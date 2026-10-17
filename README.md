@@ -66,6 +66,8 @@ func main() {
 
 The same code is in `example_test.go`, so `make test` checks that it compiles.
 
+The full API, with the spec's descriptions as doc comments, is in the [Go reference](https://pkg.go.dev/github.com/psyb0t/go-label-studio) and in `go doc github.com/psyb0t/go-label-studio`.
+
 Method names come from the spec's operation IDs, such as `ApiProjectsRetrieveWithResponse` and `ApiTasksListWithResponse`. All 376 paths and 592 operations are generated. The spec includes Enterprise endpoints; availability depends on the server edition and your permissions.
 
 ## Auth
