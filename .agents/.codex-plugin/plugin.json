@@ -1,0 +1,21 @@
+{
+  "name": "go-label-studio",
+  "version": "0.1.0",
+  "description": "Unofficial Go client for the Label Studio API: projects, tasks, annotations, predictions, imports, exports, storage and administration, generated from HumanSignal's public spec.",
+  "author": {
+    "name": "psyb0t",
+    "url": "https://github.com/psyb0t"
+  },
+  "homepage": "https://github.com/psyb0t/go-label-studio",
+  "repository": "https://github.com/psyb0t/go-label-studio",
+  "license": "MIT",
+  "keywords": [
+    "label-studio",
+    "annotation",
+    "labeling",
+    "api-client",
+    "go-library",
+    "openapi"
+  ],
+  "skills": "./skills/"
+}
