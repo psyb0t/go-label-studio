@@ -40,7 +40,7 @@ gitleaks dir --no-banner --no-color --redact \
 	/work || gitleaks_dir_rc=$?
 
 gitleaks_git_rc=0
-if [ -e /work/.git ]; then
+if [[ -e /work/.git ]]; then
 	log INFO "scanning Git history for secrets"
 	gitleaks git --no-banner --no-color --redact \
 		--gitleaks-ignore-path /work/.gitleaksignore \
@@ -48,8 +48,9 @@ if [ -e /work/.git ]; then
 		--report-path "$tmp/gitleaks-git.sarif" \
 		/work || gitleaks_git_rc=$?
 else
-	log INFO "Git history scan skipped because this directory has no .git metadata"
-	printf '{"version":"2.1.0","runs":[]}\n' >"$tmp/gitleaks-git.sarif"
+	log WARN "Git metadata absent, skipping history scan"
+	printf '%s\n' '{"version":"2.1.0","runs":[]}' \
+		>"$tmp/gitleaks-git.sarif"
 fi
 
 log INFO "running govulncheck"
@@ -67,23 +68,42 @@ semgrep_targets=(
 	.github
 	Dockerfile.dev
 	Makefile
-	./*.go
 	scripts
 )
+# Explicit file arguments bypass Semgrep's exclude globs. Build the authored
+# file list separately so the generated-only exception cannot affect it.
+for go_source in ./*.go; do
+	if [[ "$go_source" == ./client_*.gen.go ]]; then
+		continue
+	fi
+	semgrep_targets+=("$go_source")
+done
+
 semgrep scan --config p/golang --config p/security-audit \
 	--no-git-ignore --sarif --output "$tmp/semgrep.sarif" \
 	--metrics=off --error "${semgrep_targets[@]}" || sg_rc=$?
+
+# Free-form JSON properties require generated encoding/json decoders into
+# interface{}. They create JSON values, not executable objects. Keep the rule
+# active on authored code and all other rules active on the generated client.
+generated_sg_rc=0
+semgrep scan --config p/golang --config p/security-audit \
+	--exclude-rule go.lang.security.deserialization.unsafe-deserialization-interface.go-unsafe-deserialization-interface \
+	--no-git-ignore --sarif --output "$tmp/semgrep-generated.sarif" \
+	--metrics=off --error ./client_*.gen.go || generated_sg_rc=$?
 
 log INFO "merging SARIF"
 jq -s '{version:"2.1.0","$schema":"https://json.schemastore.org/sarif-2.1.0.json",runs:([.[].runs // []] | add)}' \
 	"$tmp/gitleaks-dir.sarif" \
 	"$tmp/gitleaks-git.sarif" \
 	"$tmp/govulncheck.sarif" \
-	"$tmp/semgrep.sarif" >"$SARIF_OUT"
+	"$tmp/semgrep.sarif" \
+	"$tmp/semgrep-generated.sarif" >"$SARIF_OUT"
 
 if [ "$gitleaks_dir_rc" -ne 0 ] || [ "$gitleaks_git_rc" -ne 0 ] ||
-	[ "$gv_rc" -ne 0 ] || [ "$sg_rc" -ne 0 ]; then
-	log ERROR "security findings, gitleaks_dir=${gitleaks_dir_rc}, gitleaks_git=${gitleaks_git_rc}, govulncheck=${gv_rc}, semgrep=${sg_rc}, report=${SARIF_OUT}"
+	[ "$gv_rc" -ne 0 ] || [ "$sg_rc" -ne 0 ] ||
+	[ "$generated_sg_rc" -ne 0 ]; then
+	log ERROR "security findings, gitleaks_dir=${gitleaks_dir_rc}, gitleaks_git=${gitleaks_git_rc}, govulncheck=${gv_rc}, semgrep=${sg_rc}, semgrep_generated=${generated_sg_rc}, report=${SARIF_OUT}"
 	exit 1
 fi
 log INFO "security scan complete with no findings"
