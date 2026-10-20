@@ -2,6 +2,12 @@
 
 All notable changes per release. Versions follow [semver](https://semver.org).
 
+## v0.2.0, 2026-10-20
+
+- `Label.CreatedBy` and `Label.Organization` changed from `int` to `*int` and are now optional in JSON (`omitempty`).
+- Removed `CreatedBy` and `Organization` from `PatchedLabelRequest`, `ProjectTemplateRequest` and `PatchedProjectTemplateRequest`. The upstream spec no longer accepts them in requests.
+- The `ApiProjectsPartialUpdate*RequestBody` type aliases moved between generated files. Their names and types are unchanged.
+
 ## v0.1.2, 2026-10-17
 
 - Documentation only. The agent skill explains how to look up every endpoint, parameter and model with `go doc` or on pkg.go.dev, and declares its license.

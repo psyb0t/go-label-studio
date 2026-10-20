@@ -15,15 +15,6 @@ import (
 	openapi_types "github.com/oapi-codegen/runtime/types"
 )
 
-// ApiProjectsPartialUpdateJSONRequestBody defines body for ApiProjectsPartialUpdate for application/json ContentType.
-type ApiProjectsPartialUpdateJSONRequestBody = PatchedLseProjectUpdateRequest
-
-// ApiProjectsPartialUpdateFormdataRequestBody defines body for ApiProjectsPartialUpdate for application/x-www-form-urlencoded ContentType.
-type ApiProjectsPartialUpdateFormdataRequestBody = PatchedLseProjectUpdateRequest
-
-// ApiProjectsPartialUpdateMultipartRequestBody defines body for ApiProjectsPartialUpdate for multipart/form-data ContentType.
-type ApiProjectsPartialUpdateMultipartRequestBody = PatchedLseProjectUpdateRequest
-
 // ApiProjectsAwsCustomFunctionCreateJSONRequestBody defines body for ApiProjectsAwsCustomFunctionCreate for application/json ContentType.
 type ApiProjectsAwsCustomFunctionCreateJSONRequestBody = AWSCustomFunctionUpdateRequest
 

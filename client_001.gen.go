@@ -7122,13 +7122,13 @@ type Label struct {
 	CreatedAt *time.Time `json:"created_at,omitempty"`
 
 	// CreatedBy User who made this label
-	CreatedBy int `json:"created_by"`
+	CreatedBy *int `json:"created_by,omitempty"`
 
 	// Description Label description
 	Description  *string `json:"description,omitempty"`
 	Id           *int    `json:"id,omitempty"`
 	Links        *[]int  `json:"links,omitempty"`
-	Organization int     `json:"organization"`
+	Organization *int    `json:"organization,omitempty"`
 	Projects     *[]int  `json:"projects,omitempty"`
 
 	// Title Label title
@@ -12178,12 +12178,8 @@ type PatchedLabelRequest struct {
 	// ApprovedBy User who approved this label
 	ApprovedBy *int `json:"approved_by,omitempty"`
 
-	// CreatedBy User who made this label
-	CreatedBy *int `json:"created_by,omitempty"`
-
 	// Description Label description
-	Description  *string `json:"description,omitempty"`
-	Organization *int    `json:"organization,omitempty"`
+	Description *string `json:"description,omitempty"`
 
 	// Title Label title
 	Title *string `json:"title,omitempty"`
@@ -12987,13 +12983,11 @@ type PatchedProjectLearningAssignmentRequest struct {
 type PatchedProjectTemplateRequest struct {
 	// AssignmentSettings general dict serialized assignment settings
 	AssignmentSettings interface{} `json:"assignment_settings,omitempty"`
-	CreatedBy          *int        `json:"created_by,omitempty"`
 
 	// CustomScript custom script (Plugin) for projects created from this template
 	CustomScript *string `json:"custom_script,omitempty"`
 	Description  *string `json:"description,omitempty"`
 	Name         *string `json:"name,omitempty"`
-	Organization *int    `json:"organization,omitempty"`
 	ProjectId    *int    `json:"project_id,omitempty"`
 
 	// ProjectSettings general dict serialized project settings
@@ -14171,13 +14165,11 @@ type ProjectTemplate struct {
 type ProjectTemplateRequest struct {
 	// AssignmentSettings general dict serialized assignment settings
 	AssignmentSettings interface{} `json:"assignment_settings,omitempty"`
-	CreatedBy          *int        `json:"created_by,omitempty"`
 
 	// CustomScript custom script (Plugin) for projects created from this template
 	CustomScript *string `json:"custom_script,omitempty"`
 	Description  *string `json:"description,omitempty"`
 	Name         string  `json:"name"`
-	Organization *int    `json:"organization,omitempty"`
 	ProjectId    *int    `json:"project_id,omitempty"`
 
 	// ProjectSettings general dict serialized project settings
@@ -20009,3 +20001,12 @@ type ApiProjectsValidateCreateFormdataRequestBody = ProjectLabelConfigRequest
 
 // ApiProjectsValidateCreateMultipartRequestBody defines body for ApiProjectsValidateCreate for multipart/form-data ContentType.
 type ApiProjectsValidateCreateMultipartRequestBody = ProjectLabelConfigRequest
+
+// ApiProjectsPartialUpdateJSONRequestBody defines body for ApiProjectsPartialUpdate for application/json ContentType.
+type ApiProjectsPartialUpdateJSONRequestBody = PatchedLseProjectUpdateRequest
+
+// ApiProjectsPartialUpdateFormdataRequestBody defines body for ApiProjectsPartialUpdate for application/x-www-form-urlencoded ContentType.
+type ApiProjectsPartialUpdateFormdataRequestBody = PatchedLseProjectUpdateRequest
+
+// ApiProjectsPartialUpdateMultipartRequestBody defines body for ApiProjectsPartialUpdate for multipart/form-data ContentType.
+type ApiProjectsPartialUpdateMultipartRequestBody = PatchedLseProjectUpdateRequest
