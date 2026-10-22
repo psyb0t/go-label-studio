@@ -4,7 +4,7 @@ This module is unofficial and not affiliated with HumanSignal.
 
 ## Requirements
 
-- Go 1.26.9 or newer, per the module's `go.mod`.
+- Go 1.26.10 or newer, per the module's `go.mod`.
 - A trusted Label Studio installation URL and user API token. The spec describes the token on Label Studio's User Account page.
 - Export `LABEL_STUDIO_URL` and `LABEL_STUDIO_API_KEY` for the examples. These are application conventions; the client does not read environment variables itself.
 

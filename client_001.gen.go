@@ -2611,6 +2611,9 @@ type AllRolesProjectList struct {
 	// IsDraft Whether or not the project is in the middle of being created
 	IsDraft *bool `json:"is_draft,omitempty"`
 
+	// IsOnboardingProject Onboarding project: contributors must pass it before identity verification
+	IsOnboardingProject *bool `json:"is_onboarding_project,omitempty"`
+
 	// IsPublished Whether or not the project is published to annotators
 	IsPublished *bool `json:"is_published,omitempty"`
 
@@ -20007,6 +20010,3 @@ type ApiProjectsPartialUpdateJSONRequestBody = PatchedLseProjectUpdateRequest
 
 // ApiProjectsPartialUpdateFormdataRequestBody defines body for ApiProjectsPartialUpdate for application/x-www-form-urlencoded ContentType.
 type ApiProjectsPartialUpdateFormdataRequestBody = PatchedLseProjectUpdateRequest
-
-// ApiProjectsPartialUpdateMultipartRequestBody defines body for ApiProjectsPartialUpdate for multipart/form-data ContentType.
-type ApiProjectsPartialUpdateMultipartRequestBody = PatchedLseProjectUpdateRequest

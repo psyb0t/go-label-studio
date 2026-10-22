@@ -2,6 +2,13 @@
 
 All notable changes per release. Versions follow [semver](https://semver.org).
 
+## v0.2.1, 2026-10-22
+
+- Added `AllRolesProjectList.IsOnboardingProject` (`*bool`, JSON `is_onboarding_project`, optional). The upstream spec describes it as an onboarding project that contributors must pass before identity verification.
+- `ApiProjectsPartialUpdateMultipartRequestBody` moved to another generated file. Its name and type (`PatchedLseProjectUpdateRequest`) are unchanged.
+- The module now requires Go 1.26.10 or newer. The previous Go 1.26.9 has a `crypto/x509` vulnerability (GO-2026-6809) that 1.26.10 fixes.
+- The development image uses Go 1.26.10 and a newer `ca-certificates` package, because the old package version is gone from the Alpine index.
+
 ## v0.2.0, 2026-10-20
 
 - `Label.CreatedBy` and `Label.Organization` changed from `int` to `*int` and are now optional in JSON (`omitempty`).
