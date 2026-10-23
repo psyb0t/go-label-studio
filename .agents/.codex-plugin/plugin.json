@@ -1,6 +1,6 @@
 {
   "name": "go-label-studio",
-  "version": "0.2.1",
+  "version": "0.3.0",
   "description": "Unofficial Go client for the Label Studio API: projects, tasks, annotations, predictions, imports, exports, storage and administration, generated from HumanSignal's public spec.",
   "author": {
     "name": "psyb0t",

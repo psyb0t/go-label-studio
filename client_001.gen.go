@@ -676,6 +676,27 @@ func (e MappingStatusEnum) Valid() bool {
 	}
 }
 
+// Defines values for MemberSkillStatusEnum.
+const (
+	MemberSkillStatusEnumFailed       MemberSkillStatusEnum = "failed"
+	MemberSkillStatusEnumSelfReported MemberSkillStatusEnum = "self_reported"
+	MemberSkillStatusEnumVerified     MemberSkillStatusEnum = "verified"
+)
+
+// Valid indicates whether the value is a known member of the MemberSkillStatusEnum enum.
+func (e MemberSkillStatusEnum) Valid() bool {
+	switch e {
+	case MemberSkillStatusEnumFailed:
+		return true
+	case MemberSkillStatusEnumSelfReported:
+		return true
+	case MemberSkillStatusEnumVerified:
+		return true
+	default:
+		return false
+	}
+}
+
 // Defines values for ModelRunStatusEnum.
 const (
 	ModelRunStatusEnumCanceled   ModelRunStatusEnum = "Canceled"
@@ -4392,7 +4413,10 @@ type CommentSerializerWithExpandedUser struct {
 
 // ConfigurablePermissionOption defines model for ConfigurablePermissionOption.
 type ConfigurablePermissionOption struct {
-	Default    []AssignableOrganizationRoleEnum `json:"default"`
+	Default []AssignableOrganizationRoleEnum `json:"default"`
+
+	// ExcludedBy Broader permission that supersedes this one; it only takes effect for roles without it.
+	ExcludedBy *string                          `json:"excluded_by,omitempty"`
 	Group      *string                          `json:"group,omitempty"`
 	Label      *string                          `json:"label,omitempty"`
 	Options    []AssignableOrganizationRoleEnum `json:"options"`
@@ -8297,6 +8321,7 @@ type LseOrganizationMemberList struct {
 	Organization int                            `json:"organization"`
 	Role         *OrganizationRoleEnum          `json:"role,omitempty"`
 	RoleSource   *RoleSourceEnum                `json:"role_source,omitempty"`
+	Skills       *[]MemberSkill                 `json:"skills,omitempty"`
 	Tags         *[]SimpleOrganizationMemberTag `json:"tags,omitempty"`
 
 	// User A ModelSerializer that takes additional arguments for
@@ -10185,6 +10210,22 @@ type MaybeExpandedComment struct {
 	union json.RawMessage
 }
 
+// MemberSkill defines model for MemberSkill.
+type MemberSkill struct {
+	Code  string `json:"code"`
+	Label string `json:"label"`
+
+	// Status * `verified` - verified
+	// * `self_reported` - self_reported
+	// * `failed` - failed
+	Status MemberSkillStatusEnum `json:"status"`
+}
+
+// MemberSkillStatusEnum * `verified` - verified
+// * `self_reported` - self_reported
+// * `failed` - failed
+type MemberSkillStatusEnum string
+
 // MetricParam defines model for MetricParam.
 type MetricParam struct {
 	// Deprecated: this property has been marked as deprecated upstream, but no `x-deprecated-reason` was set
@@ -10954,6 +10995,7 @@ type PaginatedProjectMember struct {
 	Phone                  *string                        `json:"phone,omitempty"`
 	ProjectRole            *string                        `json:"project_role,omitempty"`
 	ProjectRoleSource      *string                        `json:"project_role_source,omitempty"`
+	Skills                 *[]MemberSkill                 `json:"skills,omitempty"`
 	Tags                   *[]SimpleOrganizationMemberTag `json:"tags,omitempty"`
 	UserType               *string                        `json:"user_type,omitempty"`
 	Username               string                         `json:"username"`
@@ -17582,8 +17624,11 @@ type ApiOrganizationsMembershipsSearchListParams struct {
 	ExcludeWorkspaceId *float64 `form:"exclude_workspace_id,omitempty" json:"exclude_workspace_id,omitempty"`
 
 	// Filters Versioned JSON organization-member filter payload.
-	Filters   *string `form:"filters,omitempty" json:"filters,omitempty"`
-	IsDeleted *bool   `form:"is_deleted,omitempty" json:"is_deleted,omitempty"`
+	Filters *string `form:"filters,omitempty" json:"filters,omitempty"`
+
+	// IncludeSkills Add `skills` to each row: the member's skills with their status, those the `filters` payload matched first. Owners, Administrators and Managers only; ignored for other roles.
+	IncludeSkills *bool `form:"include_skills,omitempty" json:"include_skills,omitempty"`
+	IsDeleted     *bool `form:"is_deleted,omitempty" json:"is_deleted,omitempty"`
 
 	// Ordering Which field to use when ordering the results.
 	Ordering *string `form:"ordering,omitempty" json:"ordering,omitempty"`
@@ -17607,6 +17652,12 @@ type ApiOrganizationsMembershipsSearchListParams struct {
 
 	// UserType Multiple values may be separated by commas.
 	UserType *[]string `form:"user_type,omitempty" json:"user_type,omitempty"`
+}
+
+// ApiOrganizationsMembershipsSearchCreateParams defines parameters for ApiOrganizationsMembershipsSearchCreate.
+type ApiOrganizationsMembershipsSearchCreateParams struct {
+	// IncludeSkills Add `skills` to each row: the member's skills with their status, those the `filters` payload matched first. Owners, Administrators and Managers only; ignored for other roles.
+	IncludeSkills *bool `form:"include_skills,omitempty" json:"include_skills,omitempty"`
 }
 
 // ApiOrganizationsMembershipsRetrieveParams defines parameters for ApiOrganizationsMembershipsRetrieve.
@@ -17944,6 +17995,9 @@ type ApiProjectsMembersBulkDestroyParams struct {
 	// Excluded Comma-separated list of user IDs to keep assigned when `all=true`.
 	Excluded *string `form:"excluded,omitempty" json:"excluded,omitempty"`
 
+	// Ids Filter id by in list
+	Ids *string `form:"ids,omitempty" json:"ids,omitempty"`
+
 	// Included Comma-separated list of user IDs to unassign when `all=false`.
 	Included *string `form:"included,omitempty" json:"included,omitempty"`
 
@@ -17971,16 +18025,19 @@ type ApiProjectsMembersBulkDestroyParams struct {
 
 // ApiProjectsMembersBulkCreateParams defines parameters for ApiProjectsMembersBulkCreate.
 type ApiProjectsMembersBulkCreateParams struct {
+	// Filters Versioned JSON member-filter payload, the same one the organization members list accepts. Only when all=True. When advanced member filtering is enabled, do not also supply role, user_type, tags, or last-activity legacy filter parameters.
+	Filters *string `form:"filters,omitempty" json:"filters,omitempty"`
+
 	// LastActivityGte Filter by last activity (ISO 8601 formatted date). Only when all=True.
 	LastActivityGte *string `form:"last_activity__gte,omitempty" json:"last_activity__gte,omitempty"`
 
 	// LastActivityLte Filter by last activity upper bound (ISO 8601 formatted date). Only when all=True.
 	LastActivityLte *string `form:"last_activity__lte,omitempty" json:"last_activity__lte,omitempty"`
 
-	// Role Filter by role, project roles take precedence over organization roles. Only when all=True. (comma-separated values)
+	// Role Filter by organization role. Only when all=True. (comma-separated values)
 	Role *string `form:"role,omitempty" json:"role,omitempty"`
 
-	// Search Search term for filtering members by name, email, or username. Only when all=True.
+	// Search Search members by first name, last name, email, or an enabled optional member-list column. Only when all=True.
 	Search *string `form:"search,omitempty" json:"search,omitempty"`
 
 	// Tags Multiple values may be separated by commas. (comma-separated values)
@@ -17988,6 +18045,12 @@ type ApiProjectsMembersBulkCreateParams struct {
 
 	// TagsOperator How the `tags` ids combine: `any` (at least one tag), `all` (every tag, the default), `none` (no selected tag). Ignored without `tags`.
 	TagsOperator *string `form:"tags_operator,omitempty" json:"tags_operator,omitempty"`
+
+	// UserLastActivityGte Filter user__last_activity by greater than or equal to
+	UserLastActivityGte *string `form:"user__last_activity__gte,omitempty" json:"user__last_activity__gte,omitempty"`
+
+	// UserLastActivityLte Filter user__last_activity by less than or equal to
+	UserLastActivityLte *string `form:"user__last_activity__lte,omitempty" json:"user__last_activity__lte,omitempty"`
 
 	// UserType Multiple values may be separated by commas. (comma-separated values)
 	UserType *string `form:"user_type,omitempty" json:"user_type,omitempty"`
@@ -18036,6 +18099,9 @@ type ApiProjectsMembersPaginatedListParams struct {
 
 	// Implicit Include/Exclude implicit project members in the results. If not provided, explicit + implicit members are returned.
 	Implicit *bool `form:"implicit,omitempty" json:"implicit,omitempty"`
+
+	// IncludeSkills Add `skills` to each row: the member's skills with their status, those the `filters` payload matched first. Owners, Administrators and Managers only; ignored for other roles.
+	IncludeSkills *bool `form:"include_skills,omitempty" json:"include_skills,omitempty"`
 
 	// LastActivityGte Filter by last activity time (ISO 8601 datetime). Returns users with last activity greater than or equal to this time.
 	LastActivityGte *time.Time `form:"last_activity__gte,omitempty" json:"last_activity__gte,omitempty"`
@@ -18920,6 +18986,30 @@ type ApiWorkspacesMembershipsBulkDestroyParams struct {
 
 	// Search Search term for filtering matched members by name or email.
 	Search *string `form:"search,omitempty" json:"search,omitempty"`
+}
+
+// ApiWorkspacesMembershipsBulkCreateParams defines parameters for ApiWorkspacesMembershipsBulkCreate.
+type ApiWorkspacesMembershipsBulkCreateParams struct {
+	// Filters Versioned JSON member-filter payload, the same one the organization members list accepts. Only when all=True. When advanced member filtering is enabled, do not also supply role, user_type, tags, or last-activity legacy filter parameters.
+	Filters *string `form:"filters,omitempty" json:"filters,omitempty"`
+
+	// Role Multiple values may be separated by commas. (comma-separated values)
+	Role *string `form:"role,omitempty" json:"role,omitempty"`
+
+	// Search Search members by first name, last name, email, or an enabled optional member-list column. Only when all=True.
+	Search *string `form:"search,omitempty" json:"search,omitempty"`
+
+	// Tags Multiple values may be separated by commas. (comma-separated values)
+	Tags *string `form:"tags,omitempty" json:"tags,omitempty"`
+
+	// UserLastActivityGte Filter user__last_activity by greater than or equal to
+	UserLastActivityGte *string `form:"user__last_activity__gte,omitempty" json:"user__last_activity__gte,omitempty"`
+
+	// UserLastActivityLte Filter user__last_activity by less than or equal to
+	UserLastActivityLte *string `form:"user__last_activity__lte,omitempty" json:"user__last_activity__lte,omitempty"`
+
+	// UserType Multiple values may be separated by commas. (comma-separated values)
+	UserType *string `form:"user_type,omitempty" json:"user_type,omitempty"`
 }
 
 // ApiWorkspacesMembershipsPaginatedListParams defines parameters for ApiWorkspacesMembershipsPaginatedList.
@@ -19920,93 +20010,3 @@ type ApiPredictionsCreateJSONRequestBody = PredictionRequest
 
 // ApiPredictionsCreateFormdataRequestBody defines body for ApiPredictionsCreate for application/x-www-form-urlencoded ContentType.
 type ApiPredictionsCreateFormdataRequestBody = PredictionRequest
-
-// ApiPredictionsCreateMultipartRequestBody defines body for ApiPredictionsCreate for multipart/form-data ContentType.
-type ApiPredictionsCreateMultipartRequestBody = PredictionRequest
-
-// ApiPredictionsPartialUpdateJSONRequestBody defines body for ApiPredictionsPartialUpdate for application/json ContentType.
-type ApiPredictionsPartialUpdateJSONRequestBody = PatchedPredictionRequest
-
-// ApiPredictionsPartialUpdateFormdataRequestBody defines body for ApiPredictionsPartialUpdate for application/x-www-form-urlencoded ContentType.
-type ApiPredictionsPartialUpdateFormdataRequestBody = PatchedPredictionRequest
-
-// ApiPredictionsPartialUpdateMultipartRequestBody defines body for ApiPredictionsPartialUpdate for multipart/form-data ContentType.
-type ApiPredictionsPartialUpdateMultipartRequestBody = PatchedPredictionRequest
-
-// ApiPredictionsUpdateJSONRequestBody defines body for ApiPredictionsUpdate for application/json ContentType.
-type ApiPredictionsUpdateJSONRequestBody = PredictionRequest
-
-// ApiPredictionsUpdateFormdataRequestBody defines body for ApiPredictionsUpdate for application/x-www-form-urlencoded ContentType.
-type ApiPredictionsUpdateFormdataRequestBody = PredictionRequest
-
-// ApiPredictionsUpdateMultipartRequestBody defines body for ApiPredictionsUpdate for multipart/form-data ContentType.
-type ApiPredictionsUpdateMultipartRequestBody = PredictionRequest
-
-// ApiProjectTemplatesCreateJSONRequestBody defines body for ApiProjectTemplatesCreate for application/json ContentType.
-type ApiProjectTemplatesCreateJSONRequestBody = ProjectTemplateRequest
-
-// ApiProjectTemplatesCreateFormdataRequestBody defines body for ApiProjectTemplatesCreate for application/x-www-form-urlencoded ContentType.
-type ApiProjectTemplatesCreateFormdataRequestBody = ProjectTemplateRequest
-
-// ApiProjectTemplatesCreateMultipartRequestBody defines body for ApiProjectTemplatesCreate for multipart/form-data ContentType.
-type ApiProjectTemplatesCreateMultipartRequestBody = ProjectTemplateRequest
-
-// ApiProjectTemplatesPartialUpdateJSONRequestBody defines body for ApiProjectTemplatesPartialUpdate for application/json ContentType.
-type ApiProjectTemplatesPartialUpdateJSONRequestBody = PatchedProjectTemplateRequest
-
-// ApiProjectTemplatesPartialUpdateFormdataRequestBody defines body for ApiProjectTemplatesPartialUpdate for application/x-www-form-urlencoded ContentType.
-type ApiProjectTemplatesPartialUpdateFormdataRequestBody = PatchedProjectTemplateRequest
-
-// ApiProjectTemplatesPartialUpdateMultipartRequestBody defines body for ApiProjectTemplatesPartialUpdate for multipart/form-data ContentType.
-type ApiProjectTemplatesPartialUpdateMultipartRequestBody = PatchedProjectTemplateRequest
-
-// ApiProjectTemplatesUpdateJSONRequestBody defines body for ApiProjectTemplatesUpdate for application/json ContentType.
-type ApiProjectTemplatesUpdateJSONRequestBody = ProjectTemplateRequest
-
-// ApiProjectTemplatesUpdateFormdataRequestBody defines body for ApiProjectTemplatesUpdate for application/x-www-form-urlencoded ContentType.
-type ApiProjectTemplatesUpdateFormdataRequestBody = ProjectTemplateRequest
-
-// ApiProjectTemplatesUpdateMultipartRequestBody defines body for ApiProjectTemplatesUpdate for multipart/form-data ContentType.
-type ApiProjectTemplatesUpdateMultipartRequestBody = ProjectTemplateRequest
-
-// ApiProjectTemplatesCreateProjectCreateJSONRequestBody defines body for ApiProjectTemplatesCreateProjectCreate for application/json ContentType.
-type ApiProjectTemplatesCreateProjectCreateJSONRequestBody = CreateProjectFromTemplateRequestRequest
-
-// ApiProjectTemplatesCreateProjectCreateFormdataRequestBody defines body for ApiProjectTemplatesCreateProjectCreate for application/x-www-form-urlencoded ContentType.
-type ApiProjectTemplatesCreateProjectCreateFormdataRequestBody = CreateProjectFromTemplateRequestRequest
-
-// ApiProjectTemplatesCreateProjectCreateMultipartRequestBody defines body for ApiProjectTemplatesCreateProjectCreate for multipart/form-data ContentType.
-type ApiProjectTemplatesCreateProjectCreateMultipartRequestBody = CreateProjectFromTemplateRequestRequest
-
-// ApiProjectsCreateJSONRequestBody defines body for ApiProjectsCreate for application/json ContentType.
-type ApiProjectsCreateJSONRequestBody = LseProjectCreateRequest
-
-// ApiProjectsCreateFormdataRequestBody defines body for ApiProjectsCreate for application/x-www-form-urlencoded ContentType.
-type ApiProjectsCreateFormdataRequestBody = LseProjectCreateRequest
-
-// ApiProjectsCreateMultipartRequestBody defines body for ApiProjectsCreate for multipart/form-data ContentType.
-type ApiProjectsCreateMultipartRequestBody = LseProjectCreateRequest
-
-// ApiProjectsRolesCreateJSONRequestBody defines body for ApiProjectsRolesCreate for application/json ContentType.
-type ApiProjectsRolesCreateJSONRequestBody = ProjectRoleRequest
-
-// ApiProjectsRolesCreateFormdataRequestBody defines body for ApiProjectsRolesCreate for application/x-www-form-urlencoded ContentType.
-type ApiProjectsRolesCreateFormdataRequestBody = ProjectRoleRequest
-
-// ApiProjectsRolesCreateMultipartRequestBody defines body for ApiProjectsRolesCreate for multipart/form-data ContentType.
-type ApiProjectsRolesCreateMultipartRequestBody = ProjectRoleRequest
-
-// ApiProjectsValidateCreateJSONRequestBody defines body for ApiProjectsValidateCreate for application/json ContentType.
-type ApiProjectsValidateCreateJSONRequestBody = ProjectLabelConfigRequest
-
-// ApiProjectsValidateCreateFormdataRequestBody defines body for ApiProjectsValidateCreate for application/x-www-form-urlencoded ContentType.
-type ApiProjectsValidateCreateFormdataRequestBody = ProjectLabelConfigRequest
-
-// ApiProjectsValidateCreateMultipartRequestBody defines body for ApiProjectsValidateCreate for multipart/form-data ContentType.
-type ApiProjectsValidateCreateMultipartRequestBody = ProjectLabelConfigRequest
-
-// ApiProjectsPartialUpdateJSONRequestBody defines body for ApiProjectsPartialUpdate for application/json ContentType.
-type ApiProjectsPartialUpdateJSONRequestBody = PatchedLseProjectUpdateRequest
-
-// ApiProjectsPartialUpdateFormdataRequestBody defines body for ApiProjectsPartialUpdate for application/x-www-form-urlencoded ContentType.
-type ApiProjectsPartialUpdateFormdataRequestBody = PatchedLseProjectUpdateRequest

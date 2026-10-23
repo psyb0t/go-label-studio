@@ -17,6 +17,61 @@ import (
 	openapi_types "github.com/oapi-codegen/runtime/types"
 )
 
+// ApiUsersPartialUpdate Update user details
+//
+//	Update details for a specific user, such as their name or contact information, in Label Studio.
+//
+// Takes a body of the `application/json` content type.
+//
+// Corresponds with PATCH /api/users/{id}/ (the `ApiUsersPartialUpdate` operationId).
+func (c *Client) ApiUsersPartialUpdate(ctx context.Context, id int, body ApiUsersPartialUpdateJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiUsersPartialUpdateRequest(c.Server, id, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ApiUsersPartialUpdateWithFormdataBody Update user details
+//
+//	Update details for a specific user, such as their name or contact information, in Label Studio.
+//
+// Takes a body of the `application/x-www-form-urlencoded` content type.
+//
+// Corresponds with PATCH /api/users/{id}/ (the `ApiUsersPartialUpdate` operationId).
+func (c *Client) ApiUsersPartialUpdateWithFormdataBody(ctx context.Context, id int, body ApiUsersPartialUpdateFormdataRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiUsersPartialUpdateRequestWithFormdataBody(c.Server, id, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ApiVersionRetrieve Get version information
+//
+// Get version information about the Label Studio instance.
+//
+// Corresponds with GET /api/version/ (the `ApiVersionRetrieve` operationId).
+func (c *Client) ApiVersionRetrieve(ctx context.Context, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiVersionRetrieveRequest(c.Server)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
 // ApiWebhooksList List all webhooks
 //
 // List all webhooks set up for your organization.
@@ -648,8 +703,8 @@ func (c *Client) ApiWorkspacesMembershipsBulkDestroy(ctx context.Context, id int
 // Takes any type of body and a specified content type.
 //
 // Corresponds with POST /api/workspaces/{id}/memberships/bulk/ (the `ApiWorkspacesMembershipsBulkCreate` operationId).
-func (c *Client) ApiWorkspacesMembershipsBulkCreateWithBody(ctx context.Context, id int, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewApiWorkspacesMembershipsBulkCreateRequestWithBody(c.Server, id, contentType, body)
+func (c *Client) ApiWorkspacesMembershipsBulkCreateWithBody(ctx context.Context, id int, params *ApiWorkspacesMembershipsBulkCreateParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiWorkspacesMembershipsBulkCreateRequestWithBody(c.Server, id, params, contentType, body)
 	if err != nil {
 		return nil, err
 	}
@@ -675,8 +730,8 @@ func (c *Client) ApiWorkspacesMembershipsBulkCreateWithBody(ctx context.Context,
 // Takes a body of the `application/json` content type.
 //
 // Corresponds with POST /api/workspaces/{id}/memberships/bulk/ (the `ApiWorkspacesMembershipsBulkCreate` operationId).
-func (c *Client) ApiWorkspacesMembershipsBulkCreate(ctx context.Context, id int, body ApiWorkspacesMembershipsBulkCreateJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewApiWorkspacesMembershipsBulkCreateRequest(c.Server, id, body)
+func (c *Client) ApiWorkspacesMembershipsBulkCreate(ctx context.Context, id int, params *ApiWorkspacesMembershipsBulkCreateParams, body ApiWorkspacesMembershipsBulkCreateJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiWorkspacesMembershipsBulkCreateRequest(c.Server, id, params, body)
 	if err != nil {
 		return nil, err
 	}
@@ -702,8 +757,8 @@ func (c *Client) ApiWorkspacesMembershipsBulkCreate(ctx context.Context, id int,
 // Takes a body of the `application/x-www-form-urlencoded` content type.
 //
 // Corresponds with POST /api/workspaces/{id}/memberships/bulk/ (the `ApiWorkspacesMembershipsBulkCreate` operationId).
-func (c *Client) ApiWorkspacesMembershipsBulkCreateWithFormdataBody(ctx context.Context, id int, body ApiWorkspacesMembershipsBulkCreateFormdataRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewApiWorkspacesMembershipsBulkCreateRequestWithFormdataBody(c.Server, id, body)
+func (c *Client) ApiWorkspacesMembershipsBulkCreateWithFormdataBody(ctx context.Context, id int, params *ApiWorkspacesMembershipsBulkCreateParams, body ApiWorkspacesMembershipsBulkCreateFormdataRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiWorkspacesMembershipsBulkCreateRequestWithFormdataBody(c.Server, id, params, body)
 	if err != nil {
 		return nil, err
 	}
@@ -14850,6 +14905,18 @@ func NewApiOrganizationsMembershipsSearchListRequest(server string, id int, para
 
 		}
 
+		if params.IncludeSkills != nil {
+
+			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "include_skills", *params.IncludeSkills, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "boolean", Format: ""}); err != nil {
+				return nil, err
+			} else {
+				for _, qp := range strings.Split(queryFrag, "&") {
+					rawQueryFragments = append(rawQueryFragments, qp)
+				}
+			}
+
+		}
+
 		if params.IsDeleted != nil {
 
 			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "is_deleted", *params.IsDeleted, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "boolean", Format: ""}); err != nil {
@@ -14985,29 +15052,29 @@ func NewApiOrganizationsMembershipsSearchListRequest(server string, id int, para
 }
 
 // NewApiOrganizationsMembershipsSearchCreateRequest calls the generic ApiOrganizationsMembershipsSearchCreate builder with application/json body
-func NewApiOrganizationsMembershipsSearchCreateRequest(server string, id int, body ApiOrganizationsMembershipsSearchCreateJSONRequestBody) (*http.Request, error) {
+func NewApiOrganizationsMembershipsSearchCreateRequest(server string, id int, params *ApiOrganizationsMembershipsSearchCreateParams, body ApiOrganizationsMembershipsSearchCreateJSONRequestBody) (*http.Request, error) {
 	var bodyReader io.Reader
 	buf, err := json.Marshal(body)
 	if err != nil {
 		return nil, err
 	}
 	bodyReader = bytes.NewReader(buf)
-	return NewApiOrganizationsMembershipsSearchCreateRequestWithBody(server, id, "application/json", bodyReader)
+	return NewApiOrganizationsMembershipsSearchCreateRequestWithBody(server, id, params, "application/json", bodyReader)
 }
 
 // NewApiOrganizationsMembershipsSearchCreateRequestWithFormdataBody calls the generic ApiOrganizationsMembershipsSearchCreate builder with application/x-www-form-urlencoded body
-func NewApiOrganizationsMembershipsSearchCreateRequestWithFormdataBody(server string, id int, body ApiOrganizationsMembershipsSearchCreateFormdataRequestBody) (*http.Request, error) {
+func NewApiOrganizationsMembershipsSearchCreateRequestWithFormdataBody(server string, id int, params *ApiOrganizationsMembershipsSearchCreateParams, body ApiOrganizationsMembershipsSearchCreateFormdataRequestBody) (*http.Request, error) {
 	var bodyReader io.Reader
 	bodyStr, err := runtime.MarshalForm(body, nil)
 	if err != nil {
 		return nil, err
 	}
 	bodyReader = strings.NewReader(bodyStr.Encode())
-	return NewApiOrganizationsMembershipsSearchCreateRequestWithBody(server, id, "application/x-www-form-urlencoded", bodyReader)
+	return NewApiOrganizationsMembershipsSearchCreateRequestWithBody(server, id, params, "application/x-www-form-urlencoded", bodyReader)
 }
 
 // NewApiOrganizationsMembershipsSearchCreateRequestWithBody constructs an http.Request for the ApiOrganizationsMembershipsSearchCreate method, with any body, and a specified content type
-func NewApiOrganizationsMembershipsSearchCreateRequestWithBody(server string, id int, contentType string, body io.Reader) (*http.Request, error) {
+func NewApiOrganizationsMembershipsSearchCreateRequestWithBody(server string, id int, params *ApiOrganizationsMembershipsSearchCreateParams, contentType string, body io.Reader) (*http.Request, error) {
 	var err error
 
 	var pathParam0 string
@@ -15030,6 +15097,33 @@ func NewApiOrganizationsMembershipsSearchCreateRequestWithBody(server string, id
 	queryURL, err := serverURL.Parse(operationPath)
 	if err != nil {
 		return nil, err
+	}
+
+	if params != nil {
+		// queryValues collects non-styled parameters (passthrough, JSON)
+		// that are safe to round-trip through url.Values.Encode().
+		queryValues := queryURL.Query()
+		// rawQueryFragments collects pre-encoded query fragments from
+		// styled parameters, preserving literal commas as delimiters
+		// per the OpenAPI spec (e.g. "color=blue,black,brown").
+		var rawQueryFragments []string
+
+		if params.IncludeSkills != nil {
+
+			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "include_skills", *params.IncludeSkills, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "boolean", Format: ""}); err != nil {
+				return nil, err
+			} else {
+				for _, qp := range strings.Split(queryFrag, "&") {
+					rawQueryFragments = append(rawQueryFragments, qp)
+				}
+			}
+
+		}
+
+		if encoded := queryValues.Encode(); encoded != "" {
+			rawQueryFragments = append(rawQueryFragments, encoded)
+		}
+		queryURL.RawQuery = strings.Join(rawQueryFragments, "&")
 	}
 
 	req, err := http.NewRequest(http.MethodPost, queryURL.String(), body)
@@ -19243,6 +19337,18 @@ func NewApiProjectsMembersBulkDestroyRequest(server string, id int, params *ApiP
 
 		}
 
+		if params.Ids != nil {
+
+			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "ids", *params.Ids, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			} else {
+				for _, qp := range strings.Split(queryFrag, "&") {
+					rawQueryFragments = append(rawQueryFragments, qp)
+				}
+			}
+
+		}
+
 		if params.Included != nil {
 
 			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "included", *params.Included, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "string", Format: ""}); err != nil {
@@ -19410,6 +19516,18 @@ func NewApiProjectsMembersBulkCreateRequestWithBody(server string, id int, param
 		// per the OpenAPI spec (e.g. "color=blue,black,brown").
 		var rawQueryFragments []string
 
+		if params.Filters != nil {
+
+			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "filters", *params.Filters, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			} else {
+				for _, qp := range strings.Split(queryFrag, "&") {
+					rawQueryFragments = append(rawQueryFragments, qp)
+				}
+			}
+
+		}
+
 		if params.LastActivityGte != nil {
 
 			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "last_activity__gte", *params.LastActivityGte, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "string", Format: ""}); err != nil {
@@ -19473,6 +19591,30 @@ func NewApiProjectsMembersBulkCreateRequestWithBody(server string, id int, param
 		if params.TagsOperator != nil {
 
 			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "tags_operator", *params.TagsOperator, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			} else {
+				for _, qp := range strings.Split(queryFrag, "&") {
+					rawQueryFragments = append(rawQueryFragments, qp)
+				}
+			}
+
+		}
+
+		if params.UserLastActivityGte != nil {
+
+			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "user__last_activity__gte", *params.UserLastActivityGte, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			} else {
+				for _, qp := range strings.Split(queryFrag, "&") {
+					rawQueryFragments = append(rawQueryFragments, qp)
+				}
+			}
+
+		}
+
+		if params.UserLastActivityLte != nil {
+
+			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "user__last_activity__lte", *params.UserLastActivityLte, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "string", Format: ""}); err != nil {
 				return nil, err
 			} else {
 				for _, qp := range strings.Split(queryFrag, "&") {
@@ -19750,6 +19892,18 @@ func NewApiProjectsMembersPaginatedListRequest(server string, id int, params *Ap
 
 		}
 
+		if params.IncludeSkills != nil {
+
+			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "include_skills", *params.IncludeSkills, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "boolean", Format: ""}); err != nil {
+				return nil, err
+			} else {
+				for _, qp := range strings.Split(queryFrag, "&") {
+					rawQueryFragments = append(rawQueryFragments, qp)
+				}
+			}
+
+		}
+
 		if params.LastActivityGte != nil {
 
 			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "last_activity__gte", *params.LastActivityGte, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "string", Format: "date-time"}); err != nil {
@@ -19910,139 +20064,6 @@ func NewApiProjectsMembersPaginatedListRequest(server string, id int, params *Ap
 			rawQueryFragments = append(rawQueryFragments, encoded)
 		}
 		queryURL.RawQuery = strings.Join(rawQueryFragments, "&")
-	}
-
-	req, err := http.NewRequest(http.MethodGet, queryURL.String(), nil)
-	if err != nil {
-		return nil, err
-	}
-
-	return req, nil
-}
-
-// NewApiProjectsMetricparamRetrieveRequest constructs an http.Request for the ApiProjectsMetricparamRetrieve method
-func NewApiProjectsMetricparamRetrieveRequest(server string, id int) (*http.Request, error) {
-	var err error
-
-	var pathParam0 string
-
-	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "id", id, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "integer", Format: ""})
-	if err != nil {
-		return nil, err
-	}
-
-	serverURL, err := url.Parse(server)
-	if err != nil {
-		return nil, err
-	}
-
-	operationPath := fmt.Sprintf("/api/projects/%s/metricparam/", pathParam0)
-	if operationPath[0] == '/' {
-		operationPath = "." + operationPath
-	}
-
-	queryURL, err := serverURL.Parse(operationPath)
-	if err != nil {
-		return nil, err
-	}
-
-	req, err := http.NewRequest(http.MethodGet, queryURL.String(), nil)
-	if err != nil {
-		return nil, err
-	}
-
-	return req, nil
-}
-
-// NewApiProjectsMetricparamCreateRequest calls the generic ApiProjectsMetricparamCreate builder with application/json body
-func NewApiProjectsMetricparamCreateRequest(server string, id int, body ApiProjectsMetricparamCreateJSONRequestBody) (*http.Request, error) {
-	var bodyReader io.Reader
-	buf, err := json.Marshal(body)
-	if err != nil {
-		return nil, err
-	}
-	bodyReader = bytes.NewReader(buf)
-	return NewApiProjectsMetricparamCreateRequestWithBody(server, id, "application/json", bodyReader)
-}
-
-// NewApiProjectsMetricparamCreateRequestWithFormdataBody calls the generic ApiProjectsMetricparamCreate builder with application/x-www-form-urlencoded body
-func NewApiProjectsMetricparamCreateRequestWithFormdataBody(server string, id int, body ApiProjectsMetricparamCreateFormdataRequestBody) (*http.Request, error) {
-	var bodyReader io.Reader
-	bodyStr, err := runtime.MarshalForm(body, nil)
-	if err != nil {
-		return nil, err
-	}
-	bodyReader = strings.NewReader(bodyStr.Encode())
-	return NewApiProjectsMetricparamCreateRequestWithBody(server, id, "application/x-www-form-urlencoded", bodyReader)
-}
-
-// NewApiProjectsMetricparamCreateRequestWithBody constructs an http.Request for the ApiProjectsMetricparamCreate method, with any body, and a specified content type
-func NewApiProjectsMetricparamCreateRequestWithBody(server string, id int, contentType string, body io.Reader) (*http.Request, error) {
-	var err error
-
-	var pathParam0 string
-
-	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "id", id, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "integer", Format: ""})
-	if err != nil {
-		return nil, err
-	}
-
-	serverURL, err := url.Parse(server)
-	if err != nil {
-		return nil, err
-	}
-
-	operationPath := fmt.Sprintf("/api/projects/%s/metricparam/", pathParam0)
-	if operationPath[0] == '/' {
-		operationPath = "." + operationPath
-	}
-
-	queryURL, err := serverURL.Parse(operationPath)
-	if err != nil {
-		return nil, err
-	}
-
-	req, err := http.NewRequest(http.MethodPost, queryURL.String(), body)
-	if err != nil {
-		return nil, err
-	}
-
-	req.Header.Add("Content-Type", contentType)
-
-	return req, nil
-}
-
-// NewApiProjectsModelStatsAgreementRetrieveRequest constructs an http.Request for the ApiProjectsModelStatsAgreementRetrieve method
-func NewApiProjectsModelStatsAgreementRetrieveRequest(server string, id int, modelVersion string) (*http.Request, error) {
-	var err error
-
-	var pathParam0 string
-
-	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "id", id, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "integer", Format: ""})
-	if err != nil {
-		return nil, err
-	}
-
-	var pathParam1 string
-
-	pathParam1, err = runtime.StyleParamWithOptions("simple", false, "model_version", modelVersion, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
-	if err != nil {
-		return nil, err
-	}
-
-	serverURL, err := url.Parse(server)
-	if err != nil {
-		return nil, err
-	}
-
-	operationPath := fmt.Sprintf("/api/projects/%s/model-stats/%s/agreement", pathParam0, pathParam1)
-	if operationPath[0] == '/' {
-		operationPath = "." + operationPath
-	}
-
-	queryURL, err := serverURL.Parse(operationPath)
-	if err != nil {
-		return nil, err
 	}
 
 	req, err := http.NewRequest(http.MethodGet, queryURL.String(), nil)

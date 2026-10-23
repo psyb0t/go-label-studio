@@ -12868,7 +12868,7 @@ func (c *ClientWithResponses) ApiOrganizationsMembershipsFilterOptionsMembership
 
 // ApiOrganizationsMembershipsFilterOptionsSkillsListWithResponse List organization member Skills filter options
 //
-// Return self-reported Skills values with Contributor Setup display metadata.
+// Return Skills values held by members, self-reported or set by a skill assessment, with Contributor Setup display metadata. Owners, Administrators and Managers only.
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -12918,8 +12918,8 @@ func (c *ClientWithResponses) ApiOrganizationsMembershipsSearchListWithResponse(
 // Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
 //
 // Corresponds with POST /api/organizations/{id}/memberships/search (the `ApiOrganizationsMembershipsSearchCreate` operationId).
-func (c *ClientWithResponses) ApiOrganizationsMembershipsSearchCreateWithBodyWithResponse(ctx context.Context, id int, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*ApiOrganizationsMembershipsSearchCreateResponse, error) {
-	rsp, err := c.ApiOrganizationsMembershipsSearchCreateWithBody(ctx, id, contentType, body, reqEditors...)
+func (c *ClientWithResponses) ApiOrganizationsMembershipsSearchCreateWithBodyWithResponse(ctx context.Context, id int, params *ApiOrganizationsMembershipsSearchCreateParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*ApiOrganizationsMembershipsSearchCreateResponse, error) {
+	rsp, err := c.ApiOrganizationsMembershipsSearchCreateWithBody(ctx, id, params, contentType, body, reqEditors...)
 	if err != nil {
 		return nil, err
 	}
@@ -12933,8 +12933,8 @@ func (c *ClientWithResponses) ApiOrganizationsMembershipsSearchCreateWithBodyWit
 // Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
 //
 // Corresponds with POST /api/organizations/{id}/memberships/search (the `ApiOrganizationsMembershipsSearchCreate` operationId).
-func (c *ClientWithResponses) ApiOrganizationsMembershipsSearchCreateWithResponse(ctx context.Context, id int, body ApiOrganizationsMembershipsSearchCreateJSONRequestBody, reqEditors ...RequestEditorFn) (*ApiOrganizationsMembershipsSearchCreateResponse, error) {
-	rsp, err := c.ApiOrganizationsMembershipsSearchCreate(ctx, id, body, reqEditors...)
+func (c *ClientWithResponses) ApiOrganizationsMembershipsSearchCreateWithResponse(ctx context.Context, id int, params *ApiOrganizationsMembershipsSearchCreateParams, body ApiOrganizationsMembershipsSearchCreateJSONRequestBody, reqEditors ...RequestEditorFn) (*ApiOrganizationsMembershipsSearchCreateResponse, error) {
+	rsp, err := c.ApiOrganizationsMembershipsSearchCreate(ctx, id, params, body, reqEditors...)
 	if err != nil {
 		return nil, err
 	}
@@ -12948,8 +12948,8 @@ func (c *ClientWithResponses) ApiOrganizationsMembershipsSearchCreateWithRespons
 // Takes a body of the `application/x-www-form-urlencoded` content type, and returns a wrapper object for the known response body format(s).
 //
 // Corresponds with POST /api/organizations/{id}/memberships/search (the `ApiOrganizationsMembershipsSearchCreate` operationId).
-func (c *ClientWithResponses) ApiOrganizationsMembershipsSearchCreateWithFormdataBodyWithResponse(ctx context.Context, id int, body ApiOrganizationsMembershipsSearchCreateFormdataRequestBody, reqEditors ...RequestEditorFn) (*ApiOrganizationsMembershipsSearchCreateResponse, error) {
-	rsp, err := c.ApiOrganizationsMembershipsSearchCreateWithFormdataBody(ctx, id, body, reqEditors...)
+func (c *ClientWithResponses) ApiOrganizationsMembershipsSearchCreateWithFormdataBodyWithResponse(ctx context.Context, id int, params *ApiOrganizationsMembershipsSearchCreateParams, body ApiOrganizationsMembershipsSearchCreateFormdataRequestBody, reqEditors ...RequestEditorFn) (*ApiOrganizationsMembershipsSearchCreateResponse, error) {
+	rsp, err := c.ApiOrganizationsMembershipsSearchCreateWithFormdataBody(ctx, id, params, body, reqEditors...)
 	if err != nil {
 		return nil, err
 	}

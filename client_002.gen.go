@@ -15,6 +15,96 @@ import (
 	openapi_types "github.com/oapi-codegen/runtime/types"
 )
 
+// ApiPredictionsCreateMultipartRequestBody defines body for ApiPredictionsCreate for multipart/form-data ContentType.
+type ApiPredictionsCreateMultipartRequestBody = PredictionRequest
+
+// ApiPredictionsPartialUpdateJSONRequestBody defines body for ApiPredictionsPartialUpdate for application/json ContentType.
+type ApiPredictionsPartialUpdateJSONRequestBody = PatchedPredictionRequest
+
+// ApiPredictionsPartialUpdateFormdataRequestBody defines body for ApiPredictionsPartialUpdate for application/x-www-form-urlencoded ContentType.
+type ApiPredictionsPartialUpdateFormdataRequestBody = PatchedPredictionRequest
+
+// ApiPredictionsPartialUpdateMultipartRequestBody defines body for ApiPredictionsPartialUpdate for multipart/form-data ContentType.
+type ApiPredictionsPartialUpdateMultipartRequestBody = PatchedPredictionRequest
+
+// ApiPredictionsUpdateJSONRequestBody defines body for ApiPredictionsUpdate for application/json ContentType.
+type ApiPredictionsUpdateJSONRequestBody = PredictionRequest
+
+// ApiPredictionsUpdateFormdataRequestBody defines body for ApiPredictionsUpdate for application/x-www-form-urlencoded ContentType.
+type ApiPredictionsUpdateFormdataRequestBody = PredictionRequest
+
+// ApiPredictionsUpdateMultipartRequestBody defines body for ApiPredictionsUpdate for multipart/form-data ContentType.
+type ApiPredictionsUpdateMultipartRequestBody = PredictionRequest
+
+// ApiProjectTemplatesCreateJSONRequestBody defines body for ApiProjectTemplatesCreate for application/json ContentType.
+type ApiProjectTemplatesCreateJSONRequestBody = ProjectTemplateRequest
+
+// ApiProjectTemplatesCreateFormdataRequestBody defines body for ApiProjectTemplatesCreate for application/x-www-form-urlencoded ContentType.
+type ApiProjectTemplatesCreateFormdataRequestBody = ProjectTemplateRequest
+
+// ApiProjectTemplatesCreateMultipartRequestBody defines body for ApiProjectTemplatesCreate for multipart/form-data ContentType.
+type ApiProjectTemplatesCreateMultipartRequestBody = ProjectTemplateRequest
+
+// ApiProjectTemplatesPartialUpdateJSONRequestBody defines body for ApiProjectTemplatesPartialUpdate for application/json ContentType.
+type ApiProjectTemplatesPartialUpdateJSONRequestBody = PatchedProjectTemplateRequest
+
+// ApiProjectTemplatesPartialUpdateFormdataRequestBody defines body for ApiProjectTemplatesPartialUpdate for application/x-www-form-urlencoded ContentType.
+type ApiProjectTemplatesPartialUpdateFormdataRequestBody = PatchedProjectTemplateRequest
+
+// ApiProjectTemplatesPartialUpdateMultipartRequestBody defines body for ApiProjectTemplatesPartialUpdate for multipart/form-data ContentType.
+type ApiProjectTemplatesPartialUpdateMultipartRequestBody = PatchedProjectTemplateRequest
+
+// ApiProjectTemplatesUpdateJSONRequestBody defines body for ApiProjectTemplatesUpdate for application/json ContentType.
+type ApiProjectTemplatesUpdateJSONRequestBody = ProjectTemplateRequest
+
+// ApiProjectTemplatesUpdateFormdataRequestBody defines body for ApiProjectTemplatesUpdate for application/x-www-form-urlencoded ContentType.
+type ApiProjectTemplatesUpdateFormdataRequestBody = ProjectTemplateRequest
+
+// ApiProjectTemplatesUpdateMultipartRequestBody defines body for ApiProjectTemplatesUpdate for multipart/form-data ContentType.
+type ApiProjectTemplatesUpdateMultipartRequestBody = ProjectTemplateRequest
+
+// ApiProjectTemplatesCreateProjectCreateJSONRequestBody defines body for ApiProjectTemplatesCreateProjectCreate for application/json ContentType.
+type ApiProjectTemplatesCreateProjectCreateJSONRequestBody = CreateProjectFromTemplateRequestRequest
+
+// ApiProjectTemplatesCreateProjectCreateFormdataRequestBody defines body for ApiProjectTemplatesCreateProjectCreate for application/x-www-form-urlencoded ContentType.
+type ApiProjectTemplatesCreateProjectCreateFormdataRequestBody = CreateProjectFromTemplateRequestRequest
+
+// ApiProjectTemplatesCreateProjectCreateMultipartRequestBody defines body for ApiProjectTemplatesCreateProjectCreate for multipart/form-data ContentType.
+type ApiProjectTemplatesCreateProjectCreateMultipartRequestBody = CreateProjectFromTemplateRequestRequest
+
+// ApiProjectsCreateJSONRequestBody defines body for ApiProjectsCreate for application/json ContentType.
+type ApiProjectsCreateJSONRequestBody = LseProjectCreateRequest
+
+// ApiProjectsCreateFormdataRequestBody defines body for ApiProjectsCreate for application/x-www-form-urlencoded ContentType.
+type ApiProjectsCreateFormdataRequestBody = LseProjectCreateRequest
+
+// ApiProjectsCreateMultipartRequestBody defines body for ApiProjectsCreate for multipart/form-data ContentType.
+type ApiProjectsCreateMultipartRequestBody = LseProjectCreateRequest
+
+// ApiProjectsRolesCreateJSONRequestBody defines body for ApiProjectsRolesCreate for application/json ContentType.
+type ApiProjectsRolesCreateJSONRequestBody = ProjectRoleRequest
+
+// ApiProjectsRolesCreateFormdataRequestBody defines body for ApiProjectsRolesCreate for application/x-www-form-urlencoded ContentType.
+type ApiProjectsRolesCreateFormdataRequestBody = ProjectRoleRequest
+
+// ApiProjectsRolesCreateMultipartRequestBody defines body for ApiProjectsRolesCreate for multipart/form-data ContentType.
+type ApiProjectsRolesCreateMultipartRequestBody = ProjectRoleRequest
+
+// ApiProjectsValidateCreateJSONRequestBody defines body for ApiProjectsValidateCreate for application/json ContentType.
+type ApiProjectsValidateCreateJSONRequestBody = ProjectLabelConfigRequest
+
+// ApiProjectsValidateCreateFormdataRequestBody defines body for ApiProjectsValidateCreate for application/x-www-form-urlencoded ContentType.
+type ApiProjectsValidateCreateFormdataRequestBody = ProjectLabelConfigRequest
+
+// ApiProjectsValidateCreateMultipartRequestBody defines body for ApiProjectsValidateCreate for multipart/form-data ContentType.
+type ApiProjectsValidateCreateMultipartRequestBody = ProjectLabelConfigRequest
+
+// ApiProjectsPartialUpdateJSONRequestBody defines body for ApiProjectsPartialUpdate for application/json ContentType.
+type ApiProjectsPartialUpdateJSONRequestBody = PatchedLseProjectUpdateRequest
+
+// ApiProjectsPartialUpdateFormdataRequestBody defines body for ApiProjectsPartialUpdate for application/x-www-form-urlencoded ContentType.
+type ApiProjectsPartialUpdateFormdataRequestBody = PatchedLseProjectUpdateRequest
+
 // ApiProjectsPartialUpdateMultipartRequestBody defines body for ApiProjectsPartialUpdate for multipart/form-data ContentType.
 type ApiProjectsPartialUpdateMultipartRequestBody = PatchedLseProjectUpdateRequest
 
@@ -8171,7 +8261,7 @@ type ClientInterface interface {
 
 	// ApiOrganizationsMembershipsFilterOptionsSkillsList List organization member Skills filter options
 	//
-	// Return self-reported Skills values with Contributor Setup display metadata.
+	// Return Skills values held by members, self-reported or set by a skill assessment, with Contributor Setup display metadata. Owners, Administrators and Managers only.
 	//
 	// Corresponds with GET /api/organizations/{id}/memberships/filter-options/skills (the `ApiOrganizationsMembershipsFilterOptionsSkillsList` operationId).
 	ApiOrganizationsMembershipsFilterOptionsSkillsList(ctx context.Context, id int, params *ApiOrganizationsMembershipsFilterOptionsSkillsListParams, reqEditors ...RequestEditorFn) (*http.Response, error)
@@ -8197,7 +8287,7 @@ type ClientInterface interface {
 	// Takes any type of body and a specified content type.
 	//
 	// Corresponds with POST /api/organizations/{id}/memberships/search (the `ApiOrganizationsMembershipsSearchCreate` operationId).
-	ApiOrganizationsMembershipsSearchCreateWithBody(ctx context.Context, id int, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
+	ApiOrganizationsMembershipsSearchCreateWithBody(ctx context.Context, id int, params *ApiOrganizationsMembershipsSearchCreateParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// ApiOrganizationsMembershipsSearchCreate Search organization members using reusable filters
 	//
@@ -8206,7 +8296,7 @@ type ClientInterface interface {
 	// Takes a body of the `application/json` content type.
 	//
 	// Corresponds with POST /api/organizations/{id}/memberships/search (the `ApiOrganizationsMembershipsSearchCreate` operationId).
-	ApiOrganizationsMembershipsSearchCreate(ctx context.Context, id int, body ApiOrganizationsMembershipsSearchCreateJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
+	ApiOrganizationsMembershipsSearchCreate(ctx context.Context, id int, params *ApiOrganizationsMembershipsSearchCreateParams, body ApiOrganizationsMembershipsSearchCreateJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// ApiOrganizationsMembershipsSearchCreateWithFormdataBody Search organization members using reusable filters
 	//
@@ -8215,7 +8305,7 @@ type ClientInterface interface {
 	// Takes a body of the `application/x-www-form-urlencoded` content type.
 	//
 	// Corresponds with POST /api/organizations/{id}/memberships/search (the `ApiOrganizationsMembershipsSearchCreate` operationId).
-	ApiOrganizationsMembershipsSearchCreateWithFormdataBody(ctx context.Context, id int, body ApiOrganizationsMembershipsSearchCreateFormdataRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
+	ApiOrganizationsMembershipsSearchCreateWithFormdataBody(ctx context.Context, id int, params *ApiOrganizationsMembershipsSearchCreateParams, body ApiOrganizationsMembershipsSearchCreateFormdataRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// ApiOrganizationsMembershipsDestroy Soft delete an organization member
 	//
@@ -15958,7 +16048,7 @@ type ClientInterface interface {
 	// Takes any type of body and a specified content type.
 	//
 	// Corresponds with POST /api/workspaces/{id}/memberships/bulk/ (the `ApiWorkspacesMembershipsBulkCreate` operationId).
-	ApiWorkspacesMembershipsBulkCreateWithBody(ctx context.Context, id int, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
+	ApiWorkspacesMembershipsBulkCreateWithBody(ctx context.Context, id int, params *ApiWorkspacesMembershipsBulkCreateParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// ApiWorkspacesMembershipsBulkCreate ✨ Bulk assign workspace members
 	//
@@ -15973,7 +16063,7 @@ type ClientInterface interface {
 	// Takes a body of the `application/json` content type.
 	//
 	// Corresponds with POST /api/workspaces/{id}/memberships/bulk/ (the `ApiWorkspacesMembershipsBulkCreate` operationId).
-	ApiWorkspacesMembershipsBulkCreate(ctx context.Context, id int, body ApiWorkspacesMembershipsBulkCreateJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
+	ApiWorkspacesMembershipsBulkCreate(ctx context.Context, id int, params *ApiWorkspacesMembershipsBulkCreateParams, body ApiWorkspacesMembershipsBulkCreateJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// ApiWorkspacesMembershipsBulkCreateWithFormdataBody ✨ Bulk assign workspace members
 	//
@@ -15988,7 +16078,7 @@ type ClientInterface interface {
 	// Takes a body of the `application/x-www-form-urlencoded` content type.
 	//
 	// Corresponds with POST /api/workspaces/{id}/memberships/bulk/ (the `ApiWorkspacesMembershipsBulkCreate` operationId).
-	ApiWorkspacesMembershipsBulkCreateWithFormdataBody(ctx context.Context, id int, body ApiWorkspacesMembershipsBulkCreateFormdataRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
+	ApiWorkspacesMembershipsBulkCreateWithFormdataBody(ctx context.Context, id int, params *ApiWorkspacesMembershipsBulkCreateParams, body ApiWorkspacesMembershipsBulkCreateFormdataRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// ApiWorkspacesMembershipsPaginatedList ✨ Get workspace members paginated
 	//
@@ -19945,73 +20035,6 @@ func (c *Client) ApiDimensionsValueCountsBackfillCreate(ctx context.Context, bod
 // Corresponds with POST /api/dimensions/value-counts-backfill/ (the `ApiDimensionsValueCountsBackfillCreate` operationId).
 func (c *Client) ApiDimensionsValueCountsBackfillCreateWithFormdataBody(ctx context.Context, body ApiDimensionsValueCountsBackfillCreateFormdataRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewApiDimensionsValueCountsBackfillCreateRequestWithFormdataBody(c.Server, body)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// ApiDimensionsValueCountsBackfillJobsList ✨ List Dimension value-counts backfill jobs
-//
-// <Card href="https://humansignal.com/goenterprise">
-//
-//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
-//	    <p style="margin-top: 10px; font-size: 14px;">
-//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
-//	    </p>
-//	</Card>
-//
-// Retrieve Dimension value-counts backfill jobs for the authenticated user's active organization, ordered by most-recently created first. Supports page / page_size query params (default 50 per page, max 500). Requires administrator or owner role and Agreement V2 access.
-//
-// Corresponds with GET /api/dimensions/value-counts-backfill/jobs/ (the `ApiDimensionsValueCountsBackfillJobsList` operationId).
-func (c *Client) ApiDimensionsValueCountsBackfillJobsList(ctx context.Context, params *ApiDimensionsValueCountsBackfillJobsListParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewApiDimensionsValueCountsBackfillJobsListRequest(c.Server, params)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// ApiDimensionsValueCountsBackfillStatusRetrieve ✨ Get Dimension value-counts backfill status
-//
-// <Card href="https://humansignal.com/goenterprise">
-//
-//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
-//	    <p style="margin-top: 10px; font-size: 14px;">
-//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
-//	    </p>
-//	</Card>
-//
-// Retrieve the status of a Dimension value-counts backfill job for the authenticated user's active organization. By default returns the aggregated organization status. Specify job_id or project_id to get a specific job status. Requires administrator or owner role and Agreement V2 access.
-//
-// Corresponds with GET /api/dimensions/value-counts-backfill/status/ (the `ApiDimensionsValueCountsBackfillStatusRetrieve` operationId).
-func (c *Client) ApiDimensionsValueCountsBackfillStatusRetrieve(ctx context.Context, params *ApiDimensionsValueCountsBackfillStatusRetrieveParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewApiDimensionsValueCountsBackfillStatusRetrieveRequest(c.Server, params)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// ApiDmActionsRetrieve Get actions
-//
-// Retrieve all the registered actions with descriptions that data manager can use.
-//
-// Corresponds with GET /api/dm/actions/ (the `ApiDmActionsRetrieve` operationId).
-func (c *Client) ApiDmActionsRetrieve(ctx context.Context, params *ApiDmActionsRetrieveParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewApiDmActionsRetrieveRequest(c.Server, params)
 	if err != nil {
 		return nil, err
 	}

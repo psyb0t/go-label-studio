@@ -2,6 +2,16 @@
 
 All notable changes per release. Versions follow [semver](https://semver.org).
 
+## v0.3.0, 2026-10-23
+
+- Breaking: `ApiOrganizationsMembershipsSearchCreate` and `ApiWorkspacesMembershipsBulkCreate` now take a `*ApiOrganizationsMembershipsSearchCreateParams` or `*ApiWorkspacesMembershipsBulkCreateParams` argument after the id. This applies to the `WithBody` and `WithFormdataBody` variants, the `ClientWithResponses` `...WithResponse` variants, the matching `ClientInterface` and `ClientWithResponsesInterface` methods, and the `NewApiOrganizationsMembershipsSearchCreateRequest*` and `NewApiWorkspacesMembershipsBulkCreateRequest*` builders. Migration: pass `nil` for the new argument to keep the old behavior.
+- Added `ApiOrganizationsMembershipsSearchCreateParams` (field `IncludeSkills`) and `ApiWorkspacesMembershipsBulkCreateParams` (fields `Filters`, `Role`, `Search`, `Tags`, `UserLastActivityGte`, `UserLastActivityLte` and others the spec lists).
+- Added `MemberSkill`, `MemberSkillStatusEnum` and its constants `MemberSkillStatusEnumFailed`, `MemberSkillStatusEnumSelfReported` and `MemberSkillStatusEnumVerified`.
+- Added `LseOrganizationMemberList.Skills` and `PaginatedProjectMember.Skills` (`*[]MemberSkill`, optional).
+- Added `IncludeSkills` to `ApiOrganizationsMembershipsSearchListParams` and `ApiProjectsMembersPaginatedListParams`.
+- Added `Filters`, `UserLastActivityGte` and `UserLastActivityLte` to `ApiProjectsMembersBulkCreateParams`, and `Ids` to `ApiProjectsMembersBulkDestroyParams`.
+- Added `ConfigurablePermissionOption.ExcludedBy` (`*string`, optional), the broader permission that supersedes this one.
+
 ## v0.2.1, 2026-10-22
 
 - Added `AllRolesProjectList.IsOnboardingProject` (`*bool`, JSON `is_onboarding_project`, optional). The upstream spec describes it as an onboarding project that contributors must pass before identity verification.

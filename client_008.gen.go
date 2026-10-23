@@ -5483,8 +5483,8 @@ func (c *ClientWithResponses) ApiWorkspacesMembershipsBulkDestroyWithResponse(ct
 // Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
 //
 // Corresponds with POST /api/workspaces/{id}/memberships/bulk/ (the `ApiWorkspacesMembershipsBulkCreate` operationId).
-func (c *ClientWithResponses) ApiWorkspacesMembershipsBulkCreateWithBodyWithResponse(ctx context.Context, id int, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*ApiWorkspacesMembershipsBulkCreateResponse, error) {
-	rsp, err := c.ApiWorkspacesMembershipsBulkCreateWithBody(ctx, id, contentType, body, reqEditors...)
+func (c *ClientWithResponses) ApiWorkspacesMembershipsBulkCreateWithBodyWithResponse(ctx context.Context, id int, params *ApiWorkspacesMembershipsBulkCreateParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*ApiWorkspacesMembershipsBulkCreateResponse, error) {
+	rsp, err := c.ApiWorkspacesMembershipsBulkCreateWithBody(ctx, id, params, contentType, body, reqEditors...)
 	if err != nil {
 		return nil, err
 	}
@@ -5506,8 +5506,8 @@ func (c *ClientWithResponses) ApiWorkspacesMembershipsBulkCreateWithBodyWithResp
 // Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
 //
 // Corresponds with POST /api/workspaces/{id}/memberships/bulk/ (the `ApiWorkspacesMembershipsBulkCreate` operationId).
-func (c *ClientWithResponses) ApiWorkspacesMembershipsBulkCreateWithResponse(ctx context.Context, id int, body ApiWorkspacesMembershipsBulkCreateJSONRequestBody, reqEditors ...RequestEditorFn) (*ApiWorkspacesMembershipsBulkCreateResponse, error) {
-	rsp, err := c.ApiWorkspacesMembershipsBulkCreate(ctx, id, body, reqEditors...)
+func (c *ClientWithResponses) ApiWorkspacesMembershipsBulkCreateWithResponse(ctx context.Context, id int, params *ApiWorkspacesMembershipsBulkCreateParams, body ApiWorkspacesMembershipsBulkCreateJSONRequestBody, reqEditors ...RequestEditorFn) (*ApiWorkspacesMembershipsBulkCreateResponse, error) {
+	rsp, err := c.ApiWorkspacesMembershipsBulkCreate(ctx, id, params, body, reqEditors...)
 	if err != nil {
 		return nil, err
 	}
@@ -5529,8 +5529,8 @@ func (c *ClientWithResponses) ApiWorkspacesMembershipsBulkCreateWithResponse(ctx
 // Takes a body of the `application/x-www-form-urlencoded` content type, and returns a wrapper object for the known response body format(s).
 //
 // Corresponds with POST /api/workspaces/{id}/memberships/bulk/ (the `ApiWorkspacesMembershipsBulkCreate` operationId).
-func (c *ClientWithResponses) ApiWorkspacesMembershipsBulkCreateWithFormdataBodyWithResponse(ctx context.Context, id int, body ApiWorkspacesMembershipsBulkCreateFormdataRequestBody, reqEditors ...RequestEditorFn) (*ApiWorkspacesMembershipsBulkCreateResponse, error) {
-	rsp, err := c.ApiWorkspacesMembershipsBulkCreateWithFormdataBody(ctx, id, body, reqEditors...)
+func (c *ClientWithResponses) ApiWorkspacesMembershipsBulkCreateWithFormdataBodyWithResponse(ctx context.Context, id int, params *ApiWorkspacesMembershipsBulkCreateParams, body ApiWorkspacesMembershipsBulkCreateFormdataRequestBody, reqEditors ...RequestEditorFn) (*ApiWorkspacesMembershipsBulkCreateResponse, error) {
+	rsp, err := c.ApiWorkspacesMembershipsBulkCreateWithFormdataBody(ctx, id, params, body, reqEditors...)
 	if err != nil {
 		return nil, err
 	}

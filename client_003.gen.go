@@ -9,6 +9,73 @@ import (
 	"net/http"
 )
 
+// ApiDimensionsValueCountsBackfillJobsList ✨ List Dimension value-counts backfill jobs
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Retrieve Dimension value-counts backfill jobs for the authenticated user's active organization, ordered by most-recently created first. Supports page / page_size query params (default 50 per page, max 500). Requires administrator or owner role and Agreement V2 access.
+//
+// Corresponds with GET /api/dimensions/value-counts-backfill/jobs/ (the `ApiDimensionsValueCountsBackfillJobsList` operationId).
+func (c *Client) ApiDimensionsValueCountsBackfillJobsList(ctx context.Context, params *ApiDimensionsValueCountsBackfillJobsListParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiDimensionsValueCountsBackfillJobsListRequest(c.Server, params)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ApiDimensionsValueCountsBackfillStatusRetrieve ✨ Get Dimension value-counts backfill status
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Retrieve the status of a Dimension value-counts backfill job for the authenticated user's active organization. By default returns the aggregated organization status. Specify job_id or project_id to get a specific job status. Requires administrator or owner role and Agreement V2 access.
+//
+// Corresponds with GET /api/dimensions/value-counts-backfill/status/ (the `ApiDimensionsValueCountsBackfillStatusRetrieve` operationId).
+func (c *Client) ApiDimensionsValueCountsBackfillStatusRetrieve(ctx context.Context, params *ApiDimensionsValueCountsBackfillStatusRetrieveParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiDimensionsValueCountsBackfillStatusRetrieveRequest(c.Server, params)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ApiDmActionsRetrieve Get actions
+//
+// Retrieve all the registered actions with descriptions that data manager can use.
+//
+// Corresponds with GET /api/dm/actions/ (the `ApiDmActionsRetrieve` operationId).
+func (c *Client) ApiDmActionsRetrieve(ctx context.Context, params *ApiDmActionsRetrieveParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiDmActionsRetrieveRequest(c.Server, params)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
 // ApiDmActionsCreateWithBody Post actions
 //
 // Perform a Data Manager action with the selected tasks and filters. Note: More complex actions require additional parameters in the request body. Call `GET api/actions?project=<id>` to explore them. <br>Example: `GET api/actions?id=delete_tasks&project=1`
@@ -5956,7 +6023,7 @@ func (c *Client) ApiOrganizationsMembershipsFilterOptionsMembershipList(ctx cont
 
 // ApiOrganizationsMembershipsFilterOptionsSkillsList List organization member Skills filter options
 //
-// Return self-reported Skills values with Contributor Setup display metadata.
+// Return Skills values held by members, self-reported or set by a skill assessment, with Contributor Setup display metadata. Owners, Administrators and Managers only.
 //
 // Corresponds with GET /api/organizations/{id}/memberships/filter-options/skills (the `ApiOrganizationsMembershipsFilterOptionsSkillsList` operationId).
 func (c *Client) ApiOrganizationsMembershipsFilterOptionsSkillsList(ctx context.Context, id int, params *ApiOrganizationsMembershipsFilterOptionsSkillsListParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -6012,8 +6079,8 @@ func (c *Client) ApiOrganizationsMembershipsSearchList(ctx context.Context, id i
 // Takes any type of body and a specified content type.
 //
 // Corresponds with POST /api/organizations/{id}/memberships/search (the `ApiOrganizationsMembershipsSearchCreate` operationId).
-func (c *Client) ApiOrganizationsMembershipsSearchCreateWithBody(ctx context.Context, id int, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewApiOrganizationsMembershipsSearchCreateRequestWithBody(c.Server, id, contentType, body)
+func (c *Client) ApiOrganizationsMembershipsSearchCreateWithBody(ctx context.Context, id int, params *ApiOrganizationsMembershipsSearchCreateParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiOrganizationsMembershipsSearchCreateRequestWithBody(c.Server, id, params, contentType, body)
 	if err != nil {
 		return nil, err
 	}
@@ -6031,8 +6098,8 @@ func (c *Client) ApiOrganizationsMembershipsSearchCreateWithBody(ctx context.Con
 // Takes a body of the `application/json` content type.
 //
 // Corresponds with POST /api/organizations/{id}/memberships/search (the `ApiOrganizationsMembershipsSearchCreate` operationId).
-func (c *Client) ApiOrganizationsMembershipsSearchCreate(ctx context.Context, id int, body ApiOrganizationsMembershipsSearchCreateJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewApiOrganizationsMembershipsSearchCreateRequest(c.Server, id, body)
+func (c *Client) ApiOrganizationsMembershipsSearchCreate(ctx context.Context, id int, params *ApiOrganizationsMembershipsSearchCreateParams, body ApiOrganizationsMembershipsSearchCreateJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiOrganizationsMembershipsSearchCreateRequest(c.Server, id, params, body)
 	if err != nil {
 		return nil, err
 	}
@@ -6050,8 +6117,8 @@ func (c *Client) ApiOrganizationsMembershipsSearchCreate(ctx context.Context, id
 // Takes a body of the `application/x-www-form-urlencoded` content type.
 //
 // Corresponds with POST /api/organizations/{id}/memberships/search (the `ApiOrganizationsMembershipsSearchCreate` operationId).
-func (c *Client) ApiOrganizationsMembershipsSearchCreateWithFormdataBody(ctx context.Context, id int, body ApiOrganizationsMembershipsSearchCreateFormdataRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewApiOrganizationsMembershipsSearchCreateRequestWithFormdataBody(c.Server, id, body)
+func (c *Client) ApiOrganizationsMembershipsSearchCreateWithFormdataBody(ctx context.Context, id int, params *ApiOrganizationsMembershipsSearchCreateParams, body ApiOrganizationsMembershipsSearchCreateFormdataRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiOrganizationsMembershipsSearchCreateRequestWithFormdataBody(c.Server, id, params, body)
 	if err != nil {
 		return nil, err
 	}
@@ -19947,61 +20014,6 @@ func (c *Client) ApiUsersRetrieve(ctx context.Context, id int, reqEditors ...Req
 // Corresponds with PATCH /api/users/{id}/ (the `ApiUsersPartialUpdate` operationId).
 func (c *Client) ApiUsersPartialUpdateWithBody(ctx context.Context, id int, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewApiUsersPartialUpdateRequestWithBody(c.Server, id, contentType, body)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// ApiUsersPartialUpdate Update user details
-//
-//	Update details for a specific user, such as their name or contact information, in Label Studio.
-//
-// Takes a body of the `application/json` content type.
-//
-// Corresponds with PATCH /api/users/{id}/ (the `ApiUsersPartialUpdate` operationId).
-func (c *Client) ApiUsersPartialUpdate(ctx context.Context, id int, body ApiUsersPartialUpdateJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewApiUsersPartialUpdateRequest(c.Server, id, body)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// ApiUsersPartialUpdateWithFormdataBody Update user details
-//
-//	Update details for a specific user, such as their name or contact information, in Label Studio.
-//
-// Takes a body of the `application/x-www-form-urlencoded` content type.
-//
-// Corresponds with PATCH /api/users/{id}/ (the `ApiUsersPartialUpdate` operationId).
-func (c *Client) ApiUsersPartialUpdateWithFormdataBody(ctx context.Context, id int, body ApiUsersPartialUpdateFormdataRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewApiUsersPartialUpdateRequestWithFormdataBody(c.Server, id, body)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// ApiVersionRetrieve Get version information
-//
-// Get version information about the Label Studio instance.
-//
-// Corresponds with GET /api/version/ (the `ApiVersionRetrieve` operationId).
-func (c *Client) ApiVersionRetrieve(ctx context.Context, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewApiVersionRetrieveRequest(c.Server)
 	if err != nil {
 		return nil, err
 	}

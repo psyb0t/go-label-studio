@@ -17,6 +17,139 @@ import (
 	openapi_types "github.com/oapi-codegen/runtime/types"
 )
 
+// NewApiProjectsMetricparamRetrieveRequest constructs an http.Request for the ApiProjectsMetricparamRetrieve method
+func NewApiProjectsMetricparamRetrieveRequest(server string, id int) (*http.Request, error) {
+	var err error
+
+	var pathParam0 string
+
+	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "id", id, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "integer", Format: ""})
+	if err != nil {
+		return nil, err
+	}
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/api/projects/%s/metricparam/", pathParam0)
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequest(http.MethodGet, queryURL.String(), nil)
+	if err != nil {
+		return nil, err
+	}
+
+	return req, nil
+}
+
+// NewApiProjectsMetricparamCreateRequest calls the generic ApiProjectsMetricparamCreate builder with application/json body
+func NewApiProjectsMetricparamCreateRequest(server string, id int, body ApiProjectsMetricparamCreateJSONRequestBody) (*http.Request, error) {
+	var bodyReader io.Reader
+	buf, err := json.Marshal(body)
+	if err != nil {
+		return nil, err
+	}
+	bodyReader = bytes.NewReader(buf)
+	return NewApiProjectsMetricparamCreateRequestWithBody(server, id, "application/json", bodyReader)
+}
+
+// NewApiProjectsMetricparamCreateRequestWithFormdataBody calls the generic ApiProjectsMetricparamCreate builder with application/x-www-form-urlencoded body
+func NewApiProjectsMetricparamCreateRequestWithFormdataBody(server string, id int, body ApiProjectsMetricparamCreateFormdataRequestBody) (*http.Request, error) {
+	var bodyReader io.Reader
+	bodyStr, err := runtime.MarshalForm(body, nil)
+	if err != nil {
+		return nil, err
+	}
+	bodyReader = strings.NewReader(bodyStr.Encode())
+	return NewApiProjectsMetricparamCreateRequestWithBody(server, id, "application/x-www-form-urlencoded", bodyReader)
+}
+
+// NewApiProjectsMetricparamCreateRequestWithBody constructs an http.Request for the ApiProjectsMetricparamCreate method, with any body, and a specified content type
+func NewApiProjectsMetricparamCreateRequestWithBody(server string, id int, contentType string, body io.Reader) (*http.Request, error) {
+	var err error
+
+	var pathParam0 string
+
+	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "id", id, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "integer", Format: ""})
+	if err != nil {
+		return nil, err
+	}
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/api/projects/%s/metricparam/", pathParam0)
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequest(http.MethodPost, queryURL.String(), body)
+	if err != nil {
+		return nil, err
+	}
+
+	req.Header.Add("Content-Type", contentType)
+
+	return req, nil
+}
+
+// NewApiProjectsModelStatsAgreementRetrieveRequest constructs an http.Request for the ApiProjectsModelStatsAgreementRetrieve method
+func NewApiProjectsModelStatsAgreementRetrieveRequest(server string, id int, modelVersion string) (*http.Request, error) {
+	var err error
+
+	var pathParam0 string
+
+	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "id", id, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "integer", Format: ""})
+	if err != nil {
+		return nil, err
+	}
+
+	var pathParam1 string
+
+	pathParam1, err = runtime.StyleParamWithOptions("simple", false, "model_version", modelVersion, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
+	if err != nil {
+		return nil, err
+	}
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/api/projects/%s/model-stats/%s/agreement", pathParam0, pathParam1)
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequest(http.MethodGet, queryURL.String(), nil)
+	if err != nil {
+		return nil, err
+	}
+
+	return req, nil
+}
+
 // NewApiProjectsModelStatsAgreementGroundtruthRetrieveRequest constructs an http.Request for the ApiProjectsModelStatsAgreementGroundtruthRetrieve method
 func NewApiProjectsModelStatsAgreementGroundtruthRetrieveRequest(server string, id int, modelVersion string, params *ApiProjectsModelStatsAgreementGroundtruthRetrieveParams) (*http.Request, error) {
 	var err error
@@ -14389,29 +14522,29 @@ func NewApiWorkspacesMembershipsBulkDestroyRequest(server string, id int, params
 }
 
 // NewApiWorkspacesMembershipsBulkCreateRequest calls the generic ApiWorkspacesMembershipsBulkCreate builder with application/json body
-func NewApiWorkspacesMembershipsBulkCreateRequest(server string, id int, body ApiWorkspacesMembershipsBulkCreateJSONRequestBody) (*http.Request, error) {
+func NewApiWorkspacesMembershipsBulkCreateRequest(server string, id int, params *ApiWorkspacesMembershipsBulkCreateParams, body ApiWorkspacesMembershipsBulkCreateJSONRequestBody) (*http.Request, error) {
 	var bodyReader io.Reader
 	buf, err := json.Marshal(body)
 	if err != nil {
 		return nil, err
 	}
 	bodyReader = bytes.NewReader(buf)
-	return NewApiWorkspacesMembershipsBulkCreateRequestWithBody(server, id, "application/json", bodyReader)
+	return NewApiWorkspacesMembershipsBulkCreateRequestWithBody(server, id, params, "application/json", bodyReader)
 }
 
 // NewApiWorkspacesMembershipsBulkCreateRequestWithFormdataBody calls the generic ApiWorkspacesMembershipsBulkCreate builder with application/x-www-form-urlencoded body
-func NewApiWorkspacesMembershipsBulkCreateRequestWithFormdataBody(server string, id int, body ApiWorkspacesMembershipsBulkCreateFormdataRequestBody) (*http.Request, error) {
+func NewApiWorkspacesMembershipsBulkCreateRequestWithFormdataBody(server string, id int, params *ApiWorkspacesMembershipsBulkCreateParams, body ApiWorkspacesMembershipsBulkCreateFormdataRequestBody) (*http.Request, error) {
 	var bodyReader io.Reader
 	bodyStr, err := runtime.MarshalForm(body, nil)
 	if err != nil {
 		return nil, err
 	}
 	bodyReader = strings.NewReader(bodyStr.Encode())
-	return NewApiWorkspacesMembershipsBulkCreateRequestWithBody(server, id, "application/x-www-form-urlencoded", bodyReader)
+	return NewApiWorkspacesMembershipsBulkCreateRequestWithBody(server, id, params, "application/x-www-form-urlencoded", bodyReader)
 }
 
 // NewApiWorkspacesMembershipsBulkCreateRequestWithBody constructs an http.Request for the ApiWorkspacesMembershipsBulkCreate method, with any body, and a specified content type
-func NewApiWorkspacesMembershipsBulkCreateRequestWithBody(server string, id int, contentType string, body io.Reader) (*http.Request, error) {
+func NewApiWorkspacesMembershipsBulkCreateRequestWithBody(server string, id int, params *ApiWorkspacesMembershipsBulkCreateParams, contentType string, body io.Reader) (*http.Request, error) {
 	var err error
 
 	var pathParam0 string
@@ -14434,6 +14567,105 @@ func NewApiWorkspacesMembershipsBulkCreateRequestWithBody(server string, id int,
 	queryURL, err := serverURL.Parse(operationPath)
 	if err != nil {
 		return nil, err
+	}
+
+	if params != nil {
+		// queryValues collects non-styled parameters (passthrough, JSON)
+		// that are safe to round-trip through url.Values.Encode().
+		queryValues := queryURL.Query()
+		// rawQueryFragments collects pre-encoded query fragments from
+		// styled parameters, preserving literal commas as delimiters
+		// per the OpenAPI spec (e.g. "color=blue,black,brown").
+		var rawQueryFragments []string
+
+		if params.Filters != nil {
+
+			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "filters", *params.Filters, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			} else {
+				for _, qp := range strings.Split(queryFrag, "&") {
+					rawQueryFragments = append(rawQueryFragments, qp)
+				}
+			}
+
+		}
+
+		if params.Role != nil {
+
+			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "role", *params.Role, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			} else {
+				for _, qp := range strings.Split(queryFrag, "&") {
+					rawQueryFragments = append(rawQueryFragments, qp)
+				}
+			}
+
+		}
+
+		if params.Search != nil {
+
+			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "search", *params.Search, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			} else {
+				for _, qp := range strings.Split(queryFrag, "&") {
+					rawQueryFragments = append(rawQueryFragments, qp)
+				}
+			}
+
+		}
+
+		if params.Tags != nil {
+
+			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "tags", *params.Tags, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			} else {
+				for _, qp := range strings.Split(queryFrag, "&") {
+					rawQueryFragments = append(rawQueryFragments, qp)
+				}
+			}
+
+		}
+
+		if params.UserLastActivityGte != nil {
+
+			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "user__last_activity__gte", *params.UserLastActivityGte, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			} else {
+				for _, qp := range strings.Split(queryFrag, "&") {
+					rawQueryFragments = append(rawQueryFragments, qp)
+				}
+			}
+
+		}
+
+		if params.UserLastActivityLte != nil {
+
+			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "user__last_activity__lte", *params.UserLastActivityLte, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			} else {
+				for _, qp := range strings.Split(queryFrag, "&") {
+					rawQueryFragments = append(rawQueryFragments, qp)
+				}
+			}
+
+		}
+
+		if params.UserType != nil {
+
+			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "user_type", *params.UserType, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			} else {
+				for _, qp := range strings.Split(queryFrag, "&") {
+					rawQueryFragments = append(rawQueryFragments, qp)
+				}
+			}
+
+		}
+
+		if encoded := queryValues.Encode(); encoded != "" {
+			rawQueryFragments = append(rawQueryFragments, encoded)
+		}
+		queryURL.RawQuery = strings.Join(rawQueryFragments, "&")
 	}
 
 	req, err := http.NewRequest(http.MethodPost, queryURL.String(), body)
@@ -20227,7 +20459,7 @@ type ClientWithResponsesInterface interface {
 
 	// ApiOrganizationsMembershipsFilterOptionsSkillsListWithResponse List organization member Skills filter options
 	//
-	// Return self-reported Skills values with Contributor Setup display metadata.
+	// Return Skills values held by members, self-reported or set by a skill assessment, with Contributor Setup display metadata. Owners, Administrators and Managers only.
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -20259,7 +20491,7 @@ type ClientWithResponsesInterface interface {
 	// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
 	//
 	// Corresponds with POST /api/organizations/{id}/memberships/search (the `ApiOrganizationsMembershipsSearchCreate` operationId).
-	ApiOrganizationsMembershipsSearchCreateWithBodyWithResponse(ctx context.Context, id int, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*ApiOrganizationsMembershipsSearchCreateResponse, error)
+	ApiOrganizationsMembershipsSearchCreateWithBodyWithResponse(ctx context.Context, id int, params *ApiOrganizationsMembershipsSearchCreateParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*ApiOrganizationsMembershipsSearchCreateResponse, error)
 
 	// ApiOrganizationsMembershipsSearchCreateWithResponse Search organization members using reusable filters
 	//
@@ -20268,7 +20500,7 @@ type ClientWithResponsesInterface interface {
 	// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
 	//
 	// Corresponds with POST /api/organizations/{id}/memberships/search (the `ApiOrganizationsMembershipsSearchCreate` operationId).
-	ApiOrganizationsMembershipsSearchCreateWithResponse(ctx context.Context, id int, body ApiOrganizationsMembershipsSearchCreateJSONRequestBody, reqEditors ...RequestEditorFn) (*ApiOrganizationsMembershipsSearchCreateResponse, error)
+	ApiOrganizationsMembershipsSearchCreateWithResponse(ctx context.Context, id int, params *ApiOrganizationsMembershipsSearchCreateParams, body ApiOrganizationsMembershipsSearchCreateJSONRequestBody, reqEditors ...RequestEditorFn) (*ApiOrganizationsMembershipsSearchCreateResponse, error)
 
 	// ApiOrganizationsMembershipsSearchCreateWithFormdataBodyWithResponse Search organization members using reusable filters
 	//
@@ -20277,7 +20509,7 @@ type ClientWithResponsesInterface interface {
 	// Takes a body of the `application/x-www-form-urlencoded` content type, and returns a wrapper object for the known response body format(s).
 	//
 	// Corresponds with POST /api/organizations/{id}/memberships/search (the `ApiOrganizationsMembershipsSearchCreate` operationId).
-	ApiOrganizationsMembershipsSearchCreateWithFormdataBodyWithResponse(ctx context.Context, id int, body ApiOrganizationsMembershipsSearchCreateFormdataRequestBody, reqEditors ...RequestEditorFn) (*ApiOrganizationsMembershipsSearchCreateResponse, error)
+	ApiOrganizationsMembershipsSearchCreateWithFormdataBodyWithResponse(ctx context.Context, id int, params *ApiOrganizationsMembershipsSearchCreateParams, body ApiOrganizationsMembershipsSearchCreateFormdataRequestBody, reqEditors ...RequestEditorFn) (*ApiOrganizationsMembershipsSearchCreateResponse, error)
 
 	// ApiOrganizationsMembershipsDestroyWithResponse Soft delete an organization member
 	//
@@ -28450,7 +28682,7 @@ type ClientWithResponsesInterface interface {
 	// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
 	//
 	// Corresponds with POST /api/workspaces/{id}/memberships/bulk/ (the `ApiWorkspacesMembershipsBulkCreate` operationId).
-	ApiWorkspacesMembershipsBulkCreateWithBodyWithResponse(ctx context.Context, id int, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*ApiWorkspacesMembershipsBulkCreateResponse, error)
+	ApiWorkspacesMembershipsBulkCreateWithBodyWithResponse(ctx context.Context, id int, params *ApiWorkspacesMembershipsBulkCreateParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*ApiWorkspacesMembershipsBulkCreateResponse, error)
 
 	// ApiWorkspacesMembershipsBulkCreateWithResponse ✨ Bulk assign workspace members
 	//
@@ -28465,7 +28697,7 @@ type ClientWithResponsesInterface interface {
 	// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
 	//
 	// Corresponds with POST /api/workspaces/{id}/memberships/bulk/ (the `ApiWorkspacesMembershipsBulkCreate` operationId).
-	ApiWorkspacesMembershipsBulkCreateWithResponse(ctx context.Context, id int, body ApiWorkspacesMembershipsBulkCreateJSONRequestBody, reqEditors ...RequestEditorFn) (*ApiWorkspacesMembershipsBulkCreateResponse, error)
+	ApiWorkspacesMembershipsBulkCreateWithResponse(ctx context.Context, id int, params *ApiWorkspacesMembershipsBulkCreateParams, body ApiWorkspacesMembershipsBulkCreateJSONRequestBody, reqEditors ...RequestEditorFn) (*ApiWorkspacesMembershipsBulkCreateResponse, error)
 
 	// ApiWorkspacesMembershipsBulkCreateWithFormdataBodyWithResponse ✨ Bulk assign workspace members
 	//
@@ -28480,7 +28712,7 @@ type ClientWithResponsesInterface interface {
 	// Takes a body of the `application/x-www-form-urlencoded` content type, and returns a wrapper object for the known response body format(s).
 	//
 	// Corresponds with POST /api/workspaces/{id}/memberships/bulk/ (the `ApiWorkspacesMembershipsBulkCreate` operationId).
-	ApiWorkspacesMembershipsBulkCreateWithFormdataBodyWithResponse(ctx context.Context, id int, body ApiWorkspacesMembershipsBulkCreateFormdataRequestBody, reqEditors ...RequestEditorFn) (*ApiWorkspacesMembershipsBulkCreateResponse, error)
+	ApiWorkspacesMembershipsBulkCreateWithFormdataBodyWithResponse(ctx context.Context, id int, params *ApiWorkspacesMembershipsBulkCreateParams, body ApiWorkspacesMembershipsBulkCreateFormdataRequestBody, reqEditors ...RequestEditorFn) (*ApiWorkspacesMembershipsBulkCreateResponse, error)
 
 	// ApiWorkspacesMembershipsPaginatedListWithResponse ✨ Get workspace members paginated
 	//
