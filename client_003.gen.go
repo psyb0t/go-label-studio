@@ -9,6 +9,39 @@ import (
 	"net/http"
 )
 
+// ApiDimensionsValueCountsBackfillCreateWithFormdataBody ✨ Trigger Dimension value-counts backfill
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Trigger a Dimension label-distribution value-counts backfill for the authenticated user's active organization. Populates MatrixAnnotatorEntry.value_counts and rebuilds the ProjectSummary.dimension_value_counts cache for all tasks, without recomputing agreement scores. Exactly one of three body fields must be provided:
+//
+// - **project_id**: backfill a single specific project.
+// - **num_projects**: batched org backfill — queue the next N not-yet-started projects (in ascending project ID order), leaving any currently in-flight jobs untouched. Repeat calls until `projects_remaining` in the response reaches 0.
+// - **all_projects**: full org backfill — cancel all in-flight jobs and queue every remaining non-completed project at once.
+//
+// Requires administrator or owner role and access to Agreement V2 value counts.
+//
+// Takes a body of the `application/x-www-form-urlencoded` content type.
+//
+// Corresponds with POST /api/dimensions/value-counts-backfill/ (the `ApiDimensionsValueCountsBackfillCreate` operationId).
+func (c *Client) ApiDimensionsValueCountsBackfillCreateWithFormdataBody(ctx context.Context, body ApiDimensionsValueCountsBackfillCreateFormdataRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiDimensionsValueCountsBackfillCreateRequestWithFormdataBody(c.Server, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
 // ApiDimensionsValueCountsBackfillJobsList ✨ List Dimension value-counts backfill jobs
 //
 // <Card href="https://humansignal.com/goenterprise">
@@ -19978,42 +20011,6 @@ func (c *Client) ApiUsersMeCertificatesList(ctx context.Context, reqEditors ...R
 // Corresponds with DELETE /api/users/{id}/ (the `ApiUsersDestroy` operationId).
 func (c *Client) ApiUsersDestroy(ctx context.Context, id int, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewApiUsersDestroyRequest(c.Server, id)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// ApiUsersRetrieve Get user info
-//
-// Get info about a specific Label Studio user, based on the user ID.
-//
-// Corresponds with GET /api/users/{id}/ (the `ApiUsersRetrieve` operationId).
-func (c *Client) ApiUsersRetrieve(ctx context.Context, id int, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewApiUsersRetrieveRequest(c.Server, id)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// ApiUsersPartialUpdateWithBody Update user details
-//
-//	Update details for a specific user, such as their name or contact information, in Label Studio.
-//
-// Takes any type of body and a specified content type.
-//
-// Corresponds with PATCH /api/users/{id}/ (the `ApiUsersPartialUpdate` operationId).
-func (c *Client) ApiUsersPartialUpdateWithBody(ctx context.Context, id int, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewApiUsersPartialUpdateRequestWithBody(c.Server, id, contentType, body)
 	if err != nil {
 		return nil, err
 	}

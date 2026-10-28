@@ -15,6 +15,24 @@ import (
 	openapi_types "github.com/oapi-codegen/runtime/types"
 )
 
+// ApiOrganizationsPermissionsUpdateMultipartRequestBody defines body for ApiOrganizationsPermissionsUpdate for multipart/form-data ContentType.
+type ApiOrganizationsPermissionsUpdateMultipartRequestBody = OrganizationPermissionRequest
+
+// ApiOrganizationsSetDefaultRolePartialUpdateJSONRequestBody defines body for ApiOrganizationsSetDefaultRolePartialUpdate for application/json ContentType.
+type ApiOrganizationsSetDefaultRolePartialUpdateJSONRequestBody = PatchedDefaultRoleRequest
+
+// ApiOrganizationsSetDefaultRolePartialUpdateFormdataRequestBody defines body for ApiOrganizationsSetDefaultRolePartialUpdate for application/x-www-form-urlencoded ContentType.
+type ApiOrganizationsSetDefaultRolePartialUpdateFormdataRequestBody = PatchedDefaultRoleRequest
+
+// ApiOrganizationsSetDefaultRolePartialUpdateMultipartRequestBody defines body for ApiOrganizationsSetDefaultRolePartialUpdate for multipart/form-data ContentType.
+type ApiOrganizationsSetDefaultRolePartialUpdateMultipartRequestBody = PatchedDefaultRoleRequest
+
+// ApiPredictionsCreateJSONRequestBody defines body for ApiPredictionsCreate for application/json ContentType.
+type ApiPredictionsCreateJSONRequestBody = PredictionRequest
+
+// ApiPredictionsCreateFormdataRequestBody defines body for ApiPredictionsCreate for application/x-www-form-urlencoded ContentType.
+type ApiPredictionsCreateFormdataRequestBody = PredictionRequest
+
 // ApiPredictionsCreateMultipartRequestBody defines body for ApiPredictionsCreate for multipart/form-data ContentType.
 type ApiPredictionsCreateMultipartRequestBody = PredictionRequest
 
@@ -20002,39 +20020,6 @@ func (c *Client) ApiDimensionsValueCountsBackfillCreateWithBody(ctx context.Cont
 // Corresponds with POST /api/dimensions/value-counts-backfill/ (the `ApiDimensionsValueCountsBackfillCreate` operationId).
 func (c *Client) ApiDimensionsValueCountsBackfillCreate(ctx context.Context, body ApiDimensionsValueCountsBackfillCreateJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewApiDimensionsValueCountsBackfillCreateRequest(c.Server, body)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// ApiDimensionsValueCountsBackfillCreateWithFormdataBody ✨ Trigger Dimension value-counts backfill
-//
-// <Card href="https://humansignal.com/goenterprise">
-//
-//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
-//	    <p style="margin-top: 10px; font-size: 14px;">
-//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
-//	    </p>
-//	</Card>
-//
-// Trigger a Dimension label-distribution value-counts backfill for the authenticated user's active organization. Populates MatrixAnnotatorEntry.value_counts and rebuilds the ProjectSummary.dimension_value_counts cache for all tasks, without recomputing agreement scores. Exactly one of three body fields must be provided:
-//
-// - **project_id**: backfill a single specific project.
-// - **num_projects**: batched org backfill — queue the next N not-yet-started projects (in ascending project ID order), leaving any currently in-flight jobs untouched. Repeat calls until `projects_remaining` in the response reaches 0.
-// - **all_projects**: full org backfill — cancel all in-flight jobs and queue every remaining non-completed project at once.
-//
-// Requires administrator or owner role and access to Agreement V2 value counts.
-//
-// Takes a body of the `application/x-www-form-urlencoded` content type.
-//
-// Corresponds with POST /api/dimensions/value-counts-backfill/ (the `ApiDimensionsValueCountsBackfillCreate` operationId).
-func (c *Client) ApiDimensionsValueCountsBackfillCreateWithFormdataBody(ctx context.Context, body ApiDimensionsValueCountsBackfillCreateFormdataRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewApiDimensionsValueCountsBackfillCreateRequestWithFormdataBody(c.Server, body)
 	if err != nil {
 		return nil, err
 	}

@@ -17,6 +17,42 @@ import (
 	openapi_types "github.com/oapi-codegen/runtime/types"
 )
 
+// ApiUsersRetrieve Get user info
+//
+// Get info about a specific Label Studio user, based on the user ID.
+//
+// Corresponds with GET /api/users/{id}/ (the `ApiUsersRetrieve` operationId).
+func (c *Client) ApiUsersRetrieve(ctx context.Context, id int, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiUsersRetrieveRequest(c.Server, id)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ApiUsersPartialUpdateWithBody Update user details
+//
+//	Update details for a specific user, such as their name or contact information, in Label Studio.
+//
+// Takes any type of body and a specified content type.
+//
+// Corresponds with PATCH /api/users/{id}/ (the `ApiUsersPartialUpdate` operationId).
+func (c *Client) ApiUsersPartialUpdateWithBody(ctx context.Context, id int, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiUsersPartialUpdateRequestWithBody(c.Server, id, contentType, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
 // ApiUsersPartialUpdate Update user details
 //
 //	Update details for a specific user, such as their name or contact information, in Label Studio.

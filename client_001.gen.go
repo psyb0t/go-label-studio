@@ -1321,6 +1321,24 @@ func (e ProjectImportStatusEnum) Valid() bool {
 	}
 }
 
+// Defines values for ProjectMemberBulkAssignRolesRoleEnum.
+const (
+	ProjectMemberBulkAssignRolesRoleEnumAN ProjectMemberBulkAssignRolesRoleEnum = "AN"
+	ProjectMemberBulkAssignRolesRoleEnumRE ProjectMemberBulkAssignRolesRoleEnum = "RE"
+)
+
+// Valid indicates whether the value is a known member of the ProjectMemberBulkAssignRolesRoleEnum enum.
+func (e ProjectMemberBulkAssignRolesRoleEnum) Valid() bool {
+	switch e {
+	case ProjectMemberBulkAssignRolesRoleEnumAN:
+		return true
+	case ProjectMemberBulkAssignRolesRoleEnumRE:
+		return true
+	default:
+		return false
+	}
+}
+
 // Defines values for ProjectSamplingEnum.
 const (
 	ProjectSamplingEnumSequentialSampling  ProjectSamplingEnum = "Sequential sampling"
@@ -14000,18 +14018,17 @@ type ProjectMemberBulkAssignResponse struct {
 type ProjectMemberBulkAssignRolesRequest struct {
 	// Role Role
 	//
-	// * `OW` - Owner
-	// * `AD` - Administrator
-	// * `MA` - Manager
 	// * `RE` - Reviewer
 	// * `AN` - Annotator
-	// * `DI` - Deactivated
-	// * `NO` - Not Activated
-	Role AssignableOrganizationRoleEnum `json:"role"`
+	Role ProjectMemberBulkAssignRolesRoleEnum `json:"role"`
 
 	// UserId User ID
 	UserId int `json:"user_id"`
 }
+
+// ProjectMemberBulkAssignRolesRoleEnum * `RE` - Reviewer
+// * `AN` - Annotator
+type ProjectMemberBulkAssignRolesRoleEnum string
 
 // ProjectMemberIdentityVerificationError defines model for ProjectMemberIdentityVerificationError.
 type ProjectMemberIdentityVerificationError struct {
@@ -19992,21 +20009,3 @@ type ApiOrganizationsPermissionsUpdateJSONRequestBody = OrganizationPermissionRe
 
 // ApiOrganizationsPermissionsUpdateFormdataRequestBody defines body for ApiOrganizationsPermissionsUpdate for application/x-www-form-urlencoded ContentType.
 type ApiOrganizationsPermissionsUpdateFormdataRequestBody = OrganizationPermissionRequest
-
-// ApiOrganizationsPermissionsUpdateMultipartRequestBody defines body for ApiOrganizationsPermissionsUpdate for multipart/form-data ContentType.
-type ApiOrganizationsPermissionsUpdateMultipartRequestBody = OrganizationPermissionRequest
-
-// ApiOrganizationsSetDefaultRolePartialUpdateJSONRequestBody defines body for ApiOrganizationsSetDefaultRolePartialUpdate for application/json ContentType.
-type ApiOrganizationsSetDefaultRolePartialUpdateJSONRequestBody = PatchedDefaultRoleRequest
-
-// ApiOrganizationsSetDefaultRolePartialUpdateFormdataRequestBody defines body for ApiOrganizationsSetDefaultRolePartialUpdate for application/x-www-form-urlencoded ContentType.
-type ApiOrganizationsSetDefaultRolePartialUpdateFormdataRequestBody = PatchedDefaultRoleRequest
-
-// ApiOrganizationsSetDefaultRolePartialUpdateMultipartRequestBody defines body for ApiOrganizationsSetDefaultRolePartialUpdate for multipart/form-data ContentType.
-type ApiOrganizationsSetDefaultRolePartialUpdateMultipartRequestBody = PatchedDefaultRoleRequest
-
-// ApiPredictionsCreateJSONRequestBody defines body for ApiPredictionsCreate for application/json ContentType.
-type ApiPredictionsCreateJSONRequestBody = PredictionRequest
-
-// ApiPredictionsCreateFormdataRequestBody defines body for ApiPredictionsCreate for application/x-www-form-urlencoded ContentType.
-type ApiPredictionsCreateFormdataRequestBody = PredictionRequest
