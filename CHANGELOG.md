@@ -2,6 +2,14 @@
 
 All notable changes per release. Versions follow [semver](https://semver.org).
 
+## v0.4.1, 2026-10-29
+
+- Added the quiz attempts endpoint, `GET /api/learning-resources/{id}/user-progress/{user_id}/quiz-attempts/`: `Client.ApiLearningResourcesUserProgressQuizAttemptsRetrieve`, `ClientWithResponses.ApiLearningResourcesUserProgressQuizAttemptsRetrieveWithResponse`, `NewApiLearningResourcesUserProgressQuizAttemptsRetrieveRequest`, `ParseApiLearningResourcesUserProgressQuizAttemptsRetrieveResponse` and `ApiLearningResourcesUserProgressQuizAttemptsRetrieveResponse`.
+- Added the matching methods to `ClientInterface` and `ClientWithResponsesInterface`. Code that calls the clients is unaffected, but a custom type that implements either interface must add them.
+- Added the response models `QuizAttempt`, `QuizAttemptHistory`, `QuizAttemptHistoryQuiz`, `QuizAttemptQuestion` and `QuizLegacyResult`.
+- Added `ApiWorkspacesListParams.InterfaceTargets` (`*bool`, query `interface_targets`, optional). It limits the list to workspaces you can save an interface into.
+- Several generated methods and response types moved between generated files. Their names and signatures are unchanged.
+
 ## v0.4.0, 2026-10-28
 
 - Breaking: `ProjectMemberBulkAssignRolesRequest.Role` changed from `AssignableOrganizationRoleEnum` to the new `ProjectMemberBulkAssignRolesRoleEnum`. The upstream spec now allows only reviewer and annotator roles for this request. Migration: use the new constants instead of `AssignableOrganizationRoleEnum` values.

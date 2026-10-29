@@ -10,6 +10,87 @@ import (
 	"strings"
 )
 
+// ParseApiTokenCreateResponse parses an HTTP response from a ApiTokenCreateWithResponse call
+func ParseApiTokenCreateResponse(rsp *http.Response) (*ApiTokenCreateResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &ApiTokenCreateResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	switch {
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 201:
+		var dest LSEAPITokenCreate
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON201 = &dest
+
+	}
+
+	return response, nil
+}
+
+// ParseApiTokenBlacklistCreateResponse parses an HTTP response from a ApiTokenBlacklistCreateWithResponse call
+func ParseApiTokenBlacklistCreateResponse(rsp *http.Response) (*ApiTokenBlacklistCreateResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &ApiTokenBlacklistCreateResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	switch {
+	case rsp.StatusCode == 204:
+		break // No content-type
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 404:
+		var dest TokenDetailError
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON404 = &dest
+
+	}
+
+	return response, nil
+}
+
+// ParseApiTokenRefreshCreateResponse parses an HTTP response from a ApiTokenRefreshCreateWithResponse call
+func ParseApiTokenRefreshCreateResponse(rsp *http.Response) (*ApiTokenRefreshCreateResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &ApiTokenRefreshCreateResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	switch {
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
+		var dest TokenRefreshResponse
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON200 = &dest
+
+	}
+
+	return response, nil
+}
+
 // ParseApiTokenRotateCreateResponse parses an HTTP response from a ApiTokenRotateCreateWithResponse call
 func ParseApiTokenRotateCreateResponse(rsp *http.Response) (*ApiTokenRotateCreateResponse, error) {
 	bodyBytes, err := io.ReadAll(rsp.Body)

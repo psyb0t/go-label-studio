@@ -15,6 +15,57 @@ import (
 	openapi_types "github.com/oapi-codegen/runtime/types"
 )
 
+// ApiOrganizationsMemberTagsPartialUpdateJSONRequestBody defines body for ApiOrganizationsMemberTagsPartialUpdate for application/json ContentType.
+type ApiOrganizationsMemberTagsPartialUpdateJSONRequestBody = PatchedOrganizationMemberTagRequest
+
+// ApiOrganizationsMemberTagsPartialUpdateFormdataRequestBody defines body for ApiOrganizationsMemberTagsPartialUpdate for application/x-www-form-urlencoded ContentType.
+type ApiOrganizationsMemberTagsPartialUpdateFormdataRequestBody = PatchedOrganizationMemberTagRequest
+
+// ApiOrganizationsMemberTagsPartialUpdateMultipartRequestBody defines body for ApiOrganizationsMemberTagsPartialUpdate for multipart/form-data ContentType.
+type ApiOrganizationsMemberTagsPartialUpdateMultipartRequestBody = PatchedOrganizationMemberTagRequest
+
+// ApiOrganizationsMembershipsPartialUpdateJSONRequestBody defines body for ApiOrganizationsMembershipsPartialUpdate for application/json ContentType.
+type ApiOrganizationsMembershipsPartialUpdateJSONRequestBody = PatchedOrganizationMemberCreateUpdateRequest
+
+// ApiOrganizationsMembershipsPartialUpdateFormdataRequestBody defines body for ApiOrganizationsMembershipsPartialUpdate for application/x-www-form-urlencoded ContentType.
+type ApiOrganizationsMembershipsPartialUpdateFormdataRequestBody = PatchedOrganizationMemberCreateUpdateRequest
+
+// ApiOrganizationsMembershipsPartialUpdateMultipartRequestBody defines body for ApiOrganizationsMembershipsPartialUpdate for multipart/form-data ContentType.
+type ApiOrganizationsMembershipsPartialUpdateMultipartRequestBody = PatchedOrganizationMemberCreateUpdateRequest
+
+// ApiOrganizationsMembershipsSearchCreateJSONRequestBody defines body for ApiOrganizationsMembershipsSearchCreate for application/json ContentType.
+type ApiOrganizationsMembershipsSearchCreateJSONRequestBody = OrganizationMemberFilterRequestRequest
+
+// ApiOrganizationsMembershipsSearchCreateFormdataRequestBody defines body for ApiOrganizationsMembershipsSearchCreate for application/x-www-form-urlencoded ContentType.
+type ApiOrganizationsMembershipsSearchCreateFormdataRequestBody = OrganizationMemberFilterRequestRequest
+
+// ApiOrganizationsMembershipsSearchCreateMultipartRequestBody defines body for ApiOrganizationsMembershipsSearchCreate for multipart/form-data ContentType.
+type ApiOrganizationsMembershipsSearchCreateMultipartRequestBody = OrganizationMemberFilterRequestRequest
+
+// ApiOrganizationsPermissionsCreateJSONRequestBody defines body for ApiOrganizationsPermissionsCreate for application/json ContentType.
+type ApiOrganizationsPermissionsCreateJSONRequestBody = OrganizationPermissionRequest
+
+// ApiOrganizationsPermissionsCreateFormdataRequestBody defines body for ApiOrganizationsPermissionsCreate for application/x-www-form-urlencoded ContentType.
+type ApiOrganizationsPermissionsCreateFormdataRequestBody = OrganizationPermissionRequest
+
+// ApiOrganizationsPermissionsCreateMultipartRequestBody defines body for ApiOrganizationsPermissionsCreate for multipart/form-data ContentType.
+type ApiOrganizationsPermissionsCreateMultipartRequestBody = OrganizationPermissionRequest
+
+// ApiOrganizationsPermissionsPartialUpdateJSONRequestBody defines body for ApiOrganizationsPermissionsPartialUpdate for application/json ContentType.
+type ApiOrganizationsPermissionsPartialUpdateJSONRequestBody = PatchedOrganizationPermissionRequest
+
+// ApiOrganizationsPermissionsPartialUpdateFormdataRequestBody defines body for ApiOrganizationsPermissionsPartialUpdate for application/x-www-form-urlencoded ContentType.
+type ApiOrganizationsPermissionsPartialUpdateFormdataRequestBody = PatchedOrganizationPermissionRequest
+
+// ApiOrganizationsPermissionsPartialUpdateMultipartRequestBody defines body for ApiOrganizationsPermissionsPartialUpdate for multipart/form-data ContentType.
+type ApiOrganizationsPermissionsPartialUpdateMultipartRequestBody = PatchedOrganizationPermissionRequest
+
+// ApiOrganizationsPermissionsUpdateJSONRequestBody defines body for ApiOrganizationsPermissionsUpdate for application/json ContentType.
+type ApiOrganizationsPermissionsUpdateJSONRequestBody = OrganizationPermissionRequest
+
+// ApiOrganizationsPermissionsUpdateFormdataRequestBody defines body for ApiOrganizationsPermissionsUpdate for application/x-www-form-urlencoded ContentType.
+type ApiOrganizationsPermissionsUpdateFormdataRequestBody = OrganizationPermissionRequest
+
 // ApiOrganizationsPermissionsUpdateMultipartRequestBody defines body for ApiOrganizationsPermissionsUpdate for multipart/form-data ContentType.
 type ApiOrganizationsPermissionsUpdateMultipartRequestBody = OrganizationPermissionRequest
 
@@ -6856,7 +6907,7 @@ type ClientInterface interface {
 	//             This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
 	//         </p>
 	//     </Card>
-	// Update the current user's progress on a learning resource.
+	// Update the current user's progress on a learning resource. Learners can only update a published course they were given (404 otherwise). `page_id` is recorded only for a page the course has. `time_spent_seconds` adds at most 3600 seconds per request. `mark_complete` is ignored until every page has been visited, and completes the course only when every required quiz has also been passed.
 	//
 	// Takes any type of body and a specified content type.
 	//
@@ -6871,7 +6922,7 @@ type ClientInterface interface {
 	//             This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
 	//         </p>
 	//     </Card>
-	// Update the current user's progress on a learning resource.
+	// Update the current user's progress on a learning resource. Learners can only update a published course they were given (404 otherwise). `page_id` is recorded only for a page the course has. `time_spent_seconds` adds at most 3600 seconds per request. `mark_complete` is ignored until every page has been visited, and completes the course only when every required quiz has also been passed.
 	//
 	// Takes a body of the `application/json` content type.
 	//
@@ -6886,7 +6937,7 @@ type ClientInterface interface {
 	//             This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
 	//         </p>
 	//     </Card>
-	// Update the current user's progress on a learning resource.
+	// Update the current user's progress on a learning resource. Learners can only update a published course they were given (404 otherwise). `page_id` is recorded only for a page the course has. `time_spent_seconds` adds at most 3600 seconds per request. `mark_complete` is ignored until every page has been visited, and completes the course only when every required quiz has also been passed.
 	//
 	// Takes a body of the `application/x-www-form-urlencoded` content type.
 	//
@@ -7198,6 +7249,19 @@ type ClientInterface interface {
 	//
 	// Corresponds with POST /api/learning-resources/{id}/user-progress/import/ (the `ApiLearningResourcesUserProgressImportCreate` operationId).
 	ApiLearningResourcesUserProgressImportCreateWithBody(ctx context.Context, id int, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	// ApiLearningResourcesUserProgressQuizAttemptsRetrieve ✨ Get quiz attempt history for a learner
+	//
+	// <Card href="https://humansignal.com/goenterprise">
+	//         <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+	//         <p style="margin-top: 10px; font-size: 14px;">
+	//             This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+	//         </p>
+	//     </Card>
+	// View every quiz submission by one learner on this course, including answers and correct-answer keys. Restricted to roles with learning.manage permission.
+	//
+	// Corresponds with GET /api/learning-resources/{id}/user-progress/{user_id}/quiz-attempts/ (the `ApiLearningResourcesUserProgressQuizAttemptsRetrieve` operationId).
+	ApiLearningResourcesUserProgressQuizAttemptsRetrieve(ctx context.Context, id int, userId string, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// ApiLearningResourcesUserProgressResetCreateWithBody ✨ Reset user progress on a learning resource
 	//
@@ -9875,6 +9939,8 @@ type ClientInterface interface {
 	//
 	//
 	//             Poll the status of an asynchronous project import operation.
+	//
+	//             *Note*: this endpoint is also accessible as `client.tasks.create_many_status`, its historical location.
 	//
 	//             **Usage:**
 	//             1. When you POST to `/api/projects/{project_id}/import`, you'll receive a response like `{"import": <import_id>}`
@@ -19954,72 +20020,6 @@ func (c *Client) ApiDimensionsBackfillStatusRetrieve(ctx context.Context, params
 // Corresponds with DELETE /api/dimensions/value-counts-backfill/ (the `ApiDimensionsValueCountsBackfillDestroy` operationId).
 func (c *Client) ApiDimensionsValueCountsBackfillDestroy(ctx context.Context, params *ApiDimensionsValueCountsBackfillDestroyParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewApiDimensionsValueCountsBackfillDestroyRequest(c.Server, params)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// ApiDimensionsValueCountsBackfillCreateWithBody ✨ Trigger Dimension value-counts backfill
-//
-// <Card href="https://humansignal.com/goenterprise">
-//
-//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
-//	    <p style="margin-top: 10px; font-size: 14px;">
-//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
-//	    </p>
-//	</Card>
-//
-// Trigger a Dimension label-distribution value-counts backfill for the authenticated user's active organization. Populates MatrixAnnotatorEntry.value_counts and rebuilds the ProjectSummary.dimension_value_counts cache for all tasks, without recomputing agreement scores. Exactly one of three body fields must be provided:
-//
-// - **project_id**: backfill a single specific project.
-// - **num_projects**: batched org backfill — queue the next N not-yet-started projects (in ascending project ID order), leaving any currently in-flight jobs untouched. Repeat calls until `projects_remaining` in the response reaches 0.
-// - **all_projects**: full org backfill — cancel all in-flight jobs and queue every remaining non-completed project at once.
-//
-// Requires administrator or owner role and access to Agreement V2 value counts.
-//
-// Takes any type of body and a specified content type.
-//
-// Corresponds with POST /api/dimensions/value-counts-backfill/ (the `ApiDimensionsValueCountsBackfillCreate` operationId).
-func (c *Client) ApiDimensionsValueCountsBackfillCreateWithBody(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewApiDimensionsValueCountsBackfillCreateRequestWithBody(c.Server, contentType, body)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// ApiDimensionsValueCountsBackfillCreate ✨ Trigger Dimension value-counts backfill
-//
-// <Card href="https://humansignal.com/goenterprise">
-//
-//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
-//	    <p style="margin-top: 10px; font-size: 14px;">
-//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
-//	    </p>
-//	</Card>
-//
-// Trigger a Dimension label-distribution value-counts backfill for the authenticated user's active organization. Populates MatrixAnnotatorEntry.value_counts and rebuilds the ProjectSummary.dimension_value_counts cache for all tasks, without recomputing agreement scores. Exactly one of three body fields must be provided:
-//
-// - **project_id**: backfill a single specific project.
-// - **num_projects**: batched org backfill — queue the next N not-yet-started projects (in ascending project ID order), leaving any currently in-flight jobs untouched. Repeat calls until `projects_remaining` in the response reaches 0.
-// - **all_projects**: full org backfill — cancel all in-flight jobs and queue every remaining non-completed project at once.
-//
-// Requires administrator or owner role and access to Agreement V2 value counts.
-//
-// Takes a body of the `application/json` content type.
-//
-// Corresponds with POST /api/dimensions/value-counts-backfill/ (the `ApiDimensionsValueCountsBackfillCreate` operationId).
-func (c *Client) ApiDimensionsValueCountsBackfillCreate(ctx context.Context, body ApiDimensionsValueCountsBackfillCreateJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewApiDimensionsValueCountsBackfillCreateRequest(c.Server, body)
 	if err != nil {
 		return nil, err
 	}

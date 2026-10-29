@@ -7941,6 +7941,47 @@ func (r ApiLearningResourcesUserProgressImportCreateResponse) ContentType() stri
 	return ""
 }
 
+type ApiLearningResourcesUserProgressQuizAttemptsRetrieveResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+	// JSON200 the response for an HTTP 200 `application/json` response
+	JSON200 *QuizAttemptHistory
+}
+
+// GetJSON200 returns the response for an HTTP 200 `application/json` response
+func (r ApiLearningResourcesUserProgressQuizAttemptsRetrieveResponse) GetJSON200() *QuizAttemptHistory {
+	return r.JSON200
+}
+
+// GetBody returns the raw response body bytes
+func (r ApiLearningResourcesUserProgressQuizAttemptsRetrieveResponse) GetBody() []byte {
+	return r.Body
+}
+
+// Status returns HTTPResponse.Status
+func (r ApiLearningResourcesUserProgressQuizAttemptsRetrieveResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+
+// StatusCode returns HTTPResponse.StatusCode
+func (r ApiLearningResourcesUserProgressQuizAttemptsRetrieveResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+
+// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
+func (r ApiLearningResourcesUserProgressQuizAttemptsRetrieveResponse) ContentType() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Header.Get("Content-Type")
+	}
+	return ""
+}
+
 type ApiLearningResourcesUserProgressResetCreateResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -19962,47 +20003,6 @@ func (r ApiStoragesExportRedisPartialUpdateResponse) Status() string {
 
 // StatusCode returns HTTPResponse.StatusCode
 func (r ApiStoragesExportRedisPartialUpdateResponse) StatusCode() int {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.StatusCode
-	}
-	return 0
-}
-
-// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
-func (r ApiStoragesExportRedisPartialUpdateResponse) ContentType() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Header.Get("Content-Type")
-	}
-	return ""
-}
-
-type ApiStoragesExportRedisSyncCreateResponse struct {
-	Body         []byte
-	HTTPResponse *http.Response
-	// JSON200 the response for an HTTP 200 `application/json` response
-	JSON200 *RedisExportStorage
-}
-
-// GetJSON200 returns the response for an HTTP 200 `application/json` response
-func (r ApiStoragesExportRedisSyncCreateResponse) GetJSON200() *RedisExportStorage {
-	return r.JSON200
-}
-
-// GetBody returns the raw response body bytes
-func (r ApiStoragesExportRedisSyncCreateResponse) GetBody() []byte {
-	return r.Body
-}
-
-// Status returns HTTPResponse.Status
-func (r ApiStoragesExportRedisSyncCreateResponse) Status() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Status
-	}
-	return http.StatusText(0)
-}
-
-// StatusCode returns HTTPResponse.StatusCode
-func (r ApiStoragesExportRedisSyncCreateResponse) StatusCode() int {
 	if r.HTTPResponse != nil {
 		return r.HTTPResponse.StatusCode
 	}

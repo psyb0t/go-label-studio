@@ -14032,6 +14032,18 @@ func NewApiWorkspacesListRequest(server string, params *ApiWorkspacesListParams)
 
 		}
 
+		if params.InterfaceTargets != nil {
+
+			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "interface_targets", *params.InterfaceTargets, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "boolean", Format: ""}); err != nil {
+				return nil, err
+			} else {
+				for _, qp := range strings.Split(queryFrag, "&") {
+					rawQueryFragments = append(rawQueryFragments, qp)
+				}
+			}
+
+		}
+
 		if params.IsArchived != nil {
 
 			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "is_archived", *params.IsArchived, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "boolean", Format: ""}); err != nil {
@@ -18988,7 +19000,7 @@ type ClientWithResponsesInterface interface {
 	//             This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
 	//         </p>
 	//     </Card>
-	// Update the current user's progress on a learning resource.
+	// Update the current user's progress on a learning resource. Learners can only update a published course they were given (404 otherwise). `page_id` is recorded only for a page the course has. `time_spent_seconds` adds at most 3600 seconds per request. `mark_complete` is ignored until every page has been visited, and completes the course only when every required quiz has also been passed.
 	//
 	// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
 	//
@@ -19003,7 +19015,7 @@ type ClientWithResponsesInterface interface {
 	//             This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
 	//         </p>
 	//     </Card>
-	// Update the current user's progress on a learning resource.
+	// Update the current user's progress on a learning resource. Learners can only update a published course they were given (404 otherwise). `page_id` is recorded only for a page the course has. `time_spent_seconds` adds at most 3600 seconds per request. `mark_complete` is ignored until every page has been visited, and completes the course only when every required quiz has also been passed.
 	//
 	// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
 	//
@@ -19018,7 +19030,7 @@ type ClientWithResponsesInterface interface {
 	//             This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
 	//         </p>
 	//     </Card>
-	// Update the current user's progress on a learning resource.
+	// Update the current user's progress on a learning resource. Learners can only update a published course they were given (404 otherwise). `page_id` is recorded only for a page the course has. `time_spent_seconds` adds at most 3600 seconds per request. `mark_complete` is ignored until every page has been visited, and completes the course only when every required quiz has also been passed.
 	//
 	// Takes a body of the `application/x-www-form-urlencoded` content type, and returns a wrapper object for the known response body format(s).
 	//
@@ -19336,6 +19348,21 @@ type ClientWithResponsesInterface interface {
 	//
 	// Corresponds with POST /api/learning-resources/{id}/user-progress/import/ (the `ApiLearningResourcesUserProgressImportCreate` operationId).
 	ApiLearningResourcesUserProgressImportCreateWithBodyWithResponse(ctx context.Context, id int, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*ApiLearningResourcesUserProgressImportCreateResponse, error)
+
+	// ApiLearningResourcesUserProgressQuizAttemptsRetrieveWithResponse ✨ Get quiz attempt history for a learner
+	//
+	// <Card href="https://humansignal.com/goenterprise">
+	//         <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+	//         <p style="margin-top: 10px; font-size: 14px;">
+	//             This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+	//         </p>
+	//     </Card>
+	// View every quiz submission by one learner on this course, including answers and correct-answer keys. Restricted to roles with learning.manage permission.
+	//
+	// Returns a wrapper object for the known response body format(s).
+	//
+	// Corresponds with GET /api/learning-resources/{id}/user-progress/{user_id}/quiz-attempts/ (the `ApiLearningResourcesUserProgressQuizAttemptsRetrieve` operationId).
+	ApiLearningResourcesUserProgressQuizAttemptsRetrieveWithResponse(ctx context.Context, id int, userId string, reqEditors ...RequestEditorFn) (*ApiLearningResourcesUserProgressQuizAttemptsRetrieveResponse, error)
 
 	// ApiLearningResourcesUserProgressResetCreateWithBodyWithResponse ✨ Reset user progress on a learning resource
 	//
@@ -22139,6 +22166,8 @@ type ClientWithResponsesInterface interface {
 	//
 	//
 	//             Poll the status of an asynchronous project import operation.
+	//
+	//             *Note*: this endpoint is also accessible as `client.tasks.create_many_status`, its historical location.
 	//
 	//             **Usage:**
 	//             1. When you POST to `/api/projects/{project_id}/import`, you'll receive a response like `{"import": <import_id>}`

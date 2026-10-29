@@ -17,6 +17,107 @@ import (
 	openapi_types "github.com/oapi-codegen/runtime/types"
 )
 
+// ApiUsersCreateWithBody Create new user
+//
+// Create a user in Label Studio.
+//
+// Takes any type of body and a specified content type.
+//
+// Corresponds with POST /api/users/ (the `ApiUsersCreate` operationId).
+func (c *Client) ApiUsersCreateWithBody(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiUsersCreateRequestWithBody(c.Server, contentType, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ApiUsersCreate Create new user
+//
+// Create a user in Label Studio.
+//
+// Takes a body of the `application/json` content type.
+//
+// Corresponds with POST /api/users/ (the `ApiUsersCreate` operationId).
+func (c *Client) ApiUsersCreate(ctx context.Context, body ApiUsersCreateJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiUsersCreateRequest(c.Server, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ApiUsersCreateWithFormdataBody Create new user
+//
+// Create a user in Label Studio.
+//
+// Takes a body of the `application/x-www-form-urlencoded` content type.
+//
+// Corresponds with POST /api/users/ (the `ApiUsersCreate` operationId).
+func (c *Client) ApiUsersCreateWithFormdataBody(ctx context.Context, body ApiUsersCreateFormdataRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiUsersCreateRequestWithFormdataBody(c.Server, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ApiUsersMeCertificatesList ✨ List certificates for the current user
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// List all certificates issued to the current user.
+//
+// Corresponds with GET /api/users/me/certificates/ (the `ApiUsersMeCertificatesList` operationId).
+func (c *Client) ApiUsersMeCertificatesList(ctx context.Context, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiUsersMeCertificatesListRequest(c.Server)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ApiUsersDestroy Delete user
+//
+// Delete a specific Label Studio user. Only available in community edition.
+//
+// <Warning>Use caution when deleting a user, as this can cause issues such as breaking the "Annotated by" filter or leaving orphaned records.</Warning>
+//
+// Corresponds with DELETE /api/users/{id}/ (the `ApiUsersDestroy` operationId).
+func (c *Client) ApiUsersDestroy(ctx context.Context, id int, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiUsersDestroyRequest(c.Server, id)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
 // ApiUsersRetrieve Get user info
 //
 // Get info about a specific Label Studio user, based on the user ID.
@@ -12343,6 +12444,47 @@ func NewApiLearningResourcesUserProgressImportCreateRequestWithBody(server strin
 	}
 
 	req.Header.Add("Content-Type", contentType)
+
+	return req, nil
+}
+
+// NewApiLearningResourcesUserProgressQuizAttemptsRetrieveRequest constructs an http.Request for the ApiLearningResourcesUserProgressQuizAttemptsRetrieve method
+func NewApiLearningResourcesUserProgressQuizAttemptsRetrieveRequest(server string, id int, userId string) (*http.Request, error) {
+	var err error
+
+	var pathParam0 string
+
+	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "id", id, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "integer", Format: ""})
+	if err != nil {
+		return nil, err
+	}
+
+	var pathParam1 string
+
+	pathParam1, err = runtime.StyleParamWithOptions("simple", false, "user_id", userId, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
+	if err != nil {
+		return nil, err
+	}
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/api/learning-resources/%s/user-progress/%s/quiz-attempts/", pathParam0, pathParam1)
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequest(http.MethodGet, queryURL.String(), nil)
+	if err != nil {
+		return nil, err
+	}
 
 	return req, nil
 }

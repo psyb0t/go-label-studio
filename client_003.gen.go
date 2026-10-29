@@ -9,6 +9,72 @@ import (
 	"net/http"
 )
 
+// ApiDimensionsValueCountsBackfillCreateWithBody ✨ Trigger Dimension value-counts backfill
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Trigger a Dimension label-distribution value-counts backfill for the authenticated user's active organization. Populates MatrixAnnotatorEntry.value_counts and rebuilds the ProjectSummary.dimension_value_counts cache for all tasks, without recomputing agreement scores. Exactly one of three body fields must be provided:
+//
+// - **project_id**: backfill a single specific project.
+// - **num_projects**: batched org backfill — queue the next N not-yet-started projects (in ascending project ID order), leaving any currently in-flight jobs untouched. Repeat calls until `projects_remaining` in the response reaches 0.
+// - **all_projects**: full org backfill — cancel all in-flight jobs and queue every remaining non-completed project at once.
+//
+// Requires administrator or owner role and access to Agreement V2 value counts.
+//
+// Takes any type of body and a specified content type.
+//
+// Corresponds with POST /api/dimensions/value-counts-backfill/ (the `ApiDimensionsValueCountsBackfillCreate` operationId).
+func (c *Client) ApiDimensionsValueCountsBackfillCreateWithBody(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiDimensionsValueCountsBackfillCreateRequestWithBody(c.Server, contentType, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ApiDimensionsValueCountsBackfillCreate ✨ Trigger Dimension value-counts backfill
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Trigger a Dimension label-distribution value-counts backfill for the authenticated user's active organization. Populates MatrixAnnotatorEntry.value_counts and rebuilds the ProjectSummary.dimension_value_counts cache for all tasks, without recomputing agreement scores. Exactly one of three body fields must be provided:
+//
+// - **project_id**: backfill a single specific project.
+// - **num_projects**: batched org backfill — queue the next N not-yet-started projects (in ascending project ID order), leaving any currently in-flight jobs untouched. Repeat calls until `projects_remaining` in the response reaches 0.
+// - **all_projects**: full org backfill — cancel all in-flight jobs and queue every remaining non-completed project at once.
+//
+// Requires administrator or owner role and access to Agreement V2 value counts.
+//
+// Takes a body of the `application/json` content type.
+//
+// Corresponds with POST /api/dimensions/value-counts-backfill/ (the `ApiDimensionsValueCountsBackfillCreate` operationId).
+func (c *Client) ApiDimensionsValueCountsBackfillCreate(ctx context.Context, body ApiDimensionsValueCountsBackfillCreateJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiDimensionsValueCountsBackfillCreateRequest(c.Server, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
 // ApiDimensionsValueCountsBackfillCreateWithFormdataBody ✨ Trigger Dimension value-counts backfill
 //
 // <Card href="https://humansignal.com/goenterprise">
@@ -3515,7 +3581,7 @@ func (c *Client) ApiLearningResourcesOutlineRetrieve(ctx context.Context, id int
 //	    </p>
 //	</Card>
 //
-// Update the current user's progress on a learning resource.
+// Update the current user's progress on a learning resource. Learners can only update a published course they were given (404 otherwise). `page_id` is recorded only for a page the course has. `time_spent_seconds` adds at most 3600 seconds per request. `mark_complete` is ignored until every page has been visited, and completes the course only when every required quiz has also been passed.
 //
 // Takes any type of body and a specified content type.
 //
@@ -3542,7 +3608,7 @@ func (c *Client) ApiLearningResourcesProgressCreateWithBody(ctx context.Context,
 //	    </p>
 //	</Card>
 //
-// Update the current user's progress on a learning resource.
+// Update the current user's progress on a learning resource. Learners can only update a published course they were given (404 otherwise). `page_id` is recorded only for a page the course has. `time_spent_seconds` adds at most 3600 seconds per request. `mark_complete` is ignored until every page has been visited, and completes the course only when every required quiz has also been passed.
 //
 // Takes a body of the `application/json` content type.
 //
@@ -3569,7 +3635,7 @@ func (c *Client) ApiLearningResourcesProgressCreate(ctx context.Context, id int,
 //	    </p>
 //	</Card>
 //
-// Update the current user's progress on a learning resource.
+// Update the current user's progress on a learning resource. Learners can only update a published course they were given (404 otherwise). `page_id` is recorded only for a page the course has. `time_spent_seconds` adds at most 3600 seconds per request. `mark_complete` is ignored until every page has been visited, and completes the course only when every required quiz has also been passed.
 //
 // Takes a body of the `application/x-www-form-urlencoded` content type.
 //
@@ -4140,6 +4206,31 @@ func (c *Client) ApiLearningResourcesUserProgressExportRetrieve(ctx context.Cont
 // Corresponds with POST /api/learning-resources/{id}/user-progress/import/ (the `ApiLearningResourcesUserProgressImportCreate` operationId).
 func (c *Client) ApiLearningResourcesUserProgressImportCreateWithBody(ctx context.Context, id int, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewApiLearningResourcesUserProgressImportCreateRequestWithBody(c.Server, id, contentType, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ApiLearningResourcesUserProgressQuizAttemptsRetrieve ✨ Get quiz attempt history for a learner
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// View every quiz submission by one learner on this course, including answers and correct-answer keys. Restricted to roles with learning.manage permission.
+//
+// Corresponds with GET /api/learning-resources/{id}/user-progress/{user_id}/quiz-attempts/ (the `ApiLearningResourcesUserProgressQuizAttemptsRetrieve` operationId).
+func (c *Client) ApiLearningResourcesUserProgressQuizAttemptsRetrieve(ctx context.Context, id int, userId string, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiLearningResourcesUserProgressQuizAttemptsRetrieveRequest(c.Server, id, userId)
 	if err != nil {
 		return nil, err
 	}
@@ -8915,6 +9006,8 @@ func (c *Client) ApiProjectsImportsList(ctx context.Context, id int, params *Api
 // ApiProjectsImportsRetrieve Get project import status
 //
 //	Poll the status of an asynchronous project import operation.
+//
+//	*Note*: this endpoint is also accessible as `client.tasks.create_many_status`, its historical location.
 //
 //	**Usage:**
 //	1. When you POST to `/api/projects/{project_id}/import`, you'll receive a response like `{"import": <import_id>}`
@@ -19910,107 +20003,6 @@ func (c *Client) ApiTokenRotateCreateWithFormdataBody(ctx context.Context, body 
 // Corresponds with GET /api/users/ (the `ApiUsersList` operationId).
 func (c *Client) ApiUsersList(ctx context.Context, params *ApiUsersListParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewApiUsersListRequest(c.Server, params)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// ApiUsersCreateWithBody Create new user
-//
-// Create a user in Label Studio.
-//
-// Takes any type of body and a specified content type.
-//
-// Corresponds with POST /api/users/ (the `ApiUsersCreate` operationId).
-func (c *Client) ApiUsersCreateWithBody(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewApiUsersCreateRequestWithBody(c.Server, contentType, body)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// ApiUsersCreate Create new user
-//
-// Create a user in Label Studio.
-//
-// Takes a body of the `application/json` content type.
-//
-// Corresponds with POST /api/users/ (the `ApiUsersCreate` operationId).
-func (c *Client) ApiUsersCreate(ctx context.Context, body ApiUsersCreateJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewApiUsersCreateRequest(c.Server, body)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// ApiUsersCreateWithFormdataBody Create new user
-//
-// Create a user in Label Studio.
-//
-// Takes a body of the `application/x-www-form-urlencoded` content type.
-//
-// Corresponds with POST /api/users/ (the `ApiUsersCreate` operationId).
-func (c *Client) ApiUsersCreateWithFormdataBody(ctx context.Context, body ApiUsersCreateFormdataRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewApiUsersCreateRequestWithFormdataBody(c.Server, body)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// ApiUsersMeCertificatesList ✨ List certificates for the current user
-//
-// <Card href="https://humansignal.com/goenterprise">
-//
-//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
-//	    <p style="margin-top: 10px; font-size: 14px;">
-//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
-//	    </p>
-//	</Card>
-//
-// List all certificates issued to the current user.
-//
-// Corresponds with GET /api/users/me/certificates/ (the `ApiUsersMeCertificatesList` operationId).
-func (c *Client) ApiUsersMeCertificatesList(ctx context.Context, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewApiUsersMeCertificatesListRequest(c.Server)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// ApiUsersDestroy Delete user
-//
-// Delete a specific Label Studio user. Only available in community edition.
-//
-// <Warning>Use caution when deleting a user, as this can cause issues such as breaking the "Annotated by" filter or leaving orphaned records.</Warning>
-//
-// Corresponds with DELETE /api/users/{id}/ (the `ApiUsersDestroy` operationId).
-func (c *Client) ApiUsersDestroy(ctx context.Context, id int, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewApiUsersDestroyRequest(c.Server, id)
 	if err != nil {
 		return nil, err
 	}

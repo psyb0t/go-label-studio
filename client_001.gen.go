@@ -14275,6 +14275,54 @@ type PublishLearningResourceRequest struct {
 	RetakeScope  *RetakeScopeEnum `json:"retake_scope,omitempty"`
 }
 
+// QuizAttempt defines model for QuizAttempt.
+type QuizAttempt struct {
+	AttemptNumber int                   `json:"attempt_number"`
+	Passed        bool                  `json:"passed"`
+	Questions     []QuizAttemptQuestion `json:"questions"`
+	RetakeCycle   int                   `json:"retake_cycle"`
+	ScorePercent  int                   `json:"score_percent"`
+	SubmittedAt   time.Time             `json:"submitted_at"`
+}
+
+// QuizAttemptHistory defines model for QuizAttemptHistory.
+type QuizAttemptHistory struct {
+	Quizzes []QuizAttemptHistoryQuiz `json:"quizzes"`
+	UserId  int                      `json:"user_id"`
+}
+
+// QuizAttemptHistoryQuiz defines model for QuizAttemptHistoryQuiz.
+type QuizAttemptHistoryQuiz struct {
+	Attempts           []QuizAttempt     `json:"attempts"`
+	LegacyResult       *QuizLegacyResult `json:"legacy_result"`
+	PageTitle          string            `json:"page_title"`
+	QuizId             string            `json:"quiz_id"`
+	Removed            bool              `json:"removed"`
+	Title              string            `json:"title"`
+	UnrecordedAttempts int               `json:"unrecorded_attempts"`
+}
+
+// QuizAttemptQuestion One question as the learner saw it, with their answer and the correct-answer key.
+type QuizAttemptQuestion struct {
+	Answer           interface{}               `json:"answer"`
+	BlocksJson       *string                   `json:"blocksJson,omitempty"`
+	Choices          *[]map[string]interface{} `json:"choices,omitempty"`
+	Correct          bool                      `json:"correct"`
+	CorrectAnswerIds interface{}               `json:"correctAnswerIds"`
+	Id               string                    `json:"id"`
+	Pairs            *[]map[string]interface{} `json:"pairs,omitempty"`
+	Type             *string                   `json:"type"`
+}
+
+// QuizLegacyResult Last result for attempts made before attempt recording existed: no answers, correct/incorrect only.
+type QuizLegacyResult struct {
+	Attempts        int                               `json:"attempts"`
+	LastAttempt     *string                           `json:"last_attempt"`
+	Passed          *bool                             `json:"passed"`
+	QuestionResults map[string]map[string]interface{} `json:"question_results"`
+	ScorePercent    int                               `json:"score_percent"`
+}
+
 // ReEvaluate defines model for ReEvaluate.
 type ReEvaluate struct {
 	// Mode * `failed` - failed
@@ -18971,6 +19019,9 @@ type ApiWorkspacesListParams struct {
 	// IncludeAllWorkspaces Include all workspaces in the organization, including other users' personal workspaces. Only effective for users with Administrator or Owner role. When enabled, the response includes created_by_user info for personal workspaces.
 	IncludeAllWorkspaces *bool `form:"include_all_workspaces,omitempty" json:"include_all_workspaces,omitempty"`
 
+	// InterfaceTargets Only workspaces you can save an interface into: the workspaces you may manage, plus your Personal Sandbox if interfaces are allowed there.
+	InterfaceTargets *bool `form:"interface_targets,omitempty" json:"interface_targets,omitempty"`
+
 	// IsArchived Filter by archived status. Set to false to exclude archived workspaces.
 	IsArchived *bool `form:"is_archived,omitempty" json:"is_archived,omitempty"`
 
@@ -19958,54 +20009,3 @@ type ApiOrganizationsMemberTagsImportsCreateFormdataRequestBody = OrganizationMe
 
 // ApiOrganizationsMemberTagsImportsCreateMultipartRequestBody defines body for ApiOrganizationsMemberTagsImportsCreate for multipart/form-data ContentType.
 type ApiOrganizationsMemberTagsImportsCreateMultipartRequestBody = OrganizationMemberTagImportCreateRequest
-
-// ApiOrganizationsMemberTagsPartialUpdateJSONRequestBody defines body for ApiOrganizationsMemberTagsPartialUpdate for application/json ContentType.
-type ApiOrganizationsMemberTagsPartialUpdateJSONRequestBody = PatchedOrganizationMemberTagRequest
-
-// ApiOrganizationsMemberTagsPartialUpdateFormdataRequestBody defines body for ApiOrganizationsMemberTagsPartialUpdate for application/x-www-form-urlencoded ContentType.
-type ApiOrganizationsMemberTagsPartialUpdateFormdataRequestBody = PatchedOrganizationMemberTagRequest
-
-// ApiOrganizationsMemberTagsPartialUpdateMultipartRequestBody defines body for ApiOrganizationsMemberTagsPartialUpdate for multipart/form-data ContentType.
-type ApiOrganizationsMemberTagsPartialUpdateMultipartRequestBody = PatchedOrganizationMemberTagRequest
-
-// ApiOrganizationsMembershipsPartialUpdateJSONRequestBody defines body for ApiOrganizationsMembershipsPartialUpdate for application/json ContentType.
-type ApiOrganizationsMembershipsPartialUpdateJSONRequestBody = PatchedOrganizationMemberCreateUpdateRequest
-
-// ApiOrganizationsMembershipsPartialUpdateFormdataRequestBody defines body for ApiOrganizationsMembershipsPartialUpdate for application/x-www-form-urlencoded ContentType.
-type ApiOrganizationsMembershipsPartialUpdateFormdataRequestBody = PatchedOrganizationMemberCreateUpdateRequest
-
-// ApiOrganizationsMembershipsPartialUpdateMultipartRequestBody defines body for ApiOrganizationsMembershipsPartialUpdate for multipart/form-data ContentType.
-type ApiOrganizationsMembershipsPartialUpdateMultipartRequestBody = PatchedOrganizationMemberCreateUpdateRequest
-
-// ApiOrganizationsMembershipsSearchCreateJSONRequestBody defines body for ApiOrganizationsMembershipsSearchCreate for application/json ContentType.
-type ApiOrganizationsMembershipsSearchCreateJSONRequestBody = OrganizationMemberFilterRequestRequest
-
-// ApiOrganizationsMembershipsSearchCreateFormdataRequestBody defines body for ApiOrganizationsMembershipsSearchCreate for application/x-www-form-urlencoded ContentType.
-type ApiOrganizationsMembershipsSearchCreateFormdataRequestBody = OrganizationMemberFilterRequestRequest
-
-// ApiOrganizationsMembershipsSearchCreateMultipartRequestBody defines body for ApiOrganizationsMembershipsSearchCreate for multipart/form-data ContentType.
-type ApiOrganizationsMembershipsSearchCreateMultipartRequestBody = OrganizationMemberFilterRequestRequest
-
-// ApiOrganizationsPermissionsCreateJSONRequestBody defines body for ApiOrganizationsPermissionsCreate for application/json ContentType.
-type ApiOrganizationsPermissionsCreateJSONRequestBody = OrganizationPermissionRequest
-
-// ApiOrganizationsPermissionsCreateFormdataRequestBody defines body for ApiOrganizationsPermissionsCreate for application/x-www-form-urlencoded ContentType.
-type ApiOrganizationsPermissionsCreateFormdataRequestBody = OrganizationPermissionRequest
-
-// ApiOrganizationsPermissionsCreateMultipartRequestBody defines body for ApiOrganizationsPermissionsCreate for multipart/form-data ContentType.
-type ApiOrganizationsPermissionsCreateMultipartRequestBody = OrganizationPermissionRequest
-
-// ApiOrganizationsPermissionsPartialUpdateJSONRequestBody defines body for ApiOrganizationsPermissionsPartialUpdate for application/json ContentType.
-type ApiOrganizationsPermissionsPartialUpdateJSONRequestBody = PatchedOrganizationPermissionRequest
-
-// ApiOrganizationsPermissionsPartialUpdateFormdataRequestBody defines body for ApiOrganizationsPermissionsPartialUpdate for application/x-www-form-urlencoded ContentType.
-type ApiOrganizationsPermissionsPartialUpdateFormdataRequestBody = PatchedOrganizationPermissionRequest
-
-// ApiOrganizationsPermissionsPartialUpdateMultipartRequestBody defines body for ApiOrganizationsPermissionsPartialUpdate for multipart/form-data ContentType.
-type ApiOrganizationsPermissionsPartialUpdateMultipartRequestBody = PatchedOrganizationPermissionRequest
-
-// ApiOrganizationsPermissionsUpdateJSONRequestBody defines body for ApiOrganizationsPermissionsUpdate for application/json ContentType.
-type ApiOrganizationsPermissionsUpdateJSONRequestBody = OrganizationPermissionRequest
-
-// ApiOrganizationsPermissionsUpdateFormdataRequestBody defines body for ApiOrganizationsPermissionsUpdate for application/x-www-form-urlencoded ContentType.
-type ApiOrganizationsPermissionsUpdateFormdataRequestBody = OrganizationPermissionRequest

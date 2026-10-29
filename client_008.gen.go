@@ -13,6 +13,82 @@ import (
 	openapi_types "github.com/oapi-codegen/runtime/types"
 )
 
+// ApiStoragesDatabricksPartialUpdateWithFormdataBodyWithResponse ✨ Update Databricks import storage
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Update a specific Databricks Files import storage connection.
+//
+// Takes a body of the `application/x-www-form-urlencoded` content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with PATCH /api/storages/databricks/{id} (the `ApiStoragesDatabricksPartialUpdate` operationId).
+func (c *ClientWithResponses) ApiStoragesDatabricksPartialUpdateWithFormdataBodyWithResponse(ctx context.Context, id int, body ApiStoragesDatabricksPartialUpdateFormdataRequestBody, reqEditors ...RequestEditorFn) (*ApiStoragesDatabricksPartialUpdateResponse, error) {
+	rsp, err := c.ApiStoragesDatabricksPartialUpdateWithFormdataBody(ctx, id, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesDatabricksPartialUpdateResponse(rsp)
+}
+
+// ApiStoragesDatabricksSyncCreateWithResponse ✨ Sync Databricks import storage
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Sync tasks from a Databricks Files import storage.
+//
+// Returns a wrapper object for the known response body format(s).
+//
+// Corresponds with POST /api/storages/databricks/{id}/sync (the `ApiStoragesDatabricksSyncCreate` operationId).
+func (c *ClientWithResponses) ApiStoragesDatabricksSyncCreateWithResponse(ctx context.Context, id int, reqEditors ...RequestEditorFn) (*ApiStoragesDatabricksSyncCreateResponse, error) {
+	rsp, err := c.ApiStoragesDatabricksSyncCreate(ctx, id, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesDatabricksSyncCreateResponse(rsp)
+}
+
+// ApiStoragesExportListWithResponse List all export storages from the project
+//
+// Retrieve a list of the export storages of all types with their IDs.
+//
+// Returns a wrapper object for the known response body format(s).
+//
+// Corresponds with GET /api/storages/export (the `ApiStoragesExportList` operationId).
+func (c *ClientWithResponses) ApiStoragesExportListWithResponse(ctx context.Context, params *ApiStoragesExportListParams, reqEditors ...RequestEditorFn) (*ApiStoragesExportListResponse, error) {
+	rsp, err := c.ApiStoragesExportList(ctx, params, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesExportListResponse(rsp)
+}
+
+// ApiStoragesExportAzureListWithResponse Get all export storage
+//
+// Get a list of all Azure export storage connections.
+//
+// Returns a wrapper object for the known response body format(s).
+//
+// Corresponds with GET /api/storages/export/azure (the `ApiStoragesExportAzureList` operationId).
+func (c *ClientWithResponses) ApiStoragesExportAzureListWithResponse(ctx context.Context, params *ApiStoragesExportAzureListParams, reqEditors ...RequestEditorFn) (*ApiStoragesExportAzureListResponse, error) {
+	rsp, err := c.ApiStoragesExportAzureList(ctx, params, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesExportAzureListResponse(rsp)
+}
+
 // ApiStoragesExportAzureCreateWithBodyWithResponse Create export storage
 //
 // Create a new Azure export storage connection to store annotations.
@@ -10703,6 +10779,32 @@ func ParseApiLearningResourcesUserProgressImportCreateResponse(rsp *http.Respons
 	return response, nil
 }
 
+// ParseApiLearningResourcesUserProgressQuizAttemptsRetrieveResponse parses an HTTP response from a ApiLearningResourcesUserProgressQuizAttemptsRetrieveWithResponse call
+func ParseApiLearningResourcesUserProgressQuizAttemptsRetrieveResponse(rsp *http.Response) (*ApiLearningResourcesUserProgressQuizAttemptsRetrieveResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &ApiLearningResourcesUserProgressQuizAttemptsRetrieveResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	switch {
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
+		var dest QuizAttemptHistory
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON200 = &dest
+
+	}
+
+	return response, nil
+}
+
 // ParseApiLearningResourcesUserProgressResetCreateResponse parses an HTTP response from a ApiLearningResourcesUserProgressResetCreateWithResponse call
 func ParseApiLearningResourcesUserProgressResetCreateResponse(rsp *http.Response) (*ApiLearningResourcesUserProgressResetCreateResponse, error) {
 	bodyBytes, err := io.ReadAll(rsp.Body)
@@ -19923,87 +20025,6 @@ func ParseApiTokenListResponse(rsp *http.Response) (*ApiTokenListResponse, error
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
 		var dest []LSEAPITokenList
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON200 = &dest
-
-	}
-
-	return response, nil
-}
-
-// ParseApiTokenCreateResponse parses an HTTP response from a ApiTokenCreateWithResponse call
-func ParseApiTokenCreateResponse(rsp *http.Response) (*ApiTokenCreateResponse, error) {
-	bodyBytes, err := io.ReadAll(rsp.Body)
-	defer func() { _ = rsp.Body.Close() }()
-	if err != nil {
-		return nil, err
-	}
-
-	response := &ApiTokenCreateResponse{
-		Body:         bodyBytes,
-		HTTPResponse: rsp,
-	}
-
-	switch {
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 201:
-		var dest LSEAPITokenCreate
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON201 = &dest
-
-	}
-
-	return response, nil
-}
-
-// ParseApiTokenBlacklistCreateResponse parses an HTTP response from a ApiTokenBlacklistCreateWithResponse call
-func ParseApiTokenBlacklistCreateResponse(rsp *http.Response) (*ApiTokenBlacklistCreateResponse, error) {
-	bodyBytes, err := io.ReadAll(rsp.Body)
-	defer func() { _ = rsp.Body.Close() }()
-	if err != nil {
-		return nil, err
-	}
-
-	response := &ApiTokenBlacklistCreateResponse{
-		Body:         bodyBytes,
-		HTTPResponse: rsp,
-	}
-
-	switch {
-	case rsp.StatusCode == 204:
-		break // No content-type
-
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 404:
-		var dest TokenDetailError
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON404 = &dest
-
-	}
-
-	return response, nil
-}
-
-// ParseApiTokenRefreshCreateResponse parses an HTTP response from a ApiTokenRefreshCreateWithResponse call
-func ParseApiTokenRefreshCreateResponse(rsp *http.Response) (*ApiTokenRefreshCreateResponse, error) {
-	bodyBytes, err := io.ReadAll(rsp.Body)
-	defer func() { _ = rsp.Body.Close() }()
-	if err != nil {
-		return nil, err
-	}
-
-	response := &ApiTokenRefreshCreateResponse{
-		Body:         bodyBytes,
-		HTTPResponse: rsp,
-	}
-
-	switch {
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest TokenRefreshResponse
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}

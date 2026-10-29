@@ -12,6 +12,47 @@ import (
 )
 
 // ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
+func (r ApiStoragesExportRedisPartialUpdateResponse) ContentType() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Header.Get("Content-Type")
+	}
+	return ""
+}
+
+type ApiStoragesExportRedisSyncCreateResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+	// JSON200 the response for an HTTP 200 `application/json` response
+	JSON200 *RedisExportStorage
+}
+
+// GetJSON200 returns the response for an HTTP 200 `application/json` response
+func (r ApiStoragesExportRedisSyncCreateResponse) GetJSON200() *RedisExportStorage {
+	return r.JSON200
+}
+
+// GetBody returns the raw response body bytes
+func (r ApiStoragesExportRedisSyncCreateResponse) GetBody() []byte {
+	return r.Body
+}
+
+// Status returns HTTPResponse.Status
+func (r ApiStoragesExportRedisSyncCreateResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+
+// StatusCode returns HTTPResponse.StatusCode
+func (r ApiStoragesExportRedisSyncCreateResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+
+// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
 func (r ApiStoragesExportRedisSyncCreateResponse) ContentType() string {
 	if r.HTTPResponse != nil {
 		return r.HTTPResponse.Header.Get("Content-Type")
@@ -10687,7 +10728,7 @@ func (c *ClientWithResponses) ApiLearningResourcesOutlineRetrieveWithResponse(ct
 //	    </p>
 //	</Card>
 //
-// Update the current user's progress on a learning resource.
+// Update the current user's progress on a learning resource. Learners can only update a published course they were given (404 otherwise). `page_id` is recorded only for a page the course has. `time_spent_seconds` adds at most 3600 seconds per request. `mark_complete` is ignored until every page has been visited, and completes the course only when every required quiz has also been passed.
 //
 // Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
 //
@@ -10710,7 +10751,7 @@ func (c *ClientWithResponses) ApiLearningResourcesProgressCreateWithBodyWithResp
 //	    </p>
 //	</Card>
 //
-// Update the current user's progress on a learning resource.
+// Update the current user's progress on a learning resource. Learners can only update a published course they were given (404 otherwise). `page_id` is recorded only for a page the course has. `time_spent_seconds` adds at most 3600 seconds per request. `mark_complete` is ignored until every page has been visited, and completes the course only when every required quiz has also been passed.
 //
 // Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
 //
@@ -10733,7 +10774,7 @@ func (c *ClientWithResponses) ApiLearningResourcesProgressCreateWithResponse(ctx
 //	    </p>
 //	</Card>
 //
-// Update the current user's progress on a learning resource.
+// Update the current user's progress on a learning resource. Learners can only update a published course they were given (404 otherwise). `page_id` is recorded only for a page the course has. `time_spent_seconds` adds at most 3600 seconds per request. `mark_complete` is ignored until every page has been visited, and completes the course only when every required quiz has also been passed.
 //
 // Takes a body of the `application/x-www-form-urlencoded` content type, and returns a wrapper object for the known response body format(s).
 //
@@ -11226,6 +11267,29 @@ func (c *ClientWithResponses) ApiLearningResourcesUserProgressImportCreateWithBo
 		return nil, err
 	}
 	return ParseApiLearningResourcesUserProgressImportCreateResponse(rsp)
+}
+
+// ApiLearningResourcesUserProgressQuizAttemptsRetrieveWithResponse ✨ Get quiz attempt history for a learner
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// View every quiz submission by one learner on this course, including answers and correct-answer keys. Restricted to roles with learning.manage permission.
+//
+// Returns a wrapper object for the known response body format(s).
+//
+// Corresponds with GET /api/learning-resources/{id}/user-progress/{user_id}/quiz-attempts/ (the `ApiLearningResourcesUserProgressQuizAttemptsRetrieve` operationId).
+func (c *ClientWithResponses) ApiLearningResourcesUserProgressQuizAttemptsRetrieveWithResponse(ctx context.Context, id int, userId string, reqEditors ...RequestEditorFn) (*ApiLearningResourcesUserProgressQuizAttemptsRetrieveResponse, error) {
+	rsp, err := c.ApiLearningResourcesUserProgressQuizAttemptsRetrieve(ctx, id, userId, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiLearningResourcesUserProgressQuizAttemptsRetrieveResponse(rsp)
 }
 
 // ApiLearningResourcesUserProgressResetCreateWithBodyWithResponse ✨ Reset user progress on a learning resource
@@ -15346,6 +15410,8 @@ func (c *ClientWithResponses) ApiProjectsImportsListWithResponse(ctx context.Con
 // ApiProjectsImportsRetrieveWithResponse Get project import status
 //
 //	Poll the status of an asynchronous project import operation.
+//
+//	*Note*: this endpoint is also accessible as `client.tasks.create_many_status`, its historical location.
 //
 //	**Usage:**
 //	1. When you POST to `/api/projects/{project_id}/import`, you'll receive a response like `{"import": <import_id>}`
@@ -19943,80 +20009,4 @@ func (c *ClientWithResponses) ApiStoragesDatabricksPartialUpdateWithResponse(ctx
 		return nil, err
 	}
 	return ParseApiStoragesDatabricksPartialUpdateResponse(rsp)
-}
-
-// ApiStoragesDatabricksPartialUpdateWithFormdataBodyWithResponse ✨ Update Databricks import storage
-//
-// <Card href="https://humansignal.com/goenterprise">
-//
-//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
-//	    <p style="margin-top: 10px; font-size: 14px;">
-//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
-//	    </p>
-//	</Card>
-//
-// Update a specific Databricks Files import storage connection.
-//
-// Takes a body of the `application/x-www-form-urlencoded` content type, and returns a wrapper object for the known response body format(s).
-//
-// Corresponds with PATCH /api/storages/databricks/{id} (the `ApiStoragesDatabricksPartialUpdate` operationId).
-func (c *ClientWithResponses) ApiStoragesDatabricksPartialUpdateWithFormdataBodyWithResponse(ctx context.Context, id int, body ApiStoragesDatabricksPartialUpdateFormdataRequestBody, reqEditors ...RequestEditorFn) (*ApiStoragesDatabricksPartialUpdateResponse, error) {
-	rsp, err := c.ApiStoragesDatabricksPartialUpdateWithFormdataBody(ctx, id, body, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseApiStoragesDatabricksPartialUpdateResponse(rsp)
-}
-
-// ApiStoragesDatabricksSyncCreateWithResponse ✨ Sync Databricks import storage
-//
-// <Card href="https://humansignal.com/goenterprise">
-//
-//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
-//	    <p style="margin-top: 10px; font-size: 14px;">
-//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
-//	    </p>
-//	</Card>
-//
-// Sync tasks from a Databricks Files import storage.
-//
-// Returns a wrapper object for the known response body format(s).
-//
-// Corresponds with POST /api/storages/databricks/{id}/sync (the `ApiStoragesDatabricksSyncCreate` operationId).
-func (c *ClientWithResponses) ApiStoragesDatabricksSyncCreateWithResponse(ctx context.Context, id int, reqEditors ...RequestEditorFn) (*ApiStoragesDatabricksSyncCreateResponse, error) {
-	rsp, err := c.ApiStoragesDatabricksSyncCreate(ctx, id, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseApiStoragesDatabricksSyncCreateResponse(rsp)
-}
-
-// ApiStoragesExportListWithResponse List all export storages from the project
-//
-// Retrieve a list of the export storages of all types with their IDs.
-//
-// Returns a wrapper object for the known response body format(s).
-//
-// Corresponds with GET /api/storages/export (the `ApiStoragesExportList` operationId).
-func (c *ClientWithResponses) ApiStoragesExportListWithResponse(ctx context.Context, params *ApiStoragesExportListParams, reqEditors ...RequestEditorFn) (*ApiStoragesExportListResponse, error) {
-	rsp, err := c.ApiStoragesExportList(ctx, params, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseApiStoragesExportListResponse(rsp)
-}
-
-// ApiStoragesExportAzureListWithResponse Get all export storage
-//
-// Get a list of all Azure export storage connections.
-//
-// Returns a wrapper object for the known response body format(s).
-//
-// Corresponds with GET /api/storages/export/azure (the `ApiStoragesExportAzureList` operationId).
-func (c *ClientWithResponses) ApiStoragesExportAzureListWithResponse(ctx context.Context, params *ApiStoragesExportAzureListParams, reqEditors ...RequestEditorFn) (*ApiStoragesExportAzureListResponse, error) {
-	rsp, err := c.ApiStoragesExportAzureList(ctx, params, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseApiStoragesExportAzureListResponse(rsp)
 }
