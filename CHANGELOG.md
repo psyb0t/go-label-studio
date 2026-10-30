@@ -2,6 +2,11 @@
 
 All notable changes per release. Versions follow [semver](https://semver.org).
 
+## v0.4.2, 2026-10-30
+
+- Documentation only. The doc comments on `LseTask.Annotations`, `LseTaskSerializerForAnnotators.Annotations`, `LseTaskSerializerForReviewers.Annotations` and `ApiAnnotationHistoryRetrieve` (client, `ClientWithResponses` and both interfaces) no longer mention a feature flag or FIT-720 lazy loading.
+- `ApiOrganizationsMemberTagsPartialUpdateJSONRequestBody` moved to another generated file. Its name and type (`PatchedOrganizationMemberTagRequest`) are unchanged.
+
 ## v0.4.1, 2026-10-29
 
 - Added the quiz attempts endpoint, `GET /api/learning-resources/{id}/user-progress/{user_id}/quiz-attempts/`: `Client.ApiLearningResourcesUserProgressQuizAttemptsRetrieve`, `ClientWithResponses.ApiLearningResourcesUserProgressQuizAttemptsRetrieveWithResponse`, `NewApiLearningResourcesUserProgressQuizAttemptsRetrieveRequest`, `ParseApiLearningResourcesUserProgressQuizAttemptsRetrieveResponse` and `ApiLearningResourcesUserProgressQuizAttemptsRetrieveResponse`.

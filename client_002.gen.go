@@ -15,9 +15,6 @@ import (
 	openapi_types "github.com/oapi-codegen/runtime/types"
 )
 
-// ApiOrganizationsMemberTagsPartialUpdateJSONRequestBody defines body for ApiOrganizationsMemberTagsPartialUpdate for application/json ContentType.
-type ApiOrganizationsMemberTagsPartialUpdateJSONRequestBody = PatchedOrganizationMemberTagRequest
-
 // ApiOrganizationsMemberTagsPartialUpdateFormdataRequestBody defines body for ApiOrganizationsMemberTagsPartialUpdate for application/x-www-form-urlencoded ContentType.
 type ApiOrganizationsMemberTagsPartialUpdateFormdataRequestBody = PatchedOrganizationMemberTagRequest
 
@@ -3437,7 +3434,7 @@ type ClientInterface interface {
 	//             This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
 	//         </p>
 	//     </Card>
-	// Get one annotation history item by ID with full result. Used when FIT-720 lazy load is on and the user clicks a stubbed history item to hydrate it.
+	// Get one annotation history item by ID with full result. Used when the user clicks a stubbed history item to hydrate it.
 	//
 	// Corresponds with GET /api/annotation-history/{id}/ (the `ApiAnnotationHistoryRetrieve` operationId).
 	ApiAnnotationHistoryRetrieve(ctx context.Context, id int, reqEditors ...RequestEditorFn) (*http.Response, error)
@@ -16736,7 +16733,7 @@ func (c *Client) ApiAnnotationHistoryList(ctx context.Context, params *ApiAnnota
 //	    </p>
 //	</Card>
 //
-// Get one annotation history item by ID with full result. Used when FIT-720 lazy load is on and the user clicks a stubbed history item to hydrate it.
+// Get one annotation history item by ID with full result. Used when the user clicks a stubbed history item to hydrate it.
 //
 // Corresponds with GET /api/annotation-history/{id}/ (the `ApiAnnotationHistoryRetrieve` operationId).
 func (c *Client) ApiAnnotationHistoryRetrieve(ctx context.Context, id int, reqEditors ...RequestEditorFn) (*http.Response, error) {

@@ -9552,8 +9552,7 @@ type LseTask struct {
 
 	// Annotations Return annotations for the task.
 	//
-	// If annotations_stub=True is in context (via feature flag
-	// fflag_fix_all_fit_720_lazy_load_annotations), returns lightweight
+	// If annotations_stub=True is in context, returns lightweight
 	// annotation stubs without result data for improved performance.
 	Annotations        *[]map[string]interface{} `json:"annotations,omitempty"`
 	AnnotationsIds     *string                   `json:"annotations_ids,omitempty"`
@@ -9783,8 +9782,7 @@ type LseTaskRequest struct {
 type LseTaskSerializerForAnnotators struct {
 	// Annotations Return annotations for the task.
 	//
-	// If annotations_stub=True is in context (via feature flag
-	// fflag_fix_all_fit_720_lazy_load_annotations), returns lightweight
+	// If annotations_stub=True is in context, returns lightweight
 	// annotation stubs without result data for improved performance.
 	Annotations          *[]map[string]interface{} `json:"annotations,omitempty"`
 	AnnotationsResults   *string                   `json:"annotations_results,omitempty"`
@@ -9850,8 +9848,7 @@ type LseTaskSerializerForReviewers struct {
 
 	// Annotations Return annotations for the task.
 	//
-	// If annotations_stub=True is in context (via feature flag
-	// fflag_fix_all_fit_720_lazy_load_annotations), returns lightweight
+	// If annotations_stub=True is in context, returns lightweight
 	// annotation stubs without result data for improved performance.
 	Annotations        *[]map[string]interface{} `json:"annotations,omitempty"`
 	AnnotationsIds     *string                   `json:"annotations_ids,omitempty"`
@@ -20009,3 +20006,6 @@ type ApiOrganizationsMemberTagsImportsCreateFormdataRequestBody = OrganizationMe
 
 // ApiOrganizationsMemberTagsImportsCreateMultipartRequestBody defines body for ApiOrganizationsMemberTagsImportsCreate for multipart/form-data ContentType.
 type ApiOrganizationsMemberTagsImportsCreateMultipartRequestBody = OrganizationMemberTagImportCreateRequest
+
+// ApiOrganizationsMemberTagsPartialUpdateJSONRequestBody defines body for ApiOrganizationsMemberTagsPartialUpdate for application/json ContentType.
+type ApiOrganizationsMemberTagsPartialUpdateJSONRequestBody = PatchedOrganizationMemberTagRequest

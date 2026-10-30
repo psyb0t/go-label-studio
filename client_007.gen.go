@@ -4942,7 +4942,7 @@ func (c *ClientWithResponses) ApiAnnotationHistoryListWithResponse(ctx context.C
 //	    </p>
 //	</Card>
 //
-// Get one annotation history item by ID with full result. Used when FIT-720 lazy load is on and the user clicks a stubbed history item to hydrate it.
+// Get one annotation history item by ID with full result. Used when the user clicks a stubbed history item to hydrate it.
 //
 // Returns a wrapper object for the known response body format(s).
 //
