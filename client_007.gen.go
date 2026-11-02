@@ -11,1997 +11,6 @@ import (
 	openapi_types "github.com/oapi-codegen/runtime/types"
 )
 
-// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
-func (r ApiStoragesExportRedisPartialUpdateResponse) ContentType() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Header.Get("Content-Type")
-	}
-	return ""
-}
-
-type ApiStoragesExportRedisSyncCreateResponse struct {
-	Body         []byte
-	HTTPResponse *http.Response
-	// JSON200 the response for an HTTP 200 `application/json` response
-	JSON200 *RedisExportStorage
-}
-
-// GetJSON200 returns the response for an HTTP 200 `application/json` response
-func (r ApiStoragesExportRedisSyncCreateResponse) GetJSON200() *RedisExportStorage {
-	return r.JSON200
-}
-
-// GetBody returns the raw response body bytes
-func (r ApiStoragesExportRedisSyncCreateResponse) GetBody() []byte {
-	return r.Body
-}
-
-// Status returns HTTPResponse.Status
-func (r ApiStoragesExportRedisSyncCreateResponse) Status() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Status
-	}
-	return http.StatusText(0)
-}
-
-// StatusCode returns HTTPResponse.StatusCode
-func (r ApiStoragesExportRedisSyncCreateResponse) StatusCode() int {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.StatusCode
-	}
-	return 0
-}
-
-// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
-func (r ApiStoragesExportRedisSyncCreateResponse) ContentType() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Header.Get("Content-Type")
-	}
-	return ""
-}
-
-type ApiStoragesExportS3ListResponse struct {
-	Body         []byte
-	HTTPResponse *http.Response
-	// JSON200 the response for an HTTP 200 `application/json` response
-	JSON200 *[]S3ExportStorage
-}
-
-// GetJSON200 returns the response for an HTTP 200 `application/json` response
-func (r ApiStoragesExportS3ListResponse) GetJSON200() *[]S3ExportStorage {
-	return r.JSON200
-}
-
-// GetBody returns the raw response body bytes
-func (r ApiStoragesExportS3ListResponse) GetBody() []byte {
-	return r.Body
-}
-
-// Status returns HTTPResponse.Status
-func (r ApiStoragesExportS3ListResponse) Status() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Status
-	}
-	return http.StatusText(0)
-}
-
-// StatusCode returns HTTPResponse.StatusCode
-func (r ApiStoragesExportS3ListResponse) StatusCode() int {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.StatusCode
-	}
-	return 0
-}
-
-// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
-func (r ApiStoragesExportS3ListResponse) ContentType() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Header.Get("Content-Type")
-	}
-	return ""
-}
-
-type ApiStoragesExportS3CreateResponse struct {
-	Body         []byte
-	HTTPResponse *http.Response
-	// JSON201 the response for an HTTP 201 `application/json` response
-	JSON201 *S3ExportStorage
-}
-
-// GetJSON201 returns the response for an HTTP 201 `application/json` response
-func (r ApiStoragesExportS3CreateResponse) GetJSON201() *S3ExportStorage {
-	return r.JSON201
-}
-
-// GetBody returns the raw response body bytes
-func (r ApiStoragesExportS3CreateResponse) GetBody() []byte {
-	return r.Body
-}
-
-// Status returns HTTPResponse.Status
-func (r ApiStoragesExportS3CreateResponse) Status() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Status
-	}
-	return http.StatusText(0)
-}
-
-// StatusCode returns HTTPResponse.StatusCode
-func (r ApiStoragesExportS3CreateResponse) StatusCode() int {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.StatusCode
-	}
-	return 0
-}
-
-// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
-func (r ApiStoragesExportS3CreateResponse) ContentType() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Header.Get("Content-Type")
-	}
-	return ""
-}
-
-type ApiStoragesExportS3ValidateCreateResponse struct {
-	Body         []byte
-	HTTPResponse *http.Response
-}
-
-// GetBody returns the raw response body bytes
-func (r ApiStoragesExportS3ValidateCreateResponse) GetBody() []byte {
-	return r.Body
-}
-
-// Status returns HTTPResponse.Status
-func (r ApiStoragesExportS3ValidateCreateResponse) Status() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Status
-	}
-	return http.StatusText(0)
-}
-
-// StatusCode returns HTTPResponse.StatusCode
-func (r ApiStoragesExportS3ValidateCreateResponse) StatusCode() int {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.StatusCode
-	}
-	return 0
-}
-
-// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
-func (r ApiStoragesExportS3ValidateCreateResponse) ContentType() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Header.Get("Content-Type")
-	}
-	return ""
-}
-
-type ApiStoragesExportS3DestroyResponse struct {
-	Body         []byte
-	HTTPResponse *http.Response
-}
-
-// GetBody returns the raw response body bytes
-func (r ApiStoragesExportS3DestroyResponse) GetBody() []byte {
-	return r.Body
-}
-
-// Status returns HTTPResponse.Status
-func (r ApiStoragesExportS3DestroyResponse) Status() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Status
-	}
-	return http.StatusText(0)
-}
-
-// StatusCode returns HTTPResponse.StatusCode
-func (r ApiStoragesExportS3DestroyResponse) StatusCode() int {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.StatusCode
-	}
-	return 0
-}
-
-// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
-func (r ApiStoragesExportS3DestroyResponse) ContentType() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Header.Get("Content-Type")
-	}
-	return ""
-}
-
-type ApiStoragesExportS3RetrieveResponse struct {
-	Body         []byte
-	HTTPResponse *http.Response
-	// JSON200 the response for an HTTP 200 `application/json` response
-	JSON200 *S3ExportStorage
-}
-
-// GetJSON200 returns the response for an HTTP 200 `application/json` response
-func (r ApiStoragesExportS3RetrieveResponse) GetJSON200() *S3ExportStorage {
-	return r.JSON200
-}
-
-// GetBody returns the raw response body bytes
-func (r ApiStoragesExportS3RetrieveResponse) GetBody() []byte {
-	return r.Body
-}
-
-// Status returns HTTPResponse.Status
-func (r ApiStoragesExportS3RetrieveResponse) Status() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Status
-	}
-	return http.StatusText(0)
-}
-
-// StatusCode returns HTTPResponse.StatusCode
-func (r ApiStoragesExportS3RetrieveResponse) StatusCode() int {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.StatusCode
-	}
-	return 0
-}
-
-// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
-func (r ApiStoragesExportS3RetrieveResponse) ContentType() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Header.Get("Content-Type")
-	}
-	return ""
-}
-
-type ApiStoragesExportS3PartialUpdateResponse struct {
-	Body         []byte
-	HTTPResponse *http.Response
-	// JSON200 the response for an HTTP 200 `application/json` response
-	JSON200 *S3ExportStorage
-}
-
-// GetJSON200 returns the response for an HTTP 200 `application/json` response
-func (r ApiStoragesExportS3PartialUpdateResponse) GetJSON200() *S3ExportStorage {
-	return r.JSON200
-}
-
-// GetBody returns the raw response body bytes
-func (r ApiStoragesExportS3PartialUpdateResponse) GetBody() []byte {
-	return r.Body
-}
-
-// Status returns HTTPResponse.Status
-func (r ApiStoragesExportS3PartialUpdateResponse) Status() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Status
-	}
-	return http.StatusText(0)
-}
-
-// StatusCode returns HTTPResponse.StatusCode
-func (r ApiStoragesExportS3PartialUpdateResponse) StatusCode() int {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.StatusCode
-	}
-	return 0
-}
-
-// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
-func (r ApiStoragesExportS3PartialUpdateResponse) ContentType() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Header.Get("Content-Type")
-	}
-	return ""
-}
-
-type ApiStoragesExportS3SyncCreateResponse struct {
-	Body         []byte
-	HTTPResponse *http.Response
-	// JSON200 the response for an HTTP 200 `application/json` response
-	JSON200 *S3ExportStorage
-}
-
-// GetJSON200 returns the response for an HTTP 200 `application/json` response
-func (r ApiStoragesExportS3SyncCreateResponse) GetJSON200() *S3ExportStorage {
-	return r.JSON200
-}
-
-// GetBody returns the raw response body bytes
-func (r ApiStoragesExportS3SyncCreateResponse) GetBody() []byte {
-	return r.Body
-}
-
-// Status returns HTTPResponse.Status
-func (r ApiStoragesExportS3SyncCreateResponse) Status() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Status
-	}
-	return http.StatusText(0)
-}
-
-// StatusCode returns HTTPResponse.StatusCode
-func (r ApiStoragesExportS3SyncCreateResponse) StatusCode() int {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.StatusCode
-	}
-	return 0
-}
-
-// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
-func (r ApiStoragesExportS3SyncCreateResponse) ContentType() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Header.Get("Content-Type")
-	}
-	return ""
-}
-
-type ApiStoragesExportS3sListResponse struct {
-	Body         []byte
-	HTTPResponse *http.Response
-	// JSON200 the response for an HTTP 200 `application/json` response
-	JSON200 *[]LseS3ExportStorage
-}
-
-// GetJSON200 returns the response for an HTTP 200 `application/json` response
-func (r ApiStoragesExportS3sListResponse) GetJSON200() *[]LseS3ExportStorage {
-	return r.JSON200
-}
-
-// GetBody returns the raw response body bytes
-func (r ApiStoragesExportS3sListResponse) GetBody() []byte {
-	return r.Body
-}
-
-// Status returns HTTPResponse.Status
-func (r ApiStoragesExportS3sListResponse) Status() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Status
-	}
-	return http.StatusText(0)
-}
-
-// StatusCode returns HTTPResponse.StatusCode
-func (r ApiStoragesExportS3sListResponse) StatusCode() int {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.StatusCode
-	}
-	return 0
-}
-
-// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
-func (r ApiStoragesExportS3sListResponse) ContentType() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Header.Get("Content-Type")
-	}
-	return ""
-}
-
-type ApiStoragesExportS3sCreateResponse struct {
-	Body         []byte
-	HTTPResponse *http.Response
-	// JSON201 the response for an HTTP 201 `application/json` response
-	JSON201 *LseS3ExportStorage
-}
-
-// GetJSON201 returns the response for an HTTP 201 `application/json` response
-func (r ApiStoragesExportS3sCreateResponse) GetJSON201() *LseS3ExportStorage {
-	return r.JSON201
-}
-
-// GetBody returns the raw response body bytes
-func (r ApiStoragesExportS3sCreateResponse) GetBody() []byte {
-	return r.Body
-}
-
-// Status returns HTTPResponse.Status
-func (r ApiStoragesExportS3sCreateResponse) Status() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Status
-	}
-	return http.StatusText(0)
-}
-
-// StatusCode returns HTTPResponse.StatusCode
-func (r ApiStoragesExportS3sCreateResponse) StatusCode() int {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.StatusCode
-	}
-	return 0
-}
-
-// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
-func (r ApiStoragesExportS3sCreateResponse) ContentType() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Header.Get("Content-Type")
-	}
-	return ""
-}
-
-type ApiStoragesExportS3sValidateCreateResponse struct {
-	Body         []byte
-	HTTPResponse *http.Response
-}
-
-// GetBody returns the raw response body bytes
-func (r ApiStoragesExportS3sValidateCreateResponse) GetBody() []byte {
-	return r.Body
-}
-
-// Status returns HTTPResponse.Status
-func (r ApiStoragesExportS3sValidateCreateResponse) Status() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Status
-	}
-	return http.StatusText(0)
-}
-
-// StatusCode returns HTTPResponse.StatusCode
-func (r ApiStoragesExportS3sValidateCreateResponse) StatusCode() int {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.StatusCode
-	}
-	return 0
-}
-
-// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
-func (r ApiStoragesExportS3sValidateCreateResponse) ContentType() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Header.Get("Content-Type")
-	}
-	return ""
-}
-
-type ApiStoragesExportS3sDestroyResponse struct {
-	Body         []byte
-	HTTPResponse *http.Response
-}
-
-// GetBody returns the raw response body bytes
-func (r ApiStoragesExportS3sDestroyResponse) GetBody() []byte {
-	return r.Body
-}
-
-// Status returns HTTPResponse.Status
-func (r ApiStoragesExportS3sDestroyResponse) Status() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Status
-	}
-	return http.StatusText(0)
-}
-
-// StatusCode returns HTTPResponse.StatusCode
-func (r ApiStoragesExportS3sDestroyResponse) StatusCode() int {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.StatusCode
-	}
-	return 0
-}
-
-// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
-func (r ApiStoragesExportS3sDestroyResponse) ContentType() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Header.Get("Content-Type")
-	}
-	return ""
-}
-
-type ApiStoragesExportS3sRetrieveResponse struct {
-	Body         []byte
-	HTTPResponse *http.Response
-	// JSON200 the response for an HTTP 200 `application/json` response
-	JSON200 *LseS3ExportStorage
-}
-
-// GetJSON200 returns the response for an HTTP 200 `application/json` response
-func (r ApiStoragesExportS3sRetrieveResponse) GetJSON200() *LseS3ExportStorage {
-	return r.JSON200
-}
-
-// GetBody returns the raw response body bytes
-func (r ApiStoragesExportS3sRetrieveResponse) GetBody() []byte {
-	return r.Body
-}
-
-// Status returns HTTPResponse.Status
-func (r ApiStoragesExportS3sRetrieveResponse) Status() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Status
-	}
-	return http.StatusText(0)
-}
-
-// StatusCode returns HTTPResponse.StatusCode
-func (r ApiStoragesExportS3sRetrieveResponse) StatusCode() int {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.StatusCode
-	}
-	return 0
-}
-
-// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
-func (r ApiStoragesExportS3sRetrieveResponse) ContentType() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Header.Get("Content-Type")
-	}
-	return ""
-}
-
-type ApiStoragesExportS3sPartialUpdateResponse struct {
-	Body         []byte
-	HTTPResponse *http.Response
-	// JSON200 the response for an HTTP 200 `application/json` response
-	JSON200 *LseS3ExportStorage
-}
-
-// GetJSON200 returns the response for an HTTP 200 `application/json` response
-func (r ApiStoragesExportS3sPartialUpdateResponse) GetJSON200() *LseS3ExportStorage {
-	return r.JSON200
-}
-
-// GetBody returns the raw response body bytes
-func (r ApiStoragesExportS3sPartialUpdateResponse) GetBody() []byte {
-	return r.Body
-}
-
-// Status returns HTTPResponse.Status
-func (r ApiStoragesExportS3sPartialUpdateResponse) Status() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Status
-	}
-	return http.StatusText(0)
-}
-
-// StatusCode returns HTTPResponse.StatusCode
-func (r ApiStoragesExportS3sPartialUpdateResponse) StatusCode() int {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.StatusCode
-	}
-	return 0
-}
-
-// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
-func (r ApiStoragesExportS3sPartialUpdateResponse) ContentType() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Header.Get("Content-Type")
-	}
-	return ""
-}
-
-type ApiStoragesExportS3sSyncCreateResponse struct {
-	Body         []byte
-	HTTPResponse *http.Response
-	// JSON200 the response for an HTTP 200 `application/json` response
-	JSON200 *LseS3ExportStorage
-}
-
-// GetJSON200 returns the response for an HTTP 200 `application/json` response
-func (r ApiStoragesExportS3sSyncCreateResponse) GetJSON200() *LseS3ExportStorage {
-	return r.JSON200
-}
-
-// GetBody returns the raw response body bytes
-func (r ApiStoragesExportS3sSyncCreateResponse) GetBody() []byte {
-	return r.Body
-}
-
-// Status returns HTTPResponse.Status
-func (r ApiStoragesExportS3sSyncCreateResponse) Status() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Status
-	}
-	return http.StatusText(0)
-}
-
-// StatusCode returns HTTPResponse.StatusCode
-func (r ApiStoragesExportS3sSyncCreateResponse) StatusCode() int {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.StatusCode
-	}
-	return 0
-}
-
-// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
-func (r ApiStoragesExportS3sSyncCreateResponse) ContentType() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Header.Get("Content-Type")
-	}
-	return ""
-}
-
-type ApiStoragesExportTypesRetrieveResponse struct {
-	Body         []byte
-	HTTPResponse *http.Response
-	// JSON200 the response for an HTTP 200 `application/json` response
-	JSON200 *[]struct {
-		Name  *string `json:"name,omitempty"`
-		Title *string `json:"title,omitempty"`
-	}
-}
-
-// GetJSON200 returns the response for an HTTP 200 `application/json` response
-func (r ApiStoragesExportTypesRetrieveResponse) GetJSON200() *[]struct {
-	Name  *string `json:"name,omitempty"`
-	Title *string `json:"title,omitempty"`
-} {
-	return r.JSON200
-}
-
-// GetBody returns the raw response body bytes
-func (r ApiStoragesExportTypesRetrieveResponse) GetBody() []byte {
-	return r.Body
-}
-
-// Status returns HTTPResponse.Status
-func (r ApiStoragesExportTypesRetrieveResponse) Status() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Status
-	}
-	return http.StatusText(0)
-}
-
-// StatusCode returns HTTPResponse.StatusCode
-func (r ApiStoragesExportTypesRetrieveResponse) StatusCode() int {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.StatusCode
-	}
-	return 0
-}
-
-// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
-func (r ApiStoragesExportTypesRetrieveResponse) ContentType() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Header.Get("Content-Type")
-	}
-	return ""
-}
-
-type ApiStoragesGcsListResponse struct {
-	Body         []byte
-	HTTPResponse *http.Response
-	// JSON200 the response for an HTTP 200 `application/json` response
-	JSON200 *[]GCSImportStorage
-}
-
-// GetJSON200 returns the response for an HTTP 200 `application/json` response
-func (r ApiStoragesGcsListResponse) GetJSON200() *[]GCSImportStorage {
-	return r.JSON200
-}
-
-// GetBody returns the raw response body bytes
-func (r ApiStoragesGcsListResponse) GetBody() []byte {
-	return r.Body
-}
-
-// Status returns HTTPResponse.Status
-func (r ApiStoragesGcsListResponse) Status() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Status
-	}
-	return http.StatusText(0)
-}
-
-// StatusCode returns HTTPResponse.StatusCode
-func (r ApiStoragesGcsListResponse) StatusCode() int {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.StatusCode
-	}
-	return 0
-}
-
-// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
-func (r ApiStoragesGcsListResponse) ContentType() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Header.Get("Content-Type")
-	}
-	return ""
-}
-
-type ApiStoragesGcsCreateResponse struct {
-	Body         []byte
-	HTTPResponse *http.Response
-	// JSON201 the response for an HTTP 201 `application/json` response
-	JSON201 *GCSImportStorage
-}
-
-// GetJSON201 returns the response for an HTTP 201 `application/json` response
-func (r ApiStoragesGcsCreateResponse) GetJSON201() *GCSImportStorage {
-	return r.JSON201
-}
-
-// GetBody returns the raw response body bytes
-func (r ApiStoragesGcsCreateResponse) GetBody() []byte {
-	return r.Body
-}
-
-// Status returns HTTPResponse.Status
-func (r ApiStoragesGcsCreateResponse) Status() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Status
-	}
-	return http.StatusText(0)
-}
-
-// StatusCode returns HTTPResponse.StatusCode
-func (r ApiStoragesGcsCreateResponse) StatusCode() int {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.StatusCode
-	}
-	return 0
-}
-
-// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
-func (r ApiStoragesGcsCreateResponse) ContentType() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Header.Get("Content-Type")
-	}
-	return ""
-}
-
-type ApiStoragesGcsValidateCreateResponse struct {
-	Body         []byte
-	HTTPResponse *http.Response
-}
-
-// GetBody returns the raw response body bytes
-func (r ApiStoragesGcsValidateCreateResponse) GetBody() []byte {
-	return r.Body
-}
-
-// Status returns HTTPResponse.Status
-func (r ApiStoragesGcsValidateCreateResponse) Status() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Status
-	}
-	return http.StatusText(0)
-}
-
-// StatusCode returns HTTPResponse.StatusCode
-func (r ApiStoragesGcsValidateCreateResponse) StatusCode() int {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.StatusCode
-	}
-	return 0
-}
-
-// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
-func (r ApiStoragesGcsValidateCreateResponse) ContentType() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Header.Get("Content-Type")
-	}
-	return ""
-}
-
-type ApiStoragesGcsDestroyResponse struct {
-	Body         []byte
-	HTTPResponse *http.Response
-}
-
-// GetBody returns the raw response body bytes
-func (r ApiStoragesGcsDestroyResponse) GetBody() []byte {
-	return r.Body
-}
-
-// Status returns HTTPResponse.Status
-func (r ApiStoragesGcsDestroyResponse) Status() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Status
-	}
-	return http.StatusText(0)
-}
-
-// StatusCode returns HTTPResponse.StatusCode
-func (r ApiStoragesGcsDestroyResponse) StatusCode() int {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.StatusCode
-	}
-	return 0
-}
-
-// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
-func (r ApiStoragesGcsDestroyResponse) ContentType() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Header.Get("Content-Type")
-	}
-	return ""
-}
-
-type ApiStoragesGcsRetrieveResponse struct {
-	Body         []byte
-	HTTPResponse *http.Response
-	// JSON200 the response for an HTTP 200 `application/json` response
-	JSON200 *GCSImportStorage
-}
-
-// GetJSON200 returns the response for an HTTP 200 `application/json` response
-func (r ApiStoragesGcsRetrieveResponse) GetJSON200() *GCSImportStorage {
-	return r.JSON200
-}
-
-// GetBody returns the raw response body bytes
-func (r ApiStoragesGcsRetrieveResponse) GetBody() []byte {
-	return r.Body
-}
-
-// Status returns HTTPResponse.Status
-func (r ApiStoragesGcsRetrieveResponse) Status() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Status
-	}
-	return http.StatusText(0)
-}
-
-// StatusCode returns HTTPResponse.StatusCode
-func (r ApiStoragesGcsRetrieveResponse) StatusCode() int {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.StatusCode
-	}
-	return 0
-}
-
-// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
-func (r ApiStoragesGcsRetrieveResponse) ContentType() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Header.Get("Content-Type")
-	}
-	return ""
-}
-
-type ApiStoragesGcsPartialUpdateResponse struct {
-	Body         []byte
-	HTTPResponse *http.Response
-	// JSON200 the response for an HTTP 200 `application/json` response
-	JSON200 *GCSImportStorage
-}
-
-// GetJSON200 returns the response for an HTTP 200 `application/json` response
-func (r ApiStoragesGcsPartialUpdateResponse) GetJSON200() *GCSImportStorage {
-	return r.JSON200
-}
-
-// GetBody returns the raw response body bytes
-func (r ApiStoragesGcsPartialUpdateResponse) GetBody() []byte {
-	return r.Body
-}
-
-// Status returns HTTPResponse.Status
-func (r ApiStoragesGcsPartialUpdateResponse) Status() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Status
-	}
-	return http.StatusText(0)
-}
-
-// StatusCode returns HTTPResponse.StatusCode
-func (r ApiStoragesGcsPartialUpdateResponse) StatusCode() int {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.StatusCode
-	}
-	return 0
-}
-
-// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
-func (r ApiStoragesGcsPartialUpdateResponse) ContentType() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Header.Get("Content-Type")
-	}
-	return ""
-}
-
-type ApiStoragesGcsSyncCreateResponse struct {
-	Body         []byte
-	HTTPResponse *http.Response
-	// JSON200 the response for an HTTP 200 `application/json` response
-	JSON200 *GCSImportStorage
-}
-
-// GetJSON200 returns the response for an HTTP 200 `application/json` response
-func (r ApiStoragesGcsSyncCreateResponse) GetJSON200() *GCSImportStorage {
-	return r.JSON200
-}
-
-// GetBody returns the raw response body bytes
-func (r ApiStoragesGcsSyncCreateResponse) GetBody() []byte {
-	return r.Body
-}
-
-// Status returns HTTPResponse.Status
-func (r ApiStoragesGcsSyncCreateResponse) Status() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Status
-	}
-	return http.StatusText(0)
-}
-
-// StatusCode returns HTTPResponse.StatusCode
-func (r ApiStoragesGcsSyncCreateResponse) StatusCode() int {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.StatusCode
-	}
-	return 0
-}
-
-// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
-func (r ApiStoragesGcsSyncCreateResponse) ContentType() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Header.Get("Content-Type")
-	}
-	return ""
-}
-
-type ApiStoragesGcsSaListResponse struct {
-	Body         []byte
-	HTTPResponse *http.Response
-	// JSON200 the response for an HTTP 200 `application/json` response
-	JSON200 *[]GCSSAImportStorage
-}
-
-// GetJSON200 returns the response for an HTTP 200 `application/json` response
-func (r ApiStoragesGcsSaListResponse) GetJSON200() *[]GCSSAImportStorage {
-	return r.JSON200
-}
-
-// GetBody returns the raw response body bytes
-func (r ApiStoragesGcsSaListResponse) GetBody() []byte {
-	return r.Body
-}
-
-// Status returns HTTPResponse.Status
-func (r ApiStoragesGcsSaListResponse) Status() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Status
-	}
-	return http.StatusText(0)
-}
-
-// StatusCode returns HTTPResponse.StatusCode
-func (r ApiStoragesGcsSaListResponse) StatusCode() int {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.StatusCode
-	}
-	return 0
-}
-
-// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
-func (r ApiStoragesGcsSaListResponse) ContentType() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Header.Get("Content-Type")
-	}
-	return ""
-}
-
-type ApiStoragesGcsSaCreateResponse struct {
-	Body         []byte
-	HTTPResponse *http.Response
-	// JSON201 the response for an HTTP 201 `application/json` response
-	JSON201 *GCSSAImportStorage
-}
-
-// GetJSON201 returns the response for an HTTP 201 `application/json` response
-func (r ApiStoragesGcsSaCreateResponse) GetJSON201() *GCSSAImportStorage {
-	return r.JSON201
-}
-
-// GetBody returns the raw response body bytes
-func (r ApiStoragesGcsSaCreateResponse) GetBody() []byte {
-	return r.Body
-}
-
-// Status returns HTTPResponse.Status
-func (r ApiStoragesGcsSaCreateResponse) Status() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Status
-	}
-	return http.StatusText(0)
-}
-
-// StatusCode returns HTTPResponse.StatusCode
-func (r ApiStoragesGcsSaCreateResponse) StatusCode() int {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.StatusCode
-	}
-	return 0
-}
-
-// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
-func (r ApiStoragesGcsSaCreateResponse) ContentType() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Header.Get("Content-Type")
-	}
-	return ""
-}
-
-type ApiStoragesGcsSaValidateCreateResponse struct {
-	Body         []byte
-	HTTPResponse *http.Response
-}
-
-// GetBody returns the raw response body bytes
-func (r ApiStoragesGcsSaValidateCreateResponse) GetBody() []byte {
-	return r.Body
-}
-
-// Status returns HTTPResponse.Status
-func (r ApiStoragesGcsSaValidateCreateResponse) Status() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Status
-	}
-	return http.StatusText(0)
-}
-
-// StatusCode returns HTTPResponse.StatusCode
-func (r ApiStoragesGcsSaValidateCreateResponse) StatusCode() int {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.StatusCode
-	}
-	return 0
-}
-
-// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
-func (r ApiStoragesGcsSaValidateCreateResponse) ContentType() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Header.Get("Content-Type")
-	}
-	return ""
-}
-
-type ApiStoragesGcsSaDestroyResponse struct {
-	Body         []byte
-	HTTPResponse *http.Response
-}
-
-// GetBody returns the raw response body bytes
-func (r ApiStoragesGcsSaDestroyResponse) GetBody() []byte {
-	return r.Body
-}
-
-// Status returns HTTPResponse.Status
-func (r ApiStoragesGcsSaDestroyResponse) Status() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Status
-	}
-	return http.StatusText(0)
-}
-
-// StatusCode returns HTTPResponse.StatusCode
-func (r ApiStoragesGcsSaDestroyResponse) StatusCode() int {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.StatusCode
-	}
-	return 0
-}
-
-// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
-func (r ApiStoragesGcsSaDestroyResponse) ContentType() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Header.Get("Content-Type")
-	}
-	return ""
-}
-
-type ApiStoragesGcsSaRetrieveResponse struct {
-	Body         []byte
-	HTTPResponse *http.Response
-	// JSON200 the response for an HTTP 200 `application/json` response
-	JSON200 *GCSSAImportStorage
-}
-
-// GetJSON200 returns the response for an HTTP 200 `application/json` response
-func (r ApiStoragesGcsSaRetrieveResponse) GetJSON200() *GCSSAImportStorage {
-	return r.JSON200
-}
-
-// GetBody returns the raw response body bytes
-func (r ApiStoragesGcsSaRetrieveResponse) GetBody() []byte {
-	return r.Body
-}
-
-// Status returns HTTPResponse.Status
-func (r ApiStoragesGcsSaRetrieveResponse) Status() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Status
-	}
-	return http.StatusText(0)
-}
-
-// StatusCode returns HTTPResponse.StatusCode
-func (r ApiStoragesGcsSaRetrieveResponse) StatusCode() int {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.StatusCode
-	}
-	return 0
-}
-
-// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
-func (r ApiStoragesGcsSaRetrieveResponse) ContentType() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Header.Get("Content-Type")
-	}
-	return ""
-}
-
-type ApiStoragesGcsSaPartialUpdateResponse struct {
-	Body         []byte
-	HTTPResponse *http.Response
-	// JSON200 the response for an HTTP 200 `application/json` response
-	JSON200 *GCSSAImportStorage
-}
-
-// GetJSON200 returns the response for an HTTP 200 `application/json` response
-func (r ApiStoragesGcsSaPartialUpdateResponse) GetJSON200() *GCSSAImportStorage {
-	return r.JSON200
-}
-
-// GetBody returns the raw response body bytes
-func (r ApiStoragesGcsSaPartialUpdateResponse) GetBody() []byte {
-	return r.Body
-}
-
-// Status returns HTTPResponse.Status
-func (r ApiStoragesGcsSaPartialUpdateResponse) Status() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Status
-	}
-	return http.StatusText(0)
-}
-
-// StatusCode returns HTTPResponse.StatusCode
-func (r ApiStoragesGcsSaPartialUpdateResponse) StatusCode() int {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.StatusCode
-	}
-	return 0
-}
-
-// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
-func (r ApiStoragesGcsSaPartialUpdateResponse) ContentType() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Header.Get("Content-Type")
-	}
-	return ""
-}
-
-type ApiStoragesGcsSaSyncCreateResponse struct {
-	Body         []byte
-	HTTPResponse *http.Response
-	// JSON200 the response for an HTTP 200 `application/json` response
-	JSON200 *GCSSAImportStorage
-}
-
-// GetJSON200 returns the response for an HTTP 200 `application/json` response
-func (r ApiStoragesGcsSaSyncCreateResponse) GetJSON200() *GCSSAImportStorage {
-	return r.JSON200
-}
-
-// GetBody returns the raw response body bytes
-func (r ApiStoragesGcsSaSyncCreateResponse) GetBody() []byte {
-	return r.Body
-}
-
-// Status returns HTTPResponse.Status
-func (r ApiStoragesGcsSaSyncCreateResponse) Status() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Status
-	}
-	return http.StatusText(0)
-}
-
-// StatusCode returns HTTPResponse.StatusCode
-func (r ApiStoragesGcsSaSyncCreateResponse) StatusCode() int {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.StatusCode
-	}
-	return 0
-}
-
-// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
-func (r ApiStoragesGcsSaSyncCreateResponse) ContentType() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Header.Get("Content-Type")
-	}
-	return ""
-}
-
-type ApiStoragesGcswifListResponse struct {
-	Body         []byte
-	HTTPResponse *http.Response
-	// JSON200 the response for an HTTP 200 `application/json` response
-	JSON200 *[]GCSWIFImportStorage
-}
-
-// GetJSON200 returns the response for an HTTP 200 `application/json` response
-func (r ApiStoragesGcswifListResponse) GetJSON200() *[]GCSWIFImportStorage {
-	return r.JSON200
-}
-
-// GetBody returns the raw response body bytes
-func (r ApiStoragesGcswifListResponse) GetBody() []byte {
-	return r.Body
-}
-
-// Status returns HTTPResponse.Status
-func (r ApiStoragesGcswifListResponse) Status() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Status
-	}
-	return http.StatusText(0)
-}
-
-// StatusCode returns HTTPResponse.StatusCode
-func (r ApiStoragesGcswifListResponse) StatusCode() int {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.StatusCode
-	}
-	return 0
-}
-
-// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
-func (r ApiStoragesGcswifListResponse) ContentType() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Header.Get("Content-Type")
-	}
-	return ""
-}
-
-type ApiStoragesGcswifCreateResponse struct {
-	Body         []byte
-	HTTPResponse *http.Response
-	// JSON201 the response for an HTTP 201 `application/json` response
-	JSON201 *GCSWIFImportStorage
-}
-
-// GetJSON201 returns the response for an HTTP 201 `application/json` response
-func (r ApiStoragesGcswifCreateResponse) GetJSON201() *GCSWIFImportStorage {
-	return r.JSON201
-}
-
-// GetBody returns the raw response body bytes
-func (r ApiStoragesGcswifCreateResponse) GetBody() []byte {
-	return r.Body
-}
-
-// Status returns HTTPResponse.Status
-func (r ApiStoragesGcswifCreateResponse) Status() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Status
-	}
-	return http.StatusText(0)
-}
-
-// StatusCode returns HTTPResponse.StatusCode
-func (r ApiStoragesGcswifCreateResponse) StatusCode() int {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.StatusCode
-	}
-	return 0
-}
-
-// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
-func (r ApiStoragesGcswifCreateResponse) ContentType() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Header.Get("Content-Type")
-	}
-	return ""
-}
-
-type ApiStoragesGcswifValidateCreateResponse struct {
-	Body         []byte
-	HTTPResponse *http.Response
-}
-
-// GetBody returns the raw response body bytes
-func (r ApiStoragesGcswifValidateCreateResponse) GetBody() []byte {
-	return r.Body
-}
-
-// Status returns HTTPResponse.Status
-func (r ApiStoragesGcswifValidateCreateResponse) Status() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Status
-	}
-	return http.StatusText(0)
-}
-
-// StatusCode returns HTTPResponse.StatusCode
-func (r ApiStoragesGcswifValidateCreateResponse) StatusCode() int {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.StatusCode
-	}
-	return 0
-}
-
-// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
-func (r ApiStoragesGcswifValidateCreateResponse) ContentType() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Header.Get("Content-Type")
-	}
-	return ""
-}
-
-type ApiStoragesGcswifDestroyResponse struct {
-	Body         []byte
-	HTTPResponse *http.Response
-}
-
-// GetBody returns the raw response body bytes
-func (r ApiStoragesGcswifDestroyResponse) GetBody() []byte {
-	return r.Body
-}
-
-// Status returns HTTPResponse.Status
-func (r ApiStoragesGcswifDestroyResponse) Status() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Status
-	}
-	return http.StatusText(0)
-}
-
-// StatusCode returns HTTPResponse.StatusCode
-func (r ApiStoragesGcswifDestroyResponse) StatusCode() int {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.StatusCode
-	}
-	return 0
-}
-
-// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
-func (r ApiStoragesGcswifDestroyResponse) ContentType() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Header.Get("Content-Type")
-	}
-	return ""
-}
-
-type ApiStoragesGcswifRetrieveResponse struct {
-	Body         []byte
-	HTTPResponse *http.Response
-	// JSON200 the response for an HTTP 200 `application/json` response
-	JSON200 *GCSWIFImportStorage
-}
-
-// GetJSON200 returns the response for an HTTP 200 `application/json` response
-func (r ApiStoragesGcswifRetrieveResponse) GetJSON200() *GCSWIFImportStorage {
-	return r.JSON200
-}
-
-// GetBody returns the raw response body bytes
-func (r ApiStoragesGcswifRetrieveResponse) GetBody() []byte {
-	return r.Body
-}
-
-// Status returns HTTPResponse.Status
-func (r ApiStoragesGcswifRetrieveResponse) Status() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Status
-	}
-	return http.StatusText(0)
-}
-
-// StatusCode returns HTTPResponse.StatusCode
-func (r ApiStoragesGcswifRetrieveResponse) StatusCode() int {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.StatusCode
-	}
-	return 0
-}
-
-// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
-func (r ApiStoragesGcswifRetrieveResponse) ContentType() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Header.Get("Content-Type")
-	}
-	return ""
-}
-
-type ApiStoragesGcswifPartialUpdateResponse struct {
-	Body         []byte
-	HTTPResponse *http.Response
-	// JSON200 the response for an HTTP 200 `application/json` response
-	JSON200 *GCSWIFImportStorage
-}
-
-// GetJSON200 returns the response for an HTTP 200 `application/json` response
-func (r ApiStoragesGcswifPartialUpdateResponse) GetJSON200() *GCSWIFImportStorage {
-	return r.JSON200
-}
-
-// GetBody returns the raw response body bytes
-func (r ApiStoragesGcswifPartialUpdateResponse) GetBody() []byte {
-	return r.Body
-}
-
-// Status returns HTTPResponse.Status
-func (r ApiStoragesGcswifPartialUpdateResponse) Status() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Status
-	}
-	return http.StatusText(0)
-}
-
-// StatusCode returns HTTPResponse.StatusCode
-func (r ApiStoragesGcswifPartialUpdateResponse) StatusCode() int {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.StatusCode
-	}
-	return 0
-}
-
-// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
-func (r ApiStoragesGcswifPartialUpdateResponse) ContentType() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Header.Get("Content-Type")
-	}
-	return ""
-}
-
-type ApiStoragesGcswifSyncCreateResponse struct {
-	Body         []byte
-	HTTPResponse *http.Response
-	// JSON200 the response for an HTTP 200 `application/json` response
-	JSON200 *GCSWIFImportStorage
-}
-
-// GetJSON200 returns the response for an HTTP 200 `application/json` response
-func (r ApiStoragesGcswifSyncCreateResponse) GetJSON200() *GCSWIFImportStorage {
-	return r.JSON200
-}
-
-// GetBody returns the raw response body bytes
-func (r ApiStoragesGcswifSyncCreateResponse) GetBody() []byte {
-	return r.Body
-}
-
-// Status returns HTTPResponse.Status
-func (r ApiStoragesGcswifSyncCreateResponse) Status() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Status
-	}
-	return http.StatusText(0)
-}
-
-// StatusCode returns HTTPResponse.StatusCode
-func (r ApiStoragesGcswifSyncCreateResponse) StatusCode() int {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.StatusCode
-	}
-	return 0
-}
-
-// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
-func (r ApiStoragesGcswifSyncCreateResponse) ContentType() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Header.Get("Content-Type")
-	}
-	return ""
-}
-
-type ApiStoragesLocalfilesListResponse struct {
-	Body         []byte
-	HTTPResponse *http.Response
-	// JSON200 the response for an HTTP 200 `application/json` response
-	JSON200 *[]LocalFilesImportStorage
-}
-
-// GetJSON200 returns the response for an HTTP 200 `application/json` response
-func (r ApiStoragesLocalfilesListResponse) GetJSON200() *[]LocalFilesImportStorage {
-	return r.JSON200
-}
-
-// GetBody returns the raw response body bytes
-func (r ApiStoragesLocalfilesListResponse) GetBody() []byte {
-	return r.Body
-}
-
-// Status returns HTTPResponse.Status
-func (r ApiStoragesLocalfilesListResponse) Status() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Status
-	}
-	return http.StatusText(0)
-}
-
-// StatusCode returns HTTPResponse.StatusCode
-func (r ApiStoragesLocalfilesListResponse) StatusCode() int {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.StatusCode
-	}
-	return 0
-}
-
-// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
-func (r ApiStoragesLocalfilesListResponse) ContentType() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Header.Get("Content-Type")
-	}
-	return ""
-}
-
-type ApiStoragesLocalfilesCreateResponse struct {
-	Body         []byte
-	HTTPResponse *http.Response
-	// JSON201 the response for an HTTP 201 `application/json` response
-	JSON201 *LocalFilesImportStorage
-}
-
-// GetJSON201 returns the response for an HTTP 201 `application/json` response
-func (r ApiStoragesLocalfilesCreateResponse) GetJSON201() *LocalFilesImportStorage {
-	return r.JSON201
-}
-
-// GetBody returns the raw response body bytes
-func (r ApiStoragesLocalfilesCreateResponse) GetBody() []byte {
-	return r.Body
-}
-
-// Status returns HTTPResponse.Status
-func (r ApiStoragesLocalfilesCreateResponse) Status() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Status
-	}
-	return http.StatusText(0)
-}
-
-// StatusCode returns HTTPResponse.StatusCode
-func (r ApiStoragesLocalfilesCreateResponse) StatusCode() int {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.StatusCode
-	}
-	return 0
-}
-
-// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
-func (r ApiStoragesLocalfilesCreateResponse) ContentType() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Header.Get("Content-Type")
-	}
-	return ""
-}
-
-type ApiStoragesLocalfilesValidateCreateResponse struct {
-	Body         []byte
-	HTTPResponse *http.Response
-}
-
-// GetBody returns the raw response body bytes
-func (r ApiStoragesLocalfilesValidateCreateResponse) GetBody() []byte {
-	return r.Body
-}
-
-// Status returns HTTPResponse.Status
-func (r ApiStoragesLocalfilesValidateCreateResponse) Status() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Status
-	}
-	return http.StatusText(0)
-}
-
-// StatusCode returns HTTPResponse.StatusCode
-func (r ApiStoragesLocalfilesValidateCreateResponse) StatusCode() int {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.StatusCode
-	}
-	return 0
-}
-
-// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
-func (r ApiStoragesLocalfilesValidateCreateResponse) ContentType() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Header.Get("Content-Type")
-	}
-	return ""
-}
-
-type ApiStoragesLocalfilesDestroyResponse struct {
-	Body         []byte
-	HTTPResponse *http.Response
-}
-
-// GetBody returns the raw response body bytes
-func (r ApiStoragesLocalfilesDestroyResponse) GetBody() []byte {
-	return r.Body
-}
-
-// Status returns HTTPResponse.Status
-func (r ApiStoragesLocalfilesDestroyResponse) Status() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Status
-	}
-	return http.StatusText(0)
-}
-
-// StatusCode returns HTTPResponse.StatusCode
-func (r ApiStoragesLocalfilesDestroyResponse) StatusCode() int {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.StatusCode
-	}
-	return 0
-}
-
-// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
-func (r ApiStoragesLocalfilesDestroyResponse) ContentType() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Header.Get("Content-Type")
-	}
-	return ""
-}
-
-type ApiStoragesLocalfilesRetrieveResponse struct {
-	Body         []byte
-	HTTPResponse *http.Response
-	// JSON200 the response for an HTTP 200 `application/json` response
-	JSON200 *LocalFilesImportStorage
-}
-
-// GetJSON200 returns the response for an HTTP 200 `application/json` response
-func (r ApiStoragesLocalfilesRetrieveResponse) GetJSON200() *LocalFilesImportStorage {
-	return r.JSON200
-}
-
-// GetBody returns the raw response body bytes
-func (r ApiStoragesLocalfilesRetrieveResponse) GetBody() []byte {
-	return r.Body
-}
-
-// Status returns HTTPResponse.Status
-func (r ApiStoragesLocalfilesRetrieveResponse) Status() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Status
-	}
-	return http.StatusText(0)
-}
-
-// StatusCode returns HTTPResponse.StatusCode
-func (r ApiStoragesLocalfilesRetrieveResponse) StatusCode() int {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.StatusCode
-	}
-	return 0
-}
-
-// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
-func (r ApiStoragesLocalfilesRetrieveResponse) ContentType() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Header.Get("Content-Type")
-	}
-	return ""
-}
-
-type ApiStoragesLocalfilesPartialUpdateResponse struct {
-	Body         []byte
-	HTTPResponse *http.Response
-	// JSON200 the response for an HTTP 200 `application/json` response
-	JSON200 *LocalFilesImportStorage
-}
-
-// GetJSON200 returns the response for an HTTP 200 `application/json` response
-func (r ApiStoragesLocalfilesPartialUpdateResponse) GetJSON200() *LocalFilesImportStorage {
-	return r.JSON200
-}
-
-// GetBody returns the raw response body bytes
-func (r ApiStoragesLocalfilesPartialUpdateResponse) GetBody() []byte {
-	return r.Body
-}
-
-// Status returns HTTPResponse.Status
-func (r ApiStoragesLocalfilesPartialUpdateResponse) Status() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Status
-	}
-	return http.StatusText(0)
-}
-
-// StatusCode returns HTTPResponse.StatusCode
-func (r ApiStoragesLocalfilesPartialUpdateResponse) StatusCode() int {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.StatusCode
-	}
-	return 0
-}
-
-// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
-func (r ApiStoragesLocalfilesPartialUpdateResponse) ContentType() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Header.Get("Content-Type")
-	}
-	return ""
-}
-
-type ApiStoragesLocalfilesSyncCreateResponse struct {
-	Body         []byte
-	HTTPResponse *http.Response
-	// JSON200 the response for an HTTP 200 `application/json` response
-	JSON200 *LocalFilesImportStorage
-}
-
-// GetJSON200 returns the response for an HTTP 200 `application/json` response
-func (r ApiStoragesLocalfilesSyncCreateResponse) GetJSON200() *LocalFilesImportStorage {
-	return r.JSON200
-}
-
-// GetBody returns the raw response body bytes
-func (r ApiStoragesLocalfilesSyncCreateResponse) GetBody() []byte {
-	return r.Body
-}
-
-// Status returns HTTPResponse.Status
-func (r ApiStoragesLocalfilesSyncCreateResponse) Status() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Status
-	}
-	return http.StatusText(0)
-}
-
-// StatusCode returns HTTPResponse.StatusCode
-func (r ApiStoragesLocalfilesSyncCreateResponse) StatusCode() int {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.StatusCode
-	}
-	return 0
-}
-
-// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
-func (r ApiStoragesLocalfilesSyncCreateResponse) ContentType() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Header.Get("Content-Type")
-	}
-	return ""
-}
-
-type ApiStoragesRedisListResponse struct {
-	Body         []byte
-	HTTPResponse *http.Response
-	// JSON200 the response for an HTTP 200 `application/json` response
-	JSON200 *[]RedisImportStorage
-}
-
-// GetJSON200 returns the response for an HTTP 200 `application/json` response
-func (r ApiStoragesRedisListResponse) GetJSON200() *[]RedisImportStorage {
-	return r.JSON200
-}
-
-// GetBody returns the raw response body bytes
-func (r ApiStoragesRedisListResponse) GetBody() []byte {
-	return r.Body
-}
-
-// Status returns HTTPResponse.Status
-func (r ApiStoragesRedisListResponse) Status() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Status
-	}
-	return http.StatusText(0)
-}
-
-// StatusCode returns HTTPResponse.StatusCode
-func (r ApiStoragesRedisListResponse) StatusCode() int {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.StatusCode
-	}
-	return 0
-}
-
-// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
-func (r ApiStoragesRedisListResponse) ContentType() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Header.Get("Content-Type")
-	}
-	return ""
-}
-
-type ApiStoragesRedisCreateResponse struct {
-	Body         []byte
-	HTTPResponse *http.Response
-	// JSON201 the response for an HTTP 201 `application/json` response
-	JSON201 *RedisImportStorage
-}
-
-// GetJSON201 returns the response for an HTTP 201 `application/json` response
-func (r ApiStoragesRedisCreateResponse) GetJSON201() *RedisImportStorage {
-	return r.JSON201
-}
-
-// GetBody returns the raw response body bytes
-func (r ApiStoragesRedisCreateResponse) GetBody() []byte {
-	return r.Body
-}
-
-// Status returns HTTPResponse.Status
-func (r ApiStoragesRedisCreateResponse) Status() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Status
-	}
-	return http.StatusText(0)
-}
-
-// StatusCode returns HTTPResponse.StatusCode
-func (r ApiStoragesRedisCreateResponse) StatusCode() int {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.StatusCode
-	}
-	return 0
-}
-
-// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
-func (r ApiStoragesRedisCreateResponse) ContentType() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Header.Get("Content-Type")
-	}
-	return ""
-}
-
-type ApiStoragesRedisValidateCreateResponse struct {
-	Body         []byte
-	HTTPResponse *http.Response
-}
-
-// GetBody returns the raw response body bytes
-func (r ApiStoragesRedisValidateCreateResponse) GetBody() []byte {
-	return r.Body
-}
-
-// Status returns HTTPResponse.Status
-func (r ApiStoragesRedisValidateCreateResponse) Status() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Status
-	}
-	return http.StatusText(0)
-}
-
-// StatusCode returns HTTPResponse.StatusCode
-func (r ApiStoragesRedisValidateCreateResponse) StatusCode() int {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.StatusCode
-	}
-	return 0
-}
-
-// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
-func (r ApiStoragesRedisValidateCreateResponse) ContentType() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Header.Get("Content-Type")
-	}
-	return ""
-}
-
-type ApiStoragesRedisDestroyResponse struct {
-	Body         []byte
-	HTTPResponse *http.Response
-}
-
-// GetBody returns the raw response body bytes
-func (r ApiStoragesRedisDestroyResponse) GetBody() []byte {
-	return r.Body
-}
-
-// Status returns HTTPResponse.Status
-func (r ApiStoragesRedisDestroyResponse) Status() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Status
-	}
-	return http.StatusText(0)
-}
-
-// StatusCode returns HTTPResponse.StatusCode
-func (r ApiStoragesRedisDestroyResponse) StatusCode() int {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.StatusCode
-	}
-	return 0
-}
-
-// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
-func (r ApiStoragesRedisDestroyResponse) ContentType() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Header.Get("Content-Type")
-	}
-	return ""
-}
-
-type ApiStoragesRedisRetrieveResponse struct {
-	Body         []byte
-	HTTPResponse *http.Response
-	// JSON200 the response for an HTTP 200 `application/json` response
-	JSON200 *RedisImportStorage
-}
-
-// GetJSON200 returns the response for an HTTP 200 `application/json` response
-func (r ApiStoragesRedisRetrieveResponse) GetJSON200() *RedisImportStorage {
-	return r.JSON200
-}
-
-// GetBody returns the raw response body bytes
-func (r ApiStoragesRedisRetrieveResponse) GetBody() []byte {
-	return r.Body
-}
-
-// Status returns HTTPResponse.Status
-func (r ApiStoragesRedisRetrieveResponse) Status() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Status
-	}
-	return http.StatusText(0)
-}
-
-// StatusCode returns HTTPResponse.StatusCode
-func (r ApiStoragesRedisRetrieveResponse) StatusCode() int {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.StatusCode
-	}
-	return 0
-}
-
-// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
-func (r ApiStoragesRedisRetrieveResponse) ContentType() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Header.Get("Content-Type")
-	}
-	return ""
-}
-
-type ApiStoragesRedisPartialUpdateResponse struct {
-	Body         []byte
-	HTTPResponse *http.Response
-	// JSON200 the response for an HTTP 200 `application/json` response
-	JSON200 *RedisImportStorage
-}
-
-// GetJSON200 returns the response for an HTTP 200 `application/json` response
-func (r ApiStoragesRedisPartialUpdateResponse) GetJSON200() *RedisImportStorage {
-	return r.JSON200
-}
-
-// GetBody returns the raw response body bytes
-func (r ApiStoragesRedisPartialUpdateResponse) GetBody() []byte {
-	return r.Body
-}
-
-// Status returns HTTPResponse.Status
-func (r ApiStoragesRedisPartialUpdateResponse) Status() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Status
-	}
-	return http.StatusText(0)
-}
-
-// StatusCode returns HTTPResponse.StatusCode
-func (r ApiStoragesRedisPartialUpdateResponse) StatusCode() int {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.StatusCode
-	}
-	return 0
-}
-
-// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
-func (r ApiStoragesRedisPartialUpdateResponse) ContentType() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Header.Get("Content-Type")
-	}
-	return ""
-}
-
-type ApiStoragesRedisSyncCreateResponse struct {
-	Body         []byte
-	HTTPResponse *http.Response
-	// JSON200 the response for an HTTP 200 `application/json` response
-	JSON200 *RedisImportStorage
-}
-
-// GetJSON200 returns the response for an HTTP 200 `application/json` response
-func (r ApiStoragesRedisSyncCreateResponse) GetJSON200() *RedisImportStorage {
-	return r.JSON200
-}
-
-// GetBody returns the raw response body bytes
-func (r ApiStoragesRedisSyncCreateResponse) GetBody() []byte {
-	return r.Body
-}
-
-// Status returns HTTPResponse.Status
-func (r ApiStoragesRedisSyncCreateResponse) Status() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Status
-	}
-	return http.StatusText(0)
-}
-
 // StatusCode returns HTTPResponse.StatusCode
 func (r ApiStoragesRedisSyncCreateResponse) StatusCode() int {
 	if r.HTTPResponse != nil {
@@ -6035,1476 +4044,6 @@ func (c *ClientWithResponses) ApiCurrentUserWhoamiRetrieveWithResponse(ctx conte
 	return ParseApiCurrentUserWhoamiRetrieveResponse(rsp)
 }
 
-// ApiDatasetStoragesListWithResponse List all dataset storages from the project
-//
-// Retrieve a list of the dataset storages of all types with their IDs.
-//
-// Returns a wrapper object for the known response body format(s).
-//
-// Corresponds with GET /api/dataset-storages/ (the `ApiDatasetStoragesList` operationId).
-func (c *ClientWithResponses) ApiDatasetStoragesListWithResponse(ctx context.Context, params *ApiDatasetStoragesListParams, reqEditors ...RequestEditorFn) (*ApiDatasetStoragesListResponse, error) {
-	rsp, err := c.ApiDatasetStoragesList(ctx, params, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseApiDatasetStoragesListResponse(rsp)
-}
-
-// ApiDatasetStoragesAzureListWithResponse Get all import storage
-//
-// Get a list of all Azure import storage connections.
-//
-// Returns a wrapper object for the known response body format(s).
-//
-// Corresponds with GET /api/dataset-storages/azure/ (the `ApiDatasetStoragesAzureList` operationId).
-func (c *ClientWithResponses) ApiDatasetStoragesAzureListWithResponse(ctx context.Context, params *ApiDatasetStoragesAzureListParams, reqEditors ...RequestEditorFn) (*ApiDatasetStoragesAzureListResponse, error) {
-	rsp, err := c.ApiDatasetStoragesAzureList(ctx, params, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseApiDatasetStoragesAzureListResponse(rsp)
-}
-
-// ApiDatasetStoragesAzureCreateWithBodyWithResponse Create import storage
-//
-// Create a new Azure import storage connection.
-//
-// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
-//
-// Corresponds with POST /api/dataset-storages/azure/ (the `ApiDatasetStoragesAzureCreate` operationId).
-func (c *ClientWithResponses) ApiDatasetStoragesAzureCreateWithBodyWithResponse(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*ApiDatasetStoragesAzureCreateResponse, error) {
-	rsp, err := c.ApiDatasetStoragesAzureCreateWithBody(ctx, contentType, body, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseApiDatasetStoragesAzureCreateResponse(rsp)
-}
-
-// ApiDatasetStoragesAzureCreateWithResponse Create import storage
-//
-// Create a new Azure import storage connection.
-//
-// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
-//
-// Corresponds with POST /api/dataset-storages/azure/ (the `ApiDatasetStoragesAzureCreate` operationId).
-func (c *ClientWithResponses) ApiDatasetStoragesAzureCreateWithResponse(ctx context.Context, body ApiDatasetStoragesAzureCreateJSONRequestBody, reqEditors ...RequestEditorFn) (*ApiDatasetStoragesAzureCreateResponse, error) {
-	rsp, err := c.ApiDatasetStoragesAzureCreate(ctx, body, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseApiDatasetStoragesAzureCreateResponse(rsp)
-}
-
-// ApiDatasetStoragesAzureCreateWithFormdataBodyWithResponse Create import storage
-//
-// Create a new Azure import storage connection.
-//
-// Takes a body of the `application/x-www-form-urlencoded` content type, and returns a wrapper object for the known response body format(s).
-//
-// Corresponds with POST /api/dataset-storages/azure/ (the `ApiDatasetStoragesAzureCreate` operationId).
-func (c *ClientWithResponses) ApiDatasetStoragesAzureCreateWithFormdataBodyWithResponse(ctx context.Context, body ApiDatasetStoragesAzureCreateFormdataRequestBody, reqEditors ...RequestEditorFn) (*ApiDatasetStoragesAzureCreateResponse, error) {
-	rsp, err := c.ApiDatasetStoragesAzureCreateWithFormdataBody(ctx, body, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseApiDatasetStoragesAzureCreateResponse(rsp)
-}
-
-// ApiDatasetStoragesAzureCheckForRecordsCreateWithBodyWithResponse Check for records given the file pattern
-//
-// Checks for existence of records matching the file pattern in the bucket/prefix.
-//
-// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
-//
-// Corresponds with POST /api/dataset-storages/azure/check-for-records/ (the `ApiDatasetStoragesAzureCheckForRecordsCreate` operationId).
-func (c *ClientWithResponses) ApiDatasetStoragesAzureCheckForRecordsCreateWithBodyWithResponse(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*ApiDatasetStoragesAzureCheckForRecordsCreateResponse, error) {
-	rsp, err := c.ApiDatasetStoragesAzureCheckForRecordsCreateWithBody(ctx, contentType, body, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseApiDatasetStoragesAzureCheckForRecordsCreateResponse(rsp)
-}
-
-// ApiDatasetStoragesAzureCheckForRecordsCreateWithResponse Check for records given the file pattern
-//
-// Checks for existence of records matching the file pattern in the bucket/prefix.
-//
-// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
-//
-// Corresponds with POST /api/dataset-storages/azure/check-for-records/ (the `ApiDatasetStoragesAzureCheckForRecordsCreate` operationId).
-func (c *ClientWithResponses) ApiDatasetStoragesAzureCheckForRecordsCreateWithResponse(ctx context.Context, body ApiDatasetStoragesAzureCheckForRecordsCreateJSONRequestBody, reqEditors ...RequestEditorFn) (*ApiDatasetStoragesAzureCheckForRecordsCreateResponse, error) {
-	rsp, err := c.ApiDatasetStoragesAzureCheckForRecordsCreate(ctx, body, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseApiDatasetStoragesAzureCheckForRecordsCreateResponse(rsp)
-}
-
-// ApiDatasetStoragesAzureCheckForRecordsCreateWithFormdataBodyWithResponse Check for records given the file pattern
-//
-// Checks for existence of records matching the file pattern in the bucket/prefix.
-//
-// Takes a body of the `application/x-www-form-urlencoded` content type, and returns a wrapper object for the known response body format(s).
-//
-// Corresponds with POST /api/dataset-storages/azure/check-for-records/ (the `ApiDatasetStoragesAzureCheckForRecordsCreate` operationId).
-func (c *ClientWithResponses) ApiDatasetStoragesAzureCheckForRecordsCreateWithFormdataBodyWithResponse(ctx context.Context, body ApiDatasetStoragesAzureCheckForRecordsCreateFormdataRequestBody, reqEditors ...RequestEditorFn) (*ApiDatasetStoragesAzureCheckForRecordsCreateResponse, error) {
-	rsp, err := c.ApiDatasetStoragesAzureCheckForRecordsCreateWithFormdataBody(ctx, body, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseApiDatasetStoragesAzureCheckForRecordsCreateResponse(rsp)
-}
-
-// ApiDatasetStoragesAzureValidateCreateWithBodyWithResponse Validate import storage
-//
-// Validate a specific Azure import storage connection.
-//
-// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
-//
-// Corresponds with POST /api/dataset-storages/azure/validate/ (the `ApiDatasetStoragesAzureValidateCreate` operationId).
-func (c *ClientWithResponses) ApiDatasetStoragesAzureValidateCreateWithBodyWithResponse(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*ApiDatasetStoragesAzureValidateCreateResponse, error) {
-	rsp, err := c.ApiDatasetStoragesAzureValidateCreateWithBody(ctx, contentType, body, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseApiDatasetStoragesAzureValidateCreateResponse(rsp)
-}
-
-// ApiDatasetStoragesAzureValidateCreateWithResponse Validate import storage
-//
-// Validate a specific Azure import storage connection.
-//
-// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
-//
-// Corresponds with POST /api/dataset-storages/azure/validate/ (the `ApiDatasetStoragesAzureValidateCreate` operationId).
-func (c *ClientWithResponses) ApiDatasetStoragesAzureValidateCreateWithResponse(ctx context.Context, body ApiDatasetStoragesAzureValidateCreateJSONRequestBody, reqEditors ...RequestEditorFn) (*ApiDatasetStoragesAzureValidateCreateResponse, error) {
-	rsp, err := c.ApiDatasetStoragesAzureValidateCreate(ctx, body, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseApiDatasetStoragesAzureValidateCreateResponse(rsp)
-}
-
-// ApiDatasetStoragesAzureValidateCreateWithFormdataBodyWithResponse Validate import storage
-//
-// Validate a specific Azure import storage connection.
-//
-// Takes a body of the `application/x-www-form-urlencoded` content type, and returns a wrapper object for the known response body format(s).
-//
-// Corresponds with POST /api/dataset-storages/azure/validate/ (the `ApiDatasetStoragesAzureValidateCreate` operationId).
-func (c *ClientWithResponses) ApiDatasetStoragesAzureValidateCreateWithFormdataBodyWithResponse(ctx context.Context, body ApiDatasetStoragesAzureValidateCreateFormdataRequestBody, reqEditors ...RequestEditorFn) (*ApiDatasetStoragesAzureValidateCreateResponse, error) {
-	rsp, err := c.ApiDatasetStoragesAzureValidateCreateWithFormdataBody(ctx, body, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseApiDatasetStoragesAzureValidateCreateResponse(rsp)
-}
-
-// ApiDatasetStoragesAzureDestroyWithResponse Delete import storage
-//
-// Delete a specific Azure import storage connection.
-//
-// Returns a wrapper object for the known response body format(s).
-//
-// Corresponds with DELETE /api/dataset-storages/azure/{id}/ (the `ApiDatasetStoragesAzureDestroy` operationId).
-func (c *ClientWithResponses) ApiDatasetStoragesAzureDestroyWithResponse(ctx context.Context, id int, reqEditors ...RequestEditorFn) (*ApiDatasetStoragesAzureDestroyResponse, error) {
-	rsp, err := c.ApiDatasetStoragesAzureDestroy(ctx, id, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseApiDatasetStoragesAzureDestroyResponse(rsp)
-}
-
-// ApiDatasetStoragesAzureRetrieveWithResponse Get import storage
-//
-// Get a specific Azure import storage connection.
-//
-// Returns a wrapper object for the known response body format(s).
-//
-// Corresponds with GET /api/dataset-storages/azure/{id}/ (the `ApiDatasetStoragesAzureRetrieve` operationId).
-func (c *ClientWithResponses) ApiDatasetStoragesAzureRetrieveWithResponse(ctx context.Context, id int, reqEditors ...RequestEditorFn) (*ApiDatasetStoragesAzureRetrieveResponse, error) {
-	rsp, err := c.ApiDatasetStoragesAzureRetrieve(ctx, id, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseApiDatasetStoragesAzureRetrieveResponse(rsp)
-}
-
-// ApiDatasetStoragesAzurePartialUpdateWithBodyWithResponse Update import storage
-//
-// Update a specific Azure import storage connection.
-//
-// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
-//
-// Corresponds with PATCH /api/dataset-storages/azure/{id}/ (the `ApiDatasetStoragesAzurePartialUpdate` operationId).
-func (c *ClientWithResponses) ApiDatasetStoragesAzurePartialUpdateWithBodyWithResponse(ctx context.Context, id int, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*ApiDatasetStoragesAzurePartialUpdateResponse, error) {
-	rsp, err := c.ApiDatasetStoragesAzurePartialUpdateWithBody(ctx, id, contentType, body, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseApiDatasetStoragesAzurePartialUpdateResponse(rsp)
-}
-
-// ApiDatasetStoragesAzurePartialUpdateWithResponse Update import storage
-//
-// Update a specific Azure import storage connection.
-//
-// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
-//
-// Corresponds with PATCH /api/dataset-storages/azure/{id}/ (the `ApiDatasetStoragesAzurePartialUpdate` operationId).
-func (c *ClientWithResponses) ApiDatasetStoragesAzurePartialUpdateWithResponse(ctx context.Context, id int, body ApiDatasetStoragesAzurePartialUpdateJSONRequestBody, reqEditors ...RequestEditorFn) (*ApiDatasetStoragesAzurePartialUpdateResponse, error) {
-	rsp, err := c.ApiDatasetStoragesAzurePartialUpdate(ctx, id, body, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseApiDatasetStoragesAzurePartialUpdateResponse(rsp)
-}
-
-// ApiDatasetStoragesAzurePartialUpdateWithFormdataBodyWithResponse Update import storage
-//
-// Update a specific Azure import storage connection.
-//
-// Takes a body of the `application/x-www-form-urlencoded` content type, and returns a wrapper object for the known response body format(s).
-//
-// Corresponds with PATCH /api/dataset-storages/azure/{id}/ (the `ApiDatasetStoragesAzurePartialUpdate` operationId).
-func (c *ClientWithResponses) ApiDatasetStoragesAzurePartialUpdateWithFormdataBodyWithResponse(ctx context.Context, id int, body ApiDatasetStoragesAzurePartialUpdateFormdataRequestBody, reqEditors ...RequestEditorFn) (*ApiDatasetStoragesAzurePartialUpdateResponse, error) {
-	rsp, err := c.ApiDatasetStoragesAzurePartialUpdateWithFormdataBody(ctx, id, body, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseApiDatasetStoragesAzurePartialUpdateResponse(rsp)
-}
-
-// ApiDatasetStoragesAzureColumnsRetrieveWithResponse Get data column names from storage
-//
-// Retrieves column names from users JSON/blob data in bucket.
-//
-// Returns a wrapper object for the known response body format(s).
-//
-// Corresponds with GET /api/dataset-storages/azure/{id}/columns/ (the `ApiDatasetStoragesAzureColumnsRetrieve` operationId).
-func (c *ClientWithResponses) ApiDatasetStoragesAzureColumnsRetrieveWithResponse(ctx context.Context, id int, reqEditors ...RequestEditorFn) (*ApiDatasetStoragesAzureColumnsRetrieveResponse, error) {
-	rsp, err := c.ApiDatasetStoragesAzureColumnsRetrieve(ctx, id, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseApiDatasetStoragesAzureColumnsRetrieveResponse(rsp)
-}
-
-// ApiDatasetStoragesAzureSyncCreateWithBodyWithResponse Sync import storage
-//
-// Sync tasks from an Azure import storage connection.
-//
-// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
-//
-// Corresponds with POST /api/dataset-storages/azure/{id}/sync/ (the `ApiDatasetStoragesAzureSyncCreate` operationId).
-func (c *ClientWithResponses) ApiDatasetStoragesAzureSyncCreateWithBodyWithResponse(ctx context.Context, id int, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*ApiDatasetStoragesAzureSyncCreateResponse, error) {
-	rsp, err := c.ApiDatasetStoragesAzureSyncCreateWithBody(ctx, id, contentType, body, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseApiDatasetStoragesAzureSyncCreateResponse(rsp)
-}
-
-// ApiDatasetStoragesAzureSyncCreateWithResponse Sync import storage
-//
-// Sync tasks from an Azure import storage connection.
-//
-// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
-//
-// Corresponds with POST /api/dataset-storages/azure/{id}/sync/ (the `ApiDatasetStoragesAzureSyncCreate` operationId).
-func (c *ClientWithResponses) ApiDatasetStoragesAzureSyncCreateWithResponse(ctx context.Context, id int, body ApiDatasetStoragesAzureSyncCreateJSONRequestBody, reqEditors ...RequestEditorFn) (*ApiDatasetStoragesAzureSyncCreateResponse, error) {
-	rsp, err := c.ApiDatasetStoragesAzureSyncCreate(ctx, id, body, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseApiDatasetStoragesAzureSyncCreateResponse(rsp)
-}
-
-// ApiDatasetStoragesAzureSyncCreateWithFormdataBodyWithResponse Sync import storage
-//
-// Sync tasks from an Azure import storage connection.
-//
-// Takes a body of the `application/x-www-form-urlencoded` content type, and returns a wrapper object for the known response body format(s).
-//
-// Corresponds with POST /api/dataset-storages/azure/{id}/sync/ (the `ApiDatasetStoragesAzureSyncCreate` operationId).
-func (c *ClientWithResponses) ApiDatasetStoragesAzureSyncCreateWithFormdataBodyWithResponse(ctx context.Context, id int, body ApiDatasetStoragesAzureSyncCreateFormdataRequestBody, reqEditors ...RequestEditorFn) (*ApiDatasetStoragesAzureSyncCreateResponse, error) {
-	rsp, err := c.ApiDatasetStoragesAzureSyncCreateWithFormdataBody(ctx, id, body, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseApiDatasetStoragesAzureSyncCreateResponse(rsp)
-}
-
-// ApiDatasetStoragesGcsListWithResponse Get all import storage
-//
-// Get a list of all GCS import storage connections.
-//
-// Returns a wrapper object for the known response body format(s).
-//
-// Corresponds with GET /api/dataset-storages/gcs/ (the `ApiDatasetStoragesGcsList` operationId).
-func (c *ClientWithResponses) ApiDatasetStoragesGcsListWithResponse(ctx context.Context, params *ApiDatasetStoragesGcsListParams, reqEditors ...RequestEditorFn) (*ApiDatasetStoragesGcsListResponse, error) {
-	rsp, err := c.ApiDatasetStoragesGcsList(ctx, params, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseApiDatasetStoragesGcsListResponse(rsp)
-}
-
-// ApiDatasetStoragesGcsCreateWithBodyWithResponse Create import storage
-//
-// Create a new GCS import storage connection.
-//
-// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
-//
-// Corresponds with POST /api/dataset-storages/gcs/ (the `ApiDatasetStoragesGcsCreate` operationId).
-func (c *ClientWithResponses) ApiDatasetStoragesGcsCreateWithBodyWithResponse(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*ApiDatasetStoragesGcsCreateResponse, error) {
-	rsp, err := c.ApiDatasetStoragesGcsCreateWithBody(ctx, contentType, body, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseApiDatasetStoragesGcsCreateResponse(rsp)
-}
-
-// ApiDatasetStoragesGcsCreateWithResponse Create import storage
-//
-// Create a new GCS import storage connection.
-//
-// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
-//
-// Corresponds with POST /api/dataset-storages/gcs/ (the `ApiDatasetStoragesGcsCreate` operationId).
-func (c *ClientWithResponses) ApiDatasetStoragesGcsCreateWithResponse(ctx context.Context, body ApiDatasetStoragesGcsCreateJSONRequestBody, reqEditors ...RequestEditorFn) (*ApiDatasetStoragesGcsCreateResponse, error) {
-	rsp, err := c.ApiDatasetStoragesGcsCreate(ctx, body, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseApiDatasetStoragesGcsCreateResponse(rsp)
-}
-
-// ApiDatasetStoragesGcsCreateWithFormdataBodyWithResponse Create import storage
-//
-// Create a new GCS import storage connection.
-//
-// Takes a body of the `application/x-www-form-urlencoded` content type, and returns a wrapper object for the known response body format(s).
-//
-// Corresponds with POST /api/dataset-storages/gcs/ (the `ApiDatasetStoragesGcsCreate` operationId).
-func (c *ClientWithResponses) ApiDatasetStoragesGcsCreateWithFormdataBodyWithResponse(ctx context.Context, body ApiDatasetStoragesGcsCreateFormdataRequestBody, reqEditors ...RequestEditorFn) (*ApiDatasetStoragesGcsCreateResponse, error) {
-	rsp, err := c.ApiDatasetStoragesGcsCreateWithFormdataBody(ctx, body, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseApiDatasetStoragesGcsCreateResponse(rsp)
-}
-
-// ApiDatasetStoragesGcsCheckForRecordsCreateWithBodyWithResponse Check for records given the file pattern
-//
-// Checks for existence of records matching the file pattern in the bucket/prefix.
-//
-// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
-//
-// Corresponds with POST /api/dataset-storages/gcs/check-for-records/ (the `ApiDatasetStoragesGcsCheckForRecordsCreate` operationId).
-func (c *ClientWithResponses) ApiDatasetStoragesGcsCheckForRecordsCreateWithBodyWithResponse(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*ApiDatasetStoragesGcsCheckForRecordsCreateResponse, error) {
-	rsp, err := c.ApiDatasetStoragesGcsCheckForRecordsCreateWithBody(ctx, contentType, body, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseApiDatasetStoragesGcsCheckForRecordsCreateResponse(rsp)
-}
-
-// ApiDatasetStoragesGcsCheckForRecordsCreateWithResponse Check for records given the file pattern
-//
-// Checks for existence of records matching the file pattern in the bucket/prefix.
-//
-// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
-//
-// Corresponds with POST /api/dataset-storages/gcs/check-for-records/ (the `ApiDatasetStoragesGcsCheckForRecordsCreate` operationId).
-func (c *ClientWithResponses) ApiDatasetStoragesGcsCheckForRecordsCreateWithResponse(ctx context.Context, body ApiDatasetStoragesGcsCheckForRecordsCreateJSONRequestBody, reqEditors ...RequestEditorFn) (*ApiDatasetStoragesGcsCheckForRecordsCreateResponse, error) {
-	rsp, err := c.ApiDatasetStoragesGcsCheckForRecordsCreate(ctx, body, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseApiDatasetStoragesGcsCheckForRecordsCreateResponse(rsp)
-}
-
-// ApiDatasetStoragesGcsCheckForRecordsCreateWithFormdataBodyWithResponse Check for records given the file pattern
-//
-// Checks for existence of records matching the file pattern in the bucket/prefix.
-//
-// Takes a body of the `application/x-www-form-urlencoded` content type, and returns a wrapper object for the known response body format(s).
-//
-// Corresponds with POST /api/dataset-storages/gcs/check-for-records/ (the `ApiDatasetStoragesGcsCheckForRecordsCreate` operationId).
-func (c *ClientWithResponses) ApiDatasetStoragesGcsCheckForRecordsCreateWithFormdataBodyWithResponse(ctx context.Context, body ApiDatasetStoragesGcsCheckForRecordsCreateFormdataRequestBody, reqEditors ...RequestEditorFn) (*ApiDatasetStoragesGcsCheckForRecordsCreateResponse, error) {
-	rsp, err := c.ApiDatasetStoragesGcsCheckForRecordsCreateWithFormdataBody(ctx, body, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseApiDatasetStoragesGcsCheckForRecordsCreateResponse(rsp)
-}
-
-// ApiDatasetStoragesGcsValidateCreateWithBodyWithResponse Validate import storage
-//
-// Validate a specific GCS import storage connection.
-//
-// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
-//
-// Corresponds with POST /api/dataset-storages/gcs/validate/ (the `ApiDatasetStoragesGcsValidateCreate` operationId).
-func (c *ClientWithResponses) ApiDatasetStoragesGcsValidateCreateWithBodyWithResponse(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*ApiDatasetStoragesGcsValidateCreateResponse, error) {
-	rsp, err := c.ApiDatasetStoragesGcsValidateCreateWithBody(ctx, contentType, body, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseApiDatasetStoragesGcsValidateCreateResponse(rsp)
-}
-
-// ApiDatasetStoragesGcsValidateCreateWithResponse Validate import storage
-//
-// Validate a specific GCS import storage connection.
-//
-// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
-//
-// Corresponds with POST /api/dataset-storages/gcs/validate/ (the `ApiDatasetStoragesGcsValidateCreate` operationId).
-func (c *ClientWithResponses) ApiDatasetStoragesGcsValidateCreateWithResponse(ctx context.Context, body ApiDatasetStoragesGcsValidateCreateJSONRequestBody, reqEditors ...RequestEditorFn) (*ApiDatasetStoragesGcsValidateCreateResponse, error) {
-	rsp, err := c.ApiDatasetStoragesGcsValidateCreate(ctx, body, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseApiDatasetStoragesGcsValidateCreateResponse(rsp)
-}
-
-// ApiDatasetStoragesGcsValidateCreateWithFormdataBodyWithResponse Validate import storage
-//
-// Validate a specific GCS import storage connection.
-//
-// Takes a body of the `application/x-www-form-urlencoded` content type, and returns a wrapper object for the known response body format(s).
-//
-// Corresponds with POST /api/dataset-storages/gcs/validate/ (the `ApiDatasetStoragesGcsValidateCreate` operationId).
-func (c *ClientWithResponses) ApiDatasetStoragesGcsValidateCreateWithFormdataBodyWithResponse(ctx context.Context, body ApiDatasetStoragesGcsValidateCreateFormdataRequestBody, reqEditors ...RequestEditorFn) (*ApiDatasetStoragesGcsValidateCreateResponse, error) {
-	rsp, err := c.ApiDatasetStoragesGcsValidateCreateWithFormdataBody(ctx, body, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseApiDatasetStoragesGcsValidateCreateResponse(rsp)
-}
-
-// ApiDatasetStoragesGcsDestroyWithResponse Delete import storage
-//
-// Delete a specific GCS import storage connection.
-//
-// Returns a wrapper object for the known response body format(s).
-//
-// Corresponds with DELETE /api/dataset-storages/gcs/{id}/ (the `ApiDatasetStoragesGcsDestroy` operationId).
-func (c *ClientWithResponses) ApiDatasetStoragesGcsDestroyWithResponse(ctx context.Context, id int, reqEditors ...RequestEditorFn) (*ApiDatasetStoragesGcsDestroyResponse, error) {
-	rsp, err := c.ApiDatasetStoragesGcsDestroy(ctx, id, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseApiDatasetStoragesGcsDestroyResponse(rsp)
-}
-
-// ApiDatasetStoragesGcsRetrieveWithResponse Get import storage
-//
-// Get a specific GCS import storage connection.
-//
-// Returns a wrapper object for the known response body format(s).
-//
-// Corresponds with GET /api/dataset-storages/gcs/{id}/ (the `ApiDatasetStoragesGcsRetrieve` operationId).
-func (c *ClientWithResponses) ApiDatasetStoragesGcsRetrieveWithResponse(ctx context.Context, id int, reqEditors ...RequestEditorFn) (*ApiDatasetStoragesGcsRetrieveResponse, error) {
-	rsp, err := c.ApiDatasetStoragesGcsRetrieve(ctx, id, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseApiDatasetStoragesGcsRetrieveResponse(rsp)
-}
-
-// ApiDatasetStoragesGcsPartialUpdateWithBodyWithResponse Update import storage
-//
-// Update a specific GCS import storage connection.
-//
-// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
-//
-// Corresponds with PATCH /api/dataset-storages/gcs/{id}/ (the `ApiDatasetStoragesGcsPartialUpdate` operationId).
-func (c *ClientWithResponses) ApiDatasetStoragesGcsPartialUpdateWithBodyWithResponse(ctx context.Context, id int, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*ApiDatasetStoragesGcsPartialUpdateResponse, error) {
-	rsp, err := c.ApiDatasetStoragesGcsPartialUpdateWithBody(ctx, id, contentType, body, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseApiDatasetStoragesGcsPartialUpdateResponse(rsp)
-}
-
-// ApiDatasetStoragesGcsPartialUpdateWithResponse Update import storage
-//
-// Update a specific GCS import storage connection.
-//
-// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
-//
-// Corresponds with PATCH /api/dataset-storages/gcs/{id}/ (the `ApiDatasetStoragesGcsPartialUpdate` operationId).
-func (c *ClientWithResponses) ApiDatasetStoragesGcsPartialUpdateWithResponse(ctx context.Context, id int, body ApiDatasetStoragesGcsPartialUpdateJSONRequestBody, reqEditors ...RequestEditorFn) (*ApiDatasetStoragesGcsPartialUpdateResponse, error) {
-	rsp, err := c.ApiDatasetStoragesGcsPartialUpdate(ctx, id, body, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseApiDatasetStoragesGcsPartialUpdateResponse(rsp)
-}
-
-// ApiDatasetStoragesGcsPartialUpdateWithFormdataBodyWithResponse Update import storage
-//
-// Update a specific GCS import storage connection.
-//
-// Takes a body of the `application/x-www-form-urlencoded` content type, and returns a wrapper object for the known response body format(s).
-//
-// Corresponds with PATCH /api/dataset-storages/gcs/{id}/ (the `ApiDatasetStoragesGcsPartialUpdate` operationId).
-func (c *ClientWithResponses) ApiDatasetStoragesGcsPartialUpdateWithFormdataBodyWithResponse(ctx context.Context, id int, body ApiDatasetStoragesGcsPartialUpdateFormdataRequestBody, reqEditors ...RequestEditorFn) (*ApiDatasetStoragesGcsPartialUpdateResponse, error) {
-	rsp, err := c.ApiDatasetStoragesGcsPartialUpdateWithFormdataBody(ctx, id, body, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseApiDatasetStoragesGcsPartialUpdateResponse(rsp)
-}
-
-// ApiDatasetStoragesGcsColumnsRetrieveWithResponse Get data column names from storage
-//
-// Retrieves column names from users JSON/blob data in bucket.
-//
-// Returns a wrapper object for the known response body format(s).
-//
-// Corresponds with GET /api/dataset-storages/gcs/{id}/columns/ (the `ApiDatasetStoragesGcsColumnsRetrieve` operationId).
-func (c *ClientWithResponses) ApiDatasetStoragesGcsColumnsRetrieveWithResponse(ctx context.Context, id int, reqEditors ...RequestEditorFn) (*ApiDatasetStoragesGcsColumnsRetrieveResponse, error) {
-	rsp, err := c.ApiDatasetStoragesGcsColumnsRetrieve(ctx, id, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseApiDatasetStoragesGcsColumnsRetrieveResponse(rsp)
-}
-
-// ApiDatasetStoragesGcsSyncCreateWithBodyWithResponse Sync import storage
-//
-// Sync tasks from an GCS import storage connection.
-//
-// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
-//
-// Corresponds with POST /api/dataset-storages/gcs/{id}/sync/ (the `ApiDatasetStoragesGcsSyncCreate` operationId).
-func (c *ClientWithResponses) ApiDatasetStoragesGcsSyncCreateWithBodyWithResponse(ctx context.Context, id int, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*ApiDatasetStoragesGcsSyncCreateResponse, error) {
-	rsp, err := c.ApiDatasetStoragesGcsSyncCreateWithBody(ctx, id, contentType, body, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseApiDatasetStoragesGcsSyncCreateResponse(rsp)
-}
-
-// ApiDatasetStoragesGcsSyncCreateWithResponse Sync import storage
-//
-// Sync tasks from an GCS import storage connection.
-//
-// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
-//
-// Corresponds with POST /api/dataset-storages/gcs/{id}/sync/ (the `ApiDatasetStoragesGcsSyncCreate` operationId).
-func (c *ClientWithResponses) ApiDatasetStoragesGcsSyncCreateWithResponse(ctx context.Context, id int, body ApiDatasetStoragesGcsSyncCreateJSONRequestBody, reqEditors ...RequestEditorFn) (*ApiDatasetStoragesGcsSyncCreateResponse, error) {
-	rsp, err := c.ApiDatasetStoragesGcsSyncCreate(ctx, id, body, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseApiDatasetStoragesGcsSyncCreateResponse(rsp)
-}
-
-// ApiDatasetStoragesGcsSyncCreateWithFormdataBodyWithResponse Sync import storage
-//
-// Sync tasks from an GCS import storage connection.
-//
-// Takes a body of the `application/x-www-form-urlencoded` content type, and returns a wrapper object for the known response body format(s).
-//
-// Corresponds with POST /api/dataset-storages/gcs/{id}/sync/ (the `ApiDatasetStoragesGcsSyncCreate` operationId).
-func (c *ClientWithResponses) ApiDatasetStoragesGcsSyncCreateWithFormdataBodyWithResponse(ctx context.Context, id int, body ApiDatasetStoragesGcsSyncCreateFormdataRequestBody, reqEditors ...RequestEditorFn) (*ApiDatasetStoragesGcsSyncCreateResponse, error) {
-	rsp, err := c.ApiDatasetStoragesGcsSyncCreateWithFormdataBody(ctx, id, body, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseApiDatasetStoragesGcsSyncCreateResponse(rsp)
-}
-
-// ApiDatasetStoragesS3ListWithResponse Get all import storage
-//
-// Get a list of all S3 import storage connections.
-//
-// Returns a wrapper object for the known response body format(s).
-//
-// Corresponds with GET /api/dataset-storages/s3/ (the `ApiDatasetStoragesS3List` operationId).
-func (c *ClientWithResponses) ApiDatasetStoragesS3ListWithResponse(ctx context.Context, params *ApiDatasetStoragesS3ListParams, reqEditors ...RequestEditorFn) (*ApiDatasetStoragesS3ListResponse, error) {
-	rsp, err := c.ApiDatasetStoragesS3List(ctx, params, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseApiDatasetStoragesS3ListResponse(rsp)
-}
-
-// ApiDatasetStoragesS3CreateWithBodyWithResponse Create import storage
-//
-// Create a new S3 import storage connection.
-//
-// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
-//
-// Corresponds with POST /api/dataset-storages/s3/ (the `ApiDatasetStoragesS3Create` operationId).
-func (c *ClientWithResponses) ApiDatasetStoragesS3CreateWithBodyWithResponse(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*ApiDatasetStoragesS3CreateResponse, error) {
-	rsp, err := c.ApiDatasetStoragesS3CreateWithBody(ctx, contentType, body, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseApiDatasetStoragesS3CreateResponse(rsp)
-}
-
-// ApiDatasetStoragesS3CreateWithResponse Create import storage
-//
-// Create a new S3 import storage connection.
-//
-// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
-//
-// Corresponds with POST /api/dataset-storages/s3/ (the `ApiDatasetStoragesS3Create` operationId).
-func (c *ClientWithResponses) ApiDatasetStoragesS3CreateWithResponse(ctx context.Context, body ApiDatasetStoragesS3CreateJSONRequestBody, reqEditors ...RequestEditorFn) (*ApiDatasetStoragesS3CreateResponse, error) {
-	rsp, err := c.ApiDatasetStoragesS3Create(ctx, body, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseApiDatasetStoragesS3CreateResponse(rsp)
-}
-
-// ApiDatasetStoragesS3CreateWithFormdataBodyWithResponse Create import storage
-//
-// Create a new S3 import storage connection.
-//
-// Takes a body of the `application/x-www-form-urlencoded` content type, and returns a wrapper object for the known response body format(s).
-//
-// Corresponds with POST /api/dataset-storages/s3/ (the `ApiDatasetStoragesS3Create` operationId).
-func (c *ClientWithResponses) ApiDatasetStoragesS3CreateWithFormdataBodyWithResponse(ctx context.Context, body ApiDatasetStoragesS3CreateFormdataRequestBody, reqEditors ...RequestEditorFn) (*ApiDatasetStoragesS3CreateResponse, error) {
-	rsp, err := c.ApiDatasetStoragesS3CreateWithFormdataBody(ctx, body, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseApiDatasetStoragesS3CreateResponse(rsp)
-}
-
-// ApiDatasetStoragesS3CheckForRecordsCreateWithBodyWithResponse Check for records given the file pattern
-//
-// Checks for existence of records matching the file pattern in the bucket/prefix.
-//
-// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
-//
-// Corresponds with POST /api/dataset-storages/s3/check-for-records/ (the `ApiDatasetStoragesS3CheckForRecordsCreate` operationId).
-func (c *ClientWithResponses) ApiDatasetStoragesS3CheckForRecordsCreateWithBodyWithResponse(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*ApiDatasetStoragesS3CheckForRecordsCreateResponse, error) {
-	rsp, err := c.ApiDatasetStoragesS3CheckForRecordsCreateWithBody(ctx, contentType, body, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseApiDatasetStoragesS3CheckForRecordsCreateResponse(rsp)
-}
-
-// ApiDatasetStoragesS3CheckForRecordsCreateWithResponse Check for records given the file pattern
-//
-// Checks for existence of records matching the file pattern in the bucket/prefix.
-//
-// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
-//
-// Corresponds with POST /api/dataset-storages/s3/check-for-records/ (the `ApiDatasetStoragesS3CheckForRecordsCreate` operationId).
-func (c *ClientWithResponses) ApiDatasetStoragesS3CheckForRecordsCreateWithResponse(ctx context.Context, body ApiDatasetStoragesS3CheckForRecordsCreateJSONRequestBody, reqEditors ...RequestEditorFn) (*ApiDatasetStoragesS3CheckForRecordsCreateResponse, error) {
-	rsp, err := c.ApiDatasetStoragesS3CheckForRecordsCreate(ctx, body, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseApiDatasetStoragesS3CheckForRecordsCreateResponse(rsp)
-}
-
-// ApiDatasetStoragesS3CheckForRecordsCreateWithFormdataBodyWithResponse Check for records given the file pattern
-//
-// Checks for existence of records matching the file pattern in the bucket/prefix.
-//
-// Takes a body of the `application/x-www-form-urlencoded` content type, and returns a wrapper object for the known response body format(s).
-//
-// Corresponds with POST /api/dataset-storages/s3/check-for-records/ (the `ApiDatasetStoragesS3CheckForRecordsCreate` operationId).
-func (c *ClientWithResponses) ApiDatasetStoragesS3CheckForRecordsCreateWithFormdataBodyWithResponse(ctx context.Context, body ApiDatasetStoragesS3CheckForRecordsCreateFormdataRequestBody, reqEditors ...RequestEditorFn) (*ApiDatasetStoragesS3CheckForRecordsCreateResponse, error) {
-	rsp, err := c.ApiDatasetStoragesS3CheckForRecordsCreateWithFormdataBody(ctx, body, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseApiDatasetStoragesS3CheckForRecordsCreateResponse(rsp)
-}
-
-// ApiDatasetStoragesS3ValidateCreateWithBodyWithResponse Validate import storage
-//
-// Validate a specific S3 import storage connection.
-//
-// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
-//
-// Corresponds with POST /api/dataset-storages/s3/validate/ (the `ApiDatasetStoragesS3ValidateCreate` operationId).
-func (c *ClientWithResponses) ApiDatasetStoragesS3ValidateCreateWithBodyWithResponse(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*ApiDatasetStoragesS3ValidateCreateResponse, error) {
-	rsp, err := c.ApiDatasetStoragesS3ValidateCreateWithBody(ctx, contentType, body, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseApiDatasetStoragesS3ValidateCreateResponse(rsp)
-}
-
-// ApiDatasetStoragesS3ValidateCreateWithResponse Validate import storage
-//
-// Validate a specific S3 import storage connection.
-//
-// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
-//
-// Corresponds with POST /api/dataset-storages/s3/validate/ (the `ApiDatasetStoragesS3ValidateCreate` operationId).
-func (c *ClientWithResponses) ApiDatasetStoragesS3ValidateCreateWithResponse(ctx context.Context, body ApiDatasetStoragesS3ValidateCreateJSONRequestBody, reqEditors ...RequestEditorFn) (*ApiDatasetStoragesS3ValidateCreateResponse, error) {
-	rsp, err := c.ApiDatasetStoragesS3ValidateCreate(ctx, body, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseApiDatasetStoragesS3ValidateCreateResponse(rsp)
-}
-
-// ApiDatasetStoragesS3ValidateCreateWithFormdataBodyWithResponse Validate import storage
-//
-// Validate a specific S3 import storage connection.
-//
-// Takes a body of the `application/x-www-form-urlencoded` content type, and returns a wrapper object for the known response body format(s).
-//
-// Corresponds with POST /api/dataset-storages/s3/validate/ (the `ApiDatasetStoragesS3ValidateCreate` operationId).
-func (c *ClientWithResponses) ApiDatasetStoragesS3ValidateCreateWithFormdataBodyWithResponse(ctx context.Context, body ApiDatasetStoragesS3ValidateCreateFormdataRequestBody, reqEditors ...RequestEditorFn) (*ApiDatasetStoragesS3ValidateCreateResponse, error) {
-	rsp, err := c.ApiDatasetStoragesS3ValidateCreateWithFormdataBody(ctx, body, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseApiDatasetStoragesS3ValidateCreateResponse(rsp)
-}
-
-// ApiDatasetStoragesS3DestroyWithResponse Delete import storage
-//
-// Delete a specific S3 import storage connection.
-//
-// Returns a wrapper object for the known response body format(s).
-//
-// Corresponds with DELETE /api/dataset-storages/s3/{id}/ (the `ApiDatasetStoragesS3Destroy` operationId).
-func (c *ClientWithResponses) ApiDatasetStoragesS3DestroyWithResponse(ctx context.Context, id int, reqEditors ...RequestEditorFn) (*ApiDatasetStoragesS3DestroyResponse, error) {
-	rsp, err := c.ApiDatasetStoragesS3Destroy(ctx, id, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseApiDatasetStoragesS3DestroyResponse(rsp)
-}
-
-// ApiDatasetStoragesS3RetrieveWithResponse Get import storage
-//
-// Get a specific S3 import storage connection.
-//
-// Returns a wrapper object for the known response body format(s).
-//
-// Corresponds with GET /api/dataset-storages/s3/{id}/ (the `ApiDatasetStoragesS3Retrieve` operationId).
-func (c *ClientWithResponses) ApiDatasetStoragesS3RetrieveWithResponse(ctx context.Context, id int, reqEditors ...RequestEditorFn) (*ApiDatasetStoragesS3RetrieveResponse, error) {
-	rsp, err := c.ApiDatasetStoragesS3Retrieve(ctx, id, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseApiDatasetStoragesS3RetrieveResponse(rsp)
-}
-
-// ApiDatasetStoragesS3PartialUpdateWithBodyWithResponse Update import storage
-//
-// Update a specific S3 import storage connection.
-//
-// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
-//
-// Corresponds with PATCH /api/dataset-storages/s3/{id}/ (the `ApiDatasetStoragesS3PartialUpdate` operationId).
-func (c *ClientWithResponses) ApiDatasetStoragesS3PartialUpdateWithBodyWithResponse(ctx context.Context, id int, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*ApiDatasetStoragesS3PartialUpdateResponse, error) {
-	rsp, err := c.ApiDatasetStoragesS3PartialUpdateWithBody(ctx, id, contentType, body, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseApiDatasetStoragesS3PartialUpdateResponse(rsp)
-}
-
-// ApiDatasetStoragesS3PartialUpdateWithResponse Update import storage
-//
-// Update a specific S3 import storage connection.
-//
-// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
-//
-// Corresponds with PATCH /api/dataset-storages/s3/{id}/ (the `ApiDatasetStoragesS3PartialUpdate` operationId).
-func (c *ClientWithResponses) ApiDatasetStoragesS3PartialUpdateWithResponse(ctx context.Context, id int, body ApiDatasetStoragesS3PartialUpdateJSONRequestBody, reqEditors ...RequestEditorFn) (*ApiDatasetStoragesS3PartialUpdateResponse, error) {
-	rsp, err := c.ApiDatasetStoragesS3PartialUpdate(ctx, id, body, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseApiDatasetStoragesS3PartialUpdateResponse(rsp)
-}
-
-// ApiDatasetStoragesS3PartialUpdateWithFormdataBodyWithResponse Update import storage
-//
-// Update a specific S3 import storage connection.
-//
-// Takes a body of the `application/x-www-form-urlencoded` content type, and returns a wrapper object for the known response body format(s).
-//
-// Corresponds with PATCH /api/dataset-storages/s3/{id}/ (the `ApiDatasetStoragesS3PartialUpdate` operationId).
-func (c *ClientWithResponses) ApiDatasetStoragesS3PartialUpdateWithFormdataBodyWithResponse(ctx context.Context, id int, body ApiDatasetStoragesS3PartialUpdateFormdataRequestBody, reqEditors ...RequestEditorFn) (*ApiDatasetStoragesS3PartialUpdateResponse, error) {
-	rsp, err := c.ApiDatasetStoragesS3PartialUpdateWithFormdataBody(ctx, id, body, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseApiDatasetStoragesS3PartialUpdateResponse(rsp)
-}
-
-// ApiDatasetStoragesS3ColumnsRetrieveWithResponse Get data column names from storage
-//
-// Retrieves column names from users JSON/blob data in bucket.
-//
-// Returns a wrapper object for the known response body format(s).
-//
-// Corresponds with GET /api/dataset-storages/s3/{id}/columns/ (the `ApiDatasetStoragesS3ColumnsRetrieve` operationId).
-func (c *ClientWithResponses) ApiDatasetStoragesS3ColumnsRetrieveWithResponse(ctx context.Context, id int, reqEditors ...RequestEditorFn) (*ApiDatasetStoragesS3ColumnsRetrieveResponse, error) {
-	rsp, err := c.ApiDatasetStoragesS3ColumnsRetrieve(ctx, id, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseApiDatasetStoragesS3ColumnsRetrieveResponse(rsp)
-}
-
-// ApiDatasetStoragesS3SyncCreateWithBodyWithResponse Sync import storage
-//
-// Sync tasks from an S3 import storage connection.
-//
-// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
-//
-// Corresponds with POST /api/dataset-storages/s3/{id}/sync/ (the `ApiDatasetStoragesS3SyncCreate` operationId).
-func (c *ClientWithResponses) ApiDatasetStoragesS3SyncCreateWithBodyWithResponse(ctx context.Context, id int, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*ApiDatasetStoragesS3SyncCreateResponse, error) {
-	rsp, err := c.ApiDatasetStoragesS3SyncCreateWithBody(ctx, id, contentType, body, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseApiDatasetStoragesS3SyncCreateResponse(rsp)
-}
-
-// ApiDatasetStoragesS3SyncCreateWithResponse Sync import storage
-//
-// Sync tasks from an S3 import storage connection.
-//
-// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
-//
-// Corresponds with POST /api/dataset-storages/s3/{id}/sync/ (the `ApiDatasetStoragesS3SyncCreate` operationId).
-func (c *ClientWithResponses) ApiDatasetStoragesS3SyncCreateWithResponse(ctx context.Context, id int, body ApiDatasetStoragesS3SyncCreateJSONRequestBody, reqEditors ...RequestEditorFn) (*ApiDatasetStoragesS3SyncCreateResponse, error) {
-	rsp, err := c.ApiDatasetStoragesS3SyncCreate(ctx, id, body, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseApiDatasetStoragesS3SyncCreateResponse(rsp)
-}
-
-// ApiDatasetStoragesS3SyncCreateWithFormdataBodyWithResponse Sync import storage
-//
-// Sync tasks from an S3 import storage connection.
-//
-// Takes a body of the `application/x-www-form-urlencoded` content type, and returns a wrapper object for the known response body format(s).
-//
-// Corresponds with POST /api/dataset-storages/s3/{id}/sync/ (the `ApiDatasetStoragesS3SyncCreate` operationId).
-func (c *ClientWithResponses) ApiDatasetStoragesS3SyncCreateWithFormdataBodyWithResponse(ctx context.Context, id int, body ApiDatasetStoragesS3SyncCreateFormdataRequestBody, reqEditors ...RequestEditorFn) (*ApiDatasetStoragesS3SyncCreateResponse, error) {
-	rsp, err := c.ApiDatasetStoragesS3SyncCreateWithFormdataBody(ctx, id, body, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseApiDatasetStoragesS3SyncCreateResponse(rsp)
-}
-
-// ApiDatasetStoragesTypesRetrieveWithResponse List all dataset storages types
-//
-// Retrieve a list of the dataset storages types.
-//
-// Returns a wrapper object for the known response body format(s).
-//
-// Corresponds with GET /api/dataset-storages/types/ (the `ApiDatasetStoragesTypesRetrieve` operationId).
-func (c *ClientWithResponses) ApiDatasetStoragesTypesRetrieveWithResponse(ctx context.Context, reqEditors ...RequestEditorFn) (*ApiDatasetStoragesTypesRetrieveResponse, error) {
-	rsp, err := c.ApiDatasetStoragesTypesRetrieve(ctx, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseApiDatasetStoragesTypesRetrieveResponse(rsp)
-}
-
-// ApiDatasetsListWithResponse List datasets
-//
-// List all datasets.
-//
-// Returns a wrapper object for the known response body format(s).
-//
-// Corresponds with GET /api/datasets/ (the `ApiDatasetsList` operationId).
-func (c *ClientWithResponses) ApiDatasetsListWithResponse(ctx context.Context, params *ApiDatasetsListParams, reqEditors ...RequestEditorFn) (*ApiDatasetsListResponse, error) {
-	rsp, err := c.ApiDatasetsList(ctx, params, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseApiDatasetsListResponse(rsp)
-}
-
-// ApiDatasetsCreateWithBodyWithResponse Create dataset
-//
-// Create a new dataset.
-//
-// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
-//
-// Corresponds with POST /api/datasets/ (the `ApiDatasetsCreate` operationId).
-func (c *ClientWithResponses) ApiDatasetsCreateWithBodyWithResponse(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*ApiDatasetsCreateResponse, error) {
-	rsp, err := c.ApiDatasetsCreateWithBody(ctx, contentType, body, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseApiDatasetsCreateResponse(rsp)
-}
-
-// ApiDatasetsCreateWithResponse Create dataset
-//
-// Create a new dataset.
-//
-// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
-//
-// Corresponds with POST /api/datasets/ (the `ApiDatasetsCreate` operationId).
-func (c *ClientWithResponses) ApiDatasetsCreateWithResponse(ctx context.Context, body ApiDatasetsCreateJSONRequestBody, reqEditors ...RequestEditorFn) (*ApiDatasetsCreateResponse, error) {
-	rsp, err := c.ApiDatasetsCreate(ctx, body, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseApiDatasetsCreateResponse(rsp)
-}
-
-// ApiDatasetsCreateWithFormdataBodyWithResponse Create dataset
-//
-// Create a new dataset.
-//
-// Takes a body of the `application/x-www-form-urlencoded` content type, and returns a wrapper object for the known response body format(s).
-//
-// Corresponds with POST /api/datasets/ (the `ApiDatasetsCreate` operationId).
-func (c *ClientWithResponses) ApiDatasetsCreateWithFormdataBodyWithResponse(ctx context.Context, body ApiDatasetsCreateFormdataRequestBody, reqEditors ...RequestEditorFn) (*ApiDatasetsCreateResponse, error) {
-	rsp, err := c.ApiDatasetsCreateWithFormdataBody(ctx, body, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseApiDatasetsCreateResponse(rsp)
-}
-
-// ApiDatasetsColumnsRetrieveWithResponse Get data explorer columns
-//
-// Retrieve the data explorer columns available for a specific Dataset.
-//
-// Returns a wrapper object for the known response body format(s).
-//
-// Corresponds with GET /api/datasets/columns (the `ApiDatasetsColumnsRetrieve` operationId).
-func (c *ClientWithResponses) ApiDatasetsColumnsRetrieveWithResponse(ctx context.Context, params *ApiDatasetsColumnsRetrieveParams, reqEditors ...RequestEditorFn) (*ApiDatasetsColumnsRetrieveResponse, error) {
-	rsp, err := c.ApiDatasetsColumnsRetrieve(ctx, params, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseApiDatasetsColumnsRetrieveResponse(rsp)
-}
-
-// ApiDatasetsImportPartialUpdateWithBodyWithResponse Export candidate tasks to project
-//
-// Export Candidate task for a specific dataset to project.
-//
-// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
-//
-// Corresponds with PATCH /api/datasets/import (the `ApiDatasetsImportPartialUpdate` operationId).
-func (c *ClientWithResponses) ApiDatasetsImportPartialUpdateWithBodyWithResponse(ctx context.Context, params *ApiDatasetsImportPartialUpdateParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*ApiDatasetsImportPartialUpdateResponse, error) {
-	rsp, err := c.ApiDatasetsImportPartialUpdateWithBody(ctx, params, contentType, body, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseApiDatasetsImportPartialUpdateResponse(rsp)
-}
-
-// ApiDatasetsImportPartialUpdateWithResponse Export candidate tasks to project
-//
-// Export Candidate task for a specific dataset to project.
-//
-// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
-//
-// Corresponds with PATCH /api/datasets/import (the `ApiDatasetsImportPartialUpdate` operationId).
-func (c *ClientWithResponses) ApiDatasetsImportPartialUpdateWithResponse(ctx context.Context, params *ApiDatasetsImportPartialUpdateParams, body ApiDatasetsImportPartialUpdateJSONRequestBody, reqEditors ...RequestEditorFn) (*ApiDatasetsImportPartialUpdateResponse, error) {
-	rsp, err := c.ApiDatasetsImportPartialUpdate(ctx, params, body, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseApiDatasetsImportPartialUpdateResponse(rsp)
-}
-
-// ApiDatasetsImportPartialUpdateWithFormdataBodyWithResponse Export candidate tasks to project
-//
-// Export Candidate task for a specific dataset to project.
-//
-// Takes a body of the `application/x-www-form-urlencoded` content type, and returns a wrapper object for the known response body format(s).
-//
-// Corresponds with PATCH /api/datasets/import (the `ApiDatasetsImportPartialUpdate` operationId).
-func (c *ClientWithResponses) ApiDatasetsImportPartialUpdateWithFormdataBodyWithResponse(ctx context.Context, params *ApiDatasetsImportPartialUpdateParams, body ApiDatasetsImportPartialUpdateFormdataRequestBody, reqEditors ...RequestEditorFn) (*ApiDatasetsImportPartialUpdateResponse, error) {
-	rsp, err := c.ApiDatasetsImportPartialUpdateWithFormdataBody(ctx, params, body, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseApiDatasetsImportPartialUpdateResponse(rsp)
-}
-
-// ApiDatasetsImportCreateWithBodyWithResponse Export candidate tasks to project
-//
-//	Export Candidate task for a specific dataset to project.
-//
-// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
-//
-// Corresponds with POST /api/datasets/import (the `ApiDatasetsImportCreate` operationId).
-func (c *ClientWithResponses) ApiDatasetsImportCreateWithBodyWithResponse(ctx context.Context, params *ApiDatasetsImportCreateParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*ApiDatasetsImportCreateResponse, error) {
-	rsp, err := c.ApiDatasetsImportCreateWithBody(ctx, params, contentType, body, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseApiDatasetsImportCreateResponse(rsp)
-}
-
-// ApiDatasetsImportCreateWithResponse Export candidate tasks to project
-//
-//	Export Candidate task for a specific dataset to project.
-//
-// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
-//
-// Corresponds with POST /api/datasets/import (the `ApiDatasetsImportCreate` operationId).
-func (c *ClientWithResponses) ApiDatasetsImportCreateWithResponse(ctx context.Context, params *ApiDatasetsImportCreateParams, body ApiDatasetsImportCreateJSONRequestBody, reqEditors ...RequestEditorFn) (*ApiDatasetsImportCreateResponse, error) {
-	rsp, err := c.ApiDatasetsImportCreate(ctx, params, body, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseApiDatasetsImportCreateResponse(rsp)
-}
-
-// ApiDatasetsImportCreateWithFormdataBodyWithResponse Export candidate tasks to project
-//
-//	Export Candidate task for a specific dataset to project.
-//
-// Takes a body of the `application/x-www-form-urlencoded` content type, and returns a wrapper object for the known response body format(s).
-//
-// Corresponds with POST /api/datasets/import (the `ApiDatasetsImportCreate` operationId).
-func (c *ClientWithResponses) ApiDatasetsImportCreateWithFormdataBodyWithResponse(ctx context.Context, params *ApiDatasetsImportCreateParams, body ApiDatasetsImportCreateFormdataRequestBody, reqEditors ...RequestEditorFn) (*ApiDatasetsImportCreateResponse, error) {
-	rsp, err := c.ApiDatasetsImportCreateWithFormdataBody(ctx, params, body, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseApiDatasetsImportCreateResponse(rsp)
-}
-
-// ApiDatasetsTasksRetrieveWithResponse Get Data Explorer tasks list
-//
-//	Retrieve a list of Data Explorer tasks with pagination for a specific view or dataset, by using filters and ordering.
-//
-// Returns a wrapper object for the known response body format(s).
-//
-// Corresponds with GET /api/datasets/tasks (the `ApiDatasetsTasksRetrieve` operationId).
-func (c *ClientWithResponses) ApiDatasetsTasksRetrieveWithResponse(ctx context.Context, params *ApiDatasetsTasksRetrieveParams, reqEditors ...RequestEditorFn) (*ApiDatasetsTasksRetrieveResponse, error) {
-	rsp, err := c.ApiDatasetsTasksRetrieve(ctx, params, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseApiDatasetsTasksRetrieveResponse(rsp)
-}
-
-// ApiDatasetsTasksMetadataRetrieveWithResponse Get Candidate task metadata
-//
-//	Retrieve Candidate task metadata for a specific dataset, by using candidate_task_id or weaviate_id.
-//
-// Returns a wrapper object for the known response body format(s).
-//
-// Corresponds with GET /api/datasets/tasks/metadata (the `ApiDatasetsTasksMetadataRetrieve` operationId).
-func (c *ClientWithResponses) ApiDatasetsTasksMetadataRetrieveWithResponse(ctx context.Context, params *ApiDatasetsTasksMetadataRetrieveParams, reqEditors ...RequestEditorFn) (*ApiDatasetsTasksMetadataRetrieveResponse, error) {
-	rsp, err := c.ApiDatasetsTasksMetadataRetrieve(ctx, params, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseApiDatasetsTasksMetadataRetrieveResponse(rsp)
-}
-
-// ApiDatasetsViewsListWithResponse List dataset views
-//
-// List all views for a specific dataset.
-//
-// Returns a wrapper object for the known response body format(s).
-//
-// Corresponds with GET /api/datasets/views/ (the `ApiDatasetsViewsList` operationId).
-func (c *ClientWithResponses) ApiDatasetsViewsListWithResponse(ctx context.Context, params *ApiDatasetsViewsListParams, reqEditors ...RequestEditorFn) (*ApiDatasetsViewsListResponse, error) {
-	rsp, err := c.ApiDatasetsViewsList(ctx, params, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseApiDatasetsViewsListResponse(rsp)
-}
-
-// ApiDatasetsViewsCreateWithBodyWithResponse Create dataset view
-//
-// Create a view for a specific dataset.
-//
-// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
-//
-// Corresponds with POST /api/datasets/views/ (the `ApiDatasetsViewsCreate` operationId).
-func (c *ClientWithResponses) ApiDatasetsViewsCreateWithBodyWithResponse(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*ApiDatasetsViewsCreateResponse, error) {
-	rsp, err := c.ApiDatasetsViewsCreateWithBody(ctx, contentType, body, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseApiDatasetsViewsCreateResponse(rsp)
-}
-
-// ApiDatasetsViewsCreateWithResponse Create dataset view
-//
-// Create a view for a specific dataset.
-//
-// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
-//
-// Corresponds with POST /api/datasets/views/ (the `ApiDatasetsViewsCreate` operationId).
-func (c *ClientWithResponses) ApiDatasetsViewsCreateWithResponse(ctx context.Context, body ApiDatasetsViewsCreateJSONRequestBody, reqEditors ...RequestEditorFn) (*ApiDatasetsViewsCreateResponse, error) {
-	rsp, err := c.ApiDatasetsViewsCreate(ctx, body, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseApiDatasetsViewsCreateResponse(rsp)
-}
-
-// ApiDatasetsViewsCreateWithFormdataBodyWithResponse Create dataset view
-//
-// Create a view for a specific dataset.
-//
-// Takes a body of the `application/x-www-form-urlencoded` content type, and returns a wrapper object for the known response body format(s).
-//
-// Corresponds with POST /api/datasets/views/ (the `ApiDatasetsViewsCreate` operationId).
-func (c *ClientWithResponses) ApiDatasetsViewsCreateWithFormdataBodyWithResponse(ctx context.Context, body ApiDatasetsViewsCreateFormdataRequestBody, reqEditors ...RequestEditorFn) (*ApiDatasetsViewsCreateResponse, error) {
-	rsp, err := c.ApiDatasetsViewsCreateWithFormdataBody(ctx, body, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseApiDatasetsViewsCreateResponse(rsp)
-}
-
-// ApiDatasetsViewsResetDestroyWithResponse Reset dataset views
-//
-// Reset all views for a specific dataset.
-//
-// Returns a wrapper object for the known response body format(s).
-//
-// Corresponds with DELETE /api/datasets/views/reset/ (the `ApiDatasetsViewsResetDestroy` operationId).
-func (c *ClientWithResponses) ApiDatasetsViewsResetDestroyWithResponse(ctx context.Context, reqEditors ...RequestEditorFn) (*ApiDatasetsViewsResetDestroyResponse, error) {
-	rsp, err := c.ApiDatasetsViewsResetDestroy(ctx, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseApiDatasetsViewsResetDestroyResponse(rsp)
-}
-
-// ApiDatasetsViewsDestroyWithResponse Delete dataset view
-//
-// Delete a specific view by ID.
-//
-// Returns a wrapper object for the known response body format(s).
-//
-// Corresponds with DELETE /api/datasets/views/{id}/ (the `ApiDatasetsViewsDestroy` operationId).
-func (c *ClientWithResponses) ApiDatasetsViewsDestroyWithResponse(ctx context.Context, id string, reqEditors ...RequestEditorFn) (*ApiDatasetsViewsDestroyResponse, error) {
-	rsp, err := c.ApiDatasetsViewsDestroy(ctx, id, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseApiDatasetsViewsDestroyResponse(rsp)
-}
-
-// ApiDatasetsViewsRetrieveWithResponse Get dataset view details
-//
-// Get the details about a specific view in the data manager.
-//
-// Returns a wrapper object for the known response body format(s).
-//
-// Corresponds with GET /api/datasets/views/{id}/ (the `ApiDatasetsViewsRetrieve` operationId).
-func (c *ClientWithResponses) ApiDatasetsViewsRetrieveWithResponse(ctx context.Context, id string, reqEditors ...RequestEditorFn) (*ApiDatasetsViewsRetrieveResponse, error) {
-	rsp, err := c.ApiDatasetsViewsRetrieve(ctx, id, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseApiDatasetsViewsRetrieveResponse(rsp)
-}
-
-// ApiDatasetsViewsPartialUpdateWithBodyWithResponse Update dataset view
-//
-// Update view data with additional filters and other information for a specific dataset.
-//
-// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
-//
-// Corresponds with PATCH /api/datasets/views/{id}/ (the `ApiDatasetsViewsPartialUpdate` operationId).
-func (c *ClientWithResponses) ApiDatasetsViewsPartialUpdateWithBodyWithResponse(ctx context.Context, id string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*ApiDatasetsViewsPartialUpdateResponse, error) {
-	rsp, err := c.ApiDatasetsViewsPartialUpdateWithBody(ctx, id, contentType, body, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseApiDatasetsViewsPartialUpdateResponse(rsp)
-}
-
-// ApiDatasetsViewsPartialUpdateWithResponse Update dataset view
-//
-// Update view data with additional filters and other information for a specific dataset.
-//
-// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
-//
-// Corresponds with PATCH /api/datasets/views/{id}/ (the `ApiDatasetsViewsPartialUpdate` operationId).
-func (c *ClientWithResponses) ApiDatasetsViewsPartialUpdateWithResponse(ctx context.Context, id string, body ApiDatasetsViewsPartialUpdateJSONRequestBody, reqEditors ...RequestEditorFn) (*ApiDatasetsViewsPartialUpdateResponse, error) {
-	rsp, err := c.ApiDatasetsViewsPartialUpdate(ctx, id, body, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseApiDatasetsViewsPartialUpdateResponse(rsp)
-}
-
-// ApiDatasetsViewsPartialUpdateWithFormdataBodyWithResponse Update dataset view
-//
-// Update view data with additional filters and other information for a specific dataset.
-//
-// Takes a body of the `application/x-www-form-urlencoded` content type, and returns a wrapper object for the known response body format(s).
-//
-// Corresponds with PATCH /api/datasets/views/{id}/ (the `ApiDatasetsViewsPartialUpdate` operationId).
-func (c *ClientWithResponses) ApiDatasetsViewsPartialUpdateWithFormdataBodyWithResponse(ctx context.Context, id string, body ApiDatasetsViewsPartialUpdateFormdataRequestBody, reqEditors ...RequestEditorFn) (*ApiDatasetsViewsPartialUpdateResponse, error) {
-	rsp, err := c.ApiDatasetsViewsPartialUpdateWithFormdataBody(ctx, id, body, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseApiDatasetsViewsPartialUpdateResponse(rsp)
-}
-
-// ApiDatasetsViewsUpdateWithBodyWithResponse Put dataset view
-//
-// Overwrite view data with updated filters and other information for a specific dataset.
-//
-// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
-//
-// Corresponds with PUT /api/datasets/views/{id}/ (the `ApiDatasetsViewsUpdate` operationId).
-func (c *ClientWithResponses) ApiDatasetsViewsUpdateWithBodyWithResponse(ctx context.Context, id string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*ApiDatasetsViewsUpdateResponse, error) {
-	rsp, err := c.ApiDatasetsViewsUpdateWithBody(ctx, id, contentType, body, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseApiDatasetsViewsUpdateResponse(rsp)
-}
-
-// ApiDatasetsViewsUpdateWithResponse Put dataset view
-//
-// Overwrite view data with updated filters and other information for a specific dataset.
-//
-// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
-//
-// Corresponds with PUT /api/datasets/views/{id}/ (the `ApiDatasetsViewsUpdate` operationId).
-func (c *ClientWithResponses) ApiDatasetsViewsUpdateWithResponse(ctx context.Context, id string, body ApiDatasetsViewsUpdateJSONRequestBody, reqEditors ...RequestEditorFn) (*ApiDatasetsViewsUpdateResponse, error) {
-	rsp, err := c.ApiDatasetsViewsUpdate(ctx, id, body, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseApiDatasetsViewsUpdateResponse(rsp)
-}
-
-// ApiDatasetsViewsUpdateWithFormdataBodyWithResponse Put dataset view
-//
-// Overwrite view data with updated filters and other information for a specific dataset.
-//
-// Takes a body of the `application/x-www-form-urlencoded` content type, and returns a wrapper object for the known response body format(s).
-//
-// Corresponds with PUT /api/datasets/views/{id}/ (the `ApiDatasetsViewsUpdate` operationId).
-func (c *ClientWithResponses) ApiDatasetsViewsUpdateWithFormdataBodyWithResponse(ctx context.Context, id string, body ApiDatasetsViewsUpdateFormdataRequestBody, reqEditors ...RequestEditorFn) (*ApiDatasetsViewsUpdateResponse, error) {
-	rsp, err := c.ApiDatasetsViewsUpdateWithFormdataBody(ctx, id, body, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseApiDatasetsViewsUpdateResponse(rsp)
-}
-
-// ApiDatasetsDestroyWithResponse Delete dataset
-//
-// Delete a dataset by ID.
-//
-// Returns a wrapper object for the known response body format(s).
-//
-// Corresponds with DELETE /api/datasets/{id}/ (the `ApiDatasetsDestroy` operationId).
-func (c *ClientWithResponses) ApiDatasetsDestroyWithResponse(ctx context.Context, id int, reqEditors ...RequestEditorFn) (*ApiDatasetsDestroyResponse, error) {
-	rsp, err := c.ApiDatasetsDestroy(ctx, id, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseApiDatasetsDestroyResponse(rsp)
-}
-
-// ApiDatasetsRetrieveWithResponse Get dataset
-//
-// Retrieve a specific dataset.
-//
-// Returns a wrapper object for the known response body format(s).
-//
-// Corresponds with GET /api/datasets/{id}/ (the `ApiDatasetsRetrieve` operationId).
-func (c *ClientWithResponses) ApiDatasetsRetrieveWithResponse(ctx context.Context, id int, reqEditors ...RequestEditorFn) (*ApiDatasetsRetrieveResponse, error) {
-	rsp, err := c.ApiDatasetsRetrieve(ctx, id, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseApiDatasetsRetrieveResponse(rsp)
-}
-
-// ApiDatasetsPartialUpdateWithBodyWithResponse Update dataset
-//
-// Update a specific dataset by ID.
-//
-// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
-//
-// Corresponds with PATCH /api/datasets/{id}/ (the `ApiDatasetsPartialUpdate` operationId).
-func (c *ClientWithResponses) ApiDatasetsPartialUpdateWithBodyWithResponse(ctx context.Context, id int, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*ApiDatasetsPartialUpdateResponse, error) {
-	rsp, err := c.ApiDatasetsPartialUpdateWithBody(ctx, id, contentType, body, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseApiDatasetsPartialUpdateResponse(rsp)
-}
-
-// ApiDatasetsPartialUpdateWithResponse Update dataset
-//
-// Update a specific dataset by ID.
-//
-// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
-//
-// Corresponds with PATCH /api/datasets/{id}/ (the `ApiDatasetsPartialUpdate` operationId).
-func (c *ClientWithResponses) ApiDatasetsPartialUpdateWithResponse(ctx context.Context, id int, body ApiDatasetsPartialUpdateJSONRequestBody, reqEditors ...RequestEditorFn) (*ApiDatasetsPartialUpdateResponse, error) {
-	rsp, err := c.ApiDatasetsPartialUpdate(ctx, id, body, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseApiDatasetsPartialUpdateResponse(rsp)
-}
-
-// ApiDatasetsPartialUpdateWithFormdataBodyWithResponse Update dataset
-//
-// Update a specific dataset by ID.
-//
-// Takes a body of the `application/x-www-form-urlencoded` content type, and returns a wrapper object for the known response body format(s).
-//
-// Corresponds with PATCH /api/datasets/{id}/ (the `ApiDatasetsPartialUpdate` operationId).
-func (c *ClientWithResponses) ApiDatasetsPartialUpdateWithFormdataBodyWithResponse(ctx context.Context, id int, body ApiDatasetsPartialUpdateFormdataRequestBody, reqEditors ...RequestEditorFn) (*ApiDatasetsPartialUpdateResponse, error) {
-	rsp, err := c.ApiDatasetsPartialUpdateWithFormdataBody(ctx, id, body, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseApiDatasetsPartialUpdateResponse(rsp)
-}
-
-// ApiDatasetsUpdateWithBodyWithResponse Put dataset
-//
-// Overwrite a specific dataset by ID.
-//
-// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
-//
-// Corresponds with PUT /api/datasets/{id}/ (the `ApiDatasetsUpdate` operationId).
-func (c *ClientWithResponses) ApiDatasetsUpdateWithBodyWithResponse(ctx context.Context, id int, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*ApiDatasetsUpdateResponse, error) {
-	rsp, err := c.ApiDatasetsUpdateWithBody(ctx, id, contentType, body, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseApiDatasetsUpdateResponse(rsp)
-}
-
-// ApiDatasetsUpdateWithResponse Put dataset
-//
-// Overwrite a specific dataset by ID.
-//
-// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
-//
-// Corresponds with PUT /api/datasets/{id}/ (the `ApiDatasetsUpdate` operationId).
-func (c *ClientWithResponses) ApiDatasetsUpdateWithResponse(ctx context.Context, id int, body ApiDatasetsUpdateJSONRequestBody, reqEditors ...RequestEditorFn) (*ApiDatasetsUpdateResponse, error) {
-	rsp, err := c.ApiDatasetsUpdate(ctx, id, body, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseApiDatasetsUpdateResponse(rsp)
-}
-
-// ApiDatasetsUpdateWithFormdataBodyWithResponse Put dataset
-//
-// Overwrite a specific dataset by ID.
-//
-// Takes a body of the `application/x-www-form-urlencoded` content type, and returns a wrapper object for the known response body format(s).
-//
-// Corresponds with PUT /api/datasets/{id}/ (the `ApiDatasetsUpdate` operationId).
-func (c *ClientWithResponses) ApiDatasetsUpdateWithFormdataBodyWithResponse(ctx context.Context, id int, body ApiDatasetsUpdateFormdataRequestBody, reqEditors ...RequestEditorFn) (*ApiDatasetsUpdateResponse, error) {
-	rsp, err := c.ApiDatasetsUpdateWithFormdataBody(ctx, id, body, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseApiDatasetsUpdateResponse(rsp)
-}
-
-// ApiDatasetsMembersDestroyWithResponse Remove member from dataset
-//
-// Remove a member from a specific dataset.
-//
-// Returns a wrapper object for the known response body format(s).
-//
-// Corresponds with DELETE /api/datasets/{id}/members (the `ApiDatasetsMembersDestroy` operationId).
-func (c *ClientWithResponses) ApiDatasetsMembersDestroyWithResponse(ctx context.Context, id int, params *ApiDatasetsMembersDestroyParams, reqEditors ...RequestEditorFn) (*ApiDatasetsMembersDestroyResponse, error) {
-	rsp, err := c.ApiDatasetsMembersDestroy(ctx, id, params, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseApiDatasetsMembersDestroyResponse(rsp)
-}
-
-// ApiDatasetsMembersListWithResponse Get datasets members
-//
-// Retrieve the members for a specific dataset.
-//
-// Returns a wrapper object for the known response body format(s).
-//
-// Corresponds with GET /api/datasets/{id}/members (the `ApiDatasetsMembersList` operationId).
-func (c *ClientWithResponses) ApiDatasetsMembersListWithResponse(ctx context.Context, id int, params *ApiDatasetsMembersListParams, reqEditors ...RequestEditorFn) (*ApiDatasetsMembersListResponse, error) {
-	rsp, err := c.ApiDatasetsMembersList(ctx, id, params, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseApiDatasetsMembersListResponse(rsp)
-}
-
-// ApiDatasetsMembersCreateWithBodyWithResponse Add dataset member
-//
-// Add a member to a specific dataset.
-//
-// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
-//
-// Corresponds with POST /api/datasets/{id}/members (the `ApiDatasetsMembersCreate` operationId).
-func (c *ClientWithResponses) ApiDatasetsMembersCreateWithBodyWithResponse(ctx context.Context, id int, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*ApiDatasetsMembersCreateResponse, error) {
-	rsp, err := c.ApiDatasetsMembersCreateWithBody(ctx, id, contentType, body, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseApiDatasetsMembersCreateResponse(rsp)
-}
-
-// ApiDatasetsMembersCreateWithResponse Add dataset member
-//
-// Add a member to a specific dataset.
-//
-// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
-//
-// Corresponds with POST /api/datasets/{id}/members (the `ApiDatasetsMembersCreate` operationId).
-func (c *ClientWithResponses) ApiDatasetsMembersCreateWithResponse(ctx context.Context, id int, body ApiDatasetsMembersCreateJSONRequestBody, reqEditors ...RequestEditorFn) (*ApiDatasetsMembersCreateResponse, error) {
-	rsp, err := c.ApiDatasetsMembersCreate(ctx, id, body, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseApiDatasetsMembersCreateResponse(rsp)
-}
-
-// ApiDatasetsMembersCreateWithFormdataBodyWithResponse Add dataset member
-//
-// Add a member to a specific dataset.
-//
-// Takes a body of the `application/x-www-form-urlencoded` content type, and returns a wrapper object for the known response body format(s).
-//
-// Corresponds with POST /api/datasets/{id}/members (the `ApiDatasetsMembersCreate` operationId).
-func (c *ClientWithResponses) ApiDatasetsMembersCreateWithFormdataBodyWithResponse(ctx context.Context, id int, body ApiDatasetsMembersCreateFormdataRequestBody, reqEditors ...RequestEditorFn) (*ApiDatasetsMembersCreateResponse, error) {
-	rsp, err := c.ApiDatasetsMembersCreateWithFormdataBody(ctx, id, body, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseApiDatasetsMembersCreateResponse(rsp)
-}
-
 // ApiDimensionsBackfillDestroyWithResponse ✨ Cancel Agreement V2 backfill jobs
 //
 // <Card href="https://humansignal.com/goenterprise">
@@ -10004,8 +6543,8 @@ func (c *ClientWithResponses) ApiLearningResourcesDestroyWithResponse(ctx contex
 // Returns a wrapper object for the known response body format(s).
 //
 // Corresponds with GET /api/learning-resources/{id}/ (the `ApiLearningResourcesRetrieve` operationId).
-func (c *ClientWithResponses) ApiLearningResourcesRetrieveWithResponse(ctx context.Context, id int, reqEditors ...RequestEditorFn) (*ApiLearningResourcesRetrieveResponse, error) {
-	rsp, err := c.ApiLearningResourcesRetrieve(ctx, id, reqEditors...)
+func (c *ClientWithResponses) ApiLearningResourcesRetrieveWithResponse(ctx context.Context, id int, params *ApiLearningResourcesRetrieveParams, reqEditors ...RequestEditorFn) (*ApiLearningResourcesRetrieveResponse, error) {
+	rsp, err := c.ApiLearningResourcesRetrieve(ctx, id, params, reqEditors...)
 	if err != nil {
 		return nil, err
 	}
@@ -10985,8 +7524,8 @@ func (c *ClientWithResponses) ApiLearningResourcesStructureCreateWithFormdataBod
 // Returns a wrapper object for the known response body format(s).
 //
 // Corresponds with GET /api/learning-resources/{id}/take/ (the `ApiLearningResourcesTakeRetrieve` operationId).
-func (c *ClientWithResponses) ApiLearningResourcesTakeRetrieveWithResponse(ctx context.Context, id int, reqEditors ...RequestEditorFn) (*ApiLearningResourcesTakeRetrieveResponse, error) {
-	rsp, err := c.ApiLearningResourcesTakeRetrieve(ctx, id, reqEditors...)
+func (c *ClientWithResponses) ApiLearningResourcesTakeRetrieveWithResponse(ctx context.Context, id int, params *ApiLearningResourcesTakeRetrieveParams, reqEditors ...RequestEditorFn) (*ApiLearningResourcesTakeRetrieveResponse, error) {
+	rsp, err := c.ApiLearningResourcesTakeRetrieve(ctx, id, params, reqEditors...)
 	if err != nil {
 		return nil, err
 	}
@@ -20009,4 +16548,3478 @@ func (c *ClientWithResponses) ApiStoragesDatabricksPartialUpdateWithResponse(ctx
 		return nil, err
 	}
 	return ParseApiStoragesDatabricksPartialUpdateResponse(rsp)
+}
+
+// ApiStoragesDatabricksPartialUpdateWithFormdataBodyWithResponse ✨ Update Databricks import storage
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Update a specific Databricks Files import storage connection.
+//
+// Takes a body of the `application/x-www-form-urlencoded` content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with PATCH /api/storages/databricks/{id} (the `ApiStoragesDatabricksPartialUpdate` operationId).
+func (c *ClientWithResponses) ApiStoragesDatabricksPartialUpdateWithFormdataBodyWithResponse(ctx context.Context, id int, body ApiStoragesDatabricksPartialUpdateFormdataRequestBody, reqEditors ...RequestEditorFn) (*ApiStoragesDatabricksPartialUpdateResponse, error) {
+	rsp, err := c.ApiStoragesDatabricksPartialUpdateWithFormdataBody(ctx, id, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesDatabricksPartialUpdateResponse(rsp)
+}
+
+// ApiStoragesDatabricksSyncCreateWithResponse ✨ Sync Databricks import storage
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Sync tasks from a Databricks Files import storage.
+//
+// Returns a wrapper object for the known response body format(s).
+//
+// Corresponds with POST /api/storages/databricks/{id}/sync (the `ApiStoragesDatabricksSyncCreate` operationId).
+func (c *ClientWithResponses) ApiStoragesDatabricksSyncCreateWithResponse(ctx context.Context, id int, reqEditors ...RequestEditorFn) (*ApiStoragesDatabricksSyncCreateResponse, error) {
+	rsp, err := c.ApiStoragesDatabricksSyncCreate(ctx, id, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesDatabricksSyncCreateResponse(rsp)
+}
+
+// ApiStoragesExportListWithResponse List all export storages from the project
+//
+// Retrieve a list of the export storages of all types with their IDs.
+//
+// Returns a wrapper object for the known response body format(s).
+//
+// Corresponds with GET /api/storages/export (the `ApiStoragesExportList` operationId).
+func (c *ClientWithResponses) ApiStoragesExportListWithResponse(ctx context.Context, params *ApiStoragesExportListParams, reqEditors ...RequestEditorFn) (*ApiStoragesExportListResponse, error) {
+	rsp, err := c.ApiStoragesExportList(ctx, params, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesExportListResponse(rsp)
+}
+
+// ApiStoragesExportAzureListWithResponse Get all export storage
+//
+// Get a list of all Azure export storage connections.
+//
+// Returns a wrapper object for the known response body format(s).
+//
+// Corresponds with GET /api/storages/export/azure (the `ApiStoragesExportAzureList` operationId).
+func (c *ClientWithResponses) ApiStoragesExportAzureListWithResponse(ctx context.Context, params *ApiStoragesExportAzureListParams, reqEditors ...RequestEditorFn) (*ApiStoragesExportAzureListResponse, error) {
+	rsp, err := c.ApiStoragesExportAzureList(ctx, params, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesExportAzureListResponse(rsp)
+}
+
+// ApiStoragesExportAzureCreateWithBodyWithResponse Create export storage
+//
+// Create a new Azure export storage connection to store annotations.
+//
+// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with POST /api/storages/export/azure (the `ApiStoragesExportAzureCreate` operationId).
+func (c *ClientWithResponses) ApiStoragesExportAzureCreateWithBodyWithResponse(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*ApiStoragesExportAzureCreateResponse, error) {
+	rsp, err := c.ApiStoragesExportAzureCreateWithBody(ctx, contentType, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesExportAzureCreateResponse(rsp)
+}
+
+// ApiStoragesExportAzureCreateWithResponse Create export storage
+//
+// Create a new Azure export storage connection to store annotations.
+//
+// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with POST /api/storages/export/azure (the `ApiStoragesExportAzureCreate` operationId).
+func (c *ClientWithResponses) ApiStoragesExportAzureCreateWithResponse(ctx context.Context, body ApiStoragesExportAzureCreateJSONRequestBody, reqEditors ...RequestEditorFn) (*ApiStoragesExportAzureCreateResponse, error) {
+	rsp, err := c.ApiStoragesExportAzureCreate(ctx, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesExportAzureCreateResponse(rsp)
+}
+
+// ApiStoragesExportAzureCreateWithFormdataBodyWithResponse Create export storage
+//
+// Create a new Azure export storage connection to store annotations.
+//
+// Takes a body of the `application/x-www-form-urlencoded` content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with POST /api/storages/export/azure (the `ApiStoragesExportAzureCreate` operationId).
+func (c *ClientWithResponses) ApiStoragesExportAzureCreateWithFormdataBodyWithResponse(ctx context.Context, body ApiStoragesExportAzureCreateFormdataRequestBody, reqEditors ...RequestEditorFn) (*ApiStoragesExportAzureCreateResponse, error) {
+	rsp, err := c.ApiStoragesExportAzureCreateWithFormdataBody(ctx, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesExportAzureCreateResponse(rsp)
+}
+
+// ApiStoragesExportAzureValidateCreateWithBodyWithResponse Validate export storage
+//
+// Validate a specific Azure export storage connection.
+//
+// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with POST /api/storages/export/azure/validate (the `ApiStoragesExportAzureValidateCreate` operationId).
+func (c *ClientWithResponses) ApiStoragesExportAzureValidateCreateWithBodyWithResponse(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*ApiStoragesExportAzureValidateCreateResponse, error) {
+	rsp, err := c.ApiStoragesExportAzureValidateCreateWithBody(ctx, contentType, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesExportAzureValidateCreateResponse(rsp)
+}
+
+// ApiStoragesExportAzureValidateCreateWithResponse Validate export storage
+//
+// Validate a specific Azure export storage connection.
+//
+// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with POST /api/storages/export/azure/validate (the `ApiStoragesExportAzureValidateCreate` operationId).
+func (c *ClientWithResponses) ApiStoragesExportAzureValidateCreateWithResponse(ctx context.Context, body ApiStoragesExportAzureValidateCreateJSONRequestBody, reqEditors ...RequestEditorFn) (*ApiStoragesExportAzureValidateCreateResponse, error) {
+	rsp, err := c.ApiStoragesExportAzureValidateCreate(ctx, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesExportAzureValidateCreateResponse(rsp)
+}
+
+// ApiStoragesExportAzureValidateCreateWithFormdataBodyWithResponse Validate export storage
+//
+// Validate a specific Azure export storage connection.
+//
+// Takes a body of the `application/x-www-form-urlencoded` content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with POST /api/storages/export/azure/validate (the `ApiStoragesExportAzureValidateCreate` operationId).
+func (c *ClientWithResponses) ApiStoragesExportAzureValidateCreateWithFormdataBodyWithResponse(ctx context.Context, body ApiStoragesExportAzureValidateCreateFormdataRequestBody, reqEditors ...RequestEditorFn) (*ApiStoragesExportAzureValidateCreateResponse, error) {
+	rsp, err := c.ApiStoragesExportAzureValidateCreateWithFormdataBody(ctx, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesExportAzureValidateCreateResponse(rsp)
+}
+
+// ApiStoragesExportAzureDestroyWithResponse Delete export storage
+//
+// Delete a specific Azure export storage connection.
+//
+// Returns a wrapper object for the known response body format(s).
+//
+// Corresponds with DELETE /api/storages/export/azure/{id} (the `ApiStoragesExportAzureDestroy` operationId).
+func (c *ClientWithResponses) ApiStoragesExportAzureDestroyWithResponse(ctx context.Context, id int, reqEditors ...RequestEditorFn) (*ApiStoragesExportAzureDestroyResponse, error) {
+	rsp, err := c.ApiStoragesExportAzureDestroy(ctx, id, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesExportAzureDestroyResponse(rsp)
+}
+
+// ApiStoragesExportAzureRetrieveWithResponse Get export storage
+//
+// Get a specific Azure export storage connection.
+//
+// Returns a wrapper object for the known response body format(s).
+//
+// Corresponds with GET /api/storages/export/azure/{id} (the `ApiStoragesExportAzureRetrieve` operationId).
+func (c *ClientWithResponses) ApiStoragesExportAzureRetrieveWithResponse(ctx context.Context, id int, reqEditors ...RequestEditorFn) (*ApiStoragesExportAzureRetrieveResponse, error) {
+	rsp, err := c.ApiStoragesExportAzureRetrieve(ctx, id, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesExportAzureRetrieveResponse(rsp)
+}
+
+// ApiStoragesExportAzurePartialUpdateWithBodyWithResponse Update export storage
+//
+// Update a specific Azure export storage connection.
+//
+// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with PATCH /api/storages/export/azure/{id} (the `ApiStoragesExportAzurePartialUpdate` operationId).
+func (c *ClientWithResponses) ApiStoragesExportAzurePartialUpdateWithBodyWithResponse(ctx context.Context, id int, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*ApiStoragesExportAzurePartialUpdateResponse, error) {
+	rsp, err := c.ApiStoragesExportAzurePartialUpdateWithBody(ctx, id, contentType, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesExportAzurePartialUpdateResponse(rsp)
+}
+
+// ApiStoragesExportAzurePartialUpdateWithResponse Update export storage
+//
+// Update a specific Azure export storage connection.
+//
+// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with PATCH /api/storages/export/azure/{id} (the `ApiStoragesExportAzurePartialUpdate` operationId).
+func (c *ClientWithResponses) ApiStoragesExportAzurePartialUpdateWithResponse(ctx context.Context, id int, body ApiStoragesExportAzurePartialUpdateJSONRequestBody, reqEditors ...RequestEditorFn) (*ApiStoragesExportAzurePartialUpdateResponse, error) {
+	rsp, err := c.ApiStoragesExportAzurePartialUpdate(ctx, id, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesExportAzurePartialUpdateResponse(rsp)
+}
+
+// ApiStoragesExportAzurePartialUpdateWithFormdataBodyWithResponse Update export storage
+//
+// Update a specific Azure export storage connection.
+//
+// Takes a body of the `application/x-www-form-urlencoded` content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with PATCH /api/storages/export/azure/{id} (the `ApiStoragesExportAzurePartialUpdate` operationId).
+func (c *ClientWithResponses) ApiStoragesExportAzurePartialUpdateWithFormdataBodyWithResponse(ctx context.Context, id int, body ApiStoragesExportAzurePartialUpdateFormdataRequestBody, reqEditors ...RequestEditorFn) (*ApiStoragesExportAzurePartialUpdateResponse, error) {
+	rsp, err := c.ApiStoragesExportAzurePartialUpdateWithFormdataBody(ctx, id, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesExportAzurePartialUpdateResponse(rsp)
+}
+
+// ApiStoragesExportAzureSyncCreateWithResponse Sync export storage
+//
+// Sync tasks from an Azure export storage connection.
+//
+// Returns a wrapper object for the known response body format(s).
+//
+// Corresponds with POST /api/storages/export/azure/{id}/sync (the `ApiStoragesExportAzureSyncCreate` operationId).
+func (c *ClientWithResponses) ApiStoragesExportAzureSyncCreateWithResponse(ctx context.Context, id int, reqEditors ...RequestEditorFn) (*ApiStoragesExportAzureSyncCreateResponse, error) {
+	rsp, err := c.ApiStoragesExportAzureSyncCreate(ctx, id, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesExportAzureSyncCreateResponse(rsp)
+}
+
+// ApiStoragesExportAzureSpiListWithResponse ✨ Get all Azure SPI export storage
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Get a list of all Azure export storage connections that were set up with Service Principal authentication.
+//
+// Returns a wrapper object for the known response body format(s).
+//
+// Corresponds with GET /api/storages/export/azure_spi (the `ApiStoragesExportAzureSpiList` operationId).
+func (c *ClientWithResponses) ApiStoragesExportAzureSpiListWithResponse(ctx context.Context, params *ApiStoragesExportAzureSpiListParams, reqEditors ...RequestEditorFn) (*ApiStoragesExportAzureSpiListResponse, error) {
+	rsp, err := c.ApiStoragesExportAzureSpiList(ctx, params, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesExportAzureSpiListResponse(rsp)
+}
+
+// ApiStoragesExportAzureSpiCreateWithBodyWithResponse ✨ Create Azure export storage with SPI authentication
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Create an Azure export storage connection with Service Principal or workload-identity authentication to store annotations. Supports auth_mode=service_principal (default; requires tenant_id, client_id, and client_secret) and auth_mode=workload_identity (secretless; client_secret must be omitted, tenant_id is not required, optional client_id selects a user-assigned managed identity). GET responses never include client_secret.
+//
+// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with POST /api/storages/export/azure_spi (the `ApiStoragesExportAzureSpiCreate` operationId).
+func (c *ClientWithResponses) ApiStoragesExportAzureSpiCreateWithBodyWithResponse(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*ApiStoragesExportAzureSpiCreateResponse, error) {
+	rsp, err := c.ApiStoragesExportAzureSpiCreateWithBody(ctx, contentType, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesExportAzureSpiCreateResponse(rsp)
+}
+
+// ApiStoragesExportAzureSpiCreateWithResponse ✨ Create Azure export storage with SPI authentication
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Create an Azure export storage connection with Service Principal or workload-identity authentication to store annotations. Supports auth_mode=service_principal (default; requires tenant_id, client_id, and client_secret) and auth_mode=workload_identity (secretless; client_secret must be omitted, tenant_id is not required, optional client_id selects a user-assigned managed identity). GET responses never include client_secret.
+//
+// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with POST /api/storages/export/azure_spi (the `ApiStoragesExportAzureSpiCreate` operationId).
+func (c *ClientWithResponses) ApiStoragesExportAzureSpiCreateWithResponse(ctx context.Context, body ApiStoragesExportAzureSpiCreateJSONRequestBody, reqEditors ...RequestEditorFn) (*ApiStoragesExportAzureSpiCreateResponse, error) {
+	rsp, err := c.ApiStoragesExportAzureSpiCreate(ctx, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesExportAzureSpiCreateResponse(rsp)
+}
+
+// ApiStoragesExportAzureSpiCreateWithFormdataBodyWithResponse ✨ Create Azure export storage with SPI authentication
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Create an Azure export storage connection with Service Principal or workload-identity authentication to store annotations. Supports auth_mode=service_principal (default; requires tenant_id, client_id, and client_secret) and auth_mode=workload_identity (secretless; client_secret must be omitted, tenant_id is not required, optional client_id selects a user-assigned managed identity). GET responses never include client_secret.
+//
+// Takes a body of the `application/x-www-form-urlencoded` content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with POST /api/storages/export/azure_spi (the `ApiStoragesExportAzureSpiCreate` operationId).
+func (c *ClientWithResponses) ApiStoragesExportAzureSpiCreateWithFormdataBodyWithResponse(ctx context.Context, body ApiStoragesExportAzureSpiCreateFormdataRequestBody, reqEditors ...RequestEditorFn) (*ApiStoragesExportAzureSpiCreateResponse, error) {
+	rsp, err := c.ApiStoragesExportAzureSpiCreateWithFormdataBody(ctx, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesExportAzureSpiCreateResponse(rsp)
+}
+
+// ApiStoragesExportAzureSpiValidateCreateWithBodyWithResponse ✨ Validate Azure SPI export storage
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Validate a specific Azure export storage connection (Service Principal or workload-identity). Supports auth_mode=service_principal (default; requires tenant_id, client_id, and client_secret) and auth_mode=workload_identity (secretless; client_secret must be omitted, tenant_id is not required, optional client_id selects a user-assigned managed identity). GET responses never include client_secret.
+//
+// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with POST /api/storages/export/azure_spi/validate (the `ApiStoragesExportAzureSpiValidateCreate` operationId).
+func (c *ClientWithResponses) ApiStoragesExportAzureSpiValidateCreateWithBodyWithResponse(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*ApiStoragesExportAzureSpiValidateCreateResponse, error) {
+	rsp, err := c.ApiStoragesExportAzureSpiValidateCreateWithBody(ctx, contentType, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesExportAzureSpiValidateCreateResponse(rsp)
+}
+
+// ApiStoragesExportAzureSpiValidateCreateWithResponse ✨ Validate Azure SPI export storage
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Validate a specific Azure export storage connection (Service Principal or workload-identity). Supports auth_mode=service_principal (default; requires tenant_id, client_id, and client_secret) and auth_mode=workload_identity (secretless; client_secret must be omitted, tenant_id is not required, optional client_id selects a user-assigned managed identity). GET responses never include client_secret.
+//
+// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with POST /api/storages/export/azure_spi/validate (the `ApiStoragesExportAzureSpiValidateCreate` operationId).
+func (c *ClientWithResponses) ApiStoragesExportAzureSpiValidateCreateWithResponse(ctx context.Context, body ApiStoragesExportAzureSpiValidateCreateJSONRequestBody, reqEditors ...RequestEditorFn) (*ApiStoragesExportAzureSpiValidateCreateResponse, error) {
+	rsp, err := c.ApiStoragesExportAzureSpiValidateCreate(ctx, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesExportAzureSpiValidateCreateResponse(rsp)
+}
+
+// ApiStoragesExportAzureSpiValidateCreateWithFormdataBodyWithResponse ✨ Validate Azure SPI export storage
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Validate a specific Azure export storage connection (Service Principal or workload-identity). Supports auth_mode=service_principal (default; requires tenant_id, client_id, and client_secret) and auth_mode=workload_identity (secretless; client_secret must be omitted, tenant_id is not required, optional client_id selects a user-assigned managed identity). GET responses never include client_secret.
+//
+// Takes a body of the `application/x-www-form-urlencoded` content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with POST /api/storages/export/azure_spi/validate (the `ApiStoragesExportAzureSpiValidateCreate` operationId).
+func (c *ClientWithResponses) ApiStoragesExportAzureSpiValidateCreateWithFormdataBodyWithResponse(ctx context.Context, body ApiStoragesExportAzureSpiValidateCreateFormdataRequestBody, reqEditors ...RequestEditorFn) (*ApiStoragesExportAzureSpiValidateCreateResponse, error) {
+	rsp, err := c.ApiStoragesExportAzureSpiValidateCreateWithFormdataBody(ctx, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesExportAzureSpiValidateCreateResponse(rsp)
+}
+
+// ApiStoragesExportAzureSpiDestroyWithResponse ✨ Delete Azure SPI export storage
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Delete a specific Azure export storage connection that was set up with Service Principal authentication.
+//
+// Returns a wrapper object for the known response body format(s).
+//
+// Corresponds with DELETE /api/storages/export/azure_spi/{id} (the `ApiStoragesExportAzureSpiDestroy` operationId).
+func (c *ClientWithResponses) ApiStoragesExportAzureSpiDestroyWithResponse(ctx context.Context, id int, reqEditors ...RequestEditorFn) (*ApiStoragesExportAzureSpiDestroyResponse, error) {
+	rsp, err := c.ApiStoragesExportAzureSpiDestroy(ctx, id, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesExportAzureSpiDestroyResponse(rsp)
+}
+
+// ApiStoragesExportAzureSpiRetrieveWithResponse ✨ Get Azure SPI export storage
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Get a specific Azure export storage connection that was set up with Service Principal authentication.
+//
+// Returns a wrapper object for the known response body format(s).
+//
+// Corresponds with GET /api/storages/export/azure_spi/{id} (the `ApiStoragesExportAzureSpiRetrieve` operationId).
+func (c *ClientWithResponses) ApiStoragesExportAzureSpiRetrieveWithResponse(ctx context.Context, id int, reqEditors ...RequestEditorFn) (*ApiStoragesExportAzureSpiRetrieveResponse, error) {
+	rsp, err := c.ApiStoragesExportAzureSpiRetrieve(ctx, id, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesExportAzureSpiRetrieveResponse(rsp)
+}
+
+// ApiStoragesExportAzureSpiPartialUpdateWithBodyWithResponse ✨ Update Azure SPI export storage
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Update a specific Azure export storage connection (Service Principal or workload-identity). Supports auth_mode=service_principal (default; requires tenant_id, client_id, and client_secret) and auth_mode=workload_identity (secretless; client_secret must be omitted, tenant_id is not required, optional client_id selects a user-assigned managed identity). GET responses never include client_secret.
+//
+// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with PATCH /api/storages/export/azure_spi/{id} (the `ApiStoragesExportAzureSpiPartialUpdate` operationId).
+func (c *ClientWithResponses) ApiStoragesExportAzureSpiPartialUpdateWithBodyWithResponse(ctx context.Context, id int, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*ApiStoragesExportAzureSpiPartialUpdateResponse, error) {
+	rsp, err := c.ApiStoragesExportAzureSpiPartialUpdateWithBody(ctx, id, contentType, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesExportAzureSpiPartialUpdateResponse(rsp)
+}
+
+// ApiStoragesExportAzureSpiPartialUpdateWithResponse ✨ Update Azure SPI export storage
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Update a specific Azure export storage connection (Service Principal or workload-identity). Supports auth_mode=service_principal (default; requires tenant_id, client_id, and client_secret) and auth_mode=workload_identity (secretless; client_secret must be omitted, tenant_id is not required, optional client_id selects a user-assigned managed identity). GET responses never include client_secret.
+//
+// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with PATCH /api/storages/export/azure_spi/{id} (the `ApiStoragesExportAzureSpiPartialUpdate` operationId).
+func (c *ClientWithResponses) ApiStoragesExportAzureSpiPartialUpdateWithResponse(ctx context.Context, id int, body ApiStoragesExportAzureSpiPartialUpdateJSONRequestBody, reqEditors ...RequestEditorFn) (*ApiStoragesExportAzureSpiPartialUpdateResponse, error) {
+	rsp, err := c.ApiStoragesExportAzureSpiPartialUpdate(ctx, id, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesExportAzureSpiPartialUpdateResponse(rsp)
+}
+
+// ApiStoragesExportAzureSpiPartialUpdateWithFormdataBodyWithResponse ✨ Update Azure SPI export storage
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Update a specific Azure export storage connection (Service Principal or workload-identity). Supports auth_mode=service_principal (default; requires tenant_id, client_id, and client_secret) and auth_mode=workload_identity (secretless; client_secret must be omitted, tenant_id is not required, optional client_id selects a user-assigned managed identity). GET responses never include client_secret.
+//
+// Takes a body of the `application/x-www-form-urlencoded` content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with PATCH /api/storages/export/azure_spi/{id} (the `ApiStoragesExportAzureSpiPartialUpdate` operationId).
+func (c *ClientWithResponses) ApiStoragesExportAzureSpiPartialUpdateWithFormdataBodyWithResponse(ctx context.Context, id int, body ApiStoragesExportAzureSpiPartialUpdateFormdataRequestBody, reqEditors ...RequestEditorFn) (*ApiStoragesExportAzureSpiPartialUpdateResponse, error) {
+	rsp, err := c.ApiStoragesExportAzureSpiPartialUpdateWithFormdataBody(ctx, id, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesExportAzureSpiPartialUpdateResponse(rsp)
+}
+
+// ApiStoragesExportAzureSpiSyncCreateWithResponse ✨ Sync Azure SPI export storage
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Sync tasks from an Azure SPI export storage.
+//
+// Returns a wrapper object for the known response body format(s).
+//
+// Corresponds with POST /api/storages/export/azure_spi/{id}/sync (the `ApiStoragesExportAzureSpiSyncCreate` operationId).
+func (c *ClientWithResponses) ApiStoragesExportAzureSpiSyncCreateWithResponse(ctx context.Context, id int, reqEditors ...RequestEditorFn) (*ApiStoragesExportAzureSpiSyncCreateResponse, error) {
+	rsp, err := c.ApiStoragesExportAzureSpiSyncCreate(ctx, id, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesExportAzureSpiSyncCreateResponse(rsp)
+}
+
+// ApiStoragesExportDatabricksListWithResponse ✨ List Databricks export storages
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Get a list of all Databricks Files export storage connections.
+//
+// Returns a wrapper object for the known response body format(s).
+//
+// Corresponds with GET /api/storages/export/databricks (the `ApiStoragesExportDatabricksList` operationId).
+func (c *ClientWithResponses) ApiStoragesExportDatabricksListWithResponse(ctx context.Context, params *ApiStoragesExportDatabricksListParams, reqEditors ...RequestEditorFn) (*ApiStoragesExportDatabricksListResponse, error) {
+	rsp, err := c.ApiStoragesExportDatabricksList(ctx, params, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesExportDatabricksListResponse(rsp)
+}
+
+// ApiStoragesExportDatabricksCreateWithBodyWithResponse ✨ Create Databricks export storage
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Create a Databricks Files export storage connection.
+//
+// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with POST /api/storages/export/databricks (the `ApiStoragesExportDatabricksCreate` operationId).
+func (c *ClientWithResponses) ApiStoragesExportDatabricksCreateWithBodyWithResponse(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*ApiStoragesExportDatabricksCreateResponse, error) {
+	rsp, err := c.ApiStoragesExportDatabricksCreateWithBody(ctx, contentType, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesExportDatabricksCreateResponse(rsp)
+}
+
+// ApiStoragesExportDatabricksCreateWithResponse ✨ Create Databricks export storage
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Create a Databricks Files export storage connection.
+//
+// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with POST /api/storages/export/databricks (the `ApiStoragesExportDatabricksCreate` operationId).
+func (c *ClientWithResponses) ApiStoragesExportDatabricksCreateWithResponse(ctx context.Context, body ApiStoragesExportDatabricksCreateJSONRequestBody, reqEditors ...RequestEditorFn) (*ApiStoragesExportDatabricksCreateResponse, error) {
+	rsp, err := c.ApiStoragesExportDatabricksCreate(ctx, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesExportDatabricksCreateResponse(rsp)
+}
+
+// ApiStoragesExportDatabricksCreateWithFormdataBodyWithResponse ✨ Create Databricks export storage
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Create a Databricks Files export storage connection.
+//
+// Takes a body of the `application/x-www-form-urlencoded` content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with POST /api/storages/export/databricks (the `ApiStoragesExportDatabricksCreate` operationId).
+func (c *ClientWithResponses) ApiStoragesExportDatabricksCreateWithFormdataBodyWithResponse(ctx context.Context, body ApiStoragesExportDatabricksCreateFormdataRequestBody, reqEditors ...RequestEditorFn) (*ApiStoragesExportDatabricksCreateResponse, error) {
+	rsp, err := c.ApiStoragesExportDatabricksCreateWithFormdataBody(ctx, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesExportDatabricksCreateResponse(rsp)
+}
+
+// ApiStoragesExportDatabricksValidateCreateWithBodyWithResponse ✨ Validate Databricks export storage
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Validate a specific Databricks Files export storage connection.
+//
+// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with POST /api/storages/export/databricks/validate (the `ApiStoragesExportDatabricksValidateCreate` operationId).
+func (c *ClientWithResponses) ApiStoragesExportDatabricksValidateCreateWithBodyWithResponse(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*ApiStoragesExportDatabricksValidateCreateResponse, error) {
+	rsp, err := c.ApiStoragesExportDatabricksValidateCreateWithBody(ctx, contentType, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesExportDatabricksValidateCreateResponse(rsp)
+}
+
+// ApiStoragesExportDatabricksValidateCreateWithResponse ✨ Validate Databricks export storage
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Validate a specific Databricks Files export storage connection.
+//
+// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with POST /api/storages/export/databricks/validate (the `ApiStoragesExportDatabricksValidateCreate` operationId).
+func (c *ClientWithResponses) ApiStoragesExportDatabricksValidateCreateWithResponse(ctx context.Context, body ApiStoragesExportDatabricksValidateCreateJSONRequestBody, reqEditors ...RequestEditorFn) (*ApiStoragesExportDatabricksValidateCreateResponse, error) {
+	rsp, err := c.ApiStoragesExportDatabricksValidateCreate(ctx, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesExportDatabricksValidateCreateResponse(rsp)
+}
+
+// ApiStoragesExportDatabricksValidateCreateWithFormdataBodyWithResponse ✨ Validate Databricks export storage
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Validate a specific Databricks Files export storage connection.
+//
+// Takes a body of the `application/x-www-form-urlencoded` content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with POST /api/storages/export/databricks/validate (the `ApiStoragesExportDatabricksValidateCreate` operationId).
+func (c *ClientWithResponses) ApiStoragesExportDatabricksValidateCreateWithFormdataBodyWithResponse(ctx context.Context, body ApiStoragesExportDatabricksValidateCreateFormdataRequestBody, reqEditors ...RequestEditorFn) (*ApiStoragesExportDatabricksValidateCreateResponse, error) {
+	rsp, err := c.ApiStoragesExportDatabricksValidateCreateWithFormdataBody(ctx, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesExportDatabricksValidateCreateResponse(rsp)
+}
+
+// ApiStoragesExportDatabricksDestroyWithResponse ✨ Delete Databricks export storage
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Delete a specific Databricks Files export storage connection.
+//
+// Returns a wrapper object for the known response body format(s).
+//
+// Corresponds with DELETE /api/storages/export/databricks/{id} (the `ApiStoragesExportDatabricksDestroy` operationId).
+func (c *ClientWithResponses) ApiStoragesExportDatabricksDestroyWithResponse(ctx context.Context, id int, reqEditors ...RequestEditorFn) (*ApiStoragesExportDatabricksDestroyResponse, error) {
+	rsp, err := c.ApiStoragesExportDatabricksDestroy(ctx, id, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesExportDatabricksDestroyResponse(rsp)
+}
+
+// ApiStoragesExportDatabricksRetrieveWithResponse ✨ Get Databricks export storage
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Get a specific Databricks Files export storage connection.
+//
+// Returns a wrapper object for the known response body format(s).
+//
+// Corresponds with GET /api/storages/export/databricks/{id} (the `ApiStoragesExportDatabricksRetrieve` operationId).
+func (c *ClientWithResponses) ApiStoragesExportDatabricksRetrieveWithResponse(ctx context.Context, id int, reqEditors ...RequestEditorFn) (*ApiStoragesExportDatabricksRetrieveResponse, error) {
+	rsp, err := c.ApiStoragesExportDatabricksRetrieve(ctx, id, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesExportDatabricksRetrieveResponse(rsp)
+}
+
+// ApiStoragesExportDatabricksPartialUpdateWithBodyWithResponse ✨ Update Databricks export storage
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Update a specific Databricks Files export storage connection.
+//
+// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with PATCH /api/storages/export/databricks/{id} (the `ApiStoragesExportDatabricksPartialUpdate` operationId).
+func (c *ClientWithResponses) ApiStoragesExportDatabricksPartialUpdateWithBodyWithResponse(ctx context.Context, id int, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*ApiStoragesExportDatabricksPartialUpdateResponse, error) {
+	rsp, err := c.ApiStoragesExportDatabricksPartialUpdateWithBody(ctx, id, contentType, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesExportDatabricksPartialUpdateResponse(rsp)
+}
+
+// ApiStoragesExportDatabricksPartialUpdateWithResponse ✨ Update Databricks export storage
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Update a specific Databricks Files export storage connection.
+//
+// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with PATCH /api/storages/export/databricks/{id} (the `ApiStoragesExportDatabricksPartialUpdate` operationId).
+func (c *ClientWithResponses) ApiStoragesExportDatabricksPartialUpdateWithResponse(ctx context.Context, id int, body ApiStoragesExportDatabricksPartialUpdateJSONRequestBody, reqEditors ...RequestEditorFn) (*ApiStoragesExportDatabricksPartialUpdateResponse, error) {
+	rsp, err := c.ApiStoragesExportDatabricksPartialUpdate(ctx, id, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesExportDatabricksPartialUpdateResponse(rsp)
+}
+
+// ApiStoragesExportDatabricksPartialUpdateWithFormdataBodyWithResponse ✨ Update Databricks export storage
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Update a specific Databricks Files export storage connection.
+//
+// Takes a body of the `application/x-www-form-urlencoded` content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with PATCH /api/storages/export/databricks/{id} (the `ApiStoragesExportDatabricksPartialUpdate` operationId).
+func (c *ClientWithResponses) ApiStoragesExportDatabricksPartialUpdateWithFormdataBodyWithResponse(ctx context.Context, id int, body ApiStoragesExportDatabricksPartialUpdateFormdataRequestBody, reqEditors ...RequestEditorFn) (*ApiStoragesExportDatabricksPartialUpdateResponse, error) {
+	rsp, err := c.ApiStoragesExportDatabricksPartialUpdateWithFormdataBody(ctx, id, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesExportDatabricksPartialUpdateResponse(rsp)
+}
+
+// ApiStoragesExportDatabricksSyncCreateWithResponse ✨ Sync Databricks export storage
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Export annotations to a Databricks Files storage.
+//
+// Returns a wrapper object for the known response body format(s).
+//
+// Corresponds with POST /api/storages/export/databricks/{id}/sync (the `ApiStoragesExportDatabricksSyncCreate` operationId).
+func (c *ClientWithResponses) ApiStoragesExportDatabricksSyncCreateWithResponse(ctx context.Context, id int, reqEditors ...RequestEditorFn) (*ApiStoragesExportDatabricksSyncCreateResponse, error) {
+	rsp, err := c.ApiStoragesExportDatabricksSyncCreate(ctx, id, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesExportDatabricksSyncCreateResponse(rsp)
+}
+
+// ApiStoragesExportGcsListWithResponse Get all export storage
+//
+// Get a list of all GCS export storage connections.
+//
+// Returns a wrapper object for the known response body format(s).
+//
+// Corresponds with GET /api/storages/export/gcs (the `ApiStoragesExportGcsList` operationId).
+func (c *ClientWithResponses) ApiStoragesExportGcsListWithResponse(ctx context.Context, params *ApiStoragesExportGcsListParams, reqEditors ...RequestEditorFn) (*ApiStoragesExportGcsListResponse, error) {
+	rsp, err := c.ApiStoragesExportGcsList(ctx, params, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesExportGcsListResponse(rsp)
+}
+
+// ApiStoragesExportGcsCreateWithBodyWithResponse Create export storage
+//
+// Create a new GCS export storage connection to store annotations.
+//
+// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with POST /api/storages/export/gcs (the `ApiStoragesExportGcsCreate` operationId).
+func (c *ClientWithResponses) ApiStoragesExportGcsCreateWithBodyWithResponse(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*ApiStoragesExportGcsCreateResponse, error) {
+	rsp, err := c.ApiStoragesExportGcsCreateWithBody(ctx, contentType, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesExportGcsCreateResponse(rsp)
+}
+
+// ApiStoragesExportGcsCreateWithResponse Create export storage
+//
+// Create a new GCS export storage connection to store annotations.
+//
+// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with POST /api/storages/export/gcs (the `ApiStoragesExportGcsCreate` operationId).
+func (c *ClientWithResponses) ApiStoragesExportGcsCreateWithResponse(ctx context.Context, body ApiStoragesExportGcsCreateJSONRequestBody, reqEditors ...RequestEditorFn) (*ApiStoragesExportGcsCreateResponse, error) {
+	rsp, err := c.ApiStoragesExportGcsCreate(ctx, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesExportGcsCreateResponse(rsp)
+}
+
+// ApiStoragesExportGcsCreateWithFormdataBodyWithResponse Create export storage
+//
+// Create a new GCS export storage connection to store annotations.
+//
+// Takes a body of the `application/x-www-form-urlencoded` content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with POST /api/storages/export/gcs (the `ApiStoragesExportGcsCreate` operationId).
+func (c *ClientWithResponses) ApiStoragesExportGcsCreateWithFormdataBodyWithResponse(ctx context.Context, body ApiStoragesExportGcsCreateFormdataRequestBody, reqEditors ...RequestEditorFn) (*ApiStoragesExportGcsCreateResponse, error) {
+	rsp, err := c.ApiStoragesExportGcsCreateWithFormdataBody(ctx, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesExportGcsCreateResponse(rsp)
+}
+
+// ApiStoragesExportGcsValidateCreateWithBodyWithResponse Validate export storage
+//
+// Validate a specific GCS export storage connection.
+//
+// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with POST /api/storages/export/gcs/validate (the `ApiStoragesExportGcsValidateCreate` operationId).
+func (c *ClientWithResponses) ApiStoragesExportGcsValidateCreateWithBodyWithResponse(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*ApiStoragesExportGcsValidateCreateResponse, error) {
+	rsp, err := c.ApiStoragesExportGcsValidateCreateWithBody(ctx, contentType, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesExportGcsValidateCreateResponse(rsp)
+}
+
+// ApiStoragesExportGcsValidateCreateWithResponse Validate export storage
+//
+// Validate a specific GCS export storage connection.
+//
+// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with POST /api/storages/export/gcs/validate (the `ApiStoragesExportGcsValidateCreate` operationId).
+func (c *ClientWithResponses) ApiStoragesExportGcsValidateCreateWithResponse(ctx context.Context, body ApiStoragesExportGcsValidateCreateJSONRequestBody, reqEditors ...RequestEditorFn) (*ApiStoragesExportGcsValidateCreateResponse, error) {
+	rsp, err := c.ApiStoragesExportGcsValidateCreate(ctx, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesExportGcsValidateCreateResponse(rsp)
+}
+
+// ApiStoragesExportGcsValidateCreateWithFormdataBodyWithResponse Validate export storage
+//
+// Validate a specific GCS export storage connection.
+//
+// Takes a body of the `application/x-www-form-urlencoded` content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with POST /api/storages/export/gcs/validate (the `ApiStoragesExportGcsValidateCreate` operationId).
+func (c *ClientWithResponses) ApiStoragesExportGcsValidateCreateWithFormdataBodyWithResponse(ctx context.Context, body ApiStoragesExportGcsValidateCreateFormdataRequestBody, reqEditors ...RequestEditorFn) (*ApiStoragesExportGcsValidateCreateResponse, error) {
+	rsp, err := c.ApiStoragesExportGcsValidateCreateWithFormdataBody(ctx, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesExportGcsValidateCreateResponse(rsp)
+}
+
+// ApiStoragesExportGcsDestroyWithResponse Delete export storage
+//
+// Delete a specific GCS export storage connection.
+//
+// Returns a wrapper object for the known response body format(s).
+//
+// Corresponds with DELETE /api/storages/export/gcs/{id} (the `ApiStoragesExportGcsDestroy` operationId).
+func (c *ClientWithResponses) ApiStoragesExportGcsDestroyWithResponse(ctx context.Context, id int, reqEditors ...RequestEditorFn) (*ApiStoragesExportGcsDestroyResponse, error) {
+	rsp, err := c.ApiStoragesExportGcsDestroy(ctx, id, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesExportGcsDestroyResponse(rsp)
+}
+
+// ApiStoragesExportGcsRetrieveWithResponse Get export storage
+//
+// Get a specific GCS export storage connection.
+//
+// Returns a wrapper object for the known response body format(s).
+//
+// Corresponds with GET /api/storages/export/gcs/{id} (the `ApiStoragesExportGcsRetrieve` operationId).
+func (c *ClientWithResponses) ApiStoragesExportGcsRetrieveWithResponse(ctx context.Context, id int, reqEditors ...RequestEditorFn) (*ApiStoragesExportGcsRetrieveResponse, error) {
+	rsp, err := c.ApiStoragesExportGcsRetrieve(ctx, id, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesExportGcsRetrieveResponse(rsp)
+}
+
+// ApiStoragesExportGcsPartialUpdateWithBodyWithResponse Update export storage
+//
+// Update a specific GCS export storage connection.
+//
+// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with PATCH /api/storages/export/gcs/{id} (the `ApiStoragesExportGcsPartialUpdate` operationId).
+func (c *ClientWithResponses) ApiStoragesExportGcsPartialUpdateWithBodyWithResponse(ctx context.Context, id int, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*ApiStoragesExportGcsPartialUpdateResponse, error) {
+	rsp, err := c.ApiStoragesExportGcsPartialUpdateWithBody(ctx, id, contentType, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesExportGcsPartialUpdateResponse(rsp)
+}
+
+// ApiStoragesExportGcsPartialUpdateWithResponse Update export storage
+//
+// Update a specific GCS export storage connection.
+//
+// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with PATCH /api/storages/export/gcs/{id} (the `ApiStoragesExportGcsPartialUpdate` operationId).
+func (c *ClientWithResponses) ApiStoragesExportGcsPartialUpdateWithResponse(ctx context.Context, id int, body ApiStoragesExportGcsPartialUpdateJSONRequestBody, reqEditors ...RequestEditorFn) (*ApiStoragesExportGcsPartialUpdateResponse, error) {
+	rsp, err := c.ApiStoragesExportGcsPartialUpdate(ctx, id, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesExportGcsPartialUpdateResponse(rsp)
+}
+
+// ApiStoragesExportGcsPartialUpdateWithFormdataBodyWithResponse Update export storage
+//
+// Update a specific GCS export storage connection.
+//
+// Takes a body of the `application/x-www-form-urlencoded` content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with PATCH /api/storages/export/gcs/{id} (the `ApiStoragesExportGcsPartialUpdate` operationId).
+func (c *ClientWithResponses) ApiStoragesExportGcsPartialUpdateWithFormdataBodyWithResponse(ctx context.Context, id int, body ApiStoragesExportGcsPartialUpdateFormdataRequestBody, reqEditors ...RequestEditorFn) (*ApiStoragesExportGcsPartialUpdateResponse, error) {
+	rsp, err := c.ApiStoragesExportGcsPartialUpdateWithFormdataBody(ctx, id, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesExportGcsPartialUpdateResponse(rsp)
+}
+
+// ApiStoragesExportGcsSyncCreateWithResponse Sync export storage
+//
+// Sync tasks from an GCS export storage connection.
+//
+// Returns a wrapper object for the known response body format(s).
+//
+// Corresponds with POST /api/storages/export/gcs/{id}/sync (the `ApiStoragesExportGcsSyncCreate` operationId).
+func (c *ClientWithResponses) ApiStoragesExportGcsSyncCreateWithResponse(ctx context.Context, id int, reqEditors ...RequestEditorFn) (*ApiStoragesExportGcsSyncCreateResponse, error) {
+	rsp, err := c.ApiStoragesExportGcsSyncCreate(ctx, id, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesExportGcsSyncCreateResponse(rsp)
+}
+
+// ApiStoragesExportGcsSaListWithResponse ✨ Get all GCS SA export storages
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Get a list of all GCS export storage connections set up with SA Impersonation.
+//
+// Returns a wrapper object for the known response body format(s).
+//
+// Corresponds with GET /api/storages/export/gcs_sa (the `ApiStoragesExportGcsSaList` operationId).
+func (c *ClientWithResponses) ApiStoragesExportGcsSaListWithResponse(ctx context.Context, params *ApiStoragesExportGcsSaListParams, reqEditors ...RequestEditorFn) (*ApiStoragesExportGcsSaListResponse, error) {
+	rsp, err := c.ApiStoragesExportGcsSaList(ctx, params, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesExportGcsSaListResponse(rsp)
+}
+
+// ApiStoragesExportGcsSaCreateWithBodyWithResponse ✨ Create GCS export storage with SA Impersonation
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Create a GCS export storage connection with SA Impersonation to store annotations.
+//
+// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with POST /api/storages/export/gcs_sa (the `ApiStoragesExportGcsSaCreate` operationId).
+func (c *ClientWithResponses) ApiStoragesExportGcsSaCreateWithBodyWithResponse(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*ApiStoragesExportGcsSaCreateResponse, error) {
+	rsp, err := c.ApiStoragesExportGcsSaCreateWithBody(ctx, contentType, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesExportGcsSaCreateResponse(rsp)
+}
+
+// ApiStoragesExportGcsSaCreateWithResponse ✨ Create GCS export storage with SA Impersonation
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Create a GCS export storage connection with SA Impersonation to store annotations.
+//
+// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with POST /api/storages/export/gcs_sa (the `ApiStoragesExportGcsSaCreate` operationId).
+func (c *ClientWithResponses) ApiStoragesExportGcsSaCreateWithResponse(ctx context.Context, body ApiStoragesExportGcsSaCreateJSONRequestBody, reqEditors ...RequestEditorFn) (*ApiStoragesExportGcsSaCreateResponse, error) {
+	rsp, err := c.ApiStoragesExportGcsSaCreate(ctx, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesExportGcsSaCreateResponse(rsp)
+}
+
+// ApiStoragesExportGcsSaCreateWithFormdataBodyWithResponse ✨ Create GCS export storage with SA Impersonation
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Create a GCS export storage connection with SA Impersonation to store annotations.
+//
+// Takes a body of the `application/x-www-form-urlencoded` content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with POST /api/storages/export/gcs_sa (the `ApiStoragesExportGcsSaCreate` operationId).
+func (c *ClientWithResponses) ApiStoragesExportGcsSaCreateWithFormdataBodyWithResponse(ctx context.Context, body ApiStoragesExportGcsSaCreateFormdataRequestBody, reqEditors ...RequestEditorFn) (*ApiStoragesExportGcsSaCreateResponse, error) {
+	rsp, err := c.ApiStoragesExportGcsSaCreateWithFormdataBody(ctx, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesExportGcsSaCreateResponse(rsp)
+}
+
+// ApiStoragesExportGcsSaValidateCreateWithBodyWithResponse ✨ Validate GCS SA export storage
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Validate a specific GCS export storage connection set up with SA Impersonation.
+//
+// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with POST /api/storages/export/gcs_sa/validate (the `ApiStoragesExportGcsSaValidateCreate` operationId).
+func (c *ClientWithResponses) ApiStoragesExportGcsSaValidateCreateWithBodyWithResponse(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*ApiStoragesExportGcsSaValidateCreateResponse, error) {
+	rsp, err := c.ApiStoragesExportGcsSaValidateCreateWithBody(ctx, contentType, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesExportGcsSaValidateCreateResponse(rsp)
+}
+
+// ApiStoragesExportGcsSaValidateCreateWithResponse ✨ Validate GCS SA export storage
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Validate a specific GCS export storage connection set up with SA Impersonation.
+//
+// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with POST /api/storages/export/gcs_sa/validate (the `ApiStoragesExportGcsSaValidateCreate` operationId).
+func (c *ClientWithResponses) ApiStoragesExportGcsSaValidateCreateWithResponse(ctx context.Context, body ApiStoragesExportGcsSaValidateCreateJSONRequestBody, reqEditors ...RequestEditorFn) (*ApiStoragesExportGcsSaValidateCreateResponse, error) {
+	rsp, err := c.ApiStoragesExportGcsSaValidateCreate(ctx, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesExportGcsSaValidateCreateResponse(rsp)
+}
+
+// ApiStoragesExportGcsSaValidateCreateWithFormdataBodyWithResponse ✨ Validate GCS SA export storage
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Validate a specific GCS export storage connection set up with SA Impersonation.
+//
+// Takes a body of the `application/x-www-form-urlencoded` content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with POST /api/storages/export/gcs_sa/validate (the `ApiStoragesExportGcsSaValidateCreate` operationId).
+func (c *ClientWithResponses) ApiStoragesExportGcsSaValidateCreateWithFormdataBodyWithResponse(ctx context.Context, body ApiStoragesExportGcsSaValidateCreateFormdataRequestBody, reqEditors ...RequestEditorFn) (*ApiStoragesExportGcsSaValidateCreateResponse, error) {
+	rsp, err := c.ApiStoragesExportGcsSaValidateCreateWithFormdataBody(ctx, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesExportGcsSaValidateCreateResponse(rsp)
+}
+
+// ApiStoragesExportGcsSaDestroyWithResponse ✨ Delete GCS SA export storage
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Delete a specific GCS export storage connection set up with SA Impersonation.
+//
+// Returns a wrapper object for the known response body format(s).
+//
+// Corresponds with DELETE /api/storages/export/gcs_sa/{id} (the `ApiStoragesExportGcsSaDestroy` operationId).
+func (c *ClientWithResponses) ApiStoragesExportGcsSaDestroyWithResponse(ctx context.Context, id int, reqEditors ...RequestEditorFn) (*ApiStoragesExportGcsSaDestroyResponse, error) {
+	rsp, err := c.ApiStoragesExportGcsSaDestroy(ctx, id, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesExportGcsSaDestroyResponse(rsp)
+}
+
+// ApiStoragesExportGcsSaRetrieveWithResponse ✨ Get GCS SA export storage
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Get a specific GCS export storage connection set up with SA Impersonation.
+//
+// Returns a wrapper object for the known response body format(s).
+//
+// Corresponds with GET /api/storages/export/gcs_sa/{id} (the `ApiStoragesExportGcsSaRetrieve` operationId).
+func (c *ClientWithResponses) ApiStoragesExportGcsSaRetrieveWithResponse(ctx context.Context, id int, reqEditors ...RequestEditorFn) (*ApiStoragesExportGcsSaRetrieveResponse, error) {
+	rsp, err := c.ApiStoragesExportGcsSaRetrieve(ctx, id, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesExportGcsSaRetrieveResponse(rsp)
+}
+
+// ApiStoragesExportGcsSaPartialUpdateWithBodyWithResponse ✨ Update GCS SA export storage
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Update a specific GCS export storage connection set up with SA Impersonation.
+//
+// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with PATCH /api/storages/export/gcs_sa/{id} (the `ApiStoragesExportGcsSaPartialUpdate` operationId).
+func (c *ClientWithResponses) ApiStoragesExportGcsSaPartialUpdateWithBodyWithResponse(ctx context.Context, id int, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*ApiStoragesExportGcsSaPartialUpdateResponse, error) {
+	rsp, err := c.ApiStoragesExportGcsSaPartialUpdateWithBody(ctx, id, contentType, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesExportGcsSaPartialUpdateResponse(rsp)
+}
+
+// ApiStoragesExportGcsSaPartialUpdateWithResponse ✨ Update GCS SA export storage
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Update a specific GCS export storage connection set up with SA Impersonation.
+//
+// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with PATCH /api/storages/export/gcs_sa/{id} (the `ApiStoragesExportGcsSaPartialUpdate` operationId).
+func (c *ClientWithResponses) ApiStoragesExportGcsSaPartialUpdateWithResponse(ctx context.Context, id int, body ApiStoragesExportGcsSaPartialUpdateJSONRequestBody, reqEditors ...RequestEditorFn) (*ApiStoragesExportGcsSaPartialUpdateResponse, error) {
+	rsp, err := c.ApiStoragesExportGcsSaPartialUpdate(ctx, id, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesExportGcsSaPartialUpdateResponse(rsp)
+}
+
+// ApiStoragesExportGcsSaPartialUpdateWithFormdataBodyWithResponse ✨ Update GCS SA export storage
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Update a specific GCS export storage connection set up with SA Impersonation.
+//
+// Takes a body of the `application/x-www-form-urlencoded` content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with PATCH /api/storages/export/gcs_sa/{id} (the `ApiStoragesExportGcsSaPartialUpdate` operationId).
+func (c *ClientWithResponses) ApiStoragesExportGcsSaPartialUpdateWithFormdataBodyWithResponse(ctx context.Context, id int, body ApiStoragesExportGcsSaPartialUpdateFormdataRequestBody, reqEditors ...RequestEditorFn) (*ApiStoragesExportGcsSaPartialUpdateResponse, error) {
+	rsp, err := c.ApiStoragesExportGcsSaPartialUpdateWithFormdataBody(ctx, id, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesExportGcsSaPartialUpdateResponse(rsp)
+}
+
+// ApiStoragesExportGcsSaSyncCreateWithResponse ✨ Sync GCS SA export storage
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Sync annotations to a GCS SA export storage.
+//
+// Returns a wrapper object for the known response body format(s).
+//
+// Corresponds with POST /api/storages/export/gcs_sa/{id}/sync (the `ApiStoragesExportGcsSaSyncCreate` operationId).
+func (c *ClientWithResponses) ApiStoragesExportGcsSaSyncCreateWithResponse(ctx context.Context, id int, reqEditors ...RequestEditorFn) (*ApiStoragesExportGcsSaSyncCreateResponse, error) {
+	rsp, err := c.ApiStoragesExportGcsSaSyncCreate(ctx, id, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesExportGcsSaSyncCreateResponse(rsp)
+}
+
+// ApiStoragesExportGcswifListWithResponse ✨ Get all GCS WIF export storage
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Get a list of all GCS export storage connections that were set up with WIF authentication.
+//
+// Returns a wrapper object for the known response body format(s).
+//
+// Corresponds with GET /api/storages/export/gcswif (the `ApiStoragesExportGcswifList` operationId).
+func (c *ClientWithResponses) ApiStoragesExportGcswifListWithResponse(ctx context.Context, params *ApiStoragesExportGcswifListParams, reqEditors ...RequestEditorFn) (*ApiStoragesExportGcswifListResponse, error) {
+	rsp, err := c.ApiStoragesExportGcswifList(ctx, params, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesExportGcswifListResponse(rsp)
+}
+
+// ApiStoragesExportGcswifCreateWithBodyWithResponse ✨ Create GCS export storage with WIF authentication
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Create an GCS export storage connection with WIF authentication to store annotations.
+//
+// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with POST /api/storages/export/gcswif (the `ApiStoragesExportGcswifCreate` operationId).
+func (c *ClientWithResponses) ApiStoragesExportGcswifCreateWithBodyWithResponse(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*ApiStoragesExportGcswifCreateResponse, error) {
+	rsp, err := c.ApiStoragesExportGcswifCreateWithBody(ctx, contentType, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesExportGcswifCreateResponse(rsp)
+}
+
+// ApiStoragesExportGcswifCreateWithResponse ✨ Create GCS export storage with WIF authentication
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Create an GCS export storage connection with WIF authentication to store annotations.
+//
+// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with POST /api/storages/export/gcswif (the `ApiStoragesExportGcswifCreate` operationId).
+func (c *ClientWithResponses) ApiStoragesExportGcswifCreateWithResponse(ctx context.Context, body ApiStoragesExportGcswifCreateJSONRequestBody, reqEditors ...RequestEditorFn) (*ApiStoragesExportGcswifCreateResponse, error) {
+	rsp, err := c.ApiStoragesExportGcswifCreate(ctx, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesExportGcswifCreateResponse(rsp)
+}
+
+// ApiStoragesExportGcswifCreateWithFormdataBodyWithResponse ✨ Create GCS export storage with WIF authentication
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Create an GCS export storage connection with WIF authentication to store annotations.
+//
+// Takes a body of the `application/x-www-form-urlencoded` content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with POST /api/storages/export/gcswif (the `ApiStoragesExportGcswifCreate` operationId).
+func (c *ClientWithResponses) ApiStoragesExportGcswifCreateWithFormdataBodyWithResponse(ctx context.Context, body ApiStoragesExportGcswifCreateFormdataRequestBody, reqEditors ...RequestEditorFn) (*ApiStoragesExportGcswifCreateResponse, error) {
+	rsp, err := c.ApiStoragesExportGcswifCreateWithFormdataBody(ctx, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesExportGcswifCreateResponse(rsp)
+}
+
+// ApiStoragesExportGcswifValidateCreateWithBodyWithResponse ✨ Validate GCS WIF export storage
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Validate a specific GCS export storage connection that was set up with WIF authentication.
+//
+// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with POST /api/storages/export/gcswif/validate (the `ApiStoragesExportGcswifValidateCreate` operationId).
+func (c *ClientWithResponses) ApiStoragesExportGcswifValidateCreateWithBodyWithResponse(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*ApiStoragesExportGcswifValidateCreateResponse, error) {
+	rsp, err := c.ApiStoragesExportGcswifValidateCreateWithBody(ctx, contentType, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesExportGcswifValidateCreateResponse(rsp)
+}
+
+// ApiStoragesExportGcswifValidateCreateWithResponse ✨ Validate GCS WIF export storage
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Validate a specific GCS export storage connection that was set up with WIF authentication.
+//
+// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with POST /api/storages/export/gcswif/validate (the `ApiStoragesExportGcswifValidateCreate` operationId).
+func (c *ClientWithResponses) ApiStoragesExportGcswifValidateCreateWithResponse(ctx context.Context, body ApiStoragesExportGcswifValidateCreateJSONRequestBody, reqEditors ...RequestEditorFn) (*ApiStoragesExportGcswifValidateCreateResponse, error) {
+	rsp, err := c.ApiStoragesExportGcswifValidateCreate(ctx, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesExportGcswifValidateCreateResponse(rsp)
+}
+
+// ApiStoragesExportGcswifValidateCreateWithFormdataBodyWithResponse ✨ Validate GCS WIF export storage
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Validate a specific GCS export storage connection that was set up with WIF authentication.
+//
+// Takes a body of the `application/x-www-form-urlencoded` content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with POST /api/storages/export/gcswif/validate (the `ApiStoragesExportGcswifValidateCreate` operationId).
+func (c *ClientWithResponses) ApiStoragesExportGcswifValidateCreateWithFormdataBodyWithResponse(ctx context.Context, body ApiStoragesExportGcswifValidateCreateFormdataRequestBody, reqEditors ...RequestEditorFn) (*ApiStoragesExportGcswifValidateCreateResponse, error) {
+	rsp, err := c.ApiStoragesExportGcswifValidateCreateWithFormdataBody(ctx, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesExportGcswifValidateCreateResponse(rsp)
+}
+
+// ApiStoragesExportGcswifDestroyWithResponse ✨ Delete GCS WIF export storage
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Delete a specific GCS export storage connection that was set up with WIF authentication.
+//
+// Returns a wrapper object for the known response body format(s).
+//
+// Corresponds with DELETE /api/storages/export/gcswif/{id} (the `ApiStoragesExportGcswifDestroy` operationId).
+func (c *ClientWithResponses) ApiStoragesExportGcswifDestroyWithResponse(ctx context.Context, id int, reqEditors ...RequestEditorFn) (*ApiStoragesExportGcswifDestroyResponse, error) {
+	rsp, err := c.ApiStoragesExportGcswifDestroy(ctx, id, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesExportGcswifDestroyResponse(rsp)
+}
+
+// ApiStoragesExportGcswifRetrieveWithResponse ✨ Get GCS WIF export storage
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Get a specific GCS export storage connection that was set up with WIF authentication.
+//
+// Returns a wrapper object for the known response body format(s).
+//
+// Corresponds with GET /api/storages/export/gcswif/{id} (the `ApiStoragesExportGcswifRetrieve` operationId).
+func (c *ClientWithResponses) ApiStoragesExportGcswifRetrieveWithResponse(ctx context.Context, id int, reqEditors ...RequestEditorFn) (*ApiStoragesExportGcswifRetrieveResponse, error) {
+	rsp, err := c.ApiStoragesExportGcswifRetrieve(ctx, id, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesExportGcswifRetrieveResponse(rsp)
+}
+
+// ApiStoragesExportGcswifPartialUpdateWithBodyWithResponse ✨ Update GCS WIF export storage
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Update a specific GCS export storage connection that was set up with WIF authentication.
+//
+// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with PATCH /api/storages/export/gcswif/{id} (the `ApiStoragesExportGcswifPartialUpdate` operationId).
+func (c *ClientWithResponses) ApiStoragesExportGcswifPartialUpdateWithBodyWithResponse(ctx context.Context, id int, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*ApiStoragesExportGcswifPartialUpdateResponse, error) {
+	rsp, err := c.ApiStoragesExportGcswifPartialUpdateWithBody(ctx, id, contentType, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesExportGcswifPartialUpdateResponse(rsp)
+}
+
+// ApiStoragesExportGcswifPartialUpdateWithResponse ✨ Update GCS WIF export storage
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Update a specific GCS export storage connection that was set up with WIF authentication.
+//
+// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with PATCH /api/storages/export/gcswif/{id} (the `ApiStoragesExportGcswifPartialUpdate` operationId).
+func (c *ClientWithResponses) ApiStoragesExportGcswifPartialUpdateWithResponse(ctx context.Context, id int, body ApiStoragesExportGcswifPartialUpdateJSONRequestBody, reqEditors ...RequestEditorFn) (*ApiStoragesExportGcswifPartialUpdateResponse, error) {
+	rsp, err := c.ApiStoragesExportGcswifPartialUpdate(ctx, id, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesExportGcswifPartialUpdateResponse(rsp)
+}
+
+// ApiStoragesExportGcswifPartialUpdateWithFormdataBodyWithResponse ✨ Update GCS WIF export storage
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Update a specific GCS export storage connection that was set up with WIF authentication.
+//
+// Takes a body of the `application/x-www-form-urlencoded` content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with PATCH /api/storages/export/gcswif/{id} (the `ApiStoragesExportGcswifPartialUpdate` operationId).
+func (c *ClientWithResponses) ApiStoragesExportGcswifPartialUpdateWithFormdataBodyWithResponse(ctx context.Context, id int, body ApiStoragesExportGcswifPartialUpdateFormdataRequestBody, reqEditors ...RequestEditorFn) (*ApiStoragesExportGcswifPartialUpdateResponse, error) {
+	rsp, err := c.ApiStoragesExportGcswifPartialUpdateWithFormdataBody(ctx, id, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesExportGcswifPartialUpdateResponse(rsp)
+}
+
+// ApiStoragesExportGcswifSyncCreateWithResponse ✨ Sync GCS WIF export storage
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Sync tasks from an GCS WIF export storage.
+//
+// Returns a wrapper object for the known response body format(s).
+//
+// Corresponds with POST /api/storages/export/gcswif/{id}/sync (the `ApiStoragesExportGcswifSyncCreate` operationId).
+func (c *ClientWithResponses) ApiStoragesExportGcswifSyncCreateWithResponse(ctx context.Context, id int, reqEditors ...RequestEditorFn) (*ApiStoragesExportGcswifSyncCreateResponse, error) {
+	rsp, err := c.ApiStoragesExportGcswifSyncCreate(ctx, id, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesExportGcswifSyncCreateResponse(rsp)
+}
+
+// ApiStoragesExportLocalfilesListWithResponse Get all export storage
+//
+// Get a list of all local file export storage connections.
+//
+// Returns a wrapper object for the known response body format(s).
+//
+// Corresponds with GET /api/storages/export/localfiles (the `ApiStoragesExportLocalfilesList` operationId).
+func (c *ClientWithResponses) ApiStoragesExportLocalfilesListWithResponse(ctx context.Context, params *ApiStoragesExportLocalfilesListParams, reqEditors ...RequestEditorFn) (*ApiStoragesExportLocalfilesListResponse, error) {
+	rsp, err := c.ApiStoragesExportLocalfilesList(ctx, params, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesExportLocalfilesListResponse(rsp)
+}
+
+// ApiStoragesExportLocalfilesCreateWithBodyWithResponse Create export storage
+//
+// Create a new local file export storage connection to store annotations.
+//
+// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with POST /api/storages/export/localfiles (the `ApiStoragesExportLocalfilesCreate` operationId).
+func (c *ClientWithResponses) ApiStoragesExportLocalfilesCreateWithBodyWithResponse(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*ApiStoragesExportLocalfilesCreateResponse, error) {
+	rsp, err := c.ApiStoragesExportLocalfilesCreateWithBody(ctx, contentType, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesExportLocalfilesCreateResponse(rsp)
+}
+
+// ApiStoragesExportLocalfilesCreateWithResponse Create export storage
+//
+// Create a new local file export storage connection to store annotations.
+//
+// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with POST /api/storages/export/localfiles (the `ApiStoragesExportLocalfilesCreate` operationId).
+func (c *ClientWithResponses) ApiStoragesExportLocalfilesCreateWithResponse(ctx context.Context, body ApiStoragesExportLocalfilesCreateJSONRequestBody, reqEditors ...RequestEditorFn) (*ApiStoragesExportLocalfilesCreateResponse, error) {
+	rsp, err := c.ApiStoragesExportLocalfilesCreate(ctx, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesExportLocalfilesCreateResponse(rsp)
+}
+
+// ApiStoragesExportLocalfilesCreateWithFormdataBodyWithResponse Create export storage
+//
+// Create a new local file export storage connection to store annotations.
+//
+// Takes a body of the `application/x-www-form-urlencoded` content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with POST /api/storages/export/localfiles (the `ApiStoragesExportLocalfilesCreate` operationId).
+func (c *ClientWithResponses) ApiStoragesExportLocalfilesCreateWithFormdataBodyWithResponse(ctx context.Context, body ApiStoragesExportLocalfilesCreateFormdataRequestBody, reqEditors ...RequestEditorFn) (*ApiStoragesExportLocalfilesCreateResponse, error) {
+	rsp, err := c.ApiStoragesExportLocalfilesCreateWithFormdataBody(ctx, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesExportLocalfilesCreateResponse(rsp)
+}
+
+// ApiStoragesExportLocalfilesValidateCreateWithBodyWithResponse Validate export storage
+//
+// Validate a specific local file export storage connection.
+//
+// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with POST /api/storages/export/localfiles/validate (the `ApiStoragesExportLocalfilesValidateCreate` operationId).
+func (c *ClientWithResponses) ApiStoragesExportLocalfilesValidateCreateWithBodyWithResponse(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*ApiStoragesExportLocalfilesValidateCreateResponse, error) {
+	rsp, err := c.ApiStoragesExportLocalfilesValidateCreateWithBody(ctx, contentType, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesExportLocalfilesValidateCreateResponse(rsp)
+}
+
+// ApiStoragesExportLocalfilesValidateCreateWithResponse Validate export storage
+//
+// Validate a specific local file export storage connection.
+//
+// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with POST /api/storages/export/localfiles/validate (the `ApiStoragesExportLocalfilesValidateCreate` operationId).
+func (c *ClientWithResponses) ApiStoragesExportLocalfilesValidateCreateWithResponse(ctx context.Context, body ApiStoragesExportLocalfilesValidateCreateJSONRequestBody, reqEditors ...RequestEditorFn) (*ApiStoragesExportLocalfilesValidateCreateResponse, error) {
+	rsp, err := c.ApiStoragesExportLocalfilesValidateCreate(ctx, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesExportLocalfilesValidateCreateResponse(rsp)
+}
+
+// ApiStoragesExportLocalfilesValidateCreateWithFormdataBodyWithResponse Validate export storage
+//
+// Validate a specific local file export storage connection.
+//
+// Takes a body of the `application/x-www-form-urlencoded` content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with POST /api/storages/export/localfiles/validate (the `ApiStoragesExportLocalfilesValidateCreate` operationId).
+func (c *ClientWithResponses) ApiStoragesExportLocalfilesValidateCreateWithFormdataBodyWithResponse(ctx context.Context, body ApiStoragesExportLocalfilesValidateCreateFormdataRequestBody, reqEditors ...RequestEditorFn) (*ApiStoragesExportLocalfilesValidateCreateResponse, error) {
+	rsp, err := c.ApiStoragesExportLocalfilesValidateCreateWithFormdataBody(ctx, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesExportLocalfilesValidateCreateResponse(rsp)
+}
+
+// ApiStoragesExportLocalfilesDestroyWithResponse Delete export storage
+//
+// Delete a specific local file export storage connection.
+//
+// Returns a wrapper object for the known response body format(s).
+//
+// Corresponds with DELETE /api/storages/export/localfiles/{id} (the `ApiStoragesExportLocalfilesDestroy` operationId).
+func (c *ClientWithResponses) ApiStoragesExportLocalfilesDestroyWithResponse(ctx context.Context, id int, reqEditors ...RequestEditorFn) (*ApiStoragesExportLocalfilesDestroyResponse, error) {
+	rsp, err := c.ApiStoragesExportLocalfilesDestroy(ctx, id, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesExportLocalfilesDestroyResponse(rsp)
+}
+
+// ApiStoragesExportLocalfilesRetrieveWithResponse Get export storage
+//
+// Get a specific local file export storage connection.
+//
+// Returns a wrapper object for the known response body format(s).
+//
+// Corresponds with GET /api/storages/export/localfiles/{id} (the `ApiStoragesExportLocalfilesRetrieve` operationId).
+func (c *ClientWithResponses) ApiStoragesExportLocalfilesRetrieveWithResponse(ctx context.Context, id int, reqEditors ...RequestEditorFn) (*ApiStoragesExportLocalfilesRetrieveResponse, error) {
+	rsp, err := c.ApiStoragesExportLocalfilesRetrieve(ctx, id, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesExportLocalfilesRetrieveResponse(rsp)
+}
+
+// ApiStoragesExportLocalfilesPartialUpdateWithBodyWithResponse Update export storage
+//
+// Update a specific local file export storage connection.
+//
+// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with PATCH /api/storages/export/localfiles/{id} (the `ApiStoragesExportLocalfilesPartialUpdate` operationId).
+func (c *ClientWithResponses) ApiStoragesExportLocalfilesPartialUpdateWithBodyWithResponse(ctx context.Context, id int, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*ApiStoragesExportLocalfilesPartialUpdateResponse, error) {
+	rsp, err := c.ApiStoragesExportLocalfilesPartialUpdateWithBody(ctx, id, contentType, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesExportLocalfilesPartialUpdateResponse(rsp)
+}
+
+// ApiStoragesExportLocalfilesPartialUpdateWithResponse Update export storage
+//
+// Update a specific local file export storage connection.
+//
+// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with PATCH /api/storages/export/localfiles/{id} (the `ApiStoragesExportLocalfilesPartialUpdate` operationId).
+func (c *ClientWithResponses) ApiStoragesExportLocalfilesPartialUpdateWithResponse(ctx context.Context, id int, body ApiStoragesExportLocalfilesPartialUpdateJSONRequestBody, reqEditors ...RequestEditorFn) (*ApiStoragesExportLocalfilesPartialUpdateResponse, error) {
+	rsp, err := c.ApiStoragesExportLocalfilesPartialUpdate(ctx, id, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesExportLocalfilesPartialUpdateResponse(rsp)
+}
+
+// ApiStoragesExportLocalfilesPartialUpdateWithFormdataBodyWithResponse Update export storage
+//
+// Update a specific local file export storage connection.
+//
+// Takes a body of the `application/x-www-form-urlencoded` content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with PATCH /api/storages/export/localfiles/{id} (the `ApiStoragesExportLocalfilesPartialUpdate` operationId).
+func (c *ClientWithResponses) ApiStoragesExportLocalfilesPartialUpdateWithFormdataBodyWithResponse(ctx context.Context, id int, body ApiStoragesExportLocalfilesPartialUpdateFormdataRequestBody, reqEditors ...RequestEditorFn) (*ApiStoragesExportLocalfilesPartialUpdateResponse, error) {
+	rsp, err := c.ApiStoragesExportLocalfilesPartialUpdateWithFormdataBody(ctx, id, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesExportLocalfilesPartialUpdateResponse(rsp)
+}
+
+// ApiStoragesExportLocalfilesSyncCreateWithResponse Sync export storage
+//
+// Sync tasks from a local file export storage connection.
+//
+// Returns a wrapper object for the known response body format(s).
+//
+// Corresponds with POST /api/storages/export/localfiles/{id}/sync (the `ApiStoragesExportLocalfilesSyncCreate` operationId).
+func (c *ClientWithResponses) ApiStoragesExportLocalfilesSyncCreateWithResponse(ctx context.Context, id int, reqEditors ...RequestEditorFn) (*ApiStoragesExportLocalfilesSyncCreateResponse, error) {
+	rsp, err := c.ApiStoragesExportLocalfilesSyncCreate(ctx, id, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesExportLocalfilesSyncCreateResponse(rsp)
+}
+
+// ApiStoragesExportRedisListWithResponse Get all export storage
+//
+// Get a list of all Redis export storage connections.
+//
+// Returns a wrapper object for the known response body format(s).
+//
+// Corresponds with GET /api/storages/export/redis (the `ApiStoragesExportRedisList` operationId).
+func (c *ClientWithResponses) ApiStoragesExportRedisListWithResponse(ctx context.Context, params *ApiStoragesExportRedisListParams, reqEditors ...RequestEditorFn) (*ApiStoragesExportRedisListResponse, error) {
+	rsp, err := c.ApiStoragesExportRedisList(ctx, params, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesExportRedisListResponse(rsp)
+}
+
+// ApiStoragesExportRedisCreateWithBodyWithResponse Create export storage
+//
+// Create a new Redis export storage connection to store annotations.
+//
+// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with POST /api/storages/export/redis (the `ApiStoragesExportRedisCreate` operationId).
+func (c *ClientWithResponses) ApiStoragesExportRedisCreateWithBodyWithResponse(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*ApiStoragesExportRedisCreateResponse, error) {
+	rsp, err := c.ApiStoragesExportRedisCreateWithBody(ctx, contentType, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesExportRedisCreateResponse(rsp)
+}
+
+// ApiStoragesExportRedisCreateWithResponse Create export storage
+//
+// Create a new Redis export storage connection to store annotations.
+//
+// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with POST /api/storages/export/redis (the `ApiStoragesExportRedisCreate` operationId).
+func (c *ClientWithResponses) ApiStoragesExportRedisCreateWithResponse(ctx context.Context, body ApiStoragesExportRedisCreateJSONRequestBody, reqEditors ...RequestEditorFn) (*ApiStoragesExportRedisCreateResponse, error) {
+	rsp, err := c.ApiStoragesExportRedisCreate(ctx, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesExportRedisCreateResponse(rsp)
+}
+
+// ApiStoragesExportRedisCreateWithFormdataBodyWithResponse Create export storage
+//
+// Create a new Redis export storage connection to store annotations.
+//
+// Takes a body of the `application/x-www-form-urlencoded` content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with POST /api/storages/export/redis (the `ApiStoragesExportRedisCreate` operationId).
+func (c *ClientWithResponses) ApiStoragesExportRedisCreateWithFormdataBodyWithResponse(ctx context.Context, body ApiStoragesExportRedisCreateFormdataRequestBody, reqEditors ...RequestEditorFn) (*ApiStoragesExportRedisCreateResponse, error) {
+	rsp, err := c.ApiStoragesExportRedisCreateWithFormdataBody(ctx, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesExportRedisCreateResponse(rsp)
+}
+
+// ApiStoragesExportRedisValidateCreateWithBodyWithResponse Validate export storage
+//
+// Validate a specific Redis export storage connection.
+//
+// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with POST /api/storages/export/redis/validate (the `ApiStoragesExportRedisValidateCreate` operationId).
+func (c *ClientWithResponses) ApiStoragesExportRedisValidateCreateWithBodyWithResponse(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*ApiStoragesExportRedisValidateCreateResponse, error) {
+	rsp, err := c.ApiStoragesExportRedisValidateCreateWithBody(ctx, contentType, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesExportRedisValidateCreateResponse(rsp)
+}
+
+// ApiStoragesExportRedisValidateCreateWithResponse Validate export storage
+//
+// Validate a specific Redis export storage connection.
+//
+// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with POST /api/storages/export/redis/validate (the `ApiStoragesExportRedisValidateCreate` operationId).
+func (c *ClientWithResponses) ApiStoragesExportRedisValidateCreateWithResponse(ctx context.Context, body ApiStoragesExportRedisValidateCreateJSONRequestBody, reqEditors ...RequestEditorFn) (*ApiStoragesExportRedisValidateCreateResponse, error) {
+	rsp, err := c.ApiStoragesExportRedisValidateCreate(ctx, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesExportRedisValidateCreateResponse(rsp)
+}
+
+// ApiStoragesExportRedisValidateCreateWithFormdataBodyWithResponse Validate export storage
+//
+// Validate a specific Redis export storage connection.
+//
+// Takes a body of the `application/x-www-form-urlencoded` content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with POST /api/storages/export/redis/validate (the `ApiStoragesExportRedisValidateCreate` operationId).
+func (c *ClientWithResponses) ApiStoragesExportRedisValidateCreateWithFormdataBodyWithResponse(ctx context.Context, body ApiStoragesExportRedisValidateCreateFormdataRequestBody, reqEditors ...RequestEditorFn) (*ApiStoragesExportRedisValidateCreateResponse, error) {
+	rsp, err := c.ApiStoragesExportRedisValidateCreateWithFormdataBody(ctx, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesExportRedisValidateCreateResponse(rsp)
+}
+
+// ApiStoragesExportRedisDestroyWithResponse Delete export storage
+//
+// Delete a specific Redis export storage connection.
+//
+// Returns a wrapper object for the known response body format(s).
+//
+// Corresponds with DELETE /api/storages/export/redis/{id} (the `ApiStoragesExportRedisDestroy` operationId).
+func (c *ClientWithResponses) ApiStoragesExportRedisDestroyWithResponse(ctx context.Context, id int, reqEditors ...RequestEditorFn) (*ApiStoragesExportRedisDestroyResponse, error) {
+	rsp, err := c.ApiStoragesExportRedisDestroy(ctx, id, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesExportRedisDestroyResponse(rsp)
+}
+
+// ApiStoragesExportRedisRetrieveWithResponse Get export storage
+//
+// Get a specific Redis export storage connection.
+//
+// Returns a wrapper object for the known response body format(s).
+//
+// Corresponds with GET /api/storages/export/redis/{id} (the `ApiStoragesExportRedisRetrieve` operationId).
+func (c *ClientWithResponses) ApiStoragesExportRedisRetrieveWithResponse(ctx context.Context, id int, reqEditors ...RequestEditorFn) (*ApiStoragesExportRedisRetrieveResponse, error) {
+	rsp, err := c.ApiStoragesExportRedisRetrieve(ctx, id, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesExportRedisRetrieveResponse(rsp)
+}
+
+// ApiStoragesExportRedisPartialUpdateWithBodyWithResponse Update export storage
+//
+// Update a specific Redis export storage connection.
+//
+// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with PATCH /api/storages/export/redis/{id} (the `ApiStoragesExportRedisPartialUpdate` operationId).
+func (c *ClientWithResponses) ApiStoragesExportRedisPartialUpdateWithBodyWithResponse(ctx context.Context, id int, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*ApiStoragesExportRedisPartialUpdateResponse, error) {
+	rsp, err := c.ApiStoragesExportRedisPartialUpdateWithBody(ctx, id, contentType, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesExportRedisPartialUpdateResponse(rsp)
+}
+
+// ApiStoragesExportRedisPartialUpdateWithResponse Update export storage
+//
+// Update a specific Redis export storage connection.
+//
+// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with PATCH /api/storages/export/redis/{id} (the `ApiStoragesExportRedisPartialUpdate` operationId).
+func (c *ClientWithResponses) ApiStoragesExportRedisPartialUpdateWithResponse(ctx context.Context, id int, body ApiStoragesExportRedisPartialUpdateJSONRequestBody, reqEditors ...RequestEditorFn) (*ApiStoragesExportRedisPartialUpdateResponse, error) {
+	rsp, err := c.ApiStoragesExportRedisPartialUpdate(ctx, id, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesExportRedisPartialUpdateResponse(rsp)
+}
+
+// ApiStoragesExportRedisPartialUpdateWithFormdataBodyWithResponse Update export storage
+//
+// Update a specific Redis export storage connection.
+//
+// Takes a body of the `application/x-www-form-urlencoded` content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with PATCH /api/storages/export/redis/{id} (the `ApiStoragesExportRedisPartialUpdate` operationId).
+func (c *ClientWithResponses) ApiStoragesExportRedisPartialUpdateWithFormdataBodyWithResponse(ctx context.Context, id int, body ApiStoragesExportRedisPartialUpdateFormdataRequestBody, reqEditors ...RequestEditorFn) (*ApiStoragesExportRedisPartialUpdateResponse, error) {
+	rsp, err := c.ApiStoragesExportRedisPartialUpdateWithFormdataBody(ctx, id, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesExportRedisPartialUpdateResponse(rsp)
+}
+
+// ApiStoragesExportRedisSyncCreateWithResponse Sync export storage
+//
+// Sync tasks from a Redis export storage connection.
+//
+// Returns a wrapper object for the known response body format(s).
+//
+// Corresponds with POST /api/storages/export/redis/{id}/sync (the `ApiStoragesExportRedisSyncCreate` operationId).
+func (c *ClientWithResponses) ApiStoragesExportRedisSyncCreateWithResponse(ctx context.Context, id int, reqEditors ...RequestEditorFn) (*ApiStoragesExportRedisSyncCreateResponse, error) {
+	rsp, err := c.ApiStoragesExportRedisSyncCreate(ctx, id, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesExportRedisSyncCreateResponse(rsp)
+}
+
+// ApiStoragesExportS3ListWithResponse Get all export storage
+//
+// Get a list of all S3 export storage connections.
+//
+// Returns a wrapper object for the known response body format(s).
+//
+// Corresponds with GET /api/storages/export/s3 (the `ApiStoragesExportS3List` operationId).
+func (c *ClientWithResponses) ApiStoragesExportS3ListWithResponse(ctx context.Context, params *ApiStoragesExportS3ListParams, reqEditors ...RequestEditorFn) (*ApiStoragesExportS3ListResponse, error) {
+	rsp, err := c.ApiStoragesExportS3List(ctx, params, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesExportS3ListResponse(rsp)
+}
+
+// ApiStoragesExportS3CreateWithBodyWithResponse Create export storage
+//
+// Create a new S3 export storage connection to store annotations.
+//
+// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with POST /api/storages/export/s3 (the `ApiStoragesExportS3Create` operationId).
+func (c *ClientWithResponses) ApiStoragesExportS3CreateWithBodyWithResponse(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*ApiStoragesExportS3CreateResponse, error) {
+	rsp, err := c.ApiStoragesExportS3CreateWithBody(ctx, contentType, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesExportS3CreateResponse(rsp)
+}
+
+// ApiStoragesExportS3CreateWithResponse Create export storage
+//
+// Create a new S3 export storage connection to store annotations.
+//
+// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with POST /api/storages/export/s3 (the `ApiStoragesExportS3Create` operationId).
+func (c *ClientWithResponses) ApiStoragesExportS3CreateWithResponse(ctx context.Context, body ApiStoragesExportS3CreateJSONRequestBody, reqEditors ...RequestEditorFn) (*ApiStoragesExportS3CreateResponse, error) {
+	rsp, err := c.ApiStoragesExportS3Create(ctx, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesExportS3CreateResponse(rsp)
+}
+
+// ApiStoragesExportS3CreateWithFormdataBodyWithResponse Create export storage
+//
+// Create a new S3 export storage connection to store annotations.
+//
+// Takes a body of the `application/x-www-form-urlencoded` content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with POST /api/storages/export/s3 (the `ApiStoragesExportS3Create` operationId).
+func (c *ClientWithResponses) ApiStoragesExportS3CreateWithFormdataBodyWithResponse(ctx context.Context, body ApiStoragesExportS3CreateFormdataRequestBody, reqEditors ...RequestEditorFn) (*ApiStoragesExportS3CreateResponse, error) {
+	rsp, err := c.ApiStoragesExportS3CreateWithFormdataBody(ctx, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesExportS3CreateResponse(rsp)
+}
+
+// ApiStoragesExportS3ValidateCreateWithBodyWithResponse Validate export storage
+//
+// Validate a specific S3 export storage connection.
+//
+// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with POST /api/storages/export/s3/validate (the `ApiStoragesExportS3ValidateCreate` operationId).
+func (c *ClientWithResponses) ApiStoragesExportS3ValidateCreateWithBodyWithResponse(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*ApiStoragesExportS3ValidateCreateResponse, error) {
+	rsp, err := c.ApiStoragesExportS3ValidateCreateWithBody(ctx, contentType, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesExportS3ValidateCreateResponse(rsp)
+}
+
+// ApiStoragesExportS3ValidateCreateWithResponse Validate export storage
+//
+// Validate a specific S3 export storage connection.
+//
+// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with POST /api/storages/export/s3/validate (the `ApiStoragesExportS3ValidateCreate` operationId).
+func (c *ClientWithResponses) ApiStoragesExportS3ValidateCreateWithResponse(ctx context.Context, body ApiStoragesExportS3ValidateCreateJSONRequestBody, reqEditors ...RequestEditorFn) (*ApiStoragesExportS3ValidateCreateResponse, error) {
+	rsp, err := c.ApiStoragesExportS3ValidateCreate(ctx, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesExportS3ValidateCreateResponse(rsp)
+}
+
+// ApiStoragesExportS3ValidateCreateWithFormdataBodyWithResponse Validate export storage
+//
+// Validate a specific S3 export storage connection.
+//
+// Takes a body of the `application/x-www-form-urlencoded` content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with POST /api/storages/export/s3/validate (the `ApiStoragesExportS3ValidateCreate` operationId).
+func (c *ClientWithResponses) ApiStoragesExportS3ValidateCreateWithFormdataBodyWithResponse(ctx context.Context, body ApiStoragesExportS3ValidateCreateFormdataRequestBody, reqEditors ...RequestEditorFn) (*ApiStoragesExportS3ValidateCreateResponse, error) {
+	rsp, err := c.ApiStoragesExportS3ValidateCreateWithFormdataBody(ctx, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesExportS3ValidateCreateResponse(rsp)
+}
+
+// ApiStoragesExportS3DestroyWithResponse Delete export storage
+//
+// Delete a specific S3 export storage connection.
+//
+// Returns a wrapper object for the known response body format(s).
+//
+// Corresponds with DELETE /api/storages/export/s3/{id} (the `ApiStoragesExportS3Destroy` operationId).
+func (c *ClientWithResponses) ApiStoragesExportS3DestroyWithResponse(ctx context.Context, id int, reqEditors ...RequestEditorFn) (*ApiStoragesExportS3DestroyResponse, error) {
+	rsp, err := c.ApiStoragesExportS3Destroy(ctx, id, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesExportS3DestroyResponse(rsp)
+}
+
+// ApiStoragesExportS3RetrieveWithResponse Get export storage
+//
+// Get a specific S3 export storage connection.
+//
+// Returns a wrapper object for the known response body format(s).
+//
+// Corresponds with GET /api/storages/export/s3/{id} (the `ApiStoragesExportS3Retrieve` operationId).
+func (c *ClientWithResponses) ApiStoragesExportS3RetrieveWithResponse(ctx context.Context, id int, reqEditors ...RequestEditorFn) (*ApiStoragesExportS3RetrieveResponse, error) {
+	rsp, err := c.ApiStoragesExportS3Retrieve(ctx, id, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesExportS3RetrieveResponse(rsp)
+}
+
+// ApiStoragesExportS3PartialUpdateWithBodyWithResponse Update export storage
+//
+// Update a specific S3 export storage connection.
+//
+// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with PATCH /api/storages/export/s3/{id} (the `ApiStoragesExportS3PartialUpdate` operationId).
+func (c *ClientWithResponses) ApiStoragesExportS3PartialUpdateWithBodyWithResponse(ctx context.Context, id int, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*ApiStoragesExportS3PartialUpdateResponse, error) {
+	rsp, err := c.ApiStoragesExportS3PartialUpdateWithBody(ctx, id, contentType, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesExportS3PartialUpdateResponse(rsp)
+}
+
+// ApiStoragesExportS3PartialUpdateWithResponse Update export storage
+//
+// Update a specific S3 export storage connection.
+//
+// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with PATCH /api/storages/export/s3/{id} (the `ApiStoragesExportS3PartialUpdate` operationId).
+func (c *ClientWithResponses) ApiStoragesExportS3PartialUpdateWithResponse(ctx context.Context, id int, body ApiStoragesExportS3PartialUpdateJSONRequestBody, reqEditors ...RequestEditorFn) (*ApiStoragesExportS3PartialUpdateResponse, error) {
+	rsp, err := c.ApiStoragesExportS3PartialUpdate(ctx, id, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesExportS3PartialUpdateResponse(rsp)
+}
+
+// ApiStoragesExportS3PartialUpdateWithFormdataBodyWithResponse Update export storage
+//
+// Update a specific S3 export storage connection.
+//
+// Takes a body of the `application/x-www-form-urlencoded` content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with PATCH /api/storages/export/s3/{id} (the `ApiStoragesExportS3PartialUpdate` operationId).
+func (c *ClientWithResponses) ApiStoragesExportS3PartialUpdateWithFormdataBodyWithResponse(ctx context.Context, id int, body ApiStoragesExportS3PartialUpdateFormdataRequestBody, reqEditors ...RequestEditorFn) (*ApiStoragesExportS3PartialUpdateResponse, error) {
+	rsp, err := c.ApiStoragesExportS3PartialUpdateWithFormdataBody(ctx, id, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesExportS3PartialUpdateResponse(rsp)
+}
+
+// ApiStoragesExportS3SyncCreateWithResponse Sync export storage
+//
+// Sync tasks from an S3 export storage connection.
+//
+// Returns a wrapper object for the known response body format(s).
+//
+// Corresponds with POST /api/storages/export/s3/{id}/sync (the `ApiStoragesExportS3SyncCreate` operationId).
+func (c *ClientWithResponses) ApiStoragesExportS3SyncCreateWithResponse(ctx context.Context, id int, reqEditors ...RequestEditorFn) (*ApiStoragesExportS3SyncCreateResponse, error) {
+	rsp, err := c.ApiStoragesExportS3SyncCreate(ctx, id, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesExportS3SyncCreateResponse(rsp)
+}
+
+// ApiStoragesExportS3sListWithResponse ✨ List S3s export storage
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Get a list of all S3 export storage connections that were set up with IAM role access.
+//
+// Returns a wrapper object for the known response body format(s).
+//
+// Corresponds with GET /api/storages/export/s3s (the `ApiStoragesExportS3sList` operationId).
+func (c *ClientWithResponses) ApiStoragesExportS3sListWithResponse(ctx context.Context, params *ApiStoragesExportS3sListParams, reqEditors ...RequestEditorFn) (*ApiStoragesExportS3sListResponse, error) {
+	rsp, err := c.ApiStoragesExportS3sList(ctx, params, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesExportS3sListResponse(rsp)
+}
+
+// ApiStoragesExportS3sCreateWithBodyWithResponse ✨ Create export storage
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Create an S3 export storage connection with IAM role access to store annotations.
+//
+// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with POST /api/storages/export/s3s (the `ApiStoragesExportS3sCreate` operationId).
+func (c *ClientWithResponses) ApiStoragesExportS3sCreateWithBodyWithResponse(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*ApiStoragesExportS3sCreateResponse, error) {
+	rsp, err := c.ApiStoragesExportS3sCreateWithBody(ctx, contentType, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesExportS3sCreateResponse(rsp)
+}
+
+// ApiStoragesExportS3sCreateWithResponse ✨ Create export storage
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Create an S3 export storage connection with IAM role access to store annotations.
+//
+// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with POST /api/storages/export/s3s (the `ApiStoragesExportS3sCreate` operationId).
+func (c *ClientWithResponses) ApiStoragesExportS3sCreateWithResponse(ctx context.Context, body ApiStoragesExportS3sCreateJSONRequestBody, reqEditors ...RequestEditorFn) (*ApiStoragesExportS3sCreateResponse, error) {
+	rsp, err := c.ApiStoragesExportS3sCreate(ctx, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesExportS3sCreateResponse(rsp)
+}
+
+// ApiStoragesExportS3sCreateWithFormdataBodyWithResponse ✨ Create export storage
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Create an S3 export storage connection with IAM role access to store annotations.
+//
+// Takes a body of the `application/x-www-form-urlencoded` content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with POST /api/storages/export/s3s (the `ApiStoragesExportS3sCreate` operationId).
+func (c *ClientWithResponses) ApiStoragesExportS3sCreateWithFormdataBodyWithResponse(ctx context.Context, body ApiStoragesExportS3sCreateFormdataRequestBody, reqEditors ...RequestEditorFn) (*ApiStoragesExportS3sCreateResponse, error) {
+	rsp, err := c.ApiStoragesExportS3sCreateWithFormdataBody(ctx, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesExportS3sCreateResponse(rsp)
+}
+
+// ApiStoragesExportS3sValidateCreateWithBodyWithResponse ✨ Validate export storage
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Validate a specific S3 export storage connection that was set up with IAM role access.
+//
+// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with POST /api/storages/export/s3s/validate (the `ApiStoragesExportS3sValidateCreate` operationId).
+func (c *ClientWithResponses) ApiStoragesExportS3sValidateCreateWithBodyWithResponse(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*ApiStoragesExportS3sValidateCreateResponse, error) {
+	rsp, err := c.ApiStoragesExportS3sValidateCreateWithBody(ctx, contentType, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesExportS3sValidateCreateResponse(rsp)
+}
+
+// ApiStoragesExportS3sValidateCreateWithResponse ✨ Validate export storage
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Validate a specific S3 export storage connection that was set up with IAM role access.
+//
+// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with POST /api/storages/export/s3s/validate (the `ApiStoragesExportS3sValidateCreate` operationId).
+func (c *ClientWithResponses) ApiStoragesExportS3sValidateCreateWithResponse(ctx context.Context, body ApiStoragesExportS3sValidateCreateJSONRequestBody, reqEditors ...RequestEditorFn) (*ApiStoragesExportS3sValidateCreateResponse, error) {
+	rsp, err := c.ApiStoragesExportS3sValidateCreate(ctx, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesExportS3sValidateCreateResponse(rsp)
+}
+
+// ApiStoragesExportS3sValidateCreateWithFormdataBodyWithResponse ✨ Validate export storage
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Validate a specific S3 export storage connection that was set up with IAM role access.
+//
+// Takes a body of the `application/x-www-form-urlencoded` content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with POST /api/storages/export/s3s/validate (the `ApiStoragesExportS3sValidateCreate` operationId).
+func (c *ClientWithResponses) ApiStoragesExportS3sValidateCreateWithFormdataBodyWithResponse(ctx context.Context, body ApiStoragesExportS3sValidateCreateFormdataRequestBody, reqEditors ...RequestEditorFn) (*ApiStoragesExportS3sValidateCreateResponse, error) {
+	rsp, err := c.ApiStoragesExportS3sValidateCreateWithFormdataBody(ctx, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesExportS3sValidateCreateResponse(rsp)
+}
+
+// ApiStoragesExportS3sDestroyWithResponse ✨ Delete export storage
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Delete a specific S3 export storage connection that was set up with IAM role access.
+//
+// Returns a wrapper object for the known response body format(s).
+//
+// Corresponds with DELETE /api/storages/export/s3s/{id} (the `ApiStoragesExportS3sDestroy` operationId).
+func (c *ClientWithResponses) ApiStoragesExportS3sDestroyWithResponse(ctx context.Context, id int, reqEditors ...RequestEditorFn) (*ApiStoragesExportS3sDestroyResponse, error) {
+	rsp, err := c.ApiStoragesExportS3sDestroy(ctx, id, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesExportS3sDestroyResponse(rsp)
+}
+
+// ApiStoragesExportS3sRetrieveWithResponse ✨ Get export storage
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Get a specific S3 export storage connection that was set up with IAM role access.
+//
+// Returns a wrapper object for the known response body format(s).
+//
+// Corresponds with GET /api/storages/export/s3s/{id} (the `ApiStoragesExportS3sRetrieve` operationId).
+func (c *ClientWithResponses) ApiStoragesExportS3sRetrieveWithResponse(ctx context.Context, id int, reqEditors ...RequestEditorFn) (*ApiStoragesExportS3sRetrieveResponse, error) {
+	rsp, err := c.ApiStoragesExportS3sRetrieve(ctx, id, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesExportS3sRetrieveResponse(rsp)
+}
+
+// ApiStoragesExportS3sPartialUpdateWithBodyWithResponse ✨ Update export storage
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Update a specific S3 export storage connection that was set up with IAM role access.
+//
+// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with PATCH /api/storages/export/s3s/{id} (the `ApiStoragesExportS3sPartialUpdate` operationId).
+func (c *ClientWithResponses) ApiStoragesExportS3sPartialUpdateWithBodyWithResponse(ctx context.Context, id int, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*ApiStoragesExportS3sPartialUpdateResponse, error) {
+	rsp, err := c.ApiStoragesExportS3sPartialUpdateWithBody(ctx, id, contentType, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesExportS3sPartialUpdateResponse(rsp)
+}
+
+// ApiStoragesExportS3sPartialUpdateWithResponse ✨ Update export storage
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Update a specific S3 export storage connection that was set up with IAM role access.
+//
+// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with PATCH /api/storages/export/s3s/{id} (the `ApiStoragesExportS3sPartialUpdate` operationId).
+func (c *ClientWithResponses) ApiStoragesExportS3sPartialUpdateWithResponse(ctx context.Context, id int, body ApiStoragesExportS3sPartialUpdateJSONRequestBody, reqEditors ...RequestEditorFn) (*ApiStoragesExportS3sPartialUpdateResponse, error) {
+	rsp, err := c.ApiStoragesExportS3sPartialUpdate(ctx, id, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesExportS3sPartialUpdateResponse(rsp)
+}
+
+// ApiStoragesExportS3sPartialUpdateWithFormdataBodyWithResponse ✨ Update export storage
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Update a specific S3 export storage connection that was set up with IAM role access.
+//
+// Takes a body of the `application/x-www-form-urlencoded` content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with PATCH /api/storages/export/s3s/{id} (the `ApiStoragesExportS3sPartialUpdate` operationId).
+func (c *ClientWithResponses) ApiStoragesExportS3sPartialUpdateWithFormdataBodyWithResponse(ctx context.Context, id int, body ApiStoragesExportS3sPartialUpdateFormdataRequestBody, reqEditors ...RequestEditorFn) (*ApiStoragesExportS3sPartialUpdateResponse, error) {
+	rsp, err := c.ApiStoragesExportS3sPartialUpdateWithFormdataBody(ctx, id, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesExportS3sPartialUpdateResponse(rsp)
+}
+
+// ApiStoragesExportS3sSyncCreateWithResponse ✨ Sync export storage
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Sync tasks from an S3 export storage.
+//
+// Returns a wrapper object for the known response body format(s).
+//
+// Corresponds with POST /api/storages/export/s3s/{id}/sync (the `ApiStoragesExportS3sSyncCreate` operationId).
+func (c *ClientWithResponses) ApiStoragesExportS3sSyncCreateWithResponse(ctx context.Context, id int, reqEditors ...RequestEditorFn) (*ApiStoragesExportS3sSyncCreateResponse, error) {
+	rsp, err := c.ApiStoragesExportS3sSyncCreate(ctx, id, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesExportS3sSyncCreateResponse(rsp)
+}
+
+// ApiStoragesExportTypesRetrieveWithResponse List all export storages types
+//
+// Retrieve a list of the export storages types.
+//
+// Returns a wrapper object for the known response body format(s).
+//
+// Corresponds with GET /api/storages/export/types (the `ApiStoragesExportTypesRetrieve` operationId).
+func (c *ClientWithResponses) ApiStoragesExportTypesRetrieveWithResponse(ctx context.Context, reqEditors ...RequestEditorFn) (*ApiStoragesExportTypesRetrieveResponse, error) {
+	rsp, err := c.ApiStoragesExportTypesRetrieve(ctx, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesExportTypesRetrieveResponse(rsp)
+}
+
+// ApiStoragesGcsListWithResponse Get all import storage
+//
+// Get a list of all GCS import storage connections.
+//
+// Returns a wrapper object for the known response body format(s).
+//
+// Corresponds with GET /api/storages/gcs/ (the `ApiStoragesGcsList` operationId).
+func (c *ClientWithResponses) ApiStoragesGcsListWithResponse(ctx context.Context, params *ApiStoragesGcsListParams, reqEditors ...RequestEditorFn) (*ApiStoragesGcsListResponse, error) {
+	rsp, err := c.ApiStoragesGcsList(ctx, params, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesGcsListResponse(rsp)
+}
+
+// ApiStoragesGcsCreateWithBodyWithResponse Create import storage
+//
+// Create a new GCS import storage connection.
+//
+// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with POST /api/storages/gcs/ (the `ApiStoragesGcsCreate` operationId).
+func (c *ClientWithResponses) ApiStoragesGcsCreateWithBodyWithResponse(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*ApiStoragesGcsCreateResponse, error) {
+	rsp, err := c.ApiStoragesGcsCreateWithBody(ctx, contentType, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesGcsCreateResponse(rsp)
+}
+
+// ApiStoragesGcsCreateWithResponse Create import storage
+//
+// Create a new GCS import storage connection.
+//
+// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with POST /api/storages/gcs/ (the `ApiStoragesGcsCreate` operationId).
+func (c *ClientWithResponses) ApiStoragesGcsCreateWithResponse(ctx context.Context, body ApiStoragesGcsCreateJSONRequestBody, reqEditors ...RequestEditorFn) (*ApiStoragesGcsCreateResponse, error) {
+	rsp, err := c.ApiStoragesGcsCreate(ctx, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesGcsCreateResponse(rsp)
+}
+
+// ApiStoragesGcsCreateWithFormdataBodyWithResponse Create import storage
+//
+// Create a new GCS import storage connection.
+//
+// Takes a body of the `application/x-www-form-urlencoded` content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with POST /api/storages/gcs/ (the `ApiStoragesGcsCreate` operationId).
+func (c *ClientWithResponses) ApiStoragesGcsCreateWithFormdataBodyWithResponse(ctx context.Context, body ApiStoragesGcsCreateFormdataRequestBody, reqEditors ...RequestEditorFn) (*ApiStoragesGcsCreateResponse, error) {
+	rsp, err := c.ApiStoragesGcsCreateWithFormdataBody(ctx, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesGcsCreateResponse(rsp)
+}
+
+// ApiStoragesGcsValidateCreateWithBodyWithResponse Validate import storage
+//
+// Validate a specific GCS import storage connection.
+//
+// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with POST /api/storages/gcs/validate (the `ApiStoragesGcsValidateCreate` operationId).
+func (c *ClientWithResponses) ApiStoragesGcsValidateCreateWithBodyWithResponse(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*ApiStoragesGcsValidateCreateResponse, error) {
+	rsp, err := c.ApiStoragesGcsValidateCreateWithBody(ctx, contentType, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesGcsValidateCreateResponse(rsp)
+}
+
+// ApiStoragesGcsValidateCreateWithResponse Validate import storage
+//
+// Validate a specific GCS import storage connection.
+//
+// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with POST /api/storages/gcs/validate (the `ApiStoragesGcsValidateCreate` operationId).
+func (c *ClientWithResponses) ApiStoragesGcsValidateCreateWithResponse(ctx context.Context, body ApiStoragesGcsValidateCreateJSONRequestBody, reqEditors ...RequestEditorFn) (*ApiStoragesGcsValidateCreateResponse, error) {
+	rsp, err := c.ApiStoragesGcsValidateCreate(ctx, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesGcsValidateCreateResponse(rsp)
+}
+
+// ApiStoragesGcsValidateCreateWithFormdataBodyWithResponse Validate import storage
+//
+// Validate a specific GCS import storage connection.
+//
+// Takes a body of the `application/x-www-form-urlencoded` content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with POST /api/storages/gcs/validate (the `ApiStoragesGcsValidateCreate` operationId).
+func (c *ClientWithResponses) ApiStoragesGcsValidateCreateWithFormdataBodyWithResponse(ctx context.Context, body ApiStoragesGcsValidateCreateFormdataRequestBody, reqEditors ...RequestEditorFn) (*ApiStoragesGcsValidateCreateResponse, error) {
+	rsp, err := c.ApiStoragesGcsValidateCreateWithFormdataBody(ctx, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesGcsValidateCreateResponse(rsp)
+}
+
+// ApiStoragesGcsDestroyWithResponse Delete import storage
+//
+// Delete a specific GCS import storage connection.
+//
+// Returns a wrapper object for the known response body format(s).
+//
+// Corresponds with DELETE /api/storages/gcs/{id} (the `ApiStoragesGcsDestroy` operationId).
+func (c *ClientWithResponses) ApiStoragesGcsDestroyWithResponse(ctx context.Context, id int, reqEditors ...RequestEditorFn) (*ApiStoragesGcsDestroyResponse, error) {
+	rsp, err := c.ApiStoragesGcsDestroy(ctx, id, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesGcsDestroyResponse(rsp)
+}
+
+// ApiStoragesGcsRetrieveWithResponse Get import storage
+//
+// Get a specific GCS import storage connection.
+//
+// Returns a wrapper object for the known response body format(s).
+//
+// Corresponds with GET /api/storages/gcs/{id} (the `ApiStoragesGcsRetrieve` operationId).
+func (c *ClientWithResponses) ApiStoragesGcsRetrieveWithResponse(ctx context.Context, id int, reqEditors ...RequestEditorFn) (*ApiStoragesGcsRetrieveResponse, error) {
+	rsp, err := c.ApiStoragesGcsRetrieve(ctx, id, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesGcsRetrieveResponse(rsp)
+}
+
+// ApiStoragesGcsPartialUpdateWithBodyWithResponse Update import storage
+//
+// Update a specific GCS import storage connection.
+//
+// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with PATCH /api/storages/gcs/{id} (the `ApiStoragesGcsPartialUpdate` operationId).
+func (c *ClientWithResponses) ApiStoragesGcsPartialUpdateWithBodyWithResponse(ctx context.Context, id int, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*ApiStoragesGcsPartialUpdateResponse, error) {
+	rsp, err := c.ApiStoragesGcsPartialUpdateWithBody(ctx, id, contentType, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesGcsPartialUpdateResponse(rsp)
+}
+
+// ApiStoragesGcsPartialUpdateWithResponse Update import storage
+//
+// Update a specific GCS import storage connection.
+//
+// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with PATCH /api/storages/gcs/{id} (the `ApiStoragesGcsPartialUpdate` operationId).
+func (c *ClientWithResponses) ApiStoragesGcsPartialUpdateWithResponse(ctx context.Context, id int, body ApiStoragesGcsPartialUpdateJSONRequestBody, reqEditors ...RequestEditorFn) (*ApiStoragesGcsPartialUpdateResponse, error) {
+	rsp, err := c.ApiStoragesGcsPartialUpdate(ctx, id, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesGcsPartialUpdateResponse(rsp)
+}
+
+// ApiStoragesGcsPartialUpdateWithFormdataBodyWithResponse Update import storage
+//
+// Update a specific GCS import storage connection.
+//
+// Takes a body of the `application/x-www-form-urlencoded` content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with PATCH /api/storages/gcs/{id} (the `ApiStoragesGcsPartialUpdate` operationId).
+func (c *ClientWithResponses) ApiStoragesGcsPartialUpdateWithFormdataBodyWithResponse(ctx context.Context, id int, body ApiStoragesGcsPartialUpdateFormdataRequestBody, reqEditors ...RequestEditorFn) (*ApiStoragesGcsPartialUpdateResponse, error) {
+	rsp, err := c.ApiStoragesGcsPartialUpdateWithFormdataBody(ctx, id, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesGcsPartialUpdateResponse(rsp)
+}
+
+// ApiStoragesGcsSyncCreateWithResponse Sync import storage
+//
+// Sync tasks from a GCS import storage connection.
+//
+// Returns a wrapper object for the known response body format(s).
+//
+// Corresponds with POST /api/storages/gcs/{id}/sync (the `ApiStoragesGcsSyncCreate` operationId).
+func (c *ClientWithResponses) ApiStoragesGcsSyncCreateWithResponse(ctx context.Context, id int, reqEditors ...RequestEditorFn) (*ApiStoragesGcsSyncCreateResponse, error) {
+	rsp, err := c.ApiStoragesGcsSyncCreate(ctx, id, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesGcsSyncCreateResponse(rsp)
+}
+
+// ApiStoragesGcsSaListWithResponse ✨ Get all GCS SA import storages
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Get list of all GCS import storage connections set up with Service Account Impersonation.
+//
+// Returns a wrapper object for the known response body format(s).
+//
+// Corresponds with GET /api/storages/gcs_sa/ (the `ApiStoragesGcsSaList` operationId).
+func (c *ClientWithResponses) ApiStoragesGcsSaListWithResponse(ctx context.Context, params *ApiStoragesGcsSaListParams, reqEditors ...RequestEditorFn) (*ApiStoragesGcsSaListResponse, error) {
+	rsp, err := c.ApiStoragesGcsSaList(ctx, params, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesGcsSaListResponse(rsp)
+}
+
+// ApiStoragesGcsSaCreateWithBodyWithResponse ✨ Create GCS import storage with SA Impersonation
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Create GCS import storage with Service Account Impersonation.
+//
+// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with POST /api/storages/gcs_sa/ (the `ApiStoragesGcsSaCreate` operationId).
+func (c *ClientWithResponses) ApiStoragesGcsSaCreateWithBodyWithResponse(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*ApiStoragesGcsSaCreateResponse, error) {
+	rsp, err := c.ApiStoragesGcsSaCreateWithBody(ctx, contentType, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesGcsSaCreateResponse(rsp)
+}
+
+// ApiStoragesGcsSaCreateWithResponse ✨ Create GCS import storage with SA Impersonation
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Create GCS import storage with Service Account Impersonation.
+//
+// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with POST /api/storages/gcs_sa/ (the `ApiStoragesGcsSaCreate` operationId).
+func (c *ClientWithResponses) ApiStoragesGcsSaCreateWithResponse(ctx context.Context, body ApiStoragesGcsSaCreateJSONRequestBody, reqEditors ...RequestEditorFn) (*ApiStoragesGcsSaCreateResponse, error) {
+	rsp, err := c.ApiStoragesGcsSaCreate(ctx, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesGcsSaCreateResponse(rsp)
+}
+
+// ApiStoragesGcsSaCreateWithFormdataBodyWithResponse ✨ Create GCS import storage with SA Impersonation
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Create GCS import storage with Service Account Impersonation.
+//
+// Takes a body of the `application/x-www-form-urlencoded` content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with POST /api/storages/gcs_sa/ (the `ApiStoragesGcsSaCreate` operationId).
+func (c *ClientWithResponses) ApiStoragesGcsSaCreateWithFormdataBodyWithResponse(ctx context.Context, body ApiStoragesGcsSaCreateFormdataRequestBody, reqEditors ...RequestEditorFn) (*ApiStoragesGcsSaCreateResponse, error) {
+	rsp, err := c.ApiStoragesGcsSaCreateWithFormdataBody(ctx, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesGcsSaCreateResponse(rsp)
+}
+
+// ApiStoragesGcsSaValidateCreateWithBodyWithResponse ✨ Validate GCS SA import storage
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Validate a specific GCS import storage connection set up with SA Impersonation.
+//
+// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with POST /api/storages/gcs_sa/validate (the `ApiStoragesGcsSaValidateCreate` operationId).
+func (c *ClientWithResponses) ApiStoragesGcsSaValidateCreateWithBodyWithResponse(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*ApiStoragesGcsSaValidateCreateResponse, error) {
+	rsp, err := c.ApiStoragesGcsSaValidateCreateWithBody(ctx, contentType, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesGcsSaValidateCreateResponse(rsp)
+}
+
+// ApiStoragesGcsSaValidateCreateWithResponse ✨ Validate GCS SA import storage
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Validate a specific GCS import storage connection set up with SA Impersonation.
+//
+// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with POST /api/storages/gcs_sa/validate (the `ApiStoragesGcsSaValidateCreate` operationId).
+func (c *ClientWithResponses) ApiStoragesGcsSaValidateCreateWithResponse(ctx context.Context, body ApiStoragesGcsSaValidateCreateJSONRequestBody, reqEditors ...RequestEditorFn) (*ApiStoragesGcsSaValidateCreateResponse, error) {
+	rsp, err := c.ApiStoragesGcsSaValidateCreate(ctx, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesGcsSaValidateCreateResponse(rsp)
+}
+
+// ApiStoragesGcsSaValidateCreateWithFormdataBodyWithResponse ✨ Validate GCS SA import storage
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Validate a specific GCS import storage connection set up with SA Impersonation.
+//
+// Takes a body of the `application/x-www-form-urlencoded` content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with POST /api/storages/gcs_sa/validate (the `ApiStoragesGcsSaValidateCreate` operationId).
+func (c *ClientWithResponses) ApiStoragesGcsSaValidateCreateWithFormdataBodyWithResponse(ctx context.Context, body ApiStoragesGcsSaValidateCreateFormdataRequestBody, reqEditors ...RequestEditorFn) (*ApiStoragesGcsSaValidateCreateResponse, error) {
+	rsp, err := c.ApiStoragesGcsSaValidateCreateWithFormdataBody(ctx, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesGcsSaValidateCreateResponse(rsp)
+}
+
+// ApiStoragesGcsSaDestroyWithResponse ✨ Delete GCS SA import storage
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Delete a specific GCS import storage connection set up with SA Impersonation.
+//
+// Returns a wrapper object for the known response body format(s).
+//
+// Corresponds with DELETE /api/storages/gcs_sa/{id} (the `ApiStoragesGcsSaDestroy` operationId).
+func (c *ClientWithResponses) ApiStoragesGcsSaDestroyWithResponse(ctx context.Context, id int, reqEditors ...RequestEditorFn) (*ApiStoragesGcsSaDestroyResponse, error) {
+	rsp, err := c.ApiStoragesGcsSaDestroy(ctx, id, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesGcsSaDestroyResponse(rsp)
+}
+
+// ApiStoragesGcsSaRetrieveWithResponse ✨ Get GCS SA import storage
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Get a specific GCS import storage connection set up with SA Impersonation.
+//
+// Returns a wrapper object for the known response body format(s).
+//
+// Corresponds with GET /api/storages/gcs_sa/{id} (the `ApiStoragesGcsSaRetrieve` operationId).
+func (c *ClientWithResponses) ApiStoragesGcsSaRetrieveWithResponse(ctx context.Context, id int, reqEditors ...RequestEditorFn) (*ApiStoragesGcsSaRetrieveResponse, error) {
+	rsp, err := c.ApiStoragesGcsSaRetrieve(ctx, id, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesGcsSaRetrieveResponse(rsp)
+}
+
+// ApiStoragesGcsSaPartialUpdateWithBodyWithResponse ✨ Update GCS SA import storage
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Update a specific GCS import storage connection set up with SA Impersonation.
+//
+// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with PATCH /api/storages/gcs_sa/{id} (the `ApiStoragesGcsSaPartialUpdate` operationId).
+func (c *ClientWithResponses) ApiStoragesGcsSaPartialUpdateWithBodyWithResponse(ctx context.Context, id int, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*ApiStoragesGcsSaPartialUpdateResponse, error) {
+	rsp, err := c.ApiStoragesGcsSaPartialUpdateWithBody(ctx, id, contentType, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesGcsSaPartialUpdateResponse(rsp)
+}
+
+// ApiStoragesGcsSaPartialUpdateWithResponse ✨ Update GCS SA import storage
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Update a specific GCS import storage connection set up with SA Impersonation.
+//
+// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with PATCH /api/storages/gcs_sa/{id} (the `ApiStoragesGcsSaPartialUpdate` operationId).
+func (c *ClientWithResponses) ApiStoragesGcsSaPartialUpdateWithResponse(ctx context.Context, id int, body ApiStoragesGcsSaPartialUpdateJSONRequestBody, reqEditors ...RequestEditorFn) (*ApiStoragesGcsSaPartialUpdateResponse, error) {
+	rsp, err := c.ApiStoragesGcsSaPartialUpdate(ctx, id, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesGcsSaPartialUpdateResponse(rsp)
+}
+
+// ApiStoragesGcsSaPartialUpdateWithFormdataBodyWithResponse ✨ Update GCS SA import storage
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Update a specific GCS import storage connection set up with SA Impersonation.
+//
+// Takes a body of the `application/x-www-form-urlencoded` content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with PATCH /api/storages/gcs_sa/{id} (the `ApiStoragesGcsSaPartialUpdate` operationId).
+func (c *ClientWithResponses) ApiStoragesGcsSaPartialUpdateWithFormdataBodyWithResponse(ctx context.Context, id int, body ApiStoragesGcsSaPartialUpdateFormdataRequestBody, reqEditors ...RequestEditorFn) (*ApiStoragesGcsSaPartialUpdateResponse, error) {
+	rsp, err := c.ApiStoragesGcsSaPartialUpdateWithFormdataBody(ctx, id, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesGcsSaPartialUpdateResponse(rsp)
+}
+
+// ApiStoragesGcsSaSyncCreateWithResponse ✨ Sync GCS SA import storage
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Sync tasks from a GCS import storage connection set up with SA Impersonation.
+//
+// Returns a wrapper object for the known response body format(s).
+//
+// Corresponds with POST /api/storages/gcs_sa/{id}/sync (the `ApiStoragesGcsSaSyncCreate` operationId).
+func (c *ClientWithResponses) ApiStoragesGcsSaSyncCreateWithResponse(ctx context.Context, id int, reqEditors ...RequestEditorFn) (*ApiStoragesGcsSaSyncCreateResponse, error) {
+	rsp, err := c.ApiStoragesGcsSaSyncCreate(ctx, id, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesGcsSaSyncCreateResponse(rsp)
+}
+
+// ApiStoragesGcswifListWithResponse ✨ Get GCS WIF import storage
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Get list of all GCS import storage connections set up with WIF authentication.
+//
+// Returns a wrapper object for the known response body format(s).
+//
+// Corresponds with GET /api/storages/gcswif/ (the `ApiStoragesGcswifList` operationId).
+func (c *ClientWithResponses) ApiStoragesGcswifListWithResponse(ctx context.Context, params *ApiStoragesGcswifListParams, reqEditors ...RequestEditorFn) (*ApiStoragesGcswifListResponse, error) {
+	rsp, err := c.ApiStoragesGcswifList(ctx, params, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesGcswifListResponse(rsp)
+}
+
+// ApiStoragesGcswifCreateWithBodyWithResponse ✨ Create GCS import storage with WIF
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Create GCS import storage with WIF.
+//
+// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with POST /api/storages/gcswif/ (the `ApiStoragesGcswifCreate` operationId).
+func (c *ClientWithResponses) ApiStoragesGcswifCreateWithBodyWithResponse(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*ApiStoragesGcswifCreateResponse, error) {
+	rsp, err := c.ApiStoragesGcswifCreateWithBody(ctx, contentType, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesGcswifCreateResponse(rsp)
+}
+
+// ApiStoragesGcswifCreateWithResponse ✨ Create GCS import storage with WIF
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Create GCS import storage with WIF.
+//
+// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with POST /api/storages/gcswif/ (the `ApiStoragesGcswifCreate` operationId).
+func (c *ClientWithResponses) ApiStoragesGcswifCreateWithResponse(ctx context.Context, body ApiStoragesGcswifCreateJSONRequestBody, reqEditors ...RequestEditorFn) (*ApiStoragesGcswifCreateResponse, error) {
+	rsp, err := c.ApiStoragesGcswifCreate(ctx, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesGcswifCreateResponse(rsp)
+}
+
+// ApiStoragesGcswifCreateWithFormdataBodyWithResponse ✨ Create GCS import storage with WIF
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Create GCS import storage with WIF.
+//
+// Takes a body of the `application/x-www-form-urlencoded` content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with POST /api/storages/gcswif/ (the `ApiStoragesGcswifCreate` operationId).
+func (c *ClientWithResponses) ApiStoragesGcswifCreateWithFormdataBodyWithResponse(ctx context.Context, body ApiStoragesGcswifCreateFormdataRequestBody, reqEditors ...RequestEditorFn) (*ApiStoragesGcswifCreateResponse, error) {
+	rsp, err := c.ApiStoragesGcswifCreateWithFormdataBody(ctx, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesGcswifCreateResponse(rsp)
+}
+
+// ApiStoragesGcswifValidateCreateWithBodyWithResponse ✨ Validate GCS WIF import storage
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Validate a specific GCS import storage connection that was set up with WIF authentication.
+//
+// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with POST /api/storages/gcswif/validate (the `ApiStoragesGcswifValidateCreate` operationId).
+func (c *ClientWithResponses) ApiStoragesGcswifValidateCreateWithBodyWithResponse(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*ApiStoragesGcswifValidateCreateResponse, error) {
+	rsp, err := c.ApiStoragesGcswifValidateCreateWithBody(ctx, contentType, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesGcswifValidateCreateResponse(rsp)
+}
+
+// ApiStoragesGcswifValidateCreateWithResponse ✨ Validate GCS WIF import storage
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Validate a specific GCS import storage connection that was set up with WIF authentication.
+//
+// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with POST /api/storages/gcswif/validate (the `ApiStoragesGcswifValidateCreate` operationId).
+func (c *ClientWithResponses) ApiStoragesGcswifValidateCreateWithResponse(ctx context.Context, body ApiStoragesGcswifValidateCreateJSONRequestBody, reqEditors ...RequestEditorFn) (*ApiStoragesGcswifValidateCreateResponse, error) {
+	rsp, err := c.ApiStoragesGcswifValidateCreate(ctx, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesGcswifValidateCreateResponse(rsp)
+}
+
+// ApiStoragesGcswifValidateCreateWithFormdataBodyWithResponse ✨ Validate GCS WIF import storage
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Validate a specific GCS import storage connection that was set up with WIF authentication.
+//
+// Takes a body of the `application/x-www-form-urlencoded` content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with POST /api/storages/gcswif/validate (the `ApiStoragesGcswifValidateCreate` operationId).
+func (c *ClientWithResponses) ApiStoragesGcswifValidateCreateWithFormdataBodyWithResponse(ctx context.Context, body ApiStoragesGcswifValidateCreateFormdataRequestBody, reqEditors ...RequestEditorFn) (*ApiStoragesGcswifValidateCreateResponse, error) {
+	rsp, err := c.ApiStoragesGcswifValidateCreateWithFormdataBody(ctx, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesGcswifValidateCreateResponse(rsp)
+}
+
+// ApiStoragesGcswifDestroyWithResponse ✨ Delete GCS WIF import storage
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Delete a specific GCS import storage connection that was set up with WIF authentication.
+//
+// Returns a wrapper object for the known response body format(s).
+//
+// Corresponds with DELETE /api/storages/gcswif/{id} (the `ApiStoragesGcswifDestroy` operationId).
+func (c *ClientWithResponses) ApiStoragesGcswifDestroyWithResponse(ctx context.Context, id int, reqEditors ...RequestEditorFn) (*ApiStoragesGcswifDestroyResponse, error) {
+	rsp, err := c.ApiStoragesGcswifDestroy(ctx, id, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesGcswifDestroyResponse(rsp)
+}
+
+// ApiStoragesGcswifRetrieveWithResponse ✨ Get GCS WIF import storage
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Get a specific GCS import storage connection that was set up with WIF.
+//
+// Returns a wrapper object for the known response body format(s).
+//
+// Corresponds with GET /api/storages/gcswif/{id} (the `ApiStoragesGcswifRetrieve` operationId).
+func (c *ClientWithResponses) ApiStoragesGcswifRetrieveWithResponse(ctx context.Context, id int, reqEditors ...RequestEditorFn) (*ApiStoragesGcswifRetrieveResponse, error) {
+	rsp, err := c.ApiStoragesGcswifRetrieve(ctx, id, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesGcswifRetrieveResponse(rsp)
+}
+
+// ApiStoragesGcswifPartialUpdateWithBodyWithResponse ✨ Update GCS WIF import storage
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Update a specific GCS import storage connection that was set up with WIF authentication.
+//
+// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with PATCH /api/storages/gcswif/{id} (the `ApiStoragesGcswifPartialUpdate` operationId).
+func (c *ClientWithResponses) ApiStoragesGcswifPartialUpdateWithBodyWithResponse(ctx context.Context, id int, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*ApiStoragesGcswifPartialUpdateResponse, error) {
+	rsp, err := c.ApiStoragesGcswifPartialUpdateWithBody(ctx, id, contentType, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesGcswifPartialUpdateResponse(rsp)
+}
+
+// ApiStoragesGcswifPartialUpdateWithResponse ✨ Update GCS WIF import storage
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Update a specific GCS import storage connection that was set up with WIF authentication.
+//
+// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with PATCH /api/storages/gcswif/{id} (the `ApiStoragesGcswifPartialUpdate` operationId).
+func (c *ClientWithResponses) ApiStoragesGcswifPartialUpdateWithResponse(ctx context.Context, id int, body ApiStoragesGcswifPartialUpdateJSONRequestBody, reqEditors ...RequestEditorFn) (*ApiStoragesGcswifPartialUpdateResponse, error) {
+	rsp, err := c.ApiStoragesGcswifPartialUpdate(ctx, id, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesGcswifPartialUpdateResponse(rsp)
+}
+
+// ApiStoragesGcswifPartialUpdateWithFormdataBodyWithResponse ✨ Update GCS WIF import storage
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Update a specific GCS import storage connection that was set up with WIF authentication.
+//
+// Takes a body of the `application/x-www-form-urlencoded` content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with PATCH /api/storages/gcswif/{id} (the `ApiStoragesGcswifPartialUpdate` operationId).
+func (c *ClientWithResponses) ApiStoragesGcswifPartialUpdateWithFormdataBodyWithResponse(ctx context.Context, id int, body ApiStoragesGcswifPartialUpdateFormdataRequestBody, reqEditors ...RequestEditorFn) (*ApiStoragesGcswifPartialUpdateResponse, error) {
+	rsp, err := c.ApiStoragesGcswifPartialUpdateWithFormdataBody(ctx, id, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesGcswifPartialUpdateResponse(rsp)
+}
+
+// ApiStoragesGcswifSyncCreateWithResponse ✨ Sync GCS WIF import storage
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Sync tasks from an GCS import storage connection that was set up with WIF authentication.
+//
+// Returns a wrapper object for the known response body format(s).
+//
+// Corresponds with POST /api/storages/gcswif/{id}/sync (the `ApiStoragesGcswifSyncCreate` operationId).
+func (c *ClientWithResponses) ApiStoragesGcswifSyncCreateWithResponse(ctx context.Context, id int, reqEditors ...RequestEditorFn) (*ApiStoragesGcswifSyncCreateResponse, error) {
+	rsp, err := c.ApiStoragesGcswifSyncCreate(ctx, id, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesGcswifSyncCreateResponse(rsp)
+}
+
+// ApiStoragesLocalfilesListWithResponse Get all import storage
+//
+// Get a list of all local file import storage connections.
+//
+// Returns a wrapper object for the known response body format(s).
+//
+// Corresponds with GET /api/storages/localfiles/ (the `ApiStoragesLocalfilesList` operationId).
+func (c *ClientWithResponses) ApiStoragesLocalfilesListWithResponse(ctx context.Context, params *ApiStoragesLocalfilesListParams, reqEditors ...RequestEditorFn) (*ApiStoragesLocalfilesListResponse, error) {
+	rsp, err := c.ApiStoragesLocalfilesList(ctx, params, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesLocalfilesListResponse(rsp)
+}
+
+// ApiStoragesLocalfilesCreateWithBodyWithResponse Create import storage
+//
+// Create a new local file import storage connection.
+//
+// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with POST /api/storages/localfiles/ (the `ApiStoragesLocalfilesCreate` operationId).
+func (c *ClientWithResponses) ApiStoragesLocalfilesCreateWithBodyWithResponse(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*ApiStoragesLocalfilesCreateResponse, error) {
+	rsp, err := c.ApiStoragesLocalfilesCreateWithBody(ctx, contentType, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesLocalfilesCreateResponse(rsp)
+}
+
+// ApiStoragesLocalfilesCreateWithResponse Create import storage
+//
+// Create a new local file import storage connection.
+//
+// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with POST /api/storages/localfiles/ (the `ApiStoragesLocalfilesCreate` operationId).
+func (c *ClientWithResponses) ApiStoragesLocalfilesCreateWithResponse(ctx context.Context, body ApiStoragesLocalfilesCreateJSONRequestBody, reqEditors ...RequestEditorFn) (*ApiStoragesLocalfilesCreateResponse, error) {
+	rsp, err := c.ApiStoragesLocalfilesCreate(ctx, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesLocalfilesCreateResponse(rsp)
+}
+
+// ApiStoragesLocalfilesCreateWithFormdataBodyWithResponse Create import storage
+//
+// Create a new local file import storage connection.
+//
+// Takes a body of the `application/x-www-form-urlencoded` content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with POST /api/storages/localfiles/ (the `ApiStoragesLocalfilesCreate` operationId).
+func (c *ClientWithResponses) ApiStoragesLocalfilesCreateWithFormdataBodyWithResponse(ctx context.Context, body ApiStoragesLocalfilesCreateFormdataRequestBody, reqEditors ...RequestEditorFn) (*ApiStoragesLocalfilesCreateResponse, error) {
+	rsp, err := c.ApiStoragesLocalfilesCreateWithFormdataBody(ctx, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesLocalfilesCreateResponse(rsp)
+}
+
+// ApiStoragesLocalfilesValidateCreateWithBodyWithResponse Validate import storage
+//
+// Validate a specific local file import storage connection.
+//
+// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with POST /api/storages/localfiles/validate (the `ApiStoragesLocalfilesValidateCreate` operationId).
+func (c *ClientWithResponses) ApiStoragesLocalfilesValidateCreateWithBodyWithResponse(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*ApiStoragesLocalfilesValidateCreateResponse, error) {
+	rsp, err := c.ApiStoragesLocalfilesValidateCreateWithBody(ctx, contentType, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesLocalfilesValidateCreateResponse(rsp)
+}
+
+// ApiStoragesLocalfilesValidateCreateWithResponse Validate import storage
+//
+// Validate a specific local file import storage connection.
+//
+// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with POST /api/storages/localfiles/validate (the `ApiStoragesLocalfilesValidateCreate` operationId).
+func (c *ClientWithResponses) ApiStoragesLocalfilesValidateCreateWithResponse(ctx context.Context, body ApiStoragesLocalfilesValidateCreateJSONRequestBody, reqEditors ...RequestEditorFn) (*ApiStoragesLocalfilesValidateCreateResponse, error) {
+	rsp, err := c.ApiStoragesLocalfilesValidateCreate(ctx, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesLocalfilesValidateCreateResponse(rsp)
+}
+
+// ApiStoragesLocalfilesValidateCreateWithFormdataBodyWithResponse Validate import storage
+//
+// Validate a specific local file import storage connection.
+//
+// Takes a body of the `application/x-www-form-urlencoded` content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with POST /api/storages/localfiles/validate (the `ApiStoragesLocalfilesValidateCreate` operationId).
+func (c *ClientWithResponses) ApiStoragesLocalfilesValidateCreateWithFormdataBodyWithResponse(ctx context.Context, body ApiStoragesLocalfilesValidateCreateFormdataRequestBody, reqEditors ...RequestEditorFn) (*ApiStoragesLocalfilesValidateCreateResponse, error) {
+	rsp, err := c.ApiStoragesLocalfilesValidateCreateWithFormdataBody(ctx, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesLocalfilesValidateCreateResponse(rsp)
+}
+
+// ApiStoragesLocalfilesDestroyWithResponse Delete import storage
+//
+// Delete a specific local file import storage connection.
+//
+// Returns a wrapper object for the known response body format(s).
+//
+// Corresponds with DELETE /api/storages/localfiles/{id} (the `ApiStoragesLocalfilesDestroy` operationId).
+func (c *ClientWithResponses) ApiStoragesLocalfilesDestroyWithResponse(ctx context.Context, id int, reqEditors ...RequestEditorFn) (*ApiStoragesLocalfilesDestroyResponse, error) {
+	rsp, err := c.ApiStoragesLocalfilesDestroy(ctx, id, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesLocalfilesDestroyResponse(rsp)
+}
+
+// ApiStoragesLocalfilesRetrieveWithResponse Get import storage
+//
+// Get a specific local file import storage connection.
+//
+// Returns a wrapper object for the known response body format(s).
+//
+// Corresponds with GET /api/storages/localfiles/{id} (the `ApiStoragesLocalfilesRetrieve` operationId).
+func (c *ClientWithResponses) ApiStoragesLocalfilesRetrieveWithResponse(ctx context.Context, id int, reqEditors ...RequestEditorFn) (*ApiStoragesLocalfilesRetrieveResponse, error) {
+	rsp, err := c.ApiStoragesLocalfilesRetrieve(ctx, id, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesLocalfilesRetrieveResponse(rsp)
 }

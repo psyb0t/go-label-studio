@@ -2,6 +2,16 @@
 
 All notable changes per release. Versions follow [semver](https://semver.org).
 
+## v0.5.0, 2026-11-02
+
+- Breaking: removed the whole datasets API. The upstream spec no longer has the `/api/datasets/` endpoints. The `ApiDatasets...` methods are gone from `Client`, `ClientWithResponses`, `ClientInterface` and `ClientWithResponsesInterface`, along with their `New...Request` and `Parse...Response` functions, `...Response` types, `...Params` types and `...RequestBody` aliases. This covers datasets, dataset members, views, import, columns and task metadata.
+- Breaking: removed the dataset storage endpoints: `ApiDatasetStoragesList`, `ApiDatasetStoragesTypesRetrieve` and the Azure, GCS and S3 variants, such as `ApiDatasetStoragesS3Create`, `ApiDatasetStoragesGcsSyncCreate` and `ApiDatasetStoragesAzureValidateCreate`, with their response, params and request body types.
+- Breaking: removed the models `Dataset`, `DatasetRequest`, `PatchedDatasetRequest`, `DatasetColumn`, `DatasetColumnsResponse`, `DatasetColumnVisibilityDefaults`, `DatasetImportCandidatesCreateRequest`, `DatasetImportCandidatesResponse`, `PatchedDatasetImportCandidatesPatchRequest`, `DatasetMember`, `DatasetMemberRequest`, `DatasetView`, `DatasetViewRequest`, `PatchedDatasetViewRequest`, `DatasetTasksMetadataResponse`, `DatasetStorageAvailableDataType`, `DatasetStorageColumnType` and `DatasetStorageColumnsResponse`.
+- Breaking: removed the storage models `AzureDatasetStorage`, `GCSDatasetStorage`, `S3DatasetStorage`, their `...Request` types and the `PatchedAzureDatasetStorageRequest`, `PatchedGCSDatasetStorageRequest` and `PatchedS3DatasetStorageRequest` types. Removed the filter types `ChildFilterRequest`, `FilterGroupRequest` and `FilterRequest`. Migration: stop calling these endpoints and using these types.
+- Breaking: `ApiLearningResourcesRetrieve` and `ApiLearningResourcesTakeRetrieve` now take a params argument, `*ApiLearningResourcesRetrieveParams` and `*ApiLearningResourcesTakeRetrieveParams`, after the id. The same applies to the `WithResponse` methods, the interface methods and `NewApiLearningResourcesRetrieveRequest` and `NewApiLearningResourcesTakeRetrieveRequest`. Migration: pass `nil` to keep the old behavior.
+- Added `ApiLearningResourcesRetrieveParams.Omit` and `ApiLearningResourcesTakeRetrieveParams.Omit` (`*string`, query `omit`, optional). It lists response fields to leave out, such as `content` or `modules`.
+- Generated code moved between files. Names and types of the remaining API are unchanged.
+
 ## v0.4.2, 2026-10-30
 
 - Documentation only. The doc comments on `LseTask.Annotations`, `LseTaskSerializerForAnnotators.Annotations`, `LseTaskSerializerForReviewers.Annotations` and `ApiAnnotationHistoryRetrieve` (client, `ClientWithResponses` and both interfaces) no longer mention a feature flag or FIT-720 lazy loading.

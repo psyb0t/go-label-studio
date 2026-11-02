@@ -6,7 +6,6 @@ package labelstudio
 import (
 	"context"
 	"encoding/json"
-	"fmt"
 	"io"
 	"net/http"
 	"strings"
@@ -14,1331 +13,6 @@ import (
 	"github.com/oapi-codegen/runtime"
 	openapi_types "github.com/oapi-codegen/runtime/types"
 )
-
-// ApiOrganizationsMemberTagsPartialUpdateFormdataRequestBody defines body for ApiOrganizationsMemberTagsPartialUpdate for application/x-www-form-urlencoded ContentType.
-type ApiOrganizationsMemberTagsPartialUpdateFormdataRequestBody = PatchedOrganizationMemberTagRequest
-
-// ApiOrganizationsMemberTagsPartialUpdateMultipartRequestBody defines body for ApiOrganizationsMemberTagsPartialUpdate for multipart/form-data ContentType.
-type ApiOrganizationsMemberTagsPartialUpdateMultipartRequestBody = PatchedOrganizationMemberTagRequest
-
-// ApiOrganizationsMembershipsPartialUpdateJSONRequestBody defines body for ApiOrganizationsMembershipsPartialUpdate for application/json ContentType.
-type ApiOrganizationsMembershipsPartialUpdateJSONRequestBody = PatchedOrganizationMemberCreateUpdateRequest
-
-// ApiOrganizationsMembershipsPartialUpdateFormdataRequestBody defines body for ApiOrganizationsMembershipsPartialUpdate for application/x-www-form-urlencoded ContentType.
-type ApiOrganizationsMembershipsPartialUpdateFormdataRequestBody = PatchedOrganizationMemberCreateUpdateRequest
-
-// ApiOrganizationsMembershipsPartialUpdateMultipartRequestBody defines body for ApiOrganizationsMembershipsPartialUpdate for multipart/form-data ContentType.
-type ApiOrganizationsMembershipsPartialUpdateMultipartRequestBody = PatchedOrganizationMemberCreateUpdateRequest
-
-// ApiOrganizationsMembershipsSearchCreateJSONRequestBody defines body for ApiOrganizationsMembershipsSearchCreate for application/json ContentType.
-type ApiOrganizationsMembershipsSearchCreateJSONRequestBody = OrganizationMemberFilterRequestRequest
-
-// ApiOrganizationsMembershipsSearchCreateFormdataRequestBody defines body for ApiOrganizationsMembershipsSearchCreate for application/x-www-form-urlencoded ContentType.
-type ApiOrganizationsMembershipsSearchCreateFormdataRequestBody = OrganizationMemberFilterRequestRequest
-
-// ApiOrganizationsMembershipsSearchCreateMultipartRequestBody defines body for ApiOrganizationsMembershipsSearchCreate for multipart/form-data ContentType.
-type ApiOrganizationsMembershipsSearchCreateMultipartRequestBody = OrganizationMemberFilterRequestRequest
-
-// ApiOrganizationsPermissionsCreateJSONRequestBody defines body for ApiOrganizationsPermissionsCreate for application/json ContentType.
-type ApiOrganizationsPermissionsCreateJSONRequestBody = OrganizationPermissionRequest
-
-// ApiOrganizationsPermissionsCreateFormdataRequestBody defines body for ApiOrganizationsPermissionsCreate for application/x-www-form-urlencoded ContentType.
-type ApiOrganizationsPermissionsCreateFormdataRequestBody = OrganizationPermissionRequest
-
-// ApiOrganizationsPermissionsCreateMultipartRequestBody defines body for ApiOrganizationsPermissionsCreate for multipart/form-data ContentType.
-type ApiOrganizationsPermissionsCreateMultipartRequestBody = OrganizationPermissionRequest
-
-// ApiOrganizationsPermissionsPartialUpdateJSONRequestBody defines body for ApiOrganizationsPermissionsPartialUpdate for application/json ContentType.
-type ApiOrganizationsPermissionsPartialUpdateJSONRequestBody = PatchedOrganizationPermissionRequest
-
-// ApiOrganizationsPermissionsPartialUpdateFormdataRequestBody defines body for ApiOrganizationsPermissionsPartialUpdate for application/x-www-form-urlencoded ContentType.
-type ApiOrganizationsPermissionsPartialUpdateFormdataRequestBody = PatchedOrganizationPermissionRequest
-
-// ApiOrganizationsPermissionsPartialUpdateMultipartRequestBody defines body for ApiOrganizationsPermissionsPartialUpdate for multipart/form-data ContentType.
-type ApiOrganizationsPermissionsPartialUpdateMultipartRequestBody = PatchedOrganizationPermissionRequest
-
-// ApiOrganizationsPermissionsUpdateJSONRequestBody defines body for ApiOrganizationsPermissionsUpdate for application/json ContentType.
-type ApiOrganizationsPermissionsUpdateJSONRequestBody = OrganizationPermissionRequest
-
-// ApiOrganizationsPermissionsUpdateFormdataRequestBody defines body for ApiOrganizationsPermissionsUpdate for application/x-www-form-urlencoded ContentType.
-type ApiOrganizationsPermissionsUpdateFormdataRequestBody = OrganizationPermissionRequest
-
-// ApiOrganizationsPermissionsUpdateMultipartRequestBody defines body for ApiOrganizationsPermissionsUpdate for multipart/form-data ContentType.
-type ApiOrganizationsPermissionsUpdateMultipartRequestBody = OrganizationPermissionRequest
-
-// ApiOrganizationsSetDefaultRolePartialUpdateJSONRequestBody defines body for ApiOrganizationsSetDefaultRolePartialUpdate for application/json ContentType.
-type ApiOrganizationsSetDefaultRolePartialUpdateJSONRequestBody = PatchedDefaultRoleRequest
-
-// ApiOrganizationsSetDefaultRolePartialUpdateFormdataRequestBody defines body for ApiOrganizationsSetDefaultRolePartialUpdate for application/x-www-form-urlencoded ContentType.
-type ApiOrganizationsSetDefaultRolePartialUpdateFormdataRequestBody = PatchedDefaultRoleRequest
-
-// ApiOrganizationsSetDefaultRolePartialUpdateMultipartRequestBody defines body for ApiOrganizationsSetDefaultRolePartialUpdate for multipart/form-data ContentType.
-type ApiOrganizationsSetDefaultRolePartialUpdateMultipartRequestBody = PatchedDefaultRoleRequest
-
-// ApiPredictionsCreateJSONRequestBody defines body for ApiPredictionsCreate for application/json ContentType.
-type ApiPredictionsCreateJSONRequestBody = PredictionRequest
-
-// ApiPredictionsCreateFormdataRequestBody defines body for ApiPredictionsCreate for application/x-www-form-urlencoded ContentType.
-type ApiPredictionsCreateFormdataRequestBody = PredictionRequest
-
-// ApiPredictionsCreateMultipartRequestBody defines body for ApiPredictionsCreate for multipart/form-data ContentType.
-type ApiPredictionsCreateMultipartRequestBody = PredictionRequest
-
-// ApiPredictionsPartialUpdateJSONRequestBody defines body for ApiPredictionsPartialUpdate for application/json ContentType.
-type ApiPredictionsPartialUpdateJSONRequestBody = PatchedPredictionRequest
-
-// ApiPredictionsPartialUpdateFormdataRequestBody defines body for ApiPredictionsPartialUpdate for application/x-www-form-urlencoded ContentType.
-type ApiPredictionsPartialUpdateFormdataRequestBody = PatchedPredictionRequest
-
-// ApiPredictionsPartialUpdateMultipartRequestBody defines body for ApiPredictionsPartialUpdate for multipart/form-data ContentType.
-type ApiPredictionsPartialUpdateMultipartRequestBody = PatchedPredictionRequest
-
-// ApiPredictionsUpdateJSONRequestBody defines body for ApiPredictionsUpdate for application/json ContentType.
-type ApiPredictionsUpdateJSONRequestBody = PredictionRequest
-
-// ApiPredictionsUpdateFormdataRequestBody defines body for ApiPredictionsUpdate for application/x-www-form-urlencoded ContentType.
-type ApiPredictionsUpdateFormdataRequestBody = PredictionRequest
-
-// ApiPredictionsUpdateMultipartRequestBody defines body for ApiPredictionsUpdate for multipart/form-data ContentType.
-type ApiPredictionsUpdateMultipartRequestBody = PredictionRequest
-
-// ApiProjectTemplatesCreateJSONRequestBody defines body for ApiProjectTemplatesCreate for application/json ContentType.
-type ApiProjectTemplatesCreateJSONRequestBody = ProjectTemplateRequest
-
-// ApiProjectTemplatesCreateFormdataRequestBody defines body for ApiProjectTemplatesCreate for application/x-www-form-urlencoded ContentType.
-type ApiProjectTemplatesCreateFormdataRequestBody = ProjectTemplateRequest
-
-// ApiProjectTemplatesCreateMultipartRequestBody defines body for ApiProjectTemplatesCreate for multipart/form-data ContentType.
-type ApiProjectTemplatesCreateMultipartRequestBody = ProjectTemplateRequest
-
-// ApiProjectTemplatesPartialUpdateJSONRequestBody defines body for ApiProjectTemplatesPartialUpdate for application/json ContentType.
-type ApiProjectTemplatesPartialUpdateJSONRequestBody = PatchedProjectTemplateRequest
-
-// ApiProjectTemplatesPartialUpdateFormdataRequestBody defines body for ApiProjectTemplatesPartialUpdate for application/x-www-form-urlencoded ContentType.
-type ApiProjectTemplatesPartialUpdateFormdataRequestBody = PatchedProjectTemplateRequest
-
-// ApiProjectTemplatesPartialUpdateMultipartRequestBody defines body for ApiProjectTemplatesPartialUpdate for multipart/form-data ContentType.
-type ApiProjectTemplatesPartialUpdateMultipartRequestBody = PatchedProjectTemplateRequest
-
-// ApiProjectTemplatesUpdateJSONRequestBody defines body for ApiProjectTemplatesUpdate for application/json ContentType.
-type ApiProjectTemplatesUpdateJSONRequestBody = ProjectTemplateRequest
-
-// ApiProjectTemplatesUpdateFormdataRequestBody defines body for ApiProjectTemplatesUpdate for application/x-www-form-urlencoded ContentType.
-type ApiProjectTemplatesUpdateFormdataRequestBody = ProjectTemplateRequest
-
-// ApiProjectTemplatesUpdateMultipartRequestBody defines body for ApiProjectTemplatesUpdate for multipart/form-data ContentType.
-type ApiProjectTemplatesUpdateMultipartRequestBody = ProjectTemplateRequest
-
-// ApiProjectTemplatesCreateProjectCreateJSONRequestBody defines body for ApiProjectTemplatesCreateProjectCreate for application/json ContentType.
-type ApiProjectTemplatesCreateProjectCreateJSONRequestBody = CreateProjectFromTemplateRequestRequest
-
-// ApiProjectTemplatesCreateProjectCreateFormdataRequestBody defines body for ApiProjectTemplatesCreateProjectCreate for application/x-www-form-urlencoded ContentType.
-type ApiProjectTemplatesCreateProjectCreateFormdataRequestBody = CreateProjectFromTemplateRequestRequest
-
-// ApiProjectTemplatesCreateProjectCreateMultipartRequestBody defines body for ApiProjectTemplatesCreateProjectCreate for multipart/form-data ContentType.
-type ApiProjectTemplatesCreateProjectCreateMultipartRequestBody = CreateProjectFromTemplateRequestRequest
-
-// ApiProjectsCreateJSONRequestBody defines body for ApiProjectsCreate for application/json ContentType.
-type ApiProjectsCreateJSONRequestBody = LseProjectCreateRequest
-
-// ApiProjectsCreateFormdataRequestBody defines body for ApiProjectsCreate for application/x-www-form-urlencoded ContentType.
-type ApiProjectsCreateFormdataRequestBody = LseProjectCreateRequest
-
-// ApiProjectsCreateMultipartRequestBody defines body for ApiProjectsCreate for multipart/form-data ContentType.
-type ApiProjectsCreateMultipartRequestBody = LseProjectCreateRequest
-
-// ApiProjectsRolesCreateJSONRequestBody defines body for ApiProjectsRolesCreate for application/json ContentType.
-type ApiProjectsRolesCreateJSONRequestBody = ProjectRoleRequest
-
-// ApiProjectsRolesCreateFormdataRequestBody defines body for ApiProjectsRolesCreate for application/x-www-form-urlencoded ContentType.
-type ApiProjectsRolesCreateFormdataRequestBody = ProjectRoleRequest
-
-// ApiProjectsRolesCreateMultipartRequestBody defines body for ApiProjectsRolesCreate for multipart/form-data ContentType.
-type ApiProjectsRolesCreateMultipartRequestBody = ProjectRoleRequest
-
-// ApiProjectsValidateCreateJSONRequestBody defines body for ApiProjectsValidateCreate for application/json ContentType.
-type ApiProjectsValidateCreateJSONRequestBody = ProjectLabelConfigRequest
-
-// ApiProjectsValidateCreateFormdataRequestBody defines body for ApiProjectsValidateCreate for application/x-www-form-urlencoded ContentType.
-type ApiProjectsValidateCreateFormdataRequestBody = ProjectLabelConfigRequest
-
-// ApiProjectsValidateCreateMultipartRequestBody defines body for ApiProjectsValidateCreate for multipart/form-data ContentType.
-type ApiProjectsValidateCreateMultipartRequestBody = ProjectLabelConfigRequest
-
-// ApiProjectsPartialUpdateJSONRequestBody defines body for ApiProjectsPartialUpdate for application/json ContentType.
-type ApiProjectsPartialUpdateJSONRequestBody = PatchedLseProjectUpdateRequest
-
-// ApiProjectsPartialUpdateFormdataRequestBody defines body for ApiProjectsPartialUpdate for application/x-www-form-urlencoded ContentType.
-type ApiProjectsPartialUpdateFormdataRequestBody = PatchedLseProjectUpdateRequest
-
-// ApiProjectsPartialUpdateMultipartRequestBody defines body for ApiProjectsPartialUpdate for multipart/form-data ContentType.
-type ApiProjectsPartialUpdateMultipartRequestBody = PatchedLseProjectUpdateRequest
-
-// ApiProjectsAwsCustomFunctionCreateJSONRequestBody defines body for ApiProjectsAwsCustomFunctionCreate for application/json ContentType.
-type ApiProjectsAwsCustomFunctionCreateJSONRequestBody = AWSCustomFunctionUpdateRequest
-
-// ApiProjectsAwsCustomFunctionCreateFormdataRequestBody defines body for ApiProjectsAwsCustomFunctionCreate for application/x-www-form-urlencoded ContentType.
-type ApiProjectsAwsCustomFunctionCreateFormdataRequestBody = AWSCustomFunctionUpdateRequest
-
-// ApiProjectsAwsCustomFunctionCreateMultipartRequestBody defines body for ApiProjectsAwsCustomFunctionCreate for multipart/form-data ContentType.
-type ApiProjectsAwsCustomFunctionCreateMultipartRequestBody = AWSCustomFunctionUpdateRequest
-
-// ApiProjectsCheckFunctionCreateJSONRequestBody defines body for ApiProjectsCheckFunctionCreate for application/json ContentType.
-type ApiProjectsCheckFunctionCreateJSONRequestBody = CheckMatchingFunctionRequestRequest
-
-// ApiProjectsCheckFunctionCreateFormdataRequestBody defines body for ApiProjectsCheckFunctionCreate for application/x-www-form-urlencoded ContentType.
-type ApiProjectsCheckFunctionCreateFormdataRequestBody = CheckMatchingFunctionRequestRequest
-
-// ApiProjectsCheckFunctionCreateMultipartRequestBody defines body for ApiProjectsCheckFunctionCreate for multipart/form-data ContentType.
-type ApiProjectsCheckFunctionCreateMultipartRequestBody = CheckMatchingFunctionRequestRequest
-
-// ApiProjectsCustomFunctionCreateJSONRequestBody defines body for ApiProjectsCustomFunctionCreate for application/json ContentType.
-type ApiProjectsCustomFunctionCreateJSONRequestBody = CustomFunctionCodeRequestRequest
-
-// ApiProjectsCustomFunctionCreateFormdataRequestBody defines body for ApiProjectsCustomFunctionCreate for application/x-www-form-urlencoded ContentType.
-type ApiProjectsCustomFunctionCreateFormdataRequestBody = CustomFunctionCodeRequestRequest
-
-// ApiProjectsCustomFunctionCreateMultipartRequestBody defines body for ApiProjectsCustomFunctionCreate for multipart/form-data ContentType.
-type ApiProjectsCustomFunctionCreateMultipartRequestBody = CustomFunctionCodeRequestRequest
-
-// ApiProjectsDuplicateCreateJSONRequestBody defines body for ApiProjectsDuplicateCreate for application/json ContentType.
-type ApiProjectsDuplicateCreateJSONRequestBody = ProjectDuplicateRequest
-
-// ApiProjectsDuplicateCreateFormdataRequestBody defines body for ApiProjectsDuplicateCreate for application/x-www-form-urlencoded ContentType.
-type ApiProjectsDuplicateCreateFormdataRequestBody = ProjectDuplicateRequest
-
-// ApiProjectsDuplicateCreateMultipartRequestBody defines body for ApiProjectsDuplicateCreate for multipart/form-data ContentType.
-type ApiProjectsDuplicateCreateMultipartRequestBody = ProjectDuplicateRequest
-
-// ApiProjectsExportsCreateJSONRequestBody defines body for ApiProjectsExportsCreate for application/json ContentType.
-type ApiProjectsExportsCreateJSONRequestBody = LseExportCreateRequest
-
-// ApiProjectsExportsCreateFormdataRequestBody defines body for ApiProjectsExportsCreate for application/x-www-form-urlencoded ContentType.
-type ApiProjectsExportsCreateFormdataRequestBody = LseExportCreateRequest
-
-// ApiProjectsExportsCreateMultipartRequestBody defines body for ApiProjectsExportsCreate for multipart/form-data ContentType.
-type ApiProjectsExportsCreateMultipartRequestBody = LseExportCreateRequest
-
-// ApiProjectsExportsConvertCreateJSONRequestBody defines body for ApiProjectsExportsConvertCreate for application/json ContentType.
-type ApiProjectsExportsConvertCreateJSONRequestBody = ExportConvertRequest
-
-// ApiProjectsExportsConvertCreateFormdataRequestBody defines body for ApiProjectsExportsConvertCreate for application/x-www-form-urlencoded ContentType.
-type ApiProjectsExportsConvertCreateFormdataRequestBody = ExportConvertRequest
-
-// ApiProjectsExportsConvertCreateMultipartRequestBody defines body for ApiProjectsExportsConvertCreate for multipart/form-data ContentType.
-type ApiProjectsExportsConvertCreateMultipartRequestBody = ExportConvertRequest
-
-// ApiProjectsGcpCustomFunctionCreateJSONRequestBody defines body for ApiProjectsGcpCustomFunctionCreate for application/json ContentType.
-type ApiProjectsGcpCustomFunctionCreateJSONRequestBody = GCPCustomFunctionUpdateRequest
-
-// ApiProjectsGcpCustomFunctionCreateFormdataRequestBody defines body for ApiProjectsGcpCustomFunctionCreate for application/x-www-form-urlencoded ContentType.
-type ApiProjectsGcpCustomFunctionCreateFormdataRequestBody = GCPCustomFunctionUpdateRequest
-
-// ApiProjectsGcpCustomFunctionCreateMultipartRequestBody defines body for ApiProjectsGcpCustomFunctionCreate for multipart/form-data ContentType.
-type ApiProjectsGcpCustomFunctionCreateMultipartRequestBody = GCPCustomFunctionUpdateRequest
-
-// ApiProjectsImportCreateJSONRequestBody defines body for ApiProjectsImportCreate for application/json ContentType.
-type ApiProjectsImportCreateJSONRequestBody = ApiProjectsImportCreateJSONBody
-
-// ApiProjectsImportCreateFormdataRequestBody defines body for ApiProjectsImportCreate for application/x-www-form-urlencoded ContentType.
-type ApiProjectsImportCreateFormdataRequestBody = ApiProjectsImportCreateFormdataBody
-
-// ApiProjectsImportCreateMultipartRequestBody defines body for ApiProjectsImportCreate for multipart/form-data ContentType.
-type ApiProjectsImportCreateMultipartRequestBody = ApiProjectsImportCreateMultipartBody
-
-// ApiProjectsImportPredictionsCreateJSONRequestBody defines body for ApiProjectsImportPredictionsCreate for application/json ContentType.
-type ApiProjectsImportPredictionsCreateJSONRequestBody = ApiProjectsImportPredictionsCreateJSONBody
-
-// ApiProjectsImportPredictionsCreateFormdataRequestBody defines body for ApiProjectsImportPredictionsCreate for application/x-www-form-urlencoded ContentType.
-type ApiProjectsImportPredictionsCreateFormdataRequestBody = ApiProjectsImportPredictionsCreateFormdataBody
-
-// ApiProjectsImportPredictionsCreateMultipartRequestBody defines body for ApiProjectsImportPredictionsCreate for multipart/form-data ContentType.
-type ApiProjectsImportPredictionsCreateMultipartRequestBody = ApiProjectsImportPredictionsCreateMultipartBody
-
-// ApiProjectsMembersCreateJSONRequestBody defines body for ApiProjectsMembersCreate for application/json ContentType.
-type ApiProjectsMembersCreateJSONRequestBody = ProjectMemberRequest
-
-// ApiProjectsMembersCreateFormdataRequestBody defines body for ApiProjectsMembersCreate for application/x-www-form-urlencoded ContentType.
-type ApiProjectsMembersCreateFormdataRequestBody = ProjectMemberRequest
-
-// ApiProjectsMembersCreateMultipartRequestBody defines body for ApiProjectsMembersCreate for multipart/form-data ContentType.
-type ApiProjectsMembersCreateMultipartRequestBody = ProjectMemberRequest
-
-// ApiProjectsMembersBulkCreateJSONRequestBody defines body for ApiProjectsMembersBulkCreate for application/json ContentType.
-type ApiProjectsMembersBulkCreateJSONRequestBody = ProjectMemberBulkAssignRequest
-
-// ApiProjectsMembersBulkCreateFormdataRequestBody defines body for ApiProjectsMembersBulkCreate for application/x-www-form-urlencoded ContentType.
-type ApiProjectsMembersBulkCreateFormdataRequestBody = ProjectMemberBulkAssignRequest
-
-// ApiProjectsMembersBulkCreateMultipartRequestBody defines body for ApiProjectsMembersBulkCreate for multipart/form-data ContentType.
-type ApiProjectsMembersBulkCreateMultipartRequestBody = ProjectMemberBulkAssignRequest
-
-// ApiProjectsMetricparamCreateJSONRequestBody defines body for ApiProjectsMetricparamCreate for application/json ContentType.
-type ApiProjectsMetricparamCreateJSONRequestBody = MetricParamUpdateRequest
-
-// ApiProjectsMetricparamCreateFormdataRequestBody defines body for ApiProjectsMetricparamCreate for application/x-www-form-urlencoded ContentType.
-type ApiProjectsMetricparamCreateFormdataRequestBody = MetricParamUpdateRequest
-
-// ApiProjectsMetricparamCreateMultipartRequestBody defines body for ApiProjectsMetricparamCreate for multipart/form-data ContentType.
-type ApiProjectsMetricparamCreateMultipartRequestBody = MetricParamUpdateRequest
-
-// ApiProjectsProjectExtraParamsCreateJSONRequestBody defines body for ApiProjectsProjectExtraParamsCreate for application/json ContentType.
-type ApiProjectsProjectExtraParamsCreateJSONRequestBody = LseProjectParamsRequest
-
-// ApiProjectsProjectExtraParamsCreateFormdataRequestBody defines body for ApiProjectsProjectExtraParamsCreate for application/x-www-form-urlencoded ContentType.
-type ApiProjectsProjectExtraParamsCreateFormdataRequestBody = LseProjectParamsRequest
-
-// ApiProjectsProjectExtraParamsCreateMultipartRequestBody defines body for ApiProjectsProjectExtraParamsCreate for multipart/form-data ContentType.
-type ApiProjectsProjectExtraParamsCreateMultipartRequestBody = LseProjectParamsRequest
-
-// ApiProjectsReviewRoutingRulesBulkCreateJSONRequestBody defines body for ApiProjectsReviewRoutingRulesBulkCreate for application/json ContentType.
-type ApiProjectsReviewRoutingRulesBulkCreateJSONRequestBody = ReviewRoutingRulesReplaceRequest
-
-// ApiProjectsReviewRoutingRulesBulkCreateFormdataRequestBody defines body for ApiProjectsReviewRoutingRulesBulkCreate for application/x-www-form-urlencoded ContentType.
-type ApiProjectsReviewRoutingRulesBulkCreateFormdataRequestBody = ReviewRoutingRulesReplaceRequest
-
-// ApiProjectsReviewRoutingRulesBulkCreateMultipartRequestBody defines body for ApiProjectsReviewRoutingRulesBulkCreate for multipart/form-data ContentType.
-type ApiProjectsReviewRoutingRulesBulkCreateMultipartRequestBody = ReviewRoutingRulesReplaceRequest
-
-// ApiProjectsTasksAssigneesBulkCreateJSONRequestBody defines body for ApiProjectsTasksAssigneesBulkCreate for application/json ContentType.
-type ApiProjectsTasksAssigneesBulkCreateJSONRequestBody = BulkTaskAssigneesRequestRequest
-
-// ApiProjectsTasksAssigneesBulkCreateFormdataRequestBody defines body for ApiProjectsTasksAssigneesBulkCreate for application/x-www-form-urlencoded ContentType.
-type ApiProjectsTasksAssigneesBulkCreateFormdataRequestBody = BulkTaskAssigneesRequestRequest
-
-// ApiProjectsTasksAssigneesBulkCreateMultipartRequestBody defines body for ApiProjectsTasksAssigneesBulkCreate for multipart/form-data ContentType.
-type ApiProjectsTasksAssigneesBulkCreateMultipartRequestBody = BulkTaskAssigneesRequestRequest
-
-// ApiProjectsTasksAssigneesPartialUpdateJSONRequestBody defines body for ApiProjectsTasksAssigneesPartialUpdate for application/json ContentType.
-type ApiProjectsTasksAssigneesPartialUpdateJSONRequestBody = PatchedTaskAssigneesMutationRequest
-
-// ApiProjectsTasksAssigneesPartialUpdateFormdataRequestBody defines body for ApiProjectsTasksAssigneesPartialUpdate for application/x-www-form-urlencoded ContentType.
-type ApiProjectsTasksAssigneesPartialUpdateFormdataRequestBody = PatchedTaskAssigneesMutationRequest
-
-// ApiProjectsTasksAssigneesPartialUpdateMultipartRequestBody defines body for ApiProjectsTasksAssigneesPartialUpdate for multipart/form-data ContentType.
-type ApiProjectsTasksAssigneesPartialUpdateMultipartRequestBody = PatchedTaskAssigneesMutationRequest
-
-// ApiProjectsTasksAssigneesCreateJSONRequestBody defines body for ApiProjectsTasksAssigneesCreate for application/json ContentType.
-type ApiProjectsTasksAssigneesCreateJSONRequestBody = TaskAssigneesMutationRequest
-
-// ApiProjectsTasksAssigneesCreateFormdataRequestBody defines body for ApiProjectsTasksAssigneesCreate for application/x-www-form-urlencoded ContentType.
-type ApiProjectsTasksAssigneesCreateFormdataRequestBody = TaskAssigneesMutationRequest
-
-// ApiProjectsTasksAssigneesCreateMultipartRequestBody defines body for ApiProjectsTasksAssigneesCreate for multipart/form-data ContentType.
-type ApiProjectsTasksAssigneesCreateMultipartRequestBody = TaskAssigneesMutationRequest
-
-// ApiProjectsValidateLabelConfigJSONRequestBody defines body for ApiProjectsValidateLabelConfig for application/json ContentType.
-type ApiProjectsValidateLabelConfigJSONRequestBody = ProjectLabelConfigRequest
-
-// ApiProjectsValidateLabelConfigFormdataRequestBody defines body for ApiProjectsValidateLabelConfig for application/x-www-form-urlencoded ContentType.
-type ApiProjectsValidateLabelConfigFormdataRequestBody = ProjectLabelConfigRequest
-
-// ApiProjectsValidateLabelConfigMultipartRequestBody defines body for ApiProjectsValidateLabelConfig for multipart/form-data ContentType.
-type ApiProjectsValidateLabelConfigMultipartRequestBody = ProjectLabelConfigRequest
-
-// ApiProjectsDimensionsCreateJSONRequestBody defines body for ApiProjectsDimensionsCreate for application/json ContentType.
-type ApiProjectsDimensionsCreateJSONRequestBody = DimensionCreateRequest
-
-// ApiProjectsDimensionsCreateFormdataRequestBody defines body for ApiProjectsDimensionsCreate for application/x-www-form-urlencoded ContentType.
-type ApiProjectsDimensionsCreateFormdataRequestBody = DimensionCreateRequest
-
-// ApiProjectsDimensionsCreateMultipartRequestBody defines body for ApiProjectsDimensionsCreate for multipart/form-data ContentType.
-type ApiProjectsDimensionsCreateMultipartRequestBody = DimensionCreateRequest
-
-// ApiProjectsDimensionsPartialUpdateJSONRequestBody defines body for ApiProjectsDimensionsPartialUpdate for application/json ContentType.
-type ApiProjectsDimensionsPartialUpdateJSONRequestBody = PatchedDimensionRequest
-
-// ApiProjectsDimensionsPartialUpdateFormdataRequestBody defines body for ApiProjectsDimensionsPartialUpdate for application/x-www-form-urlencoded ContentType.
-type ApiProjectsDimensionsPartialUpdateFormdataRequestBody = PatchedDimensionRequest
-
-// ApiProjectsDimensionsPartialUpdateMultipartRequestBody defines body for ApiProjectsDimensionsPartialUpdate for multipart/form-data ContentType.
-type ApiProjectsDimensionsPartialUpdateMultipartRequestBody = PatchedDimensionRequest
-
-// ApiProjectsDimensionsUpdateJSONRequestBody defines body for ApiProjectsDimensionsUpdate for application/json ContentType.
-type ApiProjectsDimensionsUpdateJSONRequestBody = DimensionRequest
-
-// ApiProjectsDimensionsUpdateFormdataRequestBody defines body for ApiProjectsDimensionsUpdate for application/x-www-form-urlencoded ContentType.
-type ApiProjectsDimensionsUpdateFormdataRequestBody = DimensionRequest
-
-// ApiProjectsDimensionsUpdateMultipartRequestBody defines body for ApiProjectsDimensionsUpdate for multipart/form-data ContentType.
-type ApiProjectsDimensionsUpdateMultipartRequestBody = DimensionRequest
-
-// ApiProjectsLearningAssignmentsCreateJSONRequestBody defines body for ApiProjectsLearningAssignmentsCreate for application/json ContentType.
-type ApiProjectsLearningAssignmentsCreateJSONRequestBody = ProjectLearningAssignmentCreateRequest
-
-// ApiProjectsLearningAssignmentsCreateFormdataRequestBody defines body for ApiProjectsLearningAssignmentsCreate for application/x-www-form-urlencoded ContentType.
-type ApiProjectsLearningAssignmentsCreateFormdataRequestBody = ProjectLearningAssignmentCreateRequest
-
-// ApiProjectsLearningAssignmentsCreateMultipartRequestBody defines body for ApiProjectsLearningAssignmentsCreate for multipart/form-data ContentType.
-type ApiProjectsLearningAssignmentsCreateMultipartRequestBody = ProjectLearningAssignmentCreateRequest
-
-// ApiProjectsLearningAssignmentsReorderPartialUpdateJSONRequestBody defines body for ApiProjectsLearningAssignmentsReorderPartialUpdate for application/json ContentType.
-type ApiProjectsLearningAssignmentsReorderPartialUpdateJSONRequestBody = PatchedProjectLearningAssignmentRequest
-
-// ApiProjectsLearningAssignmentsReorderPartialUpdateFormdataRequestBody defines body for ApiProjectsLearningAssignmentsReorderPartialUpdate for application/x-www-form-urlencoded ContentType.
-type ApiProjectsLearningAssignmentsReorderPartialUpdateFormdataRequestBody = PatchedProjectLearningAssignmentRequest
-
-// ApiProjectsLearningAssignmentsReorderPartialUpdateMultipartRequestBody defines body for ApiProjectsLearningAssignmentsReorderPartialUpdate for multipart/form-data ContentType.
-type ApiProjectsLearningAssignmentsReorderPartialUpdateMultipartRequestBody = PatchedProjectLearningAssignmentRequest
-
-// ApiProjectsMembersPausesCreateJSONRequestBody defines body for ApiProjectsMembersPausesCreate for application/json ContentType.
-type ApiProjectsMembersPausesCreateJSONRequestBody = PauseRequest
-
-// ApiProjectsMembersPausesCreateFormdataRequestBody defines body for ApiProjectsMembersPausesCreate for application/x-www-form-urlencoded ContentType.
-type ApiProjectsMembersPausesCreateFormdataRequestBody = PauseRequest
-
-// ApiProjectsMembersPausesCreateMultipartRequestBody defines body for ApiProjectsMembersPausesCreate for multipart/form-data ContentType.
-type ApiProjectsMembersPausesCreateMultipartRequestBody = PauseRequest
-
-// ApiProjectsMembersPausesPartialUpdateJSONRequestBody defines body for ApiProjectsMembersPausesPartialUpdate for application/json ContentType.
-type ApiProjectsMembersPausesPartialUpdateJSONRequestBody = PatchedPauseRequest
-
-// ApiProjectsMembersPausesPartialUpdateFormdataRequestBody defines body for ApiProjectsMembersPausesPartialUpdate for application/x-www-form-urlencoded ContentType.
-type ApiProjectsMembersPausesPartialUpdateFormdataRequestBody = PatchedPauseRequest
-
-// ApiProjectsMembersPausesPartialUpdateMultipartRequestBody defines body for ApiProjectsMembersPausesPartialUpdate for multipart/form-data ContentType.
-type ApiProjectsMembersPausesPartialUpdateMultipartRequestBody = PatchedPauseRequest
-
-// ApiProjectsMembersPausesUpdateJSONRequestBody defines body for ApiProjectsMembersPausesUpdate for application/json ContentType.
-type ApiProjectsMembersPausesUpdateJSONRequestBody = PauseRequest
-
-// ApiProjectsMembersPausesUpdateFormdataRequestBody defines body for ApiProjectsMembersPausesUpdate for application/x-www-form-urlencoded ContentType.
-type ApiProjectsMembersPausesUpdateFormdataRequestBody = PauseRequest
-
-// ApiProjectsMembersPausesUpdateMultipartRequestBody defines body for ApiProjectsMembersPausesUpdate for multipart/form-data ContentType.
-type ApiProjectsMembersPausesUpdateMultipartRequestBody = PauseRequest
-
-// ApiPromptsCreateJSONRequestBody defines body for ApiPromptsCreate for application/json ContentType.
-type ApiPromptsCreateJSONRequestBody = ModelInterfaceRequest
-
-// ApiPromptsCreateFormdataRequestBody defines body for ApiPromptsCreate for application/x-www-form-urlencoded ContentType.
-type ApiPromptsCreateFormdataRequestBody = ModelInterfaceRequest
-
-// ApiPromptsCreateMultipartRequestBody defines body for ApiPromptsCreate for multipart/form-data ContentType.
-type ApiPromptsCreateMultipartRequestBody = ModelInterfaceRequest
-
-// ApiPromptsPartialUpdateJSONRequestBody defines body for ApiPromptsPartialUpdate for application/json ContentType.
-type ApiPromptsPartialUpdateJSONRequestBody = PatchedModelInterfaceRequest
-
-// ApiPromptsPartialUpdateFormdataRequestBody defines body for ApiPromptsPartialUpdate for application/x-www-form-urlencoded ContentType.
-type ApiPromptsPartialUpdateFormdataRequestBody = PatchedModelInterfaceRequest
-
-// ApiPromptsPartialUpdateMultipartRequestBody defines body for ApiPromptsPartialUpdate for multipart/form-data ContentType.
-type ApiPromptsPartialUpdateMultipartRequestBody = PatchedModelInterfaceRequest
-
-// ApiPromptsUpdateJSONRequestBody defines body for ApiPromptsUpdate for application/json ContentType.
-type ApiPromptsUpdateJSONRequestBody = ModelInterfaceRequest
-
-// ApiPromptsUpdateFormdataRequestBody defines body for ApiPromptsUpdate for application/x-www-form-urlencoded ContentType.
-type ApiPromptsUpdateFormdataRequestBody = ModelInterfaceRequest
-
-// ApiPromptsUpdateMultipartRequestBody defines body for ApiPromptsUpdate for multipart/form-data ContentType.
-type ApiPromptsUpdateMultipartRequestBody = ModelInterfaceRequest
-
-// ApiPromptsDuplicateCreateJSONRequestBody defines body for ApiPromptsDuplicateCreate for application/json ContentType.
-type ApiPromptsDuplicateCreateJSONRequestBody = ModelInterfaceRequest
-
-// ApiPromptsDuplicateCreateFormdataRequestBody defines body for ApiPromptsDuplicateCreate for application/x-www-form-urlencoded ContentType.
-type ApiPromptsDuplicateCreateFormdataRequestBody = ModelInterfaceRequest
-
-// ApiPromptsDuplicateCreateMultipartRequestBody defines body for ApiPromptsDuplicateCreate for multipart/form-data ContentType.
-type ApiPromptsDuplicateCreateMultipartRequestBody = ModelInterfaceRequest
-
-// ApiPromptsVersionsCreateJSONRequestBody defines body for ApiPromptsVersionsCreate for application/json ContentType.
-type ApiPromptsVersionsCreateJSONRequestBody = ThirdPartyModelVersionRequest
-
-// ApiPromptsVersionsCreateFormdataRequestBody defines body for ApiPromptsVersionsCreate for application/x-www-form-urlencoded ContentType.
-type ApiPromptsVersionsCreateFormdataRequestBody = ThirdPartyModelVersionRequest
-
-// ApiPromptsVersionsCreateMultipartRequestBody defines body for ApiPromptsVersionsCreate for multipart/form-data ContentType.
-type ApiPromptsVersionsCreateMultipartRequestBody = ThirdPartyModelVersionRequest
-
-// ApiPromptsVersionsPartialUpdateJSONRequestBody defines body for ApiPromptsVersionsPartialUpdate for application/json ContentType.
-type ApiPromptsVersionsPartialUpdateJSONRequestBody = PatchedThirdPartyModelVersionRequest
-
-// ApiPromptsVersionsPartialUpdateFormdataRequestBody defines body for ApiPromptsVersionsPartialUpdate for application/x-www-form-urlencoded ContentType.
-type ApiPromptsVersionsPartialUpdateFormdataRequestBody = PatchedThirdPartyModelVersionRequest
-
-// ApiPromptsVersionsPartialUpdateMultipartRequestBody defines body for ApiPromptsVersionsPartialUpdate for multipart/form-data ContentType.
-type ApiPromptsVersionsPartialUpdateMultipartRequestBody = PatchedThirdPartyModelVersionRequest
-
-// ApiPromptsVersionsUpdateJSONRequestBody defines body for ApiPromptsVersionsUpdate for application/json ContentType.
-type ApiPromptsVersionsUpdateJSONRequestBody = ThirdPartyModelVersionRequest
-
-// ApiPromptsVersionsUpdateFormdataRequestBody defines body for ApiPromptsVersionsUpdate for application/x-www-form-urlencoded ContentType.
-type ApiPromptsVersionsUpdateFormdataRequestBody = ThirdPartyModelVersionRequest
-
-// ApiPromptsVersionsUpdateMultipartRequestBody defines body for ApiPromptsVersionsUpdate for multipart/form-data ContentType.
-type ApiPromptsVersionsUpdateMultipartRequestBody = ThirdPartyModelVersionRequest
-
-// ApiPromptsVersionsDuplicateCreateJSONRequestBody defines body for ApiPromptsVersionsDuplicateCreate for application/json ContentType.
-type ApiPromptsVersionsDuplicateCreateJSONRequestBody = ThirdPartyModelVersionRequest
-
-// ApiPromptsVersionsDuplicateCreateFormdataRequestBody defines body for ApiPromptsVersionsDuplicateCreate for application/x-www-form-urlencoded ContentType.
-type ApiPromptsVersionsDuplicateCreateFormdataRequestBody = ThirdPartyModelVersionRequest
-
-// ApiPromptsVersionsDuplicateCreateMultipartRequestBody defines body for ApiPromptsVersionsDuplicateCreate for multipart/form-data ContentType.
-type ApiPromptsVersionsDuplicateCreateMultipartRequestBody = ThirdPartyModelVersionRequest
-
-// ApiPromptsVersionsFewShotExamplesCreateJSONRequestBody defines body for ApiPromptsVersionsFewShotExamplesCreate for application/json ContentType.
-type ApiPromptsVersionsFewShotExamplesCreateJSONRequestBody = FewShotExampleRequest
-
-// ApiPromptsVersionsFewShotExamplesCreateFormdataRequestBody defines body for ApiPromptsVersionsFewShotExamplesCreate for application/x-www-form-urlencoded ContentType.
-type ApiPromptsVersionsFewShotExamplesCreateFormdataRequestBody = FewShotExampleRequest
-
-// ApiPromptsVersionsFewShotExamplesCreateMultipartRequestBody defines body for ApiPromptsVersionsFewShotExamplesCreate for multipart/form-data ContentType.
-type ApiPromptsVersionsFewShotExamplesCreateMultipartRequestBody = FewShotExampleRequest
-
-// ApiPromptsVersionsFewShotExamplesReorderCreateJSONRequestBody defines body for ApiPromptsVersionsFewShotExamplesReorderCreate for application/json ContentType.
-type ApiPromptsVersionsFewShotExamplesReorderCreateJSONRequestBody = FewShotExampleRequest
-
-// ApiPromptsVersionsFewShotExamplesReorderCreateFormdataRequestBody defines body for ApiPromptsVersionsFewShotExamplesReorderCreate for application/x-www-form-urlencoded ContentType.
-type ApiPromptsVersionsFewShotExamplesReorderCreateFormdataRequestBody = FewShotExampleRequest
-
-// ApiPromptsVersionsFewShotExamplesReorderCreateMultipartRequestBody defines body for ApiPromptsVersionsFewShotExamplesReorderCreate for multipart/form-data ContentType.
-type ApiPromptsVersionsFewShotExamplesReorderCreateMultipartRequestBody = FewShotExampleRequest
-
-// ApiPromptsVersionsFewShotExamplesPartialUpdateJSONRequestBody defines body for ApiPromptsVersionsFewShotExamplesPartialUpdate for application/json ContentType.
-type ApiPromptsVersionsFewShotExamplesPartialUpdateJSONRequestBody = PatchedFewShotExampleRequest
-
-// ApiPromptsVersionsFewShotExamplesPartialUpdateFormdataRequestBody defines body for ApiPromptsVersionsFewShotExamplesPartialUpdate for application/x-www-form-urlencoded ContentType.
-type ApiPromptsVersionsFewShotExamplesPartialUpdateFormdataRequestBody = PatchedFewShotExampleRequest
-
-// ApiPromptsVersionsFewShotExamplesPartialUpdateMultipartRequestBody defines body for ApiPromptsVersionsFewShotExamplesPartialUpdate for multipart/form-data ContentType.
-type ApiPromptsVersionsFewShotExamplesPartialUpdateMultipartRequestBody = PatchedFewShotExampleRequest
-
-// ApiPromptsVersionsInferenceRunsCreateJSONRequestBody defines body for ApiPromptsVersionsInferenceRunsCreate for application/json ContentType.
-type ApiPromptsVersionsInferenceRunsCreateJSONRequestBody = ModelRunRequestRequest
-
-// ApiPromptsVersionsInferenceRunsCreateFormdataRequestBody defines body for ApiPromptsVersionsInferenceRunsCreate for application/x-www-form-urlencoded ContentType.
-type ApiPromptsVersionsInferenceRunsCreateFormdataRequestBody = ModelRunRequestRequest
-
-// ApiPromptsVersionsInferenceRunsCreateMultipartRequestBody defines body for ApiPromptsVersionsInferenceRunsCreate for multipart/form-data ContentType.
-type ApiPromptsVersionsInferenceRunsCreateMultipartRequestBody = ModelRunRequestRequest
-
-// ApiPromptsVersionsRefineCreateJSONRequestBody defines body for ApiPromptsVersionsRefineCreate for application/json ContentType.
-type ApiPromptsVersionsRefineCreateJSONRequestBody = RefinePromptRequestRequest
-
-// ApiPromptsVersionsRefineCreateFormdataRequestBody defines body for ApiPromptsVersionsRefineCreate for application/x-www-form-urlencoded ContentType.
-type ApiPromptsVersionsRefineCreateFormdataRequestBody = RefinePromptRequestRequest
-
-// ApiPromptsVersionsRefineCreateMultipartRequestBody defines body for ApiPromptsVersionsRefineCreate for multipart/form-data ContentType.
-type ApiPromptsVersionsRefineCreateMultipartRequestBody = RefinePromptRequestRequest
-
-// ApiPromptsVersionsTryTaskCreateJSONRequestBody defines body for ApiPromptsVersionsTryTaskCreate for application/json ContentType.
-type ApiPromptsVersionsTryTaskCreateJSONRequestBody = TryTaskRequestRequest
-
-// ApiPromptsVersionsTryTaskCreateFormdataRequestBody defines body for ApiPromptsVersionsTryTaskCreate for application/x-www-form-urlencoded ContentType.
-type ApiPromptsVersionsTryTaskCreateFormdataRequestBody = TryTaskRequestRequest
-
-// ApiPromptsVersionsTryTaskCreateMultipartRequestBody defines body for ApiPromptsVersionsTryTaskCreate for multipart/form-data ContentType.
-type ApiPromptsVersionsTryTaskCreateMultipartRequestBody = TryTaskRequestRequest
-
-// ApiSamlSettingsCreateJSONRequestBody defines body for ApiSamlSettingsCreate for application/json ContentType.
-type ApiSamlSettingsCreateJSONRequestBody = SamlSettingsUpdateRequest
-
-// ApiSamlSettingsCreateFormdataRequestBody defines body for ApiSamlSettingsCreate for application/x-www-form-urlencoded ContentType.
-type ApiSamlSettingsCreateFormdataRequestBody = SamlSettingsUpdateRequest
-
-// ApiSamlSettingsCreateMultipartRequestBody defines body for ApiSamlSettingsCreate for multipart/form-data ContentType.
-type ApiSamlSettingsCreateMultipartRequestBody = SamlSettingsUpdateRequest
-
-// ApiSamlSettingsValidateDomainCreateJSONRequestBody defines body for ApiSamlSettingsValidateDomainCreate for application/json ContentType.
-type ApiSamlSettingsValidateDomainCreateJSONRequestBody = ValidateSamlDomainRequestRequest
-
-// ApiSamlSettingsValidateDomainCreateFormdataRequestBody defines body for ApiSamlSettingsValidateDomainCreate for application/x-www-form-urlencoded ContentType.
-type ApiSamlSettingsValidateDomainCreateFormdataRequestBody = ValidateSamlDomainRequestRequest
-
-// ApiSamlSettingsValidateDomainCreateMultipartRequestBody defines body for ApiSamlSettingsValidateDomainCreate for multipart/form-data ContentType.
-type ApiSamlSettingsValidateDomainCreateMultipartRequestBody = ValidateSamlDomainRequestRequest
-
-// ApiSamlSettingsValidateMetadataUrlCreateJSONRequestBody defines body for ApiSamlSettingsValidateMetadataUrlCreate for application/json ContentType.
-type ApiSamlSettingsValidateMetadataUrlCreateJSONRequestBody = ValidateSamlMetadataUrlRequestRequest
-
-// ApiSamlSettingsValidateMetadataUrlCreateFormdataRequestBody defines body for ApiSamlSettingsValidateMetadataUrlCreate for application/x-www-form-urlencoded ContentType.
-type ApiSamlSettingsValidateMetadataUrlCreateFormdataRequestBody = ValidateSamlMetadataUrlRequestRequest
-
-// ApiSamlSettingsValidateMetadataUrlCreateMultipartRequestBody defines body for ApiSamlSettingsValidateMetadataUrlCreate for multipart/form-data ContentType.
-type ApiSamlSettingsValidateMetadataUrlCreateMultipartRequestBody = ValidateSamlMetadataUrlRequestRequest
-
-// ApiScimSettingsCreateJSONRequestBody defines body for ApiScimSettingsCreate for application/json ContentType.
-type ApiScimSettingsCreateJSONRequestBody = ScimSettingsUpdateRequest
-
-// ApiScimSettingsCreateFormdataRequestBody defines body for ApiScimSettingsCreate for application/x-www-form-urlencoded ContentType.
-type ApiScimSettingsCreateFormdataRequestBody = ScimSettingsUpdateRequest
-
-// ApiScimSettingsCreateMultipartRequestBody defines body for ApiScimSettingsCreate for multipart/form-data ContentType.
-type ApiScimSettingsCreateMultipartRequestBody = ScimSettingsUpdateRequest
-
-// ApiSessionPolicyPartialUpdateJSONRequestBody defines body for ApiSessionPolicyPartialUpdate for application/json ContentType.
-type ApiSessionPolicyPartialUpdateJSONRequestBody = PatchedSessionTimeoutPolicyRequest
-
-// ApiSessionPolicyPartialUpdateFormdataRequestBody defines body for ApiSessionPolicyPartialUpdate for application/x-www-form-urlencoded ContentType.
-type ApiSessionPolicyPartialUpdateFormdataRequestBody = PatchedSessionTimeoutPolicyRequest
-
-// ApiSessionPolicyPartialUpdateMultipartRequestBody defines body for ApiSessionPolicyPartialUpdate for multipart/form-data ContentType.
-type ApiSessionPolicyPartialUpdateMultipartRequestBody = PatchedSessionTimeoutPolicyRequest
-
-// ApiStoragesAzureCreateJSONRequestBody defines body for ApiStoragesAzureCreate for application/json ContentType.
-type ApiStoragesAzureCreateJSONRequestBody = AzureBlobImportStorageWriteRequest
-
-// ApiStoragesAzureCreateFormdataRequestBody defines body for ApiStoragesAzureCreate for application/x-www-form-urlencoded ContentType.
-type ApiStoragesAzureCreateFormdataRequestBody = AzureBlobImportStorageWriteRequest
-
-// ApiStoragesAzureCreateMultipartRequestBody defines body for ApiStoragesAzureCreate for multipart/form-data ContentType.
-type ApiStoragesAzureCreateMultipartRequestBody = AzureBlobImportStorageWriteRequest
-
-// ApiStoragesAzureValidateCreateJSONRequestBody defines body for ApiStoragesAzureValidateCreate for application/json ContentType.
-type ApiStoragesAzureValidateCreateJSONRequestBody = AzureBlobImportStorageValidateRequest
-
-// ApiStoragesAzureValidateCreateFormdataRequestBody defines body for ApiStoragesAzureValidateCreate for application/x-www-form-urlencoded ContentType.
-type ApiStoragesAzureValidateCreateFormdataRequestBody = AzureBlobImportStorageValidateRequest
-
-// ApiStoragesAzureValidateCreateMultipartRequestBody defines body for ApiStoragesAzureValidateCreate for multipart/form-data ContentType.
-type ApiStoragesAzureValidateCreateMultipartRequestBody = AzureBlobImportStorageValidateRequest
-
-// ApiStoragesAzurePartialUpdateJSONRequestBody defines body for ApiStoragesAzurePartialUpdate for application/json ContentType.
-type ApiStoragesAzurePartialUpdateJSONRequestBody = PatchedAzureBlobImportStorageWriteRequest
-
-// ApiStoragesAzurePartialUpdateFormdataRequestBody defines body for ApiStoragesAzurePartialUpdate for application/x-www-form-urlencoded ContentType.
-type ApiStoragesAzurePartialUpdateFormdataRequestBody = PatchedAzureBlobImportStorageWriteRequest
-
-// ApiStoragesAzurePartialUpdateMultipartRequestBody defines body for ApiStoragesAzurePartialUpdate for multipart/form-data ContentType.
-type ApiStoragesAzurePartialUpdateMultipartRequestBody = PatchedAzureBlobImportStorageWriteRequest
-
-// ApiStoragesAzureSpiCreateJSONRequestBody defines body for ApiStoragesAzureSpiCreate for application/json ContentType.
-type ApiStoragesAzureSpiCreateJSONRequestBody = AzureServicePrincipalImportStorageRequest
-
-// ApiStoragesAzureSpiCreateFormdataRequestBody defines body for ApiStoragesAzureSpiCreate for application/x-www-form-urlencoded ContentType.
-type ApiStoragesAzureSpiCreateFormdataRequestBody = AzureServicePrincipalImportStorageRequest
-
-// ApiStoragesAzureSpiCreateMultipartRequestBody defines body for ApiStoragesAzureSpiCreate for multipart/form-data ContentType.
-type ApiStoragesAzureSpiCreateMultipartRequestBody = AzureServicePrincipalImportStorageRequest
-
-// ApiStoragesAzureSpiValidateCreateJSONRequestBody defines body for ApiStoragesAzureSpiValidateCreate for application/json ContentType.
-type ApiStoragesAzureSpiValidateCreateJSONRequestBody = AzureServicePrincipalImportStorageRequest
-
-// ApiStoragesAzureSpiValidateCreateFormdataRequestBody defines body for ApiStoragesAzureSpiValidateCreate for application/x-www-form-urlencoded ContentType.
-type ApiStoragesAzureSpiValidateCreateFormdataRequestBody = AzureServicePrincipalImportStorageRequest
-
-// ApiStoragesAzureSpiValidateCreateMultipartRequestBody defines body for ApiStoragesAzureSpiValidateCreate for multipart/form-data ContentType.
-type ApiStoragesAzureSpiValidateCreateMultipartRequestBody = AzureServicePrincipalImportStorageRequest
-
-// ApiStoragesAzureSpiPartialUpdateJSONRequestBody defines body for ApiStoragesAzureSpiPartialUpdate for application/json ContentType.
-type ApiStoragesAzureSpiPartialUpdateJSONRequestBody = PatchedAzureServicePrincipalImportStorageRequest
-
-// ApiStoragesAzureSpiPartialUpdateFormdataRequestBody defines body for ApiStoragesAzureSpiPartialUpdate for application/x-www-form-urlencoded ContentType.
-type ApiStoragesAzureSpiPartialUpdateFormdataRequestBody = PatchedAzureServicePrincipalImportStorageRequest
-
-// ApiStoragesAzureSpiPartialUpdateMultipartRequestBody defines body for ApiStoragesAzureSpiPartialUpdate for multipart/form-data ContentType.
-type ApiStoragesAzureSpiPartialUpdateMultipartRequestBody = PatchedAzureServicePrincipalImportStorageRequest
-
-// ApiStoragesDatabricksCreateJSONRequestBody defines body for ApiStoragesDatabricksCreate for application/json ContentType.
-type ApiStoragesDatabricksCreateJSONRequestBody = DatabricksImportStorageWriteRequest
-
-// ApiStoragesDatabricksCreateFormdataRequestBody defines body for ApiStoragesDatabricksCreate for application/x-www-form-urlencoded ContentType.
-type ApiStoragesDatabricksCreateFormdataRequestBody = DatabricksImportStorageWriteRequest
-
-// ApiStoragesDatabricksCreateMultipartRequestBody defines body for ApiStoragesDatabricksCreate for multipart/form-data ContentType.
-type ApiStoragesDatabricksCreateMultipartRequestBody = DatabricksImportStorageWriteRequest
-
-// ApiStoragesDatabricksValidateCreateJSONRequestBody defines body for ApiStoragesDatabricksValidateCreate for application/json ContentType.
-type ApiStoragesDatabricksValidateCreateJSONRequestBody = DatabricksImportStorageValidateRequest
-
-// ApiStoragesDatabricksValidateCreateFormdataRequestBody defines body for ApiStoragesDatabricksValidateCreate for application/x-www-form-urlencoded ContentType.
-type ApiStoragesDatabricksValidateCreateFormdataRequestBody = DatabricksImportStorageValidateRequest
-
-// ApiStoragesDatabricksValidateCreateMultipartRequestBody defines body for ApiStoragesDatabricksValidateCreate for multipart/form-data ContentType.
-type ApiStoragesDatabricksValidateCreateMultipartRequestBody = DatabricksImportStorageValidateRequest
-
-// ApiStoragesDatabricksPartialUpdateJSONRequestBody defines body for ApiStoragesDatabricksPartialUpdate for application/json ContentType.
-type ApiStoragesDatabricksPartialUpdateJSONRequestBody = PatchedDatabricksImportStorageWriteRequest
-
-// ApiStoragesDatabricksPartialUpdateFormdataRequestBody defines body for ApiStoragesDatabricksPartialUpdate for application/x-www-form-urlencoded ContentType.
-type ApiStoragesDatabricksPartialUpdateFormdataRequestBody = PatchedDatabricksImportStorageWriteRequest
-
-// ApiStoragesDatabricksPartialUpdateMultipartRequestBody defines body for ApiStoragesDatabricksPartialUpdate for multipart/form-data ContentType.
-type ApiStoragesDatabricksPartialUpdateMultipartRequestBody = PatchedDatabricksImportStorageWriteRequest
-
-// ApiStoragesExportAzureCreateJSONRequestBody defines body for ApiStoragesExportAzureCreate for application/json ContentType.
-type ApiStoragesExportAzureCreateJSONRequestBody = AzureBlobExportStorageWriteRequest
-
-// ApiStoragesExportAzureCreateFormdataRequestBody defines body for ApiStoragesExportAzureCreate for application/x-www-form-urlencoded ContentType.
-type ApiStoragesExportAzureCreateFormdataRequestBody = AzureBlobExportStorageWriteRequest
-
-// ApiStoragesExportAzureCreateMultipartRequestBody defines body for ApiStoragesExportAzureCreate for multipart/form-data ContentType.
-type ApiStoragesExportAzureCreateMultipartRequestBody = AzureBlobExportStorageWriteRequest
-
-// ApiStoragesExportAzureValidateCreateJSONRequestBody defines body for ApiStoragesExportAzureValidateCreate for application/json ContentType.
-type ApiStoragesExportAzureValidateCreateJSONRequestBody = AzureBlobExportStorageValidateRequest
-
-// ApiStoragesExportAzureValidateCreateFormdataRequestBody defines body for ApiStoragesExportAzureValidateCreate for application/x-www-form-urlencoded ContentType.
-type ApiStoragesExportAzureValidateCreateFormdataRequestBody = AzureBlobExportStorageValidateRequest
-
-// ApiStoragesExportAzureValidateCreateMultipartRequestBody defines body for ApiStoragesExportAzureValidateCreate for multipart/form-data ContentType.
-type ApiStoragesExportAzureValidateCreateMultipartRequestBody = AzureBlobExportStorageValidateRequest
-
-// ApiStoragesExportAzurePartialUpdateJSONRequestBody defines body for ApiStoragesExportAzurePartialUpdate for application/json ContentType.
-type ApiStoragesExportAzurePartialUpdateJSONRequestBody = PatchedAzureBlobExportStorageWriteRequest
-
-// ApiStoragesExportAzurePartialUpdateFormdataRequestBody defines body for ApiStoragesExportAzurePartialUpdate for application/x-www-form-urlencoded ContentType.
-type ApiStoragesExportAzurePartialUpdateFormdataRequestBody = PatchedAzureBlobExportStorageWriteRequest
-
-// ApiStoragesExportAzurePartialUpdateMultipartRequestBody defines body for ApiStoragesExportAzurePartialUpdate for multipart/form-data ContentType.
-type ApiStoragesExportAzurePartialUpdateMultipartRequestBody = PatchedAzureBlobExportStorageWriteRequest
-
-// ApiStoragesExportAzureSpiCreateJSONRequestBody defines body for ApiStoragesExportAzureSpiCreate for application/json ContentType.
-type ApiStoragesExportAzureSpiCreateJSONRequestBody = AzureServicePrincipalExportStorageRequest
-
-// ApiStoragesExportAzureSpiCreateFormdataRequestBody defines body for ApiStoragesExportAzureSpiCreate for application/x-www-form-urlencoded ContentType.
-type ApiStoragesExportAzureSpiCreateFormdataRequestBody = AzureServicePrincipalExportStorageRequest
-
-// ApiStoragesExportAzureSpiCreateMultipartRequestBody defines body for ApiStoragesExportAzureSpiCreate for multipart/form-data ContentType.
-type ApiStoragesExportAzureSpiCreateMultipartRequestBody = AzureServicePrincipalExportStorageRequest
-
-// ApiStoragesExportAzureSpiValidateCreateJSONRequestBody defines body for ApiStoragesExportAzureSpiValidateCreate for application/json ContentType.
-type ApiStoragesExportAzureSpiValidateCreateJSONRequestBody = AzureServicePrincipalExportStorageRequest
-
-// ApiStoragesExportAzureSpiValidateCreateFormdataRequestBody defines body for ApiStoragesExportAzureSpiValidateCreate for application/x-www-form-urlencoded ContentType.
-type ApiStoragesExportAzureSpiValidateCreateFormdataRequestBody = AzureServicePrincipalExportStorageRequest
-
-// ApiStoragesExportAzureSpiValidateCreateMultipartRequestBody defines body for ApiStoragesExportAzureSpiValidateCreate for multipart/form-data ContentType.
-type ApiStoragesExportAzureSpiValidateCreateMultipartRequestBody = AzureServicePrincipalExportStorageRequest
-
-// ApiStoragesExportAzureSpiPartialUpdateJSONRequestBody defines body for ApiStoragesExportAzureSpiPartialUpdate for application/json ContentType.
-type ApiStoragesExportAzureSpiPartialUpdateJSONRequestBody = PatchedAzureServicePrincipalExportStorageRequest
-
-// ApiStoragesExportAzureSpiPartialUpdateFormdataRequestBody defines body for ApiStoragesExportAzureSpiPartialUpdate for application/x-www-form-urlencoded ContentType.
-type ApiStoragesExportAzureSpiPartialUpdateFormdataRequestBody = PatchedAzureServicePrincipalExportStorageRequest
-
-// ApiStoragesExportAzureSpiPartialUpdateMultipartRequestBody defines body for ApiStoragesExportAzureSpiPartialUpdate for multipart/form-data ContentType.
-type ApiStoragesExportAzureSpiPartialUpdateMultipartRequestBody = PatchedAzureServicePrincipalExportStorageRequest
-
-// ApiStoragesExportDatabricksCreateJSONRequestBody defines body for ApiStoragesExportDatabricksCreate for application/json ContentType.
-type ApiStoragesExportDatabricksCreateJSONRequestBody = DatabricksExportStorageWriteRequest
-
-// ApiStoragesExportDatabricksCreateFormdataRequestBody defines body for ApiStoragesExportDatabricksCreate for application/x-www-form-urlencoded ContentType.
-type ApiStoragesExportDatabricksCreateFormdataRequestBody = DatabricksExportStorageWriteRequest
-
-// ApiStoragesExportDatabricksCreateMultipartRequestBody defines body for ApiStoragesExportDatabricksCreate for multipart/form-data ContentType.
-type ApiStoragesExportDatabricksCreateMultipartRequestBody = DatabricksExportStorageWriteRequest
-
-// ApiStoragesExportDatabricksValidateCreateJSONRequestBody defines body for ApiStoragesExportDatabricksValidateCreate for application/json ContentType.
-type ApiStoragesExportDatabricksValidateCreateJSONRequestBody = DatabricksExportStorageValidateRequest
-
-// ApiStoragesExportDatabricksValidateCreateFormdataRequestBody defines body for ApiStoragesExportDatabricksValidateCreate for application/x-www-form-urlencoded ContentType.
-type ApiStoragesExportDatabricksValidateCreateFormdataRequestBody = DatabricksExportStorageValidateRequest
-
-// ApiStoragesExportDatabricksValidateCreateMultipartRequestBody defines body for ApiStoragesExportDatabricksValidateCreate for multipart/form-data ContentType.
-type ApiStoragesExportDatabricksValidateCreateMultipartRequestBody = DatabricksExportStorageValidateRequest
-
-// ApiStoragesExportDatabricksPartialUpdateJSONRequestBody defines body for ApiStoragesExportDatabricksPartialUpdate for application/json ContentType.
-type ApiStoragesExportDatabricksPartialUpdateJSONRequestBody = PatchedDatabricksExportStorageWriteRequest
-
-// ApiStoragesExportDatabricksPartialUpdateFormdataRequestBody defines body for ApiStoragesExportDatabricksPartialUpdate for application/x-www-form-urlencoded ContentType.
-type ApiStoragesExportDatabricksPartialUpdateFormdataRequestBody = PatchedDatabricksExportStorageWriteRequest
-
-// ApiStoragesExportDatabricksPartialUpdateMultipartRequestBody defines body for ApiStoragesExportDatabricksPartialUpdate for multipart/form-data ContentType.
-type ApiStoragesExportDatabricksPartialUpdateMultipartRequestBody = PatchedDatabricksExportStorageWriteRequest
-
-// ApiStoragesExportGcsCreateJSONRequestBody defines body for ApiStoragesExportGcsCreate for application/json ContentType.
-type ApiStoragesExportGcsCreateJSONRequestBody = GCSExportStorageWriteRequest
-
-// ApiStoragesExportGcsCreateFormdataRequestBody defines body for ApiStoragesExportGcsCreate for application/x-www-form-urlencoded ContentType.
-type ApiStoragesExportGcsCreateFormdataRequestBody = GCSExportStorageWriteRequest
-
-// ApiStoragesExportGcsCreateMultipartRequestBody defines body for ApiStoragesExportGcsCreate for multipart/form-data ContentType.
-type ApiStoragesExportGcsCreateMultipartRequestBody = GCSExportStorageWriteRequest
-
-// ApiStoragesExportGcsValidateCreateJSONRequestBody defines body for ApiStoragesExportGcsValidateCreate for application/json ContentType.
-type ApiStoragesExportGcsValidateCreateJSONRequestBody = GCSExportStorageValidateRequest
-
-// ApiStoragesExportGcsValidateCreateFormdataRequestBody defines body for ApiStoragesExportGcsValidateCreate for application/x-www-form-urlencoded ContentType.
-type ApiStoragesExportGcsValidateCreateFormdataRequestBody = GCSExportStorageValidateRequest
-
-// ApiStoragesExportGcsValidateCreateMultipartRequestBody defines body for ApiStoragesExportGcsValidateCreate for multipart/form-data ContentType.
-type ApiStoragesExportGcsValidateCreateMultipartRequestBody = GCSExportStorageValidateRequest
-
-// ApiStoragesExportGcsPartialUpdateJSONRequestBody defines body for ApiStoragesExportGcsPartialUpdate for application/json ContentType.
-type ApiStoragesExportGcsPartialUpdateJSONRequestBody = PatchedGCSExportStorageWriteRequest
-
-// ApiStoragesExportGcsPartialUpdateFormdataRequestBody defines body for ApiStoragesExportGcsPartialUpdate for application/x-www-form-urlencoded ContentType.
-type ApiStoragesExportGcsPartialUpdateFormdataRequestBody = PatchedGCSExportStorageWriteRequest
-
-// ApiStoragesExportGcsPartialUpdateMultipartRequestBody defines body for ApiStoragesExportGcsPartialUpdate for multipart/form-data ContentType.
-type ApiStoragesExportGcsPartialUpdateMultipartRequestBody = PatchedGCSExportStorageWriteRequest
-
-// ApiStoragesExportGcsSaCreateJSONRequestBody defines body for ApiStoragesExportGcsSaCreate for application/json ContentType.
-type ApiStoragesExportGcsSaCreateJSONRequestBody = GCSSAExportStorageRequest
-
-// ApiStoragesExportGcsSaCreateFormdataRequestBody defines body for ApiStoragesExportGcsSaCreate for application/x-www-form-urlencoded ContentType.
-type ApiStoragesExportGcsSaCreateFormdataRequestBody = GCSSAExportStorageRequest
-
-// ApiStoragesExportGcsSaCreateMultipartRequestBody defines body for ApiStoragesExportGcsSaCreate for multipart/form-data ContentType.
-type ApiStoragesExportGcsSaCreateMultipartRequestBody = GCSSAExportStorageRequest
-
-// ApiStoragesExportGcsSaValidateCreateJSONRequestBody defines body for ApiStoragesExportGcsSaValidateCreate for application/json ContentType.
-type ApiStoragesExportGcsSaValidateCreateJSONRequestBody = GCSSAExportStorageRequest
-
-// ApiStoragesExportGcsSaValidateCreateFormdataRequestBody defines body for ApiStoragesExportGcsSaValidateCreate for application/x-www-form-urlencoded ContentType.
-type ApiStoragesExportGcsSaValidateCreateFormdataRequestBody = GCSSAExportStorageRequest
-
-// ApiStoragesExportGcsSaValidateCreateMultipartRequestBody defines body for ApiStoragesExportGcsSaValidateCreate for multipart/form-data ContentType.
-type ApiStoragesExportGcsSaValidateCreateMultipartRequestBody = GCSSAExportStorageRequest
-
-// ApiStoragesExportGcsSaPartialUpdateJSONRequestBody defines body for ApiStoragesExportGcsSaPartialUpdate for application/json ContentType.
-type ApiStoragesExportGcsSaPartialUpdateJSONRequestBody = PatchedGCSSAExportStorageRequest
-
-// ApiStoragesExportGcsSaPartialUpdateFormdataRequestBody defines body for ApiStoragesExportGcsSaPartialUpdate for application/x-www-form-urlencoded ContentType.
-type ApiStoragesExportGcsSaPartialUpdateFormdataRequestBody = PatchedGCSSAExportStorageRequest
-
-// ApiStoragesExportGcsSaPartialUpdateMultipartRequestBody defines body for ApiStoragesExportGcsSaPartialUpdate for multipart/form-data ContentType.
-type ApiStoragesExportGcsSaPartialUpdateMultipartRequestBody = PatchedGCSSAExportStorageRequest
-
-// ApiStoragesExportGcswifCreateJSONRequestBody defines body for ApiStoragesExportGcswifCreate for application/json ContentType.
-type ApiStoragesExportGcswifCreateJSONRequestBody = GCSWIFExportStorageRequest
-
-// ApiStoragesExportGcswifCreateFormdataRequestBody defines body for ApiStoragesExportGcswifCreate for application/x-www-form-urlencoded ContentType.
-type ApiStoragesExportGcswifCreateFormdataRequestBody = GCSWIFExportStorageRequest
-
-// ApiStoragesExportGcswifCreateMultipartRequestBody defines body for ApiStoragesExportGcswifCreate for multipart/form-data ContentType.
-type ApiStoragesExportGcswifCreateMultipartRequestBody = GCSWIFExportStorageRequest
-
-// ApiStoragesExportGcswifValidateCreateJSONRequestBody defines body for ApiStoragesExportGcswifValidateCreate for application/json ContentType.
-type ApiStoragesExportGcswifValidateCreateJSONRequestBody = GCSWIFExportStorageRequest
-
-// ApiStoragesExportGcswifValidateCreateFormdataRequestBody defines body for ApiStoragesExportGcswifValidateCreate for application/x-www-form-urlencoded ContentType.
-type ApiStoragesExportGcswifValidateCreateFormdataRequestBody = GCSWIFExportStorageRequest
-
-// ApiStoragesExportGcswifValidateCreateMultipartRequestBody defines body for ApiStoragesExportGcswifValidateCreate for multipart/form-data ContentType.
-type ApiStoragesExportGcswifValidateCreateMultipartRequestBody = GCSWIFExportStorageRequest
-
-// ApiStoragesExportGcswifPartialUpdateJSONRequestBody defines body for ApiStoragesExportGcswifPartialUpdate for application/json ContentType.
-type ApiStoragesExportGcswifPartialUpdateJSONRequestBody = PatchedGCSWIFExportStorageRequest
-
-// ApiStoragesExportGcswifPartialUpdateFormdataRequestBody defines body for ApiStoragesExportGcswifPartialUpdate for application/x-www-form-urlencoded ContentType.
-type ApiStoragesExportGcswifPartialUpdateFormdataRequestBody = PatchedGCSWIFExportStorageRequest
-
-// ApiStoragesExportGcswifPartialUpdateMultipartRequestBody defines body for ApiStoragesExportGcswifPartialUpdate for multipart/form-data ContentType.
-type ApiStoragesExportGcswifPartialUpdateMultipartRequestBody = PatchedGCSWIFExportStorageRequest
-
-// ApiStoragesExportLocalfilesCreateJSONRequestBody defines body for ApiStoragesExportLocalfilesCreate for application/json ContentType.
-type ApiStoragesExportLocalfilesCreateJSONRequestBody = LocalFilesExportStorageWriteRequest
-
-// ApiStoragesExportLocalfilesCreateFormdataRequestBody defines body for ApiStoragesExportLocalfilesCreate for application/x-www-form-urlencoded ContentType.
-type ApiStoragesExportLocalfilesCreateFormdataRequestBody = LocalFilesExportStorageWriteRequest
-
-// ApiStoragesExportLocalfilesCreateMultipartRequestBody defines body for ApiStoragesExportLocalfilesCreate for multipart/form-data ContentType.
-type ApiStoragesExportLocalfilesCreateMultipartRequestBody = LocalFilesExportStorageWriteRequest
-
-// ApiStoragesExportLocalfilesValidateCreateJSONRequestBody defines body for ApiStoragesExportLocalfilesValidateCreate for application/json ContentType.
-type ApiStoragesExportLocalfilesValidateCreateJSONRequestBody = LocalFilesExportStorageValidateRequest
-
-// ApiStoragesExportLocalfilesValidateCreateFormdataRequestBody defines body for ApiStoragesExportLocalfilesValidateCreate for application/x-www-form-urlencoded ContentType.
-type ApiStoragesExportLocalfilesValidateCreateFormdataRequestBody = LocalFilesExportStorageValidateRequest
-
-// ApiStoragesExportLocalfilesValidateCreateMultipartRequestBody defines body for ApiStoragesExportLocalfilesValidateCreate for multipart/form-data ContentType.
-type ApiStoragesExportLocalfilesValidateCreateMultipartRequestBody = LocalFilesExportStorageValidateRequest
-
-// ApiStoragesExportLocalfilesPartialUpdateJSONRequestBody defines body for ApiStoragesExportLocalfilesPartialUpdate for application/json ContentType.
-type ApiStoragesExportLocalfilesPartialUpdateJSONRequestBody = PatchedLocalFilesExportStorageWriteRequest
-
-// ApiStoragesExportLocalfilesPartialUpdateFormdataRequestBody defines body for ApiStoragesExportLocalfilesPartialUpdate for application/x-www-form-urlencoded ContentType.
-type ApiStoragesExportLocalfilesPartialUpdateFormdataRequestBody = PatchedLocalFilesExportStorageWriteRequest
-
-// ApiStoragesExportLocalfilesPartialUpdateMultipartRequestBody defines body for ApiStoragesExportLocalfilesPartialUpdate for multipart/form-data ContentType.
-type ApiStoragesExportLocalfilesPartialUpdateMultipartRequestBody = PatchedLocalFilesExportStorageWriteRequest
-
-// ApiStoragesExportRedisCreateJSONRequestBody defines body for ApiStoragesExportRedisCreate for application/json ContentType.
-type ApiStoragesExportRedisCreateJSONRequestBody = RedisExportStorageWriteRequest
-
-// ApiStoragesExportRedisCreateFormdataRequestBody defines body for ApiStoragesExportRedisCreate for application/x-www-form-urlencoded ContentType.
-type ApiStoragesExportRedisCreateFormdataRequestBody = RedisExportStorageWriteRequest
-
-// ApiStoragesExportRedisCreateMultipartRequestBody defines body for ApiStoragesExportRedisCreate for multipart/form-data ContentType.
-type ApiStoragesExportRedisCreateMultipartRequestBody = RedisExportStorageWriteRequest
-
-// ApiStoragesExportRedisValidateCreateJSONRequestBody defines body for ApiStoragesExportRedisValidateCreate for application/json ContentType.
-type ApiStoragesExportRedisValidateCreateJSONRequestBody = RedisExportStorageValidateRequest
-
-// ApiStoragesExportRedisValidateCreateFormdataRequestBody defines body for ApiStoragesExportRedisValidateCreate for application/x-www-form-urlencoded ContentType.
-type ApiStoragesExportRedisValidateCreateFormdataRequestBody = RedisExportStorageValidateRequest
-
-// ApiStoragesExportRedisValidateCreateMultipartRequestBody defines body for ApiStoragesExportRedisValidateCreate for multipart/form-data ContentType.
-type ApiStoragesExportRedisValidateCreateMultipartRequestBody = RedisExportStorageValidateRequest
-
-// ApiStoragesExportRedisPartialUpdateJSONRequestBody defines body for ApiStoragesExportRedisPartialUpdate for application/json ContentType.
-type ApiStoragesExportRedisPartialUpdateJSONRequestBody = PatchedRedisExportStorageWriteRequest
-
-// ApiStoragesExportRedisPartialUpdateFormdataRequestBody defines body for ApiStoragesExportRedisPartialUpdate for application/x-www-form-urlencoded ContentType.
-type ApiStoragesExportRedisPartialUpdateFormdataRequestBody = PatchedRedisExportStorageWriteRequest
-
-// ApiStoragesExportRedisPartialUpdateMultipartRequestBody defines body for ApiStoragesExportRedisPartialUpdate for multipart/form-data ContentType.
-type ApiStoragesExportRedisPartialUpdateMultipartRequestBody = PatchedRedisExportStorageWriteRequest
-
-// ApiStoragesExportS3CreateJSONRequestBody defines body for ApiStoragesExportS3Create for application/json ContentType.
-type ApiStoragesExportS3CreateJSONRequestBody = S3ExportStorageWriteRequest
-
-// ApiStoragesExportS3CreateFormdataRequestBody defines body for ApiStoragesExportS3Create for application/x-www-form-urlencoded ContentType.
-type ApiStoragesExportS3CreateFormdataRequestBody = S3ExportStorageWriteRequest
-
-// ApiStoragesExportS3CreateMultipartRequestBody defines body for ApiStoragesExportS3Create for multipart/form-data ContentType.
-type ApiStoragesExportS3CreateMultipartRequestBody = S3ExportStorageWriteRequest
-
-// ApiStoragesExportS3ValidateCreateJSONRequestBody defines body for ApiStoragesExportS3ValidateCreate for application/json ContentType.
-type ApiStoragesExportS3ValidateCreateJSONRequestBody = S3ExportStorageValidateRequest
-
-// ApiStoragesExportS3ValidateCreateFormdataRequestBody defines body for ApiStoragesExportS3ValidateCreate for application/x-www-form-urlencoded ContentType.
-type ApiStoragesExportS3ValidateCreateFormdataRequestBody = S3ExportStorageValidateRequest
-
-// ApiStoragesExportS3ValidateCreateMultipartRequestBody defines body for ApiStoragesExportS3ValidateCreate for multipart/form-data ContentType.
-type ApiStoragesExportS3ValidateCreateMultipartRequestBody = S3ExportStorageValidateRequest
-
-// ApiStoragesExportS3PartialUpdateJSONRequestBody defines body for ApiStoragesExportS3PartialUpdate for application/json ContentType.
-type ApiStoragesExportS3PartialUpdateJSONRequestBody = PatchedS3ExportStorageWriteRequest
-
-// ApiStoragesExportS3PartialUpdateFormdataRequestBody defines body for ApiStoragesExportS3PartialUpdate for application/x-www-form-urlencoded ContentType.
-type ApiStoragesExportS3PartialUpdateFormdataRequestBody = PatchedS3ExportStorageWriteRequest
-
-// ApiStoragesExportS3PartialUpdateMultipartRequestBody defines body for ApiStoragesExportS3PartialUpdate for multipart/form-data ContentType.
-type ApiStoragesExportS3PartialUpdateMultipartRequestBody = PatchedS3ExportStorageWriteRequest
-
-// ApiStoragesExportS3sCreateJSONRequestBody defines body for ApiStoragesExportS3sCreate for application/json ContentType.
-type ApiStoragesExportS3sCreateJSONRequestBody = LseS3ExportStorageRequest
-
-// ApiStoragesExportS3sCreateFormdataRequestBody defines body for ApiStoragesExportS3sCreate for application/x-www-form-urlencoded ContentType.
-type ApiStoragesExportS3sCreateFormdataRequestBody = LseS3ExportStorageRequest
-
-// ApiStoragesExportS3sCreateMultipartRequestBody defines body for ApiStoragesExportS3sCreate for multipart/form-data ContentType.
-type ApiStoragesExportS3sCreateMultipartRequestBody = LseS3ExportStorageRequest
-
-// ApiStoragesExportS3sValidateCreateJSONRequestBody defines body for ApiStoragesExportS3sValidateCreate for application/json ContentType.
-type ApiStoragesExportS3sValidateCreateJSONRequestBody = LseS3ExportStorageRequest
-
-// ApiStoragesExportS3sValidateCreateFormdataRequestBody defines body for ApiStoragesExportS3sValidateCreate for application/x-www-form-urlencoded ContentType.
-type ApiStoragesExportS3sValidateCreateFormdataRequestBody = LseS3ExportStorageRequest
-
-// ApiStoragesExportS3sValidateCreateMultipartRequestBody defines body for ApiStoragesExportS3sValidateCreate for multipart/form-data ContentType.
-type ApiStoragesExportS3sValidateCreateMultipartRequestBody = LseS3ExportStorageRequest
-
-// ApiStoragesExportS3sPartialUpdateJSONRequestBody defines body for ApiStoragesExportS3sPartialUpdate for application/json ContentType.
-type ApiStoragesExportS3sPartialUpdateJSONRequestBody = PatchedLseS3ExportStorageRequest
-
-// ApiStoragesExportS3sPartialUpdateFormdataRequestBody defines body for ApiStoragesExportS3sPartialUpdate for application/x-www-form-urlencoded ContentType.
-type ApiStoragesExportS3sPartialUpdateFormdataRequestBody = PatchedLseS3ExportStorageRequest
-
-// ApiStoragesExportS3sPartialUpdateMultipartRequestBody defines body for ApiStoragesExportS3sPartialUpdate for multipart/form-data ContentType.
-type ApiStoragesExportS3sPartialUpdateMultipartRequestBody = PatchedLseS3ExportStorageRequest
-
-// ApiStoragesGcsCreateJSONRequestBody defines body for ApiStoragesGcsCreate for application/json ContentType.
-type ApiStoragesGcsCreateJSONRequestBody = GCSImportStorageWriteRequest
-
-// ApiStoragesGcsCreateFormdataRequestBody defines body for ApiStoragesGcsCreate for application/x-www-form-urlencoded ContentType.
-type ApiStoragesGcsCreateFormdataRequestBody = GCSImportStorageWriteRequest
-
-// ApiStoragesGcsCreateMultipartRequestBody defines body for ApiStoragesGcsCreate for multipart/form-data ContentType.
-type ApiStoragesGcsCreateMultipartRequestBody = GCSImportStorageWriteRequest
-
-// ApiStoragesGcsValidateCreateJSONRequestBody defines body for ApiStoragesGcsValidateCreate for application/json ContentType.
-type ApiStoragesGcsValidateCreateJSONRequestBody = GCSImportStorageValidateRequest
-
-// ApiStoragesGcsValidateCreateFormdataRequestBody defines body for ApiStoragesGcsValidateCreate for application/x-www-form-urlencoded ContentType.
-type ApiStoragesGcsValidateCreateFormdataRequestBody = GCSImportStorageValidateRequest
-
-// ApiStoragesGcsValidateCreateMultipartRequestBody defines body for ApiStoragesGcsValidateCreate for multipart/form-data ContentType.
-type ApiStoragesGcsValidateCreateMultipartRequestBody = GCSImportStorageValidateRequest
-
-// ApiStoragesGcsPartialUpdateJSONRequestBody defines body for ApiStoragesGcsPartialUpdate for application/json ContentType.
-type ApiStoragesGcsPartialUpdateJSONRequestBody = PatchedGCSImportStorageWriteRequest
-
-// ApiStoragesGcsPartialUpdateFormdataRequestBody defines body for ApiStoragesGcsPartialUpdate for application/x-www-form-urlencoded ContentType.
-type ApiStoragesGcsPartialUpdateFormdataRequestBody = PatchedGCSImportStorageWriteRequest
-
-// ApiStoragesGcsPartialUpdateMultipartRequestBody defines body for ApiStoragesGcsPartialUpdate for multipart/form-data ContentType.
-type ApiStoragesGcsPartialUpdateMultipartRequestBody = PatchedGCSImportStorageWriteRequest
-
-// ApiStoragesGcsSaCreateJSONRequestBody defines body for ApiStoragesGcsSaCreate for application/json ContentType.
-type ApiStoragesGcsSaCreateJSONRequestBody = GCSSAImportStorageRequest
-
-// ApiStoragesGcsSaCreateFormdataRequestBody defines body for ApiStoragesGcsSaCreate for application/x-www-form-urlencoded ContentType.
-type ApiStoragesGcsSaCreateFormdataRequestBody = GCSSAImportStorageRequest
-
-// ApiStoragesGcsSaCreateMultipartRequestBody defines body for ApiStoragesGcsSaCreate for multipart/form-data ContentType.
-type ApiStoragesGcsSaCreateMultipartRequestBody = GCSSAImportStorageRequest
-
-// ApiStoragesGcsSaValidateCreateJSONRequestBody defines body for ApiStoragesGcsSaValidateCreate for application/json ContentType.
-type ApiStoragesGcsSaValidateCreateJSONRequestBody = GCSSAImportStorageRequest
-
-// ApiStoragesGcsSaValidateCreateFormdataRequestBody defines body for ApiStoragesGcsSaValidateCreate for application/x-www-form-urlencoded ContentType.
-type ApiStoragesGcsSaValidateCreateFormdataRequestBody = GCSSAImportStorageRequest
-
-// ApiStoragesGcsSaValidateCreateMultipartRequestBody defines body for ApiStoragesGcsSaValidateCreate for multipart/form-data ContentType.
-type ApiStoragesGcsSaValidateCreateMultipartRequestBody = GCSSAImportStorageRequest
-
-// ApiStoragesGcsSaPartialUpdateJSONRequestBody defines body for ApiStoragesGcsSaPartialUpdate for application/json ContentType.
-type ApiStoragesGcsSaPartialUpdateJSONRequestBody = PatchedGCSSAImportStorageRequest
-
-// ApiStoragesGcsSaPartialUpdateFormdataRequestBody defines body for ApiStoragesGcsSaPartialUpdate for application/x-www-form-urlencoded ContentType.
-type ApiStoragesGcsSaPartialUpdateFormdataRequestBody = PatchedGCSSAImportStorageRequest
-
-// ApiStoragesGcsSaPartialUpdateMultipartRequestBody defines body for ApiStoragesGcsSaPartialUpdate for multipart/form-data ContentType.
-type ApiStoragesGcsSaPartialUpdateMultipartRequestBody = PatchedGCSSAImportStorageRequest
-
-// ApiStoragesGcswifCreateJSONRequestBody defines body for ApiStoragesGcswifCreate for application/json ContentType.
-type ApiStoragesGcswifCreateJSONRequestBody = GCSWIFImportStorageRequest
-
-// ApiStoragesGcswifCreateFormdataRequestBody defines body for ApiStoragesGcswifCreate for application/x-www-form-urlencoded ContentType.
-type ApiStoragesGcswifCreateFormdataRequestBody = GCSWIFImportStorageRequest
-
-// ApiStoragesGcswifCreateMultipartRequestBody defines body for ApiStoragesGcswifCreate for multipart/form-data ContentType.
-type ApiStoragesGcswifCreateMultipartRequestBody = GCSWIFImportStorageRequest
-
-// ApiStoragesGcswifValidateCreateJSONRequestBody defines body for ApiStoragesGcswifValidateCreate for application/json ContentType.
-type ApiStoragesGcswifValidateCreateJSONRequestBody = GCSWIFImportStorageRequest
-
-// ApiStoragesGcswifValidateCreateFormdataRequestBody defines body for ApiStoragesGcswifValidateCreate for application/x-www-form-urlencoded ContentType.
-type ApiStoragesGcswifValidateCreateFormdataRequestBody = GCSWIFImportStorageRequest
-
-// ApiStoragesGcswifValidateCreateMultipartRequestBody defines body for ApiStoragesGcswifValidateCreate for multipart/form-data ContentType.
-type ApiStoragesGcswifValidateCreateMultipartRequestBody = GCSWIFImportStorageRequest
-
-// ApiStoragesGcswifPartialUpdateJSONRequestBody defines body for ApiStoragesGcswifPartialUpdate for application/json ContentType.
-type ApiStoragesGcswifPartialUpdateJSONRequestBody = PatchedGCSWIFImportStorageRequest
-
-// ApiStoragesGcswifPartialUpdateFormdataRequestBody defines body for ApiStoragesGcswifPartialUpdate for application/x-www-form-urlencoded ContentType.
-type ApiStoragesGcswifPartialUpdateFormdataRequestBody = PatchedGCSWIFImportStorageRequest
-
-// ApiStoragesGcswifPartialUpdateMultipartRequestBody defines body for ApiStoragesGcswifPartialUpdate for multipart/form-data ContentType.
-type ApiStoragesGcswifPartialUpdateMultipartRequestBody = PatchedGCSWIFImportStorageRequest
-
-// ApiStoragesLocalfilesCreateJSONRequestBody defines body for ApiStoragesLocalfilesCreate for application/json ContentType.
-type ApiStoragesLocalfilesCreateJSONRequestBody = LocalFilesImportStorageWriteRequest
-
-// ApiStoragesLocalfilesCreateFormdataRequestBody defines body for ApiStoragesLocalfilesCreate for application/x-www-form-urlencoded ContentType.
-type ApiStoragesLocalfilesCreateFormdataRequestBody = LocalFilesImportStorageWriteRequest
-
-// ApiStoragesLocalfilesCreateMultipartRequestBody defines body for ApiStoragesLocalfilesCreate for multipart/form-data ContentType.
-type ApiStoragesLocalfilesCreateMultipartRequestBody = LocalFilesImportStorageWriteRequest
-
-// ApiStoragesLocalfilesValidateCreateJSONRequestBody defines body for ApiStoragesLocalfilesValidateCreate for application/json ContentType.
-type ApiStoragesLocalfilesValidateCreateJSONRequestBody = LocalFilesImportStorageValidateRequest
-
-// ApiStoragesLocalfilesValidateCreateFormdataRequestBody defines body for ApiStoragesLocalfilesValidateCreate for application/x-www-form-urlencoded ContentType.
-type ApiStoragesLocalfilesValidateCreateFormdataRequestBody = LocalFilesImportStorageValidateRequest
-
-// ApiStoragesLocalfilesValidateCreateMultipartRequestBody defines body for ApiStoragesLocalfilesValidateCreate for multipart/form-data ContentType.
-type ApiStoragesLocalfilesValidateCreateMultipartRequestBody = LocalFilesImportStorageValidateRequest
-
-// ApiStoragesLocalfilesPartialUpdateJSONRequestBody defines body for ApiStoragesLocalfilesPartialUpdate for application/json ContentType.
-type ApiStoragesLocalfilesPartialUpdateJSONRequestBody = PatchedLocalFilesImportStorageWriteRequest
-
-// ApiStoragesLocalfilesPartialUpdateFormdataRequestBody defines body for ApiStoragesLocalfilesPartialUpdate for application/x-www-form-urlencoded ContentType.
-type ApiStoragesLocalfilesPartialUpdateFormdataRequestBody = PatchedLocalFilesImportStorageWriteRequest
-
-// ApiStoragesLocalfilesPartialUpdateMultipartRequestBody defines body for ApiStoragesLocalfilesPartialUpdate for multipart/form-data ContentType.
-type ApiStoragesLocalfilesPartialUpdateMultipartRequestBody = PatchedLocalFilesImportStorageWriteRequest
-
-// ApiStoragesRedisCreateJSONRequestBody defines body for ApiStoragesRedisCreate for application/json ContentType.
-type ApiStoragesRedisCreateJSONRequestBody = RedisImportStorageWriteRequest
-
-// ApiStoragesRedisCreateFormdataRequestBody defines body for ApiStoragesRedisCreate for application/x-www-form-urlencoded ContentType.
-type ApiStoragesRedisCreateFormdataRequestBody = RedisImportStorageWriteRequest
-
-// ApiStoragesRedisCreateMultipartRequestBody defines body for ApiStoragesRedisCreate for multipart/form-data ContentType.
-type ApiStoragesRedisCreateMultipartRequestBody = RedisImportStorageWriteRequest
-
-// ApiStoragesRedisValidateCreateJSONRequestBody defines body for ApiStoragesRedisValidateCreate for application/json ContentType.
-type ApiStoragesRedisValidateCreateJSONRequestBody = RedisImportStorageValidateRequest
-
-// ApiStoragesRedisValidateCreateFormdataRequestBody defines body for ApiStoragesRedisValidateCreate for application/x-www-form-urlencoded ContentType.
-type ApiStoragesRedisValidateCreateFormdataRequestBody = RedisImportStorageValidateRequest
-
-// ApiStoragesRedisValidateCreateMultipartRequestBody defines body for ApiStoragesRedisValidateCreate for multipart/form-data ContentType.
-type ApiStoragesRedisValidateCreateMultipartRequestBody = RedisImportStorageValidateRequest
-
-// ApiStoragesRedisPartialUpdateJSONRequestBody defines body for ApiStoragesRedisPartialUpdate for application/json ContentType.
-type ApiStoragesRedisPartialUpdateJSONRequestBody = PatchedRedisImportStorageWriteRequest
-
-// ApiStoragesRedisPartialUpdateFormdataRequestBody defines body for ApiStoragesRedisPartialUpdate for application/x-www-form-urlencoded ContentType.
-type ApiStoragesRedisPartialUpdateFormdataRequestBody = PatchedRedisImportStorageWriteRequest
-
-// ApiStoragesRedisPartialUpdateMultipartRequestBody defines body for ApiStoragesRedisPartialUpdate for multipart/form-data ContentType.
-type ApiStoragesRedisPartialUpdateMultipartRequestBody = PatchedRedisImportStorageWriteRequest
-
-// ApiStoragesS3CreateJSONRequestBody defines body for ApiStoragesS3Create for application/json ContentType.
-type ApiStoragesS3CreateJSONRequestBody = S3ImportStorageWriteRequest
-
-// ApiStoragesS3CreateFormdataRequestBody defines body for ApiStoragesS3Create for application/x-www-form-urlencoded ContentType.
-type ApiStoragesS3CreateFormdataRequestBody = S3ImportStorageWriteRequest
-
-// ApiStoragesS3CreateMultipartRequestBody defines body for ApiStoragesS3Create for multipart/form-data ContentType.
-type ApiStoragesS3CreateMultipartRequestBody = S3ImportStorageWriteRequest
-
-// ApiStoragesS3ValidateCreateJSONRequestBody defines body for ApiStoragesS3ValidateCreate for application/json ContentType.
-type ApiStoragesS3ValidateCreateJSONRequestBody = S3ImportStorageValidateRequest
-
-// ApiStoragesS3ValidateCreateFormdataRequestBody defines body for ApiStoragesS3ValidateCreate for application/x-www-form-urlencoded ContentType.
-type ApiStoragesS3ValidateCreateFormdataRequestBody = S3ImportStorageValidateRequest
-
-// ApiStoragesS3ValidateCreateMultipartRequestBody defines body for ApiStoragesS3ValidateCreate for multipart/form-data ContentType.
-type ApiStoragesS3ValidateCreateMultipartRequestBody = S3ImportStorageValidateRequest
-
-// ApiStoragesS3PartialUpdateJSONRequestBody defines body for ApiStoragesS3PartialUpdate for application/json ContentType.
-type ApiStoragesS3PartialUpdateJSONRequestBody = PatchedS3ImportStorageWriteRequest
-
-// ApiStoragesS3PartialUpdateFormdataRequestBody defines body for ApiStoragesS3PartialUpdate for application/x-www-form-urlencoded ContentType.
-type ApiStoragesS3PartialUpdateFormdataRequestBody = PatchedS3ImportStorageWriteRequest
-
-// ApiStoragesS3PartialUpdateMultipartRequestBody defines body for ApiStoragesS3PartialUpdate for multipart/form-data ContentType.
-type ApiStoragesS3PartialUpdateMultipartRequestBody = PatchedS3ImportStorageWriteRequest
-
-// ApiStoragesS3sCreateJSONRequestBody defines body for ApiStoragesS3sCreate for application/json ContentType.
-type ApiStoragesS3sCreateJSONRequestBody = LseS3ImportStorageRequest
-
-// ApiStoragesS3sCreateFormdataRequestBody defines body for ApiStoragesS3sCreate for application/x-www-form-urlencoded ContentType.
-type ApiStoragesS3sCreateFormdataRequestBody = LseS3ImportStorageRequest
-
-// ApiStoragesS3sCreateMultipartRequestBody defines body for ApiStoragesS3sCreate for multipart/form-data ContentType.
-type ApiStoragesS3sCreateMultipartRequestBody = LseS3ImportStorageRequest
-
-// ApiStoragesS3sValidateCreateJSONRequestBody defines body for ApiStoragesS3sValidateCreate for application/json ContentType.
-type ApiStoragesS3sValidateCreateJSONRequestBody = LseS3ImportStorageRequest
-
-// ApiStoragesS3sValidateCreateFormdataRequestBody defines body for ApiStoragesS3sValidateCreate for application/x-www-form-urlencoded ContentType.
-type ApiStoragesS3sValidateCreateFormdataRequestBody = LseS3ImportStorageRequest
-
-// ApiStoragesS3sValidateCreateMultipartRequestBody defines body for ApiStoragesS3sValidateCreate for multipart/form-data ContentType.
-type ApiStoragesS3sValidateCreateMultipartRequestBody = LseS3ImportStorageRequest
-
-// ApiStoragesS3sPartialUpdateJSONRequestBody defines body for ApiStoragesS3sPartialUpdate for application/json ContentType.
-type ApiStoragesS3sPartialUpdateJSONRequestBody = PatchedLseS3ImportStorageRequest
-
-// ApiStoragesS3sPartialUpdateFormdataRequestBody defines body for ApiStoragesS3sPartialUpdate for application/x-www-form-urlencoded ContentType.
-type ApiStoragesS3sPartialUpdateFormdataRequestBody = PatchedLseS3ImportStorageRequest
-
-// ApiStoragesS3sPartialUpdateMultipartRequestBody defines body for ApiStoragesS3sPartialUpdate for multipart/form-data ContentType.
-type ApiStoragesS3sPartialUpdateMultipartRequestBody = PatchedLseS3ImportStorageRequest
-
-// ApiTasksCreateJSONRequestBody defines body for ApiTasksCreate for application/json ContentType.
-type ApiTasksCreateJSONRequestBody = LseTaskRequest
-
-// ApiTasksCreateFormdataRequestBody defines body for ApiTasksCreate for application/x-www-form-urlencoded ContentType.
-type ApiTasksCreateFormdataRequestBody = LseTaskRequest
-
-// ApiTasksCreateMultipartRequestBody defines body for ApiTasksCreate for multipart/form-data ContentType.
-type ApiTasksCreateMultipartRequestBody = LseTaskRequest
-
-// ApiTasksPartialUpdateJSONRequestBody defines body for ApiTasksPartialUpdate for application/json ContentType.
-type ApiTasksPartialUpdateJSONRequestBody = PatchedLseTaskRequest
-
-// ApiTasksPartialUpdateFormdataRequestBody defines body for ApiTasksPartialUpdate for application/x-www-form-urlencoded ContentType.
-type ApiTasksPartialUpdateFormdataRequestBody = PatchedLseTaskRequest
-
-// ApiTasksPartialUpdateMultipartRequestBody defines body for ApiTasksPartialUpdate for multipart/form-data ContentType.
-type ApiTasksPartialUpdateMultipartRequestBody = PatchedLseTaskRequest
-
-// ApiTasksAnnotationsCreateJSONRequestBody defines body for ApiTasksAnnotationsCreate for application/json ContentType.
-type ApiTasksAnnotationsCreateJSONRequestBody = AnnotationRequest
-
-// ApiTasksAnnotationsCreateFormdataRequestBody defines body for ApiTasksAnnotationsCreate for application/x-www-form-urlencoded ContentType.
-type ApiTasksAnnotationsCreateFormdataRequestBody = AnnotationRequest
-
-// ApiTasksAnnotationsCreateMultipartRequestBody defines body for ApiTasksAnnotationsCreate for multipart/form-data ContentType.
-type ApiTasksAnnotationsCreateMultipartRequestBody = AnnotationRequest
-
-// ApiTasksEventsCreateJSONRequestBody defines body for ApiTasksEventsCreate for application/json ContentType.
-type ApiTasksEventsCreateJSONRequestBody = TaskEventRequest
-
-// ApiTasksEventsCreateFormdataRequestBody defines body for ApiTasksEventsCreate for application/x-www-form-urlencoded ContentType.
-type ApiTasksEventsCreateFormdataRequestBody = TaskEventRequest
-
-// ApiTasksEventsCreateMultipartRequestBody defines body for ApiTasksEventsCreate for multipart/form-data ContentType.
-type ApiTasksEventsCreateMultipartRequestBody = TaskEventRequest
-
-// ApiTokenBlacklistCreateJSONRequestBody defines body for ApiTokenBlacklistCreate for application/json ContentType.
-type ApiTokenBlacklistCreateJSONRequestBody = LSAPITokenBlacklistRequest
-
-// ApiTokenBlacklistCreateFormdataRequestBody defines body for ApiTokenBlacklistCreate for application/x-www-form-urlencoded ContentType.
-type ApiTokenBlacklistCreateFormdataRequestBody = LSAPITokenBlacklistRequest
-
-// ApiTokenBlacklistCreateMultipartRequestBody defines body for ApiTokenBlacklistCreate for multipart/form-data ContentType.
-type ApiTokenBlacklistCreateMultipartRequestBody = LSAPITokenBlacklistRequest
-
-// ApiTokenRefreshCreateJSONRequestBody defines body for ApiTokenRefreshCreate for application/json ContentType.
-type ApiTokenRefreshCreateJSONRequestBody = TokenRefreshRequest
-
-// ApiTokenRefreshCreateFormdataRequestBody defines body for ApiTokenRefreshCreate for application/x-www-form-urlencoded ContentType.
-type ApiTokenRefreshCreateFormdataRequestBody = TokenRefreshRequest
-
-// ApiTokenRefreshCreateMultipartRequestBody defines body for ApiTokenRefreshCreate for multipart/form-data ContentType.
-type ApiTokenRefreshCreateMultipartRequestBody = TokenRefreshRequest
-
-// ApiTokenRotateCreateJSONRequestBody defines body for ApiTokenRotateCreate for application/json ContentType.
-type ApiTokenRotateCreateJSONRequestBody = LSAPITokenRotateRequest
-
-// ApiTokenRotateCreateFormdataRequestBody defines body for ApiTokenRotateCreate for application/x-www-form-urlencoded ContentType.
-type ApiTokenRotateCreateFormdataRequestBody = LSAPITokenRotateRequest
-
-// ApiTokenRotateCreateMultipartRequestBody defines body for ApiTokenRotateCreate for multipart/form-data ContentType.
-type ApiTokenRotateCreateMultipartRequestBody = LSAPITokenRotateRequest
-
-// ApiUsersCreateJSONRequestBody defines body for ApiUsersCreate for application/json ContentType.
-type ApiUsersCreateJSONRequestBody = LseUserRequest
-
-// ApiUsersCreateFormdataRequestBody defines body for ApiUsersCreate for application/x-www-form-urlencoded ContentType.
-type ApiUsersCreateFormdataRequestBody = LseUserRequest
-
-// ApiUsersCreateMultipartRequestBody defines body for ApiUsersCreate for multipart/form-data ContentType.
-type ApiUsersCreateMultipartRequestBody = LseUserRequest
-
-// ApiUsersPartialUpdateJSONRequestBody defines body for ApiUsersPartialUpdate for application/json ContentType.
-type ApiUsersPartialUpdateJSONRequestBody = PatchedLseUserSerializerUpdateRequest
-
-// ApiUsersPartialUpdateFormdataRequestBody defines body for ApiUsersPartialUpdate for application/x-www-form-urlencoded ContentType.
-type ApiUsersPartialUpdateFormdataRequestBody = PatchedLseUserSerializerUpdateRequest
-
-// ApiUsersPartialUpdateMultipartRequestBody defines body for ApiUsersPartialUpdate for multipart/form-data ContentType.
-type ApiUsersPartialUpdateMultipartRequestBody = PatchedLseUserSerializerUpdateRequest
-
-// ApiWebhooksCreateJSONRequestBody defines body for ApiWebhooksCreate for application/json ContentType.
-type ApiWebhooksCreateJSONRequestBody = WebhookRequest
-
-// ApiWebhooksCreateFormdataRequestBody defines body for ApiWebhooksCreate for application/x-www-form-urlencoded ContentType.
-type ApiWebhooksCreateFormdataRequestBody = WebhookRequest
-
-// ApiWebhooksCreateMultipartRequestBody defines body for ApiWebhooksCreate for multipart/form-data ContentType.
-type ApiWebhooksCreateMultipartRequestBody = WebhookRequest
-
-// ApiWebhooksPartialUpdateJSONRequestBody defines body for ApiWebhooksPartialUpdate for application/json ContentType.
-type ApiWebhooksPartialUpdateJSONRequestBody = PatchedWebhookSerializerForUpdateRequest
-
-// ApiWebhooksPartialUpdateFormdataRequestBody defines body for ApiWebhooksPartialUpdate for application/x-www-form-urlencoded ContentType.
-type ApiWebhooksPartialUpdateFormdataRequestBody = PatchedWebhookSerializerForUpdateRequest
-
-// ApiWebhooksPartialUpdateMultipartRequestBody defines body for ApiWebhooksPartialUpdate for multipart/form-data ContentType.
-type ApiWebhooksPartialUpdateMultipartRequestBody = PatchedWebhookSerializerForUpdateRequest
-
-// ApiWebhooksUpdateJSONRequestBody defines body for ApiWebhooksUpdate for application/json ContentType.
-type ApiWebhooksUpdateJSONRequestBody = WebhookSerializerForUpdateRequest
-
-// ApiWebhooksUpdateFormdataRequestBody defines body for ApiWebhooksUpdate for application/x-www-form-urlencoded ContentType.
-type ApiWebhooksUpdateFormdataRequestBody = WebhookSerializerForUpdateRequest
-
-// ApiWebhooksUpdateMultipartRequestBody defines body for ApiWebhooksUpdate for multipart/form-data ContentType.
-type ApiWebhooksUpdateMultipartRequestBody = WebhookSerializerForUpdateRequest
-
-// ApiWorkspacesCreateJSONRequestBody defines body for ApiWorkspacesCreate for application/json ContentType.
-type ApiWorkspacesCreateJSONRequestBody = WorkspaceRequest
-
-// ApiWorkspacesCreateFormdataRequestBody defines body for ApiWorkspacesCreate for application/x-www-form-urlencoded ContentType.
-type ApiWorkspacesCreateFormdataRequestBody = WorkspaceRequest
-
-// ApiWorkspacesCreateMultipartRequestBody defines body for ApiWorkspacesCreate for multipart/form-data ContentType.
-type ApiWorkspacesCreateMultipartRequestBody = WorkspaceRequest
-
-// ApiWorkspacesPartialUpdateJSONRequestBody defines body for ApiWorkspacesPartialUpdate for application/json ContentType.
-type ApiWorkspacesPartialUpdateJSONRequestBody = PatchedWorkspaceRequest
-
-// ApiWorkspacesPartialUpdateFormdataRequestBody defines body for ApiWorkspacesPartialUpdate for application/x-www-form-urlencoded ContentType.
-type ApiWorkspacesPartialUpdateFormdataRequestBody = PatchedWorkspaceRequest
-
-// ApiWorkspacesPartialUpdateMultipartRequestBody defines body for ApiWorkspacesPartialUpdate for multipart/form-data ContentType.
-type ApiWorkspacesPartialUpdateMultipartRequestBody = PatchedWorkspaceRequest
-
-// ApiWorkspacesMembershipsCreateJSONRequestBody defines body for ApiWorkspacesMembershipsCreate for application/json ContentType.
-type ApiWorkspacesMembershipsCreateJSONRequestBody = WorkspaceMemberCreateRequest
-
-// ApiWorkspacesMembershipsCreateFormdataRequestBody defines body for ApiWorkspacesMembershipsCreate for application/x-www-form-urlencoded ContentType.
-type ApiWorkspacesMembershipsCreateFormdataRequestBody = WorkspaceMemberCreateRequest
-
-// ApiWorkspacesMembershipsCreateMultipartRequestBody defines body for ApiWorkspacesMembershipsCreate for multipart/form-data ContentType.
-type ApiWorkspacesMembershipsCreateMultipartRequestBody = WorkspaceMemberCreateRequest
-
-// ApiWorkspacesMembershipsBulkCreateJSONRequestBody defines body for ApiWorkspacesMembershipsBulkCreate for application/json ContentType.
-type ApiWorkspacesMembershipsBulkCreateJSONRequestBody = WorkspaceMemberBulkAssignRequest
-
-// ApiWorkspacesMembershipsBulkCreateFormdataRequestBody defines body for ApiWorkspacesMembershipsBulkCreate for application/x-www-form-urlencoded ContentType.
-type ApiWorkspacesMembershipsBulkCreateFormdataRequestBody = WorkspaceMemberBulkAssignRequest
-
-// ApiWorkspacesMembershipsBulkCreateMultipartRequestBody defines body for ApiWorkspacesMembershipsBulkCreate for multipart/form-data ContentType.
-type ApiWorkspacesMembershipsBulkCreateMultipartRequestBody = WorkspaceMemberBulkAssignRequest
-
-// ApiWorkspacesProjectsCreateJSONRequestBody defines body for ApiWorkspacesProjectsCreate for application/json ContentType.
-type ApiWorkspacesProjectsCreateJSONRequestBody = WorkspaceProjectsRequest
-
-// ApiWorkspacesProjectsCreateFormdataRequestBody defines body for ApiWorkspacesProjectsCreate for application/x-www-form-urlencoded ContentType.
-type ApiWorkspacesProjectsCreateFormdataRequestBody = WorkspaceProjectsRequest
-
-// ApiWorkspacesProjectsCreateMultipartRequestBody defines body for ApiWorkspacesProjectsCreate for multipart/form-data ContentType.
-type ApiWorkspacesProjectsCreateMultipartRequestBody = WorkspaceProjectsRequest
-
-// Getter for additional properties for ApiProjectsStatsDataFilterRetrieve200JSONResponseBody_UserFilters_Stats_Item. Returns the specified
-// element and whether it was found
-func (a ApiProjectsStatsDataFilterRetrieve200JSONResponseBody_UserFilters_Stats_Item) Get(fieldName string) (value map[string]interface{}, found bool) {
-	if a.AdditionalProperties != nil {
-		value, found = a.AdditionalProperties[fieldName]
-	}
-	return
-}
-
-// Setter for additional properties for ApiProjectsStatsDataFilterRetrieve200JSONResponseBody_UserFilters_Stats_Item
-func (a *ApiProjectsStatsDataFilterRetrieve200JSONResponseBody_UserFilters_Stats_Item) Set(fieldName string, value map[string]interface{}) {
-	if a.AdditionalProperties == nil {
-		a.AdditionalProperties = make(map[string]map[string]interface{})
-	}
-	a.AdditionalProperties[fieldName] = value
-}
-
-// Override default JSON handling for ApiProjectsStatsDataFilterRetrieve200JSONResponseBody_UserFilters_Stats_Item to handle AdditionalProperties
-func (a *ApiProjectsStatsDataFilterRetrieve200JSONResponseBody_UserFilters_Stats_Item) UnmarshalJSON(b []byte) error {
-	object := make(map[string]json.RawMessage)
-	err := json.Unmarshal(b, &object)
-	if err != nil {
-		return err
-	}
-
-	if raw, found := object["id"]; found {
-		err = json.Unmarshal(raw, &a.Id)
-		if err != nil {
-			return fmt.Errorf("error reading 'id': %w", err)
-		}
-		delete(object, "id")
-	}
-
-	if len(object) != 0 {
-		a.AdditionalProperties = make(map[string]map[string]interface{})
-		for fieldName, fieldBuf := range object {
-			var fieldVal map[string]interface{}
-			err := json.Unmarshal(fieldBuf, &fieldVal)
-			if err != nil {
-				return fmt.Errorf("error unmarshaling field %s: %w", fieldName, err)
-			}
-			a.AdditionalProperties[fieldName] = fieldVal
-		}
-	}
-	return nil
-}
-
-// Override default JSON handling for ApiProjectsStatsDataFilterRetrieve200JSONResponseBody_UserFilters_Stats_Item to handle AdditionalProperties
-func (a ApiProjectsStatsDataFilterRetrieve200JSONResponseBody_UserFilters_Stats_Item) MarshalJSON() ([]byte, error) {
-	var err error
-	object := make(map[string]json.RawMessage)
-
-	if a.Id != nil {
-		object["id"], err = json.Marshal(a.Id)
-		if err != nil {
-			return nil, fmt.Errorf("error marshaling 'id': %w", err)
-		}
-	}
-
-	for fieldName, field := range a.AdditionalProperties {
-		object[fieldName], err = json.Marshal(field)
-		if err != nil {
-			return nil, fmt.Errorf("error marshaling '%s': %w", fieldName, err)
-		}
-	}
-	return json.Marshal(object)
-}
 
 // AsAgreementV2BackfillJobTriggeredBy0 returns the union data inside the AgreementV2BackfillJob_TriggeredBy_AdditionalProperties as a AgreementV2BackfillJobTriggeredBy0
 func (t AgreementV2BackfillJob_TriggeredBy_AdditionalProperties) AsAgreementV2BackfillJobTriggeredBy0() (AgreementV2BackfillJobTriggeredBy0, error) {
@@ -4089,846 +2763,6 @@ type ClientInterface interface {
 	// Corresponds with GET /api/current-user/whoami (the `ApiCurrentUserWhoamiRetrieve` operationId).
 	ApiCurrentUserWhoamiRetrieve(ctx context.Context, reqEditors ...RequestEditorFn) (*http.Response, error)
 
-	// ApiDatasetStoragesList List all dataset storages from the project
-	//
-	// Retrieve a list of the dataset storages of all types with their IDs.
-	//
-	// Corresponds with GET /api/dataset-storages/ (the `ApiDatasetStoragesList` operationId).
-	ApiDatasetStoragesList(ctx context.Context, params *ApiDatasetStoragesListParams, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// ApiDatasetStoragesAzureList Get all import storage
-	//
-	// Get a list of all Azure import storage connections.
-	//
-	// Corresponds with GET /api/dataset-storages/azure/ (the `ApiDatasetStoragesAzureList` operationId).
-	ApiDatasetStoragesAzureList(ctx context.Context, params *ApiDatasetStoragesAzureListParams, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// ApiDatasetStoragesAzureCreateWithBody Create import storage
-	//
-	// Create a new Azure import storage connection.
-	//
-	// Takes any type of body and a specified content type.
-	//
-	// Corresponds with POST /api/dataset-storages/azure/ (the `ApiDatasetStoragesAzureCreate` operationId).
-	ApiDatasetStoragesAzureCreateWithBody(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// ApiDatasetStoragesAzureCreate Create import storage
-	//
-	// Create a new Azure import storage connection.
-	//
-	// Takes a body of the `application/json` content type.
-	//
-	// Corresponds with POST /api/dataset-storages/azure/ (the `ApiDatasetStoragesAzureCreate` operationId).
-	ApiDatasetStoragesAzureCreate(ctx context.Context, body ApiDatasetStoragesAzureCreateJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// ApiDatasetStoragesAzureCreateWithFormdataBody Create import storage
-	//
-	// Create a new Azure import storage connection.
-	//
-	// Takes a body of the `application/x-www-form-urlencoded` content type.
-	//
-	// Corresponds with POST /api/dataset-storages/azure/ (the `ApiDatasetStoragesAzureCreate` operationId).
-	ApiDatasetStoragesAzureCreateWithFormdataBody(ctx context.Context, body ApiDatasetStoragesAzureCreateFormdataRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// ApiDatasetStoragesAzureCheckForRecordsCreateWithBody Check for records given the file pattern
-	//
-	// Checks for existence of records matching the file pattern in the bucket/prefix.
-	//
-	// Takes any type of body and a specified content type.
-	//
-	// Corresponds with POST /api/dataset-storages/azure/check-for-records/ (the `ApiDatasetStoragesAzureCheckForRecordsCreate` operationId).
-	ApiDatasetStoragesAzureCheckForRecordsCreateWithBody(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// ApiDatasetStoragesAzureCheckForRecordsCreate Check for records given the file pattern
-	//
-	// Checks for existence of records matching the file pattern in the bucket/prefix.
-	//
-	// Takes a body of the `application/json` content type.
-	//
-	// Corresponds with POST /api/dataset-storages/azure/check-for-records/ (the `ApiDatasetStoragesAzureCheckForRecordsCreate` operationId).
-	ApiDatasetStoragesAzureCheckForRecordsCreate(ctx context.Context, body ApiDatasetStoragesAzureCheckForRecordsCreateJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// ApiDatasetStoragesAzureCheckForRecordsCreateWithFormdataBody Check for records given the file pattern
-	//
-	// Checks for existence of records matching the file pattern in the bucket/prefix.
-	//
-	// Takes a body of the `application/x-www-form-urlencoded` content type.
-	//
-	// Corresponds with POST /api/dataset-storages/azure/check-for-records/ (the `ApiDatasetStoragesAzureCheckForRecordsCreate` operationId).
-	ApiDatasetStoragesAzureCheckForRecordsCreateWithFormdataBody(ctx context.Context, body ApiDatasetStoragesAzureCheckForRecordsCreateFormdataRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// ApiDatasetStoragesAzureValidateCreateWithBody Validate import storage
-	//
-	// Validate a specific Azure import storage connection.
-	//
-	// Takes any type of body and a specified content type.
-	//
-	// Corresponds with POST /api/dataset-storages/azure/validate/ (the `ApiDatasetStoragesAzureValidateCreate` operationId).
-	ApiDatasetStoragesAzureValidateCreateWithBody(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// ApiDatasetStoragesAzureValidateCreate Validate import storage
-	//
-	// Validate a specific Azure import storage connection.
-	//
-	// Takes a body of the `application/json` content type.
-	//
-	// Corresponds with POST /api/dataset-storages/azure/validate/ (the `ApiDatasetStoragesAzureValidateCreate` operationId).
-	ApiDatasetStoragesAzureValidateCreate(ctx context.Context, body ApiDatasetStoragesAzureValidateCreateJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// ApiDatasetStoragesAzureValidateCreateWithFormdataBody Validate import storage
-	//
-	// Validate a specific Azure import storage connection.
-	//
-	// Takes a body of the `application/x-www-form-urlencoded` content type.
-	//
-	// Corresponds with POST /api/dataset-storages/azure/validate/ (the `ApiDatasetStoragesAzureValidateCreate` operationId).
-	ApiDatasetStoragesAzureValidateCreateWithFormdataBody(ctx context.Context, body ApiDatasetStoragesAzureValidateCreateFormdataRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// ApiDatasetStoragesAzureDestroy Delete import storage
-	//
-	// Delete a specific Azure import storage connection.
-	//
-	// Corresponds with DELETE /api/dataset-storages/azure/{id}/ (the `ApiDatasetStoragesAzureDestroy` operationId).
-	ApiDatasetStoragesAzureDestroy(ctx context.Context, id int, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// ApiDatasetStoragesAzureRetrieve Get import storage
-	//
-	// Get a specific Azure import storage connection.
-	//
-	// Corresponds with GET /api/dataset-storages/azure/{id}/ (the `ApiDatasetStoragesAzureRetrieve` operationId).
-	ApiDatasetStoragesAzureRetrieve(ctx context.Context, id int, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// ApiDatasetStoragesAzurePartialUpdateWithBody Update import storage
-	//
-	// Update a specific Azure import storage connection.
-	//
-	// Takes any type of body and a specified content type.
-	//
-	// Corresponds with PATCH /api/dataset-storages/azure/{id}/ (the `ApiDatasetStoragesAzurePartialUpdate` operationId).
-	ApiDatasetStoragesAzurePartialUpdateWithBody(ctx context.Context, id int, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// ApiDatasetStoragesAzurePartialUpdate Update import storage
-	//
-	// Update a specific Azure import storage connection.
-	//
-	// Takes a body of the `application/json` content type.
-	//
-	// Corresponds with PATCH /api/dataset-storages/azure/{id}/ (the `ApiDatasetStoragesAzurePartialUpdate` operationId).
-	ApiDatasetStoragesAzurePartialUpdate(ctx context.Context, id int, body ApiDatasetStoragesAzurePartialUpdateJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// ApiDatasetStoragesAzurePartialUpdateWithFormdataBody Update import storage
-	//
-	// Update a specific Azure import storage connection.
-	//
-	// Takes a body of the `application/x-www-form-urlencoded` content type.
-	//
-	// Corresponds with PATCH /api/dataset-storages/azure/{id}/ (the `ApiDatasetStoragesAzurePartialUpdate` operationId).
-	ApiDatasetStoragesAzurePartialUpdateWithFormdataBody(ctx context.Context, id int, body ApiDatasetStoragesAzurePartialUpdateFormdataRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// ApiDatasetStoragesAzureColumnsRetrieve Get data column names from storage
-	//
-	// Retrieves column names from users JSON/blob data in bucket.
-	//
-	// Corresponds with GET /api/dataset-storages/azure/{id}/columns/ (the `ApiDatasetStoragesAzureColumnsRetrieve` operationId).
-	ApiDatasetStoragesAzureColumnsRetrieve(ctx context.Context, id int, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// ApiDatasetStoragesAzureSyncCreateWithBody Sync import storage
-	//
-	// Sync tasks from an Azure import storage connection.
-	//
-	// Takes any type of body and a specified content type.
-	//
-	// Corresponds with POST /api/dataset-storages/azure/{id}/sync/ (the `ApiDatasetStoragesAzureSyncCreate` operationId).
-	ApiDatasetStoragesAzureSyncCreateWithBody(ctx context.Context, id int, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// ApiDatasetStoragesAzureSyncCreate Sync import storage
-	//
-	// Sync tasks from an Azure import storage connection.
-	//
-	// Takes a body of the `application/json` content type.
-	//
-	// Corresponds with POST /api/dataset-storages/azure/{id}/sync/ (the `ApiDatasetStoragesAzureSyncCreate` operationId).
-	ApiDatasetStoragesAzureSyncCreate(ctx context.Context, id int, body ApiDatasetStoragesAzureSyncCreateJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// ApiDatasetStoragesAzureSyncCreateWithFormdataBody Sync import storage
-	//
-	// Sync tasks from an Azure import storage connection.
-	//
-	// Takes a body of the `application/x-www-form-urlencoded` content type.
-	//
-	// Corresponds with POST /api/dataset-storages/azure/{id}/sync/ (the `ApiDatasetStoragesAzureSyncCreate` operationId).
-	ApiDatasetStoragesAzureSyncCreateWithFormdataBody(ctx context.Context, id int, body ApiDatasetStoragesAzureSyncCreateFormdataRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// ApiDatasetStoragesGcsList Get all import storage
-	//
-	// Get a list of all GCS import storage connections.
-	//
-	// Corresponds with GET /api/dataset-storages/gcs/ (the `ApiDatasetStoragesGcsList` operationId).
-	ApiDatasetStoragesGcsList(ctx context.Context, params *ApiDatasetStoragesGcsListParams, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// ApiDatasetStoragesGcsCreateWithBody Create import storage
-	//
-	// Create a new GCS import storage connection.
-	//
-	// Takes any type of body and a specified content type.
-	//
-	// Corresponds with POST /api/dataset-storages/gcs/ (the `ApiDatasetStoragesGcsCreate` operationId).
-	ApiDatasetStoragesGcsCreateWithBody(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// ApiDatasetStoragesGcsCreate Create import storage
-	//
-	// Create a new GCS import storage connection.
-	//
-	// Takes a body of the `application/json` content type.
-	//
-	// Corresponds with POST /api/dataset-storages/gcs/ (the `ApiDatasetStoragesGcsCreate` operationId).
-	ApiDatasetStoragesGcsCreate(ctx context.Context, body ApiDatasetStoragesGcsCreateJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// ApiDatasetStoragesGcsCreateWithFormdataBody Create import storage
-	//
-	// Create a new GCS import storage connection.
-	//
-	// Takes a body of the `application/x-www-form-urlencoded` content type.
-	//
-	// Corresponds with POST /api/dataset-storages/gcs/ (the `ApiDatasetStoragesGcsCreate` operationId).
-	ApiDatasetStoragesGcsCreateWithFormdataBody(ctx context.Context, body ApiDatasetStoragesGcsCreateFormdataRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// ApiDatasetStoragesGcsCheckForRecordsCreateWithBody Check for records given the file pattern
-	//
-	// Checks for existence of records matching the file pattern in the bucket/prefix.
-	//
-	// Takes any type of body and a specified content type.
-	//
-	// Corresponds with POST /api/dataset-storages/gcs/check-for-records/ (the `ApiDatasetStoragesGcsCheckForRecordsCreate` operationId).
-	ApiDatasetStoragesGcsCheckForRecordsCreateWithBody(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// ApiDatasetStoragesGcsCheckForRecordsCreate Check for records given the file pattern
-	//
-	// Checks for existence of records matching the file pattern in the bucket/prefix.
-	//
-	// Takes a body of the `application/json` content type.
-	//
-	// Corresponds with POST /api/dataset-storages/gcs/check-for-records/ (the `ApiDatasetStoragesGcsCheckForRecordsCreate` operationId).
-	ApiDatasetStoragesGcsCheckForRecordsCreate(ctx context.Context, body ApiDatasetStoragesGcsCheckForRecordsCreateJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// ApiDatasetStoragesGcsCheckForRecordsCreateWithFormdataBody Check for records given the file pattern
-	//
-	// Checks for existence of records matching the file pattern in the bucket/prefix.
-	//
-	// Takes a body of the `application/x-www-form-urlencoded` content type.
-	//
-	// Corresponds with POST /api/dataset-storages/gcs/check-for-records/ (the `ApiDatasetStoragesGcsCheckForRecordsCreate` operationId).
-	ApiDatasetStoragesGcsCheckForRecordsCreateWithFormdataBody(ctx context.Context, body ApiDatasetStoragesGcsCheckForRecordsCreateFormdataRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// ApiDatasetStoragesGcsValidateCreateWithBody Validate import storage
-	//
-	// Validate a specific GCS import storage connection.
-	//
-	// Takes any type of body and a specified content type.
-	//
-	// Corresponds with POST /api/dataset-storages/gcs/validate/ (the `ApiDatasetStoragesGcsValidateCreate` operationId).
-	ApiDatasetStoragesGcsValidateCreateWithBody(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// ApiDatasetStoragesGcsValidateCreate Validate import storage
-	//
-	// Validate a specific GCS import storage connection.
-	//
-	// Takes a body of the `application/json` content type.
-	//
-	// Corresponds with POST /api/dataset-storages/gcs/validate/ (the `ApiDatasetStoragesGcsValidateCreate` operationId).
-	ApiDatasetStoragesGcsValidateCreate(ctx context.Context, body ApiDatasetStoragesGcsValidateCreateJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// ApiDatasetStoragesGcsValidateCreateWithFormdataBody Validate import storage
-	//
-	// Validate a specific GCS import storage connection.
-	//
-	// Takes a body of the `application/x-www-form-urlencoded` content type.
-	//
-	// Corresponds with POST /api/dataset-storages/gcs/validate/ (the `ApiDatasetStoragesGcsValidateCreate` operationId).
-	ApiDatasetStoragesGcsValidateCreateWithFormdataBody(ctx context.Context, body ApiDatasetStoragesGcsValidateCreateFormdataRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// ApiDatasetStoragesGcsDestroy Delete import storage
-	//
-	// Delete a specific GCS import storage connection.
-	//
-	// Corresponds with DELETE /api/dataset-storages/gcs/{id}/ (the `ApiDatasetStoragesGcsDestroy` operationId).
-	ApiDatasetStoragesGcsDestroy(ctx context.Context, id int, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// ApiDatasetStoragesGcsRetrieve Get import storage
-	//
-	// Get a specific GCS import storage connection.
-	//
-	// Corresponds with GET /api/dataset-storages/gcs/{id}/ (the `ApiDatasetStoragesGcsRetrieve` operationId).
-	ApiDatasetStoragesGcsRetrieve(ctx context.Context, id int, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// ApiDatasetStoragesGcsPartialUpdateWithBody Update import storage
-	//
-	// Update a specific GCS import storage connection.
-	//
-	// Takes any type of body and a specified content type.
-	//
-	// Corresponds with PATCH /api/dataset-storages/gcs/{id}/ (the `ApiDatasetStoragesGcsPartialUpdate` operationId).
-	ApiDatasetStoragesGcsPartialUpdateWithBody(ctx context.Context, id int, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// ApiDatasetStoragesGcsPartialUpdate Update import storage
-	//
-	// Update a specific GCS import storage connection.
-	//
-	// Takes a body of the `application/json` content type.
-	//
-	// Corresponds with PATCH /api/dataset-storages/gcs/{id}/ (the `ApiDatasetStoragesGcsPartialUpdate` operationId).
-	ApiDatasetStoragesGcsPartialUpdate(ctx context.Context, id int, body ApiDatasetStoragesGcsPartialUpdateJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// ApiDatasetStoragesGcsPartialUpdateWithFormdataBody Update import storage
-	//
-	// Update a specific GCS import storage connection.
-	//
-	// Takes a body of the `application/x-www-form-urlencoded` content type.
-	//
-	// Corresponds with PATCH /api/dataset-storages/gcs/{id}/ (the `ApiDatasetStoragesGcsPartialUpdate` operationId).
-	ApiDatasetStoragesGcsPartialUpdateWithFormdataBody(ctx context.Context, id int, body ApiDatasetStoragesGcsPartialUpdateFormdataRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// ApiDatasetStoragesGcsColumnsRetrieve Get data column names from storage
-	//
-	// Retrieves column names from users JSON/blob data in bucket.
-	//
-	// Corresponds with GET /api/dataset-storages/gcs/{id}/columns/ (the `ApiDatasetStoragesGcsColumnsRetrieve` operationId).
-	ApiDatasetStoragesGcsColumnsRetrieve(ctx context.Context, id int, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// ApiDatasetStoragesGcsSyncCreateWithBody Sync import storage
-	//
-	// Sync tasks from an GCS import storage connection.
-	//
-	// Takes any type of body and a specified content type.
-	//
-	// Corresponds with POST /api/dataset-storages/gcs/{id}/sync/ (the `ApiDatasetStoragesGcsSyncCreate` operationId).
-	ApiDatasetStoragesGcsSyncCreateWithBody(ctx context.Context, id int, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// ApiDatasetStoragesGcsSyncCreate Sync import storage
-	//
-	// Sync tasks from an GCS import storage connection.
-	//
-	// Takes a body of the `application/json` content type.
-	//
-	// Corresponds with POST /api/dataset-storages/gcs/{id}/sync/ (the `ApiDatasetStoragesGcsSyncCreate` operationId).
-	ApiDatasetStoragesGcsSyncCreate(ctx context.Context, id int, body ApiDatasetStoragesGcsSyncCreateJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// ApiDatasetStoragesGcsSyncCreateWithFormdataBody Sync import storage
-	//
-	// Sync tasks from an GCS import storage connection.
-	//
-	// Takes a body of the `application/x-www-form-urlencoded` content type.
-	//
-	// Corresponds with POST /api/dataset-storages/gcs/{id}/sync/ (the `ApiDatasetStoragesGcsSyncCreate` operationId).
-	ApiDatasetStoragesGcsSyncCreateWithFormdataBody(ctx context.Context, id int, body ApiDatasetStoragesGcsSyncCreateFormdataRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// ApiDatasetStoragesS3List Get all import storage
-	//
-	// Get a list of all S3 import storage connections.
-	//
-	// Corresponds with GET /api/dataset-storages/s3/ (the `ApiDatasetStoragesS3List` operationId).
-	ApiDatasetStoragesS3List(ctx context.Context, params *ApiDatasetStoragesS3ListParams, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// ApiDatasetStoragesS3CreateWithBody Create import storage
-	//
-	// Create a new S3 import storage connection.
-	//
-	// Takes any type of body and a specified content type.
-	//
-	// Corresponds with POST /api/dataset-storages/s3/ (the `ApiDatasetStoragesS3Create` operationId).
-	ApiDatasetStoragesS3CreateWithBody(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// ApiDatasetStoragesS3Create Create import storage
-	//
-	// Create a new S3 import storage connection.
-	//
-	// Takes a body of the `application/json` content type.
-	//
-	// Corresponds with POST /api/dataset-storages/s3/ (the `ApiDatasetStoragesS3Create` operationId).
-	ApiDatasetStoragesS3Create(ctx context.Context, body ApiDatasetStoragesS3CreateJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// ApiDatasetStoragesS3CreateWithFormdataBody Create import storage
-	//
-	// Create a new S3 import storage connection.
-	//
-	// Takes a body of the `application/x-www-form-urlencoded` content type.
-	//
-	// Corresponds with POST /api/dataset-storages/s3/ (the `ApiDatasetStoragesS3Create` operationId).
-	ApiDatasetStoragesS3CreateWithFormdataBody(ctx context.Context, body ApiDatasetStoragesS3CreateFormdataRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// ApiDatasetStoragesS3CheckForRecordsCreateWithBody Check for records given the file pattern
-	//
-	// Checks for existence of records matching the file pattern in the bucket/prefix.
-	//
-	// Takes any type of body and a specified content type.
-	//
-	// Corresponds with POST /api/dataset-storages/s3/check-for-records/ (the `ApiDatasetStoragesS3CheckForRecordsCreate` operationId).
-	ApiDatasetStoragesS3CheckForRecordsCreateWithBody(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// ApiDatasetStoragesS3CheckForRecordsCreate Check for records given the file pattern
-	//
-	// Checks for existence of records matching the file pattern in the bucket/prefix.
-	//
-	// Takes a body of the `application/json` content type.
-	//
-	// Corresponds with POST /api/dataset-storages/s3/check-for-records/ (the `ApiDatasetStoragesS3CheckForRecordsCreate` operationId).
-	ApiDatasetStoragesS3CheckForRecordsCreate(ctx context.Context, body ApiDatasetStoragesS3CheckForRecordsCreateJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// ApiDatasetStoragesS3CheckForRecordsCreateWithFormdataBody Check for records given the file pattern
-	//
-	// Checks for existence of records matching the file pattern in the bucket/prefix.
-	//
-	// Takes a body of the `application/x-www-form-urlencoded` content type.
-	//
-	// Corresponds with POST /api/dataset-storages/s3/check-for-records/ (the `ApiDatasetStoragesS3CheckForRecordsCreate` operationId).
-	ApiDatasetStoragesS3CheckForRecordsCreateWithFormdataBody(ctx context.Context, body ApiDatasetStoragesS3CheckForRecordsCreateFormdataRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// ApiDatasetStoragesS3ValidateCreateWithBody Validate import storage
-	//
-	// Validate a specific S3 import storage connection.
-	//
-	// Takes any type of body and a specified content type.
-	//
-	// Corresponds with POST /api/dataset-storages/s3/validate/ (the `ApiDatasetStoragesS3ValidateCreate` operationId).
-	ApiDatasetStoragesS3ValidateCreateWithBody(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// ApiDatasetStoragesS3ValidateCreate Validate import storage
-	//
-	// Validate a specific S3 import storage connection.
-	//
-	// Takes a body of the `application/json` content type.
-	//
-	// Corresponds with POST /api/dataset-storages/s3/validate/ (the `ApiDatasetStoragesS3ValidateCreate` operationId).
-	ApiDatasetStoragesS3ValidateCreate(ctx context.Context, body ApiDatasetStoragesS3ValidateCreateJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// ApiDatasetStoragesS3ValidateCreateWithFormdataBody Validate import storage
-	//
-	// Validate a specific S3 import storage connection.
-	//
-	// Takes a body of the `application/x-www-form-urlencoded` content type.
-	//
-	// Corresponds with POST /api/dataset-storages/s3/validate/ (the `ApiDatasetStoragesS3ValidateCreate` operationId).
-	ApiDatasetStoragesS3ValidateCreateWithFormdataBody(ctx context.Context, body ApiDatasetStoragesS3ValidateCreateFormdataRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// ApiDatasetStoragesS3Destroy Delete import storage
-	//
-	// Delete a specific S3 import storage connection.
-	//
-	// Corresponds with DELETE /api/dataset-storages/s3/{id}/ (the `ApiDatasetStoragesS3Destroy` operationId).
-	ApiDatasetStoragesS3Destroy(ctx context.Context, id int, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// ApiDatasetStoragesS3Retrieve Get import storage
-	//
-	// Get a specific S3 import storage connection.
-	//
-	// Corresponds with GET /api/dataset-storages/s3/{id}/ (the `ApiDatasetStoragesS3Retrieve` operationId).
-	ApiDatasetStoragesS3Retrieve(ctx context.Context, id int, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// ApiDatasetStoragesS3PartialUpdateWithBody Update import storage
-	//
-	// Update a specific S3 import storage connection.
-	//
-	// Takes any type of body and a specified content type.
-	//
-	// Corresponds with PATCH /api/dataset-storages/s3/{id}/ (the `ApiDatasetStoragesS3PartialUpdate` operationId).
-	ApiDatasetStoragesS3PartialUpdateWithBody(ctx context.Context, id int, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// ApiDatasetStoragesS3PartialUpdate Update import storage
-	//
-	// Update a specific S3 import storage connection.
-	//
-	// Takes a body of the `application/json` content type.
-	//
-	// Corresponds with PATCH /api/dataset-storages/s3/{id}/ (the `ApiDatasetStoragesS3PartialUpdate` operationId).
-	ApiDatasetStoragesS3PartialUpdate(ctx context.Context, id int, body ApiDatasetStoragesS3PartialUpdateJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// ApiDatasetStoragesS3PartialUpdateWithFormdataBody Update import storage
-	//
-	// Update a specific S3 import storage connection.
-	//
-	// Takes a body of the `application/x-www-form-urlencoded` content type.
-	//
-	// Corresponds with PATCH /api/dataset-storages/s3/{id}/ (the `ApiDatasetStoragesS3PartialUpdate` operationId).
-	ApiDatasetStoragesS3PartialUpdateWithFormdataBody(ctx context.Context, id int, body ApiDatasetStoragesS3PartialUpdateFormdataRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// ApiDatasetStoragesS3ColumnsRetrieve Get data column names from storage
-	//
-	// Retrieves column names from users JSON/blob data in bucket.
-	//
-	// Corresponds with GET /api/dataset-storages/s3/{id}/columns/ (the `ApiDatasetStoragesS3ColumnsRetrieve` operationId).
-	ApiDatasetStoragesS3ColumnsRetrieve(ctx context.Context, id int, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// ApiDatasetStoragesS3SyncCreateWithBody Sync import storage
-	//
-	// Sync tasks from an S3 import storage connection.
-	//
-	// Takes any type of body and a specified content type.
-	//
-	// Corresponds with POST /api/dataset-storages/s3/{id}/sync/ (the `ApiDatasetStoragesS3SyncCreate` operationId).
-	ApiDatasetStoragesS3SyncCreateWithBody(ctx context.Context, id int, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// ApiDatasetStoragesS3SyncCreate Sync import storage
-	//
-	// Sync tasks from an S3 import storage connection.
-	//
-	// Takes a body of the `application/json` content type.
-	//
-	// Corresponds with POST /api/dataset-storages/s3/{id}/sync/ (the `ApiDatasetStoragesS3SyncCreate` operationId).
-	ApiDatasetStoragesS3SyncCreate(ctx context.Context, id int, body ApiDatasetStoragesS3SyncCreateJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// ApiDatasetStoragesS3SyncCreateWithFormdataBody Sync import storage
-	//
-	// Sync tasks from an S3 import storage connection.
-	//
-	// Takes a body of the `application/x-www-form-urlencoded` content type.
-	//
-	// Corresponds with POST /api/dataset-storages/s3/{id}/sync/ (the `ApiDatasetStoragesS3SyncCreate` operationId).
-	ApiDatasetStoragesS3SyncCreateWithFormdataBody(ctx context.Context, id int, body ApiDatasetStoragesS3SyncCreateFormdataRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// ApiDatasetStoragesTypesRetrieve List all dataset storages types
-	//
-	// Retrieve a list of the dataset storages types.
-	//
-	// Corresponds with GET /api/dataset-storages/types/ (the `ApiDatasetStoragesTypesRetrieve` operationId).
-	ApiDatasetStoragesTypesRetrieve(ctx context.Context, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// ApiDatasetsList List datasets
-	//
-	// List all datasets.
-	//
-	// Corresponds with GET /api/datasets/ (the `ApiDatasetsList` operationId).
-	ApiDatasetsList(ctx context.Context, params *ApiDatasetsListParams, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// ApiDatasetsCreateWithBody Create dataset
-	//
-	// Create a new dataset.
-	//
-	// Takes any type of body and a specified content type.
-	//
-	// Corresponds with POST /api/datasets/ (the `ApiDatasetsCreate` operationId).
-	ApiDatasetsCreateWithBody(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// ApiDatasetsCreate Create dataset
-	//
-	// Create a new dataset.
-	//
-	// Takes a body of the `application/json` content type.
-	//
-	// Corresponds with POST /api/datasets/ (the `ApiDatasetsCreate` operationId).
-	ApiDatasetsCreate(ctx context.Context, body ApiDatasetsCreateJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// ApiDatasetsCreateWithFormdataBody Create dataset
-	//
-	// Create a new dataset.
-	//
-	// Takes a body of the `application/x-www-form-urlencoded` content type.
-	//
-	// Corresponds with POST /api/datasets/ (the `ApiDatasetsCreate` operationId).
-	ApiDatasetsCreateWithFormdataBody(ctx context.Context, body ApiDatasetsCreateFormdataRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// ApiDatasetsColumnsRetrieve Get data explorer columns
-	//
-	// Retrieve the data explorer columns available for a specific Dataset.
-	//
-	// Corresponds with GET /api/datasets/columns (the `ApiDatasetsColumnsRetrieve` operationId).
-	ApiDatasetsColumnsRetrieve(ctx context.Context, params *ApiDatasetsColumnsRetrieveParams, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// ApiDatasetsImportPartialUpdateWithBody Export candidate tasks to project
-	//
-	// Export Candidate task for a specific dataset to project.
-	//
-	// Takes any type of body and a specified content type.
-	//
-	// Corresponds with PATCH /api/datasets/import (the `ApiDatasetsImportPartialUpdate` operationId).
-	ApiDatasetsImportPartialUpdateWithBody(ctx context.Context, params *ApiDatasetsImportPartialUpdateParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// ApiDatasetsImportPartialUpdate Export candidate tasks to project
-	//
-	// Export Candidate task for a specific dataset to project.
-	//
-	// Takes a body of the `application/json` content type.
-	//
-	// Corresponds with PATCH /api/datasets/import (the `ApiDatasetsImportPartialUpdate` operationId).
-	ApiDatasetsImportPartialUpdate(ctx context.Context, params *ApiDatasetsImportPartialUpdateParams, body ApiDatasetsImportPartialUpdateJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// ApiDatasetsImportPartialUpdateWithFormdataBody Export candidate tasks to project
-	//
-	// Export Candidate task for a specific dataset to project.
-	//
-	// Takes a body of the `application/x-www-form-urlencoded` content type.
-	//
-	// Corresponds with PATCH /api/datasets/import (the `ApiDatasetsImportPartialUpdate` operationId).
-	ApiDatasetsImportPartialUpdateWithFormdataBody(ctx context.Context, params *ApiDatasetsImportPartialUpdateParams, body ApiDatasetsImportPartialUpdateFormdataRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// ApiDatasetsImportCreateWithBody Export candidate tasks to project
-	//
-	//
-	//     Export Candidate task for a specific dataset to project.
-	//
-	//
-	// Takes any type of body and a specified content type.
-	//
-	// Corresponds with POST /api/datasets/import (the `ApiDatasetsImportCreate` operationId).
-	ApiDatasetsImportCreateWithBody(ctx context.Context, params *ApiDatasetsImportCreateParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// ApiDatasetsImportCreate Export candidate tasks to project
-	//
-	//
-	//     Export Candidate task for a specific dataset to project.
-	//
-	//
-	// Takes a body of the `application/json` content type.
-	//
-	// Corresponds with POST /api/datasets/import (the `ApiDatasetsImportCreate` operationId).
-	ApiDatasetsImportCreate(ctx context.Context, params *ApiDatasetsImportCreateParams, body ApiDatasetsImportCreateJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// ApiDatasetsImportCreateWithFormdataBody Export candidate tasks to project
-	//
-	//
-	//     Export Candidate task for a specific dataset to project.
-	//
-	//
-	// Takes a body of the `application/x-www-form-urlencoded` content type.
-	//
-	// Corresponds with POST /api/datasets/import (the `ApiDatasetsImportCreate` operationId).
-	ApiDatasetsImportCreateWithFormdataBody(ctx context.Context, params *ApiDatasetsImportCreateParams, body ApiDatasetsImportCreateFormdataRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// ApiDatasetsTasksRetrieve Get Data Explorer tasks list
-	//
-	//
-	//     Retrieve a list of Data Explorer tasks with pagination for a specific view or dataset, by using filters and ordering.
-	//
-	//
-	// Corresponds with GET /api/datasets/tasks (the `ApiDatasetsTasksRetrieve` operationId).
-	ApiDatasetsTasksRetrieve(ctx context.Context, params *ApiDatasetsTasksRetrieveParams, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// ApiDatasetsTasksMetadataRetrieve Get Candidate task metadata
-	//
-	//
-	//     Retrieve Candidate task metadata for a specific dataset, by using candidate_task_id or weaviate_id.
-	//
-	//
-	// Corresponds with GET /api/datasets/tasks/metadata (the `ApiDatasetsTasksMetadataRetrieve` operationId).
-	ApiDatasetsTasksMetadataRetrieve(ctx context.Context, params *ApiDatasetsTasksMetadataRetrieveParams, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// ApiDatasetsViewsList List dataset views
-	//
-	// List all views for a specific dataset.
-	//
-	// Corresponds with GET /api/datasets/views/ (the `ApiDatasetsViewsList` operationId).
-	ApiDatasetsViewsList(ctx context.Context, params *ApiDatasetsViewsListParams, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// ApiDatasetsViewsCreateWithBody Create dataset view
-	//
-	// Create a view for a specific dataset.
-	//
-	// Takes any type of body and a specified content type.
-	//
-	// Corresponds with POST /api/datasets/views/ (the `ApiDatasetsViewsCreate` operationId).
-	ApiDatasetsViewsCreateWithBody(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// ApiDatasetsViewsCreate Create dataset view
-	//
-	// Create a view for a specific dataset.
-	//
-	// Takes a body of the `application/json` content type.
-	//
-	// Corresponds with POST /api/datasets/views/ (the `ApiDatasetsViewsCreate` operationId).
-	ApiDatasetsViewsCreate(ctx context.Context, body ApiDatasetsViewsCreateJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// ApiDatasetsViewsCreateWithFormdataBody Create dataset view
-	//
-	// Create a view for a specific dataset.
-	//
-	// Takes a body of the `application/x-www-form-urlencoded` content type.
-	//
-	// Corresponds with POST /api/datasets/views/ (the `ApiDatasetsViewsCreate` operationId).
-	ApiDatasetsViewsCreateWithFormdataBody(ctx context.Context, body ApiDatasetsViewsCreateFormdataRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// ApiDatasetsViewsResetDestroy Reset dataset views
-	//
-	// Reset all views for a specific dataset.
-	//
-	// Corresponds with DELETE /api/datasets/views/reset/ (the `ApiDatasetsViewsResetDestroy` operationId).
-	ApiDatasetsViewsResetDestroy(ctx context.Context, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// ApiDatasetsViewsDestroy Delete dataset view
-	//
-	// Delete a specific view by ID.
-	//
-	// Corresponds with DELETE /api/datasets/views/{id}/ (the `ApiDatasetsViewsDestroy` operationId).
-	ApiDatasetsViewsDestroy(ctx context.Context, id string, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// ApiDatasetsViewsRetrieve Get dataset view details
-	//
-	// Get the details about a specific view in the data manager.
-	//
-	// Corresponds with GET /api/datasets/views/{id}/ (the `ApiDatasetsViewsRetrieve` operationId).
-	ApiDatasetsViewsRetrieve(ctx context.Context, id string, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// ApiDatasetsViewsPartialUpdateWithBody Update dataset view
-	//
-	// Update view data with additional filters and other information for a specific dataset.
-	//
-	// Takes any type of body and a specified content type.
-	//
-	// Corresponds with PATCH /api/datasets/views/{id}/ (the `ApiDatasetsViewsPartialUpdate` operationId).
-	ApiDatasetsViewsPartialUpdateWithBody(ctx context.Context, id string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// ApiDatasetsViewsPartialUpdate Update dataset view
-	//
-	// Update view data with additional filters and other information for a specific dataset.
-	//
-	// Takes a body of the `application/json` content type.
-	//
-	// Corresponds with PATCH /api/datasets/views/{id}/ (the `ApiDatasetsViewsPartialUpdate` operationId).
-	ApiDatasetsViewsPartialUpdate(ctx context.Context, id string, body ApiDatasetsViewsPartialUpdateJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// ApiDatasetsViewsPartialUpdateWithFormdataBody Update dataset view
-	//
-	// Update view data with additional filters and other information for a specific dataset.
-	//
-	// Takes a body of the `application/x-www-form-urlencoded` content type.
-	//
-	// Corresponds with PATCH /api/datasets/views/{id}/ (the `ApiDatasetsViewsPartialUpdate` operationId).
-	ApiDatasetsViewsPartialUpdateWithFormdataBody(ctx context.Context, id string, body ApiDatasetsViewsPartialUpdateFormdataRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// ApiDatasetsViewsUpdateWithBody Put dataset view
-	//
-	// Overwrite view data with updated filters and other information for a specific dataset.
-	//
-	// Takes any type of body and a specified content type.
-	//
-	// Corresponds with PUT /api/datasets/views/{id}/ (the `ApiDatasetsViewsUpdate` operationId).
-	ApiDatasetsViewsUpdateWithBody(ctx context.Context, id string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// ApiDatasetsViewsUpdate Put dataset view
-	//
-	// Overwrite view data with updated filters and other information for a specific dataset.
-	//
-	// Takes a body of the `application/json` content type.
-	//
-	// Corresponds with PUT /api/datasets/views/{id}/ (the `ApiDatasetsViewsUpdate` operationId).
-	ApiDatasetsViewsUpdate(ctx context.Context, id string, body ApiDatasetsViewsUpdateJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// ApiDatasetsViewsUpdateWithFormdataBody Put dataset view
-	//
-	// Overwrite view data with updated filters and other information for a specific dataset.
-	//
-	// Takes a body of the `application/x-www-form-urlencoded` content type.
-	//
-	// Corresponds with PUT /api/datasets/views/{id}/ (the `ApiDatasetsViewsUpdate` operationId).
-	ApiDatasetsViewsUpdateWithFormdataBody(ctx context.Context, id string, body ApiDatasetsViewsUpdateFormdataRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// ApiDatasetsDestroy Delete dataset
-	//
-	// Delete a dataset by ID.
-	//
-	// Corresponds with DELETE /api/datasets/{id}/ (the `ApiDatasetsDestroy` operationId).
-	ApiDatasetsDestroy(ctx context.Context, id int, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// ApiDatasetsRetrieve Get dataset
-	//
-	// Retrieve a specific dataset.
-	//
-	// Corresponds with GET /api/datasets/{id}/ (the `ApiDatasetsRetrieve` operationId).
-	ApiDatasetsRetrieve(ctx context.Context, id int, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// ApiDatasetsPartialUpdateWithBody Update dataset
-	//
-	// Update a specific dataset by ID.
-	//
-	// Takes any type of body and a specified content type.
-	//
-	// Corresponds with PATCH /api/datasets/{id}/ (the `ApiDatasetsPartialUpdate` operationId).
-	ApiDatasetsPartialUpdateWithBody(ctx context.Context, id int, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// ApiDatasetsPartialUpdate Update dataset
-	//
-	// Update a specific dataset by ID.
-	//
-	// Takes a body of the `application/json` content type.
-	//
-	// Corresponds with PATCH /api/datasets/{id}/ (the `ApiDatasetsPartialUpdate` operationId).
-	ApiDatasetsPartialUpdate(ctx context.Context, id int, body ApiDatasetsPartialUpdateJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// ApiDatasetsPartialUpdateWithFormdataBody Update dataset
-	//
-	// Update a specific dataset by ID.
-	//
-	// Takes a body of the `application/x-www-form-urlencoded` content type.
-	//
-	// Corresponds with PATCH /api/datasets/{id}/ (the `ApiDatasetsPartialUpdate` operationId).
-	ApiDatasetsPartialUpdateWithFormdataBody(ctx context.Context, id int, body ApiDatasetsPartialUpdateFormdataRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// ApiDatasetsUpdateWithBody Put dataset
-	//
-	// Overwrite a specific dataset by ID.
-	//
-	// Takes any type of body and a specified content type.
-	//
-	// Corresponds with PUT /api/datasets/{id}/ (the `ApiDatasetsUpdate` operationId).
-	ApiDatasetsUpdateWithBody(ctx context.Context, id int, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// ApiDatasetsUpdate Put dataset
-	//
-	// Overwrite a specific dataset by ID.
-	//
-	// Takes a body of the `application/json` content type.
-	//
-	// Corresponds with PUT /api/datasets/{id}/ (the `ApiDatasetsUpdate` operationId).
-	ApiDatasetsUpdate(ctx context.Context, id int, body ApiDatasetsUpdateJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// ApiDatasetsUpdateWithFormdataBody Put dataset
-	//
-	// Overwrite a specific dataset by ID.
-	//
-	// Takes a body of the `application/x-www-form-urlencoded` content type.
-	//
-	// Corresponds with PUT /api/datasets/{id}/ (the `ApiDatasetsUpdate` operationId).
-	ApiDatasetsUpdateWithFormdataBody(ctx context.Context, id int, body ApiDatasetsUpdateFormdataRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// ApiDatasetsMembersDestroy Remove member from dataset
-	//
-	// Remove a member from a specific dataset.
-	//
-	// Corresponds with DELETE /api/datasets/{id}/members (the `ApiDatasetsMembersDestroy` operationId).
-	ApiDatasetsMembersDestroy(ctx context.Context, id int, params *ApiDatasetsMembersDestroyParams, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// ApiDatasetsMembersList Get datasets members
-	//
-	// Retrieve the members for a specific dataset.
-	//
-	// Corresponds with GET /api/datasets/{id}/members (the `ApiDatasetsMembersList` operationId).
-	ApiDatasetsMembersList(ctx context.Context, id int, params *ApiDatasetsMembersListParams, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// ApiDatasetsMembersCreateWithBody Add dataset member
-	//
-	// Add a member to a specific dataset.
-	//
-	// Takes any type of body and a specified content type.
-	//
-	// Corresponds with POST /api/datasets/{id}/members (the `ApiDatasetsMembersCreate` operationId).
-	ApiDatasetsMembersCreateWithBody(ctx context.Context, id int, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// ApiDatasetsMembersCreate Add dataset member
-	//
-	// Add a member to a specific dataset.
-	//
-	// Takes a body of the `application/json` content type.
-	//
-	// Corresponds with POST /api/datasets/{id}/members (the `ApiDatasetsMembersCreate` operationId).
-	ApiDatasetsMembersCreate(ctx context.Context, id int, body ApiDatasetsMembersCreateJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// ApiDatasetsMembersCreateWithFormdataBody Add dataset member
-	//
-	// Add a member to a specific dataset.
-	//
-	// Takes a body of the `application/x-www-form-urlencoded` content type.
-	//
-	// Corresponds with POST /api/datasets/{id}/members (the `ApiDatasetsMembersCreate` operationId).
-	ApiDatasetsMembersCreateWithFormdataBody(ctx context.Context, id int, body ApiDatasetsMembersCreateFormdataRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
-
 	// ApiDimensionsBackfillDestroy ✨ Cancel Agreement V2 backfill jobs
 	//
 	// <Card href="https://humansignal.com/goenterprise">
@@ -6448,7 +4282,7 @@ type ClientInterface interface {
 	// ApiLearningResourcesRetrieve ✨ Get a learning resource
 	//
 	// Corresponds with GET /api/learning-resources/{id}/ (the `ApiLearningResourcesRetrieve` operationId).
-	ApiLearningResourcesRetrieve(ctx context.Context, id int, reqEditors ...RequestEditorFn) (*http.Response, error)
+	ApiLearningResourcesRetrieve(ctx context.Context, id int, params *ApiLearningResourcesRetrieveParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// ApiLearningResourcesPartialUpdateWithBody ✨ Update a learning resource
 	//
@@ -7069,7 +4903,7 @@ type ClientInterface interface {
 	// Get a published learning resource available for standalone access.
 	//
 	// Corresponds with GET /api/learning-resources/{id}/take/ (the `ApiLearningResourcesTakeRetrieve` operationId).
-	ApiLearningResourcesTakeRetrieve(ctx context.Context, id int, reqEditors ...RequestEditorFn) (*http.Response, error)
+	ApiLearningResourcesTakeRetrieve(ctx context.Context, id int, params *ApiLearningResourcesTakeRetrieveParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// ApiLearningResourcesUnpublishCreateWithBody ✨ Unpublish a learning resource
 	//
@@ -18018,1816 +15852,6 @@ func (c *Client) ApiCurrentUserWhoamiRetrieve(ctx context.Context, reqEditors ..
 	return c.Client.Do(req)
 }
 
-// ApiDatasetStoragesList List all dataset storages from the project
-//
-// Retrieve a list of the dataset storages of all types with their IDs.
-//
-// Corresponds with GET /api/dataset-storages/ (the `ApiDatasetStoragesList` operationId).
-func (c *Client) ApiDatasetStoragesList(ctx context.Context, params *ApiDatasetStoragesListParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewApiDatasetStoragesListRequest(c.Server, params)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// ApiDatasetStoragesAzureList Get all import storage
-//
-// Get a list of all Azure import storage connections.
-//
-// Corresponds with GET /api/dataset-storages/azure/ (the `ApiDatasetStoragesAzureList` operationId).
-func (c *Client) ApiDatasetStoragesAzureList(ctx context.Context, params *ApiDatasetStoragesAzureListParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewApiDatasetStoragesAzureListRequest(c.Server, params)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// ApiDatasetStoragesAzureCreateWithBody Create import storage
-//
-// Create a new Azure import storage connection.
-//
-// Takes any type of body and a specified content type.
-//
-// Corresponds with POST /api/dataset-storages/azure/ (the `ApiDatasetStoragesAzureCreate` operationId).
-func (c *Client) ApiDatasetStoragesAzureCreateWithBody(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewApiDatasetStoragesAzureCreateRequestWithBody(c.Server, contentType, body)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// ApiDatasetStoragesAzureCreate Create import storage
-//
-// Create a new Azure import storage connection.
-//
-// Takes a body of the `application/json` content type.
-//
-// Corresponds with POST /api/dataset-storages/azure/ (the `ApiDatasetStoragesAzureCreate` operationId).
-func (c *Client) ApiDatasetStoragesAzureCreate(ctx context.Context, body ApiDatasetStoragesAzureCreateJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewApiDatasetStoragesAzureCreateRequest(c.Server, body)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// ApiDatasetStoragesAzureCreateWithFormdataBody Create import storage
-//
-// Create a new Azure import storage connection.
-//
-// Takes a body of the `application/x-www-form-urlencoded` content type.
-//
-// Corresponds with POST /api/dataset-storages/azure/ (the `ApiDatasetStoragesAzureCreate` operationId).
-func (c *Client) ApiDatasetStoragesAzureCreateWithFormdataBody(ctx context.Context, body ApiDatasetStoragesAzureCreateFormdataRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewApiDatasetStoragesAzureCreateRequestWithFormdataBody(c.Server, body)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// ApiDatasetStoragesAzureCheckForRecordsCreateWithBody Check for records given the file pattern
-//
-// Checks for existence of records matching the file pattern in the bucket/prefix.
-//
-// Takes any type of body and a specified content type.
-//
-// Corresponds with POST /api/dataset-storages/azure/check-for-records/ (the `ApiDatasetStoragesAzureCheckForRecordsCreate` operationId).
-func (c *Client) ApiDatasetStoragesAzureCheckForRecordsCreateWithBody(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewApiDatasetStoragesAzureCheckForRecordsCreateRequestWithBody(c.Server, contentType, body)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// ApiDatasetStoragesAzureCheckForRecordsCreate Check for records given the file pattern
-//
-// Checks for existence of records matching the file pattern in the bucket/prefix.
-//
-// Takes a body of the `application/json` content type.
-//
-// Corresponds with POST /api/dataset-storages/azure/check-for-records/ (the `ApiDatasetStoragesAzureCheckForRecordsCreate` operationId).
-func (c *Client) ApiDatasetStoragesAzureCheckForRecordsCreate(ctx context.Context, body ApiDatasetStoragesAzureCheckForRecordsCreateJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewApiDatasetStoragesAzureCheckForRecordsCreateRequest(c.Server, body)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// ApiDatasetStoragesAzureCheckForRecordsCreateWithFormdataBody Check for records given the file pattern
-//
-// Checks for existence of records matching the file pattern in the bucket/prefix.
-//
-// Takes a body of the `application/x-www-form-urlencoded` content type.
-//
-// Corresponds with POST /api/dataset-storages/azure/check-for-records/ (the `ApiDatasetStoragesAzureCheckForRecordsCreate` operationId).
-func (c *Client) ApiDatasetStoragesAzureCheckForRecordsCreateWithFormdataBody(ctx context.Context, body ApiDatasetStoragesAzureCheckForRecordsCreateFormdataRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewApiDatasetStoragesAzureCheckForRecordsCreateRequestWithFormdataBody(c.Server, body)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// ApiDatasetStoragesAzureValidateCreateWithBody Validate import storage
-//
-// Validate a specific Azure import storage connection.
-//
-// Takes any type of body and a specified content type.
-//
-// Corresponds with POST /api/dataset-storages/azure/validate/ (the `ApiDatasetStoragesAzureValidateCreate` operationId).
-func (c *Client) ApiDatasetStoragesAzureValidateCreateWithBody(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewApiDatasetStoragesAzureValidateCreateRequestWithBody(c.Server, contentType, body)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// ApiDatasetStoragesAzureValidateCreate Validate import storage
-//
-// Validate a specific Azure import storage connection.
-//
-// Takes a body of the `application/json` content type.
-//
-// Corresponds with POST /api/dataset-storages/azure/validate/ (the `ApiDatasetStoragesAzureValidateCreate` operationId).
-func (c *Client) ApiDatasetStoragesAzureValidateCreate(ctx context.Context, body ApiDatasetStoragesAzureValidateCreateJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewApiDatasetStoragesAzureValidateCreateRequest(c.Server, body)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// ApiDatasetStoragesAzureValidateCreateWithFormdataBody Validate import storage
-//
-// Validate a specific Azure import storage connection.
-//
-// Takes a body of the `application/x-www-form-urlencoded` content type.
-//
-// Corresponds with POST /api/dataset-storages/azure/validate/ (the `ApiDatasetStoragesAzureValidateCreate` operationId).
-func (c *Client) ApiDatasetStoragesAzureValidateCreateWithFormdataBody(ctx context.Context, body ApiDatasetStoragesAzureValidateCreateFormdataRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewApiDatasetStoragesAzureValidateCreateRequestWithFormdataBody(c.Server, body)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// ApiDatasetStoragesAzureDestroy Delete import storage
-//
-// Delete a specific Azure import storage connection.
-//
-// Corresponds with DELETE /api/dataset-storages/azure/{id}/ (the `ApiDatasetStoragesAzureDestroy` operationId).
-func (c *Client) ApiDatasetStoragesAzureDestroy(ctx context.Context, id int, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewApiDatasetStoragesAzureDestroyRequest(c.Server, id)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// ApiDatasetStoragesAzureRetrieve Get import storage
-//
-// Get a specific Azure import storage connection.
-//
-// Corresponds with GET /api/dataset-storages/azure/{id}/ (the `ApiDatasetStoragesAzureRetrieve` operationId).
-func (c *Client) ApiDatasetStoragesAzureRetrieve(ctx context.Context, id int, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewApiDatasetStoragesAzureRetrieveRequest(c.Server, id)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// ApiDatasetStoragesAzurePartialUpdateWithBody Update import storage
-//
-// Update a specific Azure import storage connection.
-//
-// Takes any type of body and a specified content type.
-//
-// Corresponds with PATCH /api/dataset-storages/azure/{id}/ (the `ApiDatasetStoragesAzurePartialUpdate` operationId).
-func (c *Client) ApiDatasetStoragesAzurePartialUpdateWithBody(ctx context.Context, id int, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewApiDatasetStoragesAzurePartialUpdateRequestWithBody(c.Server, id, contentType, body)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// ApiDatasetStoragesAzurePartialUpdate Update import storage
-//
-// Update a specific Azure import storage connection.
-//
-// Takes a body of the `application/json` content type.
-//
-// Corresponds with PATCH /api/dataset-storages/azure/{id}/ (the `ApiDatasetStoragesAzurePartialUpdate` operationId).
-func (c *Client) ApiDatasetStoragesAzurePartialUpdate(ctx context.Context, id int, body ApiDatasetStoragesAzurePartialUpdateJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewApiDatasetStoragesAzurePartialUpdateRequest(c.Server, id, body)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// ApiDatasetStoragesAzurePartialUpdateWithFormdataBody Update import storage
-//
-// Update a specific Azure import storage connection.
-//
-// Takes a body of the `application/x-www-form-urlencoded` content type.
-//
-// Corresponds with PATCH /api/dataset-storages/azure/{id}/ (the `ApiDatasetStoragesAzurePartialUpdate` operationId).
-func (c *Client) ApiDatasetStoragesAzurePartialUpdateWithFormdataBody(ctx context.Context, id int, body ApiDatasetStoragesAzurePartialUpdateFormdataRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewApiDatasetStoragesAzurePartialUpdateRequestWithFormdataBody(c.Server, id, body)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// ApiDatasetStoragesAzureColumnsRetrieve Get data column names from storage
-//
-// Retrieves column names from users JSON/blob data in bucket.
-//
-// Corresponds with GET /api/dataset-storages/azure/{id}/columns/ (the `ApiDatasetStoragesAzureColumnsRetrieve` operationId).
-func (c *Client) ApiDatasetStoragesAzureColumnsRetrieve(ctx context.Context, id int, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewApiDatasetStoragesAzureColumnsRetrieveRequest(c.Server, id)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// ApiDatasetStoragesAzureSyncCreateWithBody Sync import storage
-//
-// Sync tasks from an Azure import storage connection.
-//
-// Takes any type of body and a specified content type.
-//
-// Corresponds with POST /api/dataset-storages/azure/{id}/sync/ (the `ApiDatasetStoragesAzureSyncCreate` operationId).
-func (c *Client) ApiDatasetStoragesAzureSyncCreateWithBody(ctx context.Context, id int, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewApiDatasetStoragesAzureSyncCreateRequestWithBody(c.Server, id, contentType, body)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// ApiDatasetStoragesAzureSyncCreate Sync import storage
-//
-// Sync tasks from an Azure import storage connection.
-//
-// Takes a body of the `application/json` content type.
-//
-// Corresponds with POST /api/dataset-storages/azure/{id}/sync/ (the `ApiDatasetStoragesAzureSyncCreate` operationId).
-func (c *Client) ApiDatasetStoragesAzureSyncCreate(ctx context.Context, id int, body ApiDatasetStoragesAzureSyncCreateJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewApiDatasetStoragesAzureSyncCreateRequest(c.Server, id, body)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// ApiDatasetStoragesAzureSyncCreateWithFormdataBody Sync import storage
-//
-// Sync tasks from an Azure import storage connection.
-//
-// Takes a body of the `application/x-www-form-urlencoded` content type.
-//
-// Corresponds with POST /api/dataset-storages/azure/{id}/sync/ (the `ApiDatasetStoragesAzureSyncCreate` operationId).
-func (c *Client) ApiDatasetStoragesAzureSyncCreateWithFormdataBody(ctx context.Context, id int, body ApiDatasetStoragesAzureSyncCreateFormdataRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewApiDatasetStoragesAzureSyncCreateRequestWithFormdataBody(c.Server, id, body)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// ApiDatasetStoragesGcsList Get all import storage
-//
-// Get a list of all GCS import storage connections.
-//
-// Corresponds with GET /api/dataset-storages/gcs/ (the `ApiDatasetStoragesGcsList` operationId).
-func (c *Client) ApiDatasetStoragesGcsList(ctx context.Context, params *ApiDatasetStoragesGcsListParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewApiDatasetStoragesGcsListRequest(c.Server, params)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// ApiDatasetStoragesGcsCreateWithBody Create import storage
-//
-// Create a new GCS import storage connection.
-//
-// Takes any type of body and a specified content type.
-//
-// Corresponds with POST /api/dataset-storages/gcs/ (the `ApiDatasetStoragesGcsCreate` operationId).
-func (c *Client) ApiDatasetStoragesGcsCreateWithBody(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewApiDatasetStoragesGcsCreateRequestWithBody(c.Server, contentType, body)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// ApiDatasetStoragesGcsCreate Create import storage
-//
-// Create a new GCS import storage connection.
-//
-// Takes a body of the `application/json` content type.
-//
-// Corresponds with POST /api/dataset-storages/gcs/ (the `ApiDatasetStoragesGcsCreate` operationId).
-func (c *Client) ApiDatasetStoragesGcsCreate(ctx context.Context, body ApiDatasetStoragesGcsCreateJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewApiDatasetStoragesGcsCreateRequest(c.Server, body)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// ApiDatasetStoragesGcsCreateWithFormdataBody Create import storage
-//
-// Create a new GCS import storage connection.
-//
-// Takes a body of the `application/x-www-form-urlencoded` content type.
-//
-// Corresponds with POST /api/dataset-storages/gcs/ (the `ApiDatasetStoragesGcsCreate` operationId).
-func (c *Client) ApiDatasetStoragesGcsCreateWithFormdataBody(ctx context.Context, body ApiDatasetStoragesGcsCreateFormdataRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewApiDatasetStoragesGcsCreateRequestWithFormdataBody(c.Server, body)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// ApiDatasetStoragesGcsCheckForRecordsCreateWithBody Check for records given the file pattern
-//
-// Checks for existence of records matching the file pattern in the bucket/prefix.
-//
-// Takes any type of body and a specified content type.
-//
-// Corresponds with POST /api/dataset-storages/gcs/check-for-records/ (the `ApiDatasetStoragesGcsCheckForRecordsCreate` operationId).
-func (c *Client) ApiDatasetStoragesGcsCheckForRecordsCreateWithBody(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewApiDatasetStoragesGcsCheckForRecordsCreateRequestWithBody(c.Server, contentType, body)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// ApiDatasetStoragesGcsCheckForRecordsCreate Check for records given the file pattern
-//
-// Checks for existence of records matching the file pattern in the bucket/prefix.
-//
-// Takes a body of the `application/json` content type.
-//
-// Corresponds with POST /api/dataset-storages/gcs/check-for-records/ (the `ApiDatasetStoragesGcsCheckForRecordsCreate` operationId).
-func (c *Client) ApiDatasetStoragesGcsCheckForRecordsCreate(ctx context.Context, body ApiDatasetStoragesGcsCheckForRecordsCreateJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewApiDatasetStoragesGcsCheckForRecordsCreateRequest(c.Server, body)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// ApiDatasetStoragesGcsCheckForRecordsCreateWithFormdataBody Check for records given the file pattern
-//
-// Checks for existence of records matching the file pattern in the bucket/prefix.
-//
-// Takes a body of the `application/x-www-form-urlencoded` content type.
-//
-// Corresponds with POST /api/dataset-storages/gcs/check-for-records/ (the `ApiDatasetStoragesGcsCheckForRecordsCreate` operationId).
-func (c *Client) ApiDatasetStoragesGcsCheckForRecordsCreateWithFormdataBody(ctx context.Context, body ApiDatasetStoragesGcsCheckForRecordsCreateFormdataRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewApiDatasetStoragesGcsCheckForRecordsCreateRequestWithFormdataBody(c.Server, body)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// ApiDatasetStoragesGcsValidateCreateWithBody Validate import storage
-//
-// Validate a specific GCS import storage connection.
-//
-// Takes any type of body and a specified content type.
-//
-// Corresponds with POST /api/dataset-storages/gcs/validate/ (the `ApiDatasetStoragesGcsValidateCreate` operationId).
-func (c *Client) ApiDatasetStoragesGcsValidateCreateWithBody(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewApiDatasetStoragesGcsValidateCreateRequestWithBody(c.Server, contentType, body)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// ApiDatasetStoragesGcsValidateCreate Validate import storage
-//
-// Validate a specific GCS import storage connection.
-//
-// Takes a body of the `application/json` content type.
-//
-// Corresponds with POST /api/dataset-storages/gcs/validate/ (the `ApiDatasetStoragesGcsValidateCreate` operationId).
-func (c *Client) ApiDatasetStoragesGcsValidateCreate(ctx context.Context, body ApiDatasetStoragesGcsValidateCreateJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewApiDatasetStoragesGcsValidateCreateRequest(c.Server, body)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// ApiDatasetStoragesGcsValidateCreateWithFormdataBody Validate import storage
-//
-// Validate a specific GCS import storage connection.
-//
-// Takes a body of the `application/x-www-form-urlencoded` content type.
-//
-// Corresponds with POST /api/dataset-storages/gcs/validate/ (the `ApiDatasetStoragesGcsValidateCreate` operationId).
-func (c *Client) ApiDatasetStoragesGcsValidateCreateWithFormdataBody(ctx context.Context, body ApiDatasetStoragesGcsValidateCreateFormdataRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewApiDatasetStoragesGcsValidateCreateRequestWithFormdataBody(c.Server, body)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// ApiDatasetStoragesGcsDestroy Delete import storage
-//
-// Delete a specific GCS import storage connection.
-//
-// Corresponds with DELETE /api/dataset-storages/gcs/{id}/ (the `ApiDatasetStoragesGcsDestroy` operationId).
-func (c *Client) ApiDatasetStoragesGcsDestroy(ctx context.Context, id int, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewApiDatasetStoragesGcsDestroyRequest(c.Server, id)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// ApiDatasetStoragesGcsRetrieve Get import storage
-//
-// Get a specific GCS import storage connection.
-//
-// Corresponds with GET /api/dataset-storages/gcs/{id}/ (the `ApiDatasetStoragesGcsRetrieve` operationId).
-func (c *Client) ApiDatasetStoragesGcsRetrieve(ctx context.Context, id int, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewApiDatasetStoragesGcsRetrieveRequest(c.Server, id)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// ApiDatasetStoragesGcsPartialUpdateWithBody Update import storage
-//
-// Update a specific GCS import storage connection.
-//
-// Takes any type of body and a specified content type.
-//
-// Corresponds with PATCH /api/dataset-storages/gcs/{id}/ (the `ApiDatasetStoragesGcsPartialUpdate` operationId).
-func (c *Client) ApiDatasetStoragesGcsPartialUpdateWithBody(ctx context.Context, id int, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewApiDatasetStoragesGcsPartialUpdateRequestWithBody(c.Server, id, contentType, body)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// ApiDatasetStoragesGcsPartialUpdate Update import storage
-//
-// Update a specific GCS import storage connection.
-//
-// Takes a body of the `application/json` content type.
-//
-// Corresponds with PATCH /api/dataset-storages/gcs/{id}/ (the `ApiDatasetStoragesGcsPartialUpdate` operationId).
-func (c *Client) ApiDatasetStoragesGcsPartialUpdate(ctx context.Context, id int, body ApiDatasetStoragesGcsPartialUpdateJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewApiDatasetStoragesGcsPartialUpdateRequest(c.Server, id, body)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// ApiDatasetStoragesGcsPartialUpdateWithFormdataBody Update import storage
-//
-// Update a specific GCS import storage connection.
-//
-// Takes a body of the `application/x-www-form-urlencoded` content type.
-//
-// Corresponds with PATCH /api/dataset-storages/gcs/{id}/ (the `ApiDatasetStoragesGcsPartialUpdate` operationId).
-func (c *Client) ApiDatasetStoragesGcsPartialUpdateWithFormdataBody(ctx context.Context, id int, body ApiDatasetStoragesGcsPartialUpdateFormdataRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewApiDatasetStoragesGcsPartialUpdateRequestWithFormdataBody(c.Server, id, body)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// ApiDatasetStoragesGcsColumnsRetrieve Get data column names from storage
-//
-// Retrieves column names from users JSON/blob data in bucket.
-//
-// Corresponds with GET /api/dataset-storages/gcs/{id}/columns/ (the `ApiDatasetStoragesGcsColumnsRetrieve` operationId).
-func (c *Client) ApiDatasetStoragesGcsColumnsRetrieve(ctx context.Context, id int, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewApiDatasetStoragesGcsColumnsRetrieveRequest(c.Server, id)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// ApiDatasetStoragesGcsSyncCreateWithBody Sync import storage
-//
-// Sync tasks from an GCS import storage connection.
-//
-// Takes any type of body and a specified content type.
-//
-// Corresponds with POST /api/dataset-storages/gcs/{id}/sync/ (the `ApiDatasetStoragesGcsSyncCreate` operationId).
-func (c *Client) ApiDatasetStoragesGcsSyncCreateWithBody(ctx context.Context, id int, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewApiDatasetStoragesGcsSyncCreateRequestWithBody(c.Server, id, contentType, body)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// ApiDatasetStoragesGcsSyncCreate Sync import storage
-//
-// Sync tasks from an GCS import storage connection.
-//
-// Takes a body of the `application/json` content type.
-//
-// Corresponds with POST /api/dataset-storages/gcs/{id}/sync/ (the `ApiDatasetStoragesGcsSyncCreate` operationId).
-func (c *Client) ApiDatasetStoragesGcsSyncCreate(ctx context.Context, id int, body ApiDatasetStoragesGcsSyncCreateJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewApiDatasetStoragesGcsSyncCreateRequest(c.Server, id, body)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// ApiDatasetStoragesGcsSyncCreateWithFormdataBody Sync import storage
-//
-// Sync tasks from an GCS import storage connection.
-//
-// Takes a body of the `application/x-www-form-urlencoded` content type.
-//
-// Corresponds with POST /api/dataset-storages/gcs/{id}/sync/ (the `ApiDatasetStoragesGcsSyncCreate` operationId).
-func (c *Client) ApiDatasetStoragesGcsSyncCreateWithFormdataBody(ctx context.Context, id int, body ApiDatasetStoragesGcsSyncCreateFormdataRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewApiDatasetStoragesGcsSyncCreateRequestWithFormdataBody(c.Server, id, body)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// ApiDatasetStoragesS3List Get all import storage
-//
-// Get a list of all S3 import storage connections.
-//
-// Corresponds with GET /api/dataset-storages/s3/ (the `ApiDatasetStoragesS3List` operationId).
-func (c *Client) ApiDatasetStoragesS3List(ctx context.Context, params *ApiDatasetStoragesS3ListParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewApiDatasetStoragesS3ListRequest(c.Server, params)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// ApiDatasetStoragesS3CreateWithBody Create import storage
-//
-// Create a new S3 import storage connection.
-//
-// Takes any type of body and a specified content type.
-//
-// Corresponds with POST /api/dataset-storages/s3/ (the `ApiDatasetStoragesS3Create` operationId).
-func (c *Client) ApiDatasetStoragesS3CreateWithBody(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewApiDatasetStoragesS3CreateRequestWithBody(c.Server, contentType, body)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// ApiDatasetStoragesS3Create Create import storage
-//
-// Create a new S3 import storage connection.
-//
-// Takes a body of the `application/json` content type.
-//
-// Corresponds with POST /api/dataset-storages/s3/ (the `ApiDatasetStoragesS3Create` operationId).
-func (c *Client) ApiDatasetStoragesS3Create(ctx context.Context, body ApiDatasetStoragesS3CreateJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewApiDatasetStoragesS3CreateRequest(c.Server, body)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// ApiDatasetStoragesS3CreateWithFormdataBody Create import storage
-//
-// Create a new S3 import storage connection.
-//
-// Takes a body of the `application/x-www-form-urlencoded` content type.
-//
-// Corresponds with POST /api/dataset-storages/s3/ (the `ApiDatasetStoragesS3Create` operationId).
-func (c *Client) ApiDatasetStoragesS3CreateWithFormdataBody(ctx context.Context, body ApiDatasetStoragesS3CreateFormdataRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewApiDatasetStoragesS3CreateRequestWithFormdataBody(c.Server, body)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// ApiDatasetStoragesS3CheckForRecordsCreateWithBody Check for records given the file pattern
-//
-// Checks for existence of records matching the file pattern in the bucket/prefix.
-//
-// Takes any type of body and a specified content type.
-//
-// Corresponds with POST /api/dataset-storages/s3/check-for-records/ (the `ApiDatasetStoragesS3CheckForRecordsCreate` operationId).
-func (c *Client) ApiDatasetStoragesS3CheckForRecordsCreateWithBody(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewApiDatasetStoragesS3CheckForRecordsCreateRequestWithBody(c.Server, contentType, body)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// ApiDatasetStoragesS3CheckForRecordsCreate Check for records given the file pattern
-//
-// Checks for existence of records matching the file pattern in the bucket/prefix.
-//
-// Takes a body of the `application/json` content type.
-//
-// Corresponds with POST /api/dataset-storages/s3/check-for-records/ (the `ApiDatasetStoragesS3CheckForRecordsCreate` operationId).
-func (c *Client) ApiDatasetStoragesS3CheckForRecordsCreate(ctx context.Context, body ApiDatasetStoragesS3CheckForRecordsCreateJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewApiDatasetStoragesS3CheckForRecordsCreateRequest(c.Server, body)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// ApiDatasetStoragesS3CheckForRecordsCreateWithFormdataBody Check for records given the file pattern
-//
-// Checks for existence of records matching the file pattern in the bucket/prefix.
-//
-// Takes a body of the `application/x-www-form-urlencoded` content type.
-//
-// Corresponds with POST /api/dataset-storages/s3/check-for-records/ (the `ApiDatasetStoragesS3CheckForRecordsCreate` operationId).
-func (c *Client) ApiDatasetStoragesS3CheckForRecordsCreateWithFormdataBody(ctx context.Context, body ApiDatasetStoragesS3CheckForRecordsCreateFormdataRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewApiDatasetStoragesS3CheckForRecordsCreateRequestWithFormdataBody(c.Server, body)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// ApiDatasetStoragesS3ValidateCreateWithBody Validate import storage
-//
-// Validate a specific S3 import storage connection.
-//
-// Takes any type of body and a specified content type.
-//
-// Corresponds with POST /api/dataset-storages/s3/validate/ (the `ApiDatasetStoragesS3ValidateCreate` operationId).
-func (c *Client) ApiDatasetStoragesS3ValidateCreateWithBody(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewApiDatasetStoragesS3ValidateCreateRequestWithBody(c.Server, contentType, body)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// ApiDatasetStoragesS3ValidateCreate Validate import storage
-//
-// Validate a specific S3 import storage connection.
-//
-// Takes a body of the `application/json` content type.
-//
-// Corresponds with POST /api/dataset-storages/s3/validate/ (the `ApiDatasetStoragesS3ValidateCreate` operationId).
-func (c *Client) ApiDatasetStoragesS3ValidateCreate(ctx context.Context, body ApiDatasetStoragesS3ValidateCreateJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewApiDatasetStoragesS3ValidateCreateRequest(c.Server, body)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// ApiDatasetStoragesS3ValidateCreateWithFormdataBody Validate import storage
-//
-// Validate a specific S3 import storage connection.
-//
-// Takes a body of the `application/x-www-form-urlencoded` content type.
-//
-// Corresponds with POST /api/dataset-storages/s3/validate/ (the `ApiDatasetStoragesS3ValidateCreate` operationId).
-func (c *Client) ApiDatasetStoragesS3ValidateCreateWithFormdataBody(ctx context.Context, body ApiDatasetStoragesS3ValidateCreateFormdataRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewApiDatasetStoragesS3ValidateCreateRequestWithFormdataBody(c.Server, body)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// ApiDatasetStoragesS3Destroy Delete import storage
-//
-// Delete a specific S3 import storage connection.
-//
-// Corresponds with DELETE /api/dataset-storages/s3/{id}/ (the `ApiDatasetStoragesS3Destroy` operationId).
-func (c *Client) ApiDatasetStoragesS3Destroy(ctx context.Context, id int, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewApiDatasetStoragesS3DestroyRequest(c.Server, id)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// ApiDatasetStoragesS3Retrieve Get import storage
-//
-// Get a specific S3 import storage connection.
-//
-// Corresponds with GET /api/dataset-storages/s3/{id}/ (the `ApiDatasetStoragesS3Retrieve` operationId).
-func (c *Client) ApiDatasetStoragesS3Retrieve(ctx context.Context, id int, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewApiDatasetStoragesS3RetrieveRequest(c.Server, id)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// ApiDatasetStoragesS3PartialUpdateWithBody Update import storage
-//
-// Update a specific S3 import storage connection.
-//
-// Takes any type of body and a specified content type.
-//
-// Corresponds with PATCH /api/dataset-storages/s3/{id}/ (the `ApiDatasetStoragesS3PartialUpdate` operationId).
-func (c *Client) ApiDatasetStoragesS3PartialUpdateWithBody(ctx context.Context, id int, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewApiDatasetStoragesS3PartialUpdateRequestWithBody(c.Server, id, contentType, body)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// ApiDatasetStoragesS3PartialUpdate Update import storage
-//
-// Update a specific S3 import storage connection.
-//
-// Takes a body of the `application/json` content type.
-//
-// Corresponds with PATCH /api/dataset-storages/s3/{id}/ (the `ApiDatasetStoragesS3PartialUpdate` operationId).
-func (c *Client) ApiDatasetStoragesS3PartialUpdate(ctx context.Context, id int, body ApiDatasetStoragesS3PartialUpdateJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewApiDatasetStoragesS3PartialUpdateRequest(c.Server, id, body)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// ApiDatasetStoragesS3PartialUpdateWithFormdataBody Update import storage
-//
-// Update a specific S3 import storage connection.
-//
-// Takes a body of the `application/x-www-form-urlencoded` content type.
-//
-// Corresponds with PATCH /api/dataset-storages/s3/{id}/ (the `ApiDatasetStoragesS3PartialUpdate` operationId).
-func (c *Client) ApiDatasetStoragesS3PartialUpdateWithFormdataBody(ctx context.Context, id int, body ApiDatasetStoragesS3PartialUpdateFormdataRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewApiDatasetStoragesS3PartialUpdateRequestWithFormdataBody(c.Server, id, body)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// ApiDatasetStoragesS3ColumnsRetrieve Get data column names from storage
-//
-// Retrieves column names from users JSON/blob data in bucket.
-//
-// Corresponds with GET /api/dataset-storages/s3/{id}/columns/ (the `ApiDatasetStoragesS3ColumnsRetrieve` operationId).
-func (c *Client) ApiDatasetStoragesS3ColumnsRetrieve(ctx context.Context, id int, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewApiDatasetStoragesS3ColumnsRetrieveRequest(c.Server, id)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// ApiDatasetStoragesS3SyncCreateWithBody Sync import storage
-//
-// Sync tasks from an S3 import storage connection.
-//
-// Takes any type of body and a specified content type.
-//
-// Corresponds with POST /api/dataset-storages/s3/{id}/sync/ (the `ApiDatasetStoragesS3SyncCreate` operationId).
-func (c *Client) ApiDatasetStoragesS3SyncCreateWithBody(ctx context.Context, id int, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewApiDatasetStoragesS3SyncCreateRequestWithBody(c.Server, id, contentType, body)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// ApiDatasetStoragesS3SyncCreate Sync import storage
-//
-// Sync tasks from an S3 import storage connection.
-//
-// Takes a body of the `application/json` content type.
-//
-// Corresponds with POST /api/dataset-storages/s3/{id}/sync/ (the `ApiDatasetStoragesS3SyncCreate` operationId).
-func (c *Client) ApiDatasetStoragesS3SyncCreate(ctx context.Context, id int, body ApiDatasetStoragesS3SyncCreateJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewApiDatasetStoragesS3SyncCreateRequest(c.Server, id, body)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// ApiDatasetStoragesS3SyncCreateWithFormdataBody Sync import storage
-//
-// Sync tasks from an S3 import storage connection.
-//
-// Takes a body of the `application/x-www-form-urlencoded` content type.
-//
-// Corresponds with POST /api/dataset-storages/s3/{id}/sync/ (the `ApiDatasetStoragesS3SyncCreate` operationId).
-func (c *Client) ApiDatasetStoragesS3SyncCreateWithFormdataBody(ctx context.Context, id int, body ApiDatasetStoragesS3SyncCreateFormdataRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewApiDatasetStoragesS3SyncCreateRequestWithFormdataBody(c.Server, id, body)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// ApiDatasetStoragesTypesRetrieve List all dataset storages types
-//
-// Retrieve a list of the dataset storages types.
-//
-// Corresponds with GET /api/dataset-storages/types/ (the `ApiDatasetStoragesTypesRetrieve` operationId).
-func (c *Client) ApiDatasetStoragesTypesRetrieve(ctx context.Context, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewApiDatasetStoragesTypesRetrieveRequest(c.Server)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// ApiDatasetsList List datasets
-//
-// List all datasets.
-//
-// Corresponds with GET /api/datasets/ (the `ApiDatasetsList` operationId).
-func (c *Client) ApiDatasetsList(ctx context.Context, params *ApiDatasetsListParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewApiDatasetsListRequest(c.Server, params)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// ApiDatasetsCreateWithBody Create dataset
-//
-// Create a new dataset.
-//
-// Takes any type of body and a specified content type.
-//
-// Corresponds with POST /api/datasets/ (the `ApiDatasetsCreate` operationId).
-func (c *Client) ApiDatasetsCreateWithBody(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewApiDatasetsCreateRequestWithBody(c.Server, contentType, body)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// ApiDatasetsCreate Create dataset
-//
-// Create a new dataset.
-//
-// Takes a body of the `application/json` content type.
-//
-// Corresponds with POST /api/datasets/ (the `ApiDatasetsCreate` operationId).
-func (c *Client) ApiDatasetsCreate(ctx context.Context, body ApiDatasetsCreateJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewApiDatasetsCreateRequest(c.Server, body)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// ApiDatasetsCreateWithFormdataBody Create dataset
-//
-// Create a new dataset.
-//
-// Takes a body of the `application/x-www-form-urlencoded` content type.
-//
-// Corresponds with POST /api/datasets/ (the `ApiDatasetsCreate` operationId).
-func (c *Client) ApiDatasetsCreateWithFormdataBody(ctx context.Context, body ApiDatasetsCreateFormdataRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewApiDatasetsCreateRequestWithFormdataBody(c.Server, body)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// ApiDatasetsColumnsRetrieve Get data explorer columns
-//
-// Retrieve the data explorer columns available for a specific Dataset.
-//
-// Corresponds with GET /api/datasets/columns (the `ApiDatasetsColumnsRetrieve` operationId).
-func (c *Client) ApiDatasetsColumnsRetrieve(ctx context.Context, params *ApiDatasetsColumnsRetrieveParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewApiDatasetsColumnsRetrieveRequest(c.Server, params)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// ApiDatasetsImportPartialUpdateWithBody Export candidate tasks to project
-//
-// Export Candidate task for a specific dataset to project.
-//
-// Takes any type of body and a specified content type.
-//
-// Corresponds with PATCH /api/datasets/import (the `ApiDatasetsImportPartialUpdate` operationId).
-func (c *Client) ApiDatasetsImportPartialUpdateWithBody(ctx context.Context, params *ApiDatasetsImportPartialUpdateParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewApiDatasetsImportPartialUpdateRequestWithBody(c.Server, params, contentType, body)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// ApiDatasetsImportPartialUpdate Export candidate tasks to project
-//
-// Export Candidate task for a specific dataset to project.
-//
-// Takes a body of the `application/json` content type.
-//
-// Corresponds with PATCH /api/datasets/import (the `ApiDatasetsImportPartialUpdate` operationId).
-func (c *Client) ApiDatasetsImportPartialUpdate(ctx context.Context, params *ApiDatasetsImportPartialUpdateParams, body ApiDatasetsImportPartialUpdateJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewApiDatasetsImportPartialUpdateRequest(c.Server, params, body)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// ApiDatasetsImportPartialUpdateWithFormdataBody Export candidate tasks to project
-//
-// Export Candidate task for a specific dataset to project.
-//
-// Takes a body of the `application/x-www-form-urlencoded` content type.
-//
-// Corresponds with PATCH /api/datasets/import (the `ApiDatasetsImportPartialUpdate` operationId).
-func (c *Client) ApiDatasetsImportPartialUpdateWithFormdataBody(ctx context.Context, params *ApiDatasetsImportPartialUpdateParams, body ApiDatasetsImportPartialUpdateFormdataRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewApiDatasetsImportPartialUpdateRequestWithFormdataBody(c.Server, params, body)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// ApiDatasetsImportCreateWithBody Export candidate tasks to project
-//
-//	Export Candidate task for a specific dataset to project.
-//
-// Takes any type of body and a specified content type.
-//
-// Corresponds with POST /api/datasets/import (the `ApiDatasetsImportCreate` operationId).
-func (c *Client) ApiDatasetsImportCreateWithBody(ctx context.Context, params *ApiDatasetsImportCreateParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewApiDatasetsImportCreateRequestWithBody(c.Server, params, contentType, body)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// ApiDatasetsImportCreate Export candidate tasks to project
-//
-//	Export Candidate task for a specific dataset to project.
-//
-// Takes a body of the `application/json` content type.
-//
-// Corresponds with POST /api/datasets/import (the `ApiDatasetsImportCreate` operationId).
-func (c *Client) ApiDatasetsImportCreate(ctx context.Context, params *ApiDatasetsImportCreateParams, body ApiDatasetsImportCreateJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewApiDatasetsImportCreateRequest(c.Server, params, body)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// ApiDatasetsImportCreateWithFormdataBody Export candidate tasks to project
-//
-//	Export Candidate task for a specific dataset to project.
-//
-// Takes a body of the `application/x-www-form-urlencoded` content type.
-//
-// Corresponds with POST /api/datasets/import (the `ApiDatasetsImportCreate` operationId).
-func (c *Client) ApiDatasetsImportCreateWithFormdataBody(ctx context.Context, params *ApiDatasetsImportCreateParams, body ApiDatasetsImportCreateFormdataRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewApiDatasetsImportCreateRequestWithFormdataBody(c.Server, params, body)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// ApiDatasetsTasksRetrieve Get Data Explorer tasks list
-//
-//	Retrieve a list of Data Explorer tasks with pagination for a specific view or dataset, by using filters and ordering.
-//
-// Corresponds with GET /api/datasets/tasks (the `ApiDatasetsTasksRetrieve` operationId).
-func (c *Client) ApiDatasetsTasksRetrieve(ctx context.Context, params *ApiDatasetsTasksRetrieveParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewApiDatasetsTasksRetrieveRequest(c.Server, params)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// ApiDatasetsTasksMetadataRetrieve Get Candidate task metadata
-//
-//	Retrieve Candidate task metadata for a specific dataset, by using candidate_task_id or weaviate_id.
-//
-// Corresponds with GET /api/datasets/tasks/metadata (the `ApiDatasetsTasksMetadataRetrieve` operationId).
-func (c *Client) ApiDatasetsTasksMetadataRetrieve(ctx context.Context, params *ApiDatasetsTasksMetadataRetrieveParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewApiDatasetsTasksMetadataRetrieveRequest(c.Server, params)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// ApiDatasetsViewsList List dataset views
-//
-// List all views for a specific dataset.
-//
-// Corresponds with GET /api/datasets/views/ (the `ApiDatasetsViewsList` operationId).
-func (c *Client) ApiDatasetsViewsList(ctx context.Context, params *ApiDatasetsViewsListParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewApiDatasetsViewsListRequest(c.Server, params)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// ApiDatasetsViewsCreateWithBody Create dataset view
-//
-// Create a view for a specific dataset.
-//
-// Takes any type of body and a specified content type.
-//
-// Corresponds with POST /api/datasets/views/ (the `ApiDatasetsViewsCreate` operationId).
-func (c *Client) ApiDatasetsViewsCreateWithBody(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewApiDatasetsViewsCreateRequestWithBody(c.Server, contentType, body)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// ApiDatasetsViewsCreate Create dataset view
-//
-// Create a view for a specific dataset.
-//
-// Takes a body of the `application/json` content type.
-//
-// Corresponds with POST /api/datasets/views/ (the `ApiDatasetsViewsCreate` operationId).
-func (c *Client) ApiDatasetsViewsCreate(ctx context.Context, body ApiDatasetsViewsCreateJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewApiDatasetsViewsCreateRequest(c.Server, body)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// ApiDatasetsViewsCreateWithFormdataBody Create dataset view
-//
-// Create a view for a specific dataset.
-//
-// Takes a body of the `application/x-www-form-urlencoded` content type.
-//
-// Corresponds with POST /api/datasets/views/ (the `ApiDatasetsViewsCreate` operationId).
-func (c *Client) ApiDatasetsViewsCreateWithFormdataBody(ctx context.Context, body ApiDatasetsViewsCreateFormdataRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewApiDatasetsViewsCreateRequestWithFormdataBody(c.Server, body)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// ApiDatasetsViewsResetDestroy Reset dataset views
-//
-// Reset all views for a specific dataset.
-//
-// Corresponds with DELETE /api/datasets/views/reset/ (the `ApiDatasetsViewsResetDestroy` operationId).
-func (c *Client) ApiDatasetsViewsResetDestroy(ctx context.Context, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewApiDatasetsViewsResetDestroyRequest(c.Server)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// ApiDatasetsViewsDestroy Delete dataset view
-//
-// Delete a specific view by ID.
-//
-// Corresponds with DELETE /api/datasets/views/{id}/ (the `ApiDatasetsViewsDestroy` operationId).
-func (c *Client) ApiDatasetsViewsDestroy(ctx context.Context, id string, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewApiDatasetsViewsDestroyRequest(c.Server, id)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// ApiDatasetsViewsRetrieve Get dataset view details
-//
-// Get the details about a specific view in the data manager.
-//
-// Corresponds with GET /api/datasets/views/{id}/ (the `ApiDatasetsViewsRetrieve` operationId).
-func (c *Client) ApiDatasetsViewsRetrieve(ctx context.Context, id string, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewApiDatasetsViewsRetrieveRequest(c.Server, id)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// ApiDatasetsViewsPartialUpdateWithBody Update dataset view
-//
-// Update view data with additional filters and other information for a specific dataset.
-//
-// Takes any type of body and a specified content type.
-//
-// Corresponds with PATCH /api/datasets/views/{id}/ (the `ApiDatasetsViewsPartialUpdate` operationId).
-func (c *Client) ApiDatasetsViewsPartialUpdateWithBody(ctx context.Context, id string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewApiDatasetsViewsPartialUpdateRequestWithBody(c.Server, id, contentType, body)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// ApiDatasetsViewsPartialUpdate Update dataset view
-//
-// Update view data with additional filters and other information for a specific dataset.
-//
-// Takes a body of the `application/json` content type.
-//
-// Corresponds with PATCH /api/datasets/views/{id}/ (the `ApiDatasetsViewsPartialUpdate` operationId).
-func (c *Client) ApiDatasetsViewsPartialUpdate(ctx context.Context, id string, body ApiDatasetsViewsPartialUpdateJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewApiDatasetsViewsPartialUpdateRequest(c.Server, id, body)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// ApiDatasetsViewsPartialUpdateWithFormdataBody Update dataset view
-//
-// Update view data with additional filters and other information for a specific dataset.
-//
-// Takes a body of the `application/x-www-form-urlencoded` content type.
-//
-// Corresponds with PATCH /api/datasets/views/{id}/ (the `ApiDatasetsViewsPartialUpdate` operationId).
-func (c *Client) ApiDatasetsViewsPartialUpdateWithFormdataBody(ctx context.Context, id string, body ApiDatasetsViewsPartialUpdateFormdataRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewApiDatasetsViewsPartialUpdateRequestWithFormdataBody(c.Server, id, body)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// ApiDatasetsViewsUpdateWithBody Put dataset view
-//
-// Overwrite view data with updated filters and other information for a specific dataset.
-//
-// Takes any type of body and a specified content type.
-//
-// Corresponds with PUT /api/datasets/views/{id}/ (the `ApiDatasetsViewsUpdate` operationId).
-func (c *Client) ApiDatasetsViewsUpdateWithBody(ctx context.Context, id string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewApiDatasetsViewsUpdateRequestWithBody(c.Server, id, contentType, body)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// ApiDatasetsViewsUpdate Put dataset view
-//
-// Overwrite view data with updated filters and other information for a specific dataset.
-//
-// Takes a body of the `application/json` content type.
-//
-// Corresponds with PUT /api/datasets/views/{id}/ (the `ApiDatasetsViewsUpdate` operationId).
-func (c *Client) ApiDatasetsViewsUpdate(ctx context.Context, id string, body ApiDatasetsViewsUpdateJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewApiDatasetsViewsUpdateRequest(c.Server, id, body)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// ApiDatasetsViewsUpdateWithFormdataBody Put dataset view
-//
-// Overwrite view data with updated filters and other information for a specific dataset.
-//
-// Takes a body of the `application/x-www-form-urlencoded` content type.
-//
-// Corresponds with PUT /api/datasets/views/{id}/ (the `ApiDatasetsViewsUpdate` operationId).
-func (c *Client) ApiDatasetsViewsUpdateWithFormdataBody(ctx context.Context, id string, body ApiDatasetsViewsUpdateFormdataRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewApiDatasetsViewsUpdateRequestWithFormdataBody(c.Server, id, body)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// ApiDatasetsDestroy Delete dataset
-//
-// Delete a dataset by ID.
-//
-// Corresponds with DELETE /api/datasets/{id}/ (the `ApiDatasetsDestroy` operationId).
-func (c *Client) ApiDatasetsDestroy(ctx context.Context, id int, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewApiDatasetsDestroyRequest(c.Server, id)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// ApiDatasetsRetrieve Get dataset
-//
-// Retrieve a specific dataset.
-//
-// Corresponds with GET /api/datasets/{id}/ (the `ApiDatasetsRetrieve` operationId).
-func (c *Client) ApiDatasetsRetrieve(ctx context.Context, id int, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewApiDatasetsRetrieveRequest(c.Server, id)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// ApiDatasetsPartialUpdateWithBody Update dataset
-//
-// Update a specific dataset by ID.
-//
-// Takes any type of body and a specified content type.
-//
-// Corresponds with PATCH /api/datasets/{id}/ (the `ApiDatasetsPartialUpdate` operationId).
-func (c *Client) ApiDatasetsPartialUpdateWithBody(ctx context.Context, id int, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewApiDatasetsPartialUpdateRequestWithBody(c.Server, id, contentType, body)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// ApiDatasetsPartialUpdate Update dataset
-//
-// Update a specific dataset by ID.
-//
-// Takes a body of the `application/json` content type.
-//
-// Corresponds with PATCH /api/datasets/{id}/ (the `ApiDatasetsPartialUpdate` operationId).
-func (c *Client) ApiDatasetsPartialUpdate(ctx context.Context, id int, body ApiDatasetsPartialUpdateJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewApiDatasetsPartialUpdateRequest(c.Server, id, body)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// ApiDatasetsPartialUpdateWithFormdataBody Update dataset
-//
-// Update a specific dataset by ID.
-//
-// Takes a body of the `application/x-www-form-urlencoded` content type.
-//
-// Corresponds with PATCH /api/datasets/{id}/ (the `ApiDatasetsPartialUpdate` operationId).
-func (c *Client) ApiDatasetsPartialUpdateWithFormdataBody(ctx context.Context, id int, body ApiDatasetsPartialUpdateFormdataRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewApiDatasetsPartialUpdateRequestWithFormdataBody(c.Server, id, body)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// ApiDatasetsUpdateWithBody Put dataset
-//
-// Overwrite a specific dataset by ID.
-//
-// Takes any type of body and a specified content type.
-//
-// Corresponds with PUT /api/datasets/{id}/ (the `ApiDatasetsUpdate` operationId).
-func (c *Client) ApiDatasetsUpdateWithBody(ctx context.Context, id int, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewApiDatasetsUpdateRequestWithBody(c.Server, id, contentType, body)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// ApiDatasetsUpdate Put dataset
-//
-// Overwrite a specific dataset by ID.
-//
-// Takes a body of the `application/json` content type.
-//
-// Corresponds with PUT /api/datasets/{id}/ (the `ApiDatasetsUpdate` operationId).
-func (c *Client) ApiDatasetsUpdate(ctx context.Context, id int, body ApiDatasetsUpdateJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewApiDatasetsUpdateRequest(c.Server, id, body)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// ApiDatasetsUpdateWithFormdataBody Put dataset
-//
-// Overwrite a specific dataset by ID.
-//
-// Takes a body of the `application/x-www-form-urlencoded` content type.
-//
-// Corresponds with PUT /api/datasets/{id}/ (the `ApiDatasetsUpdate` operationId).
-func (c *Client) ApiDatasetsUpdateWithFormdataBody(ctx context.Context, id int, body ApiDatasetsUpdateFormdataRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewApiDatasetsUpdateRequestWithFormdataBody(c.Server, id, body)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// ApiDatasetsMembersDestroy Remove member from dataset
-//
-// Remove a member from a specific dataset.
-//
-// Corresponds with DELETE /api/datasets/{id}/members (the `ApiDatasetsMembersDestroy` operationId).
-func (c *Client) ApiDatasetsMembersDestroy(ctx context.Context, id int, params *ApiDatasetsMembersDestroyParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewApiDatasetsMembersDestroyRequest(c.Server, id, params)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// ApiDatasetsMembersList Get datasets members
-//
-// Retrieve the members for a specific dataset.
-//
-// Corresponds with GET /api/datasets/{id}/members (the `ApiDatasetsMembersList` operationId).
-func (c *Client) ApiDatasetsMembersList(ctx context.Context, id int, params *ApiDatasetsMembersListParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewApiDatasetsMembersListRequest(c.Server, id, params)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// ApiDatasetsMembersCreateWithBody Add dataset member
-//
-// Add a member to a specific dataset.
-//
-// Takes any type of body and a specified content type.
-//
-// Corresponds with POST /api/datasets/{id}/members (the `ApiDatasetsMembersCreate` operationId).
-func (c *Client) ApiDatasetsMembersCreateWithBody(ctx context.Context, id int, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewApiDatasetsMembersCreateRequestWithBody(c.Server, id, contentType, body)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// ApiDatasetsMembersCreate Add dataset member
-//
-// Add a member to a specific dataset.
-//
-// Takes a body of the `application/json` content type.
-//
-// Corresponds with POST /api/datasets/{id}/members (the `ApiDatasetsMembersCreate` operationId).
-func (c *Client) ApiDatasetsMembersCreate(ctx context.Context, id int, body ApiDatasetsMembersCreateJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewApiDatasetsMembersCreateRequest(c.Server, id, body)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// ApiDatasetsMembersCreateWithFormdataBody Add dataset member
-//
-// Add a member to a specific dataset.
-//
-// Takes a body of the `application/x-www-form-urlencoded` content type.
-//
-// Corresponds with POST /api/datasets/{id}/members (the `ApiDatasetsMembersCreate` operationId).
-func (c *Client) ApiDatasetsMembersCreateWithFormdataBody(ctx context.Context, id int, body ApiDatasetsMembersCreateFormdataRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewApiDatasetsMembersCreateRequestWithFormdataBody(c.Server, id, body)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
 // ApiDimensionsBackfillDestroy ✨ Cancel Agreement V2 backfill jobs
 //
 // <Card href="https://humansignal.com/goenterprise">
@@ -20017,6 +16041,3974 @@ func (c *Client) ApiDimensionsBackfillStatusRetrieve(ctx context.Context, params
 // Corresponds with DELETE /api/dimensions/value-counts-backfill/ (the `ApiDimensionsValueCountsBackfillDestroy` operationId).
 func (c *Client) ApiDimensionsValueCountsBackfillDestroy(ctx context.Context, params *ApiDimensionsValueCountsBackfillDestroyParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewApiDimensionsValueCountsBackfillDestroyRequest(c.Server, params)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ApiDimensionsValueCountsBackfillCreateWithBody ✨ Trigger Dimension value-counts backfill
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Trigger a Dimension label-distribution value-counts backfill for the authenticated user's active organization. Populates MatrixAnnotatorEntry.value_counts and rebuilds the ProjectSummary.dimension_value_counts cache for all tasks, without recomputing agreement scores. Exactly one of three body fields must be provided:
+//
+// - **project_id**: backfill a single specific project.
+// - **num_projects**: batched org backfill — queue the next N not-yet-started projects (in ascending project ID order), leaving any currently in-flight jobs untouched. Repeat calls until `projects_remaining` in the response reaches 0.
+// - **all_projects**: full org backfill — cancel all in-flight jobs and queue every remaining non-completed project at once.
+//
+// Requires administrator or owner role and access to Agreement V2 value counts.
+//
+// Takes any type of body and a specified content type.
+//
+// Corresponds with POST /api/dimensions/value-counts-backfill/ (the `ApiDimensionsValueCountsBackfillCreate` operationId).
+func (c *Client) ApiDimensionsValueCountsBackfillCreateWithBody(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiDimensionsValueCountsBackfillCreateRequestWithBody(c.Server, contentType, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ApiDimensionsValueCountsBackfillCreate ✨ Trigger Dimension value-counts backfill
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Trigger a Dimension label-distribution value-counts backfill for the authenticated user's active organization. Populates MatrixAnnotatorEntry.value_counts and rebuilds the ProjectSummary.dimension_value_counts cache for all tasks, without recomputing agreement scores. Exactly one of three body fields must be provided:
+//
+// - **project_id**: backfill a single specific project.
+// - **num_projects**: batched org backfill — queue the next N not-yet-started projects (in ascending project ID order), leaving any currently in-flight jobs untouched. Repeat calls until `projects_remaining` in the response reaches 0.
+// - **all_projects**: full org backfill — cancel all in-flight jobs and queue every remaining non-completed project at once.
+//
+// Requires administrator or owner role and access to Agreement V2 value counts.
+//
+// Takes a body of the `application/json` content type.
+//
+// Corresponds with POST /api/dimensions/value-counts-backfill/ (the `ApiDimensionsValueCountsBackfillCreate` operationId).
+func (c *Client) ApiDimensionsValueCountsBackfillCreate(ctx context.Context, body ApiDimensionsValueCountsBackfillCreateJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiDimensionsValueCountsBackfillCreateRequest(c.Server, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ApiDimensionsValueCountsBackfillCreateWithFormdataBody ✨ Trigger Dimension value-counts backfill
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Trigger a Dimension label-distribution value-counts backfill for the authenticated user's active organization. Populates MatrixAnnotatorEntry.value_counts and rebuilds the ProjectSummary.dimension_value_counts cache for all tasks, without recomputing agreement scores. Exactly one of three body fields must be provided:
+//
+// - **project_id**: backfill a single specific project.
+// - **num_projects**: batched org backfill — queue the next N not-yet-started projects (in ascending project ID order), leaving any currently in-flight jobs untouched. Repeat calls until `projects_remaining` in the response reaches 0.
+// - **all_projects**: full org backfill — cancel all in-flight jobs and queue every remaining non-completed project at once.
+//
+// Requires administrator or owner role and access to Agreement V2 value counts.
+//
+// Takes a body of the `application/x-www-form-urlencoded` content type.
+//
+// Corresponds with POST /api/dimensions/value-counts-backfill/ (the `ApiDimensionsValueCountsBackfillCreate` operationId).
+func (c *Client) ApiDimensionsValueCountsBackfillCreateWithFormdataBody(ctx context.Context, body ApiDimensionsValueCountsBackfillCreateFormdataRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiDimensionsValueCountsBackfillCreateRequestWithFormdataBody(c.Server, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ApiDimensionsValueCountsBackfillJobsList ✨ List Dimension value-counts backfill jobs
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Retrieve Dimension value-counts backfill jobs for the authenticated user's active organization, ordered by most-recently created first. Supports page / page_size query params (default 50 per page, max 500). Requires administrator or owner role and Agreement V2 access.
+//
+// Corresponds with GET /api/dimensions/value-counts-backfill/jobs/ (the `ApiDimensionsValueCountsBackfillJobsList` operationId).
+func (c *Client) ApiDimensionsValueCountsBackfillJobsList(ctx context.Context, params *ApiDimensionsValueCountsBackfillJobsListParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiDimensionsValueCountsBackfillJobsListRequest(c.Server, params)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ApiDimensionsValueCountsBackfillStatusRetrieve ✨ Get Dimension value-counts backfill status
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Retrieve the status of a Dimension value-counts backfill job for the authenticated user's active organization. By default returns the aggregated organization status. Specify job_id or project_id to get a specific job status. Requires administrator or owner role and Agreement V2 access.
+//
+// Corresponds with GET /api/dimensions/value-counts-backfill/status/ (the `ApiDimensionsValueCountsBackfillStatusRetrieve` operationId).
+func (c *Client) ApiDimensionsValueCountsBackfillStatusRetrieve(ctx context.Context, params *ApiDimensionsValueCountsBackfillStatusRetrieveParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiDimensionsValueCountsBackfillStatusRetrieveRequest(c.Server, params)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ApiDmActionsRetrieve Get actions
+//
+// Retrieve all the registered actions with descriptions that data manager can use.
+//
+// Corresponds with GET /api/dm/actions/ (the `ApiDmActionsRetrieve` operationId).
+func (c *Client) ApiDmActionsRetrieve(ctx context.Context, params *ApiDmActionsRetrieveParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiDmActionsRetrieveRequest(c.Server, params)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ApiDmActionsCreateWithBody Post actions
+//
+// Perform a Data Manager action with the selected tasks and filters. Note: More complex actions require additional parameters in the request body. Call `GET api/actions?project=<id>` to explore them. <br>Example: `GET api/actions?id=delete_tasks&project=1`
+//
+// Takes any type of body and a specified content type.
+//
+// Corresponds with POST /api/dm/actions/ (the `ApiDmActionsCreate` operationId).
+func (c *Client) ApiDmActionsCreateWithBody(ctx context.Context, params *ApiDmActionsCreateParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiDmActionsCreateRequestWithBody(c.Server, params, contentType, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ApiDmActionsCreate Post actions
+//
+// Perform a Data Manager action with the selected tasks and filters. Note: More complex actions require additional parameters in the request body. Call `GET api/actions?project=<id>` to explore them. <br>Example: `GET api/actions?id=delete_tasks&project=1`
+//
+// Takes a body of the `application/json` content type.
+//
+// Corresponds with POST /api/dm/actions/ (the `ApiDmActionsCreate` operationId).
+func (c *Client) ApiDmActionsCreate(ctx context.Context, params *ApiDmActionsCreateParams, body ApiDmActionsCreateJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiDmActionsCreateRequest(c.Server, params, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ApiDmActionsCreateWithFormdataBody Post actions
+//
+// Perform a Data Manager action with the selected tasks and filters. Note: More complex actions require additional parameters in the request body. Call `GET api/actions?project=<id>` to explore them. <br>Example: `GET api/actions?id=delete_tasks&project=1`
+//
+// Takes a body of the `application/x-www-form-urlencoded` content type.
+//
+// Corresponds with POST /api/dm/actions/ (the `ApiDmActionsCreate` operationId).
+func (c *Client) ApiDmActionsCreateWithFormdataBody(ctx context.Context, params *ApiDmActionsCreateParams, body ApiDmActionsCreateFormdataRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiDmActionsCreateRequestWithFormdataBody(c.Server, params, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ApiDmActionsFormRetrieve Get action form
+//
+// Get the form configuration for a specific action.
+//
+// Corresponds with GET /api/dm/actions/{action_id}/form/ (the `ApiDmActionsFormRetrieve` operationId).
+func (c *Client) ApiDmActionsFormRetrieve(ctx context.Context, actionId string, params *ApiDmActionsFormRetrieveParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiDmActionsFormRetrieveRequest(c.Server, actionId, params)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ApiDmProjectRetrieve Get project state
+//
+// Retrieve the project state for the data manager.
+//
+// Corresponds with GET /api/dm/project/ (the `ApiDmProjectRetrieve` operationId).
+func (c *Client) ApiDmProjectRetrieve(ctx context.Context, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiDmProjectRetrieveRequest(c.Server)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ApiDmViewsList List views
+//
+// List all views for a specific project.
+//
+// Corresponds with GET /api/dm/views/ (the `ApiDmViewsList` operationId).
+func (c *Client) ApiDmViewsList(ctx context.Context, params *ApiDmViewsListParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiDmViewsListRequest(c.Server, params)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ApiDmViewsCreateWithBody Create view
+//
+// Create a view for a specific project.
+//
+// Takes any type of body and a specified content type.
+//
+// Corresponds with POST /api/dm/views/ (the `ApiDmViewsCreate` operationId).
+func (c *Client) ApiDmViewsCreateWithBody(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiDmViewsCreateRequestWithBody(c.Server, contentType, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ApiDmViewsCreate Create view
+//
+// Create a view for a specific project.
+//
+// Takes a body of the `application/json` content type.
+//
+// Corresponds with POST /api/dm/views/ (the `ApiDmViewsCreate` operationId).
+func (c *Client) ApiDmViewsCreate(ctx context.Context, body ApiDmViewsCreateJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiDmViewsCreateRequest(c.Server, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ApiDmViewsCreateWithFormdataBody Create view
+//
+// Create a view for a specific project.
+//
+// Takes a body of the `application/x-www-form-urlencoded` content type.
+//
+// Corresponds with POST /api/dm/views/ (the `ApiDmViewsCreate` operationId).
+func (c *Client) ApiDmViewsCreateWithFormdataBody(ctx context.Context, body ApiDmViewsCreateFormdataRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiDmViewsCreateRequestWithFormdataBody(c.Server, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ApiDmViewsOrderCreateWithBody Update order of views
+//
+// Update the order field of views based on the provided list of view IDs.
+//
+// Takes any type of body and a specified content type.
+//
+// Corresponds with POST /api/dm/views/order/ (the `ApiDmViewsOrderCreate` operationId).
+func (c *Client) ApiDmViewsOrderCreateWithBody(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiDmViewsOrderCreateRequestWithBody(c.Server, contentType, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ApiDmViewsOrderCreate Update order of views
+//
+// Update the order field of views based on the provided list of view IDs.
+//
+// Takes a body of the `application/json` content type.
+//
+// Corresponds with POST /api/dm/views/order/ (the `ApiDmViewsOrderCreate` operationId).
+func (c *Client) ApiDmViewsOrderCreate(ctx context.Context, body ApiDmViewsOrderCreateJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiDmViewsOrderCreateRequest(c.Server, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ApiDmViewsOrderCreateWithFormdataBody Update order of views
+//
+// Update the order field of views based on the provided list of view IDs.
+//
+// Takes a body of the `application/x-www-form-urlencoded` content type.
+//
+// Corresponds with POST /api/dm/views/order/ (the `ApiDmViewsOrderCreate` operationId).
+func (c *Client) ApiDmViewsOrderCreateWithFormdataBody(ctx context.Context, body ApiDmViewsOrderCreateFormdataRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiDmViewsOrderCreateRequestWithFormdataBody(c.Server, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ApiDmViewsResetDestroy Delete all project views
+//
+// Delete all views for a specific project.
+//
+// Corresponds with DELETE /api/dm/views/reset/ (the `ApiDmViewsResetDestroy` operationId).
+func (c *Client) ApiDmViewsResetDestroy(ctx context.Context, params *ApiDmViewsResetDestroyParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiDmViewsResetDestroyRequest(c.Server, params)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ApiDmViewsDestroy Delete view
+//
+// Delete a specific view by ID.
+//
+// Corresponds with DELETE /api/dm/views/{id}/ (the `ApiDmViewsDestroy` operationId).
+func (c *Client) ApiDmViewsDestroy(ctx context.Context, id string, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiDmViewsDestroyRequest(c.Server, id)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ApiDmViewsRetrieve Get view details
+//
+// Get the details about a specific view in the data manager.
+//
+// Corresponds with GET /api/dm/views/{id}/ (the `ApiDmViewsRetrieve` operationId).
+func (c *Client) ApiDmViewsRetrieve(ctx context.Context, id string, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiDmViewsRetrieveRequest(c.Server, id)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ApiDmViewsPartialUpdateWithBody Update view
+//
+// Update view data with additional filters and other information for a specific project.
+//
+// Takes any type of body and a specified content type.
+//
+// Corresponds with PATCH /api/dm/views/{id}/ (the `ApiDmViewsPartialUpdate` operationId).
+func (c *Client) ApiDmViewsPartialUpdateWithBody(ctx context.Context, id string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiDmViewsPartialUpdateRequestWithBody(c.Server, id, contentType, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ApiDmViewsPartialUpdate Update view
+//
+// Update view data with additional filters and other information for a specific project.
+//
+// Takes a body of the `application/json` content type.
+//
+// Corresponds with PATCH /api/dm/views/{id}/ (the `ApiDmViewsPartialUpdate` operationId).
+func (c *Client) ApiDmViewsPartialUpdate(ctx context.Context, id string, body ApiDmViewsPartialUpdateJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiDmViewsPartialUpdateRequest(c.Server, id, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ApiDmViewsPartialUpdateWithFormdataBody Update view
+//
+// Update view data with additional filters and other information for a specific project.
+//
+// Takes a body of the `application/x-www-form-urlencoded` content type.
+//
+// Corresponds with PATCH /api/dm/views/{id}/ (the `ApiDmViewsPartialUpdate` operationId).
+func (c *Client) ApiDmViewsPartialUpdateWithFormdataBody(ctx context.Context, id string, body ApiDmViewsPartialUpdateFormdataRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiDmViewsPartialUpdateRequestWithFormdataBody(c.Server, id, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ApiDmViewsUpdateWithBody Put view
+//
+// Overwrite view data with updated filters and other information for a specific project.
+//
+// Takes any type of body and a specified content type.
+//
+// Corresponds with PUT /api/dm/views/{id}/ (the `ApiDmViewsUpdate` operationId).
+func (c *Client) ApiDmViewsUpdateWithBody(ctx context.Context, id string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiDmViewsUpdateRequestWithBody(c.Server, id, contentType, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ApiDmViewsUpdate Put view
+//
+// Overwrite view data with updated filters and other information for a specific project.
+//
+// Takes a body of the `application/json` content type.
+//
+// Corresponds with PUT /api/dm/views/{id}/ (the `ApiDmViewsUpdate` operationId).
+func (c *Client) ApiDmViewsUpdate(ctx context.Context, id string, body ApiDmViewsUpdateJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiDmViewsUpdateRequest(c.Server, id, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ApiDmViewsUpdateWithFormdataBody Put view
+//
+// Overwrite view data with updated filters and other information for a specific project.
+//
+// Takes a body of the `application/x-www-form-urlencoded` content type.
+//
+// Corresponds with PUT /api/dm/views/{id}/ (the `ApiDmViewsUpdate` operationId).
+func (c *Client) ApiDmViewsUpdateWithFormdataBody(ctx context.Context, id string, body ApiDmViewsUpdateFormdataRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiDmViewsUpdateRequestWithFormdataBody(c.Server, id, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ApiFsmBackfillDestroy ✨ Cancel state backfill jobs
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Cancel state backfill jobs for the authenticated user's active organization. Can cancel a specific job by job_id, all jobs for a specific project by project_id, or all backfill jobs for the entire organization if neither is provided.
+//
+// Corresponds with DELETE /api/fsm/backfill/ (the `ApiFsmBackfillDestroy` operationId).
+func (c *Client) ApiFsmBackfillDestroy(ctx context.Context, params *ApiFsmBackfillDestroyParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiFsmBackfillDestroyRequest(c.Server, params)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ApiFsmBackfillCreate ✨ Trigger state backfill for organization
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Trigger state backfill for the authenticated user's active organization. Creates initial state records for entities without states. Requires administrator or owner role and state management access.
+//
+// Corresponds with POST /api/fsm/backfill/ (the `ApiFsmBackfillCreate` operationId).
+func (c *Client) ApiFsmBackfillCreate(ctx context.Context, params *ApiFsmBackfillCreateParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiFsmBackfillCreateRequest(c.Server, params)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ApiFsmBackfillJobsRetrieve ✨ List state backfill jobs
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Retrieve the latest 10 state backfill jobs for the authenticated user's active organization. Shows job history with status, progress, and timing information. Requires administrator or owner role and state management access.
+//
+// Corresponds with GET /api/fsm/backfill/jobs/ (the `ApiFsmBackfillJobsRetrieve` operationId).
+func (c *Client) ApiFsmBackfillJobsRetrieve(ctx context.Context, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiFsmBackfillJobsRetrieveRequest(c.Server)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ApiFsmBackfillStatusRetrieve ✨ Get state backfill status
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Retrieve the status of a state backfill job for the authenticated user's active organization. By default returns the aggregated org status, or specify job_id or project_id to get explicit job statuses. Shows progress, completion time, and any errors. Requires administrator or owner role and state management access.
+//
+// Corresponds with GET /api/fsm/backfill/status/ (the `ApiFsmBackfillStatusRetrieve` operationId).
+func (c *Client) ApiFsmBackfillStatusRetrieve(ctx context.Context, params *ApiFsmBackfillStatusRetrieveParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiFsmBackfillStatusRetrieveRequest(c.Server, params)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ApiFsmEntitiesHistoryList ✨ Get entity state history
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// # Get the state history of an entity
+//
+// Corresponds with GET /api/fsm/entities/{entity_name}/{entity_id}/history (the `ApiFsmEntitiesHistoryList` operationId).
+func (c *Client) ApiFsmEntitiesHistoryList(ctx context.Context, entityName string, entityId int, params *ApiFsmEntitiesHistoryListParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiFsmEntitiesHistoryListRequest(c.Server, entityName, entityId, params)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ApiFsmEntitiesTransitionCreateWithBody ✨ Execute manual state transition
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Execute a registered manual transition for an entity.
+//
+// Takes any type of body and a specified content type.
+//
+// Corresponds with POST /api/fsm/entities/{entity_name}/{entity_id}/transition/ (the `ApiFsmEntitiesTransitionCreate` operationId).
+func (c *Client) ApiFsmEntitiesTransitionCreateWithBody(ctx context.Context, entityName string, entityId int, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiFsmEntitiesTransitionCreateRequestWithBody(c.Server, entityName, entityId, contentType, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ApiFsmEntitiesTransitionCreate ✨ Execute manual state transition
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Execute a registered manual transition for an entity.
+//
+// Takes a body of the `application/json` content type.
+//
+// Corresponds with POST /api/fsm/entities/{entity_name}/{entity_id}/transition/ (the `ApiFsmEntitiesTransitionCreate` operationId).
+func (c *Client) ApiFsmEntitiesTransitionCreate(ctx context.Context, entityName string, entityId int, body ApiFsmEntitiesTransitionCreateJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiFsmEntitiesTransitionCreateRequest(c.Server, entityName, entityId, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ApiFsmEntitiesTransitionCreateWithFormdataBody ✨ Execute manual state transition
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Execute a registered manual transition for an entity.
+//
+// Takes a body of the `application/x-www-form-urlencoded` content type.
+//
+// Corresponds with POST /api/fsm/entities/{entity_name}/{entity_id}/transition/ (the `ApiFsmEntitiesTransitionCreate` operationId).
+func (c *Client) ApiFsmEntitiesTransitionCreateWithFormdataBody(ctx context.Context, entityName string, entityId int, body ApiFsmEntitiesTransitionCreateFormdataRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiFsmEntitiesTransitionCreateRequestWithFormdataBody(c.Server, entityName, entityId, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ApiFsmOrganizationsIdpAssignmentsHistoryList Get organization IdP group assignment history
+//
+// Read-only state history for IdP group assignments, scoped to the active organization (admin/owner only).
+//
+// Corresponds with GET /api/fsm/organizations/{org_id}/idp-assignments-history/ (the `ApiFsmOrganizationsIdpAssignmentsHistoryList` operationId).
+func (c *Client) ApiFsmOrganizationsIdpAssignmentsHistoryList(ctx context.Context, orgId int, params *ApiFsmOrganizationsIdpAssignmentsHistoryListParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiFsmOrganizationsIdpAssignmentsHistoryListRequest(c.Server, orgId, params)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ApiFsmOrganizationsMembershipHistoryList Get organization membership history
+//
+// Read-only state history for organization memberships, scoped to the active organization (admin/owner only).
+//
+// Corresponds with GET /api/fsm/organizations/{org_id}/membership-history/ (the `ApiFsmOrganizationsMembershipHistoryList` operationId).
+func (c *Client) ApiFsmOrganizationsMembershipHistoryList(ctx context.Context, orgId int, params *ApiFsmOrganizationsMembershipHistoryListParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiFsmOrganizationsMembershipHistoryListRequest(c.Server, orgId, params)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ApiFsmOrganizationsSettingsHistoryList Get organization settings history
+//
+// Read-only state history for organization SAML/SCIM settings, scoped to the active organization (admin/owner only).
+//
+// Corresponds with GET /api/fsm/organizations/{org_id}/settings-history/ (the `ApiFsmOrganizationsSettingsHistoryList` operationId).
+func (c *Client) ApiFsmOrganizationsSettingsHistoryList(ctx context.Context, orgId int, params *ApiFsmOrganizationsSettingsHistoryListParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiFsmOrganizationsSettingsHistoryListRequest(c.Server, orgId, params)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ApiFsmProjectsMembershipHistoryList Get project membership history
+//
+// Read-only state history for project memberships (admin/owner of the project organization only).
+//
+// Corresponds with GET /api/fsm/projects/{project_id}/membership-history/ (the `ApiFsmProjectsMembershipHistoryList` operationId).
+func (c *Client) ApiFsmProjectsMembershipHistoryList(ctx context.Context, projectId int, params *ApiFsmProjectsMembershipHistoryListParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiFsmProjectsMembershipHistoryListRequest(c.Server, projectId, params)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ApiFsmProjectsRoleHistoryList Get project role history
+//
+// Read-only state history for project role assignments (admin/owner of the project organization only).
+//
+// Corresponds with GET /api/fsm/projects/{project_id}/role-history/ (the `ApiFsmProjectsRoleHistoryList` operationId).
+func (c *Client) ApiFsmProjectsRoleHistoryList(ctx context.Context, projectId int, params *ApiFsmProjectsRoleHistoryListParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiFsmProjectsRoleHistoryListRequest(c.Server, projectId, params)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ApiFsmWorkspacesMembershipHistoryList Get workspace membership history
+//
+// Read-only state history for workspace memberships (admin/owner of the workspace organization only).
+//
+// Corresponds with GET /api/fsm/workspaces/{workspace_id}/membership-history/ (the `ApiFsmWorkspacesMembershipHistoryList` operationId).
+func (c *Client) ApiFsmWorkspacesMembershipHistoryList(ctx context.Context, workspaceId int, params *ApiFsmWorkspacesMembershipHistoryListParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiFsmWorkspacesMembershipHistoryListRequest(c.Server, workspaceId, params)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ApiImportFileUploadDestroy Delete file upload
+//
+// Delete a specific uploaded file.
+//
+// Corresponds with DELETE /api/import/file-upload/{id} (the `ApiImportFileUploadDestroy` operationId).
+func (c *Client) ApiImportFileUploadDestroy(ctx context.Context, id int, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiImportFileUploadDestroyRequest(c.Server, id)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ApiImportFileUploadRetrieve Get file upload
+//
+// Retrieve details about a specific uploaded file.
+//
+// Corresponds with GET /api/import/file-upload/{id} (the `ApiImportFileUploadRetrieve` operationId).
+func (c *Client) ApiImportFileUploadRetrieve(ctx context.Context, id int, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiImportFileUploadRetrieveRequest(c.Server, id)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ApiImportFileUploadPartialUpdateWithBody Update file upload
+//
+// Update a specific uploaded file.
+//
+// Takes any type of body and a specified content type.
+//
+// Corresponds with PATCH /api/import/file-upload/{id} (the `ApiImportFileUploadPartialUpdate` operationId).
+func (c *Client) ApiImportFileUploadPartialUpdateWithBody(ctx context.Context, id int, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiImportFileUploadPartialUpdateRequestWithBody(c.Server, id, contentType, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ApiImportFileUploadPartialUpdate Update file upload
+//
+// Update a specific uploaded file.
+//
+// Takes a body of the `application/json` content type.
+//
+// Corresponds with PATCH /api/import/file-upload/{id} (the `ApiImportFileUploadPartialUpdate` operationId).
+func (c *Client) ApiImportFileUploadPartialUpdate(ctx context.Context, id int, body ApiImportFileUploadPartialUpdateJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiImportFileUploadPartialUpdateRequest(c.Server, id, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ApiImportFileUploadPartialUpdateWithFormdataBody Update file upload
+//
+// Update a specific uploaded file.
+//
+// Takes a body of the `application/x-www-form-urlencoded` content type.
+//
+// Corresponds with PATCH /api/import/file-upload/{id} (the `ApiImportFileUploadPartialUpdate` operationId).
+func (c *Client) ApiImportFileUploadPartialUpdateWithFormdataBody(ctx context.Context, id int, body ApiImportFileUploadPartialUpdateFormdataRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiImportFileUploadPartialUpdateRequestWithFormdataBody(c.Server, id, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ApiInferenceRunsBulkIndicatorsRetrieve ✨ Bulk fetch indicators for inference runs
+//
+// Bulk fetch default indicators for multiple inference runs at once.
+//
+// Returns aggregated metrics for up to 20 completed runs in a single request,
+// used by the Comparison Matrix to show all versions side by side.
+//
+// Corresponds with GET /api/inference-runs/bulk-indicators/ (the `ApiInferenceRunsBulkIndicatorsRetrieve` operationId).
+func (c *Client) ApiInferenceRunsBulkIndicatorsRetrieve(ctx context.Context, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiInferenceRunsBulkIndicatorsRetrieveRequest(c.Server)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ApiInferenceRunsReEvaluateCreateWithBody ✨ Re-evaluate specific tasks from a previous run
+//
+// Create a new inference run targeting only specific tasks (re-evaluation).
+//
+// Supports four modes:
+// - custom: provide explicit task_ids
+// - failed: re-run tasks with failed predictions from a source run
+// - incorrect: re-run tasks with score < 1.0 from a source run
+// - regressions: re-run tasks that regressed between two runs
+//
+// Takes any type of body and a specified content type.
+//
+// Corresponds with POST /api/inference-runs/re-evaluate/ (the `ApiInferenceRunsReEvaluateCreate` operationId).
+func (c *Client) ApiInferenceRunsReEvaluateCreateWithBody(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiInferenceRunsReEvaluateCreateRequestWithBody(c.Server, contentType, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ApiInferenceRunsReEvaluateCreate ✨ Re-evaluate specific tasks from a previous run
+//
+// Create a new inference run targeting only specific tasks (re-evaluation).
+//
+// Supports four modes:
+// - custom: provide explicit task_ids
+// - failed: re-run tasks with failed predictions from a source run
+// - incorrect: re-run tasks with score < 1.0 from a source run
+// - regressions: re-run tasks that regressed between two runs
+//
+// Takes a body of the `application/json` content type.
+//
+// Corresponds with POST /api/inference-runs/re-evaluate/ (the `ApiInferenceRunsReEvaluateCreate` operationId).
+func (c *Client) ApiInferenceRunsReEvaluateCreate(ctx context.Context, body ApiInferenceRunsReEvaluateCreateJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiInferenceRunsReEvaluateCreateRequest(c.Server, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ApiInferenceRunsReEvaluateCreateWithFormdataBody ✨ Re-evaluate specific tasks from a previous run
+//
+// Create a new inference run targeting only specific tasks (re-evaluation).
+//
+// Supports four modes:
+// - custom: provide explicit task_ids
+// - failed: re-run tasks with failed predictions from a source run
+// - incorrect: re-run tasks with score < 1.0 from a source run
+// - regressions: re-run tasks that regressed between two runs
+//
+// Takes a body of the `application/x-www-form-urlencoded` content type.
+//
+// Corresponds with POST /api/inference-runs/re-evaluate/ (the `ApiInferenceRunsReEvaluateCreate` operationId).
+func (c *Client) ApiInferenceRunsReEvaluateCreateWithFormdataBody(ctx context.Context, body ApiInferenceRunsReEvaluateCreateFormdataRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiInferenceRunsReEvaluateCreateRequestWithFormdataBody(c.Server, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ApiInferenceRunsRegressionsRetrieve ✨ Compare correctness transitions between inference runs
+//
+// Compare correctness transitions between two inference runs.
+//
+// Classifies each task as regression, improvement, stable_correct,
+// stable_incorrect, new, or removed based on prediction scores.
+//
+// Corresponds with GET /api/inference-runs/regressions/ (the `ApiInferenceRunsRegressionsRetrieve` operationId).
+func (c *Client) ApiInferenceRunsRegressionsRetrieve(ctx context.Context, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiInferenceRunsRegressionsRetrieveRequest(c.Server)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ApiInferenceRunsIndicatorsList ✨ Get key indicators
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Get key indicators for the Prompt dashboard.
+//
+// Corresponds with GET /api/inference-runs/{id}/indicators/ (the `ApiInferenceRunsIndicatorsList` operationId).
+func (c *Client) ApiInferenceRunsIndicatorsList(ctx context.Context, id int, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiInferenceRunsIndicatorsListRequest(c.Server, id)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ApiInferenceRunsIndicatorsRetrieve ✨ Get key indicator
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Get a specific key indicator for the Prompt dashboard.
+//
+// Corresponds with GET /api/inference-runs/{id}/indicators/{indicator_key} (the `ApiInferenceRunsIndicatorsRetrieve` operationId).
+func (c *Client) ApiInferenceRunsIndicatorsRetrieve(ctx context.Context, id int, indicatorKey string, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiInferenceRunsIndicatorsRetrieveRequest(c.Server, id, indicatorKey)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ApiInterfacesList ✨ List saved interfaces
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// List saved interfaces for the current organization.
+//
+// Corresponds with GET /api/interfaces/ (the `ApiInterfacesList` operationId).
+func (c *Client) ApiInterfacesList(ctx context.Context, params *ApiInterfacesListParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiInterfacesListRequest(c.Server, params)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ApiInterfacesCreateWithBody ✨ Create a saved interface
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Create a new saved interface.
+//
+// Takes any type of body and a specified content type.
+//
+// Corresponds with POST /api/interfaces/ (the `ApiInterfacesCreate` operationId).
+func (c *Client) ApiInterfacesCreateWithBody(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiInterfacesCreateRequestWithBody(c.Server, contentType, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ApiInterfacesCreate ✨ Create a saved interface
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Create a new saved interface.
+//
+// Takes a body of the `application/json` content type.
+//
+// Corresponds with POST /api/interfaces/ (the `ApiInterfacesCreate` operationId).
+func (c *Client) ApiInterfacesCreate(ctx context.Context, body ApiInterfacesCreateJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiInterfacesCreateRequest(c.Server, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ApiInterfacesCreateWithFormdataBody ✨ Create a saved interface
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Create a new saved interface.
+//
+// Takes a body of the `application/x-www-form-urlencoded` content type.
+//
+// Corresponds with POST /api/interfaces/ (the `ApiInterfacesCreate` operationId).
+func (c *Client) ApiInterfacesCreateWithFormdataBody(ctx context.Context, body ApiInterfacesCreateFormdataRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiInterfacesCreateRequestWithFormdataBody(c.Server, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ApiInterfacesClassicReplacementsRetrieve ✨ List classic template replacements
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Map each classic labeling template (keyed by "<category>/<name>") to the system interface template and preset parameters that replace it. Empty when modern interface components are not available to the caller.
+//
+// Corresponds with GET /api/interfaces/classic-replacements/ (the `ApiInterfacesClassicReplacementsRetrieve` operationId).
+func (c *Client) ApiInterfacesClassicReplacementsRetrieve(ctx context.Context, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiInterfacesClassicReplacementsRetrieveRequest(c.Server)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ApiInterfacesDestroy ✨ Delete a saved interface
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Delete a saved interface.
+//
+// Corresponds with DELETE /api/interfaces/{id}/ (the `ApiInterfacesDestroy` operationId).
+func (c *Client) ApiInterfacesDestroy(ctx context.Context, id int, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiInterfacesDestroyRequest(c.Server, id)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ApiInterfacesRetrieve ✨ Get a saved interface
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Retrieve a saved interface by ID.
+//
+// Corresponds with GET /api/interfaces/{id}/ (the `ApiInterfacesRetrieve` operationId).
+func (c *Client) ApiInterfacesRetrieve(ctx context.Context, id int, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiInterfacesRetrieveRequest(c.Server, id)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ApiInterfacesPartialUpdateWithBody ✨ Partially update a saved interface
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Partially update a saved interface.
+//
+// Takes any type of body and a specified content type.
+//
+// Corresponds with PATCH /api/interfaces/{id}/ (the `ApiInterfacesPartialUpdate` operationId).
+func (c *Client) ApiInterfacesPartialUpdateWithBody(ctx context.Context, id int, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiInterfacesPartialUpdateRequestWithBody(c.Server, id, contentType, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ApiInterfacesPartialUpdate ✨ Partially update a saved interface
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Partially update a saved interface.
+//
+// Takes a body of the `application/json` content type.
+//
+// Corresponds with PATCH /api/interfaces/{id}/ (the `ApiInterfacesPartialUpdate` operationId).
+func (c *Client) ApiInterfacesPartialUpdate(ctx context.Context, id int, body ApiInterfacesPartialUpdateJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiInterfacesPartialUpdateRequest(c.Server, id, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ApiInterfacesPartialUpdateWithFormdataBody ✨ Partially update a saved interface
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Partially update a saved interface.
+//
+// Takes a body of the `application/x-www-form-urlencoded` content type.
+//
+// Corresponds with PATCH /api/interfaces/{id}/ (the `ApiInterfacesPartialUpdate` operationId).
+func (c *Client) ApiInterfacesPartialUpdateWithFormdataBody(ctx context.Context, id int, body ApiInterfacesPartialUpdateFormdataRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiInterfacesPartialUpdateRequestWithFormdataBody(c.Server, id, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ApiInterfacesUpdateWithBody ✨ Update a saved interface
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Update a saved interface.
+//
+// Takes any type of body and a specified content type.
+//
+// Corresponds with PUT /api/interfaces/{id}/ (the `ApiInterfacesUpdate` operationId).
+func (c *Client) ApiInterfacesUpdateWithBody(ctx context.Context, id int, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiInterfacesUpdateRequestWithBody(c.Server, id, contentType, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ApiInterfacesUpdate ✨ Update a saved interface
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Update a saved interface.
+//
+// Takes a body of the `application/json` content type.
+//
+// Corresponds with PUT /api/interfaces/{id}/ (the `ApiInterfacesUpdate` operationId).
+func (c *Client) ApiInterfacesUpdate(ctx context.Context, id int, body ApiInterfacesUpdateJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiInterfacesUpdateRequest(c.Server, id, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ApiInterfacesUpdateWithFormdataBody ✨ Update a saved interface
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Update a saved interface.
+//
+// Takes a body of the `application/x-www-form-urlencoded` content type.
+//
+// Corresponds with PUT /api/interfaces/{id}/ (the `ApiInterfacesUpdate` operationId).
+func (c *Client) ApiInterfacesUpdateWithFormdataBody(ctx context.Context, id int, body ApiInterfacesUpdateFormdataRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiInterfacesUpdateRequestWithFormdataBody(c.Server, id, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ApiInterfacesAppendVersionsCreateWithBody ✨ Append saved interface versions
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Append one or more versions to a saved interface with server-assigned stable version IDs.
+//
+// Takes any type of body and a specified content type.
+//
+// Corresponds with POST /api/interfaces/{id}/append_versions/ (the `ApiInterfacesAppendVersionsCreate` operationId).
+func (c *Client) ApiInterfacesAppendVersionsCreateWithBody(ctx context.Context, id int, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiInterfacesAppendVersionsCreateRequestWithBody(c.Server, id, contentType, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ApiInterfacesAppendVersionsCreate ✨ Append saved interface versions
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Append one or more versions to a saved interface with server-assigned stable version IDs.
+//
+// Takes a body of the `application/json` content type.
+//
+// Corresponds with POST /api/interfaces/{id}/append_versions/ (the `ApiInterfacesAppendVersionsCreate` operationId).
+func (c *Client) ApiInterfacesAppendVersionsCreate(ctx context.Context, id int, body ApiInterfacesAppendVersionsCreateJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiInterfacesAppendVersionsCreateRequest(c.Server, id, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ApiInterfacesAppendVersionsCreateWithFormdataBody ✨ Append saved interface versions
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Append one or more versions to a saved interface with server-assigned stable version IDs.
+//
+// Takes a body of the `application/x-www-form-urlencoded` content type.
+//
+// Corresponds with POST /api/interfaces/{id}/append_versions/ (the `ApiInterfacesAppendVersionsCreate` operationId).
+func (c *Client) ApiInterfacesAppendVersionsCreateWithFormdataBody(ctx context.Context, id int, body ApiInterfacesAppendVersionsCreateFormdataRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiInterfacesAppendVersionsCreateRequestWithFormdataBody(c.Server, id, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ApiInterfacesDuplicateCreateWithBody ✨ Duplicate a saved interface
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Create a copy of an existing saved interface.
+//
+// Takes any type of body and a specified content type.
+//
+// Corresponds with POST /api/interfaces/{id}/duplicate/ (the `ApiInterfacesDuplicateCreate` operationId).
+func (c *Client) ApiInterfacesDuplicateCreateWithBody(ctx context.Context, id int, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiInterfacesDuplicateCreateRequestWithBody(c.Server, id, contentType, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ApiInterfacesDuplicateCreate ✨ Duplicate a saved interface
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Create a copy of an existing saved interface.
+//
+// Takes a body of the `application/json` content type.
+//
+// Corresponds with POST /api/interfaces/{id}/duplicate/ (the `ApiInterfacesDuplicateCreate` operationId).
+func (c *Client) ApiInterfacesDuplicateCreate(ctx context.Context, id int, body ApiInterfacesDuplicateCreateJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiInterfacesDuplicateCreateRequest(c.Server, id, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ApiInterfacesDuplicateCreateWithFormdataBody ✨ Duplicate a saved interface
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Create a copy of an existing saved interface.
+//
+// Takes a body of the `application/x-www-form-urlencoded` content type.
+//
+// Corresponds with POST /api/interfaces/{id}/duplicate/ (the `ApiInterfacesDuplicateCreate` operationId).
+func (c *Client) ApiInterfacesDuplicateCreateWithFormdataBody(ctx context.Context, id int, body ApiInterfacesDuplicateCreateFormdataRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiInterfacesDuplicateCreateRequestWithFormdataBody(c.Server, id, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ApiInterfacesMoveCreateWithBody ✨ Move a saved interface to another workspace
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Move a saved interface to a workspace, your Personal Sandbox, or Shared (`workspace: null`). A workspace-scoped interface can only be used by projects in its workspace, so connected projects move with it when needed. Send `dry_run: true` first to get the move plan, then confirm with `dry_run: false` and the `expected_project_ids` from that plan. The response is the plan in every case; a blocked move or a changed plan returns 409 with the fresh plan.
+//
+// Takes any type of body and a specified content type.
+//
+// Corresponds with POST /api/interfaces/{id}/move/ (the `ApiInterfacesMoveCreate` operationId).
+func (c *Client) ApiInterfacesMoveCreateWithBody(ctx context.Context, id int, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiInterfacesMoveCreateRequestWithBody(c.Server, id, contentType, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ApiInterfacesMoveCreate ✨ Move a saved interface to another workspace
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Move a saved interface to a workspace, your Personal Sandbox, or Shared (`workspace: null`). A workspace-scoped interface can only be used by projects in its workspace, so connected projects move with it when needed. Send `dry_run: true` first to get the move plan, then confirm with `dry_run: false` and the `expected_project_ids` from that plan. The response is the plan in every case; a blocked move or a changed plan returns 409 with the fresh plan.
+//
+// Takes a body of the `application/json` content type.
+//
+// Corresponds with POST /api/interfaces/{id}/move/ (the `ApiInterfacesMoveCreate` operationId).
+func (c *Client) ApiInterfacesMoveCreate(ctx context.Context, id int, body ApiInterfacesMoveCreateJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiInterfacesMoveCreateRequest(c.Server, id, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ApiInterfacesMoveCreateWithFormdataBody ✨ Move a saved interface to another workspace
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Move a saved interface to a workspace, your Personal Sandbox, or Shared (`workspace: null`). A workspace-scoped interface can only be used by projects in its workspace, so connected projects move with it when needed. Send `dry_run: true` first to get the move plan, then confirm with `dry_run: false` and the `expected_project_ids` from that plan. The response is the plan in every case; a blocked move or a changed plan returns 409 with the fresh plan.
+//
+// Takes a body of the `application/x-www-form-urlencoded` content type.
+//
+// Corresponds with POST /api/interfaces/{id}/move/ (the `ApiInterfacesMoveCreate` operationId).
+func (c *Client) ApiInterfacesMoveCreateWithFormdataBody(ctx context.Context, id int, body ApiInterfacesMoveCreateFormdataRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiInterfacesMoveCreateRequestWithFormdataBody(c.Server, id, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ApiInterfacesPublishCreateWithBody ✨ Publish a saved interface version
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Publish one saved interface version by stable version ID.
+//
+// Takes any type of body and a specified content type.
+//
+// Corresponds with POST /api/interfaces/{id}/publish/ (the `ApiInterfacesPublishCreate` operationId).
+func (c *Client) ApiInterfacesPublishCreateWithBody(ctx context.Context, id int, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiInterfacesPublishCreateRequestWithBody(c.Server, id, contentType, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ApiInterfacesPublishCreate ✨ Publish a saved interface version
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Publish one saved interface version by stable version ID.
+//
+// Takes a body of the `application/json` content type.
+//
+// Corresponds with POST /api/interfaces/{id}/publish/ (the `ApiInterfacesPublishCreate` operationId).
+func (c *Client) ApiInterfacesPublishCreate(ctx context.Context, id int, body ApiInterfacesPublishCreateJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiInterfacesPublishCreateRequest(c.Server, id, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ApiInterfacesPublishCreateWithFormdataBody ✨ Publish a saved interface version
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Publish one saved interface version by stable version ID.
+//
+// Takes a body of the `application/x-www-form-urlencoded` content type.
+//
+// Corresponds with POST /api/interfaces/{id}/publish/ (the `ApiInterfacesPublishCreate` operationId).
+func (c *Client) ApiInterfacesPublishCreateWithFormdataBody(ctx context.Context, id int, body ApiInterfacesPublishCreateFormdataRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiInterfacesPublishCreateRequestWithFormdataBody(c.Server, id, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ApiInterfacesUnpublishCreateWithBody ✨ Unpublish a saved interface version
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Unpublish one saved interface version by stable version ID.
+//
+// Takes any type of body and a specified content type.
+//
+// Corresponds with POST /api/interfaces/{id}/unpublish/ (the `ApiInterfacesUnpublishCreate` operationId).
+func (c *Client) ApiInterfacesUnpublishCreateWithBody(ctx context.Context, id int, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiInterfacesUnpublishCreateRequestWithBody(c.Server, id, contentType, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ApiInterfacesUnpublishCreate ✨ Unpublish a saved interface version
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Unpublish one saved interface version by stable version ID.
+//
+// Takes a body of the `application/json` content type.
+//
+// Corresponds with POST /api/interfaces/{id}/unpublish/ (the `ApiInterfacesUnpublishCreate` operationId).
+func (c *Client) ApiInterfacesUnpublishCreate(ctx context.Context, id int, body ApiInterfacesUnpublishCreateJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiInterfacesUnpublishCreateRequest(c.Server, id, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ApiInterfacesUnpublishCreateWithFormdataBody ✨ Unpublish a saved interface version
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Unpublish one saved interface version by stable version ID.
+//
+// Takes a body of the `application/x-www-form-urlencoded` content type.
+//
+// Corresponds with POST /api/interfaces/{id}/unpublish/ (the `ApiInterfacesUnpublishCreate` operationId).
+func (c *Client) ApiInterfacesUnpublishCreateWithFormdataBody(ctx context.Context, id int, body ApiInterfacesUnpublishCreateFormdataRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiInterfacesUnpublishCreateRequestWithFormdataBody(c.Server, id, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ApiInterfacesUpdateDescriptionCreateWithBody ✨ Update a saved interface version description
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Update the description for one saved interface version by stable version ID.
+//
+// Takes any type of body and a specified content type.
+//
+// Corresponds with POST /api/interfaces/{id}/update_description/ (the `ApiInterfacesUpdateDescriptionCreate` operationId).
+func (c *Client) ApiInterfacesUpdateDescriptionCreateWithBody(ctx context.Context, id int, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiInterfacesUpdateDescriptionCreateRequestWithBody(c.Server, id, contentType, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ApiInterfacesUpdateDescriptionCreate ✨ Update a saved interface version description
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Update the description for one saved interface version by stable version ID.
+//
+// Takes a body of the `application/json` content type.
+//
+// Corresponds with POST /api/interfaces/{id}/update_description/ (the `ApiInterfacesUpdateDescriptionCreate` operationId).
+func (c *Client) ApiInterfacesUpdateDescriptionCreate(ctx context.Context, id int, body ApiInterfacesUpdateDescriptionCreateJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiInterfacesUpdateDescriptionCreateRequest(c.Server, id, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ApiInterfacesUpdateDescriptionCreateWithFormdataBody ✨ Update a saved interface version description
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Update the description for one saved interface version by stable version ID.
+//
+// Takes a body of the `application/x-www-form-urlencoded` content type.
+//
+// Corresponds with POST /api/interfaces/{id}/update_description/ (the `ApiInterfacesUpdateDescriptionCreate` operationId).
+func (c *Client) ApiInterfacesUpdateDescriptionCreateWithFormdataBody(ctx context.Context, id int, body ApiInterfacesUpdateDescriptionCreateFormdataRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiInterfacesUpdateDescriptionCreateRequestWithFormdataBody(c.Server, id, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ApiInviteRetrieve Get invite link
+//
+// Get invite link for organization.
+//
+// Corresponds with GET /api/invite (the `ApiInviteRetrieve` operationId).
+func (c *Client) ApiInviteRetrieve(ctx context.Context, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiInviteRetrieveRequest(c.Server)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ApiInviteResetTokenCreate Reset organization token
+//
+// Reset the token used in the invitation link to invite someone to an organization.
+//
+// Corresponds with POST /api/invite/reset-token (the `ApiInviteResetTokenCreate` operationId).
+func (c *Client) ApiInviteResetTokenCreate(ctx context.Context, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiInviteResetTokenCreateRequest(c.Server)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ApiInviteRevokeCreateWithBody ✨ Revoke invite
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// # Revoke invite to organization
+//
+// Takes any type of body and a specified content type.
+//
+// Corresponds with POST /api/invite/revoke (the `ApiInviteRevokeCreate` operationId).
+func (c *Client) ApiInviteRevokeCreateWithBody(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiInviteRevokeCreateRequestWithBody(c.Server, contentType, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ApiInviteRevokeCreate ✨ Revoke invite
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// # Revoke invite to organization
+//
+// Takes a body of the `application/json` content type.
+//
+// Corresponds with POST /api/invite/revoke (the `ApiInviteRevokeCreate` operationId).
+func (c *Client) ApiInviteRevokeCreate(ctx context.Context, body ApiInviteRevokeCreateJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiInviteRevokeCreateRequest(c.Server, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ApiInviteRevokeCreateWithFormdataBody ✨ Revoke invite
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// # Revoke invite to organization
+//
+// Takes a body of the `application/x-www-form-urlencoded` content type.
+//
+// Corresponds with POST /api/invite/revoke (the `ApiInviteRevokeCreate` operationId).
+func (c *Client) ApiInviteRevokeCreateWithFormdataBody(ctx context.Context, body ApiInviteRevokeCreateFormdataRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiInviteRevokeCreateRequestWithFormdataBody(c.Server, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ApiInviteSendEmailCreateWithBody ✨ Send email with invite
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// # Send email with invite to organization
+//
+// Takes any type of body and a specified content type.
+//
+// Corresponds with POST /api/invite/send-email (the `ApiInviteSendEmailCreate` operationId).
+func (c *Client) ApiInviteSendEmailCreateWithBody(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiInviteSendEmailCreateRequestWithBody(c.Server, contentType, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ApiInviteSendEmailCreate ✨ Send email with invite
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// # Send email with invite to organization
+//
+// Takes a body of the `application/json` content type.
+//
+// Corresponds with POST /api/invite/send-email (the `ApiInviteSendEmailCreate` operationId).
+func (c *Client) ApiInviteSendEmailCreate(ctx context.Context, body ApiInviteSendEmailCreateJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiInviteSendEmailCreateRequest(c.Server, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ApiInviteSendEmailCreateWithFormdataBody ✨ Send email with invite
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// # Send email with invite to organization
+//
+// Takes a body of the `application/x-www-form-urlencoded` content type.
+//
+// Corresponds with POST /api/invite/send-email (the `ApiInviteSendEmailCreate` operationId).
+func (c *Client) ApiInviteSendEmailCreateWithFormdataBody(ctx context.Context, body ApiInviteSendEmailCreateFormdataRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiInviteSendEmailCreateRequestWithFormdataBody(c.Server, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ApiJwtSettingsRetrieve Retrieve JWT Settings
+//
+// Retrieve JWT settings for the currently active organization.
+//
+// Corresponds with GET /api/jwt/settings (the `ApiJwtSettingsRetrieve` operationId).
+func (c *Client) ApiJwtSettingsRetrieve(ctx context.Context, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiJwtSettingsRetrieveRequest(c.Server)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ApiJwtSettingsCreateWithBody Update JWT Settings
+//
+// Update JWT settings for the currently active organization.
+//
+// Takes any type of body and a specified content type.
+//
+// Corresponds with POST /api/jwt/settings (the `ApiJwtSettingsCreate` operationId).
+func (c *Client) ApiJwtSettingsCreateWithBody(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiJwtSettingsCreateRequestWithBody(c.Server, contentType, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ApiJwtSettingsCreate Update JWT Settings
+//
+// Update JWT settings for the currently active organization.
+//
+// Takes a body of the `application/json` content type.
+//
+// Corresponds with POST /api/jwt/settings (the `ApiJwtSettingsCreate` operationId).
+func (c *Client) ApiJwtSettingsCreate(ctx context.Context, body ApiJwtSettingsCreateJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiJwtSettingsCreateRequest(c.Server, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ApiJwtSettingsCreateWithFormdataBody Update JWT Settings
+//
+// Update JWT settings for the currently active organization.
+//
+// Takes a body of the `application/x-www-form-urlencoded` content type.
+//
+// Corresponds with POST /api/jwt/settings (the `ApiJwtSettingsCreate` operationId).
+func (c *Client) ApiJwtSettingsCreateWithFormdataBody(ctx context.Context, body ApiJwtSettingsCreateFormdataRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiJwtSettingsCreateRequestWithFormdataBody(c.Server, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ApiLabelLinksList List label links
+//
+// List label links for a specific label and project.
+//
+// Corresponds with GET /api/label_links/ (the `ApiLabelLinksList` operationId).
+func (c *Client) ApiLabelLinksList(ctx context.Context, params *ApiLabelLinksListParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiLabelLinksListRequest(c.Server, params)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ApiLabelLinksCreateWithBody Create label links
+//
+// Create label links to link new custom labels to your project labeling configuration.
+//
+// Takes any type of body and a specified content type.
+//
+// Corresponds with POST /api/label_links/ (the `ApiLabelLinksCreate` operationId).
+func (c *Client) ApiLabelLinksCreateWithBody(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiLabelLinksCreateRequestWithBody(c.Server, contentType, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ApiLabelLinksCreate Create label links
+//
+// Create label links to link new custom labels to your project labeling configuration.
+//
+// Takes a body of the `application/json` content type.
+//
+// Corresponds with POST /api/label_links/ (the `ApiLabelLinksCreate` operationId).
+func (c *Client) ApiLabelLinksCreate(ctx context.Context, body ApiLabelLinksCreateJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiLabelLinksCreateRequest(c.Server, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ApiLabelLinksCreateWithFormdataBody Create label links
+//
+// Create label links to link new custom labels to your project labeling configuration.
+//
+// Takes a body of the `application/x-www-form-urlencoded` content type.
+//
+// Corresponds with POST /api/label_links/ (the `ApiLabelLinksCreate` operationId).
+func (c *Client) ApiLabelLinksCreateWithFormdataBody(ctx context.Context, body ApiLabelLinksCreateFormdataRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiLabelLinksCreateRequestWithFormdataBody(c.Server, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ApiLabelLinksDestroy Remove label link
+//
+//	Remove a label link that links custom labels to your project labeling configuration. If you remove a label link,
+//	the label stops being available for the project it was linked to. You can add a new label link at any time.
+//
+// Corresponds with DELETE /api/label_links/{id}/ (the `ApiLabelLinksDestroy` operationId).
+func (c *Client) ApiLabelLinksDestroy(ctx context.Context, id int, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiLabelLinksDestroyRequest(c.Server, id)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ApiLabelLinksRetrieve Get label link
+//
+// Get label links for a specific project configuration.
+//
+// Corresponds with GET /api/label_links/{id}/ (the `ApiLabelLinksRetrieve` operationId).
+func (c *Client) ApiLabelLinksRetrieve(ctx context.Context, id int, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiLabelLinksRetrieveRequest(c.Server, id)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ApiLabelLinksPartialUpdateWithBody Update label link
+//
+//	Update a label link that links custom labels to a project labeling configuration, for example if the fromName,
+//	toName, or name parameters for a tag in the labeling configuration change.
+//
+// Takes any type of body and a specified content type.
+//
+// Corresponds with PATCH /api/label_links/{id}/ (the `ApiLabelLinksPartialUpdate` operationId).
+func (c *Client) ApiLabelLinksPartialUpdateWithBody(ctx context.Context, id int, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiLabelLinksPartialUpdateRequestWithBody(c.Server, id, contentType, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ApiLabelLinksPartialUpdate Update label link
+//
+//	Update a label link that links custom labels to a project labeling configuration, for example if the fromName,
+//	toName, or name parameters for a tag in the labeling configuration change.
+//
+// Takes a body of the `application/json` content type.
+//
+// Corresponds with PATCH /api/label_links/{id}/ (the `ApiLabelLinksPartialUpdate` operationId).
+func (c *Client) ApiLabelLinksPartialUpdate(ctx context.Context, id int, body ApiLabelLinksPartialUpdateJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiLabelLinksPartialUpdateRequest(c.Server, id, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ApiLabelLinksPartialUpdateWithFormdataBody Update label link
+//
+//	Update a label link that links custom labels to a project labeling configuration, for example if the fromName,
+//	toName, or name parameters for a tag in the labeling configuration change.
+//
+// Takes a body of the `application/x-www-form-urlencoded` content type.
+//
+// Corresponds with PATCH /api/label_links/{id}/ (the `ApiLabelLinksPartialUpdate` operationId).
+func (c *Client) ApiLabelLinksPartialUpdateWithFormdataBody(ctx context.Context, id int, body ApiLabelLinksPartialUpdateFormdataRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiLabelLinksPartialUpdateRequestWithFormdataBody(c.Server, id, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ApiLabelsList List labels
+//
+// List all custom labels added to your project separately from the labeling configuration.
+//
+// Corresponds with GET /api/labels/ (the `ApiLabelsList` operationId).
+func (c *Client) ApiLabelsList(ctx context.Context, params *ApiLabelsListParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiLabelsListRequest(c.Server, params)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ApiLabelsCreateWithBody Create labels
+//
+// Add labels to your project without updating the labeling configuration.
+//
+// Takes any type of body and a specified content type.
+//
+// Corresponds with POST /api/labels/ (the `ApiLabelsCreate` operationId).
+func (c *Client) ApiLabelsCreateWithBody(ctx context.Context, params *ApiLabelsCreateParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiLabelsCreateRequestWithBody(c.Server, params, contentType, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ApiLabelsCreate Create labels
+//
+// Add labels to your project without updating the labeling configuration.
+//
+// Takes a body of the `application/json` content type.
+//
+// Corresponds with POST /api/labels/ (the `ApiLabelsCreate` operationId).
+func (c *Client) ApiLabelsCreate(ctx context.Context, params *ApiLabelsCreateParams, body ApiLabelsCreateJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiLabelsCreateRequest(c.Server, params, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ApiLabelsCreateWithFormdataBody Create labels
+//
+// Add labels to your project without updating the labeling configuration.
+//
+// Takes a body of the `application/x-www-form-urlencoded` content type.
+//
+// Corresponds with POST /api/labels/ (the `ApiLabelsCreate` operationId).
+func (c *Client) ApiLabelsCreateWithFormdataBody(ctx context.Context, params *ApiLabelsCreateParams, body ApiLabelsCreateFormdataRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiLabelsCreateRequestWithFormdataBody(c.Server, params, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ApiLabelsBulkCreateWithBody Bulk update labels
+//
+//	If you want to update the labels in saved annotations, use this endpoint.
+//
+// Takes any type of body and a specified content type.
+//
+// Corresponds with POST /api/labels/bulk (the `ApiLabelsBulkCreate` operationId).
+func (c *Client) ApiLabelsBulkCreateWithBody(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiLabelsBulkCreateRequestWithBody(c.Server, contentType, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ApiLabelsBulkCreate Bulk update labels
+//
+//	If you want to update the labels in saved annotations, use this endpoint.
+//
+// Takes a body of the `application/json` content type.
+//
+// Corresponds with POST /api/labels/bulk (the `ApiLabelsBulkCreate` operationId).
+func (c *Client) ApiLabelsBulkCreate(ctx context.Context, body ApiLabelsBulkCreateJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiLabelsBulkCreateRequest(c.Server, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ApiLabelsBulkCreateWithFormdataBody Bulk update labels
+//
+//	If you want to update the labels in saved annotations, use this endpoint.
+//
+// Takes a body of the `application/x-www-form-urlencoded` content type.
+//
+// Corresponds with POST /api/labels/bulk (the `ApiLabelsBulkCreate` operationId).
+func (c *Client) ApiLabelsBulkCreateWithFormdataBody(ctx context.Context, body ApiLabelsBulkCreateFormdataRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiLabelsBulkCreateRequestWithFormdataBody(c.Server, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ApiLabelsDestroy Remove labels
+//
+// Remove labels from your project without updating the labeling configuration.
+//
+// Corresponds with DELETE /api/labels/{id}/ (the `ApiLabelsDestroy` operationId).
+func (c *Client) ApiLabelsDestroy(ctx context.Context, id int, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiLabelsDestroyRequest(c.Server, id)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ApiLabelsRetrieve Get label
+//
+//	Retrieve a specific custom label used for your project by its ID.
+//
+// Corresponds with GET /api/labels/{id}/ (the `ApiLabelsRetrieve` operationId).
+func (c *Client) ApiLabelsRetrieve(ctx context.Context, id int, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiLabelsRetrieveRequest(c.Server, id)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ApiLabelsPartialUpdateWithBody Update labels
+//
+// Update labels used for your project without updating the labeling configuration.
+//
+// Takes any type of body and a specified content type.
+//
+// Corresponds with PATCH /api/labels/{id}/ (the `ApiLabelsPartialUpdate` operationId).
+func (c *Client) ApiLabelsPartialUpdateWithBody(ctx context.Context, id int, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiLabelsPartialUpdateRequestWithBody(c.Server, id, contentType, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ApiLabelsPartialUpdate Update labels
+//
+// Update labels used for your project without updating the labeling configuration.
+//
+// Takes a body of the `application/json` content type.
+//
+// Corresponds with PATCH /api/labels/{id}/ (the `ApiLabelsPartialUpdate` operationId).
+func (c *Client) ApiLabelsPartialUpdate(ctx context.Context, id int, body ApiLabelsPartialUpdateJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiLabelsPartialUpdateRequest(c.Server, id, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ApiLabelsPartialUpdateWithFormdataBody Update labels
+//
+// Update labels used for your project without updating the labeling configuration.
+//
+// Takes a body of the `application/x-www-form-urlencoded` content type.
+//
+// Corresponds with PATCH /api/labels/{id}/ (the `ApiLabelsPartialUpdate` operationId).
+func (c *Client) ApiLabelsPartialUpdateWithFormdataBody(ctx context.Context, id int, body ApiLabelsPartialUpdateFormdataRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiLabelsPartialUpdateRequestWithFormdataBody(c.Server, id, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ApiLearningResourcesList ✨ List learning resources
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// List org-level courses without page content.
+//
+// Corresponds with GET /api/learning-resources/ (the `ApiLearningResourcesList` operationId).
+func (c *Client) ApiLearningResourcesList(ctx context.Context, params *ApiLearningResourcesListParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiLearningResourcesListRequest(c.Server, params)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ApiLearningResourcesCreateWithBody ✨ Create a learning resource
+//
+// Takes any type of body and a specified content type.
+//
+// Corresponds with POST /api/learning-resources/ (the `ApiLearningResourcesCreate` operationId).
+func (c *Client) ApiLearningResourcesCreateWithBody(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiLearningResourcesCreateRequestWithBody(c.Server, contentType, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ApiLearningResourcesCreate ✨ Create a learning resource
+//
+// Takes a body of the `application/json` content type.
+//
+// Corresponds with POST /api/learning-resources/ (the `ApiLearningResourcesCreate` operationId).
+func (c *Client) ApiLearningResourcesCreate(ctx context.Context, body ApiLearningResourcesCreateJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiLearningResourcesCreateRequest(c.Server, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ApiLearningResourcesCreateWithFormdataBody ✨ Create a learning resource
+//
+// Takes a body of the `application/x-www-form-urlencoded` content type.
+//
+// Corresponds with POST /api/learning-resources/ (the `ApiLearningResourcesCreate` operationId).
+func (c *Client) ApiLearningResourcesCreateWithFormdataBody(ctx context.Context, body ApiLearningResourcesCreateFormdataRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiLearningResourcesCreateRequestWithFormdataBody(c.Server, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ApiLearningResourcesCountsRetrieve ✨ Batch learning resource counts
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Return page and learner progress counts for up to 100 learning resource ids (same org/workspace scope as list).
+//
+// Corresponds with GET /api/learning-resources/counts/ (the `ApiLearningResourcesCountsRetrieve` operationId).
+func (c *Client) ApiLearningResourcesCountsRetrieve(ctx context.Context, params *ApiLearningResourcesCountsRetrieveParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiLearningResourcesCountsRetrieveRequest(c.Server, params)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ApiLearningResourcesDestroy ✨ Delete a learning resource
+//
+// Corresponds with DELETE /api/learning-resources/{id}/ (the `ApiLearningResourcesDestroy` operationId).
+func (c *Client) ApiLearningResourcesDestroy(ctx context.Context, id int, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiLearningResourcesDestroyRequest(c.Server, id)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ApiLearningResourcesRetrieve ✨ Get a learning resource
+//
+// Corresponds with GET /api/learning-resources/{id}/ (the `ApiLearningResourcesRetrieve` operationId).
+func (c *Client) ApiLearningResourcesRetrieve(ctx context.Context, id int, params *ApiLearningResourcesRetrieveParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiLearningResourcesRetrieveRequest(c.Server, id, params)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ApiLearningResourcesPartialUpdateWithBody ✨ Update a learning resource
+//
+// Takes any type of body and a specified content type.
+//
+// Corresponds with PATCH /api/learning-resources/{id}/ (the `ApiLearningResourcesPartialUpdate` operationId).
+func (c *Client) ApiLearningResourcesPartialUpdateWithBody(ctx context.Context, id int, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiLearningResourcesPartialUpdateRequestWithBody(c.Server, id, contentType, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ApiLearningResourcesPartialUpdate ✨ Update a learning resource
+//
+// Takes a body of the `application/json` content type.
+//
+// Corresponds with PATCH /api/learning-resources/{id}/ (the `ApiLearningResourcesPartialUpdate` operationId).
+func (c *Client) ApiLearningResourcesPartialUpdate(ctx context.Context, id int, body ApiLearningResourcesPartialUpdateJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiLearningResourcesPartialUpdateRequest(c.Server, id, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ApiLearningResourcesPartialUpdateWithFormdataBody ✨ Update a learning resource
+//
+// Takes a body of the `application/x-www-form-urlencoded` content type.
+//
+// Corresponds with PATCH /api/learning-resources/{id}/ (the `ApiLearningResourcesPartialUpdate` operationId).
+func (c *Client) ApiLearningResourcesPartialUpdateWithFormdataBody(ctx context.Context, id int, body ApiLearningResourcesPartialUpdateFormdataRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiLearningResourcesPartialUpdateRequestWithFormdataBody(c.Server, id, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ApiLearningResourcesCertificatesList ✨ List certificates for a learning resource
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// List all certificates issued for a course.
+//
+// Corresponds with GET /api/learning-resources/{id}/certificates/ (the `ApiLearningResourcesCertificatesList` operationId).
+func (c *Client) ApiLearningResourcesCertificatesList(ctx context.Context, id int, params *ApiLearningResourcesCertificatesListParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiLearningResourcesCertificatesListRequest(c.Server, id, params)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ApiLearningResourcesCertificatesRevokeCreateWithBody ✨ Revoke a certificate
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Revoke a certificate issued for a learning resource.
+//
+// Takes any type of body and a specified content type.
+//
+// Corresponds with POST /api/learning-resources/{id}/certificates/{certificate_id}/revoke/ (the `ApiLearningResourcesCertificatesRevokeCreate` operationId).
+func (c *Client) ApiLearningResourcesCertificatesRevokeCreateWithBody(ctx context.Context, id int, certificateId int, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiLearningResourcesCertificatesRevokeCreateRequestWithBody(c.Server, id, certificateId, contentType, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ApiLearningResourcesCertificatesRevokeCreate ✨ Revoke a certificate
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Revoke a certificate issued for a learning resource.
+//
+// Takes a body of the `application/json` content type.
+//
+// Corresponds with POST /api/learning-resources/{id}/certificates/{certificate_id}/revoke/ (the `ApiLearningResourcesCertificatesRevokeCreate` operationId).
+func (c *Client) ApiLearningResourcesCertificatesRevokeCreate(ctx context.Context, id int, certificateId int, body ApiLearningResourcesCertificatesRevokeCreateJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiLearningResourcesCertificatesRevokeCreateRequest(c.Server, id, certificateId, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ApiLearningResourcesCertificatesRevokeCreateWithFormdataBody ✨ Revoke a certificate
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Revoke a certificate issued for a learning resource.
+//
+// Takes a body of the `application/x-www-form-urlencoded` content type.
+//
+// Corresponds with POST /api/learning-resources/{id}/certificates/{certificate_id}/revoke/ (the `ApiLearningResourcesCertificatesRevokeCreate` operationId).
+func (c *Client) ApiLearningResourcesCertificatesRevokeCreateWithFormdataBody(ctx context.Context, id int, certificateId int, body ApiLearningResourcesCertificatesRevokeCreateFormdataRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiLearningResourcesCertificatesRevokeCreateRequestWithFormdataBody(c.Server, id, certificateId, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ApiLearningResourcesDuplicateCreateWithBody ✨ Duplicate a learning resource
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Create a copy of a learning resource.
+//
+// Takes any type of body and a specified content type.
+//
+// Corresponds with POST /api/learning-resources/{id}/duplicate/ (the `ApiLearningResourcesDuplicateCreate` operationId).
+func (c *Client) ApiLearningResourcesDuplicateCreateWithBody(ctx context.Context, id int, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiLearningResourcesDuplicateCreateRequestWithBody(c.Server, id, contentType, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ApiLearningResourcesDuplicateCreate ✨ Duplicate a learning resource
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Create a copy of a learning resource.
+//
+// Takes a body of the `application/json` content type.
+//
+// Corresponds with POST /api/learning-resources/{id}/duplicate/ (the `ApiLearningResourcesDuplicateCreate` operationId).
+func (c *Client) ApiLearningResourcesDuplicateCreate(ctx context.Context, id int, body ApiLearningResourcesDuplicateCreateJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiLearningResourcesDuplicateCreateRequest(c.Server, id, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ApiLearningResourcesDuplicateCreateWithFormdataBody ✨ Duplicate a learning resource
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Create a copy of a learning resource.
+//
+// Takes a body of the `application/x-www-form-urlencoded` content type.
+//
+// Corresponds with POST /api/learning-resources/{id}/duplicate/ (the `ApiLearningResourcesDuplicateCreate` operationId).
+func (c *Client) ApiLearningResourcesDuplicateCreateWithFormdataBody(ctx context.Context, id int, body ApiLearningResourcesDuplicateCreateFormdataRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiLearningResourcesDuplicateCreateRequestWithFormdataBody(c.Server, id, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ApiLearningResourcesEditingSessionDestroy ✨ Heartbeat or release an editing session for a learning resource
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// POST claims or refreshes presence on a (module, page). A bare heartbeat only tracks presence — it never claims the write lock. Pass `wants_to_edit` to actually claim it: the first session on a free page to ask becomes the writer, later ones stay read-only unless `takeover` is set (which itself implies `wants_to_edit`). Sessions expire 60 seconds after the last heartbeat. DELETE releases the caller's own session.
+//
+// Corresponds with DELETE /api/learning-resources/{id}/editing-session/ (the `ApiLearningResourcesEditingSessionDestroy` operationId).
+func (c *Client) ApiLearningResourcesEditingSessionDestroy(ctx context.Context, id int, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiLearningResourcesEditingSessionDestroyRequest(c.Server, id)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ApiLearningResourcesEditingSessionCreateWithBody ✨ Heartbeat or release an editing session for a learning resource
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// POST claims or refreshes presence on a (module, page). A bare heartbeat only tracks presence — it never claims the write lock. Pass `wants_to_edit` to actually claim it: the first session on a free page to ask becomes the writer, later ones stay read-only unless `takeover` is set (which itself implies `wants_to_edit`). Sessions expire 60 seconds after the last heartbeat. DELETE releases the caller's own session.
+//
+// Takes any type of body and a specified content type.
+//
+// Corresponds with POST /api/learning-resources/{id}/editing-session/ (the `ApiLearningResourcesEditingSessionCreate` operationId).
+func (c *Client) ApiLearningResourcesEditingSessionCreateWithBody(ctx context.Context, id int, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiLearningResourcesEditingSessionCreateRequestWithBody(c.Server, id, contentType, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ApiLearningResourcesEditingSessionCreate ✨ Heartbeat or release an editing session for a learning resource
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// POST claims or refreshes presence on a (module, page). A bare heartbeat only tracks presence — it never claims the write lock. Pass `wants_to_edit` to actually claim it: the first session on a free page to ask becomes the writer, later ones stay read-only unless `takeover` is set (which itself implies `wants_to_edit`). Sessions expire 60 seconds after the last heartbeat. DELETE releases the caller's own session.
+//
+// Takes a body of the `application/json` content type.
+//
+// Corresponds with POST /api/learning-resources/{id}/editing-session/ (the `ApiLearningResourcesEditingSessionCreate` operationId).
+func (c *Client) ApiLearningResourcesEditingSessionCreate(ctx context.Context, id int, body ApiLearningResourcesEditingSessionCreateJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiLearningResourcesEditingSessionCreateRequest(c.Server, id, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ApiLearningResourcesEditingSessionCreateWithFormdataBody ✨ Heartbeat or release an editing session for a learning resource
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// POST claims or refreshes presence on a (module, page). A bare heartbeat only tracks presence — it never claims the write lock. Pass `wants_to_edit` to actually claim it: the first session on a free page to ask becomes the writer, later ones stay read-only unless `takeover` is set (which itself implies `wants_to_edit`). Sessions expire 60 seconds after the last heartbeat. DELETE releases the caller's own session.
+//
+// Takes a body of the `application/x-www-form-urlencoded` content type.
+//
+// Corresponds with POST /api/learning-resources/{id}/editing-session/ (the `ApiLearningResourcesEditingSessionCreate` operationId).
+func (c *Client) ApiLearningResourcesEditingSessionCreateWithFormdataBody(ctx context.Context, id int, body ApiLearningResourcesEditingSessionCreateFormdataRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiLearningResourcesEditingSessionCreateRequestWithFormdataBody(c.Server, id, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ApiLearningResourcesInvalidateProgressCreateWithBody ✨ Invalidate progress for a learning resource
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Invalidate all learner progress for a learning resource.
+//
+// Takes any type of body and a specified content type.
+//
+// Corresponds with POST /api/learning-resources/{id}/invalidate-progress/ (the `ApiLearningResourcesInvalidateProgressCreate` operationId).
+func (c *Client) ApiLearningResourcesInvalidateProgressCreateWithBody(ctx context.Context, id int, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiLearningResourcesInvalidateProgressCreateRequestWithBody(c.Server, id, contentType, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ApiLearningResourcesInvalidateProgressCreate ✨ Invalidate progress for a learning resource
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Invalidate all learner progress for a learning resource.
+//
+// Takes a body of the `application/json` content type.
+//
+// Corresponds with POST /api/learning-resources/{id}/invalidate-progress/ (the `ApiLearningResourcesInvalidateProgressCreate` operationId).
+func (c *Client) ApiLearningResourcesInvalidateProgressCreate(ctx context.Context, id int, body ApiLearningResourcesInvalidateProgressCreateJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiLearningResourcesInvalidateProgressCreateRequest(c.Server, id, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ApiLearningResourcesInvalidateProgressCreateWithFormdataBody ✨ Invalidate progress for a learning resource
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Invalidate all learner progress for a learning resource.
+//
+// Takes a body of the `application/x-www-form-urlencoded` content type.
+//
+// Corresponds with POST /api/learning-resources/{id}/invalidate-progress/ (the `ApiLearningResourcesInvalidateProgressCreate` operationId).
+func (c *Client) ApiLearningResourcesInvalidateProgressCreateWithFormdataBody(ctx context.Context, id int, body ApiLearningResourcesInvalidateProgressCreateFormdataRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiLearningResourcesInvalidateProgressCreateRequestWithFormdataBody(c.Server, id, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ApiLearningResourcesModulesList ✨ List or create modules for a learning resource
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// List or create modules for a learning resource.
+//
+// Corresponds with GET /api/learning-resources/{id}/modules/ (the `ApiLearningResourcesModulesList` operationId).
+func (c *Client) ApiLearningResourcesModulesList(ctx context.Context, id int, params *ApiLearningResourcesModulesListParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiLearningResourcesModulesListRequest(c.Server, id, params)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ApiLearningResourcesModulesCreateWithBody ✨ List or create modules for a learning resource
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// List or create modules for a learning resource.
+//
+// Takes any type of body and a specified content type.
+//
+// Corresponds with POST /api/learning-resources/{id}/modules/ (the `ApiLearningResourcesModulesCreate` operationId).
+func (c *Client) ApiLearningResourcesModulesCreateWithBody(ctx context.Context, id int, params *ApiLearningResourcesModulesCreateParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiLearningResourcesModulesCreateRequestWithBody(c.Server, id, params, contentType, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ApiLearningResourcesModulesCreate ✨ List or create modules for a learning resource
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// List or create modules for a learning resource.
+//
+// Takes a body of the `application/json` content type.
+//
+// Corresponds with POST /api/learning-resources/{id}/modules/ (the `ApiLearningResourcesModulesCreate` operationId).
+func (c *Client) ApiLearningResourcesModulesCreate(ctx context.Context, id int, params *ApiLearningResourcesModulesCreateParams, body ApiLearningResourcesModulesCreateJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiLearningResourcesModulesCreateRequest(c.Server, id, params, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ApiLearningResourcesModulesCreateWithFormdataBody ✨ List or create modules for a learning resource
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// List or create modules for a learning resource.
+//
+// Takes a body of the `application/x-www-form-urlencoded` content type.
+//
+// Corresponds with POST /api/learning-resources/{id}/modules/ (the `ApiLearningResourcesModulesCreate` operationId).
+func (c *Client) ApiLearningResourcesModulesCreateWithFormdataBody(ctx context.Context, id int, params *ApiLearningResourcesModulesCreateParams, body ApiLearningResourcesModulesCreateFormdataRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiLearningResourcesModulesCreateRequestWithFormdataBody(c.Server, id, params, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ApiLearningResourcesModulesReorderCreateWithBody ✨ Reorder modules for a learning resource
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Reorder modules for a learning resource.
+//
+// Takes any type of body and a specified content type.
+//
+// Corresponds with POST /api/learning-resources/{id}/modules/reorder/ (the `ApiLearningResourcesModulesReorderCreate` operationId).
+func (c *Client) ApiLearningResourcesModulesReorderCreateWithBody(ctx context.Context, id int, params *ApiLearningResourcesModulesReorderCreateParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiLearningResourcesModulesReorderCreateRequestWithBody(c.Server, id, params, contentType, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ApiLearningResourcesModulesReorderCreate ✨ Reorder modules for a learning resource
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Reorder modules for a learning resource.
+//
+// Takes a body of the `application/json` content type.
+//
+// Corresponds with POST /api/learning-resources/{id}/modules/reorder/ (the `ApiLearningResourcesModulesReorderCreate` operationId).
+func (c *Client) ApiLearningResourcesModulesReorderCreate(ctx context.Context, id int, params *ApiLearningResourcesModulesReorderCreateParams, body ApiLearningResourcesModulesReorderCreateJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiLearningResourcesModulesReorderCreateRequest(c.Server, id, params, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ApiLearningResourcesModulesReorderCreateWithFormdataBody ✨ Reorder modules for a learning resource
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Reorder modules for a learning resource.
+//
+// Takes a body of the `application/x-www-form-urlencoded` content type.
+//
+// Corresponds with POST /api/learning-resources/{id}/modules/reorder/ (the `ApiLearningResourcesModulesReorderCreate` operationId).
+func (c *Client) ApiLearningResourcesModulesReorderCreateWithFormdataBody(ctx context.Context, id int, params *ApiLearningResourcesModulesReorderCreateParams, body ApiLearningResourcesModulesReorderCreateFormdataRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiLearningResourcesModulesReorderCreateRequestWithFormdataBody(c.Server, id, params, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ApiLearningResourcesModulesDestroy ✨ Update or delete a module
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Update or delete a module in a learning resource.
+//
+// Corresponds with DELETE /api/learning-resources/{id}/modules/{module_id}/ (the `ApiLearningResourcesModulesDestroy` operationId).
+func (c *Client) ApiLearningResourcesModulesDestroy(ctx context.Context, id int, moduleId string, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiLearningResourcesModulesDestroyRequest(c.Server, id, moduleId)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ApiLearningResourcesModulesPartialUpdateWithBody ✨ Update or delete a module
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Update or delete a module in a learning resource.
+//
+// Takes any type of body and a specified content type.
+//
+// Corresponds with PATCH /api/learning-resources/{id}/modules/{module_id}/ (the `ApiLearningResourcesModulesPartialUpdate` operationId).
+func (c *Client) ApiLearningResourcesModulesPartialUpdateWithBody(ctx context.Context, id int, moduleId string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiLearningResourcesModulesPartialUpdateRequestWithBody(c.Server, id, moduleId, contentType, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ApiLearningResourcesModulesPartialUpdate ✨ Update or delete a module
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Update or delete a module in a learning resource.
+//
+// Takes a body of the `application/json` content type.
+//
+// Corresponds with PATCH /api/learning-resources/{id}/modules/{module_id}/ (the `ApiLearningResourcesModulesPartialUpdate` operationId).
+func (c *Client) ApiLearningResourcesModulesPartialUpdate(ctx context.Context, id int, moduleId string, body ApiLearningResourcesModulesPartialUpdateJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiLearningResourcesModulesPartialUpdateRequest(c.Server, id, moduleId, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ApiLearningResourcesModulesPartialUpdateWithFormdataBody ✨ Update or delete a module
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Update or delete a module in a learning resource.
+//
+// Takes a body of the `application/x-www-form-urlencoded` content type.
+//
+// Corresponds with PATCH /api/learning-resources/{id}/modules/{module_id}/ (the `ApiLearningResourcesModulesPartialUpdate` operationId).
+func (c *Client) ApiLearningResourcesModulesPartialUpdateWithFormdataBody(ctx context.Context, id int, moduleId string, body ApiLearningResourcesModulesPartialUpdateFormdataRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiLearningResourcesModulesPartialUpdateRequestWithFormdataBody(c.Server, id, moduleId, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ApiLearningResourcesModulesPagesPartialUpdateWithBody ✨ Save one page of a module
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Replace only the supplied keys of a single page. Rejects a write to a page another author holds the editing lock on with 409 `page_in_use`, a stale `page_version` with 409 `page_version_conflict`, and a page that moved to another module with 410 `page_moved`.
+//
+// Takes any type of body and a specified content type.
+//
+// Corresponds with PATCH /api/learning-resources/{id}/modules/{module_id}/pages/{page_id}/ (the `ApiLearningResourcesModulesPagesPartialUpdate` operationId).
+func (c *Client) ApiLearningResourcesModulesPagesPartialUpdateWithBody(ctx context.Context, id int, moduleId string, pageId string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiLearningResourcesModulesPagesPartialUpdateRequestWithBody(c.Server, id, moduleId, pageId, contentType, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ApiLearningResourcesModulesPagesPartialUpdate ✨ Save one page of a module
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Replace only the supplied keys of a single page. Rejects a write to a page another author holds the editing lock on with 409 `page_in_use`, a stale `page_version` with 409 `page_version_conflict`, and a page that moved to another module with 410 `page_moved`.
+//
+// Takes a body of the `application/json` content type.
+//
+// Corresponds with PATCH /api/learning-resources/{id}/modules/{module_id}/pages/{page_id}/ (the `ApiLearningResourcesModulesPagesPartialUpdate` operationId).
+func (c *Client) ApiLearningResourcesModulesPagesPartialUpdate(ctx context.Context, id int, moduleId string, pageId string, body ApiLearningResourcesModulesPagesPartialUpdateJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiLearningResourcesModulesPagesPartialUpdateRequest(c.Server, id, moduleId, pageId, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ApiLearningResourcesModulesPagesPartialUpdateWithFormdataBody ✨ Save one page of a module
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Replace only the supplied keys of a single page. Rejects a write to a page another author holds the editing lock on with 409 `page_in_use`, a stale `page_version` with 409 `page_version_conflict`, and a page that moved to another module with 410 `page_moved`.
+//
+// Takes a body of the `application/x-www-form-urlencoded` content type.
+//
+// Corresponds with PATCH /api/learning-resources/{id}/modules/{module_id}/pages/{page_id}/ (the `ApiLearningResourcesModulesPagesPartialUpdate` operationId).
+func (c *Client) ApiLearningResourcesModulesPagesPartialUpdateWithFormdataBody(ctx context.Context, id int, moduleId string, pageId string, body ApiLearningResourcesModulesPagesPartialUpdateFormdataRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiLearningResourcesModulesPagesPartialUpdateRequestWithFormdataBody(c.Server, id, moduleId, pageId, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ApiLearningResourcesOutlineRetrieve ✨ Get the structure outline of a course
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Module and page identity, titles and page versions without any block content.
+//
+// Corresponds with GET /api/learning-resources/{id}/outline/ (the `ApiLearningResourcesOutlineRetrieve` operationId).
+func (c *Client) ApiLearningResourcesOutlineRetrieve(ctx context.Context, id int, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiLearningResourcesOutlineRetrieveRequest(c.Server, id)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ApiLearningResourcesProgressCreateWithBody ✨ Update learner progress on a learning resource
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Update the current user's progress on a learning resource. Learners can only update a published course they were given (404 otherwise). `page_id` is recorded only for a page the course has. `time_spent_seconds` adds at most 3600 seconds per request. `mark_complete` is ignored until every page has been visited, and completes the course only when every required quiz has also been passed.
+//
+// Takes any type of body and a specified content type.
+//
+// Corresponds with POST /api/learning-resources/{id}/progress/ (the `ApiLearningResourcesProgressCreate` operationId).
+func (c *Client) ApiLearningResourcesProgressCreateWithBody(ctx context.Context, id int, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiLearningResourcesProgressCreateRequestWithBody(c.Server, id, contentType, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ApiLearningResourcesProgressCreate ✨ Update learner progress on a learning resource
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Update the current user's progress on a learning resource. Learners can only update a published course they were given (404 otherwise). `page_id` is recorded only for a page the course has. `time_spent_seconds` adds at most 3600 seconds per request. `mark_complete` is ignored until every page has been visited, and completes the course only when every required quiz has also been passed.
+//
+// Takes a body of the `application/json` content type.
+//
+// Corresponds with POST /api/learning-resources/{id}/progress/ (the `ApiLearningResourcesProgressCreate` operationId).
+func (c *Client) ApiLearningResourcesProgressCreate(ctx context.Context, id int, body ApiLearningResourcesProgressCreateJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiLearningResourcesProgressCreateRequest(c.Server, id, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ApiLearningResourcesProgressCreateWithFormdataBody ✨ Update learner progress on a learning resource
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Update the current user's progress on a learning resource. Learners can only update a published course they were given (404 otherwise). `page_id` is recorded only for a page the course has. `time_spent_seconds` adds at most 3600 seconds per request. `mark_complete` is ignored until every page has been visited, and completes the course only when every required quiz has also been passed.
+//
+// Takes a body of the `application/x-www-form-urlencoded` content type.
+//
+// Corresponds with POST /api/learning-resources/{id}/progress/ (the `ApiLearningResourcesProgressCreate` operationId).
+func (c *Client) ApiLearningResourcesProgressCreateWithFormdataBody(ctx context.Context, id int, body ApiLearningResourcesProgressCreateFormdataRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiLearningResourcesProgressCreateRequestWithFormdataBody(c.Server, id, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ApiLearningResourcesProjectAssignmentsCreateWithBody ✨ Bulk assign learning resource to projects
+//
+// Create project assignments for many projects in one request.
+//
+// Takes any type of body and a specified content type.
+//
+// Corresponds with POST /api/learning-resources/{id}/project-assignments/ (the `ApiLearningResourcesProjectAssignmentsCreate` operationId).
+func (c *Client) ApiLearningResourcesProjectAssignmentsCreateWithBody(ctx context.Context, id int, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiLearningResourcesProjectAssignmentsCreateRequestWithBody(c.Server, id, contentType, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ApiLearningResourcesProjectAssignmentsCreate ✨ Bulk assign learning resource to projects
+//
+// Create project assignments for many projects in one request.
+//
+// Takes a body of the `application/json` content type.
+//
+// Corresponds with POST /api/learning-resources/{id}/project-assignments/ (the `ApiLearningResourcesProjectAssignmentsCreate` operationId).
+func (c *Client) ApiLearningResourcesProjectAssignmentsCreate(ctx context.Context, id int, body ApiLearningResourcesProjectAssignmentsCreateJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiLearningResourcesProjectAssignmentsCreateRequest(c.Server, id, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ApiLearningResourcesProjectAssignmentsCreateWithFormdataBody ✨ Bulk assign learning resource to projects
+//
+// Create project assignments for many projects in one request.
+//
+// Takes a body of the `application/x-www-form-urlencoded` content type.
+//
+// Corresponds with POST /api/learning-resources/{id}/project-assignments/ (the `ApiLearningResourcesProjectAssignmentsCreate` operationId).
+func (c *Client) ApiLearningResourcesProjectAssignmentsCreateWithFormdataBody(ctx context.Context, id int, body ApiLearningResourcesProjectAssignmentsCreateFormdataRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiLearningResourcesProjectAssignmentsCreateRequestWithFormdataBody(c.Server, id, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ApiLearningResourcesPublishCreateWithBody ✨ Publish a learning resource
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Publish a learning resource to make it available to learners.
+//
+// Takes any type of body and a specified content type.
+//
+// Corresponds with POST /api/learning-resources/{id}/publish/ (the `ApiLearningResourcesPublishCreate` operationId).
+func (c *Client) ApiLearningResourcesPublishCreateWithBody(ctx context.Context, id int, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiLearningResourcesPublishCreateRequestWithBody(c.Server, id, contentType, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ApiLearningResourcesPublishCreate ✨ Publish a learning resource
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Publish a learning resource to make it available to learners.
+//
+// Takes a body of the `application/json` content type.
+//
+// Corresponds with POST /api/learning-resources/{id}/publish/ (the `ApiLearningResourcesPublishCreate` operationId).
+func (c *Client) ApiLearningResourcesPublishCreate(ctx context.Context, id int, body ApiLearningResourcesPublishCreateJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiLearningResourcesPublishCreateRequest(c.Server, id, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ApiLearningResourcesPublishCreateWithFormdataBody ✨ Publish a learning resource
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Publish a learning resource to make it available to learners.
+//
+// Takes a body of the `application/x-www-form-urlencoded` content type.
+//
+// Corresponds with POST /api/learning-resources/{id}/publish/ (the `ApiLearningResourcesPublishCreate` operationId).
+func (c *Client) ApiLearningResourcesPublishCreateWithFormdataBody(ctx context.Context, id int, body ApiLearningResourcesPublishCreateFormdataRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiLearningResourcesPublishCreateRequestWithFormdataBody(c.Server, id, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ApiLearningResourcesStructureCreateWithBody ✨ Apply a structural change to a course
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Apply a semantic structural operation (add/delete/duplicate/reorder/move page or module, rename module) to current server state under a compare-and-swap on `structure_version`. A stale version returns 409 `structure_version_conflict` with the fresh outline so the client can resync and retry.
+//
+// Takes any type of body and a specified content type.
+//
+// Corresponds with POST /api/learning-resources/{id}/structure/ (the `ApiLearningResourcesStructureCreate` operationId).
+func (c *Client) ApiLearningResourcesStructureCreateWithBody(ctx context.Context, id int, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiLearningResourcesStructureCreateRequestWithBody(c.Server, id, contentType, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ApiLearningResourcesStructureCreate ✨ Apply a structural change to a course
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Apply a semantic structural operation (add/delete/duplicate/reorder/move page or module, rename module) to current server state under a compare-and-swap on `structure_version`. A stale version returns 409 `structure_version_conflict` with the fresh outline so the client can resync and retry.
+//
+// Takes a body of the `application/json` content type.
+//
+// Corresponds with POST /api/learning-resources/{id}/structure/ (the `ApiLearningResourcesStructureCreate` operationId).
+func (c *Client) ApiLearningResourcesStructureCreate(ctx context.Context, id int, body ApiLearningResourcesStructureCreateJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiLearningResourcesStructureCreateRequest(c.Server, id, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ApiLearningResourcesStructureCreateWithFormdataBody ✨ Apply a structural change to a course
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Apply a semantic structural operation (add/delete/duplicate/reorder/move page or module, rename module) to current server state under a compare-and-swap on `structure_version`. A stale version returns 409 `structure_version_conflict` with the fresh outline so the client can resync and retry.
+//
+// Takes a body of the `application/x-www-form-urlencoded` content type.
+//
+// Corresponds with POST /api/learning-resources/{id}/structure/ (the `ApiLearningResourcesStructureCreate` operationId).
+func (c *Client) ApiLearningResourcesStructureCreateWithFormdataBody(ctx context.Context, id int, body ApiLearningResourcesStructureCreateFormdataRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiLearningResourcesStructureCreateRequestWithFormdataBody(c.Server, id, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ApiLearningResourcesTakeRetrieve ✨ Get a standalone learning resource
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Get a published learning resource available for standalone access.
+//
+// Corresponds with GET /api/learning-resources/{id}/take/ (the `ApiLearningResourcesTakeRetrieve` operationId).
+func (c *Client) ApiLearningResourcesTakeRetrieve(ctx context.Context, id int, params *ApiLearningResourcesTakeRetrieveParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiLearningResourcesTakeRetrieveRequest(c.Server, id, params)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ApiLearningResourcesUnpublishCreateWithBody ✨ Unpublish a learning resource
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Unpublish a learning resource to hide it from learners.
+//
+// Takes any type of body and a specified content type.
+//
+// Corresponds with POST /api/learning-resources/{id}/unpublish/ (the `ApiLearningResourcesUnpublishCreate` operationId).
+func (c *Client) ApiLearningResourcesUnpublishCreateWithBody(ctx context.Context, id int, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiLearningResourcesUnpublishCreateRequestWithBody(c.Server, id, contentType, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ApiLearningResourcesUnpublishCreate ✨ Unpublish a learning resource
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Unpublish a learning resource to hide it from learners.
+//
+// Takes a body of the `application/json` content type.
+//
+// Corresponds with POST /api/learning-resources/{id}/unpublish/ (the `ApiLearningResourcesUnpublishCreate` operationId).
+func (c *Client) ApiLearningResourcesUnpublishCreate(ctx context.Context, id int, body ApiLearningResourcesUnpublishCreateJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiLearningResourcesUnpublishCreateRequest(c.Server, id, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ApiLearningResourcesUnpublishCreateWithFormdataBody ✨ Unpublish a learning resource
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Unpublish a learning resource to hide it from learners.
+//
+// Takes a body of the `application/x-www-form-urlencoded` content type.
+//
+// Corresponds with POST /api/learning-resources/{id}/unpublish/ (the `ApiLearningResourcesUnpublishCreate` operationId).
+func (c *Client) ApiLearningResourcesUnpublishCreateWithFormdataBody(ctx context.Context, id int, body ApiLearningResourcesUnpublishCreateFormdataRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiLearningResourcesUnpublishCreateRequestWithFormdataBody(c.Server, id, body)
 	if err != nil {
 		return nil, err
 	}
