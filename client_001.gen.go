@@ -1790,6 +1790,24 @@ func (e StateEnum) Valid() bool {
 	}
 }
 
+// Defines values for StateSourceEnum.
+const (
+	StateSourceEnumAuto   StateSourceEnum = "auto"
+	StateSourceEnumManual StateSourceEnum = "manual"
+)
+
+// Valid indicates whether the value is a known member of the StateSourceEnum enum.
+func (e StateSourceEnum) Valid() bool {
+	switch e {
+	case StateSourceEnumAuto:
+		return true
+	case StateSourceEnumManual:
+		return true
+	default:
+		return false
+	}
+}
+
 // Defines values for StorageStatusEnum.
 const (
 	StorageStatusEnumCompleted           StorageStatusEnum = "completed"
@@ -2756,6 +2774,15 @@ type AllRolesProjectList struct {
 	// StartTrainingOnAnnotationUpdate Start model training after any annotations are submitted or updated
 	StartTrainingOnAnnotationUpdate *bool   `json:"start_training_on_annotation_update,omitempty"`
 	State                           *string `json:"state,omitempty"`
+
+	// StateMarkedDoneAt When the project was marked as Done. Null unless state_source is "manual". Managers+ only.
+	StateMarkedDoneAt *time.Time `json:"state_marked_done_at,omitempty"`
+
+	// StateMarkedDoneBy User who marked the project as Done. Null unless state_source is "manual". Managers+ only.
+	StateMarkedDoneBy *UserSimple `json:"state_marked_done_by,omitempty"`
+
+	// StateSource "manual" while a Manager+ has marked the project as Done, "auto" while the state is calculated from tasks. Null when project states are not available.
+	StateSource *StateSourceEnum `json:"state_source,omitempty"`
 
 	// StrictTaskOverlap Enforce strict overlap limit
 	StrictTaskOverlap *bool `json:"strict_task_overlap,omitempty"`
@@ -8033,6 +8060,15 @@ type LseProject struct {
 	StartTrainingOnAnnotationUpdate *bool   `json:"start_training_on_annotation_update,omitempty"`
 	State                           *string `json:"state,omitempty"`
 
+	// StateMarkedDoneAt When the project was marked as Done. Null unless state_source is "manual". Managers+ only.
+	StateMarkedDoneAt *time.Time `json:"state_marked_done_at,omitempty"`
+
+	// StateMarkedDoneBy User who marked the project as Done. Null unless state_source is "manual". Managers+ only.
+	StateMarkedDoneBy *UserSimple `json:"state_marked_done_by,omitempty"`
+
+	// StateSource "manual" while a Manager+ has marked the project as Done, "auto" while the state is calculated from tasks. Null when project states are not available.
+	StateSource *StateSourceEnum `json:"state_source,omitempty"`
+
 	// StrictTaskOverlap Enforce strict overlap limit
 	StrictTaskOverlap *bool `json:"strict_task_overlap,omitempty"`
 
@@ -8650,6 +8686,15 @@ type LseProjectResponse struct {
 	StartTrainingOnAnnotationUpdate *bool   `json:"start_training_on_annotation_update,omitempty"`
 	State                           *string `json:"state,omitempty"`
 
+	// StateMarkedDoneAt When the project was marked as Done. Null unless state_source is "manual". Managers+ only.
+	StateMarkedDoneAt *time.Time `json:"state_marked_done_at,omitempty"`
+
+	// StateMarkedDoneBy User who marked the project as Done. Null unless state_source is "manual". Managers+ only.
+	StateMarkedDoneBy *UserSimple `json:"state_marked_done_by,omitempty"`
+
+	// StateSource "manual" while a Manager+ has marked the project as Done, "auto" while the state is calculated from tasks. Null when project states are not available.
+	StateSource *StateSourceEnum `json:"state_source,omitempty"`
+
 	// StrictTaskOverlap Enforce strict overlap limit
 	StrictTaskOverlap *bool `json:"strict_task_overlap,omitempty"`
 
@@ -8710,7 +8755,7 @@ type LseS3ExportStorage struct {
 	// Description Cloud storage description
 	Description *string `json:"description,omitempty"`
 
-	// ExternalId AWS ExternalId
+	// ExternalId AWS ExternalId. Set by the server; read-only.
 	ExternalId *string `json:"external_id,omitempty"`
 	Id         *int    `json:"id,omitempty"`
 
@@ -8788,9 +8833,6 @@ type LseS3ExportStorageRequest struct {
 	// Description Cloud storage description
 	Description *string `json:"description,omitempty"`
 
-	// ExternalId AWS ExternalId
-	ExternalId *string `json:"external_id,omitempty"`
-
 	// LastSync Last sync finished time
 	LastSync *time.Time `json:"last_sync,omitempty"`
 
@@ -8864,7 +8906,7 @@ type LseS3ImportStorage struct {
 	// Description Cloud storage description
 	Description *string `json:"description,omitempty"`
 
-	// ExternalId AWS ExternalId
+	// ExternalId AWS ExternalId. Set by the server; read-only.
 	ExternalId *string `json:"external_id,omitempty"`
 	Id         *int    `json:"id,omitempty"`
 
@@ -8945,9 +8987,6 @@ type LseS3ImportStorageRequest struct {
 
 	// Description Cloud storage description
 	Description *string `json:"description,omitempty"`
-
-	// ExternalId AWS ExternalId
-	ExternalId *string `json:"external_id,omitempty"`
 
 	// LastSync Last sync finished time
 	LastSync *time.Time `json:"last_sync,omitempty"`
@@ -11907,9 +11946,6 @@ type PatchedLseS3ExportStorageRequest struct {
 	// Description Cloud storage description
 	Description *string `json:"description,omitempty"`
 
-	// ExternalId AWS ExternalId
-	ExternalId *string `json:"external_id,omitempty"`
-
 	// LastSync Last sync finished time
 	LastSync *time.Time `json:"last_sync,omitempty"`
 
@@ -11979,9 +12015,6 @@ type PatchedLseS3ImportStorageRequest struct {
 
 	// Description Cloud storage description
 	Description *string `json:"description,omitempty"`
-
-	// ExternalId AWS ExternalId
-	ExternalId *string `json:"external_id,omitempty"`
 
 	// LastSync Last sync finished time
 	LastSync *time.Time `json:"last_sync,omitempty"`
@@ -12106,7 +12139,6 @@ type PatchedLseUserSerializerUpdateRequest struct {
 	OnboardingState           *string     `json:"onboarding_state,omitempty"`
 	Password                  *string     `json:"password,omitempty"`
 	Phone                     *string     `json:"phone,omitempty"`
-	Username                  *string     `json:"username,omitempty"`
 }
 
 // PatchedMLBackendRequestRequest OpenAPI/SDK request body for ML backend create/update. Runtime still uses MLBackendSerializer.
@@ -14943,6 +14975,9 @@ type StateModel struct {
 	TransitionName *string             `json:"transition_name,omitempty"`
 	TriggeredBy    *TriggeredBy        `json:"triggered_by,omitempty"`
 }
+
+// StateSourceEnum defines model for StateSourceEnum.
+type StateSourceEnum string
 
 // StateTriggeredBy defines model for StateTriggeredBy.
 type StateTriggeredBy struct {
@@ -20002,25 +20037,4 @@ func (a *ApiProjectsStatsDataFilterRetrieve200JSONResponseBody_UserFilters_Stats
 		}
 	}
 	return nil
-}
-
-// Override default JSON handling for ApiProjectsStatsDataFilterRetrieve200JSONResponseBody_UserFilters_Stats_Item to handle AdditionalProperties
-func (a ApiProjectsStatsDataFilterRetrieve200JSONResponseBody_UserFilters_Stats_Item) MarshalJSON() ([]byte, error) {
-	var err error
-	object := make(map[string]json.RawMessage)
-
-	if a.Id != nil {
-		object["id"], err = json.Marshal(a.Id)
-		if err != nil {
-			return nil, fmt.Errorf("error marshaling 'id': %w", err)
-		}
-	}
-
-	for fieldName, field := range a.AdditionalProperties {
-		object[fieldName], err = json.Marshal(field)
-		if err != nil {
-			return nil, fmt.Errorf("error marshaling '%s': %w", fieldName, err)
-		}
-	}
-	return json.Marshal(object)
 }

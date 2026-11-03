@@ -2,6 +2,14 @@
 
 All notable changes per release. Versions follow [semver](https://semver.org).
 
+## v0.6.0, 2026-11-03
+
+- Breaking: removed `ExternalId` from `LseS3ExportStorageRequest`, `LseS3ImportStorageRequest`, `PatchedLseS3ExportStorageRequest` and `PatchedLseS3ImportStorageRequest`. The upstream spec now marks the AWS external ID as set by the server. `LseS3ExportStorage.ExternalId` and `LseS3ImportStorage.ExternalId` stay as response fields. Migration: stop setting `ExternalId` in these requests.
+- Breaking: removed `PatchedLseUserSerializerUpdateRequest.Username`. Migration: stop setting `Username` in user update requests.
+- Added `StateSourceEnum` with the constants `StateSourceEnumAuto` and `StateSourceEnumManual`, and a `Valid` method.
+- Added `StateSource` (`*StateSourceEnum`), `StateMarkedDoneAt` (`*time.Time`) and `StateMarkedDoneBy` (`*UserSimple`) to `AllRolesProjectList`, `LseProject` and `LseProjectResponse`. They show whether a manager marked the project as Done or the state comes from tasks.
+- The `MarshalJSON` method of `ApiProjectsStatsDataFilterRetrieve200JSONResponseBody_UserFilters_Stats_Item` moved to another generated file. Its behavior is unchanged.
+
 ## v0.5.0, 2026-11-02
 
 - Breaking: removed the whole datasets API. The upstream spec no longer has the `/api/datasets/` endpoints. The `ApiDatasets...` methods are gone from `Client`, `ClientWithResponses`, `ClientInterface` and `ClientWithResponsesInterface`, along with their `New...Request` and `Parse...Response` functions, `...Response` types, `...Params` types and `...RequestBody` aliases. This covers datasets, dataset members, views, import, columns and task metadata.
