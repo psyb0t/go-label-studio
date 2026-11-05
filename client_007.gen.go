@@ -7703,7 +7703,7 @@ func (c *ClientWithResponses) ApiLearningResourcesUserProgressListWithResponse(c
 //	    </p>
 //	</Card>
 //
-// Delete multiple learners' progress on this course and revoke their certificates.
+// Delete multiple learners' progress on this course and revoke their certificates. Pass `user_ids`, or `select_all` with the Learners tab `filters` to reset every matching learner. Responds 409 when `expected_count` no longer matches the filtered learners.
 //
 // Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
 //
@@ -7726,7 +7726,7 @@ func (c *ClientWithResponses) ApiLearningResourcesUserProgressBulkResetCreateWit
 //	    </p>
 //	</Card>
 //
-// Delete multiple learners' progress on this course and revoke their certificates.
+// Delete multiple learners' progress on this course and revoke their certificates. Pass `user_ids`, or `select_all` with the Learners tab `filters` to reset every matching learner. Responds 409 when `expected_count` no longer matches the filtered learners.
 //
 // Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
 //
@@ -7749,7 +7749,7 @@ func (c *ClientWithResponses) ApiLearningResourcesUserProgressBulkResetCreateWit
 //	    </p>
 //	</Card>
 //
-// Delete multiple learners' progress on this course and revoke their certificates.
+// Delete multiple learners' progress on this course and revoke their certificates. Pass `user_ids`, or `select_all` with the Learners tab `filters` to reset every matching learner. Responds 409 when `expected_count` no longer matches the filtered learners.
 //
 // Takes a body of the `application/x-www-form-urlencoded` content type, and returns a wrapper object for the known response body format(s).
 //

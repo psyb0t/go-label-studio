@@ -17,6 +17,87 @@ import (
 	openapi_types "github.com/oapi-codegen/runtime/types"
 )
 
+// ApiLearningResourcesUnpublishCreateWithBody ✨ Unpublish a learning resource
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Unpublish a learning resource to hide it from learners.
+//
+// Takes any type of body and a specified content type.
+//
+// Corresponds with POST /api/learning-resources/{id}/unpublish/ (the `ApiLearningResourcesUnpublishCreate` operationId).
+func (c *Client) ApiLearningResourcesUnpublishCreateWithBody(ctx context.Context, id int, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiLearningResourcesUnpublishCreateRequestWithBody(c.Server, id, contentType, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ApiLearningResourcesUnpublishCreate ✨ Unpublish a learning resource
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Unpublish a learning resource to hide it from learners.
+//
+// Takes a body of the `application/json` content type.
+//
+// Corresponds with POST /api/learning-resources/{id}/unpublish/ (the `ApiLearningResourcesUnpublishCreate` operationId).
+func (c *Client) ApiLearningResourcesUnpublishCreate(ctx context.Context, id int, body ApiLearningResourcesUnpublishCreateJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiLearningResourcesUnpublishCreateRequest(c.Server, id, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ApiLearningResourcesUnpublishCreateWithFormdataBody ✨ Unpublish a learning resource
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Unpublish a learning resource to hide it from learners.
+//
+// Takes a body of the `application/x-www-form-urlencoded` content type.
+//
+// Corresponds with POST /api/learning-resources/{id}/unpublish/ (the `ApiLearningResourcesUnpublishCreate` operationId).
+func (c *Client) ApiLearningResourcesUnpublishCreateWithFormdataBody(ctx context.Context, id int, body ApiLearningResourcesUnpublishCreateFormdataRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiLearningResourcesUnpublishCreateRequestWithFormdataBody(c.Server, id, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
 // ApiLearningResourcesUploadCreateWithBody ✨ Upload a file for a learning resource
 //
 // <Card href="https://humansignal.com/goenterprise">
@@ -133,7 +214,7 @@ func (c *Client) ApiLearningResourcesUserProgressList(ctx context.Context, id in
 //	    </p>
 //	</Card>
 //
-// Delete multiple learners' progress on this course and revoke their certificates.
+// Delete multiple learners' progress on this course and revoke their certificates. Pass `user_ids`, or `select_all` with the Learners tab `filters` to reset every matching learner. Responds 409 when `expected_count` no longer matches the filtered learners.
 //
 // Takes any type of body and a specified content type.
 //
@@ -160,7 +241,7 @@ func (c *Client) ApiLearningResourcesUserProgressBulkResetCreateWithBody(ctx con
 //	    </p>
 //	</Card>
 //
-// Delete multiple learners' progress on this course and revoke their certificates.
+// Delete multiple learners' progress on this course and revoke their certificates. Pass `user_ids`, or `select_all` with the Learners tab `filters` to reset every matching learner. Responds 409 when `expected_count` no longer matches the filtered learners.
 //
 // Takes a body of the `application/json` content type.
 //
@@ -187,7 +268,7 @@ func (c *Client) ApiLearningResourcesUserProgressBulkResetCreate(ctx context.Con
 //	    </p>
 //	</Card>
 //
-// Delete multiple learners' progress on this course and revoke their certificates.
+// Delete multiple learners' progress on this course and revoke their certificates. Pass `user_ids`, or `select_all` with the Learners tab `filters` to reset every matching learner. Responds 409 when `expected_count` no longer matches the filtered learners.
 //
 // Takes a body of the `application/x-www-form-urlencoded` content type.
 //
@@ -19935,126 +20016,6 @@ func NewApiDimensionsValueCountsBackfillCreateRequestWithBody(server string, con
 	}
 
 	req.Header.Add("Content-Type", contentType)
-
-	return req, nil
-}
-
-// NewApiDimensionsValueCountsBackfillJobsListRequest constructs an http.Request for the ApiDimensionsValueCountsBackfillJobsList method
-func NewApiDimensionsValueCountsBackfillJobsListRequest(server string, params *ApiDimensionsValueCountsBackfillJobsListParams) (*http.Request, error) {
-	var err error
-
-	serverURL, err := url.Parse(server)
-	if err != nil {
-		return nil, err
-	}
-
-	operationPath := fmt.Sprintf("/api/dimensions/value-counts-backfill/jobs/")
-	if operationPath[0] == '/' {
-		operationPath = "." + operationPath
-	}
-
-	queryURL, err := serverURL.Parse(operationPath)
-	if err != nil {
-		return nil, err
-	}
-
-	if params != nil {
-		// queryValues collects non-styled parameters (passthrough, JSON)
-		// that are safe to round-trip through url.Values.Encode().
-		queryValues := queryURL.Query()
-		// rawQueryFragments collects pre-encoded query fragments from
-		// styled parameters, preserving literal commas as delimiters
-		// per the OpenAPI spec (e.g. "color=blue,black,brown").
-		var rawQueryFragments []string
-
-		if params.Status != nil {
-
-			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "status", *params.Status, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "string", Format: ""}); err != nil {
-				return nil, err
-			} else {
-				for _, qp := range strings.Split(queryFrag, "&") {
-					rawQueryFragments = append(rawQueryFragments, qp)
-				}
-			}
-
-		}
-
-		if encoded := queryValues.Encode(); encoded != "" {
-			rawQueryFragments = append(rawQueryFragments, encoded)
-		}
-		queryURL.RawQuery = strings.Join(rawQueryFragments, "&")
-	}
-
-	req, err := http.NewRequest(http.MethodGet, queryURL.String(), nil)
-	if err != nil {
-		return nil, err
-	}
-
-	return req, nil
-}
-
-// NewApiDimensionsValueCountsBackfillStatusRetrieveRequest constructs an http.Request for the ApiDimensionsValueCountsBackfillStatusRetrieve method
-func NewApiDimensionsValueCountsBackfillStatusRetrieveRequest(server string, params *ApiDimensionsValueCountsBackfillStatusRetrieveParams) (*http.Request, error) {
-	var err error
-
-	serverURL, err := url.Parse(server)
-	if err != nil {
-		return nil, err
-	}
-
-	operationPath := fmt.Sprintf("/api/dimensions/value-counts-backfill/status/")
-	if operationPath[0] == '/' {
-		operationPath = "." + operationPath
-	}
-
-	queryURL, err := serverURL.Parse(operationPath)
-	if err != nil {
-		return nil, err
-	}
-
-	if params != nil {
-		// queryValues collects non-styled parameters (passthrough, JSON)
-		// that are safe to round-trip through url.Values.Encode().
-		queryValues := queryURL.Query()
-		// rawQueryFragments collects pre-encoded query fragments from
-		// styled parameters, preserving literal commas as delimiters
-		// per the OpenAPI spec (e.g. "color=blue,black,brown").
-		var rawQueryFragments []string
-
-		if params.JobId != nil {
-
-			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "job_id", *params.JobId, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "integer", Format: ""}); err != nil {
-				return nil, err
-			} else {
-				for _, qp := range strings.Split(queryFrag, "&") {
-					rawQueryFragments = append(rawQueryFragments, qp)
-				}
-			}
-
-		}
-
-		if params.ProjectId != nil {
-
-			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "project_id", *params.ProjectId, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "integer", Format: ""}); err != nil {
-				return nil, err
-			} else {
-				for _, qp := range strings.Split(queryFrag, "&") {
-					rawQueryFragments = append(rawQueryFragments, qp)
-				}
-			}
-
-		}
-
-		if encoded := queryValues.Encode(); encoded != "" {
-			rawQueryFragments = append(rawQueryFragments, encoded)
-		}
-		queryURL.RawQuery = strings.Join(rawQueryFragments, "&")
-	}
-
-	req, err := http.NewRequest(http.MethodGet, queryURL.String(), nil)
-	if err != nil {
-		return nil, err
-	}
 
 	return req, nil
 }

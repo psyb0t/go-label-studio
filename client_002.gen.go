@@ -15,6 +15,68 @@ import (
 	openapi_types "github.com/oapi-codegen/runtime/types"
 )
 
+// ApiWorkspacesMembershipsBulkCreateFormdataRequestBody defines body for ApiWorkspacesMembershipsBulkCreate for application/x-www-form-urlencoded ContentType.
+type ApiWorkspacesMembershipsBulkCreateFormdataRequestBody = WorkspaceMemberBulkAssignRequest
+
+// ApiWorkspacesMembershipsBulkCreateMultipartRequestBody defines body for ApiWorkspacesMembershipsBulkCreate for multipart/form-data ContentType.
+type ApiWorkspacesMembershipsBulkCreateMultipartRequestBody = WorkspaceMemberBulkAssignRequest
+
+// ApiWorkspacesProjectsCreateJSONRequestBody defines body for ApiWorkspacesProjectsCreate for application/json ContentType.
+type ApiWorkspacesProjectsCreateJSONRequestBody = WorkspaceProjectsRequest
+
+// ApiWorkspacesProjectsCreateFormdataRequestBody defines body for ApiWorkspacesProjectsCreate for application/x-www-form-urlencoded ContentType.
+type ApiWorkspacesProjectsCreateFormdataRequestBody = WorkspaceProjectsRequest
+
+// ApiWorkspacesProjectsCreateMultipartRequestBody defines body for ApiWorkspacesProjectsCreate for multipart/form-data ContentType.
+type ApiWorkspacesProjectsCreateMultipartRequestBody = WorkspaceProjectsRequest
+
+// Getter for additional properties for ApiProjectsStatsDataFilterRetrieve200JSONResponseBody_UserFilters_Stats_Item. Returns the specified
+// element and whether it was found
+func (a ApiProjectsStatsDataFilterRetrieve200JSONResponseBody_UserFilters_Stats_Item) Get(fieldName string) (value map[string]interface{}, found bool) {
+	if a.AdditionalProperties != nil {
+		value, found = a.AdditionalProperties[fieldName]
+	}
+	return
+}
+
+// Setter for additional properties for ApiProjectsStatsDataFilterRetrieve200JSONResponseBody_UserFilters_Stats_Item
+func (a *ApiProjectsStatsDataFilterRetrieve200JSONResponseBody_UserFilters_Stats_Item) Set(fieldName string, value map[string]interface{}) {
+	if a.AdditionalProperties == nil {
+		a.AdditionalProperties = make(map[string]map[string]interface{})
+	}
+	a.AdditionalProperties[fieldName] = value
+}
+
+// Override default JSON handling for ApiProjectsStatsDataFilterRetrieve200JSONResponseBody_UserFilters_Stats_Item to handle AdditionalProperties
+func (a *ApiProjectsStatsDataFilterRetrieve200JSONResponseBody_UserFilters_Stats_Item) UnmarshalJSON(b []byte) error {
+	object := make(map[string]json.RawMessage)
+	err := json.Unmarshal(b, &object)
+	if err != nil {
+		return err
+	}
+
+	if raw, found := object["id"]; found {
+		err = json.Unmarshal(raw, &a.Id)
+		if err != nil {
+			return fmt.Errorf("error reading 'id': %w", err)
+		}
+		delete(object, "id")
+	}
+
+	if len(object) != 0 {
+		a.AdditionalProperties = make(map[string]map[string]interface{})
+		for fieldName, fieldBuf := range object {
+			var fieldVal map[string]interface{}
+			err := json.Unmarshal(fieldBuf, &fieldVal)
+			if err != nil {
+				return fmt.Errorf("error unmarshaling field %s: %w", fieldName, err)
+			}
+			a.AdditionalProperties[fieldName] = fieldVal
+		}
+	}
+	return nil
+}
+
 // Override default JSON handling for ApiProjectsStatsDataFilterRetrieve200JSONResponseBody_UserFilters_Stats_Item to handle AdditionalProperties
 func (a ApiProjectsStatsDataFilterRetrieve200JSONResponseBody_UserFilters_Stats_Item) MarshalJSON() ([]byte, error) {
 	var err error
@@ -5038,7 +5100,7 @@ type ClientInterface interface {
 	//             This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
 	//         </p>
 	//     </Card>
-	// Delete multiple learners' progress on this course and revoke their certificates.
+	// Delete multiple learners' progress on this course and revoke their certificates. Pass `user_ids`, or `select_all` with the Learners tab `filters` to reset every matching learner. Responds 409 when `expected_count` no longer matches the filtered learners.
 	//
 	// Takes any type of body and a specified content type.
 	//
@@ -5053,7 +5115,7 @@ type ClientInterface interface {
 	//             This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
 	//         </p>
 	//     </Card>
-	// Delete multiple learners' progress on this course and revoke their certificates.
+	// Delete multiple learners' progress on this course and revoke their certificates. Pass `user_ids`, or `select_all` with the Learners tab `filters` to reset every matching learner. Responds 409 when `expected_count` no longer matches the filtered learners.
 	//
 	// Takes a body of the `application/json` content type.
 	//
@@ -5068,7 +5130,7 @@ type ClientInterface interface {
 	//             This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
 	//         </p>
 	//     </Card>
-	// Delete multiple learners' progress on this course and revoke their certificates.
+	// Delete multiple learners' progress on this course and revoke their certificates. Pass `user_ids`, or `select_all` with the Learners tab `filters` to reset every matching learner. Responds 409 when `expected_count` no longer matches the filtered learners.
 	//
 	// Takes a body of the `application/x-www-form-urlencoded` content type.
 	//
@@ -19950,87 +20012,6 @@ func (c *Client) ApiLearningResourcesStructureCreateWithFormdataBody(ctx context
 // Corresponds with GET /api/learning-resources/{id}/take/ (the `ApiLearningResourcesTakeRetrieve` operationId).
 func (c *Client) ApiLearningResourcesTakeRetrieve(ctx context.Context, id int, params *ApiLearningResourcesTakeRetrieveParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewApiLearningResourcesTakeRetrieveRequest(c.Server, id, params)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// ApiLearningResourcesUnpublishCreateWithBody ✨ Unpublish a learning resource
-//
-// <Card href="https://humansignal.com/goenterprise">
-//
-//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
-//	    <p style="margin-top: 10px; font-size: 14px;">
-//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
-//	    </p>
-//	</Card>
-//
-// Unpublish a learning resource to hide it from learners.
-//
-// Takes any type of body and a specified content type.
-//
-// Corresponds with POST /api/learning-resources/{id}/unpublish/ (the `ApiLearningResourcesUnpublishCreate` operationId).
-func (c *Client) ApiLearningResourcesUnpublishCreateWithBody(ctx context.Context, id int, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewApiLearningResourcesUnpublishCreateRequestWithBody(c.Server, id, contentType, body)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// ApiLearningResourcesUnpublishCreate ✨ Unpublish a learning resource
-//
-// <Card href="https://humansignal.com/goenterprise">
-//
-//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
-//	    <p style="margin-top: 10px; font-size: 14px;">
-//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
-//	    </p>
-//	</Card>
-//
-// Unpublish a learning resource to hide it from learners.
-//
-// Takes a body of the `application/json` content type.
-//
-// Corresponds with POST /api/learning-resources/{id}/unpublish/ (the `ApiLearningResourcesUnpublishCreate` operationId).
-func (c *Client) ApiLearningResourcesUnpublishCreate(ctx context.Context, id int, body ApiLearningResourcesUnpublishCreateJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewApiLearningResourcesUnpublishCreateRequest(c.Server, id, body)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// ApiLearningResourcesUnpublishCreateWithFormdataBody ✨ Unpublish a learning resource
-//
-// <Card href="https://humansignal.com/goenterprise">
-//
-//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
-//	    <p style="margin-top: 10px; font-size: 14px;">
-//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
-//	    </p>
-//	</Card>
-//
-// Unpublish a learning resource to hide it from learners.
-//
-// Takes a body of the `application/x-www-form-urlencoded` content type.
-//
-// Corresponds with POST /api/learning-resources/{id}/unpublish/ (the `ApiLearningResourcesUnpublishCreate` operationId).
-func (c *Client) ApiLearningResourcesUnpublishCreateWithFormdataBody(ctx context.Context, id int, body ApiLearningResourcesUnpublishCreateFormdataRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewApiLearningResourcesUnpublishCreateRequestWithFormdataBody(c.Server, id, body)
 	if err != nil {
 		return nil, err
 	}

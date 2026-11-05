@@ -2,6 +2,14 @@
 
 All notable changes per release. Versions follow [semver](https://semver.org).
 
+## v0.7.0, 2026-11-05
+
+- Breaking: `BulkResetCourseProgressRequest.UserIds` changed from `[]int` to `*[]int` and is now optional in JSON (`omitempty`). Migration: pass `&ids` instead of `ids`.
+- Added `SelectAll` (`*bool`), `Filters` (`*BulkResetCourseProgressFiltersRequest`) and `ExpectedCount` (`*int`) to `BulkResetCourseProgressRequest`. With `SelectAll`, the bulk course progress reset covers every learner matching `Filters`. The server answers 409 when `ExpectedCount` no longer matches.
+- Added `BulkResetCourseProgressFiltersRequest` with the optional fields `CourseCompletedAfter`, `CourseCompletedBefore`, `CourseCompletedNever`, `CourseStartedAfter`, `CourseStartedBefore`, `Search` and `Status`, all `*string`.
+- The doc comments on `ApiLearningResourcesUserProgressBulkResetCreate` and its variants describe the new `select_all` mode.
+- Several `Api...RequestBody` aliases and the `Get`, `Set` and `UnmarshalJSON` methods of `ApiProjectsStatsDataFilterRetrieve200JSONResponseBody_UserFilters_Stats_Item` moved between generated files. Their names and types are unchanged.
+
 ## v0.6.0, 2026-11-03
 
 - Breaking: removed `ExternalId` from `LseS3ExportStorageRequest`, `LseS3ImportStorageRequest`, `PatchedLseS3ExportStorageRequest` and `PatchedLseS3ImportStorageRequest`. The upstream spec now marks the AWS external ID as set by the server. `LseS3ExportStorage.ExternalId` and `LseS3ImportStorage.ExternalId` stay as response fields. Migration: stop setting `ExternalId` in these requests.

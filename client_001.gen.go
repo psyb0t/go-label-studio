@@ -5,7 +5,6 @@ package labelstudio
 
 import (
 	"encoding/json"
-	"fmt"
 	"time"
 
 	openapi_types "github.com/oapi-codegen/runtime/types"
@@ -4033,9 +4032,42 @@ type BulkProjectLearningAssignmentRequest struct {
 	ProjectIds []int `json:"project_ids"`
 }
 
-// BulkResetCourseProgressRequest defines model for BulkResetCourseProgressRequest.
+// BulkResetCourseProgressFiltersRequest Learners-tab filters, named and formatted like the `user-progress` list query string.
+//
+// Unlike the list (which ignores invalid values), a bad value is an error here: a dropped filter
+// would widen a destructive reset.
+type BulkResetCourseProgressFiltersRequest struct {
+	// CourseCompletedAfter ISO datetime.
+	CourseCompletedAfter *string `json:"course_completed_after,omitempty"`
+
+	// CourseCompletedBefore ISO datetime.
+	CourseCompletedBefore *string `json:"course_completed_before,omitempty"`
+
+	// CourseCompletedNever true/false/1/0/yes/no.
+	CourseCompletedNever *string `json:"course_completed_never,omitempty"`
+
+	// CourseStartedAfter ISO datetime.
+	CourseStartedAfter *string `json:"course_started_after,omitempty"`
+
+	// CourseStartedBefore ISO datetime.
+	CourseStartedBefore *string `json:"course_started_before,omitempty"`
+	Search              *string `json:"search,omitempty"`
+
+	// Status Comma-separated course statuses.
+	Status *string `json:"status,omitempty"`
+}
+
+// BulkResetCourseProgressRequest Reset by explicit `user_ids`, or by `select_all` over the filtered learners. Exactly one mode.
 type BulkResetCourseProgressRequest struct {
-	UserIds []int `json:"user_ids"`
+	// ExpectedCount Only with `select_all`. If the filters now match a different number of learners, respond 409.
+	ExpectedCount *int `json:"expected_count,omitempty"`
+
+	// Filters Learners-tab filters; only with `select_all`. Omit for all learners.
+	Filters *BulkResetCourseProgressFiltersRequest `json:"filters,omitempty"`
+
+	// SelectAll Reset every learner matching `filters` (boolean true only).
+	SelectAll *bool  `json:"select_all,omitempty"`
+	UserIds   *[]int `json:"user_ids,omitempty"`
 }
 
 // BulkTaskAssigneesRequestRequest defines model for BulkTaskAssigneesRequestRequest.
@@ -19976,65 +20008,3 @@ type ApiWorkspacesMembershipsCreateMultipartRequestBody = WorkspaceMemberCreateR
 
 // ApiWorkspacesMembershipsBulkCreateJSONRequestBody defines body for ApiWorkspacesMembershipsBulkCreate for application/json ContentType.
 type ApiWorkspacesMembershipsBulkCreateJSONRequestBody = WorkspaceMemberBulkAssignRequest
-
-// ApiWorkspacesMembershipsBulkCreateFormdataRequestBody defines body for ApiWorkspacesMembershipsBulkCreate for application/x-www-form-urlencoded ContentType.
-type ApiWorkspacesMembershipsBulkCreateFormdataRequestBody = WorkspaceMemberBulkAssignRequest
-
-// ApiWorkspacesMembershipsBulkCreateMultipartRequestBody defines body for ApiWorkspacesMembershipsBulkCreate for multipart/form-data ContentType.
-type ApiWorkspacesMembershipsBulkCreateMultipartRequestBody = WorkspaceMemberBulkAssignRequest
-
-// ApiWorkspacesProjectsCreateJSONRequestBody defines body for ApiWorkspacesProjectsCreate for application/json ContentType.
-type ApiWorkspacesProjectsCreateJSONRequestBody = WorkspaceProjectsRequest
-
-// ApiWorkspacesProjectsCreateFormdataRequestBody defines body for ApiWorkspacesProjectsCreate for application/x-www-form-urlencoded ContentType.
-type ApiWorkspacesProjectsCreateFormdataRequestBody = WorkspaceProjectsRequest
-
-// ApiWorkspacesProjectsCreateMultipartRequestBody defines body for ApiWorkspacesProjectsCreate for multipart/form-data ContentType.
-type ApiWorkspacesProjectsCreateMultipartRequestBody = WorkspaceProjectsRequest
-
-// Getter for additional properties for ApiProjectsStatsDataFilterRetrieve200JSONResponseBody_UserFilters_Stats_Item. Returns the specified
-// element and whether it was found
-func (a ApiProjectsStatsDataFilterRetrieve200JSONResponseBody_UserFilters_Stats_Item) Get(fieldName string) (value map[string]interface{}, found bool) {
-	if a.AdditionalProperties != nil {
-		value, found = a.AdditionalProperties[fieldName]
-	}
-	return
-}
-
-// Setter for additional properties for ApiProjectsStatsDataFilterRetrieve200JSONResponseBody_UserFilters_Stats_Item
-func (a *ApiProjectsStatsDataFilterRetrieve200JSONResponseBody_UserFilters_Stats_Item) Set(fieldName string, value map[string]interface{}) {
-	if a.AdditionalProperties == nil {
-		a.AdditionalProperties = make(map[string]map[string]interface{})
-	}
-	a.AdditionalProperties[fieldName] = value
-}
-
-// Override default JSON handling for ApiProjectsStatsDataFilterRetrieve200JSONResponseBody_UserFilters_Stats_Item to handle AdditionalProperties
-func (a *ApiProjectsStatsDataFilterRetrieve200JSONResponseBody_UserFilters_Stats_Item) UnmarshalJSON(b []byte) error {
-	object := make(map[string]json.RawMessage)
-	err := json.Unmarshal(b, &object)
-	if err != nil {
-		return err
-	}
-
-	if raw, found := object["id"]; found {
-		err = json.Unmarshal(raw, &a.Id)
-		if err != nil {
-			return fmt.Errorf("error reading 'id': %w", err)
-		}
-		delete(object, "id")
-	}
-
-	if len(object) != 0 {
-		a.AdditionalProperties = make(map[string]map[string]interface{})
-		for fieldName, fieldBuf := range object {
-			var fieldVal map[string]interface{}
-			err := json.Unmarshal(fieldBuf, &fieldVal)
-			if err != nil {
-				return fmt.Errorf("error unmarshaling field %s: %w", fieldName, err)
-			}
-			a.AdditionalProperties[fieldName] = fieldVal
-		}
-	}
-	return nil
-}
