@@ -2,6 +2,16 @@
 
 All notable changes per release. Versions follow [semver](https://semver.org).
 
+## v0.7.1, 2026-11-06
+
+- Added the course export endpoint, `GET /api/learning-resources/{id}/export/`: `Client.ApiLearningResourcesExportRetrieve`, `ClientWithResponses.ApiLearningResourcesExportRetrieveWithResponse`, `NewApiLearningResourcesExportRetrieveRequest`, `ParseApiLearningResourcesExportRetrieveResponse` and `ApiLearningResourcesExportRetrieveResponse`.
+- Added `ApiLearningResourcesExportRetrieveParams` with the optional `IncludeAudioVideo`, `IncludeImages` and `IncludeOther` (`*bool`). Each one bundles the referenced files, and the server then returns a zip.
+- Added the course import endpoint, `POST /api/learning-resources/import/`: `Client.ApiLearningResourcesImportCreateWithBody`, `ClientWithResponses.ApiLearningResourcesImportCreateWithBodyWithResponse`, `NewApiLearningResourcesImportCreateRequestWithBody`, `ParseApiLearningResourcesImportCreateResponse` and `ApiLearningResourcesImportCreateResponse`.
+- Added the multipart body types `ApiLearningResourcesImportCreateMultipartBody` (fields `File`, `Title`, `Workspace`) and `ApiLearningResourcesImportCreateMultipartRequestBody`.
+- Added the models `CourseExportPayload` and `CourseImportResponse`.
+- Added the matching methods to `ClientInterface` and `ClientWithResponsesInterface`. Code that calls the clients is unaffected, but a custom type that implements either interface must add them.
+- Several generated types and methods moved between generated files. Their names and signatures are unchanged.
+
 ## v0.7.0, 2026-11-05
 
 - Breaking: `BulkResetCourseProgressRequest.UserIds` changed from `[]int` to `*[]int` and is now optional in JSON (`omitempty`). Migration: pass `&ids` instead of `ids`.

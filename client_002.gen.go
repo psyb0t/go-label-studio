@@ -15,6 +15,81 @@ import (
 	openapi_types "github.com/oapi-codegen/runtime/types"
 )
 
+// ApiUsersCreateJSONRequestBody defines body for ApiUsersCreate for application/json ContentType.
+type ApiUsersCreateJSONRequestBody = LseUserRequest
+
+// ApiUsersCreateFormdataRequestBody defines body for ApiUsersCreate for application/x-www-form-urlencoded ContentType.
+type ApiUsersCreateFormdataRequestBody = LseUserRequest
+
+// ApiUsersCreateMultipartRequestBody defines body for ApiUsersCreate for multipart/form-data ContentType.
+type ApiUsersCreateMultipartRequestBody = LseUserRequest
+
+// ApiUsersPartialUpdateJSONRequestBody defines body for ApiUsersPartialUpdate for application/json ContentType.
+type ApiUsersPartialUpdateJSONRequestBody = PatchedLseUserSerializerUpdateRequest
+
+// ApiUsersPartialUpdateFormdataRequestBody defines body for ApiUsersPartialUpdate for application/x-www-form-urlencoded ContentType.
+type ApiUsersPartialUpdateFormdataRequestBody = PatchedLseUserSerializerUpdateRequest
+
+// ApiUsersPartialUpdateMultipartRequestBody defines body for ApiUsersPartialUpdate for multipart/form-data ContentType.
+type ApiUsersPartialUpdateMultipartRequestBody = PatchedLseUserSerializerUpdateRequest
+
+// ApiWebhooksCreateJSONRequestBody defines body for ApiWebhooksCreate for application/json ContentType.
+type ApiWebhooksCreateJSONRequestBody = WebhookRequest
+
+// ApiWebhooksCreateFormdataRequestBody defines body for ApiWebhooksCreate for application/x-www-form-urlencoded ContentType.
+type ApiWebhooksCreateFormdataRequestBody = WebhookRequest
+
+// ApiWebhooksCreateMultipartRequestBody defines body for ApiWebhooksCreate for multipart/form-data ContentType.
+type ApiWebhooksCreateMultipartRequestBody = WebhookRequest
+
+// ApiWebhooksPartialUpdateJSONRequestBody defines body for ApiWebhooksPartialUpdate for application/json ContentType.
+type ApiWebhooksPartialUpdateJSONRequestBody = PatchedWebhookSerializerForUpdateRequest
+
+// ApiWebhooksPartialUpdateFormdataRequestBody defines body for ApiWebhooksPartialUpdate for application/x-www-form-urlencoded ContentType.
+type ApiWebhooksPartialUpdateFormdataRequestBody = PatchedWebhookSerializerForUpdateRequest
+
+// ApiWebhooksPartialUpdateMultipartRequestBody defines body for ApiWebhooksPartialUpdate for multipart/form-data ContentType.
+type ApiWebhooksPartialUpdateMultipartRequestBody = PatchedWebhookSerializerForUpdateRequest
+
+// ApiWebhooksUpdateJSONRequestBody defines body for ApiWebhooksUpdate for application/json ContentType.
+type ApiWebhooksUpdateJSONRequestBody = WebhookSerializerForUpdateRequest
+
+// ApiWebhooksUpdateFormdataRequestBody defines body for ApiWebhooksUpdate for application/x-www-form-urlencoded ContentType.
+type ApiWebhooksUpdateFormdataRequestBody = WebhookSerializerForUpdateRequest
+
+// ApiWebhooksUpdateMultipartRequestBody defines body for ApiWebhooksUpdate for multipart/form-data ContentType.
+type ApiWebhooksUpdateMultipartRequestBody = WebhookSerializerForUpdateRequest
+
+// ApiWorkspacesCreateJSONRequestBody defines body for ApiWorkspacesCreate for application/json ContentType.
+type ApiWorkspacesCreateJSONRequestBody = WorkspaceRequest
+
+// ApiWorkspacesCreateFormdataRequestBody defines body for ApiWorkspacesCreate for application/x-www-form-urlencoded ContentType.
+type ApiWorkspacesCreateFormdataRequestBody = WorkspaceRequest
+
+// ApiWorkspacesCreateMultipartRequestBody defines body for ApiWorkspacesCreate for multipart/form-data ContentType.
+type ApiWorkspacesCreateMultipartRequestBody = WorkspaceRequest
+
+// ApiWorkspacesPartialUpdateJSONRequestBody defines body for ApiWorkspacesPartialUpdate for application/json ContentType.
+type ApiWorkspacesPartialUpdateJSONRequestBody = PatchedWorkspaceRequest
+
+// ApiWorkspacesPartialUpdateFormdataRequestBody defines body for ApiWorkspacesPartialUpdate for application/x-www-form-urlencoded ContentType.
+type ApiWorkspacesPartialUpdateFormdataRequestBody = PatchedWorkspaceRequest
+
+// ApiWorkspacesPartialUpdateMultipartRequestBody defines body for ApiWorkspacesPartialUpdate for multipart/form-data ContentType.
+type ApiWorkspacesPartialUpdateMultipartRequestBody = PatchedWorkspaceRequest
+
+// ApiWorkspacesMembershipsCreateJSONRequestBody defines body for ApiWorkspacesMembershipsCreate for application/json ContentType.
+type ApiWorkspacesMembershipsCreateJSONRequestBody = WorkspaceMemberCreateRequest
+
+// ApiWorkspacesMembershipsCreateFormdataRequestBody defines body for ApiWorkspacesMembershipsCreate for application/x-www-form-urlencoded ContentType.
+type ApiWorkspacesMembershipsCreateFormdataRequestBody = WorkspaceMemberCreateRequest
+
+// ApiWorkspacesMembershipsCreateMultipartRequestBody defines body for ApiWorkspacesMembershipsCreate for multipart/form-data ContentType.
+type ApiWorkspacesMembershipsCreateMultipartRequestBody = WorkspaceMemberCreateRequest
+
+// ApiWorkspacesMembershipsBulkCreateJSONRequestBody defines body for ApiWorkspacesMembershipsBulkCreate for application/json ContentType.
+type ApiWorkspacesMembershipsBulkCreateJSONRequestBody = WorkspaceMemberBulkAssignRequest
+
 // ApiWorkspacesMembershipsBulkCreateFormdataRequestBody defines body for ApiWorkspacesMembershipsBulkCreate for application/x-www-form-urlencoded ContentType.
 type ApiWorkspacesMembershipsBulkCreateFormdataRequestBody = WorkspaceMemberBulkAssignRequest
 
@@ -4358,6 +4433,21 @@ type ClientInterface interface {
 	// Corresponds with GET /api/learning-resources/counts/ (the `ApiLearningResourcesCountsRetrieve` operationId).
 	ApiLearningResourcesCountsRetrieve(ctx context.Context, params *ApiLearningResourcesCountsRetrieveParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
+	// ApiLearningResourcesImportCreateWithBody ✨ Import a learning resource
+	//
+	// <Card href="https://humansignal.com/goenterprise">
+	//         <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+	//         <p style="margin-top: 10px; font-size: 14px;">
+	//             This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+	//         </p>
+	//     </Card>
+	// Create an unpublished course in a workspace from an exported course file: the JSON payload, or the zip bundle that also carries its files. Files in a bundle become the new course's own assets. Other asset ids are only valid in the organization and instance the file was exported from. In that case asset URLs are kept and `unresolved_asset_ids` lists the ones that do not exist in this organization. For any other file (another organization or instance, or no source recorded) every asset id that is not bundled is listed as unresolved and its URL is detached so it cannot resolve to an asset here.
+	//
+	// Takes any type of body and a specified content type.
+	//
+	// Corresponds with POST /api/learning-resources/import/ (the `ApiLearningResourcesImportCreate` operationId).
+	ApiLearningResourcesImportCreateWithBody(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
+
 	// ApiLearningResourcesDestroy ✨ Delete a learning resource
 	//
 	// Corresponds with DELETE /api/learning-resources/{id}/ (the `ApiLearningResourcesDestroy` operationId).
@@ -4549,6 +4639,19 @@ type ClientInterface interface {
 	//
 	// Corresponds with POST /api/learning-resources/{id}/editing-session/ (the `ApiLearningResourcesEditingSessionCreate` operationId).
 	ApiLearningResourcesEditingSessionCreateWithFormdataBody(ctx context.Context, id int, body ApiLearningResourcesEditingSessionCreateFormdataRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	// ApiLearningResourcesExportRetrieve ✨ Export a learning resource
+	//
+	// <Card href="https://humansignal.com/goenterprise">
+	//         <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+	//         <p style="margin-top: 10px; font-size: 14px;">
+	//             This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+	//         </p>
+	//     </Card>
+	// Return the draft course (settings, modules, pages) as a portable JSON payload for Import. With any of `include_images`, `include_audio_video` and `include_other` the response is a zip instead: `course.json` (the same payload), `assets.json` and the referenced files under `assets/`. References that cannot be bundled are counted in the `X-Course-Export-Skipped-Assets` header.
+	//
+	// Corresponds with GET /api/learning-resources/{id}/export/ (the `ApiLearningResourcesExportRetrieve` operationId).
+	ApiLearningResourcesExportRetrieve(ctx context.Context, id int, params *ApiLearningResourcesExportRetrieveParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// ApiLearningResourcesInvalidateProgressCreateWithBody ✨ Invalidate progress for a learning resource
 	//
@@ -18843,6 +18946,33 @@ func (c *Client) ApiLearningResourcesCountsRetrieve(ctx context.Context, params 
 	return c.Client.Do(req)
 }
 
+// ApiLearningResourcesImportCreateWithBody ✨ Import a learning resource
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Create an unpublished course in a workspace from an exported course file: the JSON payload, or the zip bundle that also carries its files. Files in a bundle become the new course's own assets. Other asset ids are only valid in the organization and instance the file was exported from. In that case asset URLs are kept and `unresolved_asset_ids` lists the ones that do not exist in this organization. For any other file (another organization or instance, or no source recorded) every asset id that is not bundled is listed as unresolved and its URL is detached so it cannot resolve to an asset here.
+//
+// Takes any type of body and a specified content type.
+//
+// Corresponds with POST /api/learning-resources/import/ (the `ApiLearningResourcesImportCreate` operationId).
+func (c *Client) ApiLearningResourcesImportCreateWithBody(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiLearningResourcesImportCreateRequestWithBody(c.Server, contentType, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
 // ApiLearningResourcesDestroy ✨ Delete a learning resource
 //
 // Corresponds with DELETE /api/learning-resources/{id}/ (the `ApiLearningResourcesDestroy` operationId).
@@ -19207,6 +19337,31 @@ func (c *Client) ApiLearningResourcesEditingSessionCreate(ctx context.Context, i
 // Corresponds with POST /api/learning-resources/{id}/editing-session/ (the `ApiLearningResourcesEditingSessionCreate` operationId).
 func (c *Client) ApiLearningResourcesEditingSessionCreateWithFormdataBody(ctx context.Context, id int, body ApiLearningResourcesEditingSessionCreateFormdataRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewApiLearningResourcesEditingSessionCreateRequestWithFormdataBody(c.Server, id, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ApiLearningResourcesExportRetrieve ✨ Export a learning resource
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Return the draft course (settings, modules, pages) as a portable JSON payload for Import. With any of `include_images`, `include_audio_video` and `include_other` the response is a zip instead: `course.json` (the same payload), `assets.json` and the referenced files under `assets/`. References that cannot be bundled are counted in the `X-Course-Export-Skipped-Assets` header.
+//
+// Corresponds with GET /api/learning-resources/{id}/export/ (the `ApiLearningResourcesExportRetrieve` operationId).
+func (c *Client) ApiLearningResourcesExportRetrieve(ctx context.Context, id int, params *ApiLearningResourcesExportRetrieveParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiLearningResourcesExportRetrieveRequest(c.Server, id, params)
 	if err != nil {
 		return nil, err
 	}
@@ -19852,166 +20007,6 @@ func (c *Client) ApiLearningResourcesProjectAssignmentsCreateWithFormdataBody(ct
 // Corresponds with POST /api/learning-resources/{id}/publish/ (the `ApiLearningResourcesPublishCreate` operationId).
 func (c *Client) ApiLearningResourcesPublishCreateWithBody(ctx context.Context, id int, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewApiLearningResourcesPublishCreateRequestWithBody(c.Server, id, contentType, body)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// ApiLearningResourcesPublishCreate ✨ Publish a learning resource
-//
-// <Card href="https://humansignal.com/goenterprise">
-//
-//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
-//	    <p style="margin-top: 10px; font-size: 14px;">
-//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
-//	    </p>
-//	</Card>
-//
-// Publish a learning resource to make it available to learners.
-//
-// Takes a body of the `application/json` content type.
-//
-// Corresponds with POST /api/learning-resources/{id}/publish/ (the `ApiLearningResourcesPublishCreate` operationId).
-func (c *Client) ApiLearningResourcesPublishCreate(ctx context.Context, id int, body ApiLearningResourcesPublishCreateJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewApiLearningResourcesPublishCreateRequest(c.Server, id, body)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// ApiLearningResourcesPublishCreateWithFormdataBody ✨ Publish a learning resource
-//
-// <Card href="https://humansignal.com/goenterprise">
-//
-//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
-//	    <p style="margin-top: 10px; font-size: 14px;">
-//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
-//	    </p>
-//	</Card>
-//
-// Publish a learning resource to make it available to learners.
-//
-// Takes a body of the `application/x-www-form-urlencoded` content type.
-//
-// Corresponds with POST /api/learning-resources/{id}/publish/ (the `ApiLearningResourcesPublishCreate` operationId).
-func (c *Client) ApiLearningResourcesPublishCreateWithFormdataBody(ctx context.Context, id int, body ApiLearningResourcesPublishCreateFormdataRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewApiLearningResourcesPublishCreateRequestWithFormdataBody(c.Server, id, body)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// ApiLearningResourcesStructureCreateWithBody ✨ Apply a structural change to a course
-//
-// <Card href="https://humansignal.com/goenterprise">
-//
-//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
-//	    <p style="margin-top: 10px; font-size: 14px;">
-//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
-//	    </p>
-//	</Card>
-//
-// Apply a semantic structural operation (add/delete/duplicate/reorder/move page or module, rename module) to current server state under a compare-and-swap on `structure_version`. A stale version returns 409 `structure_version_conflict` with the fresh outline so the client can resync and retry.
-//
-// Takes any type of body and a specified content type.
-//
-// Corresponds with POST /api/learning-resources/{id}/structure/ (the `ApiLearningResourcesStructureCreate` operationId).
-func (c *Client) ApiLearningResourcesStructureCreateWithBody(ctx context.Context, id int, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewApiLearningResourcesStructureCreateRequestWithBody(c.Server, id, contentType, body)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// ApiLearningResourcesStructureCreate ✨ Apply a structural change to a course
-//
-// <Card href="https://humansignal.com/goenterprise">
-//
-//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
-//	    <p style="margin-top: 10px; font-size: 14px;">
-//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
-//	    </p>
-//	</Card>
-//
-// Apply a semantic structural operation (add/delete/duplicate/reorder/move page or module, rename module) to current server state under a compare-and-swap on `structure_version`. A stale version returns 409 `structure_version_conflict` with the fresh outline so the client can resync and retry.
-//
-// Takes a body of the `application/json` content type.
-//
-// Corresponds with POST /api/learning-resources/{id}/structure/ (the `ApiLearningResourcesStructureCreate` operationId).
-func (c *Client) ApiLearningResourcesStructureCreate(ctx context.Context, id int, body ApiLearningResourcesStructureCreateJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewApiLearningResourcesStructureCreateRequest(c.Server, id, body)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// ApiLearningResourcesStructureCreateWithFormdataBody ✨ Apply a structural change to a course
-//
-// <Card href="https://humansignal.com/goenterprise">
-//
-//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
-//	    <p style="margin-top: 10px; font-size: 14px;">
-//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
-//	    </p>
-//	</Card>
-//
-// Apply a semantic structural operation (add/delete/duplicate/reorder/move page or module, rename module) to current server state under a compare-and-swap on `structure_version`. A stale version returns 409 `structure_version_conflict` with the fresh outline so the client can resync and retry.
-//
-// Takes a body of the `application/x-www-form-urlencoded` content type.
-//
-// Corresponds with POST /api/learning-resources/{id}/structure/ (the `ApiLearningResourcesStructureCreate` operationId).
-func (c *Client) ApiLearningResourcesStructureCreateWithFormdataBody(ctx context.Context, id int, body ApiLearningResourcesStructureCreateFormdataRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewApiLearningResourcesStructureCreateRequestWithFormdataBody(c.Server, id, body)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// ApiLearningResourcesTakeRetrieve ✨ Get a standalone learning resource
-//
-// <Card href="https://humansignal.com/goenterprise">
-//
-//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
-//	    <p style="margin-top: 10px; font-size: 14px;">
-//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
-//	    </p>
-//	</Card>
-//
-// Get a published learning resource available for standalone access.
-//
-// Corresponds with GET /api/learning-resources/{id}/take/ (the `ApiLearningResourcesTakeRetrieve` operationId).
-func (c *Client) ApiLearningResourcesTakeRetrieve(ctx context.Context, id int, params *ApiLearningResourcesTakeRetrieveParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewApiLearningResourcesTakeRetrieveRequest(c.Server, id, params)
 	if err != nil {
 		return nil, err
 	}

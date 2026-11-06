@@ -15,6 +15,123 @@ import (
 	"github.com/oapi-codegen/runtime"
 )
 
+// NewApiDimensionsValueCountsBackfillDestroyRequest constructs an http.Request for the ApiDimensionsValueCountsBackfillDestroy method
+func NewApiDimensionsValueCountsBackfillDestroyRequest(server string, params *ApiDimensionsValueCountsBackfillDestroyParams) (*http.Request, error) {
+	var err error
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/api/dimensions/value-counts-backfill/")
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	if params != nil {
+		// queryValues collects non-styled parameters (passthrough, JSON)
+		// that are safe to round-trip through url.Values.Encode().
+		queryValues := queryURL.Query()
+		// rawQueryFragments collects pre-encoded query fragments from
+		// styled parameters, preserving literal commas as delimiters
+		// per the OpenAPI spec (e.g. "color=blue,black,brown").
+		var rawQueryFragments []string
+
+		if params.JobId != nil {
+
+			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "job_id", *params.JobId, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "integer", Format: ""}); err != nil {
+				return nil, err
+			} else {
+				for _, qp := range strings.Split(queryFrag, "&") {
+					rawQueryFragments = append(rawQueryFragments, qp)
+				}
+			}
+
+		}
+
+		if params.ProjectId != nil {
+
+			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "project_id", *params.ProjectId, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "integer", Format: ""}); err != nil {
+				return nil, err
+			} else {
+				for _, qp := range strings.Split(queryFrag, "&") {
+					rawQueryFragments = append(rawQueryFragments, qp)
+				}
+			}
+
+		}
+
+		if encoded := queryValues.Encode(); encoded != "" {
+			rawQueryFragments = append(rawQueryFragments, encoded)
+		}
+		queryURL.RawQuery = strings.Join(rawQueryFragments, "&")
+	}
+
+	req, err := http.NewRequest(http.MethodDelete, queryURL.String(), nil)
+	if err != nil {
+		return nil, err
+	}
+
+	return req, nil
+}
+
+// NewApiDimensionsValueCountsBackfillCreateRequest calls the generic ApiDimensionsValueCountsBackfillCreate builder with application/json body
+func NewApiDimensionsValueCountsBackfillCreateRequest(server string, body ApiDimensionsValueCountsBackfillCreateJSONRequestBody) (*http.Request, error) {
+	var bodyReader io.Reader
+	buf, err := json.Marshal(body)
+	if err != nil {
+		return nil, err
+	}
+	bodyReader = bytes.NewReader(buf)
+	return NewApiDimensionsValueCountsBackfillCreateRequestWithBody(server, "application/json", bodyReader)
+}
+
+// NewApiDimensionsValueCountsBackfillCreateRequestWithFormdataBody calls the generic ApiDimensionsValueCountsBackfillCreate builder with application/x-www-form-urlencoded body
+func NewApiDimensionsValueCountsBackfillCreateRequestWithFormdataBody(server string, body ApiDimensionsValueCountsBackfillCreateFormdataRequestBody) (*http.Request, error) {
+	var bodyReader io.Reader
+	bodyStr, err := runtime.MarshalForm(body, nil)
+	if err != nil {
+		return nil, err
+	}
+	bodyReader = strings.NewReader(bodyStr.Encode())
+	return NewApiDimensionsValueCountsBackfillCreateRequestWithBody(server, "application/x-www-form-urlencoded", bodyReader)
+}
+
+// NewApiDimensionsValueCountsBackfillCreateRequestWithBody constructs an http.Request for the ApiDimensionsValueCountsBackfillCreate method, with any body, and a specified content type
+func NewApiDimensionsValueCountsBackfillCreateRequestWithBody(server string, contentType string, body io.Reader) (*http.Request, error) {
+	var err error
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/api/dimensions/value-counts-backfill/")
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequest(http.MethodPost, queryURL.String(), body)
+	if err != nil {
+		return nil, err
+	}
+
+	req.Header.Add("Content-Type", contentType)
+
+	return req, nil
+}
+
 // NewApiDimensionsValueCountsBackfillJobsListRequest constructs an http.Request for the ApiDimensionsValueCountsBackfillJobsList method
 func NewApiDimensionsValueCountsBackfillJobsListRequest(server string, params *ApiDimensionsValueCountsBackfillJobsListParams) (*http.Request, error) {
 	var err error
@@ -4072,6 +4189,35 @@ func NewApiLearningResourcesCountsRetrieveRequest(server string, params *ApiLear
 	return req, nil
 }
 
+// NewApiLearningResourcesImportCreateRequestWithBody constructs an http.Request for the ApiLearningResourcesImportCreate method, with any body, and a specified content type
+func NewApiLearningResourcesImportCreateRequestWithBody(server string, contentType string, body io.Reader) (*http.Request, error) {
+	var err error
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/api/learning-resources/import/")
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequest(http.MethodPost, queryURL.String(), body)
+	if err != nil {
+		return nil, err
+	}
+
+	req.Header.Add("Content-Type", contentType)
+
+	return req, nil
+}
+
 // NewApiLearningResourcesDestroyRequest constructs an http.Request for the ApiLearningResourcesDestroy method
 func NewApiLearningResourcesDestroyRequest(server string, id int) (*http.Request, error) {
 	var err error
@@ -4557,6 +4703,91 @@ func NewApiLearningResourcesEditingSessionCreateRequestWithBody(server string, i
 	}
 
 	req.Header.Add("Content-Type", contentType)
+
+	return req, nil
+}
+
+// NewApiLearningResourcesExportRetrieveRequest constructs an http.Request for the ApiLearningResourcesExportRetrieve method
+func NewApiLearningResourcesExportRetrieveRequest(server string, id int, params *ApiLearningResourcesExportRetrieveParams) (*http.Request, error) {
+	var err error
+
+	var pathParam0 string
+
+	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "id", id, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "integer", Format: ""})
+	if err != nil {
+		return nil, err
+	}
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/api/learning-resources/%s/export/", pathParam0)
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	if params != nil {
+		// queryValues collects non-styled parameters (passthrough, JSON)
+		// that are safe to round-trip through url.Values.Encode().
+		queryValues := queryURL.Query()
+		// rawQueryFragments collects pre-encoded query fragments from
+		// styled parameters, preserving literal commas as delimiters
+		// per the OpenAPI spec (e.g. "color=blue,black,brown").
+		var rawQueryFragments []string
+
+		if params.IncludeAudioVideo != nil {
+
+			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "include_audio_video", *params.IncludeAudioVideo, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "boolean", Format: ""}); err != nil {
+				return nil, err
+			} else {
+				for _, qp := range strings.Split(queryFrag, "&") {
+					rawQueryFragments = append(rawQueryFragments, qp)
+				}
+			}
+
+		}
+
+		if params.IncludeImages != nil {
+
+			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "include_images", *params.IncludeImages, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "boolean", Format: ""}); err != nil {
+				return nil, err
+			} else {
+				for _, qp := range strings.Split(queryFrag, "&") {
+					rawQueryFragments = append(rawQueryFragments, qp)
+				}
+			}
+
+		}
+
+		if params.IncludeOther != nil {
+
+			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "include_other", *params.IncludeOther, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "boolean", Format: ""}); err != nil {
+				return nil, err
+			} else {
+				for _, qp := range strings.Split(queryFrag, "&") {
+					rawQueryFragments = append(rawQueryFragments, qp)
+				}
+			}
+
+		}
+
+		if encoded := queryValues.Encode(); encoded != "" {
+			rawQueryFragments = append(rawQueryFragments, encoded)
+		}
+		queryURL.RawQuery = strings.Join(rawQueryFragments, "&")
+	}
+
+	req, err := http.NewRequest(http.MethodGet, queryURL.String(), nil)
+	if err != nil {
+		return nil, err
+	}
 
 	return req, nil
 }
@@ -19788,234 +20019,6 @@ func NewApiStoragesAzureListRequest(server string, params *ApiStoragesAzureListP
 	if err != nil {
 		return nil, err
 	}
-
-	return req, nil
-}
-
-// NewApiStoragesAzureCreateRequest calls the generic ApiStoragesAzureCreate builder with application/json body
-func NewApiStoragesAzureCreateRequest(server string, body ApiStoragesAzureCreateJSONRequestBody) (*http.Request, error) {
-	var bodyReader io.Reader
-	buf, err := json.Marshal(body)
-	if err != nil {
-		return nil, err
-	}
-	bodyReader = bytes.NewReader(buf)
-	return NewApiStoragesAzureCreateRequestWithBody(server, "application/json", bodyReader)
-}
-
-// NewApiStoragesAzureCreateRequestWithFormdataBody calls the generic ApiStoragesAzureCreate builder with application/x-www-form-urlencoded body
-func NewApiStoragesAzureCreateRequestWithFormdataBody(server string, body ApiStoragesAzureCreateFormdataRequestBody) (*http.Request, error) {
-	var bodyReader io.Reader
-	bodyStr, err := runtime.MarshalForm(body, nil)
-	if err != nil {
-		return nil, err
-	}
-	bodyReader = strings.NewReader(bodyStr.Encode())
-	return NewApiStoragesAzureCreateRequestWithBody(server, "application/x-www-form-urlencoded", bodyReader)
-}
-
-// NewApiStoragesAzureCreateRequestWithBody constructs an http.Request for the ApiStoragesAzureCreate method, with any body, and a specified content type
-func NewApiStoragesAzureCreateRequestWithBody(server string, contentType string, body io.Reader) (*http.Request, error) {
-	var err error
-
-	serverURL, err := url.Parse(server)
-	if err != nil {
-		return nil, err
-	}
-
-	operationPath := fmt.Sprintf("/api/storages/azure/")
-	if operationPath[0] == '/' {
-		operationPath = "." + operationPath
-	}
-
-	queryURL, err := serverURL.Parse(operationPath)
-	if err != nil {
-		return nil, err
-	}
-
-	req, err := http.NewRequest(http.MethodPost, queryURL.String(), body)
-	if err != nil {
-		return nil, err
-	}
-
-	req.Header.Add("Content-Type", contentType)
-
-	return req, nil
-}
-
-// NewApiStoragesAzureValidateCreateRequest calls the generic ApiStoragesAzureValidateCreate builder with application/json body
-func NewApiStoragesAzureValidateCreateRequest(server string, body ApiStoragesAzureValidateCreateJSONRequestBody) (*http.Request, error) {
-	var bodyReader io.Reader
-	buf, err := json.Marshal(body)
-	if err != nil {
-		return nil, err
-	}
-	bodyReader = bytes.NewReader(buf)
-	return NewApiStoragesAzureValidateCreateRequestWithBody(server, "application/json", bodyReader)
-}
-
-// NewApiStoragesAzureValidateCreateRequestWithFormdataBody calls the generic ApiStoragesAzureValidateCreate builder with application/x-www-form-urlencoded body
-func NewApiStoragesAzureValidateCreateRequestWithFormdataBody(server string, body ApiStoragesAzureValidateCreateFormdataRequestBody) (*http.Request, error) {
-	var bodyReader io.Reader
-	bodyStr, err := runtime.MarshalForm(body, nil)
-	if err != nil {
-		return nil, err
-	}
-	bodyReader = strings.NewReader(bodyStr.Encode())
-	return NewApiStoragesAzureValidateCreateRequestWithBody(server, "application/x-www-form-urlencoded", bodyReader)
-}
-
-// NewApiStoragesAzureValidateCreateRequestWithBody constructs an http.Request for the ApiStoragesAzureValidateCreate method, with any body, and a specified content type
-func NewApiStoragesAzureValidateCreateRequestWithBody(server string, contentType string, body io.Reader) (*http.Request, error) {
-	var err error
-
-	serverURL, err := url.Parse(server)
-	if err != nil {
-		return nil, err
-	}
-
-	operationPath := fmt.Sprintf("/api/storages/azure/validate")
-	if operationPath[0] == '/' {
-		operationPath = "." + operationPath
-	}
-
-	queryURL, err := serverURL.Parse(operationPath)
-	if err != nil {
-		return nil, err
-	}
-
-	req, err := http.NewRequest(http.MethodPost, queryURL.String(), body)
-	if err != nil {
-		return nil, err
-	}
-
-	req.Header.Add("Content-Type", contentType)
-
-	return req, nil
-}
-
-// NewApiStoragesAzureDestroyRequest constructs an http.Request for the ApiStoragesAzureDestroy method
-func NewApiStoragesAzureDestroyRequest(server string, id int) (*http.Request, error) {
-	var err error
-
-	var pathParam0 string
-
-	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "id", id, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "integer", Format: ""})
-	if err != nil {
-		return nil, err
-	}
-
-	serverURL, err := url.Parse(server)
-	if err != nil {
-		return nil, err
-	}
-
-	operationPath := fmt.Sprintf("/api/storages/azure/%s", pathParam0)
-	if operationPath[0] == '/' {
-		operationPath = "." + operationPath
-	}
-
-	queryURL, err := serverURL.Parse(operationPath)
-	if err != nil {
-		return nil, err
-	}
-
-	req, err := http.NewRequest(http.MethodDelete, queryURL.String(), nil)
-	if err != nil {
-		return nil, err
-	}
-
-	return req, nil
-}
-
-// NewApiStoragesAzureRetrieveRequest constructs an http.Request for the ApiStoragesAzureRetrieve method
-func NewApiStoragesAzureRetrieveRequest(server string, id int) (*http.Request, error) {
-	var err error
-
-	var pathParam0 string
-
-	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "id", id, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "integer", Format: ""})
-	if err != nil {
-		return nil, err
-	}
-
-	serverURL, err := url.Parse(server)
-	if err != nil {
-		return nil, err
-	}
-
-	operationPath := fmt.Sprintf("/api/storages/azure/%s", pathParam0)
-	if operationPath[0] == '/' {
-		operationPath = "." + operationPath
-	}
-
-	queryURL, err := serverURL.Parse(operationPath)
-	if err != nil {
-		return nil, err
-	}
-
-	req, err := http.NewRequest(http.MethodGet, queryURL.String(), nil)
-	if err != nil {
-		return nil, err
-	}
-
-	return req, nil
-}
-
-// NewApiStoragesAzurePartialUpdateRequest calls the generic ApiStoragesAzurePartialUpdate builder with application/json body
-func NewApiStoragesAzurePartialUpdateRequest(server string, id int, body ApiStoragesAzurePartialUpdateJSONRequestBody) (*http.Request, error) {
-	var bodyReader io.Reader
-	buf, err := json.Marshal(body)
-	if err != nil {
-		return nil, err
-	}
-	bodyReader = bytes.NewReader(buf)
-	return NewApiStoragesAzurePartialUpdateRequestWithBody(server, id, "application/json", bodyReader)
-}
-
-// NewApiStoragesAzurePartialUpdateRequestWithFormdataBody calls the generic ApiStoragesAzurePartialUpdate builder with application/x-www-form-urlencoded body
-func NewApiStoragesAzurePartialUpdateRequestWithFormdataBody(server string, id int, body ApiStoragesAzurePartialUpdateFormdataRequestBody) (*http.Request, error) {
-	var bodyReader io.Reader
-	bodyStr, err := runtime.MarshalForm(body, nil)
-	if err != nil {
-		return nil, err
-	}
-	bodyReader = strings.NewReader(bodyStr.Encode())
-	return NewApiStoragesAzurePartialUpdateRequestWithBody(server, id, "application/x-www-form-urlencoded", bodyReader)
-}
-
-// NewApiStoragesAzurePartialUpdateRequestWithBody constructs an http.Request for the ApiStoragesAzurePartialUpdate method, with any body, and a specified content type
-func NewApiStoragesAzurePartialUpdateRequestWithBody(server string, id int, contentType string, body io.Reader) (*http.Request, error) {
-	var err error
-
-	var pathParam0 string
-
-	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "id", id, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "integer", Format: ""})
-	if err != nil {
-		return nil, err
-	}
-
-	serverURL, err := url.Parse(server)
-	if err != nil {
-		return nil, err
-	}
-
-	operationPath := fmt.Sprintf("/api/storages/azure/%s", pathParam0)
-	if operationPath[0] == '/' {
-		operationPath = "." + operationPath
-	}
-
-	queryURL, err := serverURL.Parse(operationPath)
-	if err != nil {
-		return nil, err
-	}
-
-	req, err := http.NewRequest(http.MethodPatch, queryURL.String(), body)
-	if err != nil {
-		return nil, err
-	}
-
-	req.Header.Add("Content-Type", contentType)
 
 	return req, nil
 }

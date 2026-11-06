@@ -4414,6 +4414,60 @@ type CourseEditingSessionResponse struct {
 	StructureVersion int                    `json:"structure_version"`
 }
 
+// CourseExportPayload OpenAPI shape of GET /learning-resources/{id}/export/ (also the file Import accepts).
+type CourseExportPayload struct {
+	Course        map[string]interface{}   `json:"course"`
+	ExportedAt    time.Time                `json:"exported_at"`
+	Format        string                   `json:"format"`
+	FormatVersion int                      `json:"format_version"`
+	Modules       []map[string]interface{} `json:"modules"`
+	Source        *map[string]interface{}  `json:"source"`
+}
+
+// CourseImportResponse defines model for CourseImportResponse.
+type CourseImportResponse struct {
+	AllowStandalone                 *bool                   `json:"allow_standalone,omitempty"`
+	Color                           *string                 `json:"color,omitempty"`
+	Content                         *map[string]interface{} `json:"content,omitempty"`
+	ContentVersion                  *int                    `json:"content_version,omitempty"`
+	CoverImageUrl                   *string                 `json:"cover_image_url,omitempty"`
+	CreatedAt                       *time.Time              `json:"created_at,omitempty"`
+	CreatedBy                       *UserSimple             `json:"created_by,omitempty"`
+	DefaultAllowManualAccess        *bool                   `json:"default_allow_manual_access,omitempty"`
+	DefaultGateAnnotatorDataManager *bool                   `json:"default_gate_annotator_data_manager,omitempty"`
+	DefaultGateAnnotatorLabelStream *bool                   `json:"default_gate_annotator_label_stream,omitempty"`
+	DefaultGateReviewerDataManager  *bool                   `json:"default_gate_reviewer_data_manager,omitempty"`
+	DefaultGateReviewerLabelStream  *bool                   `json:"default_gate_reviewer_label_stream,omitempty"`
+	DefaultGateReviewerReviewStream *bool                   `json:"default_gate_reviewer_review_stream,omitempty"`
+
+	// EstimatedDurationUnit * `minutes` - Minutes
+	// * `hours` - Hours
+	// * `days` - Days
+	// * `weeks` - Weeks
+	EstimatedDurationUnit           *EstimatedDurationUnitEnum `json:"estimated_duration_unit,omitempty"`
+	EstimatedDurationValue          *int                       `json:"estimated_duration_value,omitempty"`
+	GenerateCertificateOnCompletion *bool                      `json:"generate_certificate_on_completion,omitempty"`
+	HasUnpublishedChanges           *bool                      `json:"has_unpublished_changes,omitempty"`
+	HideCompletedQuizzes            *bool                      `json:"hide_completed_quizzes,omitempty"`
+	Id                              *int                       `json:"id,omitempty"`
+	IsPublished                     *bool                      `json:"is_published,omitempty"`
+	LearnerCount                    *int                       `json:"learner_count,omitempty"`
+	LearnersCompletedCount          *int                       `json:"learners_completed_count,omitempty"`
+	LearnersStartedCount            *int                       `json:"learners_started_count,omitempty"`
+	ModuleCount                     *int                       `json:"module_count,omitempty"`
+	Organization                    *int                       `json:"organization,omitempty"`
+	PageCount                       *int                       `json:"page_count,omitempty"`
+	ProjectCount                    *int                       `json:"project_count,omitempty"`
+	SinglePageReview                *bool                      `json:"single_page_review,omitempty"`
+	StructureVersion                *int                       `json:"structure_version,omitempty"`
+	Summary                         *string                    `json:"summary,omitempty"`
+	Title                           *string                    `json:"title,omitempty"`
+	UnresolvedAssetIds              []int                      `json:"unresolved_asset_ids"`
+	UpdatedAt                       *time.Time                 `json:"updated_at,omitempty"`
+	UpdatedBy                       *UserSimple                `json:"updated_by,omitempty"`
+	Workspace                       *int                       `json:"workspace,omitempty"`
+}
+
 // CourseModule defines model for CourseModule.
 type CourseModule struct {
 	Content          interface{} `json:"content,omitempty"`
@@ -16385,6 +16439,13 @@ type ApiLearningResourcesCountsRetrieveParams struct {
 	Ids string `form:"ids" json:"ids"`
 }
 
+// ApiLearningResourcesImportCreateMultipartBody defines parameters for ApiLearningResourcesImportCreate.
+type ApiLearningResourcesImportCreateMultipartBody struct {
+	File      openapi_types.File `json:"file"`
+	Title     *string            `json:"title,omitempty"`
+	Workspace int                `json:"workspace"`
+}
+
 // ApiLearningResourcesRetrieveParams defines parameters for ApiLearningResourcesRetrieve.
 type ApiLearningResourcesRetrieveParams struct {
 	// Omit Comma-separated response fields to leave out, e.g. `content,modules`. `content`, `learner_content` and `modules` each carry the whole course, so leave out the ones you do not read.
@@ -16406,6 +16467,18 @@ type ApiLearningResourcesCertificatesListParams struct {
 	// Search A search term.
 	Search    *string `form:"search,omitempty" json:"search,omitempty"`
 	Workspace *int    `form:"workspace,omitempty" json:"workspace,omitempty"`
+}
+
+// ApiLearningResourcesExportRetrieveParams defines parameters for ApiLearningResourcesExportRetrieve.
+type ApiLearningResourcesExportRetrieveParams struct {
+	// IncludeAudioVideo Bundle the audio and video files the course references. Returns a zip.
+	IncludeAudioVideo *bool `form:"include_audio_video,omitempty" json:"include_audio_video,omitempty"`
+
+	// IncludeImages Bundle the images the course references. Returns a zip.
+	IncludeImages *bool `form:"include_images,omitempty" json:"include_images,omitempty"`
+
+	// IncludeOther Bundle the other files (documents, etc.) the course references. Returns a zip.
+	IncludeOther *bool `form:"include_other,omitempty" json:"include_other,omitempty"`
 }
 
 // ApiLearningResourcesModulesListParams defines parameters for ApiLearningResourcesModulesList.
@@ -18467,6 +18540,9 @@ type ApiLearningResourcesCreateFormdataRequestBody = LearningResourceCreateReque
 // ApiLearningResourcesCreateMultipartRequestBody defines body for ApiLearningResourcesCreate for multipart/form-data ContentType.
 type ApiLearningResourcesCreateMultipartRequestBody = LearningResourceCreateRequest
 
+// ApiLearningResourcesImportCreateMultipartRequestBody defines body for ApiLearningResourcesImportCreate for multipart/form-data ContentType.
+type ApiLearningResourcesImportCreateMultipartRequestBody ApiLearningResourcesImportCreateMultipartBody
+
 // ApiLearningResourcesPartialUpdateJSONRequestBody defines body for ApiLearningResourcesPartialUpdate for application/json ContentType.
 type ApiLearningResourcesPartialUpdateJSONRequestBody = PatchedLearningResourceUpdateRequest
 
@@ -19933,78 +20009,3 @@ type ApiTokenRotateCreateFormdataRequestBody = LSAPITokenRotateRequest
 
 // ApiTokenRotateCreateMultipartRequestBody defines body for ApiTokenRotateCreate for multipart/form-data ContentType.
 type ApiTokenRotateCreateMultipartRequestBody = LSAPITokenRotateRequest
-
-// ApiUsersCreateJSONRequestBody defines body for ApiUsersCreate for application/json ContentType.
-type ApiUsersCreateJSONRequestBody = LseUserRequest
-
-// ApiUsersCreateFormdataRequestBody defines body for ApiUsersCreate for application/x-www-form-urlencoded ContentType.
-type ApiUsersCreateFormdataRequestBody = LseUserRequest
-
-// ApiUsersCreateMultipartRequestBody defines body for ApiUsersCreate for multipart/form-data ContentType.
-type ApiUsersCreateMultipartRequestBody = LseUserRequest
-
-// ApiUsersPartialUpdateJSONRequestBody defines body for ApiUsersPartialUpdate for application/json ContentType.
-type ApiUsersPartialUpdateJSONRequestBody = PatchedLseUserSerializerUpdateRequest
-
-// ApiUsersPartialUpdateFormdataRequestBody defines body for ApiUsersPartialUpdate for application/x-www-form-urlencoded ContentType.
-type ApiUsersPartialUpdateFormdataRequestBody = PatchedLseUserSerializerUpdateRequest
-
-// ApiUsersPartialUpdateMultipartRequestBody defines body for ApiUsersPartialUpdate for multipart/form-data ContentType.
-type ApiUsersPartialUpdateMultipartRequestBody = PatchedLseUserSerializerUpdateRequest
-
-// ApiWebhooksCreateJSONRequestBody defines body for ApiWebhooksCreate for application/json ContentType.
-type ApiWebhooksCreateJSONRequestBody = WebhookRequest
-
-// ApiWebhooksCreateFormdataRequestBody defines body for ApiWebhooksCreate for application/x-www-form-urlencoded ContentType.
-type ApiWebhooksCreateFormdataRequestBody = WebhookRequest
-
-// ApiWebhooksCreateMultipartRequestBody defines body for ApiWebhooksCreate for multipart/form-data ContentType.
-type ApiWebhooksCreateMultipartRequestBody = WebhookRequest
-
-// ApiWebhooksPartialUpdateJSONRequestBody defines body for ApiWebhooksPartialUpdate for application/json ContentType.
-type ApiWebhooksPartialUpdateJSONRequestBody = PatchedWebhookSerializerForUpdateRequest
-
-// ApiWebhooksPartialUpdateFormdataRequestBody defines body for ApiWebhooksPartialUpdate for application/x-www-form-urlencoded ContentType.
-type ApiWebhooksPartialUpdateFormdataRequestBody = PatchedWebhookSerializerForUpdateRequest
-
-// ApiWebhooksPartialUpdateMultipartRequestBody defines body for ApiWebhooksPartialUpdate for multipart/form-data ContentType.
-type ApiWebhooksPartialUpdateMultipartRequestBody = PatchedWebhookSerializerForUpdateRequest
-
-// ApiWebhooksUpdateJSONRequestBody defines body for ApiWebhooksUpdate for application/json ContentType.
-type ApiWebhooksUpdateJSONRequestBody = WebhookSerializerForUpdateRequest
-
-// ApiWebhooksUpdateFormdataRequestBody defines body for ApiWebhooksUpdate for application/x-www-form-urlencoded ContentType.
-type ApiWebhooksUpdateFormdataRequestBody = WebhookSerializerForUpdateRequest
-
-// ApiWebhooksUpdateMultipartRequestBody defines body for ApiWebhooksUpdate for multipart/form-data ContentType.
-type ApiWebhooksUpdateMultipartRequestBody = WebhookSerializerForUpdateRequest
-
-// ApiWorkspacesCreateJSONRequestBody defines body for ApiWorkspacesCreate for application/json ContentType.
-type ApiWorkspacesCreateJSONRequestBody = WorkspaceRequest
-
-// ApiWorkspacesCreateFormdataRequestBody defines body for ApiWorkspacesCreate for application/x-www-form-urlencoded ContentType.
-type ApiWorkspacesCreateFormdataRequestBody = WorkspaceRequest
-
-// ApiWorkspacesCreateMultipartRequestBody defines body for ApiWorkspacesCreate for multipart/form-data ContentType.
-type ApiWorkspacesCreateMultipartRequestBody = WorkspaceRequest
-
-// ApiWorkspacesPartialUpdateJSONRequestBody defines body for ApiWorkspacesPartialUpdate for application/json ContentType.
-type ApiWorkspacesPartialUpdateJSONRequestBody = PatchedWorkspaceRequest
-
-// ApiWorkspacesPartialUpdateFormdataRequestBody defines body for ApiWorkspacesPartialUpdate for application/x-www-form-urlencoded ContentType.
-type ApiWorkspacesPartialUpdateFormdataRequestBody = PatchedWorkspaceRequest
-
-// ApiWorkspacesPartialUpdateMultipartRequestBody defines body for ApiWorkspacesPartialUpdate for multipart/form-data ContentType.
-type ApiWorkspacesPartialUpdateMultipartRequestBody = PatchedWorkspaceRequest
-
-// ApiWorkspacesMembershipsCreateJSONRequestBody defines body for ApiWorkspacesMembershipsCreate for application/json ContentType.
-type ApiWorkspacesMembershipsCreateJSONRequestBody = WorkspaceMemberCreateRequest
-
-// ApiWorkspacesMembershipsCreateFormdataRequestBody defines body for ApiWorkspacesMembershipsCreate for application/x-www-form-urlencoded ContentType.
-type ApiWorkspacesMembershipsCreateFormdataRequestBody = WorkspaceMemberCreateRequest
-
-// ApiWorkspacesMembershipsCreateMultipartRequestBody defines body for ApiWorkspacesMembershipsCreate for multipart/form-data ContentType.
-type ApiWorkspacesMembershipsCreateMultipartRequestBody = WorkspaceMemberCreateRequest
-
-// ApiWorkspacesMembershipsBulkCreateJSONRequestBody defines body for ApiWorkspacesMembershipsBulkCreate for application/json ContentType.
-type ApiWorkspacesMembershipsBulkCreateJSONRequestBody = WorkspaceMemberBulkAssignRequest

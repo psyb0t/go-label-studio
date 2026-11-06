@@ -12,6 +12,88 @@ import (
 )
 
 // StatusCode returns HTTPResponse.StatusCode
+func (r ApiStoragesRedisRetrieveResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+
+// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
+func (r ApiStoragesRedisRetrieveResponse) ContentType() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Header.Get("Content-Type")
+	}
+	return ""
+}
+
+type ApiStoragesRedisPartialUpdateResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+	// JSON200 the response for an HTTP 200 `application/json` response
+	JSON200 *RedisImportStorage
+}
+
+// GetJSON200 returns the response for an HTTP 200 `application/json` response
+func (r ApiStoragesRedisPartialUpdateResponse) GetJSON200() *RedisImportStorage {
+	return r.JSON200
+}
+
+// GetBody returns the raw response body bytes
+func (r ApiStoragesRedisPartialUpdateResponse) GetBody() []byte {
+	return r.Body
+}
+
+// Status returns HTTPResponse.Status
+func (r ApiStoragesRedisPartialUpdateResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+
+// StatusCode returns HTTPResponse.StatusCode
+func (r ApiStoragesRedisPartialUpdateResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+
+// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
+func (r ApiStoragesRedisPartialUpdateResponse) ContentType() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Header.Get("Content-Type")
+	}
+	return ""
+}
+
+type ApiStoragesRedisSyncCreateResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+	// JSON200 the response for an HTTP 200 `application/json` response
+	JSON200 *RedisImportStorage
+}
+
+// GetJSON200 returns the response for an HTTP 200 `application/json` response
+func (r ApiStoragesRedisSyncCreateResponse) GetJSON200() *RedisImportStorage {
+	return r.JSON200
+}
+
+// GetBody returns the raw response body bytes
+func (r ApiStoragesRedisSyncCreateResponse) GetBody() []byte {
+	return r.Body
+}
+
+// Status returns HTTPResponse.Status
+func (r ApiStoragesRedisSyncCreateResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+
+// StatusCode returns HTTPResponse.StatusCode
 func (r ApiStoragesRedisSyncCreateResponse) StatusCode() int {
 	if r.HTTPResponse != nil {
 		return r.HTTPResponse.StatusCode
@@ -6525,6 +6607,29 @@ func (c *ClientWithResponses) ApiLearningResourcesCountsRetrieveWithResponse(ctx
 	return ParseApiLearningResourcesCountsRetrieveResponse(rsp)
 }
 
+// ApiLearningResourcesImportCreateWithBodyWithResponse ✨ Import a learning resource
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Create an unpublished course in a workspace from an exported course file: the JSON payload, or the zip bundle that also carries its files. Files in a bundle become the new course's own assets. Other asset ids are only valid in the organization and instance the file was exported from. In that case asset URLs are kept and `unresolved_asset_ids` lists the ones that do not exist in this organization. For any other file (another organization or instance, or no source recorded) every asset id that is not bundled is listed as unresolved and its URL is detached so it cannot resolve to an asset here.
+//
+// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with POST /api/learning-resources/import/ (the `ApiLearningResourcesImportCreate` operationId).
+func (c *ClientWithResponses) ApiLearningResourcesImportCreateWithBodyWithResponse(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*ApiLearningResourcesImportCreateResponse, error) {
+	rsp, err := c.ApiLearningResourcesImportCreateWithBody(ctx, contentType, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiLearningResourcesImportCreateResponse(rsp)
+}
+
 // ApiLearningResourcesDestroyWithResponse ✨ Delete a learning resource
 //
 // Returns a wrapper object for the known response body format(s).
@@ -6841,6 +6946,29 @@ func (c *ClientWithResponses) ApiLearningResourcesEditingSessionCreateWithFormda
 		return nil, err
 	}
 	return ParseApiLearningResourcesEditingSessionCreateResponse(rsp)
+}
+
+// ApiLearningResourcesExportRetrieveWithResponse ✨ Export a learning resource
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Return the draft course (settings, modules, pages) as a portable JSON payload for Import. With any of `include_images`, `include_audio_video` and `include_other` the response is a zip instead: `course.json` (the same payload), `assets.json` and the referenced files under `assets/`. References that cannot be bundled are counted in the `X-Course-Export-Skipped-Assets` header.
+//
+// Returns a wrapper object for the known response body format(s).
+//
+// Corresponds with GET /api/learning-resources/{id}/export/ (the `ApiLearningResourcesExportRetrieve` operationId).
+func (c *ClientWithResponses) ApiLearningResourcesExportRetrieveWithResponse(ctx context.Context, id int, params *ApiLearningResourcesExportRetrieveParams, reqEditors ...RequestEditorFn) (*ApiLearningResourcesExportRetrieveResponse, error) {
+	rsp, err := c.ApiLearningResourcesExportRetrieve(ctx, id, params, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiLearningResourcesExportRetrieveResponse(rsp)
 }
 
 // ApiLearningResourcesInvalidateProgressCreateWithBodyWithResponse ✨ Invalidate progress for a learning resource
@@ -19887,139 +20015,4 @@ func (c *ClientWithResponses) ApiStoragesGcswifSyncCreateWithResponse(ctx contex
 		return nil, err
 	}
 	return ParseApiStoragesGcswifSyncCreateResponse(rsp)
-}
-
-// ApiStoragesLocalfilesListWithResponse Get all import storage
-//
-// Get a list of all local file import storage connections.
-//
-// Returns a wrapper object for the known response body format(s).
-//
-// Corresponds with GET /api/storages/localfiles/ (the `ApiStoragesLocalfilesList` operationId).
-func (c *ClientWithResponses) ApiStoragesLocalfilesListWithResponse(ctx context.Context, params *ApiStoragesLocalfilesListParams, reqEditors ...RequestEditorFn) (*ApiStoragesLocalfilesListResponse, error) {
-	rsp, err := c.ApiStoragesLocalfilesList(ctx, params, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseApiStoragesLocalfilesListResponse(rsp)
-}
-
-// ApiStoragesLocalfilesCreateWithBodyWithResponse Create import storage
-//
-// Create a new local file import storage connection.
-//
-// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
-//
-// Corresponds with POST /api/storages/localfiles/ (the `ApiStoragesLocalfilesCreate` operationId).
-func (c *ClientWithResponses) ApiStoragesLocalfilesCreateWithBodyWithResponse(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*ApiStoragesLocalfilesCreateResponse, error) {
-	rsp, err := c.ApiStoragesLocalfilesCreateWithBody(ctx, contentType, body, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseApiStoragesLocalfilesCreateResponse(rsp)
-}
-
-// ApiStoragesLocalfilesCreateWithResponse Create import storage
-//
-// Create a new local file import storage connection.
-//
-// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
-//
-// Corresponds with POST /api/storages/localfiles/ (the `ApiStoragesLocalfilesCreate` operationId).
-func (c *ClientWithResponses) ApiStoragesLocalfilesCreateWithResponse(ctx context.Context, body ApiStoragesLocalfilesCreateJSONRequestBody, reqEditors ...RequestEditorFn) (*ApiStoragesLocalfilesCreateResponse, error) {
-	rsp, err := c.ApiStoragesLocalfilesCreate(ctx, body, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseApiStoragesLocalfilesCreateResponse(rsp)
-}
-
-// ApiStoragesLocalfilesCreateWithFormdataBodyWithResponse Create import storage
-//
-// Create a new local file import storage connection.
-//
-// Takes a body of the `application/x-www-form-urlencoded` content type, and returns a wrapper object for the known response body format(s).
-//
-// Corresponds with POST /api/storages/localfiles/ (the `ApiStoragesLocalfilesCreate` operationId).
-func (c *ClientWithResponses) ApiStoragesLocalfilesCreateWithFormdataBodyWithResponse(ctx context.Context, body ApiStoragesLocalfilesCreateFormdataRequestBody, reqEditors ...RequestEditorFn) (*ApiStoragesLocalfilesCreateResponse, error) {
-	rsp, err := c.ApiStoragesLocalfilesCreateWithFormdataBody(ctx, body, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseApiStoragesLocalfilesCreateResponse(rsp)
-}
-
-// ApiStoragesLocalfilesValidateCreateWithBodyWithResponse Validate import storage
-//
-// Validate a specific local file import storage connection.
-//
-// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
-//
-// Corresponds with POST /api/storages/localfiles/validate (the `ApiStoragesLocalfilesValidateCreate` operationId).
-func (c *ClientWithResponses) ApiStoragesLocalfilesValidateCreateWithBodyWithResponse(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*ApiStoragesLocalfilesValidateCreateResponse, error) {
-	rsp, err := c.ApiStoragesLocalfilesValidateCreateWithBody(ctx, contentType, body, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseApiStoragesLocalfilesValidateCreateResponse(rsp)
-}
-
-// ApiStoragesLocalfilesValidateCreateWithResponse Validate import storage
-//
-// Validate a specific local file import storage connection.
-//
-// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
-//
-// Corresponds with POST /api/storages/localfiles/validate (the `ApiStoragesLocalfilesValidateCreate` operationId).
-func (c *ClientWithResponses) ApiStoragesLocalfilesValidateCreateWithResponse(ctx context.Context, body ApiStoragesLocalfilesValidateCreateJSONRequestBody, reqEditors ...RequestEditorFn) (*ApiStoragesLocalfilesValidateCreateResponse, error) {
-	rsp, err := c.ApiStoragesLocalfilesValidateCreate(ctx, body, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseApiStoragesLocalfilesValidateCreateResponse(rsp)
-}
-
-// ApiStoragesLocalfilesValidateCreateWithFormdataBodyWithResponse Validate import storage
-//
-// Validate a specific local file import storage connection.
-//
-// Takes a body of the `application/x-www-form-urlencoded` content type, and returns a wrapper object for the known response body format(s).
-//
-// Corresponds with POST /api/storages/localfiles/validate (the `ApiStoragesLocalfilesValidateCreate` operationId).
-func (c *ClientWithResponses) ApiStoragesLocalfilesValidateCreateWithFormdataBodyWithResponse(ctx context.Context, body ApiStoragesLocalfilesValidateCreateFormdataRequestBody, reqEditors ...RequestEditorFn) (*ApiStoragesLocalfilesValidateCreateResponse, error) {
-	rsp, err := c.ApiStoragesLocalfilesValidateCreateWithFormdataBody(ctx, body, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseApiStoragesLocalfilesValidateCreateResponse(rsp)
-}
-
-// ApiStoragesLocalfilesDestroyWithResponse Delete import storage
-//
-// Delete a specific local file import storage connection.
-//
-// Returns a wrapper object for the known response body format(s).
-//
-// Corresponds with DELETE /api/storages/localfiles/{id} (the `ApiStoragesLocalfilesDestroy` operationId).
-func (c *ClientWithResponses) ApiStoragesLocalfilesDestroyWithResponse(ctx context.Context, id int, reqEditors ...RequestEditorFn) (*ApiStoragesLocalfilesDestroyResponse, error) {
-	rsp, err := c.ApiStoragesLocalfilesDestroy(ctx, id, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseApiStoragesLocalfilesDestroyResponse(rsp)
-}
-
-// ApiStoragesLocalfilesRetrieveWithResponse Get import storage
-//
-// Get a specific local file import storage connection.
-//
-// Returns a wrapper object for the known response body format(s).
-//
-// Corresponds with GET /api/storages/localfiles/{id} (the `ApiStoragesLocalfilesRetrieve` operationId).
-func (c *ClientWithResponses) ApiStoragesLocalfilesRetrieveWithResponse(ctx context.Context, id int, reqEditors ...RequestEditorFn) (*ApiStoragesLocalfilesRetrieveResponse, error) {
-	rsp, err := c.ApiStoragesLocalfilesRetrieve(ctx, id, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseApiStoragesLocalfilesRetrieveResponse(rsp)
 }

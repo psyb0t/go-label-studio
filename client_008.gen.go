@@ -13,6 +13,141 @@ import (
 	openapi_types "github.com/oapi-codegen/runtime/types"
 )
 
+// ApiStoragesLocalfilesListWithResponse Get all import storage
+//
+// Get a list of all local file import storage connections.
+//
+// Returns a wrapper object for the known response body format(s).
+//
+// Corresponds with GET /api/storages/localfiles/ (the `ApiStoragesLocalfilesList` operationId).
+func (c *ClientWithResponses) ApiStoragesLocalfilesListWithResponse(ctx context.Context, params *ApiStoragesLocalfilesListParams, reqEditors ...RequestEditorFn) (*ApiStoragesLocalfilesListResponse, error) {
+	rsp, err := c.ApiStoragesLocalfilesList(ctx, params, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesLocalfilesListResponse(rsp)
+}
+
+// ApiStoragesLocalfilesCreateWithBodyWithResponse Create import storage
+//
+// Create a new local file import storage connection.
+//
+// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with POST /api/storages/localfiles/ (the `ApiStoragesLocalfilesCreate` operationId).
+func (c *ClientWithResponses) ApiStoragesLocalfilesCreateWithBodyWithResponse(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*ApiStoragesLocalfilesCreateResponse, error) {
+	rsp, err := c.ApiStoragesLocalfilesCreateWithBody(ctx, contentType, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesLocalfilesCreateResponse(rsp)
+}
+
+// ApiStoragesLocalfilesCreateWithResponse Create import storage
+//
+// Create a new local file import storage connection.
+//
+// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with POST /api/storages/localfiles/ (the `ApiStoragesLocalfilesCreate` operationId).
+func (c *ClientWithResponses) ApiStoragesLocalfilesCreateWithResponse(ctx context.Context, body ApiStoragesLocalfilesCreateJSONRequestBody, reqEditors ...RequestEditorFn) (*ApiStoragesLocalfilesCreateResponse, error) {
+	rsp, err := c.ApiStoragesLocalfilesCreate(ctx, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesLocalfilesCreateResponse(rsp)
+}
+
+// ApiStoragesLocalfilesCreateWithFormdataBodyWithResponse Create import storage
+//
+// Create a new local file import storage connection.
+//
+// Takes a body of the `application/x-www-form-urlencoded` content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with POST /api/storages/localfiles/ (the `ApiStoragesLocalfilesCreate` operationId).
+func (c *ClientWithResponses) ApiStoragesLocalfilesCreateWithFormdataBodyWithResponse(ctx context.Context, body ApiStoragesLocalfilesCreateFormdataRequestBody, reqEditors ...RequestEditorFn) (*ApiStoragesLocalfilesCreateResponse, error) {
+	rsp, err := c.ApiStoragesLocalfilesCreateWithFormdataBody(ctx, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesLocalfilesCreateResponse(rsp)
+}
+
+// ApiStoragesLocalfilesValidateCreateWithBodyWithResponse Validate import storage
+//
+// Validate a specific local file import storage connection.
+//
+// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with POST /api/storages/localfiles/validate (the `ApiStoragesLocalfilesValidateCreate` operationId).
+func (c *ClientWithResponses) ApiStoragesLocalfilesValidateCreateWithBodyWithResponse(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*ApiStoragesLocalfilesValidateCreateResponse, error) {
+	rsp, err := c.ApiStoragesLocalfilesValidateCreateWithBody(ctx, contentType, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesLocalfilesValidateCreateResponse(rsp)
+}
+
+// ApiStoragesLocalfilesValidateCreateWithResponse Validate import storage
+//
+// Validate a specific local file import storage connection.
+//
+// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with POST /api/storages/localfiles/validate (the `ApiStoragesLocalfilesValidateCreate` operationId).
+func (c *ClientWithResponses) ApiStoragesLocalfilesValidateCreateWithResponse(ctx context.Context, body ApiStoragesLocalfilesValidateCreateJSONRequestBody, reqEditors ...RequestEditorFn) (*ApiStoragesLocalfilesValidateCreateResponse, error) {
+	rsp, err := c.ApiStoragesLocalfilesValidateCreate(ctx, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesLocalfilesValidateCreateResponse(rsp)
+}
+
+// ApiStoragesLocalfilesValidateCreateWithFormdataBodyWithResponse Validate import storage
+//
+// Validate a specific local file import storage connection.
+//
+// Takes a body of the `application/x-www-form-urlencoded` content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with POST /api/storages/localfiles/validate (the `ApiStoragesLocalfilesValidateCreate` operationId).
+func (c *ClientWithResponses) ApiStoragesLocalfilesValidateCreateWithFormdataBodyWithResponse(ctx context.Context, body ApiStoragesLocalfilesValidateCreateFormdataRequestBody, reqEditors ...RequestEditorFn) (*ApiStoragesLocalfilesValidateCreateResponse, error) {
+	rsp, err := c.ApiStoragesLocalfilesValidateCreateWithFormdataBody(ctx, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesLocalfilesValidateCreateResponse(rsp)
+}
+
+// ApiStoragesLocalfilesDestroyWithResponse Delete import storage
+//
+// Delete a specific local file import storage connection.
+//
+// Returns a wrapper object for the known response body format(s).
+//
+// Corresponds with DELETE /api/storages/localfiles/{id} (the `ApiStoragesLocalfilesDestroy` operationId).
+func (c *ClientWithResponses) ApiStoragesLocalfilesDestroyWithResponse(ctx context.Context, id int, reqEditors ...RequestEditorFn) (*ApiStoragesLocalfilesDestroyResponse, error) {
+	rsp, err := c.ApiStoragesLocalfilesDestroy(ctx, id, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesLocalfilesDestroyResponse(rsp)
+}
+
+// ApiStoragesLocalfilesRetrieveWithResponse Get import storage
+//
+// Get a specific local file import storage connection.
+//
+// Returns a wrapper object for the known response body format(s).
+//
+// Corresponds with GET /api/storages/localfiles/{id} (the `ApiStoragesLocalfilesRetrieve` operationId).
+func (c *ClientWithResponses) ApiStoragesLocalfilesRetrieveWithResponse(ctx context.Context, id int, reqEditors ...RequestEditorFn) (*ApiStoragesLocalfilesRetrieveResponse, error) {
+	rsp, err := c.ApiStoragesLocalfilesRetrieve(ctx, id, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesLocalfilesRetrieveResponse(rsp)
+}
+
 // ApiStoragesLocalfilesPartialUpdateWithBodyWithResponse Update import storage
 //
 // Update a specific local file import storage connection.
@@ -5385,6 +5520,32 @@ func ParseApiLearningResourcesCountsRetrieveResponse(rsp *http.Response) (*ApiLe
 	return response, nil
 }
 
+// ParseApiLearningResourcesImportCreateResponse parses an HTTP response from a ApiLearningResourcesImportCreateWithResponse call
+func ParseApiLearningResourcesImportCreateResponse(rsp *http.Response) (*ApiLearningResourcesImportCreateResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &ApiLearningResourcesImportCreateResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	switch {
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 201:
+		var dest CourseImportResponse
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON201 = &dest
+
+	}
+
+	return response, nil
+}
+
 // ParseApiLearningResourcesDestroyResponse parses an HTTP response from a ApiLearningResourcesDestroyWithResponse call
 func ParseApiLearningResourcesDestroyResponse(rsp *http.Response) (*ApiLearningResourcesDestroyResponse, error) {
 	bodyBytes, err := io.ReadAll(rsp.Body)
@@ -5583,6 +5744,35 @@ func ParseApiLearningResourcesEditingSessionCreateResponse(rsp *http.Response) (
 
 	case rsp.StatusCode == 204:
 		break // No content-type
+
+	}
+
+	return response, nil
+}
+
+// ParseApiLearningResourcesExportRetrieveResponse parses an HTTP response from a ApiLearningResourcesExportRetrieveWithResponse call
+func ParseApiLearningResourcesExportRetrieveResponse(rsp *http.Response) (*ApiLearningResourcesExportRetrieveResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &ApiLearningResourcesExportRetrieveResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	switch {
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
+		var dest CourseExportPayload
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON200 = &dest
+
+	case rsp.StatusCode == 200:
+		// Content-type (application/zip) unsupported
 
 	}
 

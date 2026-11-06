@@ -17,6 +17,234 @@ import (
 	openapi_types "github.com/oapi-codegen/runtime/types"
 )
 
+// NewApiStoragesAzureCreateRequest calls the generic ApiStoragesAzureCreate builder with application/json body
+func NewApiStoragesAzureCreateRequest(server string, body ApiStoragesAzureCreateJSONRequestBody) (*http.Request, error) {
+	var bodyReader io.Reader
+	buf, err := json.Marshal(body)
+	if err != nil {
+		return nil, err
+	}
+	bodyReader = bytes.NewReader(buf)
+	return NewApiStoragesAzureCreateRequestWithBody(server, "application/json", bodyReader)
+}
+
+// NewApiStoragesAzureCreateRequestWithFormdataBody calls the generic ApiStoragesAzureCreate builder with application/x-www-form-urlencoded body
+func NewApiStoragesAzureCreateRequestWithFormdataBody(server string, body ApiStoragesAzureCreateFormdataRequestBody) (*http.Request, error) {
+	var bodyReader io.Reader
+	bodyStr, err := runtime.MarshalForm(body, nil)
+	if err != nil {
+		return nil, err
+	}
+	bodyReader = strings.NewReader(bodyStr.Encode())
+	return NewApiStoragesAzureCreateRequestWithBody(server, "application/x-www-form-urlencoded", bodyReader)
+}
+
+// NewApiStoragesAzureCreateRequestWithBody constructs an http.Request for the ApiStoragesAzureCreate method, with any body, and a specified content type
+func NewApiStoragesAzureCreateRequestWithBody(server string, contentType string, body io.Reader) (*http.Request, error) {
+	var err error
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/api/storages/azure/")
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequest(http.MethodPost, queryURL.String(), body)
+	if err != nil {
+		return nil, err
+	}
+
+	req.Header.Add("Content-Type", contentType)
+
+	return req, nil
+}
+
+// NewApiStoragesAzureValidateCreateRequest calls the generic ApiStoragesAzureValidateCreate builder with application/json body
+func NewApiStoragesAzureValidateCreateRequest(server string, body ApiStoragesAzureValidateCreateJSONRequestBody) (*http.Request, error) {
+	var bodyReader io.Reader
+	buf, err := json.Marshal(body)
+	if err != nil {
+		return nil, err
+	}
+	bodyReader = bytes.NewReader(buf)
+	return NewApiStoragesAzureValidateCreateRequestWithBody(server, "application/json", bodyReader)
+}
+
+// NewApiStoragesAzureValidateCreateRequestWithFormdataBody calls the generic ApiStoragesAzureValidateCreate builder with application/x-www-form-urlencoded body
+func NewApiStoragesAzureValidateCreateRequestWithFormdataBody(server string, body ApiStoragesAzureValidateCreateFormdataRequestBody) (*http.Request, error) {
+	var bodyReader io.Reader
+	bodyStr, err := runtime.MarshalForm(body, nil)
+	if err != nil {
+		return nil, err
+	}
+	bodyReader = strings.NewReader(bodyStr.Encode())
+	return NewApiStoragesAzureValidateCreateRequestWithBody(server, "application/x-www-form-urlencoded", bodyReader)
+}
+
+// NewApiStoragesAzureValidateCreateRequestWithBody constructs an http.Request for the ApiStoragesAzureValidateCreate method, with any body, and a specified content type
+func NewApiStoragesAzureValidateCreateRequestWithBody(server string, contentType string, body io.Reader) (*http.Request, error) {
+	var err error
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/api/storages/azure/validate")
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequest(http.MethodPost, queryURL.String(), body)
+	if err != nil {
+		return nil, err
+	}
+
+	req.Header.Add("Content-Type", contentType)
+
+	return req, nil
+}
+
+// NewApiStoragesAzureDestroyRequest constructs an http.Request for the ApiStoragesAzureDestroy method
+func NewApiStoragesAzureDestroyRequest(server string, id int) (*http.Request, error) {
+	var err error
+
+	var pathParam0 string
+
+	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "id", id, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "integer", Format: ""})
+	if err != nil {
+		return nil, err
+	}
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/api/storages/azure/%s", pathParam0)
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequest(http.MethodDelete, queryURL.String(), nil)
+	if err != nil {
+		return nil, err
+	}
+
+	return req, nil
+}
+
+// NewApiStoragesAzureRetrieveRequest constructs an http.Request for the ApiStoragesAzureRetrieve method
+func NewApiStoragesAzureRetrieveRequest(server string, id int) (*http.Request, error) {
+	var err error
+
+	var pathParam0 string
+
+	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "id", id, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "integer", Format: ""})
+	if err != nil {
+		return nil, err
+	}
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/api/storages/azure/%s", pathParam0)
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequest(http.MethodGet, queryURL.String(), nil)
+	if err != nil {
+		return nil, err
+	}
+
+	return req, nil
+}
+
+// NewApiStoragesAzurePartialUpdateRequest calls the generic ApiStoragesAzurePartialUpdate builder with application/json body
+func NewApiStoragesAzurePartialUpdateRequest(server string, id int, body ApiStoragesAzurePartialUpdateJSONRequestBody) (*http.Request, error) {
+	var bodyReader io.Reader
+	buf, err := json.Marshal(body)
+	if err != nil {
+		return nil, err
+	}
+	bodyReader = bytes.NewReader(buf)
+	return NewApiStoragesAzurePartialUpdateRequestWithBody(server, id, "application/json", bodyReader)
+}
+
+// NewApiStoragesAzurePartialUpdateRequestWithFormdataBody calls the generic ApiStoragesAzurePartialUpdate builder with application/x-www-form-urlencoded body
+func NewApiStoragesAzurePartialUpdateRequestWithFormdataBody(server string, id int, body ApiStoragesAzurePartialUpdateFormdataRequestBody) (*http.Request, error) {
+	var bodyReader io.Reader
+	bodyStr, err := runtime.MarshalForm(body, nil)
+	if err != nil {
+		return nil, err
+	}
+	bodyReader = strings.NewReader(bodyStr.Encode())
+	return NewApiStoragesAzurePartialUpdateRequestWithBody(server, id, "application/x-www-form-urlencoded", bodyReader)
+}
+
+// NewApiStoragesAzurePartialUpdateRequestWithBody constructs an http.Request for the ApiStoragesAzurePartialUpdate method, with any body, and a specified content type
+func NewApiStoragesAzurePartialUpdateRequestWithBody(server string, id int, contentType string, body io.Reader) (*http.Request, error) {
+	var err error
+
+	var pathParam0 string
+
+	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "id", id, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "integer", Format: ""})
+	if err != nil {
+		return nil, err
+	}
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/api/storages/azure/%s", pathParam0)
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequest(http.MethodPatch, queryURL.String(), body)
+	if err != nil {
+		return nil, err
+	}
+
+	req.Header.Add("Content-Type", contentType)
+
+	return req, nil
+}
+
 // NewApiStoragesAzureSyncCreateRequest constructs an http.Request for the ApiStoragesAzureSyncCreate method
 func NewApiStoragesAzureSyncCreateRequest(server string, id int) (*http.Request, error) {
 	var err error
@@ -11377,6 +11605,21 @@ type ClientWithResponsesInterface interface {
 	// Corresponds with GET /api/learning-resources/counts/ (the `ApiLearningResourcesCountsRetrieve` operationId).
 	ApiLearningResourcesCountsRetrieveWithResponse(ctx context.Context, params *ApiLearningResourcesCountsRetrieveParams, reqEditors ...RequestEditorFn) (*ApiLearningResourcesCountsRetrieveResponse, error)
 
+	// ApiLearningResourcesImportCreateWithBodyWithResponse ✨ Import a learning resource
+	//
+	// <Card href="https://humansignal.com/goenterprise">
+	//         <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+	//         <p style="margin-top: 10px; font-size: 14px;">
+	//             This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+	//         </p>
+	//     </Card>
+	// Create an unpublished course in a workspace from an exported course file: the JSON payload, or the zip bundle that also carries its files. Files in a bundle become the new course's own assets. Other asset ids are only valid in the organization and instance the file was exported from. In that case asset URLs are kept and `unresolved_asset_ids` lists the ones that do not exist in this organization. For any other file (another organization or instance, or no source recorded) every asset id that is not bundled is listed as unresolved and its URL is detached so it cannot resolve to an asset here.
+	//
+	// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
+	//
+	// Corresponds with POST /api/learning-resources/import/ (the `ApiLearningResourcesImportCreate` operationId).
+	ApiLearningResourcesImportCreateWithBodyWithResponse(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*ApiLearningResourcesImportCreateResponse, error)
+
 	// ApiLearningResourcesDestroyWithResponse ✨ Delete a learning resource
 	//
 	// Returns a wrapper object for the known response body format(s).
@@ -11576,6 +11819,21 @@ type ClientWithResponsesInterface interface {
 	//
 	// Corresponds with POST /api/learning-resources/{id}/editing-session/ (the `ApiLearningResourcesEditingSessionCreate` operationId).
 	ApiLearningResourcesEditingSessionCreateWithFormdataBodyWithResponse(ctx context.Context, id int, body ApiLearningResourcesEditingSessionCreateFormdataRequestBody, reqEditors ...RequestEditorFn) (*ApiLearningResourcesEditingSessionCreateResponse, error)
+
+	// ApiLearningResourcesExportRetrieveWithResponse ✨ Export a learning resource
+	//
+	// <Card href="https://humansignal.com/goenterprise">
+	//         <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+	//         <p style="margin-top: 10px; font-size: 14px;">
+	//             This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+	//         </p>
+	//     </Card>
+	// Return the draft course (settings, modules, pages) as a portable JSON payload for Import. With any of `include_images`, `include_audio_video` and `include_other` the response is a zip instead: `course.json` (the same payload), `assets.json` and the referenced files under `assets/`. References that cannot be bundled are counted in the `X-Course-Export-Skipped-Assets` header.
+	//
+	// Returns a wrapper object for the known response body format(s).
+	//
+	// Corresponds with GET /api/learning-resources/{id}/export/ (the `ApiLearningResourcesExportRetrieve` operationId).
+	ApiLearningResourcesExportRetrieveWithResponse(ctx context.Context, id int, params *ApiLearningResourcesExportRetrieveParams, reqEditors ...RequestEditorFn) (*ApiLearningResourcesExportRetrieveResponse, error)
 
 	// ApiLearningResourcesInvalidateProgressCreateWithBodyWithResponse ✨ Invalidate progress for a learning resource
 	//
