@@ -2,6 +2,16 @@
 
 All notable changes per release. Versions follow [semver](https://semver.org).
 
+## v0.8.0, 2026-11-07
+
+- Breaking: the upload endpoint, `POST /api/learning-resources/{id}/upload/`, now takes only multipart form data. Removed the JSON and form-urlencoded variants: `Client.ApiLearningResourcesUploadCreate`, `Client.ApiLearningResourcesUploadCreateWithFormdataBody`, `ClientWithResponses.ApiLearningResourcesUploadCreateWithResponse`, `ClientWithResponses.ApiLearningResourcesUploadCreateWithFormdataBodyWithResponse`, `NewApiLearningResourcesUploadCreateRequest` and `NewApiLearningResourcesUploadCreateRequestWithFormdataBody`. Also removed `ApiLearningResourcesUploadCreateJSONRequestBody` and `ApiLearningResourcesUploadCreateFormdataRequestBody`, and the matching methods of `ClientInterface` and `ClientWithResponsesInterface`. Migration: call the `WithBody` methods with a multipart body.
+- Breaking: `ApiLearningResourcesUploadCreateMultipartRequestBody` changed from an alias of `LearningResourceRequest` to a new type based on `ApiLearningResourcesUploadCreateMultipartBody`.
+- Added `ApiLearningResourcesUploadCreateMultipartBody` with the optional fields `AllowExternal` (`*bool`), `DryRun` (`*bool`), `File` (`*openapi_types.File`) and `Url` (`*string`). The upload endpoint now also imports, and its doc comments say "Upload or import a file for a learning resource".
+- Added `LearningResourceUploadResponse.Status` (`LearningResourceUploadResponseStatusEnum`).
+- Added `LearningResourceUploadResponseStatusEnum` with the constants `LearningResourceUploadResponseStatusEnumExternal`, `LearningResourceUploadResponseStatusEnumImportable`, `LearningResourceUploadResponseStatusEnumImported`, `LearningResourceUploadResponseStatusEnumUnchanged` and `LearningResourceUploadResponseStatusEnumUploaded`, and a `Valid` method.
+- Added `PatchedLseUserSerializerUpdateRequest.CurrentPassword` (`*string`, optional). The server requires it when users change their own password.
+- Several generated types and methods moved between generated files. Their names and signatures are unchanged.
+
 ## v0.7.1, 2026-11-06
 
 - Added the course export endpoint, `GET /api/learning-resources/{id}/export/`: `Client.ApiLearningResourcesExportRetrieve`, `ClientWithResponses.ApiLearningResourcesExportRetrieveWithResponse`, `NewApiLearningResourcesExportRetrieveRequest`, `ParseApiLearningResourcesExportRetrieveResponse` and `ApiLearningResourcesExportRetrieveResponse`.

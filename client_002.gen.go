@@ -15,6 +15,51 @@ import (
 	openapi_types "github.com/oapi-codegen/runtime/types"
 )
 
+// ApiTasksAnnotationsCreateJSONRequestBody defines body for ApiTasksAnnotationsCreate for application/json ContentType.
+type ApiTasksAnnotationsCreateJSONRequestBody = AnnotationRequest
+
+// ApiTasksAnnotationsCreateFormdataRequestBody defines body for ApiTasksAnnotationsCreate for application/x-www-form-urlencoded ContentType.
+type ApiTasksAnnotationsCreateFormdataRequestBody = AnnotationRequest
+
+// ApiTasksAnnotationsCreateMultipartRequestBody defines body for ApiTasksAnnotationsCreate for multipart/form-data ContentType.
+type ApiTasksAnnotationsCreateMultipartRequestBody = AnnotationRequest
+
+// ApiTasksEventsCreateJSONRequestBody defines body for ApiTasksEventsCreate for application/json ContentType.
+type ApiTasksEventsCreateJSONRequestBody = TaskEventRequest
+
+// ApiTasksEventsCreateFormdataRequestBody defines body for ApiTasksEventsCreate for application/x-www-form-urlencoded ContentType.
+type ApiTasksEventsCreateFormdataRequestBody = TaskEventRequest
+
+// ApiTasksEventsCreateMultipartRequestBody defines body for ApiTasksEventsCreate for multipart/form-data ContentType.
+type ApiTasksEventsCreateMultipartRequestBody = TaskEventRequest
+
+// ApiTokenBlacklistCreateJSONRequestBody defines body for ApiTokenBlacklistCreate for application/json ContentType.
+type ApiTokenBlacklistCreateJSONRequestBody = LSAPITokenBlacklistRequest
+
+// ApiTokenBlacklistCreateFormdataRequestBody defines body for ApiTokenBlacklistCreate for application/x-www-form-urlencoded ContentType.
+type ApiTokenBlacklistCreateFormdataRequestBody = LSAPITokenBlacklistRequest
+
+// ApiTokenBlacklistCreateMultipartRequestBody defines body for ApiTokenBlacklistCreate for multipart/form-data ContentType.
+type ApiTokenBlacklistCreateMultipartRequestBody = LSAPITokenBlacklistRequest
+
+// ApiTokenRefreshCreateJSONRequestBody defines body for ApiTokenRefreshCreate for application/json ContentType.
+type ApiTokenRefreshCreateJSONRequestBody = TokenRefreshRequest
+
+// ApiTokenRefreshCreateFormdataRequestBody defines body for ApiTokenRefreshCreate for application/x-www-form-urlencoded ContentType.
+type ApiTokenRefreshCreateFormdataRequestBody = TokenRefreshRequest
+
+// ApiTokenRefreshCreateMultipartRequestBody defines body for ApiTokenRefreshCreate for multipart/form-data ContentType.
+type ApiTokenRefreshCreateMultipartRequestBody = TokenRefreshRequest
+
+// ApiTokenRotateCreateJSONRequestBody defines body for ApiTokenRotateCreate for application/json ContentType.
+type ApiTokenRotateCreateJSONRequestBody = LSAPITokenRotateRequest
+
+// ApiTokenRotateCreateFormdataRequestBody defines body for ApiTokenRotateCreate for application/x-www-form-urlencoded ContentType.
+type ApiTokenRotateCreateFormdataRequestBody = LSAPITokenRotateRequest
+
+// ApiTokenRotateCreateMultipartRequestBody defines body for ApiTokenRotateCreate for multipart/form-data ContentType.
+type ApiTokenRotateCreateMultipartRequestBody = LSAPITokenRotateRequest
+
 // ApiUsersCreateJSONRequestBody defines body for ApiUsersCreate for application/json ContentType.
 type ApiUsersCreateJSONRequestBody = LseUserRequest
 
@@ -5137,7 +5182,7 @@ type ClientInterface interface {
 	// Corresponds with POST /api/learning-resources/{id}/unpublish/ (the `ApiLearningResourcesUnpublishCreate` operationId).
 	ApiLearningResourcesUnpublishCreateWithFormdataBody(ctx context.Context, id int, body ApiLearningResourcesUnpublishCreateFormdataRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
 
-	// ApiLearningResourcesUploadCreateWithBody ✨ Upload a file for a learning resource
+	// ApiLearningResourcesUploadCreateWithBody ✨ Upload or import a file for a learning resource
 	//
 	// <Card href="https://humansignal.com/goenterprise">
 	//         <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
@@ -5145,42 +5190,12 @@ type ClientInterface interface {
 	//             This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
 	//         </p>
 	//     </Card>
-	// Upload a file asset for use in a learning resource.
+	// Upload a new file, or import media already reachable elsewhere (an asset from another course, a project upload, or — with `allow_external` — any http(s) URL) as a CourseAsset served from this origin. Exactly one of `file`/`url` is required; `allow_external` and `dry_run` are only valid with `url`. `dry_run` classifies the URL without creating anything. A source that does not exist and one you may not read both answer 403.
 	//
 	// Takes any type of body and a specified content type.
 	//
 	// Corresponds with POST /api/learning-resources/{id}/upload/ (the `ApiLearningResourcesUploadCreate` operationId).
 	ApiLearningResourcesUploadCreateWithBody(ctx context.Context, id int, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// ApiLearningResourcesUploadCreate ✨ Upload a file for a learning resource
-	//
-	// <Card href="https://humansignal.com/goenterprise">
-	//         <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
-	//         <p style="margin-top: 10px; font-size: 14px;">
-	//             This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
-	//         </p>
-	//     </Card>
-	// Upload a file asset for use in a learning resource.
-	//
-	// Takes a body of the `application/json` content type.
-	//
-	// Corresponds with POST /api/learning-resources/{id}/upload/ (the `ApiLearningResourcesUploadCreate` operationId).
-	ApiLearningResourcesUploadCreate(ctx context.Context, id int, body ApiLearningResourcesUploadCreateJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// ApiLearningResourcesUploadCreateWithFormdataBody ✨ Upload a file for a learning resource
-	//
-	// <Card href="https://humansignal.com/goenterprise">
-	//         <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
-	//         <p style="margin-top: 10px; font-size: 14px;">
-	//             This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
-	//         </p>
-	//     </Card>
-	// Upload a file asset for use in a learning resource.
-	//
-	// Takes a body of the `application/x-www-form-urlencoded` content type.
-	//
-	// Corresponds with POST /api/learning-resources/{id}/upload/ (the `ApiLearningResourcesUploadCreate` operationId).
-	ApiLearningResourcesUploadCreateWithFormdataBody(ctx context.Context, id int, body ApiLearningResourcesUploadCreateFormdataRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// ApiLearningResourcesUserProgressList ✨ List user progress for a learning resource
 	//

@@ -17,108 +17,6 @@ import (
 	openapi_types "github.com/oapi-codegen/runtime/types"
 )
 
-// NewApiStoragesAzureCreateRequest calls the generic ApiStoragesAzureCreate builder with application/json body
-func NewApiStoragesAzureCreateRequest(server string, body ApiStoragesAzureCreateJSONRequestBody) (*http.Request, error) {
-	var bodyReader io.Reader
-	buf, err := json.Marshal(body)
-	if err != nil {
-		return nil, err
-	}
-	bodyReader = bytes.NewReader(buf)
-	return NewApiStoragesAzureCreateRequestWithBody(server, "application/json", bodyReader)
-}
-
-// NewApiStoragesAzureCreateRequestWithFormdataBody calls the generic ApiStoragesAzureCreate builder with application/x-www-form-urlencoded body
-func NewApiStoragesAzureCreateRequestWithFormdataBody(server string, body ApiStoragesAzureCreateFormdataRequestBody) (*http.Request, error) {
-	var bodyReader io.Reader
-	bodyStr, err := runtime.MarshalForm(body, nil)
-	if err != nil {
-		return nil, err
-	}
-	bodyReader = strings.NewReader(bodyStr.Encode())
-	return NewApiStoragesAzureCreateRequestWithBody(server, "application/x-www-form-urlencoded", bodyReader)
-}
-
-// NewApiStoragesAzureCreateRequestWithBody constructs an http.Request for the ApiStoragesAzureCreate method, with any body, and a specified content type
-func NewApiStoragesAzureCreateRequestWithBody(server string, contentType string, body io.Reader) (*http.Request, error) {
-	var err error
-
-	serverURL, err := url.Parse(server)
-	if err != nil {
-		return nil, err
-	}
-
-	operationPath := fmt.Sprintf("/api/storages/azure/")
-	if operationPath[0] == '/' {
-		operationPath = "." + operationPath
-	}
-
-	queryURL, err := serverURL.Parse(operationPath)
-	if err != nil {
-		return nil, err
-	}
-
-	req, err := http.NewRequest(http.MethodPost, queryURL.String(), body)
-	if err != nil {
-		return nil, err
-	}
-
-	req.Header.Add("Content-Type", contentType)
-
-	return req, nil
-}
-
-// NewApiStoragesAzureValidateCreateRequest calls the generic ApiStoragesAzureValidateCreate builder with application/json body
-func NewApiStoragesAzureValidateCreateRequest(server string, body ApiStoragesAzureValidateCreateJSONRequestBody) (*http.Request, error) {
-	var bodyReader io.Reader
-	buf, err := json.Marshal(body)
-	if err != nil {
-		return nil, err
-	}
-	bodyReader = bytes.NewReader(buf)
-	return NewApiStoragesAzureValidateCreateRequestWithBody(server, "application/json", bodyReader)
-}
-
-// NewApiStoragesAzureValidateCreateRequestWithFormdataBody calls the generic ApiStoragesAzureValidateCreate builder with application/x-www-form-urlencoded body
-func NewApiStoragesAzureValidateCreateRequestWithFormdataBody(server string, body ApiStoragesAzureValidateCreateFormdataRequestBody) (*http.Request, error) {
-	var bodyReader io.Reader
-	bodyStr, err := runtime.MarshalForm(body, nil)
-	if err != nil {
-		return nil, err
-	}
-	bodyReader = strings.NewReader(bodyStr.Encode())
-	return NewApiStoragesAzureValidateCreateRequestWithBody(server, "application/x-www-form-urlencoded", bodyReader)
-}
-
-// NewApiStoragesAzureValidateCreateRequestWithBody constructs an http.Request for the ApiStoragesAzureValidateCreate method, with any body, and a specified content type
-func NewApiStoragesAzureValidateCreateRequestWithBody(server string, contentType string, body io.Reader) (*http.Request, error) {
-	var err error
-
-	serverURL, err := url.Parse(server)
-	if err != nil {
-		return nil, err
-	}
-
-	operationPath := fmt.Sprintf("/api/storages/azure/validate")
-	if operationPath[0] == '/' {
-		operationPath = "." + operationPath
-	}
-
-	queryURL, err := serverURL.Parse(operationPath)
-	if err != nil {
-		return nil, err
-	}
-
-	req, err := http.NewRequest(http.MethodPost, queryURL.String(), body)
-	if err != nil {
-		return nil, err
-	}
-
-	req.Header.Add("Content-Type", contentType)
-
-	return req, nil
-}
-
 // NewApiStoragesAzureDestroyRequest constructs an http.Request for the ApiStoragesAzureDestroy method
 func NewApiStoragesAzureDestroyRequest(server string, id int) (*http.Request, error) {
 	var err error
@@ -12327,7 +12225,7 @@ type ClientWithResponsesInterface interface {
 	// Corresponds with POST /api/learning-resources/{id}/unpublish/ (the `ApiLearningResourcesUnpublishCreate` operationId).
 	ApiLearningResourcesUnpublishCreateWithFormdataBodyWithResponse(ctx context.Context, id int, body ApiLearningResourcesUnpublishCreateFormdataRequestBody, reqEditors ...RequestEditorFn) (*ApiLearningResourcesUnpublishCreateResponse, error)
 
-	// ApiLearningResourcesUploadCreateWithBodyWithResponse ✨ Upload a file for a learning resource
+	// ApiLearningResourcesUploadCreateWithBodyWithResponse ✨ Upload or import a file for a learning resource
 	//
 	// <Card href="https://humansignal.com/goenterprise">
 	//         <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
@@ -12335,42 +12233,12 @@ type ClientWithResponsesInterface interface {
 	//             This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
 	//         </p>
 	//     </Card>
-	// Upload a file asset for use in a learning resource.
+	// Upload a new file, or import media already reachable elsewhere (an asset from another course, a project upload, or — with `allow_external` — any http(s) URL) as a CourseAsset served from this origin. Exactly one of `file`/`url` is required; `allow_external` and `dry_run` are only valid with `url`. `dry_run` classifies the URL without creating anything. A source that does not exist and one you may not read both answer 403.
 	//
 	// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
 	//
 	// Corresponds with POST /api/learning-resources/{id}/upload/ (the `ApiLearningResourcesUploadCreate` operationId).
 	ApiLearningResourcesUploadCreateWithBodyWithResponse(ctx context.Context, id int, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*ApiLearningResourcesUploadCreateResponse, error)
-
-	// ApiLearningResourcesUploadCreateWithResponse ✨ Upload a file for a learning resource
-	//
-	// <Card href="https://humansignal.com/goenterprise">
-	//         <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
-	//         <p style="margin-top: 10px; font-size: 14px;">
-	//             This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
-	//         </p>
-	//     </Card>
-	// Upload a file asset for use in a learning resource.
-	//
-	// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
-	//
-	// Corresponds with POST /api/learning-resources/{id}/upload/ (the `ApiLearningResourcesUploadCreate` operationId).
-	ApiLearningResourcesUploadCreateWithResponse(ctx context.Context, id int, body ApiLearningResourcesUploadCreateJSONRequestBody, reqEditors ...RequestEditorFn) (*ApiLearningResourcesUploadCreateResponse, error)
-
-	// ApiLearningResourcesUploadCreateWithFormdataBodyWithResponse ✨ Upload a file for a learning resource
-	//
-	// <Card href="https://humansignal.com/goenterprise">
-	//         <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
-	//         <p style="margin-top: 10px; font-size: 14px;">
-	//             This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
-	//         </p>
-	//     </Card>
-	// Upload a file asset for use in a learning resource.
-	//
-	// Takes a body of the `application/x-www-form-urlencoded` content type, and returns a wrapper object for the known response body format(s).
-	//
-	// Corresponds with POST /api/learning-resources/{id}/upload/ (the `ApiLearningResourcesUploadCreate` operationId).
-	ApiLearningResourcesUploadCreateWithFormdataBodyWithResponse(ctx context.Context, id int, body ApiLearningResourcesUploadCreateFormdataRequestBody, reqEditors ...RequestEditorFn) (*ApiLearningResourcesUploadCreateResponse, error)
 
 	// ApiLearningResourcesUserProgressListWithResponse ✨ List user progress for a learning resource
 	//

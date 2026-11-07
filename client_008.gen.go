@@ -13,51 +13,6 @@ import (
 	openapi_types "github.com/oapi-codegen/runtime/types"
 )
 
-// ApiStoragesLocalfilesListWithResponse Get all import storage
-//
-// Get a list of all local file import storage connections.
-//
-// Returns a wrapper object for the known response body format(s).
-//
-// Corresponds with GET /api/storages/localfiles/ (the `ApiStoragesLocalfilesList` operationId).
-func (c *ClientWithResponses) ApiStoragesLocalfilesListWithResponse(ctx context.Context, params *ApiStoragesLocalfilesListParams, reqEditors ...RequestEditorFn) (*ApiStoragesLocalfilesListResponse, error) {
-	rsp, err := c.ApiStoragesLocalfilesList(ctx, params, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseApiStoragesLocalfilesListResponse(rsp)
-}
-
-// ApiStoragesLocalfilesCreateWithBodyWithResponse Create import storage
-//
-// Create a new local file import storage connection.
-//
-// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
-//
-// Corresponds with POST /api/storages/localfiles/ (the `ApiStoragesLocalfilesCreate` operationId).
-func (c *ClientWithResponses) ApiStoragesLocalfilesCreateWithBodyWithResponse(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*ApiStoragesLocalfilesCreateResponse, error) {
-	rsp, err := c.ApiStoragesLocalfilesCreateWithBody(ctx, contentType, body, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseApiStoragesLocalfilesCreateResponse(rsp)
-}
-
-// ApiStoragesLocalfilesCreateWithResponse Create import storage
-//
-// Create a new local file import storage connection.
-//
-// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
-//
-// Corresponds with POST /api/storages/localfiles/ (the `ApiStoragesLocalfilesCreate` operationId).
-func (c *ClientWithResponses) ApiStoragesLocalfilesCreateWithResponse(ctx context.Context, body ApiStoragesLocalfilesCreateJSONRequestBody, reqEditors ...RequestEditorFn) (*ApiStoragesLocalfilesCreateResponse, error) {
-	rsp, err := c.ApiStoragesLocalfilesCreate(ctx, body, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseApiStoragesLocalfilesCreateResponse(rsp)
-}
-
 // ApiStoragesLocalfilesCreateWithFormdataBodyWithResponse Create import storage
 //
 // Create a new local file import storage connection.

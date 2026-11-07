@@ -637,6 +637,33 @@ func (e LabelStreamTaskDistributionEnum) Valid() bool {
 	}
 }
 
+// Defines values for LearningResourceUploadResponseStatusEnum.
+const (
+	LearningResourceUploadResponseStatusEnumExternal   LearningResourceUploadResponseStatusEnum = "external"
+	LearningResourceUploadResponseStatusEnumImportable LearningResourceUploadResponseStatusEnum = "importable"
+	LearningResourceUploadResponseStatusEnumImported   LearningResourceUploadResponseStatusEnum = "imported"
+	LearningResourceUploadResponseStatusEnumUnchanged  LearningResourceUploadResponseStatusEnum = "unchanged"
+	LearningResourceUploadResponseStatusEnumUploaded   LearningResourceUploadResponseStatusEnum = "uploaded"
+)
+
+// Valid indicates whether the value is a known member of the LearningResourceUploadResponseStatusEnum enum.
+func (e LearningResourceUploadResponseStatusEnum) Valid() bool {
+	switch e {
+	case LearningResourceUploadResponseStatusEnumExternal:
+		return true
+	case LearningResourceUploadResponseStatusEnumImportable:
+		return true
+	case LearningResourceUploadResponseStatusEnumImported:
+		return true
+	case LearningResourceUploadResponseStatusEnumUnchanged:
+		return true
+	case LearningResourceUploadResponseStatusEnumUploaded:
+		return true
+	default:
+		return false
+	}
+}
+
 // Defines values for LseInterfaceDuplicateRequestModeEnum.
 const (
 	LseInterfaceDuplicateRequestModeEnumAll  LseInterfaceDuplicateRequestModeEnum = "all"
@@ -7233,8 +7260,21 @@ type LearningResourceUpdate struct {
 
 // LearningResourceUploadResponse defines model for LearningResourceUploadResponse.
 type LearningResourceUploadResponse struct {
-	Url string `json:"url"`
+	// Status * `uploaded` - uploaded
+	// * `imported` - imported
+	// * `unchanged` - unchanged
+	// * `importable` - importable
+	// * `external` - external
+	Status LearningResourceUploadResponseStatusEnum `json:"status"`
+	Url    string                                   `json:"url"`
 }
+
+// LearningResourceUploadResponseStatusEnum * `uploaded` - uploaded
+// * `imported` - imported
+// * `unchanged` - unchanged
+// * `importable` - importable
+// * `external` - external
+type LearningResourceUploadResponseStatusEnum string
 
 // LocalFilesExportStorage defines model for LocalFilesExportStorage.
 type LocalFilesExportStorage struct {
@@ -12215,6 +12255,9 @@ type PatchedLseUserSerializerUpdateRequest struct {
 	// AllowNewsletters Allow sending newsletters to user
 	AllowNewsletters *bool `json:"allow_newsletters,omitempty"`
 
+	// CurrentPassword Your current password. Required when you change your own password.
+	CurrentPassword *string `json:"current_password,omitempty"`
+
 	// CustomHotkeys Custom keyboard shortcuts configuration for the user interface
 	CustomHotkeys             interface{} `json:"custom_hotkeys,omitempty"`
 	DateJoined                *time.Time  `json:"date_joined,omitempty"`
@@ -16538,6 +16581,14 @@ type ApiLearningResourcesTakeRetrieveParams struct {
 	Omit *string `form:"omit,omitempty" json:"omit,omitempty"`
 }
 
+// ApiLearningResourcesUploadCreateMultipartBody defines parameters for ApiLearningResourcesUploadCreate.
+type ApiLearningResourcesUploadCreateMultipartBody struct {
+	AllowExternal *bool               `json:"allow_external,omitempty"`
+	DryRun        *bool               `json:"dry_run,omitempty"`
+	File          *openapi_types.File `json:"file,omitempty"`
+	Url           *string             `json:"url,omitempty"`
+}
+
 // ApiLearningResourcesUserProgressListParams defines parameters for ApiLearningResourcesUserProgressList.
 type ApiLearningResourcesUserProgressListParams struct {
 	// Ordering Which field to use when ordering the results.
@@ -18669,14 +18720,8 @@ type ApiLearningResourcesUnpublishCreateFormdataRequestBody = LearningResourceRe
 // ApiLearningResourcesUnpublishCreateMultipartRequestBody defines body for ApiLearningResourcesUnpublishCreate for multipart/form-data ContentType.
 type ApiLearningResourcesUnpublishCreateMultipartRequestBody = LearningResourceRequest
 
-// ApiLearningResourcesUploadCreateJSONRequestBody defines body for ApiLearningResourcesUploadCreate for application/json ContentType.
-type ApiLearningResourcesUploadCreateJSONRequestBody = LearningResourceRequest
-
-// ApiLearningResourcesUploadCreateFormdataRequestBody defines body for ApiLearningResourcesUploadCreate for application/x-www-form-urlencoded ContentType.
-type ApiLearningResourcesUploadCreateFormdataRequestBody = LearningResourceRequest
-
 // ApiLearningResourcesUploadCreateMultipartRequestBody defines body for ApiLearningResourcesUploadCreate for multipart/form-data ContentType.
-type ApiLearningResourcesUploadCreateMultipartRequestBody = LearningResourceRequest
+type ApiLearningResourcesUploadCreateMultipartRequestBody ApiLearningResourcesUploadCreateMultipartBody
 
 // ApiLearningResourcesUserProgressBulkResetCreateJSONRequestBody defines body for ApiLearningResourcesUserProgressBulkResetCreate for application/json ContentType.
 type ApiLearningResourcesUserProgressBulkResetCreateJSONRequestBody = BulkResetCourseProgressRequest
@@ -19964,48 +20009,3 @@ type ApiTasksPartialUpdateFormdataRequestBody = PatchedLseTaskRequest
 
 // ApiTasksPartialUpdateMultipartRequestBody defines body for ApiTasksPartialUpdate for multipart/form-data ContentType.
 type ApiTasksPartialUpdateMultipartRequestBody = PatchedLseTaskRequest
-
-// ApiTasksAnnotationsCreateJSONRequestBody defines body for ApiTasksAnnotationsCreate for application/json ContentType.
-type ApiTasksAnnotationsCreateJSONRequestBody = AnnotationRequest
-
-// ApiTasksAnnotationsCreateFormdataRequestBody defines body for ApiTasksAnnotationsCreate for application/x-www-form-urlencoded ContentType.
-type ApiTasksAnnotationsCreateFormdataRequestBody = AnnotationRequest
-
-// ApiTasksAnnotationsCreateMultipartRequestBody defines body for ApiTasksAnnotationsCreate for multipart/form-data ContentType.
-type ApiTasksAnnotationsCreateMultipartRequestBody = AnnotationRequest
-
-// ApiTasksEventsCreateJSONRequestBody defines body for ApiTasksEventsCreate for application/json ContentType.
-type ApiTasksEventsCreateJSONRequestBody = TaskEventRequest
-
-// ApiTasksEventsCreateFormdataRequestBody defines body for ApiTasksEventsCreate for application/x-www-form-urlencoded ContentType.
-type ApiTasksEventsCreateFormdataRequestBody = TaskEventRequest
-
-// ApiTasksEventsCreateMultipartRequestBody defines body for ApiTasksEventsCreate for multipart/form-data ContentType.
-type ApiTasksEventsCreateMultipartRequestBody = TaskEventRequest
-
-// ApiTokenBlacklistCreateJSONRequestBody defines body for ApiTokenBlacklistCreate for application/json ContentType.
-type ApiTokenBlacklistCreateJSONRequestBody = LSAPITokenBlacklistRequest
-
-// ApiTokenBlacklistCreateFormdataRequestBody defines body for ApiTokenBlacklistCreate for application/x-www-form-urlencoded ContentType.
-type ApiTokenBlacklistCreateFormdataRequestBody = LSAPITokenBlacklistRequest
-
-// ApiTokenBlacklistCreateMultipartRequestBody defines body for ApiTokenBlacklistCreate for multipart/form-data ContentType.
-type ApiTokenBlacklistCreateMultipartRequestBody = LSAPITokenBlacklistRequest
-
-// ApiTokenRefreshCreateJSONRequestBody defines body for ApiTokenRefreshCreate for application/json ContentType.
-type ApiTokenRefreshCreateJSONRequestBody = TokenRefreshRequest
-
-// ApiTokenRefreshCreateFormdataRequestBody defines body for ApiTokenRefreshCreate for application/x-www-form-urlencoded ContentType.
-type ApiTokenRefreshCreateFormdataRequestBody = TokenRefreshRequest
-
-// ApiTokenRefreshCreateMultipartRequestBody defines body for ApiTokenRefreshCreate for multipart/form-data ContentType.
-type ApiTokenRefreshCreateMultipartRequestBody = TokenRefreshRequest
-
-// ApiTokenRotateCreateJSONRequestBody defines body for ApiTokenRotateCreate for application/json ContentType.
-type ApiTokenRotateCreateJSONRequestBody = LSAPITokenRotateRequest
-
-// ApiTokenRotateCreateFormdataRequestBody defines body for ApiTokenRotateCreate for application/x-www-form-urlencoded ContentType.
-type ApiTokenRotateCreateFormdataRequestBody = LSAPITokenRotateRequest
-
-// ApiTokenRotateCreateMultipartRequestBody defines body for ApiTokenRotateCreate for multipart/form-data ContentType.
-type ApiTokenRotateCreateMultipartRequestBody = LSAPITokenRotateRequest

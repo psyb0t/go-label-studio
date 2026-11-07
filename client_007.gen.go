@@ -7729,7 +7729,7 @@ func (c *ClientWithResponses) ApiLearningResourcesUnpublishCreateWithFormdataBod
 	return ParseApiLearningResourcesUnpublishCreateResponse(rsp)
 }
 
-// ApiLearningResourcesUploadCreateWithBodyWithResponse ✨ Upload a file for a learning resource
+// ApiLearningResourcesUploadCreateWithBodyWithResponse ✨ Upload or import a file for a learning resource
 //
 // <Card href="https://humansignal.com/goenterprise">
 //
@@ -7739,59 +7739,13 @@ func (c *ClientWithResponses) ApiLearningResourcesUnpublishCreateWithFormdataBod
 //	    </p>
 //	</Card>
 //
-// Upload a file asset for use in a learning resource.
+// Upload a new file, or import media already reachable elsewhere (an asset from another course, a project upload, or — with `allow_external` — any http(s) URL) as a CourseAsset served from this origin. Exactly one of `file`/`url` is required; `allow_external` and `dry_run` are only valid with `url`. `dry_run` classifies the URL without creating anything. A source that does not exist and one you may not read both answer 403.
 //
 // Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
 //
 // Corresponds with POST /api/learning-resources/{id}/upload/ (the `ApiLearningResourcesUploadCreate` operationId).
 func (c *ClientWithResponses) ApiLearningResourcesUploadCreateWithBodyWithResponse(ctx context.Context, id int, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*ApiLearningResourcesUploadCreateResponse, error) {
 	rsp, err := c.ApiLearningResourcesUploadCreateWithBody(ctx, id, contentType, body, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseApiLearningResourcesUploadCreateResponse(rsp)
-}
-
-// ApiLearningResourcesUploadCreateWithResponse ✨ Upload a file for a learning resource
-//
-// <Card href="https://humansignal.com/goenterprise">
-//
-//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
-//	    <p style="margin-top: 10px; font-size: 14px;">
-//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
-//	    </p>
-//	</Card>
-//
-// Upload a file asset for use in a learning resource.
-//
-// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
-//
-// Corresponds with POST /api/learning-resources/{id}/upload/ (the `ApiLearningResourcesUploadCreate` operationId).
-func (c *ClientWithResponses) ApiLearningResourcesUploadCreateWithResponse(ctx context.Context, id int, body ApiLearningResourcesUploadCreateJSONRequestBody, reqEditors ...RequestEditorFn) (*ApiLearningResourcesUploadCreateResponse, error) {
-	rsp, err := c.ApiLearningResourcesUploadCreate(ctx, id, body, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseApiLearningResourcesUploadCreateResponse(rsp)
-}
-
-// ApiLearningResourcesUploadCreateWithFormdataBodyWithResponse ✨ Upload a file for a learning resource
-//
-// <Card href="https://humansignal.com/goenterprise">
-//
-//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
-//	    <p style="margin-top: 10px; font-size: 14px;">
-//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
-//	    </p>
-//	</Card>
-//
-// Upload a file asset for use in a learning resource.
-//
-// Takes a body of the `application/x-www-form-urlencoded` content type, and returns a wrapper object for the known response body format(s).
-//
-// Corresponds with POST /api/learning-resources/{id}/upload/ (the `ApiLearningResourcesUploadCreate` operationId).
-func (c *ClientWithResponses) ApiLearningResourcesUploadCreateWithFormdataBodyWithResponse(ctx context.Context, id int, body ApiLearningResourcesUploadCreateFormdataRequestBody, reqEditors ...RequestEditorFn) (*ApiLearningResourcesUploadCreateResponse, error) {
-	rsp, err := c.ApiLearningResourcesUploadCreateWithFormdataBody(ctx, id, body, reqEditors...)
 	if err != nil {
 		return nil, err
 	}
@@ -20015,4 +19969,49 @@ func (c *ClientWithResponses) ApiStoragesGcswifSyncCreateWithResponse(ctx contex
 		return nil, err
 	}
 	return ParseApiStoragesGcswifSyncCreateResponse(rsp)
+}
+
+// ApiStoragesLocalfilesListWithResponse Get all import storage
+//
+// Get a list of all local file import storage connections.
+//
+// Returns a wrapper object for the known response body format(s).
+//
+// Corresponds with GET /api/storages/localfiles/ (the `ApiStoragesLocalfilesList` operationId).
+func (c *ClientWithResponses) ApiStoragesLocalfilesListWithResponse(ctx context.Context, params *ApiStoragesLocalfilesListParams, reqEditors ...RequestEditorFn) (*ApiStoragesLocalfilesListResponse, error) {
+	rsp, err := c.ApiStoragesLocalfilesList(ctx, params, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesLocalfilesListResponse(rsp)
+}
+
+// ApiStoragesLocalfilesCreateWithBodyWithResponse Create import storage
+//
+// Create a new local file import storage connection.
+//
+// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with POST /api/storages/localfiles/ (the `ApiStoragesLocalfilesCreate` operationId).
+func (c *ClientWithResponses) ApiStoragesLocalfilesCreateWithBodyWithResponse(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*ApiStoragesLocalfilesCreateResponse, error) {
+	rsp, err := c.ApiStoragesLocalfilesCreateWithBody(ctx, contentType, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesLocalfilesCreateResponse(rsp)
+}
+
+// ApiStoragesLocalfilesCreateWithResponse Create import storage
+//
+// Create a new local file import storage connection.
+//
+// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with POST /api/storages/localfiles/ (the `ApiStoragesLocalfilesCreate` operationId).
+func (c *ClientWithResponses) ApiStoragesLocalfilesCreateWithResponse(ctx context.Context, body ApiStoragesLocalfilesCreateJSONRequestBody, reqEditors ...RequestEditorFn) (*ApiStoragesLocalfilesCreateResponse, error) {
+	rsp, err := c.ApiStoragesLocalfilesCreate(ctx, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesLocalfilesCreateResponse(rsp)
 }
