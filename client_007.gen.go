@@ -11474,7 +11474,7 @@ func (c *ClientWithResponses) ApiProjectsExportsListWithResponse(ctx context.Con
 
 // ApiProjectsExportsCreateWithBodyWithResponse Create new export snapshot
 //
-// Create a new export request to start a background task and generate an export file for a specific project by ID.
+// Create a new export request to start a background task and generate an export file for a specific project by ID. Optional `since` / `until` limit the snapshot to tasks with `updated_at` in the half-open window `[since, until)`. `since` must be in the past; an omitted or later `until` becomes create/request time minus INCREMENTAL_EXPORT_UNTIL_LAG_SECONDS. Set `ephemeral=true` to omit the snapshot from list endpoints. On deployments that run the RQ cron scheduler (SaaS; on-prem with `rqcron.enabled`), ephemeral exports older than EPHEMERAL_EXPORT_TTL_HOURS (default 24) are deleted by a daily low-queue sweep; otherwise they remain unlisted until explicitly deleted. Use the resolved `until` from the response as `since` on the next incremental create. Task deletions are not represented in incremental snapshots (only surviving tasks with bumped `updated_at`). Rows committed after the export query starts but stamped with `updated_at` before `until` can fall outside both consecutive windows; the default `until` lag mitigates long transactions.
 //
 // Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
 //
@@ -11489,7 +11489,7 @@ func (c *ClientWithResponses) ApiProjectsExportsCreateWithBodyWithResponse(ctx c
 
 // ApiProjectsExportsCreateWithResponse Create new export snapshot
 //
-// Create a new export request to start a background task and generate an export file for a specific project by ID.
+// Create a new export request to start a background task and generate an export file for a specific project by ID. Optional `since` / `until` limit the snapshot to tasks with `updated_at` in the half-open window `[since, until)`. `since` must be in the past; an omitted or later `until` becomes create/request time minus INCREMENTAL_EXPORT_UNTIL_LAG_SECONDS. Set `ephemeral=true` to omit the snapshot from list endpoints. On deployments that run the RQ cron scheduler (SaaS; on-prem with `rqcron.enabled`), ephemeral exports older than EPHEMERAL_EXPORT_TTL_HOURS (default 24) are deleted by a daily low-queue sweep; otherwise they remain unlisted until explicitly deleted. Use the resolved `until` from the response as `since` on the next incremental create. Task deletions are not represented in incremental snapshots (only surviving tasks with bumped `updated_at`). Rows committed after the export query starts but stamped with `updated_at` before `until` can fall outside both consecutive windows; the default `until` lag mitigates long transactions.
 //
 // Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
 //
@@ -11504,7 +11504,7 @@ func (c *ClientWithResponses) ApiProjectsExportsCreateWithResponse(ctx context.C
 
 // ApiProjectsExportsCreateWithFormdataBodyWithResponse Create new export snapshot
 //
-// Create a new export request to start a background task and generate an export file for a specific project by ID.
+// Create a new export request to start a background task and generate an export file for a specific project by ID. Optional `since` / `until` limit the snapshot to tasks with `updated_at` in the half-open window `[since, until)`. `since` must be in the past; an omitted or later `until` becomes create/request time minus INCREMENTAL_EXPORT_UNTIL_LAG_SECONDS. Set `ephemeral=true` to omit the snapshot from list endpoints. On deployments that run the RQ cron scheduler (SaaS; on-prem with `rqcron.enabled`), ephemeral exports older than EPHEMERAL_EXPORT_TTL_HOURS (default 24) are deleted by a daily low-queue sweep; otherwise they remain unlisted until explicitly deleted. Use the resolved `until` from the response as `since` on the next incremental create. Task deletions are not represented in incremental snapshots (only surviving tasks with bumped `updated_at`). Rows committed after the export query starts but stamped with `updated_at` before `until` can fall outside both consecutive windows; the default `until` lag mitigates long transactions.
 //
 // Takes a body of the `application/x-www-form-urlencoded` content type, and returns a wrapper object for the known response body format(s).
 //

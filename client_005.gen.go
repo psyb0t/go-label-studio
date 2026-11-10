@@ -17,6 +17,86 @@ import (
 	openapi_types "github.com/oapi-codegen/runtime/types"
 )
 
+// NewApiStoragesAzureCreateRequestWithBody constructs an http.Request for the ApiStoragesAzureCreate method, with any body, and a specified content type
+func NewApiStoragesAzureCreateRequestWithBody(server string, contentType string, body io.Reader) (*http.Request, error) {
+	var err error
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/api/storages/azure/")
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequest(http.MethodPost, queryURL.String(), body)
+	if err != nil {
+		return nil, err
+	}
+
+	req.Header.Add("Content-Type", contentType)
+
+	return req, nil
+}
+
+// NewApiStoragesAzureValidateCreateRequest calls the generic ApiStoragesAzureValidateCreate builder with application/json body
+func NewApiStoragesAzureValidateCreateRequest(server string, body ApiStoragesAzureValidateCreateJSONRequestBody) (*http.Request, error) {
+	var bodyReader io.Reader
+	buf, err := json.Marshal(body)
+	if err != nil {
+		return nil, err
+	}
+	bodyReader = bytes.NewReader(buf)
+	return NewApiStoragesAzureValidateCreateRequestWithBody(server, "application/json", bodyReader)
+}
+
+// NewApiStoragesAzureValidateCreateRequestWithFormdataBody calls the generic ApiStoragesAzureValidateCreate builder with application/x-www-form-urlencoded body
+func NewApiStoragesAzureValidateCreateRequestWithFormdataBody(server string, body ApiStoragesAzureValidateCreateFormdataRequestBody) (*http.Request, error) {
+	var bodyReader io.Reader
+	bodyStr, err := runtime.MarshalForm(body, nil)
+	if err != nil {
+		return nil, err
+	}
+	bodyReader = strings.NewReader(bodyStr.Encode())
+	return NewApiStoragesAzureValidateCreateRequestWithBody(server, "application/x-www-form-urlencoded", bodyReader)
+}
+
+// NewApiStoragesAzureValidateCreateRequestWithBody constructs an http.Request for the ApiStoragesAzureValidateCreate method, with any body, and a specified content type
+func NewApiStoragesAzureValidateCreateRequestWithBody(server string, contentType string, body io.Reader) (*http.Request, error) {
+	var err error
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/api/storages/azure/validate")
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequest(http.MethodPost, queryURL.String(), body)
+	if err != nil {
+		return nil, err
+	}
+
+	req.Header.Add("Content-Type", contentType)
+
+	return req, nil
+}
+
 // NewApiStoragesAzureDestroyRequest constructs an http.Request for the ApiStoragesAzureDestroy method
 func NewApiStoragesAzureDestroyRequest(server string, id int) (*http.Request, error) {
 	var err error
@@ -14717,7 +14797,7 @@ type ClientWithResponsesInterface interface {
 
 	// ApiProjectsExportsCreateWithBodyWithResponse Create new export snapshot
 	//
-	// Create a new export request to start a background task and generate an export file for a specific project by ID.
+	// Create a new export request to start a background task and generate an export file for a specific project by ID. Optional `since` / `until` limit the snapshot to tasks with `updated_at` in the half-open window `[since, until)`. `since` must be in the past; an omitted or later `until` becomes create/request time minus INCREMENTAL_EXPORT_UNTIL_LAG_SECONDS. Set `ephemeral=true` to omit the snapshot from list endpoints. On deployments that run the RQ cron scheduler (SaaS; on-prem with `rqcron.enabled`), ephemeral exports older than EPHEMERAL_EXPORT_TTL_HOURS (default 24) are deleted by a daily low-queue sweep; otherwise they remain unlisted until explicitly deleted. Use the resolved `until` from the response as `since` on the next incremental create. Task deletions are not represented in incremental snapshots (only surviving tasks with bumped `updated_at`). Rows committed after the export query starts but stamped with `updated_at` before `until` can fall outside both consecutive windows; the default `until` lag mitigates long transactions.
 	//
 	// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
 	//
@@ -14726,7 +14806,7 @@ type ClientWithResponsesInterface interface {
 
 	// ApiProjectsExportsCreateWithResponse Create new export snapshot
 	//
-	// Create a new export request to start a background task and generate an export file for a specific project by ID.
+	// Create a new export request to start a background task and generate an export file for a specific project by ID. Optional `since` / `until` limit the snapshot to tasks with `updated_at` in the half-open window `[since, until)`. `since` must be in the past; an omitted or later `until` becomes create/request time minus INCREMENTAL_EXPORT_UNTIL_LAG_SECONDS. Set `ephemeral=true` to omit the snapshot from list endpoints. On deployments that run the RQ cron scheduler (SaaS; on-prem with `rqcron.enabled`), ephemeral exports older than EPHEMERAL_EXPORT_TTL_HOURS (default 24) are deleted by a daily low-queue sweep; otherwise they remain unlisted until explicitly deleted. Use the resolved `until` from the response as `since` on the next incremental create. Task deletions are not represented in incremental snapshots (only surviving tasks with bumped `updated_at`). Rows committed after the export query starts but stamped with `updated_at` before `until` can fall outside both consecutive windows; the default `until` lag mitigates long transactions.
 	//
 	// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
 	//
@@ -14735,7 +14815,7 @@ type ClientWithResponsesInterface interface {
 
 	// ApiProjectsExportsCreateWithFormdataBodyWithResponse Create new export snapshot
 	//
-	// Create a new export request to start a background task and generate an export file for a specific project by ID.
+	// Create a new export request to start a background task and generate an export file for a specific project by ID. Optional `since` / `until` limit the snapshot to tasks with `updated_at` in the half-open window `[since, until)`. `since` must be in the past; an omitted or later `until` becomes create/request time minus INCREMENTAL_EXPORT_UNTIL_LAG_SECONDS. Set `ephemeral=true` to omit the snapshot from list endpoints. On deployments that run the RQ cron scheduler (SaaS; on-prem with `rqcron.enabled`), ephemeral exports older than EPHEMERAL_EXPORT_TTL_HOURS (default 24) are deleted by a daily low-queue sweep; otherwise they remain unlisted until explicitly deleted. Use the resolved `until` from the response as `since` on the next incremental create. Task deletions are not represented in incremental snapshots (only surviving tasks with bumped `updated_at`). Rows committed after the export query starts but stamped with `updated_at` before `until` can fall outside both consecutive windows; the default `until` lag mitigates long transactions.
 	//
 	// Takes a body of the `application/x-www-form-urlencoded` content type, and returns a wrapper object for the known response body format(s).
 	//

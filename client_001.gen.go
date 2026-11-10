@@ -3968,7 +3968,7 @@ type Blueprint struct {
 	LabelConfig *string `json:"label_config,omitempty"`
 	Project     int     `json:"project"`
 
-	// ShareId base64 encoded id
+	// ShareId Public identifier used in share links (the random share token).
 	ShareId   *string `json:"share_id,omitempty"`
 	ShortUrl  *string `json:"short_url,omitempty"`
 	TaskCount *int    `json:"task_count,omitempty"`
@@ -3986,7 +3986,7 @@ type BlueprintList struct {
 	Description *string `json:"description,omitempty"`
 	Id          *int    `json:"id,omitempty"`
 
-	// ShareId base64 encoded id
+	// ShareId Public identifier used in share links (the random share token).
 	ShareId   *string `json:"share_id,omitempty"`
 	ShortUrl  *string `json:"short_url,omitempty"`
 	TaskCount *int    `json:"task_count,omitempty"`
@@ -5331,12 +5331,21 @@ type Export struct {
 	// values with complex, nested serializations
 	CreatedBy *UserSimple `json:"created_by,omitempty"`
 
+	// Ephemeral When true, the export is omitted from list endpoints. Detail and download by id still work. TTL deletion (EPHEMERAL_EXPORT_TTL_HOURS, default 24) runs via the RQ cron scheduler when enabled (SaaS; on-prem `rqcron.enabled`); otherwise delete explicitly.
+	Ephemeral *bool `json:"ephemeral,omitempty"`
+
 	// FinishedAt Complete or fail time
-	FinishedAt *time.Time               `json:"finished_at,omitempty"`
-	Id         *int                     `json:"id,omitempty"`
-	Md5        *string                  `json:"md5,omitempty"`
-	Status     *ProjectImportStatusEnum `json:"status,omitempty"`
-	Title      *string                  `json:"title,omitempty"`
+	FinishedAt *time.Time `json:"finished_at,omitempty"`
+	Id         *int       `json:"id,omitempty"`
+	Md5        *string    `json:"md5,omitempty"`
+
+	// Since Inclusive lower bound on Task.updated_at for an incremental snapshot. Omit for a full export. Pair with until for a half-open window [since, until).
+	Since  *time.Time               `json:"since,omitempty"`
+	Status *ProjectImportStatusEnum `json:"status,omitempty"`
+	Title  *string                  `json:"title,omitempty"`
+
+	// Until Exclusive upper bound on Task.updated_at. If omitted, or later than create/request time minus INCREMENTAL_EXPORT_UNTIL_LAG_SECONDS, the server uses that time instead. Use the returned value as since on the next incremental create.
+	Until *time.Time `json:"until,omitempty"`
 }
 
 // ExportConvertRequest defines model for ExportConvertRequest.
@@ -7541,14 +7550,23 @@ type LseExportCreate struct {
 	// values with complex, nested serializations
 	CreatedBy *UserSimple `json:"created_by,omitempty"`
 
+	// Ephemeral When true, the export is omitted from list endpoints. Detail and download by id still work. TTL deletion (EPHEMERAL_EXPORT_TTL_HOURS, default 24) runs via the RQ cron scheduler when enabled (SaaS; on-prem `rqcron.enabled`); otherwise delete explicitly.
+	Ephemeral *bool `json:"ephemeral,omitempty"`
+
 	// FinishedAt Complete or fail time
-	FinishedAt           *time.Time               `json:"finished_at,omitempty"`
-	Id                   *int                     `json:"id,omitempty"`
-	Md5                  *string                  `json:"md5,omitempty"`
-	SerializationOptions *SerializationOptions    `json:"serialization_options,omitempty"`
-	Status               *ProjectImportStatusEnum `json:"status,omitempty"`
-	TaskFilterOptions    *LseTaskFilterOptions    `json:"task_filter_options,omitempty"`
-	Title                *string                  `json:"title,omitempty"`
+	FinishedAt           *time.Time            `json:"finished_at,omitempty"`
+	Id                   *int                  `json:"id,omitempty"`
+	Md5                  *string               `json:"md5,omitempty"`
+	SerializationOptions *SerializationOptions `json:"serialization_options,omitempty"`
+
+	// Since Inclusive lower bound on Task.updated_at for an incremental snapshot. Omit for a full export. Pair with until for a half-open window [since, until).
+	Since             *time.Time               `json:"since,omitempty"`
+	Status            *ProjectImportStatusEnum `json:"status,omitempty"`
+	TaskFilterOptions *LseTaskFilterOptions    `json:"task_filter_options,omitempty"`
+	Title             *string                  `json:"title,omitempty"`
+
+	// Until Exclusive upper bound on Task.updated_at. If omitted, or later than create/request time minus INCREMENTAL_EXPORT_UNTIL_LAG_SECONDS, the server uses that time instead. Use the returned value as since on the next incremental create.
+	Until *time.Time `json:"until,omitempty"`
 }
 
 // LseExportCreateRequest defines model for LseExportCreateRequest.
@@ -7563,13 +7581,22 @@ type LseExportCreateRequest struct {
 	// values with complex, nested serializations
 	CreatedBy *UserSimpleRequest `json:"created_by,omitempty"`
 
+	// Ephemeral When true, the export is omitted from list endpoints. Detail and download by id still work. TTL deletion (EPHEMERAL_EXPORT_TTL_HOURS, default 24) runs via the RQ cron scheduler when enabled (SaaS; on-prem `rqcron.enabled`); otherwise delete explicitly.
+	Ephemeral *bool `json:"ephemeral,omitempty"`
+
 	// FinishedAt Complete or fail time
 	FinishedAt           *time.Time                   `json:"finished_at,omitempty"`
 	Md5                  *string                      `json:"md5,omitempty"`
 	SerializationOptions *SerializationOptionsRequest `json:"serialization_options,omitempty"`
-	Status               *ProjectImportStatusEnum     `json:"status,omitempty"`
-	TaskFilterOptions    *LseTaskFilterOptionsRequest `json:"task_filter_options,omitempty"`
-	Title                *string                      `json:"title,omitempty"`
+
+	// Since Inclusive lower bound on Task.updated_at for an incremental snapshot. Omit for a full export. Pair with until for a half-open window [since, until).
+	Since             *time.Time                   `json:"since,omitempty"`
+	Status            *ProjectImportStatusEnum     `json:"status,omitempty"`
+	TaskFilterOptions *LseTaskFilterOptionsRequest `json:"task_filter_options,omitempty"`
+	Title             *string                      `json:"title,omitempty"`
+
+	// Until Exclusive upper bound on Task.updated_at. If omitted, or later than create/request time minus INCREMENTAL_EXPORT_UNTIL_LAG_SECONDS, the server uses that time instead. Use the returned value as since on the next incremental create.
+	Until *time.Time `json:"until,omitempty"`
 }
 
 // LseFields defines model for LseFields.
@@ -9857,13 +9884,17 @@ type MaybeExpandedComment struct {
 
 // MemberSkill defines model for MemberSkill.
 type MemberSkill struct {
-	Code  string `json:"code"`
-	Label string `json:"label"`
+	ClaimedLevel *string              `json:"claimed_level,omitempty"`
+	Code         string               `json:"code"`
+	FailedLevel  *string              `json:"failed_level,omitempty"`
+	Label        string               `json:"label"`
+	Levels       *[]map[string]string `json:"levels,omitempty"`
 
 	// Status * `verified` - verified
 	// * `self_reported` - self_reported
 	// * `failed` - failed
-	Status MemberSkillStatusEnum `json:"status"`
+	Status        MemberSkillStatusEnum `json:"status"`
+	VerifiedLevel *string               `json:"verified_level,omitempty"`
 }
 
 // MemberSkillStatusEnum * `verified` - verified
@@ -10266,13 +10297,14 @@ type OrganizationMemberMembershipProjectOptionKindEnum string
 // Contributor Setup names. “parent_code“ is set only when that ancestor is also an
 // option on the same question, matching “OrganizationTaxonomyNodeSerializer“.
 type OrganizationMemberSkillsOption struct {
-	Code         string  `json:"code"`
-	FieldKey     string  `json:"field_key"`
-	FieldLabel   string  `json:"field_label"`
-	Label        string  `json:"label"`
-	ParentCode   *string `json:"parent_code"`
-	SectionKey   string  `json:"section_key"`
-	SectionTitle string  `json:"section_title"`
+	Code         string               `json:"code"`
+	FieldKey     string               `json:"field_key"`
+	FieldLabel   string               `json:"field_label"`
+	Label        string               `json:"label"`
+	Levels       *[]map[string]string `json:"levels,omitempty"`
+	ParentCode   *string              `json:"parent_code"`
+	SectionKey   string               `json:"section_key"`
+	SectionTitle string               `json:"section_title"`
 }
 
 // OrganizationMemberTag defines model for OrganizationMemberTag.
@@ -19976,36 +20008,3 @@ type ApiStoragesS3sCreateMultipartRequestBody = LseS3ImportStorageRequest
 
 // ApiStoragesS3sValidateCreateJSONRequestBody defines body for ApiStoragesS3sValidateCreate for application/json ContentType.
 type ApiStoragesS3sValidateCreateJSONRequestBody = LseS3ImportStorageRequest
-
-// ApiStoragesS3sValidateCreateFormdataRequestBody defines body for ApiStoragesS3sValidateCreate for application/x-www-form-urlencoded ContentType.
-type ApiStoragesS3sValidateCreateFormdataRequestBody = LseS3ImportStorageRequest
-
-// ApiStoragesS3sValidateCreateMultipartRequestBody defines body for ApiStoragesS3sValidateCreate for multipart/form-data ContentType.
-type ApiStoragesS3sValidateCreateMultipartRequestBody = LseS3ImportStorageRequest
-
-// ApiStoragesS3sPartialUpdateJSONRequestBody defines body for ApiStoragesS3sPartialUpdate for application/json ContentType.
-type ApiStoragesS3sPartialUpdateJSONRequestBody = PatchedLseS3ImportStorageRequest
-
-// ApiStoragesS3sPartialUpdateFormdataRequestBody defines body for ApiStoragesS3sPartialUpdate for application/x-www-form-urlencoded ContentType.
-type ApiStoragesS3sPartialUpdateFormdataRequestBody = PatchedLseS3ImportStorageRequest
-
-// ApiStoragesS3sPartialUpdateMultipartRequestBody defines body for ApiStoragesS3sPartialUpdate for multipart/form-data ContentType.
-type ApiStoragesS3sPartialUpdateMultipartRequestBody = PatchedLseS3ImportStorageRequest
-
-// ApiTasksCreateJSONRequestBody defines body for ApiTasksCreate for application/json ContentType.
-type ApiTasksCreateJSONRequestBody = LseTaskRequest
-
-// ApiTasksCreateFormdataRequestBody defines body for ApiTasksCreate for application/x-www-form-urlencoded ContentType.
-type ApiTasksCreateFormdataRequestBody = LseTaskRequest
-
-// ApiTasksCreateMultipartRequestBody defines body for ApiTasksCreate for multipart/form-data ContentType.
-type ApiTasksCreateMultipartRequestBody = LseTaskRequest
-
-// ApiTasksPartialUpdateJSONRequestBody defines body for ApiTasksPartialUpdate for application/json ContentType.
-type ApiTasksPartialUpdateJSONRequestBody = PatchedLseTaskRequest
-
-// ApiTasksPartialUpdateFormdataRequestBody defines body for ApiTasksPartialUpdate for application/x-www-form-urlencoded ContentType.
-type ApiTasksPartialUpdateFormdataRequestBody = PatchedLseTaskRequest
-
-// ApiTasksPartialUpdateMultipartRequestBody defines body for ApiTasksPartialUpdate for multipart/form-data ContentType.
-type ApiTasksPartialUpdateMultipartRequestBody = PatchedLseTaskRequest

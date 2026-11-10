@@ -17,6 +17,52 @@ import (
 	openapi_types "github.com/oapi-codegen/runtime/types"
 )
 
+// ApiLearningResourcesProjectAssignmentsCreateWithFormdataBody ✨ Bulk assign learning resource to projects
+//
+// Create project assignments for many projects in one request.
+//
+// Takes a body of the `application/x-www-form-urlencoded` content type.
+//
+// Corresponds with POST /api/learning-resources/{id}/project-assignments/ (the `ApiLearningResourcesProjectAssignmentsCreate` operationId).
+func (c *Client) ApiLearningResourcesProjectAssignmentsCreateWithFormdataBody(ctx context.Context, id int, body ApiLearningResourcesProjectAssignmentsCreateFormdataRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiLearningResourcesProjectAssignmentsCreateRequestWithFormdataBody(c.Server, id, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ApiLearningResourcesPublishCreateWithBody ✨ Publish a learning resource
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Publish a learning resource to make it available to learners.
+//
+// Takes any type of body and a specified content type.
+//
+// Corresponds with POST /api/learning-resources/{id}/publish/ (the `ApiLearningResourcesPublishCreate` operationId).
+func (c *Client) ApiLearningResourcesPublishCreateWithBody(ctx context.Context, id int, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiLearningResourcesPublishCreateRequestWithBody(c.Server, id, contentType, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
 // ApiLearningResourcesPublishCreate ✨ Publish a learning resource
 //
 // <Card href="https://humansignal.com/goenterprise">
@@ -4602,7 +4648,7 @@ func (c *Client) ApiProjectsExportsList(ctx context.Context, id int, params *Api
 
 // ApiProjectsExportsCreateWithBody Create new export snapshot
 //
-// Create a new export request to start a background task and generate an export file for a specific project by ID.
+// Create a new export request to start a background task and generate an export file for a specific project by ID. Optional `since` / `until` limit the snapshot to tasks with `updated_at` in the half-open window `[since, until)`. `since` must be in the past; an omitted or later `until` becomes create/request time minus INCREMENTAL_EXPORT_UNTIL_LAG_SECONDS. Set `ephemeral=true` to omit the snapshot from list endpoints. On deployments that run the RQ cron scheduler (SaaS; on-prem with `rqcron.enabled`), ephemeral exports older than EPHEMERAL_EXPORT_TTL_HOURS (default 24) are deleted by a daily low-queue sweep; otherwise they remain unlisted until explicitly deleted. Use the resolved `until` from the response as `since` on the next incremental create. Task deletions are not represented in incremental snapshots (only surviving tasks with bumped `updated_at`). Rows committed after the export query starts but stamped with `updated_at` before `until` can fall outside both consecutive windows; the default `until` lag mitigates long transactions.
 //
 // Takes any type of body and a specified content type.
 //
@@ -4621,7 +4667,7 @@ func (c *Client) ApiProjectsExportsCreateWithBody(ctx context.Context, id int, c
 
 // ApiProjectsExportsCreate Create new export snapshot
 //
-// Create a new export request to start a background task and generate an export file for a specific project by ID.
+// Create a new export request to start a background task and generate an export file for a specific project by ID. Optional `since` / `until` limit the snapshot to tasks with `updated_at` in the half-open window `[since, until)`. `since` must be in the past; an omitted or later `until` becomes create/request time minus INCREMENTAL_EXPORT_UNTIL_LAG_SECONDS. Set `ephemeral=true` to omit the snapshot from list endpoints. On deployments that run the RQ cron scheduler (SaaS; on-prem with `rqcron.enabled`), ephemeral exports older than EPHEMERAL_EXPORT_TTL_HOURS (default 24) are deleted by a daily low-queue sweep; otherwise they remain unlisted until explicitly deleted. Use the resolved `until` from the response as `since` on the next incremental create. Task deletions are not represented in incremental snapshots (only surviving tasks with bumped `updated_at`). Rows committed after the export query starts but stamped with `updated_at` before `until` can fall outside both consecutive windows; the default `until` lag mitigates long transactions.
 //
 // Takes a body of the `application/json` content type.
 //
@@ -4640,7 +4686,7 @@ func (c *Client) ApiProjectsExportsCreate(ctx context.Context, id int, body ApiP
 
 // ApiProjectsExportsCreateWithFormdataBody Create new export snapshot
 //
-// Create a new export request to start a background task and generate an export file for a specific project by ID.
+// Create a new export request to start a background task and generate an export file for a specific project by ID. Optional `since` / `until` limit the snapshot to tasks with `updated_at` in the half-open window `[since, until)`. `since` must be in the past; an omitted or later `until` becomes create/request time minus INCREMENTAL_EXPORT_UNTIL_LAG_SECONDS. Set `ephemeral=true` to omit the snapshot from list endpoints. On deployments that run the RQ cron scheduler (SaaS; on-prem with `rqcron.enabled`), ephemeral exports older than EPHEMERAL_EXPORT_TTL_HOURS (default 24) are deleted by a daily low-queue sweep; otherwise they remain unlisted until explicitly deleted. Use the resolved `until` from the response as `since` on the next incremental create. Task deletions are not represented in incremental snapshots (only surviving tasks with bumped `updated_at`). Rows committed after the export query starts but stamped with `updated_at` before `until` can fall outside both consecutive windows; the default `until` lag mitigates long transactions.
 //
 // Takes a body of the `application/x-www-form-urlencoded` content type.
 //
@@ -20002,72 +20048,6 @@ func NewApiDimensionsBackfillStatusRetrieveRequest(server string, params *ApiDim
 	}
 
 	req, err := http.NewRequest(http.MethodGet, queryURL.String(), nil)
-	if err != nil {
-		return nil, err
-	}
-
-	return req, nil
-}
-
-// NewApiDimensionsValueCountsBackfillDestroyRequest constructs an http.Request for the ApiDimensionsValueCountsBackfillDestroy method
-func NewApiDimensionsValueCountsBackfillDestroyRequest(server string, params *ApiDimensionsValueCountsBackfillDestroyParams) (*http.Request, error) {
-	var err error
-
-	serverURL, err := url.Parse(server)
-	if err != nil {
-		return nil, err
-	}
-
-	operationPath := fmt.Sprintf("/api/dimensions/value-counts-backfill/")
-	if operationPath[0] == '/' {
-		operationPath = "." + operationPath
-	}
-
-	queryURL, err := serverURL.Parse(operationPath)
-	if err != nil {
-		return nil, err
-	}
-
-	if params != nil {
-		// queryValues collects non-styled parameters (passthrough, JSON)
-		// that are safe to round-trip through url.Values.Encode().
-		queryValues := queryURL.Query()
-		// rawQueryFragments collects pre-encoded query fragments from
-		// styled parameters, preserving literal commas as delimiters
-		// per the OpenAPI spec (e.g. "color=blue,black,brown").
-		var rawQueryFragments []string
-
-		if params.JobId != nil {
-
-			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "job_id", *params.JobId, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "integer", Format: ""}); err != nil {
-				return nil, err
-			} else {
-				for _, qp := range strings.Split(queryFrag, "&") {
-					rawQueryFragments = append(rawQueryFragments, qp)
-				}
-			}
-
-		}
-
-		if params.ProjectId != nil {
-
-			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "project_id", *params.ProjectId, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "integer", Format: ""}); err != nil {
-				return nil, err
-			} else {
-				for _, qp := range strings.Split(queryFrag, "&") {
-					rawQueryFragments = append(rawQueryFragments, qp)
-				}
-			}
-
-		}
-
-		if encoded := queryValues.Encode(); encoded != "" {
-			rawQueryFragments = append(rawQueryFragments, encoded)
-		}
-		queryURL.RawQuery = strings.Join(rawQueryFragments, "&")
-	}
-
-	req, err := http.NewRequest(http.MethodDelete, queryURL.String(), nil)
 	if err != nil {
 		return nil, err
 	}

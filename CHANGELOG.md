@@ -2,6 +2,15 @@
 
 All notable changes per release. Versions follow [semver](https://semver.org).
 
+## v0.8.1, 2026-11-10
+
+- Added `Ephemeral` (`*bool`), `Since` (`*time.Time`) and `Until` (`*time.Time`) to `Export`, `LseExportCreate` and `LseExportCreateRequest`. `Since` and `Until` limit an export snapshot to tasks whose `updated_at` falls in the window `[since, until)`. `Ephemeral` hides the export from list endpoints.
+- The doc comments on `ApiProjectsExportsCreateWithBody` and its variants describe incremental exports and ephemeral exports.
+- Added `MemberSkill.ClaimedLevel`, `MemberSkill.FailedLevel` and `MemberSkill.VerifiedLevel` (`*string`), and `MemberSkill.Levels` (`*[]map[string]string`). All are optional.
+- Added `OrganizationMemberSkillsOption.Levels` (`*[]map[string]string`, optional).
+- The doc comments on `Blueprint.ShareId` and `BlueprintList.ShareId` now say it is the public identifier used in share links. They no longer say "base64 encoded id".
+- Several generated methods and request body types moved between generated files. Their names and signatures are unchanged.
+
 ## v0.8.0, 2026-11-07
 
 - Breaking: the upload endpoint, `POST /api/learning-resources/{id}/upload/`, now takes only multipart form data. Removed the JSON and form-urlencoded variants: `Client.ApiLearningResourcesUploadCreate`, `Client.ApiLearningResourcesUploadCreateWithFormdataBody`, `ClientWithResponses.ApiLearningResourcesUploadCreateWithResponse`, `ClientWithResponses.ApiLearningResourcesUploadCreateWithFormdataBodyWithResponse`, `NewApiLearningResourcesUploadCreateRequest` and `NewApiLearningResourcesUploadCreateRequestWithFormdataBody`. Also removed `ApiLearningResourcesUploadCreateJSONRequestBody` and `ApiLearningResourcesUploadCreateFormdataRequestBody`, and the matching methods of `ClientInterface` and `ClientWithResponsesInterface`. Migration: call the `WithBody` methods with a multipart body.
