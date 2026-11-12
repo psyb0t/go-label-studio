@@ -15,6 +15,9 @@ import (
 	openapi_types "github.com/oapi-codegen/runtime/types"
 )
 
+// ApiStoragesS3sValidateCreateJSONRequestBody defines body for ApiStoragesS3sValidateCreate for application/json ContentType.
+type ApiStoragesS3sValidateCreateJSONRequestBody = LseS3ImportStorageRequest
+
 // ApiStoragesS3sValidateCreateFormdataRequestBody defines body for ApiStoragesS3sValidateCreate for application/x-www-form-urlencoded ContentType.
 type ApiStoragesS3sValidateCreateFormdataRequestBody = LseS3ImportStorageRequest
 
@@ -7568,12 +7571,12 @@ type ClientInterface interface {
 	// ApiProjectsExportFormatsRetrieve [Deprecated] Get export formats
 	//
 	//
-	// This endpoint is deprecated in Enterprise. Use the async export API instead:
-	// POST /api/projects/{{id}}/exports/ (see [Create new export](api:POST/api/projects/{id}/exports/)).
+	//         This endpoint is deprecated in Enterprise. Use the async export API instead:
+	//         POST /api/projects/{{id}}/exports/ (see [Create new export](api:POST/api/projects/{id}/exports/)).
 	//
-	// In Label Studio Enterprise, this endpoint will always return a 404 Not Found response with instructions to use the async export API.
+	//         In Label Studio Enterprise, this endpoint will always return a 404 Not Found response with instructions to use the async export API.
 	//
-	// Retrieve the available export formats for the current project by ID.
+	//         Retrieve the available export formats for the current project by ID.
 	//
 	// Corresponds with GET /api/projects/{id}/export/formats (the `ApiProjectsExportFormatsRetrieve` operationId).
 	//

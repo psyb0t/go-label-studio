@@ -2,6 +2,15 @@
 
 All notable changes per release. Versions follow [semver](https://semver.org).
 
+## v0.9.0, 2026-11-12
+
+- Breaking: removed `Organization` (`*int`) from `LseProjectCreateRequest` and `PatchedLseProjectUpdateRequest`. Migration: stop setting `Organization` in project create and update requests.
+- Added `ChatCompletionRequestRequest.Project` (`int`, JSON `project`). It is the ID of a project the caller can access whose labeling config contains a Chat tag. The field is required, so chat completion requests must set it.
+- Added `DefaultRole.Slug` (`*string`, optional), the DNS-safe organization slug used to build the default primary domain.
+- Updated the doc comments on `ApiProjectsExportFormatsRetrieve` in the client interfaces to match the new spec text.
+- Moved `ApiStoragesS3sValidateCreateJSONRequestBody` to another generated file. Its name and type are unchanged.
+- Raised the Go version in `go.mod`, `Dockerfile.dev` and the setup reference from 1.26.10 to 1.26.11. This picks up the fix for GO-2026-6859, a `net/http` vulnerability reported by `govulncheck`.
+
 ## v0.8.1, 2026-11-10
 
 - Added `Ephemeral` (`*bool`), `Since` (`*time.Time`) and `Until` (`*time.Time`) to `Export`, `LseExportCreate` and `LseExportCreateRequest`. `Since` and `Until` limit an export snapshot to tasks whose `updated_at` falls in the window `[since, until)`. `Ephemeral` hides the export from list endpoints.

@@ -4168,6 +4168,9 @@ type ChatCompletionRequestRequest struct {
 
 	// Model Model identifier in format "provider/model-name" (e.g., "openai/gpt-4")
 	Model string `json:"model"`
+
+	// Project ID of a project the caller can access whose labeling config contains a Chat tag
+	Project int `json:"project"`
 }
 
 // ChatMessageRequest Validates and sanitizes individual chat messages for LLM chat completion requests.
@@ -5134,6 +5137,9 @@ type DefaultRole struct {
 
 	// ReadOnlyQuickViewEnabledAt Set to current time to prevent creating or editing annotations in quick view.
 	ReadOnlyQuickViewEnabledAt *time.Time `json:"read_only_quick_view_enabled_at,omitempty"`
+
+	// Slug DNS-safe organization slug used to build the default primary domain (<slug>.<ORG_DOMAIN_BASE>). Nullable until the org domains backfill runs (FIT-2959).
+	Slug *string `json:"slug,omitempty"`
 }
 
 // Dimension Serializer for Dimension model.
@@ -8540,7 +8546,6 @@ type LseProjectCreateRequest struct {
 
 	// ModelVersion Machine learning model version
 	ModelVersion            *string     `json:"model_version,omitempty"`
-	Organization            *int        `json:"organization,omitempty"`
 	OutputSchema            interface{} `json:"output_schema,omitempty"`
 	OverlapCohortPercentage *int        `json:"overlap_cohort_percentage,omitempty"`
 
@@ -12011,7 +12016,6 @@ type PatchedLseProjectUpdateRequest struct {
 
 	// ModelVersion Machine learning model version
 	ModelVersion *string     `json:"model_version,omitempty"`
-	Organization *int        `json:"organization,omitempty"`
 	OutputSchema interface{} `json:"output_schema,omitempty"`
 
 	// OverlapCohortPercentage Annotations per task coverage
@@ -20005,6 +20009,3 @@ type ApiStoragesS3sCreateFormdataRequestBody = LseS3ImportStorageRequest
 
 // ApiStoragesS3sCreateMultipartRequestBody defines body for ApiStoragesS3sCreate for multipart/form-data ContentType.
 type ApiStoragesS3sCreateMultipartRequestBody = LseS3ImportStorageRequest
-
-// ApiStoragesS3sValidateCreateJSONRequestBody defines body for ApiStoragesS3sValidateCreate for application/json ContentType.
-type ApiStoragesS3sValidateCreateJSONRequestBody = LseS3ImportStorageRequest

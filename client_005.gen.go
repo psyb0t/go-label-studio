@@ -14772,12 +14772,12 @@ type ClientWithResponsesInterface interface {
 	// ApiProjectsExportFormatsRetrieveWithResponse [Deprecated] Get export formats
 	//
 	//
-	// This endpoint is deprecated in Enterprise. Use the async export API instead:
-	// POST /api/projects/{{id}}/exports/ (see [Create new export](api:POST/api/projects/{id}/exports/)).
+	//         This endpoint is deprecated in Enterprise. Use the async export API instead:
+	//         POST /api/projects/{{id}}/exports/ (see [Create new export](api:POST/api/projects/{id}/exports/)).
 	//
-	// In Label Studio Enterprise, this endpoint will always return a 404 Not Found response with instructions to use the async export API.
+	//         In Label Studio Enterprise, this endpoint will always return a 404 Not Found response with instructions to use the async export API.
 	//
-	// Retrieve the available export formats for the current project by ID.
+	//         Retrieve the available export formats for the current project by ID.
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
