@@ -2,6 +2,14 @@
 
 All notable changes per release. Versions follow [semver](https://semver.org).
 
+## v0.10.0, 2026-11-13
+
+- Breaking: removed 16 fields from `DefaultRole`: `AnnotatorReviewerFirewallEnabledAt`, `CustomInterfacesEnabled`, `CustomScriptsEnabledAt`, `EmailNotificationSettings`, `EmbedDomains`, `EmbedEnabled`, `EmbedSettings`, `ExternalId`, `ExtraDataOnActivityLogs`, `InterfaceSettings`, `LabelStreamNavigationDisabledAt`, `Organization`, `ReactCodeSettings`, `ReadOnlyQuickViewEnabledAt` and `Slug`. `DefaultRole` now only has `DefaultRole`. This also removes the `Slug` field added in v0.9.0.
+- Breaking: removed the same fields from `PatchedDefaultRoleRequest`, which now only has `DefaultRole`. Migration: stop setting or reading the removed fields.
+- Breaking: `DefaultRole.DefaultRole` changed from `*OrganizationRoleEnum` to `DefaultRoleDefaultRoleEnum` (not a pointer). `PatchedDefaultRoleRequest.DefaultRole` changed from `*OrganizationRoleEnum` to `*DefaultRoleDefaultRoleEnum`. The owner (`OW`) and deactivated (`DI`) roles are no longer valid values. Migration: use the new enum type.
+- Added `DefaultRoleDefaultRoleEnum` with the constants `DefaultRoleDefaultRoleEnumAD`, `DefaultRoleDefaultRoleEnumAN`, `DefaultRoleDefaultRoleEnumMA`, `DefaultRoleDefaultRoleEnumNO` and `DefaultRoleDefaultRoleEnumRE`, and a `Valid` method.
+- Several generated functions and request body types moved between generated files. Their names and signatures are unchanged.
+
 ## v0.9.0, 2026-11-12
 
 - Breaking: removed `Organization` (`*int`) from `LseProjectCreateRequest` and `PatchedLseProjectUpdateRequest`. Migration: stop setting `Organization` in project create and update requests.

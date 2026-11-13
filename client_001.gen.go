@@ -436,6 +436,33 @@ func (e DashboardTypeEnum) Valid() bool {
 	}
 }
 
+// Defines values for DefaultRoleDefaultRoleEnum.
+const (
+	DefaultRoleDefaultRoleEnumAD DefaultRoleDefaultRoleEnum = "AD"
+	DefaultRoleDefaultRoleEnumAN DefaultRoleDefaultRoleEnum = "AN"
+	DefaultRoleDefaultRoleEnumMA DefaultRoleDefaultRoleEnum = "MA"
+	DefaultRoleDefaultRoleEnumNO DefaultRoleDefaultRoleEnum = "NO"
+	DefaultRoleDefaultRoleEnumRE DefaultRoleDefaultRoleEnum = "RE"
+)
+
+// Valid indicates whether the value is a known member of the DefaultRoleDefaultRoleEnum enum.
+func (e DefaultRoleDefaultRoleEnum) Valid() bool {
+	switch e {
+	case DefaultRoleDefaultRoleEnumAD:
+		return true
+	case DefaultRoleDefaultRoleEnumAN:
+		return true
+	case DefaultRoleDefaultRoleEnumMA:
+		return true
+	case DefaultRoleDefaultRoleEnumNO:
+		return true
+	case DefaultRoleDefaultRoleEnumRE:
+		return true
+	default:
+		return false
+	}
+}
+
 // Defines values for EditionEnum.
 const (
 	EditionEnumCommunity  EditionEnum = "Community"
@@ -5086,61 +5113,22 @@ type DefaultModelVersionNameResponse struct {
 
 // DefaultRole defines model for DefaultRole.
 type DefaultRole struct {
-	// AnnotatorReviewerFirewallEnabledAt Set to current time to restrict data sharing between annotators and reviewers in the label stream, review stream, and notifications (which will be disabled). In these settings, information about annotator and reviewer identity is suppressed in the UI.
-	AnnotatorReviewerFirewallEnabledAt *time.Time `json:"annotator_reviewer_firewall_enabled_at,omitempty"`
-
-	// CustomInterfacesEnabled Enable custom interfaces for this organization. When disabled, projects with use_custom_interface=True will not render custom interfaces anywhere in the product (label stream, embed, data manager, interfaces dashboard).
-	CustomInterfacesEnabled *bool `json:"custom_interfaces_enabled,omitempty"`
-
-	// CustomScriptsEnabledAt Set to current time to enable custom scripts (Plugins) for this organization. Can only be enabled if no organization members are active members of any other organizations; otherwise an error will be raised. If this occurs, contact the LEAP team for assistance with enabling custom scripts (Plugins).
-	CustomScriptsEnabledAt *time.Time `json:"custom_scripts_enabled_at,omitempty"`
-
 	// DefaultRole Default membership role for invited users
 	//
-	// * `OW` - Owner
 	// * `AD` - Administrator
 	// * `MA` - Manager
 	// * `RE` - Reviewer
 	// * `AN` - Annotator
-	// * `DI` - Deactivated
 	// * `NO` - Not Activated
-	// * `VO` - View Only
-	DefaultRole *OrganizationRoleEnum `json:"default_role,omitempty"`
-
-	// EmailNotificationSettings Email notification settings for this organization. Controls which email notifications users can receive. Structure: {"notifications_allowed": {"notification_type": bool}}
-	EmailNotificationSettings interface{} `json:"email_notification_settings,omitempty"`
-
-	// EmbedDomains List of objects: {"domain": "example.com"}. Used for CSP header on /embed routes.
-	EmbedDomains interface{} `json:"embed_domains,omitempty"`
-
-	// EmbedEnabled Enable embed functionality for this organization
-	EmbedEnabled *bool `json:"embed_enabled,omitempty"`
-
-	// EmbedSettings Embed settings for this organization
-	EmbedSettings interface{} `json:"embed_settings,omitempty"`
-
-	// ExternalId External ID to uniquely identify this organization
-	ExternalId              *string `json:"external_id,omitempty"`
-	ExtraDataOnActivityLogs *bool   `json:"extra_data_on_activity_logs,omitempty"`
-
-	// InterfaceSettings Security settings for custom interfaces: CSP allowlists, script origins, iframe permissions.
-	InterfaceSettings interface{} `json:"interface_settings,omitempty"`
-
-	// LabelStreamNavigationDisabledAt Set to current time to disable the label stream navigation for this organization. This will prevent users from going back in the label stream to view previous labels.
-	LabelStreamNavigationDisabledAt *time.Time `json:"label_stream_navigation_disabled_at,omitempty"`
-
-	// Organization A unique integer value identifying this organization.
-	Organization int `json:"organization"`
-
-	// ReactCodeSettings ReactCode tag security settings. Structure: {"mode": "disabled"|"src_only"|"everything", "allowed_origins": ["https://..."], "allowed_permissions": ["camera", ...]}
-	ReactCodeSettings interface{} `json:"react_code_settings,omitempty"`
-
-	// ReadOnlyQuickViewEnabledAt Set to current time to prevent creating or editing annotations in quick view.
-	ReadOnlyQuickViewEnabledAt *time.Time `json:"read_only_quick_view_enabled_at,omitempty"`
-
-	// Slug DNS-safe organization slug used to build the default primary domain (<slug>.<ORG_DOMAIN_BASE>). Nullable until the org domains backfill runs (FIT-2959).
-	Slug *string `json:"slug,omitempty"`
+	DefaultRole DefaultRoleDefaultRoleEnum `json:"default_role"`
 }
+
+// DefaultRoleDefaultRoleEnum * `AD` - Administrator
+// * `MA` - Manager
+// * `RE` - Reviewer
+// * `AN` - Annotator
+// * `NO` - Not Activated
+type DefaultRoleDefaultRoleEnum string
 
 // Dimension Serializer for Dimension model.
 //
@@ -11250,57 +11238,14 @@ type PatchedDatabricksImportStorageWriteRequest struct {
 
 // PatchedDefaultRoleRequest defines model for PatchedDefaultRoleRequest.
 type PatchedDefaultRoleRequest struct {
-	// AnnotatorReviewerFirewallEnabledAt Set to current time to restrict data sharing between annotators and reviewers in the label stream, review stream, and notifications (which will be disabled). In these settings, information about annotator and reviewer identity is suppressed in the UI.
-	AnnotatorReviewerFirewallEnabledAt *time.Time `json:"annotator_reviewer_firewall_enabled_at,omitempty"`
-
-	// CustomInterfacesEnabled Enable custom interfaces for this organization. When disabled, projects with use_custom_interface=True will not render custom interfaces anywhere in the product (label stream, embed, data manager, interfaces dashboard).
-	CustomInterfacesEnabled *bool `json:"custom_interfaces_enabled,omitempty"`
-
-	// CustomScriptsEnabledAt Set to current time to enable custom scripts (Plugins) for this organization. Can only be enabled if no organization members are active members of any other organizations; otherwise an error will be raised. If this occurs, contact the LEAP team for assistance with enabling custom scripts (Plugins).
-	CustomScriptsEnabledAt *time.Time `json:"custom_scripts_enabled_at,omitempty"`
-
 	// DefaultRole Default membership role for invited users
 	//
-	// * `OW` - Owner
 	// * `AD` - Administrator
 	// * `MA` - Manager
 	// * `RE` - Reviewer
 	// * `AN` - Annotator
-	// * `DI` - Deactivated
 	// * `NO` - Not Activated
-	// * `VO` - View Only
-	DefaultRole *OrganizationRoleEnum `json:"default_role,omitempty"`
-
-	// EmailNotificationSettings Email notification settings for this organization. Controls which email notifications users can receive. Structure: {"notifications_allowed": {"notification_type": bool}}
-	EmailNotificationSettings interface{} `json:"email_notification_settings,omitempty"`
-
-	// EmbedDomains List of objects: {"domain": "example.com"}. Used for CSP header on /embed routes.
-	EmbedDomains interface{} `json:"embed_domains,omitempty"`
-
-	// EmbedEnabled Enable embed functionality for this organization
-	EmbedEnabled *bool `json:"embed_enabled,omitempty"`
-
-	// EmbedSettings Embed settings for this organization
-	EmbedSettings interface{} `json:"embed_settings,omitempty"`
-
-	// ExternalId External ID to uniquely identify this organization
-	ExternalId              *string `json:"external_id,omitempty"`
-	ExtraDataOnActivityLogs *bool   `json:"extra_data_on_activity_logs,omitempty"`
-
-	// InterfaceSettings Security settings for custom interfaces: CSP allowlists, script origins, iframe permissions.
-	InterfaceSettings interface{} `json:"interface_settings,omitempty"`
-
-	// LabelStreamNavigationDisabledAt Set to current time to disable the label stream navigation for this organization. This will prevent users from going back in the label stream to view previous labels.
-	LabelStreamNavigationDisabledAt *time.Time `json:"label_stream_navigation_disabled_at,omitempty"`
-
-	// Organization A unique integer value identifying this organization.
-	Organization *int `json:"organization,omitempty"`
-
-	// ReactCodeSettings ReactCode tag security settings. Structure: {"mode": "disabled"|"src_only"|"everything", "allowed_origins": ["https://..."], "allowed_permissions": ["camera", ...]}
-	ReactCodeSettings interface{} `json:"react_code_settings,omitempty"`
-
-	// ReadOnlyQuickViewEnabledAt Set to current time to prevent creating or editing annotations in quick view.
-	ReadOnlyQuickViewEnabledAt *time.Time `json:"read_only_quick_view_enabled_at,omitempty"`
+	DefaultRole *DefaultRoleDefaultRoleEnum `json:"default_role,omitempty"`
 }
 
 // PatchedDimensionRequest Serializer for Dimension model.
@@ -20009,3 +19954,57 @@ type ApiStoragesS3sCreateFormdataRequestBody = LseS3ImportStorageRequest
 
 // ApiStoragesS3sCreateMultipartRequestBody defines body for ApiStoragesS3sCreate for multipart/form-data ContentType.
 type ApiStoragesS3sCreateMultipartRequestBody = LseS3ImportStorageRequest
+
+// ApiStoragesS3sValidateCreateJSONRequestBody defines body for ApiStoragesS3sValidateCreate for application/json ContentType.
+type ApiStoragesS3sValidateCreateJSONRequestBody = LseS3ImportStorageRequest
+
+// ApiStoragesS3sValidateCreateFormdataRequestBody defines body for ApiStoragesS3sValidateCreate for application/x-www-form-urlencoded ContentType.
+type ApiStoragesS3sValidateCreateFormdataRequestBody = LseS3ImportStorageRequest
+
+// ApiStoragesS3sValidateCreateMultipartRequestBody defines body for ApiStoragesS3sValidateCreate for multipart/form-data ContentType.
+type ApiStoragesS3sValidateCreateMultipartRequestBody = LseS3ImportStorageRequest
+
+// ApiStoragesS3sPartialUpdateJSONRequestBody defines body for ApiStoragesS3sPartialUpdate for application/json ContentType.
+type ApiStoragesS3sPartialUpdateJSONRequestBody = PatchedLseS3ImportStorageRequest
+
+// ApiStoragesS3sPartialUpdateFormdataRequestBody defines body for ApiStoragesS3sPartialUpdate for application/x-www-form-urlencoded ContentType.
+type ApiStoragesS3sPartialUpdateFormdataRequestBody = PatchedLseS3ImportStorageRequest
+
+// ApiStoragesS3sPartialUpdateMultipartRequestBody defines body for ApiStoragesS3sPartialUpdate for multipart/form-data ContentType.
+type ApiStoragesS3sPartialUpdateMultipartRequestBody = PatchedLseS3ImportStorageRequest
+
+// ApiTasksCreateJSONRequestBody defines body for ApiTasksCreate for application/json ContentType.
+type ApiTasksCreateJSONRequestBody = LseTaskRequest
+
+// ApiTasksCreateFormdataRequestBody defines body for ApiTasksCreate for application/x-www-form-urlencoded ContentType.
+type ApiTasksCreateFormdataRequestBody = LseTaskRequest
+
+// ApiTasksCreateMultipartRequestBody defines body for ApiTasksCreate for multipart/form-data ContentType.
+type ApiTasksCreateMultipartRequestBody = LseTaskRequest
+
+// ApiTasksPartialUpdateJSONRequestBody defines body for ApiTasksPartialUpdate for application/json ContentType.
+type ApiTasksPartialUpdateJSONRequestBody = PatchedLseTaskRequest
+
+// ApiTasksPartialUpdateFormdataRequestBody defines body for ApiTasksPartialUpdate for application/x-www-form-urlencoded ContentType.
+type ApiTasksPartialUpdateFormdataRequestBody = PatchedLseTaskRequest
+
+// ApiTasksPartialUpdateMultipartRequestBody defines body for ApiTasksPartialUpdate for multipart/form-data ContentType.
+type ApiTasksPartialUpdateMultipartRequestBody = PatchedLseTaskRequest
+
+// ApiTasksAnnotationsCreateJSONRequestBody defines body for ApiTasksAnnotationsCreate for application/json ContentType.
+type ApiTasksAnnotationsCreateJSONRequestBody = AnnotationRequest
+
+// ApiTasksAnnotationsCreateFormdataRequestBody defines body for ApiTasksAnnotationsCreate for application/x-www-form-urlencoded ContentType.
+type ApiTasksAnnotationsCreateFormdataRequestBody = AnnotationRequest
+
+// ApiTasksAnnotationsCreateMultipartRequestBody defines body for ApiTasksAnnotationsCreate for multipart/form-data ContentType.
+type ApiTasksAnnotationsCreateMultipartRequestBody = AnnotationRequest
+
+// ApiTasksEventsCreateJSONRequestBody defines body for ApiTasksEventsCreate for application/json ContentType.
+type ApiTasksEventsCreateJSONRequestBody = TaskEventRequest
+
+// ApiTasksEventsCreateFormdataRequestBody defines body for ApiTasksEventsCreate for application/x-www-form-urlencoded ContentType.
+type ApiTasksEventsCreateFormdataRequestBody = TaskEventRequest
+
+// ApiTasksEventsCreateMultipartRequestBody defines body for ApiTasksEventsCreate for multipart/form-data ContentType.
+type ApiTasksEventsCreateMultipartRequestBody = TaskEventRequest
