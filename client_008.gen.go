@@ -13,6 +13,769 @@ import (
 	openapi_types "github.com/oapi-codegen/runtime/types"
 )
 
+// ApiStoragesGcsValidateCreateWithResponse Validate import storage
+//
+// Validate a specific GCS import storage connection.
+//
+// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with POST /api/storages/gcs/validate (the `ApiStoragesGcsValidateCreate` operationId).
+func (c *ClientWithResponses) ApiStoragesGcsValidateCreateWithResponse(ctx context.Context, body ApiStoragesGcsValidateCreateJSONRequestBody, reqEditors ...RequestEditorFn) (*ApiStoragesGcsValidateCreateResponse, error) {
+	rsp, err := c.ApiStoragesGcsValidateCreate(ctx, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesGcsValidateCreateResponse(rsp)
+}
+
+// ApiStoragesGcsValidateCreateWithFormdataBodyWithResponse Validate import storage
+//
+// Validate a specific GCS import storage connection.
+//
+// Takes a body of the `application/x-www-form-urlencoded` content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with POST /api/storages/gcs/validate (the `ApiStoragesGcsValidateCreate` operationId).
+func (c *ClientWithResponses) ApiStoragesGcsValidateCreateWithFormdataBodyWithResponse(ctx context.Context, body ApiStoragesGcsValidateCreateFormdataRequestBody, reqEditors ...RequestEditorFn) (*ApiStoragesGcsValidateCreateResponse, error) {
+	rsp, err := c.ApiStoragesGcsValidateCreateWithFormdataBody(ctx, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesGcsValidateCreateResponse(rsp)
+}
+
+// ApiStoragesGcsDestroyWithResponse Delete import storage
+//
+// Delete a specific GCS import storage connection.
+//
+// Returns a wrapper object for the known response body format(s).
+//
+// Corresponds with DELETE /api/storages/gcs/{id} (the `ApiStoragesGcsDestroy` operationId).
+func (c *ClientWithResponses) ApiStoragesGcsDestroyWithResponse(ctx context.Context, id int, reqEditors ...RequestEditorFn) (*ApiStoragesGcsDestroyResponse, error) {
+	rsp, err := c.ApiStoragesGcsDestroy(ctx, id, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesGcsDestroyResponse(rsp)
+}
+
+// ApiStoragesGcsRetrieveWithResponse Get import storage
+//
+// Get a specific GCS import storage connection.
+//
+// Returns a wrapper object for the known response body format(s).
+//
+// Corresponds with GET /api/storages/gcs/{id} (the `ApiStoragesGcsRetrieve` operationId).
+func (c *ClientWithResponses) ApiStoragesGcsRetrieveWithResponse(ctx context.Context, id int, reqEditors ...RequestEditorFn) (*ApiStoragesGcsRetrieveResponse, error) {
+	rsp, err := c.ApiStoragesGcsRetrieve(ctx, id, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesGcsRetrieveResponse(rsp)
+}
+
+// ApiStoragesGcsPartialUpdateWithBodyWithResponse Update import storage
+//
+// Update a specific GCS import storage connection.
+//
+// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with PATCH /api/storages/gcs/{id} (the `ApiStoragesGcsPartialUpdate` operationId).
+func (c *ClientWithResponses) ApiStoragesGcsPartialUpdateWithBodyWithResponse(ctx context.Context, id int, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*ApiStoragesGcsPartialUpdateResponse, error) {
+	rsp, err := c.ApiStoragesGcsPartialUpdateWithBody(ctx, id, contentType, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesGcsPartialUpdateResponse(rsp)
+}
+
+// ApiStoragesGcsPartialUpdateWithResponse Update import storage
+//
+// Update a specific GCS import storage connection.
+//
+// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with PATCH /api/storages/gcs/{id} (the `ApiStoragesGcsPartialUpdate` operationId).
+func (c *ClientWithResponses) ApiStoragesGcsPartialUpdateWithResponse(ctx context.Context, id int, body ApiStoragesGcsPartialUpdateJSONRequestBody, reqEditors ...RequestEditorFn) (*ApiStoragesGcsPartialUpdateResponse, error) {
+	rsp, err := c.ApiStoragesGcsPartialUpdate(ctx, id, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesGcsPartialUpdateResponse(rsp)
+}
+
+// ApiStoragesGcsPartialUpdateWithFormdataBodyWithResponse Update import storage
+//
+// Update a specific GCS import storage connection.
+//
+// Takes a body of the `application/x-www-form-urlencoded` content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with PATCH /api/storages/gcs/{id} (the `ApiStoragesGcsPartialUpdate` operationId).
+func (c *ClientWithResponses) ApiStoragesGcsPartialUpdateWithFormdataBodyWithResponse(ctx context.Context, id int, body ApiStoragesGcsPartialUpdateFormdataRequestBody, reqEditors ...RequestEditorFn) (*ApiStoragesGcsPartialUpdateResponse, error) {
+	rsp, err := c.ApiStoragesGcsPartialUpdateWithFormdataBody(ctx, id, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesGcsPartialUpdateResponse(rsp)
+}
+
+// ApiStoragesGcsSyncCreateWithResponse Sync import storage
+//
+// Sync tasks from a GCS import storage connection.
+//
+// Returns a wrapper object for the known response body format(s).
+//
+// Corresponds with POST /api/storages/gcs/{id}/sync (the `ApiStoragesGcsSyncCreate` operationId).
+func (c *ClientWithResponses) ApiStoragesGcsSyncCreateWithResponse(ctx context.Context, id int, reqEditors ...RequestEditorFn) (*ApiStoragesGcsSyncCreateResponse, error) {
+	rsp, err := c.ApiStoragesGcsSyncCreate(ctx, id, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesGcsSyncCreateResponse(rsp)
+}
+
+// ApiStoragesGcsSaListWithResponse ✨ Get all GCS SA import storages
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Get list of all GCS import storage connections set up with Service Account Impersonation.
+//
+// Returns a wrapper object for the known response body format(s).
+//
+// Corresponds with GET /api/storages/gcs_sa/ (the `ApiStoragesGcsSaList` operationId).
+func (c *ClientWithResponses) ApiStoragesGcsSaListWithResponse(ctx context.Context, params *ApiStoragesGcsSaListParams, reqEditors ...RequestEditorFn) (*ApiStoragesGcsSaListResponse, error) {
+	rsp, err := c.ApiStoragesGcsSaList(ctx, params, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesGcsSaListResponse(rsp)
+}
+
+// ApiStoragesGcsSaCreateWithBodyWithResponse ✨ Create GCS import storage with SA Impersonation
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Create GCS import storage with Service Account Impersonation.
+//
+// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with POST /api/storages/gcs_sa/ (the `ApiStoragesGcsSaCreate` operationId).
+func (c *ClientWithResponses) ApiStoragesGcsSaCreateWithBodyWithResponse(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*ApiStoragesGcsSaCreateResponse, error) {
+	rsp, err := c.ApiStoragesGcsSaCreateWithBody(ctx, contentType, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesGcsSaCreateResponse(rsp)
+}
+
+// ApiStoragesGcsSaCreateWithResponse ✨ Create GCS import storage with SA Impersonation
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Create GCS import storage with Service Account Impersonation.
+//
+// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with POST /api/storages/gcs_sa/ (the `ApiStoragesGcsSaCreate` operationId).
+func (c *ClientWithResponses) ApiStoragesGcsSaCreateWithResponse(ctx context.Context, body ApiStoragesGcsSaCreateJSONRequestBody, reqEditors ...RequestEditorFn) (*ApiStoragesGcsSaCreateResponse, error) {
+	rsp, err := c.ApiStoragesGcsSaCreate(ctx, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesGcsSaCreateResponse(rsp)
+}
+
+// ApiStoragesGcsSaCreateWithFormdataBodyWithResponse ✨ Create GCS import storage with SA Impersonation
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Create GCS import storage with Service Account Impersonation.
+//
+// Takes a body of the `application/x-www-form-urlencoded` content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with POST /api/storages/gcs_sa/ (the `ApiStoragesGcsSaCreate` operationId).
+func (c *ClientWithResponses) ApiStoragesGcsSaCreateWithFormdataBodyWithResponse(ctx context.Context, body ApiStoragesGcsSaCreateFormdataRequestBody, reqEditors ...RequestEditorFn) (*ApiStoragesGcsSaCreateResponse, error) {
+	rsp, err := c.ApiStoragesGcsSaCreateWithFormdataBody(ctx, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesGcsSaCreateResponse(rsp)
+}
+
+// ApiStoragesGcsSaValidateCreateWithBodyWithResponse ✨ Validate GCS SA import storage
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Validate a specific GCS import storage connection set up with SA Impersonation.
+//
+// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with POST /api/storages/gcs_sa/validate (the `ApiStoragesGcsSaValidateCreate` operationId).
+func (c *ClientWithResponses) ApiStoragesGcsSaValidateCreateWithBodyWithResponse(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*ApiStoragesGcsSaValidateCreateResponse, error) {
+	rsp, err := c.ApiStoragesGcsSaValidateCreateWithBody(ctx, contentType, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesGcsSaValidateCreateResponse(rsp)
+}
+
+// ApiStoragesGcsSaValidateCreateWithResponse ✨ Validate GCS SA import storage
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Validate a specific GCS import storage connection set up with SA Impersonation.
+//
+// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with POST /api/storages/gcs_sa/validate (the `ApiStoragesGcsSaValidateCreate` operationId).
+func (c *ClientWithResponses) ApiStoragesGcsSaValidateCreateWithResponse(ctx context.Context, body ApiStoragesGcsSaValidateCreateJSONRequestBody, reqEditors ...RequestEditorFn) (*ApiStoragesGcsSaValidateCreateResponse, error) {
+	rsp, err := c.ApiStoragesGcsSaValidateCreate(ctx, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesGcsSaValidateCreateResponse(rsp)
+}
+
+// ApiStoragesGcsSaValidateCreateWithFormdataBodyWithResponse ✨ Validate GCS SA import storage
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Validate a specific GCS import storage connection set up with SA Impersonation.
+//
+// Takes a body of the `application/x-www-form-urlencoded` content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with POST /api/storages/gcs_sa/validate (the `ApiStoragesGcsSaValidateCreate` operationId).
+func (c *ClientWithResponses) ApiStoragesGcsSaValidateCreateWithFormdataBodyWithResponse(ctx context.Context, body ApiStoragesGcsSaValidateCreateFormdataRequestBody, reqEditors ...RequestEditorFn) (*ApiStoragesGcsSaValidateCreateResponse, error) {
+	rsp, err := c.ApiStoragesGcsSaValidateCreateWithFormdataBody(ctx, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesGcsSaValidateCreateResponse(rsp)
+}
+
+// ApiStoragesGcsSaDestroyWithResponse ✨ Delete GCS SA import storage
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Delete a specific GCS import storage connection set up with SA Impersonation.
+//
+// Returns a wrapper object for the known response body format(s).
+//
+// Corresponds with DELETE /api/storages/gcs_sa/{id} (the `ApiStoragesGcsSaDestroy` operationId).
+func (c *ClientWithResponses) ApiStoragesGcsSaDestroyWithResponse(ctx context.Context, id int, reqEditors ...RequestEditorFn) (*ApiStoragesGcsSaDestroyResponse, error) {
+	rsp, err := c.ApiStoragesGcsSaDestroy(ctx, id, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesGcsSaDestroyResponse(rsp)
+}
+
+// ApiStoragesGcsSaRetrieveWithResponse ✨ Get GCS SA import storage
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Get a specific GCS import storage connection set up with SA Impersonation.
+//
+// Returns a wrapper object for the known response body format(s).
+//
+// Corresponds with GET /api/storages/gcs_sa/{id} (the `ApiStoragesGcsSaRetrieve` operationId).
+func (c *ClientWithResponses) ApiStoragesGcsSaRetrieveWithResponse(ctx context.Context, id int, reqEditors ...RequestEditorFn) (*ApiStoragesGcsSaRetrieveResponse, error) {
+	rsp, err := c.ApiStoragesGcsSaRetrieve(ctx, id, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesGcsSaRetrieveResponse(rsp)
+}
+
+// ApiStoragesGcsSaPartialUpdateWithBodyWithResponse ✨ Update GCS SA import storage
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Update a specific GCS import storage connection set up with SA Impersonation.
+//
+// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with PATCH /api/storages/gcs_sa/{id} (the `ApiStoragesGcsSaPartialUpdate` operationId).
+func (c *ClientWithResponses) ApiStoragesGcsSaPartialUpdateWithBodyWithResponse(ctx context.Context, id int, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*ApiStoragesGcsSaPartialUpdateResponse, error) {
+	rsp, err := c.ApiStoragesGcsSaPartialUpdateWithBody(ctx, id, contentType, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesGcsSaPartialUpdateResponse(rsp)
+}
+
+// ApiStoragesGcsSaPartialUpdateWithResponse ✨ Update GCS SA import storage
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Update a specific GCS import storage connection set up with SA Impersonation.
+//
+// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with PATCH /api/storages/gcs_sa/{id} (the `ApiStoragesGcsSaPartialUpdate` operationId).
+func (c *ClientWithResponses) ApiStoragesGcsSaPartialUpdateWithResponse(ctx context.Context, id int, body ApiStoragesGcsSaPartialUpdateJSONRequestBody, reqEditors ...RequestEditorFn) (*ApiStoragesGcsSaPartialUpdateResponse, error) {
+	rsp, err := c.ApiStoragesGcsSaPartialUpdate(ctx, id, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesGcsSaPartialUpdateResponse(rsp)
+}
+
+// ApiStoragesGcsSaPartialUpdateWithFormdataBodyWithResponse ✨ Update GCS SA import storage
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Update a specific GCS import storage connection set up with SA Impersonation.
+//
+// Takes a body of the `application/x-www-form-urlencoded` content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with PATCH /api/storages/gcs_sa/{id} (the `ApiStoragesGcsSaPartialUpdate` operationId).
+func (c *ClientWithResponses) ApiStoragesGcsSaPartialUpdateWithFormdataBodyWithResponse(ctx context.Context, id int, body ApiStoragesGcsSaPartialUpdateFormdataRequestBody, reqEditors ...RequestEditorFn) (*ApiStoragesGcsSaPartialUpdateResponse, error) {
+	rsp, err := c.ApiStoragesGcsSaPartialUpdateWithFormdataBody(ctx, id, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesGcsSaPartialUpdateResponse(rsp)
+}
+
+// ApiStoragesGcsSaSyncCreateWithResponse ✨ Sync GCS SA import storage
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Sync tasks from a GCS import storage connection set up with SA Impersonation.
+//
+// Returns a wrapper object for the known response body format(s).
+//
+// Corresponds with POST /api/storages/gcs_sa/{id}/sync (the `ApiStoragesGcsSaSyncCreate` operationId).
+func (c *ClientWithResponses) ApiStoragesGcsSaSyncCreateWithResponse(ctx context.Context, id int, reqEditors ...RequestEditorFn) (*ApiStoragesGcsSaSyncCreateResponse, error) {
+	rsp, err := c.ApiStoragesGcsSaSyncCreate(ctx, id, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesGcsSaSyncCreateResponse(rsp)
+}
+
+// ApiStoragesGcswifListWithResponse ✨ Get GCS WIF import storage
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Get list of all GCS import storage connections set up with WIF authentication.
+//
+// Returns a wrapper object for the known response body format(s).
+//
+// Corresponds with GET /api/storages/gcswif/ (the `ApiStoragesGcswifList` operationId).
+func (c *ClientWithResponses) ApiStoragesGcswifListWithResponse(ctx context.Context, params *ApiStoragesGcswifListParams, reqEditors ...RequestEditorFn) (*ApiStoragesGcswifListResponse, error) {
+	rsp, err := c.ApiStoragesGcswifList(ctx, params, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesGcswifListResponse(rsp)
+}
+
+// ApiStoragesGcswifCreateWithBodyWithResponse ✨ Create GCS import storage with WIF
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Create GCS import storage with WIF.
+//
+// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with POST /api/storages/gcswif/ (the `ApiStoragesGcswifCreate` operationId).
+func (c *ClientWithResponses) ApiStoragesGcswifCreateWithBodyWithResponse(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*ApiStoragesGcswifCreateResponse, error) {
+	rsp, err := c.ApiStoragesGcswifCreateWithBody(ctx, contentType, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesGcswifCreateResponse(rsp)
+}
+
+// ApiStoragesGcswifCreateWithResponse ✨ Create GCS import storage with WIF
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Create GCS import storage with WIF.
+//
+// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with POST /api/storages/gcswif/ (the `ApiStoragesGcswifCreate` operationId).
+func (c *ClientWithResponses) ApiStoragesGcswifCreateWithResponse(ctx context.Context, body ApiStoragesGcswifCreateJSONRequestBody, reqEditors ...RequestEditorFn) (*ApiStoragesGcswifCreateResponse, error) {
+	rsp, err := c.ApiStoragesGcswifCreate(ctx, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesGcswifCreateResponse(rsp)
+}
+
+// ApiStoragesGcswifCreateWithFormdataBodyWithResponse ✨ Create GCS import storage with WIF
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Create GCS import storage with WIF.
+//
+// Takes a body of the `application/x-www-form-urlencoded` content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with POST /api/storages/gcswif/ (the `ApiStoragesGcswifCreate` operationId).
+func (c *ClientWithResponses) ApiStoragesGcswifCreateWithFormdataBodyWithResponse(ctx context.Context, body ApiStoragesGcswifCreateFormdataRequestBody, reqEditors ...RequestEditorFn) (*ApiStoragesGcswifCreateResponse, error) {
+	rsp, err := c.ApiStoragesGcswifCreateWithFormdataBody(ctx, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesGcswifCreateResponse(rsp)
+}
+
+// ApiStoragesGcswifValidateCreateWithBodyWithResponse ✨ Validate GCS WIF import storage
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Validate a specific GCS import storage connection that was set up with WIF authentication.
+//
+// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with POST /api/storages/gcswif/validate (the `ApiStoragesGcswifValidateCreate` operationId).
+func (c *ClientWithResponses) ApiStoragesGcswifValidateCreateWithBodyWithResponse(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*ApiStoragesGcswifValidateCreateResponse, error) {
+	rsp, err := c.ApiStoragesGcswifValidateCreateWithBody(ctx, contentType, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesGcswifValidateCreateResponse(rsp)
+}
+
+// ApiStoragesGcswifValidateCreateWithResponse ✨ Validate GCS WIF import storage
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Validate a specific GCS import storage connection that was set up with WIF authentication.
+//
+// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with POST /api/storages/gcswif/validate (the `ApiStoragesGcswifValidateCreate` operationId).
+func (c *ClientWithResponses) ApiStoragesGcswifValidateCreateWithResponse(ctx context.Context, body ApiStoragesGcswifValidateCreateJSONRequestBody, reqEditors ...RequestEditorFn) (*ApiStoragesGcswifValidateCreateResponse, error) {
+	rsp, err := c.ApiStoragesGcswifValidateCreate(ctx, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesGcswifValidateCreateResponse(rsp)
+}
+
+// ApiStoragesGcswifValidateCreateWithFormdataBodyWithResponse ✨ Validate GCS WIF import storage
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Validate a specific GCS import storage connection that was set up with WIF authentication.
+//
+// Takes a body of the `application/x-www-form-urlencoded` content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with POST /api/storages/gcswif/validate (the `ApiStoragesGcswifValidateCreate` operationId).
+func (c *ClientWithResponses) ApiStoragesGcswifValidateCreateWithFormdataBodyWithResponse(ctx context.Context, body ApiStoragesGcswifValidateCreateFormdataRequestBody, reqEditors ...RequestEditorFn) (*ApiStoragesGcswifValidateCreateResponse, error) {
+	rsp, err := c.ApiStoragesGcswifValidateCreateWithFormdataBody(ctx, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesGcswifValidateCreateResponse(rsp)
+}
+
+// ApiStoragesGcswifDestroyWithResponse ✨ Delete GCS WIF import storage
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Delete a specific GCS import storage connection that was set up with WIF authentication.
+//
+// Returns a wrapper object for the known response body format(s).
+//
+// Corresponds with DELETE /api/storages/gcswif/{id} (the `ApiStoragesGcswifDestroy` operationId).
+func (c *ClientWithResponses) ApiStoragesGcswifDestroyWithResponse(ctx context.Context, id int, reqEditors ...RequestEditorFn) (*ApiStoragesGcswifDestroyResponse, error) {
+	rsp, err := c.ApiStoragesGcswifDestroy(ctx, id, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesGcswifDestroyResponse(rsp)
+}
+
+// ApiStoragesGcswifRetrieveWithResponse ✨ Get GCS WIF import storage
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Get a specific GCS import storage connection that was set up with WIF.
+//
+// Returns a wrapper object for the known response body format(s).
+//
+// Corresponds with GET /api/storages/gcswif/{id} (the `ApiStoragesGcswifRetrieve` operationId).
+func (c *ClientWithResponses) ApiStoragesGcswifRetrieveWithResponse(ctx context.Context, id int, reqEditors ...RequestEditorFn) (*ApiStoragesGcswifRetrieveResponse, error) {
+	rsp, err := c.ApiStoragesGcswifRetrieve(ctx, id, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesGcswifRetrieveResponse(rsp)
+}
+
+// ApiStoragesGcswifPartialUpdateWithBodyWithResponse ✨ Update GCS WIF import storage
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Update a specific GCS import storage connection that was set up with WIF authentication.
+//
+// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with PATCH /api/storages/gcswif/{id} (the `ApiStoragesGcswifPartialUpdate` operationId).
+func (c *ClientWithResponses) ApiStoragesGcswifPartialUpdateWithBodyWithResponse(ctx context.Context, id int, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*ApiStoragesGcswifPartialUpdateResponse, error) {
+	rsp, err := c.ApiStoragesGcswifPartialUpdateWithBody(ctx, id, contentType, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesGcswifPartialUpdateResponse(rsp)
+}
+
+// ApiStoragesGcswifPartialUpdateWithResponse ✨ Update GCS WIF import storage
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Update a specific GCS import storage connection that was set up with WIF authentication.
+//
+// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with PATCH /api/storages/gcswif/{id} (the `ApiStoragesGcswifPartialUpdate` operationId).
+func (c *ClientWithResponses) ApiStoragesGcswifPartialUpdateWithResponse(ctx context.Context, id int, body ApiStoragesGcswifPartialUpdateJSONRequestBody, reqEditors ...RequestEditorFn) (*ApiStoragesGcswifPartialUpdateResponse, error) {
+	rsp, err := c.ApiStoragesGcswifPartialUpdate(ctx, id, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesGcswifPartialUpdateResponse(rsp)
+}
+
+// ApiStoragesGcswifPartialUpdateWithFormdataBodyWithResponse ✨ Update GCS WIF import storage
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Update a specific GCS import storage connection that was set up with WIF authentication.
+//
+// Takes a body of the `application/x-www-form-urlencoded` content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with PATCH /api/storages/gcswif/{id} (the `ApiStoragesGcswifPartialUpdate` operationId).
+func (c *ClientWithResponses) ApiStoragesGcswifPartialUpdateWithFormdataBodyWithResponse(ctx context.Context, id int, body ApiStoragesGcswifPartialUpdateFormdataRequestBody, reqEditors ...RequestEditorFn) (*ApiStoragesGcswifPartialUpdateResponse, error) {
+	rsp, err := c.ApiStoragesGcswifPartialUpdateWithFormdataBody(ctx, id, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesGcswifPartialUpdateResponse(rsp)
+}
+
+// ApiStoragesGcswifSyncCreateWithResponse ✨ Sync GCS WIF import storage
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Sync tasks from an GCS import storage connection that was set up with WIF authentication.
+//
+// Returns a wrapper object for the known response body format(s).
+//
+// Corresponds with POST /api/storages/gcswif/{id}/sync (the `ApiStoragesGcswifSyncCreate` operationId).
+func (c *ClientWithResponses) ApiStoragesGcswifSyncCreateWithResponse(ctx context.Context, id int, reqEditors ...RequestEditorFn) (*ApiStoragesGcswifSyncCreateResponse, error) {
+	rsp, err := c.ApiStoragesGcswifSyncCreate(ctx, id, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesGcswifSyncCreateResponse(rsp)
+}
+
+// ApiStoragesLocalfilesListWithResponse Get all import storage
+//
+// Get a list of all local file import storage connections.
+//
+// Returns a wrapper object for the known response body format(s).
+//
+// Corresponds with GET /api/storages/localfiles/ (the `ApiStoragesLocalfilesList` operationId).
+func (c *ClientWithResponses) ApiStoragesLocalfilesListWithResponse(ctx context.Context, params *ApiStoragesLocalfilesListParams, reqEditors ...RequestEditorFn) (*ApiStoragesLocalfilesListResponse, error) {
+	rsp, err := c.ApiStoragesLocalfilesList(ctx, params, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesLocalfilesListResponse(rsp)
+}
+
+// ApiStoragesLocalfilesCreateWithBodyWithResponse Create import storage
+//
+// Create a new local file import storage connection.
+//
+// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with POST /api/storages/localfiles/ (the `ApiStoragesLocalfilesCreate` operationId).
+func (c *ClientWithResponses) ApiStoragesLocalfilesCreateWithBodyWithResponse(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*ApiStoragesLocalfilesCreateResponse, error) {
+	rsp, err := c.ApiStoragesLocalfilesCreateWithBody(ctx, contentType, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesLocalfilesCreateResponse(rsp)
+}
+
+// ApiStoragesLocalfilesCreateWithResponse Create import storage
+//
+// Create a new local file import storage connection.
+//
+// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with POST /api/storages/localfiles/ (the `ApiStoragesLocalfilesCreate` operationId).
+func (c *ClientWithResponses) ApiStoragesLocalfilesCreateWithResponse(ctx context.Context, body ApiStoragesLocalfilesCreateJSONRequestBody, reqEditors ...RequestEditorFn) (*ApiStoragesLocalfilesCreateResponse, error) {
+	rsp, err := c.ApiStoragesLocalfilesCreate(ctx, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesLocalfilesCreateResponse(rsp)
+}
+
 // ApiStoragesLocalfilesCreateWithFormdataBodyWithResponse Create import storage
 //
 // Create a new local file import storage connection.
@@ -5728,6 +6491,285 @@ func ParseApiLearningResourcesExportRetrieveResponse(rsp *http.Response) (*ApiLe
 
 	case rsp.StatusCode == 200:
 		// Content-type (application/zip) unsupported
+
+	}
+
+	return response, nil
+}
+
+// ParseApiLearningResourcesHistoryRetrieveResponse parses an HTTP response from a ApiLearningResourcesHistoryRetrieveWithResponse call
+func ParseApiLearningResourcesHistoryRetrieveResponse(rsp *http.Response) (*ApiLearningResourcesHistoryRetrieveResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &ApiLearningResourcesHistoryRetrieveResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	switch {
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
+		var dest HistoryListResponse
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON200 = &dest
+
+	}
+
+	return response, nil
+}
+
+// ParseApiLearningResourcesHistoryPinsCreateResponse parses an HTTP response from a ApiLearningResourcesHistoryPinsCreateWithResponse call
+func ParseApiLearningResourcesHistoryPinsCreateResponse(rsp *http.Response) (*ApiLearningResourcesHistoryPinsCreateResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &ApiLearningResourcesHistoryPinsCreateResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	switch {
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 201:
+		var dest HistoryPin
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON201 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 410:
+		var dest HistoryAnchorUnavailable
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON410 = &dest
+
+	}
+
+	return response, nil
+}
+
+// ParseApiLearningResourcesHistoryPinsDestroyResponse parses an HTTP response from a ApiLearningResourcesHistoryPinsDestroyWithResponse call
+func ParseApiLearningResourcesHistoryPinsDestroyResponse(rsp *http.Response) (*ApiLearningResourcesHistoryPinsDestroyResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &ApiLearningResourcesHistoryPinsDestroyResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	switch {
+	case rsp.StatusCode == 204:
+		break // No content-type
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 400:
+		var dest HistoryError
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON400 = &dest
+
+	}
+
+	return response, nil
+}
+
+// ParseApiLearningResourcesHistoryPinsPartialUpdateResponse parses an HTTP response from a ApiLearningResourcesHistoryPinsPartialUpdateWithResponse call
+func ParseApiLearningResourcesHistoryPinsPartialUpdateResponse(rsp *http.Response) (*ApiLearningResourcesHistoryPinsPartialUpdateResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &ApiLearningResourcesHistoryPinsPartialUpdateResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	switch {
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
+		var dest HistoryPin
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON200 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 400:
+		var dest HistoryError
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON400 = &dest
+
+	}
+
+	return response, nil
+}
+
+// ParseApiLearningResourcesHistorySessionsSavesRetrieveResponse parses an HTTP response from a ApiLearningResourcesHistorySessionsSavesRetrieveWithResponse call
+func ParseApiLearningResourcesHistorySessionsSavesRetrieveResponse(rsp *http.Response) (*ApiLearningResourcesHistorySessionsSavesRetrieveResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &ApiLearningResourcesHistorySessionsSavesRetrieveResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	switch {
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
+		var dest HistorySessionSavesResponse
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON200 = &dest
+
+	}
+
+	return response, nil
+}
+
+// ParseApiLearningResourcesHistoryStatesRetrieveResponse parses an HTTP response from a ApiLearningResourcesHistoryStatesRetrieveWithResponse call
+func ParseApiLearningResourcesHistoryStatesRetrieveResponse(rsp *http.Response) (*ApiLearningResourcesHistoryStatesRetrieveResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &ApiLearningResourcesHistoryStatesRetrieveResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	switch {
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
+		var dest HistoryStateResponse
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON200 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 410:
+		var dest HistoryAnchorUnavailable
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON410 = &dest
+
+	}
+
+	return response, nil
+}
+
+// ParseApiLearningResourcesHistoryStatesRestorePreviewRetrieveResponse parses an HTTP response from a ApiLearningResourcesHistoryStatesRestorePreviewRetrieveWithResponse call
+func ParseApiLearningResourcesHistoryStatesRestorePreviewRetrieveResponse(rsp *http.Response) (*ApiLearningResourcesHistoryStatesRestorePreviewRetrieveResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &ApiLearningResourcesHistoryStatesRestorePreviewRetrieveResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	switch {
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
+		var dest RestorePreviewResponse
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON200 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 410:
+		var dest HistoryAnchorUnavailable
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON410 = &dest
+
+	}
+
+	return response, nil
+}
+
+// ParseApiLearningResourcesHistoryStatesRestoreCreateResponse parses an HTTP response from a ApiLearningResourcesHistoryStatesRestoreCreateWithResponse call
+func ParseApiLearningResourcesHistoryStatesRestoreCreateResponse(rsp *http.Response) (*ApiLearningResourcesHistoryStatesRestoreCreateResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &ApiLearningResourcesHistoryStatesRestoreCreateResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	switch {
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
+		var dest RestoreResponse
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON200 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 409:
+		var dest StructureVersionConflict
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON409 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 410:
+		var dest HistoryAnchorUnavailable
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON410 = &dest
+
+	}
+
+	return response, nil
+}
+
+// ParseApiLearningResourcesHistoryViewingCreateResponse parses an HTTP response from a ApiLearningResourcesHistoryViewingCreateWithResponse call
+func ParseApiLearningResourcesHistoryViewingCreateResponse(rsp *http.Response) (*ApiLearningResourcesHistoryViewingCreateResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &ApiLearningResourcesHistoryViewingCreateResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	switch {
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
+		var dest HistoryViewingResponse
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON200 = &dest
 
 	}
 

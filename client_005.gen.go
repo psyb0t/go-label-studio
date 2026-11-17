@@ -17,6 +17,1361 @@ import (
 	openapi_types "github.com/oapi-codegen/runtime/types"
 )
 
+// NewApiPromptsVersionsFewShotExamplesCreateRequest calls the generic ApiPromptsVersionsFewShotExamplesCreate builder with application/json body
+func NewApiPromptsVersionsFewShotExamplesCreateRequest(server string, promptId int, versionId int, body ApiPromptsVersionsFewShotExamplesCreateJSONRequestBody) (*http.Request, error) {
+	var bodyReader io.Reader
+	buf, err := json.Marshal(body)
+	if err != nil {
+		return nil, err
+	}
+	bodyReader = bytes.NewReader(buf)
+	return NewApiPromptsVersionsFewShotExamplesCreateRequestWithBody(server, promptId, versionId, "application/json", bodyReader)
+}
+
+// NewApiPromptsVersionsFewShotExamplesCreateRequestWithFormdataBody calls the generic ApiPromptsVersionsFewShotExamplesCreate builder with application/x-www-form-urlencoded body
+func NewApiPromptsVersionsFewShotExamplesCreateRequestWithFormdataBody(server string, promptId int, versionId int, body ApiPromptsVersionsFewShotExamplesCreateFormdataRequestBody) (*http.Request, error) {
+	var bodyReader io.Reader
+	bodyStr, err := runtime.MarshalForm(body, nil)
+	if err != nil {
+		return nil, err
+	}
+	bodyReader = strings.NewReader(bodyStr.Encode())
+	return NewApiPromptsVersionsFewShotExamplesCreateRequestWithBody(server, promptId, versionId, "application/x-www-form-urlencoded", bodyReader)
+}
+
+// NewApiPromptsVersionsFewShotExamplesCreateRequestWithBody constructs an http.Request for the ApiPromptsVersionsFewShotExamplesCreate method, with any body, and a specified content type
+func NewApiPromptsVersionsFewShotExamplesCreateRequestWithBody(server string, promptId int, versionId int, contentType string, body io.Reader) (*http.Request, error) {
+	var err error
+
+	var pathParam0 string
+
+	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "prompt_id", promptId, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "integer", Format: ""})
+	if err != nil {
+		return nil, err
+	}
+
+	var pathParam1 string
+
+	pathParam1, err = runtime.StyleParamWithOptions("simple", false, "version_id", versionId, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "integer", Format: ""})
+	if err != nil {
+		return nil, err
+	}
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/api/prompts/%s/versions/%s/few-shot-examples", pathParam0, pathParam1)
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequest(http.MethodPost, queryURL.String(), body)
+	if err != nil {
+		return nil, err
+	}
+
+	req.Header.Add("Content-Type", contentType)
+
+	return req, nil
+}
+
+// NewApiPromptsVersionsFewShotExamplesReorderCreateRequest calls the generic ApiPromptsVersionsFewShotExamplesReorderCreate builder with application/json body
+func NewApiPromptsVersionsFewShotExamplesReorderCreateRequest(server string, promptId int, versionId int, body ApiPromptsVersionsFewShotExamplesReorderCreateJSONRequestBody) (*http.Request, error) {
+	var bodyReader io.Reader
+	buf, err := json.Marshal(body)
+	if err != nil {
+		return nil, err
+	}
+	bodyReader = bytes.NewReader(buf)
+	return NewApiPromptsVersionsFewShotExamplesReorderCreateRequestWithBody(server, promptId, versionId, "application/json", bodyReader)
+}
+
+// NewApiPromptsVersionsFewShotExamplesReorderCreateRequestWithFormdataBody calls the generic ApiPromptsVersionsFewShotExamplesReorderCreate builder with application/x-www-form-urlencoded body
+func NewApiPromptsVersionsFewShotExamplesReorderCreateRequestWithFormdataBody(server string, promptId int, versionId int, body ApiPromptsVersionsFewShotExamplesReorderCreateFormdataRequestBody) (*http.Request, error) {
+	var bodyReader io.Reader
+	bodyStr, err := runtime.MarshalForm(body, nil)
+	if err != nil {
+		return nil, err
+	}
+	bodyReader = strings.NewReader(bodyStr.Encode())
+	return NewApiPromptsVersionsFewShotExamplesReorderCreateRequestWithBody(server, promptId, versionId, "application/x-www-form-urlencoded", bodyReader)
+}
+
+// NewApiPromptsVersionsFewShotExamplesReorderCreateRequestWithBody constructs an http.Request for the ApiPromptsVersionsFewShotExamplesReorderCreate method, with any body, and a specified content type
+func NewApiPromptsVersionsFewShotExamplesReorderCreateRequestWithBody(server string, promptId int, versionId int, contentType string, body io.Reader) (*http.Request, error) {
+	var err error
+
+	var pathParam0 string
+
+	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "prompt_id", promptId, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "integer", Format: ""})
+	if err != nil {
+		return nil, err
+	}
+
+	var pathParam1 string
+
+	pathParam1, err = runtime.StyleParamWithOptions("simple", false, "version_id", versionId, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "integer", Format: ""})
+	if err != nil {
+		return nil, err
+	}
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/api/prompts/%s/versions/%s/few-shot-examples/reorder", pathParam0, pathParam1)
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequest(http.MethodPost, queryURL.String(), body)
+	if err != nil {
+		return nil, err
+	}
+
+	req.Header.Add("Content-Type", contentType)
+
+	return req, nil
+}
+
+// NewApiPromptsVersionsFewShotExamplesDestroyRequest constructs an http.Request for the ApiPromptsVersionsFewShotExamplesDestroy method
+func NewApiPromptsVersionsFewShotExamplesDestroyRequest(server string, promptId int, versionId int, id int) (*http.Request, error) {
+	var err error
+
+	var pathParam0 string
+
+	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "prompt_id", promptId, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "integer", Format: ""})
+	if err != nil {
+		return nil, err
+	}
+
+	var pathParam1 string
+
+	pathParam1, err = runtime.StyleParamWithOptions("simple", false, "version_id", versionId, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "integer", Format: ""})
+	if err != nil {
+		return nil, err
+	}
+
+	var pathParam2 string
+
+	pathParam2, err = runtime.StyleParamWithOptions("simple", false, "id", id, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "integer", Format: ""})
+	if err != nil {
+		return nil, err
+	}
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/api/prompts/%s/versions/%s/few-shot-examples/%s", pathParam0, pathParam1, pathParam2)
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequest(http.MethodDelete, queryURL.String(), nil)
+	if err != nil {
+		return nil, err
+	}
+
+	return req, nil
+}
+
+// NewApiPromptsVersionsFewShotExamplesPartialUpdateRequest calls the generic ApiPromptsVersionsFewShotExamplesPartialUpdate builder with application/json body
+func NewApiPromptsVersionsFewShotExamplesPartialUpdateRequest(server string, promptId int, versionId int, id int, body ApiPromptsVersionsFewShotExamplesPartialUpdateJSONRequestBody) (*http.Request, error) {
+	var bodyReader io.Reader
+	buf, err := json.Marshal(body)
+	if err != nil {
+		return nil, err
+	}
+	bodyReader = bytes.NewReader(buf)
+	return NewApiPromptsVersionsFewShotExamplesPartialUpdateRequestWithBody(server, promptId, versionId, id, "application/json", bodyReader)
+}
+
+// NewApiPromptsVersionsFewShotExamplesPartialUpdateRequestWithFormdataBody calls the generic ApiPromptsVersionsFewShotExamplesPartialUpdate builder with application/x-www-form-urlencoded body
+func NewApiPromptsVersionsFewShotExamplesPartialUpdateRequestWithFormdataBody(server string, promptId int, versionId int, id int, body ApiPromptsVersionsFewShotExamplesPartialUpdateFormdataRequestBody) (*http.Request, error) {
+	var bodyReader io.Reader
+	bodyStr, err := runtime.MarshalForm(body, nil)
+	if err != nil {
+		return nil, err
+	}
+	bodyReader = strings.NewReader(bodyStr.Encode())
+	return NewApiPromptsVersionsFewShotExamplesPartialUpdateRequestWithBody(server, promptId, versionId, id, "application/x-www-form-urlencoded", bodyReader)
+}
+
+// NewApiPromptsVersionsFewShotExamplesPartialUpdateRequestWithBody constructs an http.Request for the ApiPromptsVersionsFewShotExamplesPartialUpdate method, with any body, and a specified content type
+func NewApiPromptsVersionsFewShotExamplesPartialUpdateRequestWithBody(server string, promptId int, versionId int, id int, contentType string, body io.Reader) (*http.Request, error) {
+	var err error
+
+	var pathParam0 string
+
+	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "prompt_id", promptId, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "integer", Format: ""})
+	if err != nil {
+		return nil, err
+	}
+
+	var pathParam1 string
+
+	pathParam1, err = runtime.StyleParamWithOptions("simple", false, "version_id", versionId, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "integer", Format: ""})
+	if err != nil {
+		return nil, err
+	}
+
+	var pathParam2 string
+
+	pathParam2, err = runtime.StyleParamWithOptions("simple", false, "id", id, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "integer", Format: ""})
+	if err != nil {
+		return nil, err
+	}
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/api/prompts/%s/versions/%s/few-shot-examples/%s", pathParam0, pathParam1, pathParam2)
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequest(http.MethodPatch, queryURL.String(), body)
+	if err != nil {
+		return nil, err
+	}
+
+	req.Header.Add("Content-Type", contentType)
+
+	return req, nil
+}
+
+// NewApiPromptsVersionsInferenceRunsListRequest constructs an http.Request for the ApiPromptsVersionsInferenceRunsList method
+func NewApiPromptsVersionsInferenceRunsListRequest(server string, promptId int, versionId int, params *ApiPromptsVersionsInferenceRunsListParams) (*http.Request, error) {
+	var err error
+
+	var pathParam0 string
+
+	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "prompt_id", promptId, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "integer", Format: ""})
+	if err != nil {
+		return nil, err
+	}
+
+	var pathParam1 string
+
+	pathParam1, err = runtime.StyleParamWithOptions("simple", false, "version_id", versionId, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "integer", Format: ""})
+	if err != nil {
+		return nil, err
+	}
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/api/prompts/%s/versions/%s/inference-runs", pathParam0, pathParam1)
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	if params != nil {
+		// queryValues collects non-styled parameters (passthrough, JSON)
+		// that are safe to round-trip through url.Values.Encode().
+		queryValues := queryURL.Query()
+		// rawQueryFragments collects pre-encoded query fragments from
+		// styled parameters, preserving literal commas as delimiters
+		// per the OpenAPI spec (e.g. "color=blue,black,brown").
+		var rawQueryFragments []string
+
+		if params.Ordering != nil {
+
+			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "ordering", *params.Ordering, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			} else {
+				for _, qp := range strings.Split(queryFrag, "&") {
+					rawQueryFragments = append(rawQueryFragments, qp)
+				}
+			}
+
+		}
+
+		if params.ParentModel != nil {
+
+			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "parent_model", *params.ParentModel, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "integer", Format: ""}); err != nil {
+				return nil, err
+			} else {
+				for _, qp := range strings.Split(queryFrag, "&") {
+					rawQueryFragments = append(rawQueryFragments, qp)
+				}
+			}
+
+		}
+
+		if params.Project != nil {
+
+			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "project", *params.Project, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "integer", Format: ""}); err != nil {
+				return nil, err
+			} else {
+				for _, qp := range strings.Split(queryFrag, "&") {
+					rawQueryFragments = append(rawQueryFragments, qp)
+				}
+			}
+
+		}
+
+		if params.ProjectSubset != nil {
+
+			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "project_subset", *params.ProjectSubset, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			} else {
+				for _, qp := range strings.Split(queryFrag, "&") {
+					rawQueryFragments = append(rawQueryFragments, qp)
+				}
+			}
+
+		}
+
+		if encoded := queryValues.Encode(); encoded != "" {
+			rawQueryFragments = append(rawQueryFragments, encoded)
+		}
+		queryURL.RawQuery = strings.Join(rawQueryFragments, "&")
+	}
+
+	req, err := http.NewRequest(http.MethodGet, queryURL.String(), nil)
+	if err != nil {
+		return nil, err
+	}
+
+	return req, nil
+}
+
+// NewApiPromptsVersionsInferenceRunsCreateRequest calls the generic ApiPromptsVersionsInferenceRunsCreate builder with application/json body
+func NewApiPromptsVersionsInferenceRunsCreateRequest(server string, promptId int, versionId int, body ApiPromptsVersionsInferenceRunsCreateJSONRequestBody) (*http.Request, error) {
+	var bodyReader io.Reader
+	buf, err := json.Marshal(body)
+	if err != nil {
+		return nil, err
+	}
+	bodyReader = bytes.NewReader(buf)
+	return NewApiPromptsVersionsInferenceRunsCreateRequestWithBody(server, promptId, versionId, "application/json", bodyReader)
+}
+
+// NewApiPromptsVersionsInferenceRunsCreateRequestWithFormdataBody calls the generic ApiPromptsVersionsInferenceRunsCreate builder with application/x-www-form-urlencoded body
+func NewApiPromptsVersionsInferenceRunsCreateRequestWithFormdataBody(server string, promptId int, versionId int, body ApiPromptsVersionsInferenceRunsCreateFormdataRequestBody) (*http.Request, error) {
+	var bodyReader io.Reader
+	bodyStr, err := runtime.MarshalForm(body, nil)
+	if err != nil {
+		return nil, err
+	}
+	bodyReader = strings.NewReader(bodyStr.Encode())
+	return NewApiPromptsVersionsInferenceRunsCreateRequestWithBody(server, promptId, versionId, "application/x-www-form-urlencoded", bodyReader)
+}
+
+// NewApiPromptsVersionsInferenceRunsCreateRequestWithBody constructs an http.Request for the ApiPromptsVersionsInferenceRunsCreate method, with any body, and a specified content type
+func NewApiPromptsVersionsInferenceRunsCreateRequestWithBody(server string, promptId int, versionId int, contentType string, body io.Reader) (*http.Request, error) {
+	var err error
+
+	var pathParam0 string
+
+	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "prompt_id", promptId, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "integer", Format: ""})
+	if err != nil {
+		return nil, err
+	}
+
+	var pathParam1 string
+
+	pathParam1, err = runtime.StyleParamWithOptions("simple", false, "version_id", versionId, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "integer", Format: ""})
+	if err != nil {
+		return nil, err
+	}
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/api/prompts/%s/versions/%s/inference-runs", pathParam0, pathParam1)
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequest(http.MethodPost, queryURL.String(), body)
+	if err != nil {
+		return nil, err
+	}
+
+	req.Header.Add("Content-Type", contentType)
+
+	return req, nil
+}
+
+// NewApiPromptsVersionsInferenceRunsCancelCreateRequest constructs an http.Request for the ApiPromptsVersionsInferenceRunsCancelCreate method
+func NewApiPromptsVersionsInferenceRunsCancelCreateRequest(server string, promptId int, versionId int, inferenceRunId int) (*http.Request, error) {
+	var err error
+
+	var pathParam0 string
+
+	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "prompt_id", promptId, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "integer", Format: ""})
+	if err != nil {
+		return nil, err
+	}
+
+	var pathParam1 string
+
+	pathParam1, err = runtime.StyleParamWithOptions("simple", false, "version_id", versionId, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "integer", Format: ""})
+	if err != nil {
+		return nil, err
+	}
+
+	var pathParam2 string
+
+	pathParam2, err = runtime.StyleParamWithOptions("simple", false, "inference_run_id", inferenceRunId, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "integer", Format: ""})
+	if err != nil {
+		return nil, err
+	}
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/api/prompts/%s/versions/%s/inference-runs/%s/cancel", pathParam0, pathParam1, pathParam2)
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequest(http.MethodPost, queryURL.String(), nil)
+	if err != nil {
+		return nil, err
+	}
+
+	return req, nil
+}
+
+// NewApiPromptsVersionsPredictionCountRetrieveRequest constructs an http.Request for the ApiPromptsVersionsPredictionCountRetrieve method
+func NewApiPromptsVersionsPredictionCountRetrieveRequest(server string, promptId int, versionId int) (*http.Request, error) {
+	var err error
+
+	var pathParam0 string
+
+	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "prompt_id", promptId, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "integer", Format: ""})
+	if err != nil {
+		return nil, err
+	}
+
+	var pathParam1 string
+
+	pathParam1, err = runtime.StyleParamWithOptions("simple", false, "version_id", versionId, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "integer", Format: ""})
+	if err != nil {
+		return nil, err
+	}
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/api/prompts/%s/versions/%s/prediction-count", pathParam0, pathParam1)
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequest(http.MethodGet, queryURL.String(), nil)
+	if err != nil {
+		return nil, err
+	}
+
+	return req, nil
+}
+
+// NewApiPromptsVersionsPromptPreviewRetrieveRequest constructs an http.Request for the ApiPromptsVersionsPromptPreviewRetrieve method
+func NewApiPromptsVersionsPromptPreviewRetrieveRequest(server string, promptId int, versionId int) (*http.Request, error) {
+	var err error
+
+	var pathParam0 string
+
+	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "prompt_id", promptId, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "integer", Format: ""})
+	if err != nil {
+		return nil, err
+	}
+
+	var pathParam1 string
+
+	pathParam1, err = runtime.StyleParamWithOptions("simple", false, "version_id", versionId, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "integer", Format: ""})
+	if err != nil {
+		return nil, err
+	}
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/api/prompts/%s/versions/%s/prompt-preview", pathParam0, pathParam1)
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequest(http.MethodGet, queryURL.String(), nil)
+	if err != nil {
+		return nil, err
+	}
+
+	return req, nil
+}
+
+// NewApiPromptsVersionsRefineRetrieveRequest constructs an http.Request for the ApiPromptsVersionsRefineRetrieve method
+func NewApiPromptsVersionsRefineRetrieveRequest(server string, promptId int, versionId int, params *ApiPromptsVersionsRefineRetrieveParams) (*http.Request, error) {
+	var err error
+
+	var pathParam0 string
+
+	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "prompt_id", promptId, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "integer", Format: ""})
+	if err != nil {
+		return nil, err
+	}
+
+	var pathParam1 string
+
+	pathParam1, err = runtime.StyleParamWithOptions("simple", false, "version_id", versionId, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "integer", Format: ""})
+	if err != nil {
+		return nil, err
+	}
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/api/prompts/%s/versions/%s/refine", pathParam0, pathParam1)
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	if params != nil {
+		// queryValues collects non-styled parameters (passthrough, JSON)
+		// that are safe to round-trip through url.Values.Encode().
+		queryValues := queryURL.Query()
+		// rawQueryFragments collects pre-encoded query fragments from
+		// styled parameters, preserving literal commas as delimiters
+		// per the OpenAPI spec (e.g. "color=blue,black,brown").
+		var rawQueryFragments []string
+
+		if params.RefinementJobId != nil {
+
+			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "refinement_job_id", *params.RefinementJobId, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			} else {
+				for _, qp := range strings.Split(queryFrag, "&") {
+					rawQueryFragments = append(rawQueryFragments, qp)
+				}
+			}
+
+		}
+
+		if encoded := queryValues.Encode(); encoded != "" {
+			rawQueryFragments = append(rawQueryFragments, encoded)
+		}
+		queryURL.RawQuery = strings.Join(rawQueryFragments, "&")
+	}
+
+	req, err := http.NewRequest(http.MethodGet, queryURL.String(), nil)
+	if err != nil {
+		return nil, err
+	}
+
+	return req, nil
+}
+
+// NewApiPromptsVersionsRefineCreateRequest calls the generic ApiPromptsVersionsRefineCreate builder with application/json body
+func NewApiPromptsVersionsRefineCreateRequest(server string, promptId int, versionId int, params *ApiPromptsVersionsRefineCreateParams, body ApiPromptsVersionsRefineCreateJSONRequestBody) (*http.Request, error) {
+	var bodyReader io.Reader
+	buf, err := json.Marshal(body)
+	if err != nil {
+		return nil, err
+	}
+	bodyReader = bytes.NewReader(buf)
+	return NewApiPromptsVersionsRefineCreateRequestWithBody(server, promptId, versionId, params, "application/json", bodyReader)
+}
+
+// NewApiPromptsVersionsRefineCreateRequestWithFormdataBody calls the generic ApiPromptsVersionsRefineCreate builder with application/x-www-form-urlencoded body
+func NewApiPromptsVersionsRefineCreateRequestWithFormdataBody(server string, promptId int, versionId int, params *ApiPromptsVersionsRefineCreateParams, body ApiPromptsVersionsRefineCreateFormdataRequestBody) (*http.Request, error) {
+	var bodyReader io.Reader
+	bodyStr, err := runtime.MarshalForm(body, nil)
+	if err != nil {
+		return nil, err
+	}
+	bodyReader = strings.NewReader(bodyStr.Encode())
+	return NewApiPromptsVersionsRefineCreateRequestWithBody(server, promptId, versionId, params, "application/x-www-form-urlencoded", bodyReader)
+}
+
+// NewApiPromptsVersionsRefineCreateRequestWithBody constructs an http.Request for the ApiPromptsVersionsRefineCreate method, with any body, and a specified content type
+func NewApiPromptsVersionsRefineCreateRequestWithBody(server string, promptId int, versionId int, params *ApiPromptsVersionsRefineCreateParams, contentType string, body io.Reader) (*http.Request, error) {
+	var err error
+
+	var pathParam0 string
+
+	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "prompt_id", promptId, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "integer", Format: ""})
+	if err != nil {
+		return nil, err
+	}
+
+	var pathParam1 string
+
+	pathParam1, err = runtime.StyleParamWithOptions("simple", false, "version_id", versionId, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "integer", Format: ""})
+	if err != nil {
+		return nil, err
+	}
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/api/prompts/%s/versions/%s/refine", pathParam0, pathParam1)
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	if params != nil {
+		// queryValues collects non-styled parameters (passthrough, JSON)
+		// that are safe to round-trip through url.Values.Encode().
+		queryValues := queryURL.Query()
+		// rawQueryFragments collects pre-encoded query fragments from
+		// styled parameters, preserving literal commas as delimiters
+		// per the OpenAPI spec (e.g. "color=blue,black,brown").
+		var rawQueryFragments []string
+
+		if params.Async != nil {
+
+			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "async", *params.Async, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "boolean", Format: ""}); err != nil {
+				return nil, err
+			} else {
+				for _, qp := range strings.Split(queryFrag, "&") {
+					rawQueryFragments = append(rawQueryFragments, qp)
+				}
+			}
+
+		}
+
+		if encoded := queryValues.Encode(); encoded != "" {
+			rawQueryFragments = append(rawQueryFragments, encoded)
+		}
+		queryURL.RawQuery = strings.Join(rawQueryFragments, "&")
+	}
+
+	req, err := http.NewRequest(http.MethodPost, queryURL.String(), body)
+	if err != nil {
+		return nil, err
+	}
+
+	req.Header.Add("Content-Type", contentType)
+
+	return req, nil
+}
+
+// NewApiPromptsVersionsTryTaskCreateRequest calls the generic ApiPromptsVersionsTryTaskCreate builder with application/json body
+func NewApiPromptsVersionsTryTaskCreateRequest(server string, promptId int, versionId int, body ApiPromptsVersionsTryTaskCreateJSONRequestBody) (*http.Request, error) {
+	var bodyReader io.Reader
+	buf, err := json.Marshal(body)
+	if err != nil {
+		return nil, err
+	}
+	bodyReader = bytes.NewReader(buf)
+	return NewApiPromptsVersionsTryTaskCreateRequestWithBody(server, promptId, versionId, "application/json", bodyReader)
+}
+
+// NewApiPromptsVersionsTryTaskCreateRequestWithFormdataBody calls the generic ApiPromptsVersionsTryTaskCreate builder with application/x-www-form-urlencoded body
+func NewApiPromptsVersionsTryTaskCreateRequestWithFormdataBody(server string, promptId int, versionId int, body ApiPromptsVersionsTryTaskCreateFormdataRequestBody) (*http.Request, error) {
+	var bodyReader io.Reader
+	bodyStr, err := runtime.MarshalForm(body, nil)
+	if err != nil {
+		return nil, err
+	}
+	bodyReader = strings.NewReader(bodyStr.Encode())
+	return NewApiPromptsVersionsTryTaskCreateRequestWithBody(server, promptId, versionId, "application/x-www-form-urlencoded", bodyReader)
+}
+
+// NewApiPromptsVersionsTryTaskCreateRequestWithBody constructs an http.Request for the ApiPromptsVersionsTryTaskCreate method, with any body, and a specified content type
+func NewApiPromptsVersionsTryTaskCreateRequestWithBody(server string, promptId int, versionId int, contentType string, body io.Reader) (*http.Request, error) {
+	var err error
+
+	var pathParam0 string
+
+	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "prompt_id", promptId, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "integer", Format: ""})
+	if err != nil {
+		return nil, err
+	}
+
+	var pathParam1 string
+
+	pathParam1, err = runtime.StyleParamWithOptions("simple", false, "version_id", versionId, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "integer", Format: ""})
+	if err != nil {
+		return nil, err
+	}
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/api/prompts/%s/versions/%s/try-task", pathParam0, pathParam1)
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequest(http.MethodPost, queryURL.String(), body)
+	if err != nil {
+		return nil, err
+	}
+
+	req.Header.Add("Content-Type", contentType)
+
+	return req, nil
+}
+
+// NewApiSamlSettingsDestroyRequest constructs an http.Request for the ApiSamlSettingsDestroy method
+func NewApiSamlSettingsDestroyRequest(server string) (*http.Request, error) {
+	var err error
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/api/saml/settings")
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequest(http.MethodDelete, queryURL.String(), nil)
+	if err != nil {
+		return nil, err
+	}
+
+	return req, nil
+}
+
+// NewApiSamlSettingsRetrieveRequest constructs an http.Request for the ApiSamlSettingsRetrieve method
+func NewApiSamlSettingsRetrieveRequest(server string) (*http.Request, error) {
+	var err error
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/api/saml/settings")
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequest(http.MethodGet, queryURL.String(), nil)
+	if err != nil {
+		return nil, err
+	}
+
+	return req, nil
+}
+
+// NewApiSamlSettingsCreateRequest calls the generic ApiSamlSettingsCreate builder with application/json body
+func NewApiSamlSettingsCreateRequest(server string, body ApiSamlSettingsCreateJSONRequestBody) (*http.Request, error) {
+	var bodyReader io.Reader
+	buf, err := json.Marshal(body)
+	if err != nil {
+		return nil, err
+	}
+	bodyReader = bytes.NewReader(buf)
+	return NewApiSamlSettingsCreateRequestWithBody(server, "application/json", bodyReader)
+}
+
+// NewApiSamlSettingsCreateRequestWithFormdataBody calls the generic ApiSamlSettingsCreate builder with application/x-www-form-urlencoded body
+func NewApiSamlSettingsCreateRequestWithFormdataBody(server string, body ApiSamlSettingsCreateFormdataRequestBody) (*http.Request, error) {
+	var bodyReader io.Reader
+	bodyStr, err := runtime.MarshalForm(body, nil)
+	if err != nil {
+		return nil, err
+	}
+	bodyReader = strings.NewReader(bodyStr.Encode())
+	return NewApiSamlSettingsCreateRequestWithBody(server, "application/x-www-form-urlencoded", bodyReader)
+}
+
+// NewApiSamlSettingsCreateRequestWithBody constructs an http.Request for the ApiSamlSettingsCreate method, with any body, and a specified content type
+func NewApiSamlSettingsCreateRequestWithBody(server string, contentType string, body io.Reader) (*http.Request, error) {
+	var err error
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/api/saml/settings")
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequest(http.MethodPost, queryURL.String(), body)
+	if err != nil {
+		return nil, err
+	}
+
+	req.Header.Add("Content-Type", contentType)
+
+	return req, nil
+}
+
+// NewApiSamlSettingsValidateDomainCreateRequest calls the generic ApiSamlSettingsValidateDomainCreate builder with application/json body
+func NewApiSamlSettingsValidateDomainCreateRequest(server string, body ApiSamlSettingsValidateDomainCreateJSONRequestBody) (*http.Request, error) {
+	var bodyReader io.Reader
+	buf, err := json.Marshal(body)
+	if err != nil {
+		return nil, err
+	}
+	bodyReader = bytes.NewReader(buf)
+	return NewApiSamlSettingsValidateDomainCreateRequestWithBody(server, "application/json", bodyReader)
+}
+
+// NewApiSamlSettingsValidateDomainCreateRequestWithFormdataBody calls the generic ApiSamlSettingsValidateDomainCreate builder with application/x-www-form-urlencoded body
+func NewApiSamlSettingsValidateDomainCreateRequestWithFormdataBody(server string, body ApiSamlSettingsValidateDomainCreateFormdataRequestBody) (*http.Request, error) {
+	var bodyReader io.Reader
+	bodyStr, err := runtime.MarshalForm(body, nil)
+	if err != nil {
+		return nil, err
+	}
+	bodyReader = strings.NewReader(bodyStr.Encode())
+	return NewApiSamlSettingsValidateDomainCreateRequestWithBody(server, "application/x-www-form-urlencoded", bodyReader)
+}
+
+// NewApiSamlSettingsValidateDomainCreateRequestWithBody constructs an http.Request for the ApiSamlSettingsValidateDomainCreate method, with any body, and a specified content type
+func NewApiSamlSettingsValidateDomainCreateRequestWithBody(server string, contentType string, body io.Reader) (*http.Request, error) {
+	var err error
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/api/saml/settings/validate-domain")
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequest(http.MethodPost, queryURL.String(), body)
+	if err != nil {
+		return nil, err
+	}
+
+	req.Header.Add("Content-Type", contentType)
+
+	return req, nil
+}
+
+// NewApiSamlSettingsValidateMetadataUrlCreateRequest calls the generic ApiSamlSettingsValidateMetadataUrlCreate builder with application/json body
+func NewApiSamlSettingsValidateMetadataUrlCreateRequest(server string, body ApiSamlSettingsValidateMetadataUrlCreateJSONRequestBody) (*http.Request, error) {
+	var bodyReader io.Reader
+	buf, err := json.Marshal(body)
+	if err != nil {
+		return nil, err
+	}
+	bodyReader = bytes.NewReader(buf)
+	return NewApiSamlSettingsValidateMetadataUrlCreateRequestWithBody(server, "application/json", bodyReader)
+}
+
+// NewApiSamlSettingsValidateMetadataUrlCreateRequestWithFormdataBody calls the generic ApiSamlSettingsValidateMetadataUrlCreate builder with application/x-www-form-urlencoded body
+func NewApiSamlSettingsValidateMetadataUrlCreateRequestWithFormdataBody(server string, body ApiSamlSettingsValidateMetadataUrlCreateFormdataRequestBody) (*http.Request, error) {
+	var bodyReader io.Reader
+	bodyStr, err := runtime.MarshalForm(body, nil)
+	if err != nil {
+		return nil, err
+	}
+	bodyReader = strings.NewReader(bodyStr.Encode())
+	return NewApiSamlSettingsValidateMetadataUrlCreateRequestWithBody(server, "application/x-www-form-urlencoded", bodyReader)
+}
+
+// NewApiSamlSettingsValidateMetadataUrlCreateRequestWithBody constructs an http.Request for the ApiSamlSettingsValidateMetadataUrlCreate method, with any body, and a specified content type
+func NewApiSamlSettingsValidateMetadataUrlCreateRequestWithBody(server string, contentType string, body io.Reader) (*http.Request, error) {
+	var err error
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/api/saml/settings/validate-metadata-url")
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequest(http.MethodPost, queryURL.String(), body)
+	if err != nil {
+		return nil, err
+	}
+
+	req.Header.Add("Content-Type", contentType)
+
+	return req, nil
+}
+
+// NewApiScimSettingsRetrieveRequest constructs an http.Request for the ApiScimSettingsRetrieve method
+func NewApiScimSettingsRetrieveRequest(server string) (*http.Request, error) {
+	var err error
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/api/scim/settings")
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequest(http.MethodGet, queryURL.String(), nil)
+	if err != nil {
+		return nil, err
+	}
+
+	return req, nil
+}
+
+// NewApiScimSettingsCreateRequest calls the generic ApiScimSettingsCreate builder with application/json body
+func NewApiScimSettingsCreateRequest(server string, body ApiScimSettingsCreateJSONRequestBody) (*http.Request, error) {
+	var bodyReader io.Reader
+	buf, err := json.Marshal(body)
+	if err != nil {
+		return nil, err
+	}
+	bodyReader = bytes.NewReader(buf)
+	return NewApiScimSettingsCreateRequestWithBody(server, "application/json", bodyReader)
+}
+
+// NewApiScimSettingsCreateRequestWithFormdataBody calls the generic ApiScimSettingsCreate builder with application/x-www-form-urlencoded body
+func NewApiScimSettingsCreateRequestWithFormdataBody(server string, body ApiScimSettingsCreateFormdataRequestBody) (*http.Request, error) {
+	var bodyReader io.Reader
+	bodyStr, err := runtime.MarshalForm(body, nil)
+	if err != nil {
+		return nil, err
+	}
+	bodyReader = strings.NewReader(bodyStr.Encode())
+	return NewApiScimSettingsCreateRequestWithBody(server, "application/x-www-form-urlencoded", bodyReader)
+}
+
+// NewApiScimSettingsCreateRequestWithBody constructs an http.Request for the ApiScimSettingsCreate method, with any body, and a specified content type
+func NewApiScimSettingsCreateRequestWithBody(server string, contentType string, body io.Reader) (*http.Request, error) {
+	var err error
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/api/scim/settings")
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequest(http.MethodPost, queryURL.String(), body)
+	if err != nil {
+		return nil, err
+	}
+
+	req.Header.Add("Content-Type", contentType)
+
+	return req, nil
+}
+
+// NewApiSessionPolicyRetrieveRequest constructs an http.Request for the ApiSessionPolicyRetrieve method
+func NewApiSessionPolicyRetrieveRequest(server string) (*http.Request, error) {
+	var err error
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/api/session-policy/")
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequest(http.MethodGet, queryURL.String(), nil)
+	if err != nil {
+		return nil, err
+	}
+
+	return req, nil
+}
+
+// NewApiSessionPolicyPartialUpdateRequest calls the generic ApiSessionPolicyPartialUpdate builder with application/json body
+func NewApiSessionPolicyPartialUpdateRequest(server string, body ApiSessionPolicyPartialUpdateJSONRequestBody) (*http.Request, error) {
+	var bodyReader io.Reader
+	buf, err := json.Marshal(body)
+	if err != nil {
+		return nil, err
+	}
+	bodyReader = bytes.NewReader(buf)
+	return NewApiSessionPolicyPartialUpdateRequestWithBody(server, "application/json", bodyReader)
+}
+
+// NewApiSessionPolicyPartialUpdateRequestWithFormdataBody calls the generic ApiSessionPolicyPartialUpdate builder with application/x-www-form-urlencoded body
+func NewApiSessionPolicyPartialUpdateRequestWithFormdataBody(server string, body ApiSessionPolicyPartialUpdateFormdataRequestBody) (*http.Request, error) {
+	var bodyReader io.Reader
+	bodyStr, err := runtime.MarshalForm(body, nil)
+	if err != nil {
+		return nil, err
+	}
+	bodyReader = strings.NewReader(bodyStr.Encode())
+	return NewApiSessionPolicyPartialUpdateRequestWithBody(server, "application/x-www-form-urlencoded", bodyReader)
+}
+
+// NewApiSessionPolicyPartialUpdateRequestWithBody constructs an http.Request for the ApiSessionPolicyPartialUpdate method, with any body, and a specified content type
+func NewApiSessionPolicyPartialUpdateRequestWithBody(server string, contentType string, body io.Reader) (*http.Request, error) {
+	var err error
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/api/session-policy/")
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequest(http.MethodPatch, queryURL.String(), body)
+	if err != nil {
+		return nil, err
+	}
+
+	req.Header.Add("Content-Type", contentType)
+
+	return req, nil
+}
+
+// NewApiStoragesListRequest constructs an http.Request for the ApiStoragesList method
+func NewApiStoragesListRequest(server string, params *ApiStoragesListParams) (*http.Request, error) {
+	var err error
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/api/storages/")
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	if params != nil {
+		// queryValues collects non-styled parameters (passthrough, JSON)
+		// that are safe to round-trip through url.Values.Encode().
+		queryValues := queryURL.Query()
+		// rawQueryFragments collects pre-encoded query fragments from
+		// styled parameters, preserving literal commas as delimiters
+		// per the OpenAPI spec (e.g. "color=blue,black,brown").
+		var rawQueryFragments []string
+
+		if params.Ordering != nil {
+
+			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "ordering", *params.Ordering, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			} else {
+				for _, qp := range strings.Split(queryFrag, "&") {
+					rawQueryFragments = append(rawQueryFragments, qp)
+				}
+			}
+
+		}
+
+		if encoded := queryValues.Encode(); encoded != "" {
+			rawQueryFragments = append(rawQueryFragments, encoded)
+		}
+		queryURL.RawQuery = strings.Join(rawQueryFragments, "&")
+	}
+
+	req, err := http.NewRequest(http.MethodGet, queryURL.String(), nil)
+	if err != nil {
+		return nil, err
+	}
+
+	return req, nil
+}
+
+// NewApiStoragesAzureListRequest constructs an http.Request for the ApiStoragesAzureList method
+func NewApiStoragesAzureListRequest(server string, params *ApiStoragesAzureListParams) (*http.Request, error) {
+	var err error
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/api/storages/azure/")
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	if params != nil {
+		// queryValues collects non-styled parameters (passthrough, JSON)
+		// that are safe to round-trip through url.Values.Encode().
+		queryValues := queryURL.Query()
+		// rawQueryFragments collects pre-encoded query fragments from
+		// styled parameters, preserving literal commas as delimiters
+		// per the OpenAPI spec (e.g. "color=blue,black,brown").
+		var rawQueryFragments []string
+
+		if params.Ordering != nil {
+
+			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "ordering", *params.Ordering, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			} else {
+				for _, qp := range strings.Split(queryFrag, "&") {
+					rawQueryFragments = append(rawQueryFragments, qp)
+				}
+			}
+
+		}
+
+		if queryFrag, err := runtime.StyleParamWithOptions("form", true, "project", params.Project, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "integer", Format: ""}); err != nil {
+			return nil, err
+		} else {
+			for _, qp := range strings.Split(queryFrag, "&") {
+				rawQueryFragments = append(rawQueryFragments, qp)
+			}
+		}
+
+		if encoded := queryValues.Encode(); encoded != "" {
+			rawQueryFragments = append(rawQueryFragments, encoded)
+		}
+		queryURL.RawQuery = strings.Join(rawQueryFragments, "&")
+	}
+
+	req, err := http.NewRequest(http.MethodGet, queryURL.String(), nil)
+	if err != nil {
+		return nil, err
+	}
+
+	return req, nil
+}
+
+// NewApiStoragesAzureCreateRequest calls the generic ApiStoragesAzureCreate builder with application/json body
+func NewApiStoragesAzureCreateRequest(server string, body ApiStoragesAzureCreateJSONRequestBody) (*http.Request, error) {
+	var bodyReader io.Reader
+	buf, err := json.Marshal(body)
+	if err != nil {
+		return nil, err
+	}
+	bodyReader = bytes.NewReader(buf)
+	return NewApiStoragesAzureCreateRequestWithBody(server, "application/json", bodyReader)
+}
+
+// NewApiStoragesAzureCreateRequestWithFormdataBody calls the generic ApiStoragesAzureCreate builder with application/x-www-form-urlencoded body
+func NewApiStoragesAzureCreateRequestWithFormdataBody(server string, body ApiStoragesAzureCreateFormdataRequestBody) (*http.Request, error) {
+	var bodyReader io.Reader
+	bodyStr, err := runtime.MarshalForm(body, nil)
+	if err != nil {
+		return nil, err
+	}
+	bodyReader = strings.NewReader(bodyStr.Encode())
+	return NewApiStoragesAzureCreateRequestWithBody(server, "application/x-www-form-urlencoded", bodyReader)
+}
+
+// NewApiStoragesAzureCreateRequestWithBody constructs an http.Request for the ApiStoragesAzureCreate method, with any body, and a specified content type
+func NewApiStoragesAzureCreateRequestWithBody(server string, contentType string, body io.Reader) (*http.Request, error) {
+	var err error
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/api/storages/azure/")
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequest(http.MethodPost, queryURL.String(), body)
+	if err != nil {
+		return nil, err
+	}
+
+	req.Header.Add("Content-Type", contentType)
+
+	return req, nil
+}
+
+// NewApiStoragesAzureValidateCreateRequest calls the generic ApiStoragesAzureValidateCreate builder with application/json body
+func NewApiStoragesAzureValidateCreateRequest(server string, body ApiStoragesAzureValidateCreateJSONRequestBody) (*http.Request, error) {
+	var bodyReader io.Reader
+	buf, err := json.Marshal(body)
+	if err != nil {
+		return nil, err
+	}
+	bodyReader = bytes.NewReader(buf)
+	return NewApiStoragesAzureValidateCreateRequestWithBody(server, "application/json", bodyReader)
+}
+
+// NewApiStoragesAzureValidateCreateRequestWithFormdataBody calls the generic ApiStoragesAzureValidateCreate builder with application/x-www-form-urlencoded body
+func NewApiStoragesAzureValidateCreateRequestWithFormdataBody(server string, body ApiStoragesAzureValidateCreateFormdataRequestBody) (*http.Request, error) {
+	var bodyReader io.Reader
+	bodyStr, err := runtime.MarshalForm(body, nil)
+	if err != nil {
+		return nil, err
+	}
+	bodyReader = strings.NewReader(bodyStr.Encode())
+	return NewApiStoragesAzureValidateCreateRequestWithBody(server, "application/x-www-form-urlencoded", bodyReader)
+}
+
+// NewApiStoragesAzureValidateCreateRequestWithBody constructs an http.Request for the ApiStoragesAzureValidateCreate method, with any body, and a specified content type
+func NewApiStoragesAzureValidateCreateRequestWithBody(server string, contentType string, body io.Reader) (*http.Request, error) {
+	var err error
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/api/storages/azure/validate")
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequest(http.MethodPost, queryURL.String(), body)
+	if err != nil {
+		return nil, err
+	}
+
+	req.Header.Add("Content-Type", contentType)
+
+	return req, nil
+}
+
 // NewApiStoragesAzureDestroyRequest constructs an http.Request for the ApiStoragesAzureDestroy method
 func NewApiStoragesAzureDestroyRequest(server string, id int) (*http.Request, error) {
 	var err error
@@ -11732,6 +13087,231 @@ type ClientWithResponsesInterface interface {
 	//
 	// Corresponds with GET /api/learning-resources/{id}/export/ (the `ApiLearningResourcesExportRetrieve` operationId).
 	ApiLearningResourcesExportRetrieveWithResponse(ctx context.Context, id int, params *ApiLearningResourcesExportRetrieveParams, reqEditors ...RequestEditorFn) (*ApiLearningResourcesExportRetrieveResponse, error)
+
+	// ApiLearningResourcesHistoryRetrieveWithResponse ✨ List the version history of a course
+	//
+	// <Card href="https://humansignal.com/goenterprise">
+	//         <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+	//         <p style="margin-top: 10px; font-size: 14px;">
+	//             This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+	//         </p>
+	//     </Card>
+	// Author-only. Edit sessions (newest first), pinned versions and recently deleted pages. Summaries only, no page bodies.
+	//
+	// Returns a wrapper object for the known response body format(s).
+	//
+	// Corresponds with GET /api/learning-resources/{id}/history/ (the `ApiLearningResourcesHistoryRetrieve` operationId).
+	ApiLearningResourcesHistoryRetrieveWithResponse(ctx context.Context, id int, params *ApiLearningResourcesHistoryRetrieveParams, reqEditors ...RequestEditorFn) (*ApiLearningResourcesHistoryRetrieveResponse, error)
+
+	// ApiLearningResourcesHistoryPinsCreateWithBodyWithResponse ✨ Name a past state of a course
+	//
+	// <Card href="https://humansignal.com/goenterprise">
+	//         <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+	//         <p style="margin-top: 10px; font-size: 14px;">
+	//             This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+	//         </p>
+	//     </Card>
+	// Author-only. Materializes the state at `ref` as a named pin that survives thinning of the revisions behind it.
+	//
+	// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
+	//
+	// Corresponds with POST /api/learning-resources/{id}/history/pins/ (the `ApiLearningResourcesHistoryPinsCreate` operationId).
+	ApiLearningResourcesHistoryPinsCreateWithBodyWithResponse(ctx context.Context, id int, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*ApiLearningResourcesHistoryPinsCreateResponse, error)
+
+	// ApiLearningResourcesHistoryPinsCreateWithResponse ✨ Name a past state of a course
+	//
+	// <Card href="https://humansignal.com/goenterprise">
+	//         <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+	//         <p style="margin-top: 10px; font-size: 14px;">
+	//             This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+	//         </p>
+	//     </Card>
+	// Author-only. Materializes the state at `ref` as a named pin that survives thinning of the revisions behind it.
+	//
+	// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
+	//
+	// Corresponds with POST /api/learning-resources/{id}/history/pins/ (the `ApiLearningResourcesHistoryPinsCreate` operationId).
+	ApiLearningResourcesHistoryPinsCreateWithResponse(ctx context.Context, id int, body ApiLearningResourcesHistoryPinsCreateJSONRequestBody, reqEditors ...RequestEditorFn) (*ApiLearningResourcesHistoryPinsCreateResponse, error)
+
+	// ApiLearningResourcesHistoryPinsCreateWithFormdataBodyWithResponse ✨ Name a past state of a course
+	//
+	// <Card href="https://humansignal.com/goenterprise">
+	//         <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+	//         <p style="margin-top: 10px; font-size: 14px;">
+	//             This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+	//         </p>
+	//     </Card>
+	// Author-only. Materializes the state at `ref` as a named pin that survives thinning of the revisions behind it.
+	//
+	// Takes a body of the `application/x-www-form-urlencoded` content type, and returns a wrapper object for the known response body format(s).
+	//
+	// Corresponds with POST /api/learning-resources/{id}/history/pins/ (the `ApiLearningResourcesHistoryPinsCreate` operationId).
+	ApiLearningResourcesHistoryPinsCreateWithFormdataBodyWithResponse(ctx context.Context, id int, body ApiLearningResourcesHistoryPinsCreateFormdataRequestBody, reqEditors ...RequestEditorFn) (*ApiLearningResourcesHistoryPinsCreateResponse, error)
+
+	// ApiLearningResourcesHistoryPinsDestroyWithResponse ✨ Delete a named or before-restore version
+	//
+	// <Card href="https://humansignal.com/goenterprise">
+	//         <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+	//         <p style="margin-top: 10px; font-size: 14px;">
+	//             This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+	//         </p>
+	//     </Card>
+	// Author-only. `named` and `before_restore` pins are deletable; published pins record what was published and answer 400 `pin_not_deletable`. Deletes only the pin: revisions and other pins are untouched, and the revisions behind it stay subject to thinning.
+	//
+	// Returns a wrapper object for the known response body format(s).
+	//
+	// Corresponds with DELETE /api/learning-resources/{id}/history/pins/{pin_id}/ (the `ApiLearningResourcesHistoryPinsDestroy` operationId).
+	ApiLearningResourcesHistoryPinsDestroyWithResponse(ctx context.Context, id int, pinId int, reqEditors ...RequestEditorFn) (*ApiLearningResourcesHistoryPinsDestroyResponse, error)
+
+	// ApiLearningResourcesHistoryPinsPartialUpdateWithBodyWithResponse ✨ Rename a named version
+	//
+	// <Card href="https://humansignal.com/goenterprise">
+	//         <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+	//         <p style="margin-top: 10px; font-size: 14px;">
+	//             This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+	//         </p>
+	//     </Card>
+	// Author-only. Only `named` pins are renamable; published and before-restore pins answer 400 `pin_not_renamable`.
+	//
+	// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
+	//
+	// Corresponds with PATCH /api/learning-resources/{id}/history/pins/{pin_id}/ (the `ApiLearningResourcesHistoryPinsPartialUpdate` operationId).
+	ApiLearningResourcesHistoryPinsPartialUpdateWithBodyWithResponse(ctx context.Context, id int, pinId int, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*ApiLearningResourcesHistoryPinsPartialUpdateResponse, error)
+
+	// ApiLearningResourcesHistoryPinsPartialUpdateWithResponse ✨ Rename a named version
+	//
+	// <Card href="https://humansignal.com/goenterprise">
+	//         <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+	//         <p style="margin-top: 10px; font-size: 14px;">
+	//             This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+	//         </p>
+	//     </Card>
+	// Author-only. Only `named` pins are renamable; published and before-restore pins answer 400 `pin_not_renamable`.
+	//
+	// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
+	//
+	// Corresponds with PATCH /api/learning-resources/{id}/history/pins/{pin_id}/ (the `ApiLearningResourcesHistoryPinsPartialUpdate` operationId).
+	ApiLearningResourcesHistoryPinsPartialUpdateWithResponse(ctx context.Context, id int, pinId int, body ApiLearningResourcesHistoryPinsPartialUpdateJSONRequestBody, reqEditors ...RequestEditorFn) (*ApiLearningResourcesHistoryPinsPartialUpdateResponse, error)
+
+	// ApiLearningResourcesHistoryPinsPartialUpdateWithFormdataBodyWithResponse ✨ Rename a named version
+	//
+	// <Card href="https://humansignal.com/goenterprise">
+	//         <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+	//         <p style="margin-top: 10px; font-size: 14px;">
+	//             This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+	//         </p>
+	//     </Card>
+	// Author-only. Only `named` pins are renamable; published and before-restore pins answer 400 `pin_not_renamable`.
+	//
+	// Takes a body of the `application/x-www-form-urlencoded` content type, and returns a wrapper object for the known response body format(s).
+	//
+	// Corresponds with PATCH /api/learning-resources/{id}/history/pins/{pin_id}/ (the `ApiLearningResourcesHistoryPinsPartialUpdate` operationId).
+	ApiLearningResourcesHistoryPinsPartialUpdateWithFormdataBodyWithResponse(ctx context.Context, id int, pinId int, body ApiLearningResourcesHistoryPinsPartialUpdateFormdataRequestBody, reqEditors ...RequestEditorFn) (*ApiLearningResourcesHistoryPinsPartialUpdateResponse, error)
+
+	// ApiLearningResourcesHistorySessionsSavesRetrieveWithResponse ✨ List the saves of one history session
+	//
+	// <Card href="https://humansignal.com/goenterprise">
+	//         <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+	//         <p style="margin-top: 10px; font-size: 14px;">
+	//             This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+	//         </p>
+	//     </Card>
+	// Author-only. The individual saves of the session that ends at `ref`.
+	//
+	// Returns a wrapper object for the known response body format(s).
+	//
+	// Corresponds with GET /api/learning-resources/{id}/history/sessions/{ref}/saves/ (the `ApiLearningResourcesHistorySessionsSavesRetrieve` operationId).
+	ApiLearningResourcesHistorySessionsSavesRetrieveWithResponse(ctx context.Context, id int, ref string, reqEditors ...RequestEditorFn) (*ApiLearningResourcesHistorySessionsSavesRetrieveResponse, error)
+
+	// ApiLearningResourcesHistoryStatesRetrieveWithResponse ✨ Get one past state of a course
+	//
+	// <Card href="https://humansignal.com/goenterprise">
+	//         <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+	//         <p style="margin-top: 10px; font-size: 14px;">
+	//             This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+	//         </p>
+	//     </Card>
+	// Author-only. The whole course as of a revision or pin: `content` in the shape the live course detail returns, plus snapshot-shaped `modules`. Answers 410 `history_anchor_unavailable` with the nearest surviving state when the revision has been purged.
+	//
+	// Returns a wrapper object for the known response body format(s).
+	//
+	// Corresponds with GET /api/learning-resources/{id}/history/states/{ref}/ (the `ApiLearningResourcesHistoryStatesRetrieve` operationId).
+	ApiLearningResourcesHistoryStatesRetrieveWithResponse(ctx context.Context, id int, ref string, reqEditors ...RequestEditorFn) (*ApiLearningResourcesHistoryStatesRetrieveResponse, error)
+
+	// ApiLearningResourcesHistoryStatesRestorePreviewRetrieveWithResponse ✨ Preview a restore
+	//
+	// <Card href="https://humansignal.com/goenterprise">
+	//         <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+	//         <p style="margin-top: 10px; font-size: 14px;">
+	//             This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+	//         </p>
+	//     </Card>
+	// Author-only. Counts of what a restore would add, change and remove, including the learners who have progress on modules the restore would delete. Writes nothing.
+	//
+	// Returns a wrapper object for the known response body format(s).
+	//
+	// Corresponds with GET /api/learning-resources/{id}/history/states/{ref}/restore-preview/ (the `ApiLearningResourcesHistoryStatesRestorePreviewRetrieve` operationId).
+	ApiLearningResourcesHistoryStatesRestorePreviewRetrieveWithResponse(ctx context.Context, id int, ref string, params *ApiLearningResourcesHistoryStatesRestorePreviewRetrieveParams, reqEditors ...RequestEditorFn) (*ApiLearningResourcesHistoryStatesRestorePreviewRetrieveResponse, error)
+
+	// ApiLearningResourcesHistoryStatesRestoreCreateWithBodyWithResponse ✨ Restore a past state of a course
+	//
+	// <Card href="https://humansignal.com/goenterprise">
+	//         <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+	//         <p style="margin-top: 10px; font-size: 14px;">
+	//             This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+	//         </p>
+	//     </Card>
+	// Author-only. Forward-only: appends revisions and a `before_restore` pin, never removes history. Restores the whole course, or one page (`scope=page`, which also brings back a deleted page). The result is a draft edit: it never publishes and never changes `content_version`. A stale `structure_version` answers 409 `structure_version_conflict`; a purged revision answers 410 `history_anchor_unavailable` and changes nothing.
+	//
+	// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
+	//
+	// Corresponds with POST /api/learning-resources/{id}/history/states/{ref}/restore/ (the `ApiLearningResourcesHistoryStatesRestoreCreate` operationId).
+	ApiLearningResourcesHistoryStatesRestoreCreateWithBodyWithResponse(ctx context.Context, id int, ref string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*ApiLearningResourcesHistoryStatesRestoreCreateResponse, error)
+
+	// ApiLearningResourcesHistoryStatesRestoreCreateWithResponse ✨ Restore a past state of a course
+	//
+	// <Card href="https://humansignal.com/goenterprise">
+	//         <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+	//         <p style="margin-top: 10px; font-size: 14px;">
+	//             This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+	//         </p>
+	//     </Card>
+	// Author-only. Forward-only: appends revisions and a `before_restore` pin, never removes history. Restores the whole course, or one page (`scope=page`, which also brings back a deleted page). The result is a draft edit: it never publishes and never changes `content_version`. A stale `structure_version` answers 409 `structure_version_conflict`; a purged revision answers 410 `history_anchor_unavailable` and changes nothing.
+	//
+	// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
+	//
+	// Corresponds with POST /api/learning-resources/{id}/history/states/{ref}/restore/ (the `ApiLearningResourcesHistoryStatesRestoreCreate` operationId).
+	ApiLearningResourcesHistoryStatesRestoreCreateWithResponse(ctx context.Context, id int, ref string, body ApiLearningResourcesHistoryStatesRestoreCreateJSONRequestBody, reqEditors ...RequestEditorFn) (*ApiLearningResourcesHistoryStatesRestoreCreateResponse, error)
+
+	// ApiLearningResourcesHistoryStatesRestoreCreateWithFormdataBodyWithResponse ✨ Restore a past state of a course
+	//
+	// <Card href="https://humansignal.com/goenterprise">
+	//         <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+	//         <p style="margin-top: 10px; font-size: 14px;">
+	//             This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+	//         </p>
+	//     </Card>
+	// Author-only. Forward-only: appends revisions and a `before_restore` pin, never removes history. Restores the whole course, or one page (`scope=page`, which also brings back a deleted page). The result is a draft edit: it never publishes and never changes `content_version`. A stale `structure_version` answers 409 `structure_version_conflict`; a purged revision answers 410 `history_anchor_unavailable` and changes nothing.
+	//
+	// Takes a body of the `application/x-www-form-urlencoded` content type, and returns a wrapper object for the known response body format(s).
+	//
+	// Corresponds with POST /api/learning-resources/{id}/history/states/{ref}/restore/ (the `ApiLearningResourcesHistoryStatesRestoreCreate` operationId).
+	ApiLearningResourcesHistoryStatesRestoreCreateWithFormdataBodyWithResponse(ctx context.Context, id int, ref string, body ApiLearningResourcesHistoryStatesRestoreCreateFormdataRequestBody, reqEditors ...RequestEditorFn) (*ApiLearningResourcesHistoryStatesRestoreCreateResponse, error)
+
+	// ApiLearningResourcesHistoryViewingCreateWithResponse ✨ Heartbeat while the versions panel is open
+	//
+	// <Card href="https://humansignal.com/goenterprise">
+	//         <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+	//         <p style="margin-top: 10px; font-size: 14px;">
+	//             This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+	//         </p>
+	//     </Card>
+	// Author-only. Records a short viewing lease so retention does not thin the course while an author is looking at its history. Send it every `ttl_seconds / 2` seconds or so.
+	//
+	// Returns a wrapper object for the known response body format(s).
+	//
+	// Corresponds with POST /api/learning-resources/{id}/history/viewing/ (the `ApiLearningResourcesHistoryViewingCreate` operationId).
+	ApiLearningResourcesHistoryViewingCreateWithResponse(ctx context.Context, id int, reqEditors ...RequestEditorFn) (*ApiLearningResourcesHistoryViewingCreateResponse, error)
 
 	// ApiLearningResourcesInvalidateProgressCreateWithBodyWithResponse ✨ Invalidate progress for a learning resource
 	//

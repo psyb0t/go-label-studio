@@ -15,6 +15,309 @@ import (
 	openapi_types "github.com/oapi-codegen/runtime/types"
 )
 
+// ApiStoragesExportRedisCreateFormdataRequestBody defines body for ApiStoragesExportRedisCreate for application/x-www-form-urlencoded ContentType.
+type ApiStoragesExportRedisCreateFormdataRequestBody = RedisExportStorageWriteRequest
+
+// ApiStoragesExportRedisCreateMultipartRequestBody defines body for ApiStoragesExportRedisCreate for multipart/form-data ContentType.
+type ApiStoragesExportRedisCreateMultipartRequestBody = RedisExportStorageWriteRequest
+
+// ApiStoragesExportRedisValidateCreateJSONRequestBody defines body for ApiStoragesExportRedisValidateCreate for application/json ContentType.
+type ApiStoragesExportRedisValidateCreateJSONRequestBody = RedisExportStorageValidateRequest
+
+// ApiStoragesExportRedisValidateCreateFormdataRequestBody defines body for ApiStoragesExportRedisValidateCreate for application/x-www-form-urlencoded ContentType.
+type ApiStoragesExportRedisValidateCreateFormdataRequestBody = RedisExportStorageValidateRequest
+
+// ApiStoragesExportRedisValidateCreateMultipartRequestBody defines body for ApiStoragesExportRedisValidateCreate for multipart/form-data ContentType.
+type ApiStoragesExportRedisValidateCreateMultipartRequestBody = RedisExportStorageValidateRequest
+
+// ApiStoragesExportRedisPartialUpdateJSONRequestBody defines body for ApiStoragesExportRedisPartialUpdate for application/json ContentType.
+type ApiStoragesExportRedisPartialUpdateJSONRequestBody = PatchedRedisExportStorageWriteRequest
+
+// ApiStoragesExportRedisPartialUpdateFormdataRequestBody defines body for ApiStoragesExportRedisPartialUpdate for application/x-www-form-urlencoded ContentType.
+type ApiStoragesExportRedisPartialUpdateFormdataRequestBody = PatchedRedisExportStorageWriteRequest
+
+// ApiStoragesExportRedisPartialUpdateMultipartRequestBody defines body for ApiStoragesExportRedisPartialUpdate for multipart/form-data ContentType.
+type ApiStoragesExportRedisPartialUpdateMultipartRequestBody = PatchedRedisExportStorageWriteRequest
+
+// ApiStoragesExportS3CreateJSONRequestBody defines body for ApiStoragesExportS3Create for application/json ContentType.
+type ApiStoragesExportS3CreateJSONRequestBody = S3ExportStorageWriteRequest
+
+// ApiStoragesExportS3CreateFormdataRequestBody defines body for ApiStoragesExportS3Create for application/x-www-form-urlencoded ContentType.
+type ApiStoragesExportS3CreateFormdataRequestBody = S3ExportStorageWriteRequest
+
+// ApiStoragesExportS3CreateMultipartRequestBody defines body for ApiStoragesExportS3Create for multipart/form-data ContentType.
+type ApiStoragesExportS3CreateMultipartRequestBody = S3ExportStorageWriteRequest
+
+// ApiStoragesExportS3ValidateCreateJSONRequestBody defines body for ApiStoragesExportS3ValidateCreate for application/json ContentType.
+type ApiStoragesExportS3ValidateCreateJSONRequestBody = S3ExportStorageValidateRequest
+
+// ApiStoragesExportS3ValidateCreateFormdataRequestBody defines body for ApiStoragesExportS3ValidateCreate for application/x-www-form-urlencoded ContentType.
+type ApiStoragesExportS3ValidateCreateFormdataRequestBody = S3ExportStorageValidateRequest
+
+// ApiStoragesExportS3ValidateCreateMultipartRequestBody defines body for ApiStoragesExportS3ValidateCreate for multipart/form-data ContentType.
+type ApiStoragesExportS3ValidateCreateMultipartRequestBody = S3ExportStorageValidateRequest
+
+// ApiStoragesExportS3PartialUpdateJSONRequestBody defines body for ApiStoragesExportS3PartialUpdate for application/json ContentType.
+type ApiStoragesExportS3PartialUpdateJSONRequestBody = PatchedS3ExportStorageWriteRequest
+
+// ApiStoragesExportS3PartialUpdateFormdataRequestBody defines body for ApiStoragesExportS3PartialUpdate for application/x-www-form-urlencoded ContentType.
+type ApiStoragesExportS3PartialUpdateFormdataRequestBody = PatchedS3ExportStorageWriteRequest
+
+// ApiStoragesExportS3PartialUpdateMultipartRequestBody defines body for ApiStoragesExportS3PartialUpdate for multipart/form-data ContentType.
+type ApiStoragesExportS3PartialUpdateMultipartRequestBody = PatchedS3ExportStorageWriteRequest
+
+// ApiStoragesExportS3sCreateJSONRequestBody defines body for ApiStoragesExportS3sCreate for application/json ContentType.
+type ApiStoragesExportS3sCreateJSONRequestBody = LseS3ExportStorageRequest
+
+// ApiStoragesExportS3sCreateFormdataRequestBody defines body for ApiStoragesExportS3sCreate for application/x-www-form-urlencoded ContentType.
+type ApiStoragesExportS3sCreateFormdataRequestBody = LseS3ExportStorageRequest
+
+// ApiStoragesExportS3sCreateMultipartRequestBody defines body for ApiStoragesExportS3sCreate for multipart/form-data ContentType.
+type ApiStoragesExportS3sCreateMultipartRequestBody = LseS3ExportStorageRequest
+
+// ApiStoragesExportS3sValidateCreateJSONRequestBody defines body for ApiStoragesExportS3sValidateCreate for application/json ContentType.
+type ApiStoragesExportS3sValidateCreateJSONRequestBody = LseS3ExportStorageRequest
+
+// ApiStoragesExportS3sValidateCreateFormdataRequestBody defines body for ApiStoragesExportS3sValidateCreate for application/x-www-form-urlencoded ContentType.
+type ApiStoragesExportS3sValidateCreateFormdataRequestBody = LseS3ExportStorageRequest
+
+// ApiStoragesExportS3sValidateCreateMultipartRequestBody defines body for ApiStoragesExportS3sValidateCreate for multipart/form-data ContentType.
+type ApiStoragesExportS3sValidateCreateMultipartRequestBody = LseS3ExportStorageRequest
+
+// ApiStoragesExportS3sPartialUpdateJSONRequestBody defines body for ApiStoragesExportS3sPartialUpdate for application/json ContentType.
+type ApiStoragesExportS3sPartialUpdateJSONRequestBody = PatchedLseS3ExportStorageRequest
+
+// ApiStoragesExportS3sPartialUpdateFormdataRequestBody defines body for ApiStoragesExportS3sPartialUpdate for application/x-www-form-urlencoded ContentType.
+type ApiStoragesExportS3sPartialUpdateFormdataRequestBody = PatchedLseS3ExportStorageRequest
+
+// ApiStoragesExportS3sPartialUpdateMultipartRequestBody defines body for ApiStoragesExportS3sPartialUpdate for multipart/form-data ContentType.
+type ApiStoragesExportS3sPartialUpdateMultipartRequestBody = PatchedLseS3ExportStorageRequest
+
+// ApiStoragesGcsCreateJSONRequestBody defines body for ApiStoragesGcsCreate for application/json ContentType.
+type ApiStoragesGcsCreateJSONRequestBody = GCSImportStorageWriteRequest
+
+// ApiStoragesGcsCreateFormdataRequestBody defines body for ApiStoragesGcsCreate for application/x-www-form-urlencoded ContentType.
+type ApiStoragesGcsCreateFormdataRequestBody = GCSImportStorageWriteRequest
+
+// ApiStoragesGcsCreateMultipartRequestBody defines body for ApiStoragesGcsCreate for multipart/form-data ContentType.
+type ApiStoragesGcsCreateMultipartRequestBody = GCSImportStorageWriteRequest
+
+// ApiStoragesGcsValidateCreateJSONRequestBody defines body for ApiStoragesGcsValidateCreate for application/json ContentType.
+type ApiStoragesGcsValidateCreateJSONRequestBody = GCSImportStorageValidateRequest
+
+// ApiStoragesGcsValidateCreateFormdataRequestBody defines body for ApiStoragesGcsValidateCreate for application/x-www-form-urlencoded ContentType.
+type ApiStoragesGcsValidateCreateFormdataRequestBody = GCSImportStorageValidateRequest
+
+// ApiStoragesGcsValidateCreateMultipartRequestBody defines body for ApiStoragesGcsValidateCreate for multipart/form-data ContentType.
+type ApiStoragesGcsValidateCreateMultipartRequestBody = GCSImportStorageValidateRequest
+
+// ApiStoragesGcsPartialUpdateJSONRequestBody defines body for ApiStoragesGcsPartialUpdate for application/json ContentType.
+type ApiStoragesGcsPartialUpdateJSONRequestBody = PatchedGCSImportStorageWriteRequest
+
+// ApiStoragesGcsPartialUpdateFormdataRequestBody defines body for ApiStoragesGcsPartialUpdate for application/x-www-form-urlencoded ContentType.
+type ApiStoragesGcsPartialUpdateFormdataRequestBody = PatchedGCSImportStorageWriteRequest
+
+// ApiStoragesGcsPartialUpdateMultipartRequestBody defines body for ApiStoragesGcsPartialUpdate for multipart/form-data ContentType.
+type ApiStoragesGcsPartialUpdateMultipartRequestBody = PatchedGCSImportStorageWriteRequest
+
+// ApiStoragesGcsSaCreateJSONRequestBody defines body for ApiStoragesGcsSaCreate for application/json ContentType.
+type ApiStoragesGcsSaCreateJSONRequestBody = GCSSAImportStorageRequest
+
+// ApiStoragesGcsSaCreateFormdataRequestBody defines body for ApiStoragesGcsSaCreate for application/x-www-form-urlencoded ContentType.
+type ApiStoragesGcsSaCreateFormdataRequestBody = GCSSAImportStorageRequest
+
+// ApiStoragesGcsSaCreateMultipartRequestBody defines body for ApiStoragesGcsSaCreate for multipart/form-data ContentType.
+type ApiStoragesGcsSaCreateMultipartRequestBody = GCSSAImportStorageRequest
+
+// ApiStoragesGcsSaValidateCreateJSONRequestBody defines body for ApiStoragesGcsSaValidateCreate for application/json ContentType.
+type ApiStoragesGcsSaValidateCreateJSONRequestBody = GCSSAImportStorageRequest
+
+// ApiStoragesGcsSaValidateCreateFormdataRequestBody defines body for ApiStoragesGcsSaValidateCreate for application/x-www-form-urlencoded ContentType.
+type ApiStoragesGcsSaValidateCreateFormdataRequestBody = GCSSAImportStorageRequest
+
+// ApiStoragesGcsSaValidateCreateMultipartRequestBody defines body for ApiStoragesGcsSaValidateCreate for multipart/form-data ContentType.
+type ApiStoragesGcsSaValidateCreateMultipartRequestBody = GCSSAImportStorageRequest
+
+// ApiStoragesGcsSaPartialUpdateJSONRequestBody defines body for ApiStoragesGcsSaPartialUpdate for application/json ContentType.
+type ApiStoragesGcsSaPartialUpdateJSONRequestBody = PatchedGCSSAImportStorageRequest
+
+// ApiStoragesGcsSaPartialUpdateFormdataRequestBody defines body for ApiStoragesGcsSaPartialUpdate for application/x-www-form-urlencoded ContentType.
+type ApiStoragesGcsSaPartialUpdateFormdataRequestBody = PatchedGCSSAImportStorageRequest
+
+// ApiStoragesGcsSaPartialUpdateMultipartRequestBody defines body for ApiStoragesGcsSaPartialUpdate for multipart/form-data ContentType.
+type ApiStoragesGcsSaPartialUpdateMultipartRequestBody = PatchedGCSSAImportStorageRequest
+
+// ApiStoragesGcswifCreateJSONRequestBody defines body for ApiStoragesGcswifCreate for application/json ContentType.
+type ApiStoragesGcswifCreateJSONRequestBody = GCSWIFImportStorageRequest
+
+// ApiStoragesGcswifCreateFormdataRequestBody defines body for ApiStoragesGcswifCreate for application/x-www-form-urlencoded ContentType.
+type ApiStoragesGcswifCreateFormdataRequestBody = GCSWIFImportStorageRequest
+
+// ApiStoragesGcswifCreateMultipartRequestBody defines body for ApiStoragesGcswifCreate for multipart/form-data ContentType.
+type ApiStoragesGcswifCreateMultipartRequestBody = GCSWIFImportStorageRequest
+
+// ApiStoragesGcswifValidateCreateJSONRequestBody defines body for ApiStoragesGcswifValidateCreate for application/json ContentType.
+type ApiStoragesGcswifValidateCreateJSONRequestBody = GCSWIFImportStorageRequest
+
+// ApiStoragesGcswifValidateCreateFormdataRequestBody defines body for ApiStoragesGcswifValidateCreate for application/x-www-form-urlencoded ContentType.
+type ApiStoragesGcswifValidateCreateFormdataRequestBody = GCSWIFImportStorageRequest
+
+// ApiStoragesGcswifValidateCreateMultipartRequestBody defines body for ApiStoragesGcswifValidateCreate for multipart/form-data ContentType.
+type ApiStoragesGcswifValidateCreateMultipartRequestBody = GCSWIFImportStorageRequest
+
+// ApiStoragesGcswifPartialUpdateJSONRequestBody defines body for ApiStoragesGcswifPartialUpdate for application/json ContentType.
+type ApiStoragesGcswifPartialUpdateJSONRequestBody = PatchedGCSWIFImportStorageRequest
+
+// ApiStoragesGcswifPartialUpdateFormdataRequestBody defines body for ApiStoragesGcswifPartialUpdate for application/x-www-form-urlencoded ContentType.
+type ApiStoragesGcswifPartialUpdateFormdataRequestBody = PatchedGCSWIFImportStorageRequest
+
+// ApiStoragesGcswifPartialUpdateMultipartRequestBody defines body for ApiStoragesGcswifPartialUpdate for multipart/form-data ContentType.
+type ApiStoragesGcswifPartialUpdateMultipartRequestBody = PatchedGCSWIFImportStorageRequest
+
+// ApiStoragesLocalfilesCreateJSONRequestBody defines body for ApiStoragesLocalfilesCreate for application/json ContentType.
+type ApiStoragesLocalfilesCreateJSONRequestBody = LocalFilesImportStorageWriteRequest
+
+// ApiStoragesLocalfilesCreateFormdataRequestBody defines body for ApiStoragesLocalfilesCreate for application/x-www-form-urlencoded ContentType.
+type ApiStoragesLocalfilesCreateFormdataRequestBody = LocalFilesImportStorageWriteRequest
+
+// ApiStoragesLocalfilesCreateMultipartRequestBody defines body for ApiStoragesLocalfilesCreate for multipart/form-data ContentType.
+type ApiStoragesLocalfilesCreateMultipartRequestBody = LocalFilesImportStorageWriteRequest
+
+// ApiStoragesLocalfilesValidateCreateJSONRequestBody defines body for ApiStoragesLocalfilesValidateCreate for application/json ContentType.
+type ApiStoragesLocalfilesValidateCreateJSONRequestBody = LocalFilesImportStorageValidateRequest
+
+// ApiStoragesLocalfilesValidateCreateFormdataRequestBody defines body for ApiStoragesLocalfilesValidateCreate for application/x-www-form-urlencoded ContentType.
+type ApiStoragesLocalfilesValidateCreateFormdataRequestBody = LocalFilesImportStorageValidateRequest
+
+// ApiStoragesLocalfilesValidateCreateMultipartRequestBody defines body for ApiStoragesLocalfilesValidateCreate for multipart/form-data ContentType.
+type ApiStoragesLocalfilesValidateCreateMultipartRequestBody = LocalFilesImportStorageValidateRequest
+
+// ApiStoragesLocalfilesPartialUpdateJSONRequestBody defines body for ApiStoragesLocalfilesPartialUpdate for application/json ContentType.
+type ApiStoragesLocalfilesPartialUpdateJSONRequestBody = PatchedLocalFilesImportStorageWriteRequest
+
+// ApiStoragesLocalfilesPartialUpdateFormdataRequestBody defines body for ApiStoragesLocalfilesPartialUpdate for application/x-www-form-urlencoded ContentType.
+type ApiStoragesLocalfilesPartialUpdateFormdataRequestBody = PatchedLocalFilesImportStorageWriteRequest
+
+// ApiStoragesLocalfilesPartialUpdateMultipartRequestBody defines body for ApiStoragesLocalfilesPartialUpdate for multipart/form-data ContentType.
+type ApiStoragesLocalfilesPartialUpdateMultipartRequestBody = PatchedLocalFilesImportStorageWriteRequest
+
+// ApiStoragesRedisCreateJSONRequestBody defines body for ApiStoragesRedisCreate for application/json ContentType.
+type ApiStoragesRedisCreateJSONRequestBody = RedisImportStorageWriteRequest
+
+// ApiStoragesRedisCreateFormdataRequestBody defines body for ApiStoragesRedisCreate for application/x-www-form-urlencoded ContentType.
+type ApiStoragesRedisCreateFormdataRequestBody = RedisImportStorageWriteRequest
+
+// ApiStoragesRedisCreateMultipartRequestBody defines body for ApiStoragesRedisCreate for multipart/form-data ContentType.
+type ApiStoragesRedisCreateMultipartRequestBody = RedisImportStorageWriteRequest
+
+// ApiStoragesRedisValidateCreateJSONRequestBody defines body for ApiStoragesRedisValidateCreate for application/json ContentType.
+type ApiStoragesRedisValidateCreateJSONRequestBody = RedisImportStorageValidateRequest
+
+// ApiStoragesRedisValidateCreateFormdataRequestBody defines body for ApiStoragesRedisValidateCreate for application/x-www-form-urlencoded ContentType.
+type ApiStoragesRedisValidateCreateFormdataRequestBody = RedisImportStorageValidateRequest
+
+// ApiStoragesRedisValidateCreateMultipartRequestBody defines body for ApiStoragesRedisValidateCreate for multipart/form-data ContentType.
+type ApiStoragesRedisValidateCreateMultipartRequestBody = RedisImportStorageValidateRequest
+
+// ApiStoragesRedisPartialUpdateJSONRequestBody defines body for ApiStoragesRedisPartialUpdate for application/json ContentType.
+type ApiStoragesRedisPartialUpdateJSONRequestBody = PatchedRedisImportStorageWriteRequest
+
+// ApiStoragesRedisPartialUpdateFormdataRequestBody defines body for ApiStoragesRedisPartialUpdate for application/x-www-form-urlencoded ContentType.
+type ApiStoragesRedisPartialUpdateFormdataRequestBody = PatchedRedisImportStorageWriteRequest
+
+// ApiStoragesRedisPartialUpdateMultipartRequestBody defines body for ApiStoragesRedisPartialUpdate for multipart/form-data ContentType.
+type ApiStoragesRedisPartialUpdateMultipartRequestBody = PatchedRedisImportStorageWriteRequest
+
+// ApiStoragesS3CreateJSONRequestBody defines body for ApiStoragesS3Create for application/json ContentType.
+type ApiStoragesS3CreateJSONRequestBody = S3ImportStorageWriteRequest
+
+// ApiStoragesS3CreateFormdataRequestBody defines body for ApiStoragesS3Create for application/x-www-form-urlencoded ContentType.
+type ApiStoragesS3CreateFormdataRequestBody = S3ImportStorageWriteRequest
+
+// ApiStoragesS3CreateMultipartRequestBody defines body for ApiStoragesS3Create for multipart/form-data ContentType.
+type ApiStoragesS3CreateMultipartRequestBody = S3ImportStorageWriteRequest
+
+// ApiStoragesS3ValidateCreateJSONRequestBody defines body for ApiStoragesS3ValidateCreate for application/json ContentType.
+type ApiStoragesS3ValidateCreateJSONRequestBody = S3ImportStorageValidateRequest
+
+// ApiStoragesS3ValidateCreateFormdataRequestBody defines body for ApiStoragesS3ValidateCreate for application/x-www-form-urlencoded ContentType.
+type ApiStoragesS3ValidateCreateFormdataRequestBody = S3ImportStorageValidateRequest
+
+// ApiStoragesS3ValidateCreateMultipartRequestBody defines body for ApiStoragesS3ValidateCreate for multipart/form-data ContentType.
+type ApiStoragesS3ValidateCreateMultipartRequestBody = S3ImportStorageValidateRequest
+
+// ApiStoragesS3PartialUpdateJSONRequestBody defines body for ApiStoragesS3PartialUpdate for application/json ContentType.
+type ApiStoragesS3PartialUpdateJSONRequestBody = PatchedS3ImportStorageWriteRequest
+
+// ApiStoragesS3PartialUpdateFormdataRequestBody defines body for ApiStoragesS3PartialUpdate for application/x-www-form-urlencoded ContentType.
+type ApiStoragesS3PartialUpdateFormdataRequestBody = PatchedS3ImportStorageWriteRequest
+
+// ApiStoragesS3PartialUpdateMultipartRequestBody defines body for ApiStoragesS3PartialUpdate for multipart/form-data ContentType.
+type ApiStoragesS3PartialUpdateMultipartRequestBody = PatchedS3ImportStorageWriteRequest
+
+// ApiStoragesS3sCreateJSONRequestBody defines body for ApiStoragesS3sCreate for application/json ContentType.
+type ApiStoragesS3sCreateJSONRequestBody = LseS3ImportStorageRequest
+
+// ApiStoragesS3sCreateFormdataRequestBody defines body for ApiStoragesS3sCreate for application/x-www-form-urlencoded ContentType.
+type ApiStoragesS3sCreateFormdataRequestBody = LseS3ImportStorageRequest
+
+// ApiStoragesS3sCreateMultipartRequestBody defines body for ApiStoragesS3sCreate for multipart/form-data ContentType.
+type ApiStoragesS3sCreateMultipartRequestBody = LseS3ImportStorageRequest
+
+// ApiStoragesS3sValidateCreateJSONRequestBody defines body for ApiStoragesS3sValidateCreate for application/json ContentType.
+type ApiStoragesS3sValidateCreateJSONRequestBody = LseS3ImportStorageRequest
+
+// ApiStoragesS3sValidateCreateFormdataRequestBody defines body for ApiStoragesS3sValidateCreate for application/x-www-form-urlencoded ContentType.
+type ApiStoragesS3sValidateCreateFormdataRequestBody = LseS3ImportStorageRequest
+
+// ApiStoragesS3sValidateCreateMultipartRequestBody defines body for ApiStoragesS3sValidateCreate for multipart/form-data ContentType.
+type ApiStoragesS3sValidateCreateMultipartRequestBody = LseS3ImportStorageRequest
+
+// ApiStoragesS3sPartialUpdateJSONRequestBody defines body for ApiStoragesS3sPartialUpdate for application/json ContentType.
+type ApiStoragesS3sPartialUpdateJSONRequestBody = PatchedLseS3ImportStorageRequest
+
+// ApiStoragesS3sPartialUpdateFormdataRequestBody defines body for ApiStoragesS3sPartialUpdate for application/x-www-form-urlencoded ContentType.
+type ApiStoragesS3sPartialUpdateFormdataRequestBody = PatchedLseS3ImportStorageRequest
+
+// ApiStoragesS3sPartialUpdateMultipartRequestBody defines body for ApiStoragesS3sPartialUpdate for multipart/form-data ContentType.
+type ApiStoragesS3sPartialUpdateMultipartRequestBody = PatchedLseS3ImportStorageRequest
+
+// ApiTasksCreateJSONRequestBody defines body for ApiTasksCreate for application/json ContentType.
+type ApiTasksCreateJSONRequestBody = LseTaskRequest
+
+// ApiTasksCreateFormdataRequestBody defines body for ApiTasksCreate for application/x-www-form-urlencoded ContentType.
+type ApiTasksCreateFormdataRequestBody = LseTaskRequest
+
+// ApiTasksCreateMultipartRequestBody defines body for ApiTasksCreate for multipart/form-data ContentType.
+type ApiTasksCreateMultipartRequestBody = LseTaskRequest
+
+// ApiTasksPartialUpdateJSONRequestBody defines body for ApiTasksPartialUpdate for application/json ContentType.
+type ApiTasksPartialUpdateJSONRequestBody = PatchedLseTaskRequest
+
+// ApiTasksPartialUpdateFormdataRequestBody defines body for ApiTasksPartialUpdate for application/x-www-form-urlencoded ContentType.
+type ApiTasksPartialUpdateFormdataRequestBody = PatchedLseTaskRequest
+
+// ApiTasksPartialUpdateMultipartRequestBody defines body for ApiTasksPartialUpdate for multipart/form-data ContentType.
+type ApiTasksPartialUpdateMultipartRequestBody = PatchedLseTaskRequest
+
+// ApiTasksAnnotationsCreateJSONRequestBody defines body for ApiTasksAnnotationsCreate for application/json ContentType.
+type ApiTasksAnnotationsCreateJSONRequestBody = AnnotationRequest
+
+// ApiTasksAnnotationsCreateFormdataRequestBody defines body for ApiTasksAnnotationsCreate for application/x-www-form-urlencoded ContentType.
+type ApiTasksAnnotationsCreateFormdataRequestBody = AnnotationRequest
+
+// ApiTasksAnnotationsCreateMultipartRequestBody defines body for ApiTasksAnnotationsCreate for multipart/form-data ContentType.
+type ApiTasksAnnotationsCreateMultipartRequestBody = AnnotationRequest
+
+// ApiTasksEventsCreateJSONRequestBody defines body for ApiTasksEventsCreate for application/json ContentType.
+type ApiTasksEventsCreateJSONRequestBody = TaskEventRequest
+
+// ApiTasksEventsCreateFormdataRequestBody defines body for ApiTasksEventsCreate for application/x-www-form-urlencoded ContentType.
+type ApiTasksEventsCreateFormdataRequestBody = TaskEventRequest
+
+// ApiTasksEventsCreateMultipartRequestBody defines body for ApiTasksEventsCreate for multipart/form-data ContentType.
+type ApiTasksEventsCreateMultipartRequestBody = TaskEventRequest
+
 // ApiTokenBlacklistCreateJSONRequestBody defines body for ApiTokenBlacklistCreate for application/json ContentType.
 type ApiTokenBlacklistCreateJSONRequestBody = LSAPITokenBlacklistRequest
 
@@ -4679,6 +4982,219 @@ type ClientInterface interface {
 	//
 	// Corresponds with GET /api/learning-resources/{id}/export/ (the `ApiLearningResourcesExportRetrieve` operationId).
 	ApiLearningResourcesExportRetrieve(ctx context.Context, id int, params *ApiLearningResourcesExportRetrieveParams, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	// ApiLearningResourcesHistoryRetrieve ✨ List the version history of a course
+	//
+	// <Card href="https://humansignal.com/goenterprise">
+	//         <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+	//         <p style="margin-top: 10px; font-size: 14px;">
+	//             This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+	//         </p>
+	//     </Card>
+	// Author-only. Edit sessions (newest first), pinned versions and recently deleted pages. Summaries only, no page bodies.
+	//
+	// Corresponds with GET /api/learning-resources/{id}/history/ (the `ApiLearningResourcesHistoryRetrieve` operationId).
+	ApiLearningResourcesHistoryRetrieve(ctx context.Context, id int, params *ApiLearningResourcesHistoryRetrieveParams, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	// ApiLearningResourcesHistoryPinsCreateWithBody ✨ Name a past state of a course
+	//
+	// <Card href="https://humansignal.com/goenterprise">
+	//         <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+	//         <p style="margin-top: 10px; font-size: 14px;">
+	//             This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+	//         </p>
+	//     </Card>
+	// Author-only. Materializes the state at `ref` as a named pin that survives thinning of the revisions behind it.
+	//
+	// Takes any type of body and a specified content type.
+	//
+	// Corresponds with POST /api/learning-resources/{id}/history/pins/ (the `ApiLearningResourcesHistoryPinsCreate` operationId).
+	ApiLearningResourcesHistoryPinsCreateWithBody(ctx context.Context, id int, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	// ApiLearningResourcesHistoryPinsCreate ✨ Name a past state of a course
+	//
+	// <Card href="https://humansignal.com/goenterprise">
+	//         <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+	//         <p style="margin-top: 10px; font-size: 14px;">
+	//             This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+	//         </p>
+	//     </Card>
+	// Author-only. Materializes the state at `ref` as a named pin that survives thinning of the revisions behind it.
+	//
+	// Takes a body of the `application/json` content type.
+	//
+	// Corresponds with POST /api/learning-resources/{id}/history/pins/ (the `ApiLearningResourcesHistoryPinsCreate` operationId).
+	ApiLearningResourcesHistoryPinsCreate(ctx context.Context, id int, body ApiLearningResourcesHistoryPinsCreateJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	// ApiLearningResourcesHistoryPinsCreateWithFormdataBody ✨ Name a past state of a course
+	//
+	// <Card href="https://humansignal.com/goenterprise">
+	//         <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+	//         <p style="margin-top: 10px; font-size: 14px;">
+	//             This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+	//         </p>
+	//     </Card>
+	// Author-only. Materializes the state at `ref` as a named pin that survives thinning of the revisions behind it.
+	//
+	// Takes a body of the `application/x-www-form-urlencoded` content type.
+	//
+	// Corresponds with POST /api/learning-resources/{id}/history/pins/ (the `ApiLearningResourcesHistoryPinsCreate` operationId).
+	ApiLearningResourcesHistoryPinsCreateWithFormdataBody(ctx context.Context, id int, body ApiLearningResourcesHistoryPinsCreateFormdataRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	// ApiLearningResourcesHistoryPinsDestroy ✨ Delete a named or before-restore version
+	//
+	// <Card href="https://humansignal.com/goenterprise">
+	//         <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+	//         <p style="margin-top: 10px; font-size: 14px;">
+	//             This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+	//         </p>
+	//     </Card>
+	// Author-only. `named` and `before_restore` pins are deletable; published pins record what was published and answer 400 `pin_not_deletable`. Deletes only the pin: revisions and other pins are untouched, and the revisions behind it stay subject to thinning.
+	//
+	// Corresponds with DELETE /api/learning-resources/{id}/history/pins/{pin_id}/ (the `ApiLearningResourcesHistoryPinsDestroy` operationId).
+	ApiLearningResourcesHistoryPinsDestroy(ctx context.Context, id int, pinId int, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	// ApiLearningResourcesHistoryPinsPartialUpdateWithBody ✨ Rename a named version
+	//
+	// <Card href="https://humansignal.com/goenterprise">
+	//         <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+	//         <p style="margin-top: 10px; font-size: 14px;">
+	//             This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+	//         </p>
+	//     </Card>
+	// Author-only. Only `named` pins are renamable; published and before-restore pins answer 400 `pin_not_renamable`.
+	//
+	// Takes any type of body and a specified content type.
+	//
+	// Corresponds with PATCH /api/learning-resources/{id}/history/pins/{pin_id}/ (the `ApiLearningResourcesHistoryPinsPartialUpdate` operationId).
+	ApiLearningResourcesHistoryPinsPartialUpdateWithBody(ctx context.Context, id int, pinId int, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	// ApiLearningResourcesHistoryPinsPartialUpdate ✨ Rename a named version
+	//
+	// <Card href="https://humansignal.com/goenterprise">
+	//         <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+	//         <p style="margin-top: 10px; font-size: 14px;">
+	//             This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+	//         </p>
+	//     </Card>
+	// Author-only. Only `named` pins are renamable; published and before-restore pins answer 400 `pin_not_renamable`.
+	//
+	// Takes a body of the `application/json` content type.
+	//
+	// Corresponds with PATCH /api/learning-resources/{id}/history/pins/{pin_id}/ (the `ApiLearningResourcesHistoryPinsPartialUpdate` operationId).
+	ApiLearningResourcesHistoryPinsPartialUpdate(ctx context.Context, id int, pinId int, body ApiLearningResourcesHistoryPinsPartialUpdateJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	// ApiLearningResourcesHistoryPinsPartialUpdateWithFormdataBody ✨ Rename a named version
+	//
+	// <Card href="https://humansignal.com/goenterprise">
+	//         <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+	//         <p style="margin-top: 10px; font-size: 14px;">
+	//             This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+	//         </p>
+	//     </Card>
+	// Author-only. Only `named` pins are renamable; published and before-restore pins answer 400 `pin_not_renamable`.
+	//
+	// Takes a body of the `application/x-www-form-urlencoded` content type.
+	//
+	// Corresponds with PATCH /api/learning-resources/{id}/history/pins/{pin_id}/ (the `ApiLearningResourcesHistoryPinsPartialUpdate` operationId).
+	ApiLearningResourcesHistoryPinsPartialUpdateWithFormdataBody(ctx context.Context, id int, pinId int, body ApiLearningResourcesHistoryPinsPartialUpdateFormdataRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	// ApiLearningResourcesHistorySessionsSavesRetrieve ✨ List the saves of one history session
+	//
+	// <Card href="https://humansignal.com/goenterprise">
+	//         <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+	//         <p style="margin-top: 10px; font-size: 14px;">
+	//             This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+	//         </p>
+	//     </Card>
+	// Author-only. The individual saves of the session that ends at `ref`.
+	//
+	// Corresponds with GET /api/learning-resources/{id}/history/sessions/{ref}/saves/ (the `ApiLearningResourcesHistorySessionsSavesRetrieve` operationId).
+	ApiLearningResourcesHistorySessionsSavesRetrieve(ctx context.Context, id int, ref string, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	// ApiLearningResourcesHistoryStatesRetrieve ✨ Get one past state of a course
+	//
+	// <Card href="https://humansignal.com/goenterprise">
+	//         <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+	//         <p style="margin-top: 10px; font-size: 14px;">
+	//             This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+	//         </p>
+	//     </Card>
+	// Author-only. The whole course as of a revision or pin: `content` in the shape the live course detail returns, plus snapshot-shaped `modules`. Answers 410 `history_anchor_unavailable` with the nearest surviving state when the revision has been purged.
+	//
+	// Corresponds with GET /api/learning-resources/{id}/history/states/{ref}/ (the `ApiLearningResourcesHistoryStatesRetrieve` operationId).
+	ApiLearningResourcesHistoryStatesRetrieve(ctx context.Context, id int, ref string, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	// ApiLearningResourcesHistoryStatesRestorePreviewRetrieve ✨ Preview a restore
+	//
+	// <Card href="https://humansignal.com/goenterprise">
+	//         <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+	//         <p style="margin-top: 10px; font-size: 14px;">
+	//             This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+	//         </p>
+	//     </Card>
+	// Author-only. Counts of what a restore would add, change and remove, including the learners who have progress on modules the restore would delete. Writes nothing.
+	//
+	// Corresponds with GET /api/learning-resources/{id}/history/states/{ref}/restore-preview/ (the `ApiLearningResourcesHistoryStatesRestorePreviewRetrieve` operationId).
+	ApiLearningResourcesHistoryStatesRestorePreviewRetrieve(ctx context.Context, id int, ref string, params *ApiLearningResourcesHistoryStatesRestorePreviewRetrieveParams, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	// ApiLearningResourcesHistoryStatesRestoreCreateWithBody ✨ Restore a past state of a course
+	//
+	// <Card href="https://humansignal.com/goenterprise">
+	//         <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+	//         <p style="margin-top: 10px; font-size: 14px;">
+	//             This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+	//         </p>
+	//     </Card>
+	// Author-only. Forward-only: appends revisions and a `before_restore` pin, never removes history. Restores the whole course, or one page (`scope=page`, which also brings back a deleted page). The result is a draft edit: it never publishes and never changes `content_version`. A stale `structure_version` answers 409 `structure_version_conflict`; a purged revision answers 410 `history_anchor_unavailable` and changes nothing.
+	//
+	// Takes any type of body and a specified content type.
+	//
+	// Corresponds with POST /api/learning-resources/{id}/history/states/{ref}/restore/ (the `ApiLearningResourcesHistoryStatesRestoreCreate` operationId).
+	ApiLearningResourcesHistoryStatesRestoreCreateWithBody(ctx context.Context, id int, ref string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	// ApiLearningResourcesHistoryStatesRestoreCreate ✨ Restore a past state of a course
+	//
+	// <Card href="https://humansignal.com/goenterprise">
+	//         <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+	//         <p style="margin-top: 10px; font-size: 14px;">
+	//             This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+	//         </p>
+	//     </Card>
+	// Author-only. Forward-only: appends revisions and a `before_restore` pin, never removes history. Restores the whole course, or one page (`scope=page`, which also brings back a deleted page). The result is a draft edit: it never publishes and never changes `content_version`. A stale `structure_version` answers 409 `structure_version_conflict`; a purged revision answers 410 `history_anchor_unavailable` and changes nothing.
+	//
+	// Takes a body of the `application/json` content type.
+	//
+	// Corresponds with POST /api/learning-resources/{id}/history/states/{ref}/restore/ (the `ApiLearningResourcesHistoryStatesRestoreCreate` operationId).
+	ApiLearningResourcesHistoryStatesRestoreCreate(ctx context.Context, id int, ref string, body ApiLearningResourcesHistoryStatesRestoreCreateJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	// ApiLearningResourcesHistoryStatesRestoreCreateWithFormdataBody ✨ Restore a past state of a course
+	//
+	// <Card href="https://humansignal.com/goenterprise">
+	//         <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+	//         <p style="margin-top: 10px; font-size: 14px;">
+	//             This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+	//         </p>
+	//     </Card>
+	// Author-only. Forward-only: appends revisions and a `before_restore` pin, never removes history. Restores the whole course, or one page (`scope=page`, which also brings back a deleted page). The result is a draft edit: it never publishes and never changes `content_version`. A stale `structure_version` answers 409 `structure_version_conflict`; a purged revision answers 410 `history_anchor_unavailable` and changes nothing.
+	//
+	// Takes a body of the `application/x-www-form-urlencoded` content type.
+	//
+	// Corresponds with POST /api/learning-resources/{id}/history/states/{ref}/restore/ (the `ApiLearningResourcesHistoryStatesRestoreCreate` operationId).
+	ApiLearningResourcesHistoryStatesRestoreCreateWithFormdataBody(ctx context.Context, id int, ref string, body ApiLearningResourcesHistoryStatesRestoreCreateFormdataRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	// ApiLearningResourcesHistoryViewingCreate ✨ Heartbeat while the versions panel is open
+	//
+	// <Card href="https://humansignal.com/goenterprise">
+	//         <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+	//         <p style="margin-top: 10px; font-size: 14px;">
+	//             This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+	//         </p>
+	//     </Card>
+	// Author-only. Records a short viewing lease so retention does not thin the course while an author is looking at its history. Send it every `ttl_seconds / 2` seconds or so.
+	//
+	// Corresponds with POST /api/learning-resources/{id}/history/viewing/ (the `ApiLearningResourcesHistoryViewingCreate` operationId).
+	ApiLearningResourcesHistoryViewingCreate(ctx context.Context, id int, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// ApiLearningResourcesInvalidateProgressCreateWithBody ✨ Invalidate progress for a learning resource
 	//
@@ -19369,7 +19885,7 @@ func (c *Client) ApiLearningResourcesExportRetrieve(ctx context.Context, id int,
 	return c.Client.Do(req)
 }
 
-// ApiLearningResourcesInvalidateProgressCreateWithBody ✨ Invalidate progress for a learning resource
+// ApiLearningResourcesHistoryRetrieve ✨ List the version history of a course
 //
 // <Card href="https://humansignal.com/goenterprise">
 //
@@ -19379,13 +19895,38 @@ func (c *Client) ApiLearningResourcesExportRetrieve(ctx context.Context, id int,
 //	    </p>
 //	</Card>
 //
-// Invalidate all learner progress for a learning resource.
+// Author-only. Edit sessions (newest first), pinned versions and recently deleted pages. Summaries only, no page bodies.
+//
+// Corresponds with GET /api/learning-resources/{id}/history/ (the `ApiLearningResourcesHistoryRetrieve` operationId).
+func (c *Client) ApiLearningResourcesHistoryRetrieve(ctx context.Context, id int, params *ApiLearningResourcesHistoryRetrieveParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiLearningResourcesHistoryRetrieveRequest(c.Server, id, params)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ApiLearningResourcesHistoryPinsCreateWithBody ✨ Name a past state of a course
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Author-only. Materializes the state at `ref` as a named pin that survives thinning of the revisions behind it.
 //
 // Takes any type of body and a specified content type.
 //
-// Corresponds with POST /api/learning-resources/{id}/invalidate-progress/ (the `ApiLearningResourcesInvalidateProgressCreate` operationId).
-func (c *Client) ApiLearningResourcesInvalidateProgressCreateWithBody(ctx context.Context, id int, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewApiLearningResourcesInvalidateProgressCreateRequestWithBody(c.Server, id, contentType, body)
+// Corresponds with POST /api/learning-resources/{id}/history/pins/ (the `ApiLearningResourcesHistoryPinsCreate` operationId).
+func (c *Client) ApiLearningResourcesHistoryPinsCreateWithBody(ctx context.Context, id int, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiLearningResourcesHistoryPinsCreateRequestWithBody(c.Server, id, contentType, body)
 	if err != nil {
 		return nil, err
 	}
@@ -19396,7 +19937,7 @@ func (c *Client) ApiLearningResourcesInvalidateProgressCreateWithBody(ctx contex
 	return c.Client.Do(req)
 }
 
-// ApiLearningResourcesInvalidateProgressCreate ✨ Invalidate progress for a learning resource
+// ApiLearningResourcesHistoryPinsCreate ✨ Name a past state of a course
 //
 // <Card href="https://humansignal.com/goenterprise">
 //
@@ -19406,13 +19947,13 @@ func (c *Client) ApiLearningResourcesInvalidateProgressCreateWithBody(ctx contex
 //	    </p>
 //	</Card>
 //
-// Invalidate all learner progress for a learning resource.
+// Author-only. Materializes the state at `ref` as a named pin that survives thinning of the revisions behind it.
 //
 // Takes a body of the `application/json` content type.
 //
-// Corresponds with POST /api/learning-resources/{id}/invalidate-progress/ (the `ApiLearningResourcesInvalidateProgressCreate` operationId).
-func (c *Client) ApiLearningResourcesInvalidateProgressCreate(ctx context.Context, id int, body ApiLearningResourcesInvalidateProgressCreateJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewApiLearningResourcesInvalidateProgressCreateRequest(c.Server, id, body)
+// Corresponds with POST /api/learning-resources/{id}/history/pins/ (the `ApiLearningResourcesHistoryPinsCreate` operationId).
+func (c *Client) ApiLearningResourcesHistoryPinsCreate(ctx context.Context, id int, body ApiLearningResourcesHistoryPinsCreateJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiLearningResourcesHistoryPinsCreateRequest(c.Server, id, body)
 	if err != nil {
 		return nil, err
 	}
@@ -19423,7 +19964,7 @@ func (c *Client) ApiLearningResourcesInvalidateProgressCreate(ctx context.Contex
 	return c.Client.Do(req)
 }
 
-// ApiLearningResourcesInvalidateProgressCreateWithFormdataBody ✨ Invalidate progress for a learning resource
+// ApiLearningResourcesHistoryPinsCreateWithFormdataBody ✨ Name a past state of a course
 //
 // <Card href="https://humansignal.com/goenterprise">
 //
@@ -19433,13 +19974,13 @@ func (c *Client) ApiLearningResourcesInvalidateProgressCreate(ctx context.Contex
 //	    </p>
 //	</Card>
 //
-// Invalidate all learner progress for a learning resource.
+// Author-only. Materializes the state at `ref` as a named pin that survives thinning of the revisions behind it.
 //
 // Takes a body of the `application/x-www-form-urlencoded` content type.
 //
-// Corresponds with POST /api/learning-resources/{id}/invalidate-progress/ (the `ApiLearningResourcesInvalidateProgressCreate` operationId).
-func (c *Client) ApiLearningResourcesInvalidateProgressCreateWithFormdataBody(ctx context.Context, id int, body ApiLearningResourcesInvalidateProgressCreateFormdataRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewApiLearningResourcesInvalidateProgressCreateRequestWithFormdataBody(c.Server, id, body)
+// Corresponds with POST /api/learning-resources/{id}/history/pins/ (the `ApiLearningResourcesHistoryPinsCreate` operationId).
+func (c *Client) ApiLearningResourcesHistoryPinsCreateWithFormdataBody(ctx context.Context, id int, body ApiLearningResourcesHistoryPinsCreateFormdataRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiLearningResourcesHistoryPinsCreateRequestWithFormdataBody(c.Server, id, body)
 	if err != nil {
 		return nil, err
 	}
@@ -19450,7 +19991,7 @@ func (c *Client) ApiLearningResourcesInvalidateProgressCreateWithFormdataBody(ct
 	return c.Client.Do(req)
 }
 
-// ApiLearningResourcesModulesList ✨ List or create modules for a learning resource
+// ApiLearningResourcesHistoryPinsDestroy ✨ Delete a named or before-restore version
 //
 // <Card href="https://humansignal.com/goenterprise">
 //
@@ -19460,577 +20001,11 @@ func (c *Client) ApiLearningResourcesInvalidateProgressCreateWithFormdataBody(ct
 //	    </p>
 //	</Card>
 //
-// List or create modules for a learning resource.
-//
-// Corresponds with GET /api/learning-resources/{id}/modules/ (the `ApiLearningResourcesModulesList` operationId).
-func (c *Client) ApiLearningResourcesModulesList(ctx context.Context, id int, params *ApiLearningResourcesModulesListParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewApiLearningResourcesModulesListRequest(c.Server, id, params)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// ApiLearningResourcesModulesCreateWithBody ✨ List or create modules for a learning resource
-//
-// <Card href="https://humansignal.com/goenterprise">
-//
-//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
-//	    <p style="margin-top: 10px; font-size: 14px;">
-//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
-//	    </p>
-//	</Card>
-//
-// List or create modules for a learning resource.
-//
-// Takes any type of body and a specified content type.
-//
-// Corresponds with POST /api/learning-resources/{id}/modules/ (the `ApiLearningResourcesModulesCreate` operationId).
-func (c *Client) ApiLearningResourcesModulesCreateWithBody(ctx context.Context, id int, params *ApiLearningResourcesModulesCreateParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewApiLearningResourcesModulesCreateRequestWithBody(c.Server, id, params, contentType, body)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// ApiLearningResourcesModulesCreate ✨ List or create modules for a learning resource
-//
-// <Card href="https://humansignal.com/goenterprise">
-//
-//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
-//	    <p style="margin-top: 10px; font-size: 14px;">
-//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
-//	    </p>
-//	</Card>
-//
-// List or create modules for a learning resource.
-//
-// Takes a body of the `application/json` content type.
-//
-// Corresponds with POST /api/learning-resources/{id}/modules/ (the `ApiLearningResourcesModulesCreate` operationId).
-func (c *Client) ApiLearningResourcesModulesCreate(ctx context.Context, id int, params *ApiLearningResourcesModulesCreateParams, body ApiLearningResourcesModulesCreateJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewApiLearningResourcesModulesCreateRequest(c.Server, id, params, body)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// ApiLearningResourcesModulesCreateWithFormdataBody ✨ List or create modules for a learning resource
-//
-// <Card href="https://humansignal.com/goenterprise">
-//
-//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
-//	    <p style="margin-top: 10px; font-size: 14px;">
-//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
-//	    </p>
-//	</Card>
-//
-// List or create modules for a learning resource.
-//
-// Takes a body of the `application/x-www-form-urlencoded` content type.
-//
-// Corresponds with POST /api/learning-resources/{id}/modules/ (the `ApiLearningResourcesModulesCreate` operationId).
-func (c *Client) ApiLearningResourcesModulesCreateWithFormdataBody(ctx context.Context, id int, params *ApiLearningResourcesModulesCreateParams, body ApiLearningResourcesModulesCreateFormdataRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewApiLearningResourcesModulesCreateRequestWithFormdataBody(c.Server, id, params, body)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// ApiLearningResourcesModulesReorderCreateWithBody ✨ Reorder modules for a learning resource
-//
-// <Card href="https://humansignal.com/goenterprise">
-//
-//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
-//	    <p style="margin-top: 10px; font-size: 14px;">
-//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
-//	    </p>
-//	</Card>
-//
-// Reorder modules for a learning resource.
-//
-// Takes any type of body and a specified content type.
-//
-// Corresponds with POST /api/learning-resources/{id}/modules/reorder/ (the `ApiLearningResourcesModulesReorderCreate` operationId).
-func (c *Client) ApiLearningResourcesModulesReorderCreateWithBody(ctx context.Context, id int, params *ApiLearningResourcesModulesReorderCreateParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewApiLearningResourcesModulesReorderCreateRequestWithBody(c.Server, id, params, contentType, body)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// ApiLearningResourcesModulesReorderCreate ✨ Reorder modules for a learning resource
-//
-// <Card href="https://humansignal.com/goenterprise">
-//
-//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
-//	    <p style="margin-top: 10px; font-size: 14px;">
-//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
-//	    </p>
-//	</Card>
-//
-// Reorder modules for a learning resource.
-//
-// Takes a body of the `application/json` content type.
-//
-// Corresponds with POST /api/learning-resources/{id}/modules/reorder/ (the `ApiLearningResourcesModulesReorderCreate` operationId).
-func (c *Client) ApiLearningResourcesModulesReorderCreate(ctx context.Context, id int, params *ApiLearningResourcesModulesReorderCreateParams, body ApiLearningResourcesModulesReorderCreateJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewApiLearningResourcesModulesReorderCreateRequest(c.Server, id, params, body)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// ApiLearningResourcesModulesReorderCreateWithFormdataBody ✨ Reorder modules for a learning resource
-//
-// <Card href="https://humansignal.com/goenterprise">
-//
-//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
-//	    <p style="margin-top: 10px; font-size: 14px;">
-//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
-//	    </p>
-//	</Card>
-//
-// Reorder modules for a learning resource.
-//
-// Takes a body of the `application/x-www-form-urlencoded` content type.
-//
-// Corresponds with POST /api/learning-resources/{id}/modules/reorder/ (the `ApiLearningResourcesModulesReorderCreate` operationId).
-func (c *Client) ApiLearningResourcesModulesReorderCreateWithFormdataBody(ctx context.Context, id int, params *ApiLearningResourcesModulesReorderCreateParams, body ApiLearningResourcesModulesReorderCreateFormdataRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewApiLearningResourcesModulesReorderCreateRequestWithFormdataBody(c.Server, id, params, body)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// ApiLearningResourcesModulesDestroy ✨ Update or delete a module
-//
-// <Card href="https://humansignal.com/goenterprise">
-//
-//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
-//	    <p style="margin-top: 10px; font-size: 14px;">
-//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
-//	    </p>
-//	</Card>
-//
-// Update or delete a module in a learning resource.
-//
-// Corresponds with DELETE /api/learning-resources/{id}/modules/{module_id}/ (the `ApiLearningResourcesModulesDestroy` operationId).
-func (c *Client) ApiLearningResourcesModulesDestroy(ctx context.Context, id int, moduleId string, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewApiLearningResourcesModulesDestroyRequest(c.Server, id, moduleId)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// ApiLearningResourcesModulesPartialUpdateWithBody ✨ Update or delete a module
-//
-// <Card href="https://humansignal.com/goenterprise">
-//
-//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
-//	    <p style="margin-top: 10px; font-size: 14px;">
-//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
-//	    </p>
-//	</Card>
-//
-// Update or delete a module in a learning resource.
-//
-// Takes any type of body and a specified content type.
-//
-// Corresponds with PATCH /api/learning-resources/{id}/modules/{module_id}/ (the `ApiLearningResourcesModulesPartialUpdate` operationId).
-func (c *Client) ApiLearningResourcesModulesPartialUpdateWithBody(ctx context.Context, id int, moduleId string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewApiLearningResourcesModulesPartialUpdateRequestWithBody(c.Server, id, moduleId, contentType, body)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// ApiLearningResourcesModulesPartialUpdate ✨ Update or delete a module
-//
-// <Card href="https://humansignal.com/goenterprise">
-//
-//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
-//	    <p style="margin-top: 10px; font-size: 14px;">
-//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
-//	    </p>
-//	</Card>
-//
-// Update or delete a module in a learning resource.
-//
-// Takes a body of the `application/json` content type.
-//
-// Corresponds with PATCH /api/learning-resources/{id}/modules/{module_id}/ (the `ApiLearningResourcesModulesPartialUpdate` operationId).
-func (c *Client) ApiLearningResourcesModulesPartialUpdate(ctx context.Context, id int, moduleId string, body ApiLearningResourcesModulesPartialUpdateJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewApiLearningResourcesModulesPartialUpdateRequest(c.Server, id, moduleId, body)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// ApiLearningResourcesModulesPartialUpdateWithFormdataBody ✨ Update or delete a module
-//
-// <Card href="https://humansignal.com/goenterprise">
-//
-//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
-//	    <p style="margin-top: 10px; font-size: 14px;">
-//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
-//	    </p>
-//	</Card>
-//
-// Update or delete a module in a learning resource.
-//
-// Takes a body of the `application/x-www-form-urlencoded` content type.
-//
-// Corresponds with PATCH /api/learning-resources/{id}/modules/{module_id}/ (the `ApiLearningResourcesModulesPartialUpdate` operationId).
-func (c *Client) ApiLearningResourcesModulesPartialUpdateWithFormdataBody(ctx context.Context, id int, moduleId string, body ApiLearningResourcesModulesPartialUpdateFormdataRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewApiLearningResourcesModulesPartialUpdateRequestWithFormdataBody(c.Server, id, moduleId, body)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// ApiLearningResourcesModulesPagesPartialUpdateWithBody ✨ Save one page of a module
-//
-// <Card href="https://humansignal.com/goenterprise">
-//
-//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
-//	    <p style="margin-top: 10px; font-size: 14px;">
-//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
-//	    </p>
-//	</Card>
-//
-// Replace only the supplied keys of a single page. Rejects a write to a page another author holds the editing lock on with 409 `page_in_use`, a stale `page_version` with 409 `page_version_conflict`, and a page that moved to another module with 410 `page_moved`.
-//
-// Takes any type of body and a specified content type.
-//
-// Corresponds with PATCH /api/learning-resources/{id}/modules/{module_id}/pages/{page_id}/ (the `ApiLearningResourcesModulesPagesPartialUpdate` operationId).
-func (c *Client) ApiLearningResourcesModulesPagesPartialUpdateWithBody(ctx context.Context, id int, moduleId string, pageId string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewApiLearningResourcesModulesPagesPartialUpdateRequestWithBody(c.Server, id, moduleId, pageId, contentType, body)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// ApiLearningResourcesModulesPagesPartialUpdate ✨ Save one page of a module
-//
-// <Card href="https://humansignal.com/goenterprise">
-//
-//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
-//	    <p style="margin-top: 10px; font-size: 14px;">
-//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
-//	    </p>
-//	</Card>
-//
-// Replace only the supplied keys of a single page. Rejects a write to a page another author holds the editing lock on with 409 `page_in_use`, a stale `page_version` with 409 `page_version_conflict`, and a page that moved to another module with 410 `page_moved`.
-//
-// Takes a body of the `application/json` content type.
-//
-// Corresponds with PATCH /api/learning-resources/{id}/modules/{module_id}/pages/{page_id}/ (the `ApiLearningResourcesModulesPagesPartialUpdate` operationId).
-func (c *Client) ApiLearningResourcesModulesPagesPartialUpdate(ctx context.Context, id int, moduleId string, pageId string, body ApiLearningResourcesModulesPagesPartialUpdateJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewApiLearningResourcesModulesPagesPartialUpdateRequest(c.Server, id, moduleId, pageId, body)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// ApiLearningResourcesModulesPagesPartialUpdateWithFormdataBody ✨ Save one page of a module
-//
-// <Card href="https://humansignal.com/goenterprise">
-//
-//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
-//	    <p style="margin-top: 10px; font-size: 14px;">
-//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
-//	    </p>
-//	</Card>
-//
-// Replace only the supplied keys of a single page. Rejects a write to a page another author holds the editing lock on with 409 `page_in_use`, a stale `page_version` with 409 `page_version_conflict`, and a page that moved to another module with 410 `page_moved`.
-//
-// Takes a body of the `application/x-www-form-urlencoded` content type.
-//
-// Corresponds with PATCH /api/learning-resources/{id}/modules/{module_id}/pages/{page_id}/ (the `ApiLearningResourcesModulesPagesPartialUpdate` operationId).
-func (c *Client) ApiLearningResourcesModulesPagesPartialUpdateWithFormdataBody(ctx context.Context, id int, moduleId string, pageId string, body ApiLearningResourcesModulesPagesPartialUpdateFormdataRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewApiLearningResourcesModulesPagesPartialUpdateRequestWithFormdataBody(c.Server, id, moduleId, pageId, body)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// ApiLearningResourcesOutlineRetrieve ✨ Get the structure outline of a course
-//
-// <Card href="https://humansignal.com/goenterprise">
-//
-//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
-//	    <p style="margin-top: 10px; font-size: 14px;">
-//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
-//	    </p>
-//	</Card>
-//
-// Module and page identity, titles and page versions without any block content.
-//
-// Corresponds with GET /api/learning-resources/{id}/outline/ (the `ApiLearningResourcesOutlineRetrieve` operationId).
-func (c *Client) ApiLearningResourcesOutlineRetrieve(ctx context.Context, id int, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewApiLearningResourcesOutlineRetrieveRequest(c.Server, id)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// ApiLearningResourcesProgressCreateWithBody ✨ Update learner progress on a learning resource
-//
-// <Card href="https://humansignal.com/goenterprise">
-//
-//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
-//	    <p style="margin-top: 10px; font-size: 14px;">
-//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
-//	    </p>
-//	</Card>
-//
-// Update the current user's progress on a learning resource. Learners can only update a published course they were given (404 otherwise). `page_id` is recorded only for a page the course has. `time_spent_seconds` adds at most 3600 seconds per request. `mark_complete` is ignored until every page has been visited, and completes the course only when every required quiz has also been passed.
-//
-// Takes any type of body and a specified content type.
-//
-// Corresponds with POST /api/learning-resources/{id}/progress/ (the `ApiLearningResourcesProgressCreate` operationId).
-func (c *Client) ApiLearningResourcesProgressCreateWithBody(ctx context.Context, id int, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewApiLearningResourcesProgressCreateRequestWithBody(c.Server, id, contentType, body)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// ApiLearningResourcesProgressCreate ✨ Update learner progress on a learning resource
-//
-// <Card href="https://humansignal.com/goenterprise">
-//
-//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
-//	    <p style="margin-top: 10px; font-size: 14px;">
-//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
-//	    </p>
-//	</Card>
-//
-// Update the current user's progress on a learning resource. Learners can only update a published course they were given (404 otherwise). `page_id` is recorded only for a page the course has. `time_spent_seconds` adds at most 3600 seconds per request. `mark_complete` is ignored until every page has been visited, and completes the course only when every required quiz has also been passed.
-//
-// Takes a body of the `application/json` content type.
-//
-// Corresponds with POST /api/learning-resources/{id}/progress/ (the `ApiLearningResourcesProgressCreate` operationId).
-func (c *Client) ApiLearningResourcesProgressCreate(ctx context.Context, id int, body ApiLearningResourcesProgressCreateJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewApiLearningResourcesProgressCreateRequest(c.Server, id, body)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// ApiLearningResourcesProgressCreateWithFormdataBody ✨ Update learner progress on a learning resource
-//
-// <Card href="https://humansignal.com/goenterprise">
-//
-//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
-//	    <p style="margin-top: 10px; font-size: 14px;">
-//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
-//	    </p>
-//	</Card>
-//
-// Update the current user's progress on a learning resource. Learners can only update a published course they were given (404 otherwise). `page_id` is recorded only for a page the course has. `time_spent_seconds` adds at most 3600 seconds per request. `mark_complete` is ignored until every page has been visited, and completes the course only when every required quiz has also been passed.
-//
-// Takes a body of the `application/x-www-form-urlencoded` content type.
-//
-// Corresponds with POST /api/learning-resources/{id}/progress/ (the `ApiLearningResourcesProgressCreate` operationId).
-func (c *Client) ApiLearningResourcesProgressCreateWithFormdataBody(ctx context.Context, id int, body ApiLearningResourcesProgressCreateFormdataRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewApiLearningResourcesProgressCreateRequestWithFormdataBody(c.Server, id, body)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// ApiLearningResourcesProjectAssignmentsCreateWithBody ✨ Bulk assign learning resource to projects
-//
-// Create project assignments for many projects in one request.
-//
-// Takes any type of body and a specified content type.
-//
-// Corresponds with POST /api/learning-resources/{id}/project-assignments/ (the `ApiLearningResourcesProjectAssignmentsCreate` operationId).
-func (c *Client) ApiLearningResourcesProjectAssignmentsCreateWithBody(ctx context.Context, id int, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewApiLearningResourcesProjectAssignmentsCreateRequestWithBody(c.Server, id, contentType, body)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// ApiLearningResourcesProjectAssignmentsCreate ✨ Bulk assign learning resource to projects
-//
-// Create project assignments for many projects in one request.
-//
-// Takes a body of the `application/json` content type.
-//
-// Corresponds with POST /api/learning-resources/{id}/project-assignments/ (the `ApiLearningResourcesProjectAssignmentsCreate` operationId).
-func (c *Client) ApiLearningResourcesProjectAssignmentsCreate(ctx context.Context, id int, body ApiLearningResourcesProjectAssignmentsCreateJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewApiLearningResourcesProjectAssignmentsCreateRequest(c.Server, id, body)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// ApiLearningResourcesProjectAssignmentsCreateWithFormdataBody ✨ Bulk assign learning resource to projects
-//
-// Create project assignments for many projects in one request.
-//
-// Takes a body of the `application/x-www-form-urlencoded` content type.
-//
-// Corresponds with POST /api/learning-resources/{id}/project-assignments/ (the `ApiLearningResourcesProjectAssignmentsCreate` operationId).
-func (c *Client) ApiLearningResourcesProjectAssignmentsCreateWithFormdataBody(ctx context.Context, id int, body ApiLearningResourcesProjectAssignmentsCreateFormdataRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewApiLearningResourcesProjectAssignmentsCreateRequestWithFormdataBody(c.Server, id, body)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// ApiLearningResourcesPublishCreateWithBody ✨ Publish a learning resource
-//
-// <Card href="https://humansignal.com/goenterprise">
-//
-//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
-//	    <p style="margin-top: 10px; font-size: 14px;">
-//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
-//	    </p>
-//	</Card>
-//
-// Publish a learning resource to make it available to learners.
-//
-// Takes any type of body and a specified content type.
-//
-// Corresponds with POST /api/learning-resources/{id}/publish/ (the `ApiLearningResourcesPublishCreate` operationId).
-func (c *Client) ApiLearningResourcesPublishCreateWithBody(ctx context.Context, id int, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewApiLearningResourcesPublishCreateRequestWithBody(c.Server, id, contentType, body)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// ApiLearningResourcesPublishCreate ✨ Publish a learning resource
-//
-// <Card href="https://humansignal.com/goenterprise">
-//
-//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
-//	    <p style="margin-top: 10px; font-size: 14px;">
-//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
-//	    </p>
-//	</Card>
-//
-// Publish a learning resource to make it available to learners.
-//
-// Takes a body of the `application/json` content type.
-//
-// Corresponds with POST /api/learning-resources/{id}/publish/ (the `ApiLearningResourcesPublishCreate` operationId).
-func (c *Client) ApiLearningResourcesPublishCreate(ctx context.Context, id int, body ApiLearningResourcesPublishCreateJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewApiLearningResourcesPublishCreateRequest(c.Server, id, body)
+// Author-only. `named` and `before_restore` pins are deletable; published pins record what was published and answer 400 `pin_not_deletable`. Deletes only the pin: revisions and other pins are untouched, and the revisions behind it stay subject to thinning.
+//
+// Corresponds with DELETE /api/learning-resources/{id}/history/pins/{pin_id}/ (the `ApiLearningResourcesHistoryPinsDestroy` operationId).
+func (c *Client) ApiLearningResourcesHistoryPinsDestroy(ctx context.Context, id int, pinId int, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiLearningResourcesHistoryPinsDestroyRequest(c.Server, id, pinId)
 	if err != nil {
 		return nil, err
 	}

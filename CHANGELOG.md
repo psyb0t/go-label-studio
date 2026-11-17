@@ -2,6 +2,16 @@
 
 All notable changes per release. Versions follow [semver](https://semver.org).
 
+## v0.10.1, 2026-11-17
+
+- Added the learning resource history endpoints under `/api/learning-resources/{id}/history/`. `Client` and `ClientWithResponses` get `ApiLearningResourcesHistoryRetrieve`, `ApiLearningResourcesHistorySessionsSavesRetrieve`, `ApiLearningResourcesHistoryStatesRetrieve`, `ApiLearningResourcesHistoryStatesRestorePreviewRetrieve`, `ApiLearningResourcesHistoryStatesRestoreCreate` and `ApiLearningResourcesHistoryViewingCreate`.
+- Added the history pin endpoints: `ApiLearningResourcesHistoryPinsCreate`, `ApiLearningResourcesHistoryPinsPartialUpdate` and `ApiLearningResourcesHistoryPinsDestroy`. The create, partial update and restore methods have `WithBody` and `WithFormdataBody` variants, and `ClientWithResponses` has the matching `WithResponse` methods. Each endpoint also has `New...Request` and `Parse...Response` functions and a `...Response` type.
+- Added the models `HistoryListResponse`, `HistoryPin`, `HistorySession`, `HistorySessionPage`, `HistorySave`, `HistorySessionSavesResponse`, `HistoryStateResponse`, `HistoryStateModule`, `HistoryCurrent`, `HistoryDeletedPage`, `HistoryRestoredFrom`, `HistoryUser`, `HistoryViewingResponse`, `HistoryError` and `HistoryAnchorUnavailable`.
+- Added `HistoryPinKindEnum` with the constants `HistoryPinKindEnumBeforeRestore`, `HistoryPinKindEnumNamed` and `HistoryPinKindEnumPublished`, and `CourseHistoryScopeEnum` with `CourseHistoryScopeEnumCourse` and `CourseHistoryScopeEnumPage`. Both have a `Valid` method.
+- Added `ApiLearningResourcesHistoryRetrieveParams`, `ApiLearningResourcesHistoryStatesRestorePreviewRetrieveParams` and the enum `ApiLearningResourcesHistoryStatesRestorePreviewRetrieveParamsScope`, plus the request body aliases for the new endpoints.
+- Added the matching methods to `ClientInterface` and `ClientWithResponsesInterface`. Code that calls the clients is unaffected, but a custom type that implements either interface must add them.
+- Several generated types and methods moved between generated files. Their names and signatures are unchanged.
+
 ## v0.10.0, 2026-11-13
 
 - Breaking: removed 16 fields from `DefaultRole`: `AnnotatorReviewerFirewallEnabledAt`, `CustomInterfacesEnabled`, `CustomScriptsEnabledAt`, `EmailNotificationSettings`, `EmbedDomains`, `EmbedEnabled`, `EmbedSettings`, `ExternalId`, `ExtraDataOnActivityLogs`, `InterfaceSettings`, `LabelStreamNavigationDisabledAt`, `Organization`, `ReactCodeSettings`, `ReadOnlyQuickViewEnabledAt` and `Slug`. `DefaultRole` now only has `DefaultRole`. This also removes the `Slug` field added in v0.9.0.

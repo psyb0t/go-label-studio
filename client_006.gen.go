@@ -5246,6 +5246,417 @@ func (r ApiLearningResourcesExportRetrieveResponse) ContentType() string {
 	return ""
 }
 
+type ApiLearningResourcesHistoryRetrieveResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+	// JSON200 the response for an HTTP 200 `application/json` response
+	JSON200 *HistoryListResponse
+}
+
+// GetJSON200 returns the response for an HTTP 200 `application/json` response
+func (r ApiLearningResourcesHistoryRetrieveResponse) GetJSON200() *HistoryListResponse {
+	return r.JSON200
+}
+
+// GetBody returns the raw response body bytes
+func (r ApiLearningResourcesHistoryRetrieveResponse) GetBody() []byte {
+	return r.Body
+}
+
+// Status returns HTTPResponse.Status
+func (r ApiLearningResourcesHistoryRetrieveResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+
+// StatusCode returns HTTPResponse.StatusCode
+func (r ApiLearningResourcesHistoryRetrieveResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+
+// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
+func (r ApiLearningResourcesHistoryRetrieveResponse) ContentType() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Header.Get("Content-Type")
+	}
+	return ""
+}
+
+type ApiLearningResourcesHistoryPinsCreateResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+	// JSON201 the response for an HTTP 201 `application/json` response
+	JSON201 *HistoryPin
+	// JSON410 the response for an HTTP 410 `application/json` response
+	JSON410 *HistoryAnchorUnavailable
+}
+
+// GetJSON201 returns the response for an HTTP 201 `application/json` response
+func (r ApiLearningResourcesHistoryPinsCreateResponse) GetJSON201() *HistoryPin {
+	return r.JSON201
+}
+
+// GetJSON410 returns the response for an HTTP 410 `application/json` response
+func (r ApiLearningResourcesHistoryPinsCreateResponse) GetJSON410() *HistoryAnchorUnavailable {
+	return r.JSON410
+}
+
+// GetBody returns the raw response body bytes
+func (r ApiLearningResourcesHistoryPinsCreateResponse) GetBody() []byte {
+	return r.Body
+}
+
+// Status returns HTTPResponse.Status
+func (r ApiLearningResourcesHistoryPinsCreateResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+
+// StatusCode returns HTTPResponse.StatusCode
+func (r ApiLearningResourcesHistoryPinsCreateResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+
+// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
+func (r ApiLearningResourcesHistoryPinsCreateResponse) ContentType() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Header.Get("Content-Type")
+	}
+	return ""
+}
+
+type ApiLearningResourcesHistoryPinsDestroyResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+	// JSON400 the response for an HTTP 400 `application/json` response
+	JSON400 *HistoryError
+}
+
+// GetJSON400 returns the response for an HTTP 400 `application/json` response
+func (r ApiLearningResourcesHistoryPinsDestroyResponse) GetJSON400() *HistoryError {
+	return r.JSON400
+}
+
+// GetBody returns the raw response body bytes
+func (r ApiLearningResourcesHistoryPinsDestroyResponse) GetBody() []byte {
+	return r.Body
+}
+
+// Status returns HTTPResponse.Status
+func (r ApiLearningResourcesHistoryPinsDestroyResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+
+// StatusCode returns HTTPResponse.StatusCode
+func (r ApiLearningResourcesHistoryPinsDestroyResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+
+// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
+func (r ApiLearningResourcesHistoryPinsDestroyResponse) ContentType() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Header.Get("Content-Type")
+	}
+	return ""
+}
+
+type ApiLearningResourcesHistoryPinsPartialUpdateResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+	// JSON200 the response for an HTTP 200 `application/json` response
+	JSON200 *HistoryPin
+	// JSON400 the response for an HTTP 400 `application/json` response
+	JSON400 *HistoryError
+}
+
+// GetJSON200 returns the response for an HTTP 200 `application/json` response
+func (r ApiLearningResourcesHistoryPinsPartialUpdateResponse) GetJSON200() *HistoryPin {
+	return r.JSON200
+}
+
+// GetJSON400 returns the response for an HTTP 400 `application/json` response
+func (r ApiLearningResourcesHistoryPinsPartialUpdateResponse) GetJSON400() *HistoryError {
+	return r.JSON400
+}
+
+// GetBody returns the raw response body bytes
+func (r ApiLearningResourcesHistoryPinsPartialUpdateResponse) GetBody() []byte {
+	return r.Body
+}
+
+// Status returns HTTPResponse.Status
+func (r ApiLearningResourcesHistoryPinsPartialUpdateResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+
+// StatusCode returns HTTPResponse.StatusCode
+func (r ApiLearningResourcesHistoryPinsPartialUpdateResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+
+// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
+func (r ApiLearningResourcesHistoryPinsPartialUpdateResponse) ContentType() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Header.Get("Content-Type")
+	}
+	return ""
+}
+
+type ApiLearningResourcesHistorySessionsSavesRetrieveResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+	// JSON200 the response for an HTTP 200 `application/json` response
+	JSON200 *HistorySessionSavesResponse
+}
+
+// GetJSON200 returns the response for an HTTP 200 `application/json` response
+func (r ApiLearningResourcesHistorySessionsSavesRetrieveResponse) GetJSON200() *HistorySessionSavesResponse {
+	return r.JSON200
+}
+
+// GetBody returns the raw response body bytes
+func (r ApiLearningResourcesHistorySessionsSavesRetrieveResponse) GetBody() []byte {
+	return r.Body
+}
+
+// Status returns HTTPResponse.Status
+func (r ApiLearningResourcesHistorySessionsSavesRetrieveResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+
+// StatusCode returns HTTPResponse.StatusCode
+func (r ApiLearningResourcesHistorySessionsSavesRetrieveResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+
+// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
+func (r ApiLearningResourcesHistorySessionsSavesRetrieveResponse) ContentType() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Header.Get("Content-Type")
+	}
+	return ""
+}
+
+type ApiLearningResourcesHistoryStatesRetrieveResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+	// JSON200 the response for an HTTP 200 `application/json` response
+	JSON200 *HistoryStateResponse
+	// JSON410 the response for an HTTP 410 `application/json` response
+	JSON410 *HistoryAnchorUnavailable
+}
+
+// GetJSON200 returns the response for an HTTP 200 `application/json` response
+func (r ApiLearningResourcesHistoryStatesRetrieveResponse) GetJSON200() *HistoryStateResponse {
+	return r.JSON200
+}
+
+// GetJSON410 returns the response for an HTTP 410 `application/json` response
+func (r ApiLearningResourcesHistoryStatesRetrieveResponse) GetJSON410() *HistoryAnchorUnavailable {
+	return r.JSON410
+}
+
+// GetBody returns the raw response body bytes
+func (r ApiLearningResourcesHistoryStatesRetrieveResponse) GetBody() []byte {
+	return r.Body
+}
+
+// Status returns HTTPResponse.Status
+func (r ApiLearningResourcesHistoryStatesRetrieveResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+
+// StatusCode returns HTTPResponse.StatusCode
+func (r ApiLearningResourcesHistoryStatesRetrieveResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+
+// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
+func (r ApiLearningResourcesHistoryStatesRetrieveResponse) ContentType() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Header.Get("Content-Type")
+	}
+	return ""
+}
+
+type ApiLearningResourcesHistoryStatesRestorePreviewRetrieveResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+	// JSON200 the response for an HTTP 200 `application/json` response
+	JSON200 *RestorePreviewResponse
+	// JSON410 the response for an HTTP 410 `application/json` response
+	JSON410 *HistoryAnchorUnavailable
+}
+
+// GetJSON200 returns the response for an HTTP 200 `application/json` response
+func (r ApiLearningResourcesHistoryStatesRestorePreviewRetrieveResponse) GetJSON200() *RestorePreviewResponse {
+	return r.JSON200
+}
+
+// GetJSON410 returns the response for an HTTP 410 `application/json` response
+func (r ApiLearningResourcesHistoryStatesRestorePreviewRetrieveResponse) GetJSON410() *HistoryAnchorUnavailable {
+	return r.JSON410
+}
+
+// GetBody returns the raw response body bytes
+func (r ApiLearningResourcesHistoryStatesRestorePreviewRetrieveResponse) GetBody() []byte {
+	return r.Body
+}
+
+// Status returns HTTPResponse.Status
+func (r ApiLearningResourcesHistoryStatesRestorePreviewRetrieveResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+
+// StatusCode returns HTTPResponse.StatusCode
+func (r ApiLearningResourcesHistoryStatesRestorePreviewRetrieveResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+
+// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
+func (r ApiLearningResourcesHistoryStatesRestorePreviewRetrieveResponse) ContentType() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Header.Get("Content-Type")
+	}
+	return ""
+}
+
+type ApiLearningResourcesHistoryStatesRestoreCreateResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+	// JSON200 the response for an HTTP 200 `application/json` response
+	JSON200 *RestoreResponse
+	// JSON409 the response for an HTTP 409 `application/json` response
+	JSON409 *StructureVersionConflict
+	// JSON410 the response for an HTTP 410 `application/json` response
+	JSON410 *HistoryAnchorUnavailable
+}
+
+// GetJSON200 returns the response for an HTTP 200 `application/json` response
+func (r ApiLearningResourcesHistoryStatesRestoreCreateResponse) GetJSON200() *RestoreResponse {
+	return r.JSON200
+}
+
+// GetJSON409 returns the response for an HTTP 409 `application/json` response
+func (r ApiLearningResourcesHistoryStatesRestoreCreateResponse) GetJSON409() *StructureVersionConflict {
+	return r.JSON409
+}
+
+// GetJSON410 returns the response for an HTTP 410 `application/json` response
+func (r ApiLearningResourcesHistoryStatesRestoreCreateResponse) GetJSON410() *HistoryAnchorUnavailable {
+	return r.JSON410
+}
+
+// GetBody returns the raw response body bytes
+func (r ApiLearningResourcesHistoryStatesRestoreCreateResponse) GetBody() []byte {
+	return r.Body
+}
+
+// Status returns HTTPResponse.Status
+func (r ApiLearningResourcesHistoryStatesRestoreCreateResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+
+// StatusCode returns HTTPResponse.StatusCode
+func (r ApiLearningResourcesHistoryStatesRestoreCreateResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+
+// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
+func (r ApiLearningResourcesHistoryStatesRestoreCreateResponse) ContentType() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Header.Get("Content-Type")
+	}
+	return ""
+}
+
+type ApiLearningResourcesHistoryViewingCreateResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+	// JSON200 the response for an HTTP 200 `application/json` response
+	JSON200 *HistoryViewingResponse
+}
+
+// GetJSON200 returns the response for an HTTP 200 `application/json` response
+func (r ApiLearningResourcesHistoryViewingCreateResponse) GetJSON200() *HistoryViewingResponse {
+	return r.JSON200
+}
+
+// GetBody returns the raw response body bytes
+func (r ApiLearningResourcesHistoryViewingCreateResponse) GetBody() []byte {
+	return r.Body
+}
+
+// Status returns HTTPResponse.Status
+func (r ApiLearningResourcesHistoryViewingCreateResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+
+// StatusCode returns HTTPResponse.StatusCode
+func (r ApiLearningResourcesHistoryViewingCreateResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+
+// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
+func (r ApiLearningResourcesHistoryViewingCreateResponse) ContentType() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Header.Get("Content-Type")
+	}
+	return ""
+}
+
 type ApiLearningResourcesInvalidateProgressCreateResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -19596,419 +20007,4 @@ func (r ApiStoragesLocalfilesListResponse) StatusCode() int {
 		return r.HTTPResponse.StatusCode
 	}
 	return 0
-}
-
-// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
-func (r ApiStoragesLocalfilesListResponse) ContentType() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Header.Get("Content-Type")
-	}
-	return ""
-}
-
-type ApiStoragesLocalfilesCreateResponse struct {
-	Body         []byte
-	HTTPResponse *http.Response
-	// JSON201 the response for an HTTP 201 `application/json` response
-	JSON201 *LocalFilesImportStorage
-}
-
-// GetJSON201 returns the response for an HTTP 201 `application/json` response
-func (r ApiStoragesLocalfilesCreateResponse) GetJSON201() *LocalFilesImportStorage {
-	return r.JSON201
-}
-
-// GetBody returns the raw response body bytes
-func (r ApiStoragesLocalfilesCreateResponse) GetBody() []byte {
-	return r.Body
-}
-
-// Status returns HTTPResponse.Status
-func (r ApiStoragesLocalfilesCreateResponse) Status() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Status
-	}
-	return http.StatusText(0)
-}
-
-// StatusCode returns HTTPResponse.StatusCode
-func (r ApiStoragesLocalfilesCreateResponse) StatusCode() int {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.StatusCode
-	}
-	return 0
-}
-
-// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
-func (r ApiStoragesLocalfilesCreateResponse) ContentType() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Header.Get("Content-Type")
-	}
-	return ""
-}
-
-type ApiStoragesLocalfilesValidateCreateResponse struct {
-	Body         []byte
-	HTTPResponse *http.Response
-}
-
-// GetBody returns the raw response body bytes
-func (r ApiStoragesLocalfilesValidateCreateResponse) GetBody() []byte {
-	return r.Body
-}
-
-// Status returns HTTPResponse.Status
-func (r ApiStoragesLocalfilesValidateCreateResponse) Status() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Status
-	}
-	return http.StatusText(0)
-}
-
-// StatusCode returns HTTPResponse.StatusCode
-func (r ApiStoragesLocalfilesValidateCreateResponse) StatusCode() int {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.StatusCode
-	}
-	return 0
-}
-
-// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
-func (r ApiStoragesLocalfilesValidateCreateResponse) ContentType() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Header.Get("Content-Type")
-	}
-	return ""
-}
-
-type ApiStoragesLocalfilesDestroyResponse struct {
-	Body         []byte
-	HTTPResponse *http.Response
-}
-
-// GetBody returns the raw response body bytes
-func (r ApiStoragesLocalfilesDestroyResponse) GetBody() []byte {
-	return r.Body
-}
-
-// Status returns HTTPResponse.Status
-func (r ApiStoragesLocalfilesDestroyResponse) Status() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Status
-	}
-	return http.StatusText(0)
-}
-
-// StatusCode returns HTTPResponse.StatusCode
-func (r ApiStoragesLocalfilesDestroyResponse) StatusCode() int {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.StatusCode
-	}
-	return 0
-}
-
-// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
-func (r ApiStoragesLocalfilesDestroyResponse) ContentType() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Header.Get("Content-Type")
-	}
-	return ""
-}
-
-type ApiStoragesLocalfilesRetrieveResponse struct {
-	Body         []byte
-	HTTPResponse *http.Response
-	// JSON200 the response for an HTTP 200 `application/json` response
-	JSON200 *LocalFilesImportStorage
-}
-
-// GetJSON200 returns the response for an HTTP 200 `application/json` response
-func (r ApiStoragesLocalfilesRetrieveResponse) GetJSON200() *LocalFilesImportStorage {
-	return r.JSON200
-}
-
-// GetBody returns the raw response body bytes
-func (r ApiStoragesLocalfilesRetrieveResponse) GetBody() []byte {
-	return r.Body
-}
-
-// Status returns HTTPResponse.Status
-func (r ApiStoragesLocalfilesRetrieveResponse) Status() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Status
-	}
-	return http.StatusText(0)
-}
-
-// StatusCode returns HTTPResponse.StatusCode
-func (r ApiStoragesLocalfilesRetrieveResponse) StatusCode() int {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.StatusCode
-	}
-	return 0
-}
-
-// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
-func (r ApiStoragesLocalfilesRetrieveResponse) ContentType() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Header.Get("Content-Type")
-	}
-	return ""
-}
-
-type ApiStoragesLocalfilesPartialUpdateResponse struct {
-	Body         []byte
-	HTTPResponse *http.Response
-	// JSON200 the response for an HTTP 200 `application/json` response
-	JSON200 *LocalFilesImportStorage
-}
-
-// GetJSON200 returns the response for an HTTP 200 `application/json` response
-func (r ApiStoragesLocalfilesPartialUpdateResponse) GetJSON200() *LocalFilesImportStorage {
-	return r.JSON200
-}
-
-// GetBody returns the raw response body bytes
-func (r ApiStoragesLocalfilesPartialUpdateResponse) GetBody() []byte {
-	return r.Body
-}
-
-// Status returns HTTPResponse.Status
-func (r ApiStoragesLocalfilesPartialUpdateResponse) Status() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Status
-	}
-	return http.StatusText(0)
-}
-
-// StatusCode returns HTTPResponse.StatusCode
-func (r ApiStoragesLocalfilesPartialUpdateResponse) StatusCode() int {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.StatusCode
-	}
-	return 0
-}
-
-// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
-func (r ApiStoragesLocalfilesPartialUpdateResponse) ContentType() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Header.Get("Content-Type")
-	}
-	return ""
-}
-
-type ApiStoragesLocalfilesSyncCreateResponse struct {
-	Body         []byte
-	HTTPResponse *http.Response
-	// JSON200 the response for an HTTP 200 `application/json` response
-	JSON200 *LocalFilesImportStorage
-}
-
-// GetJSON200 returns the response for an HTTP 200 `application/json` response
-func (r ApiStoragesLocalfilesSyncCreateResponse) GetJSON200() *LocalFilesImportStorage {
-	return r.JSON200
-}
-
-// GetBody returns the raw response body bytes
-func (r ApiStoragesLocalfilesSyncCreateResponse) GetBody() []byte {
-	return r.Body
-}
-
-// Status returns HTTPResponse.Status
-func (r ApiStoragesLocalfilesSyncCreateResponse) Status() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Status
-	}
-	return http.StatusText(0)
-}
-
-// StatusCode returns HTTPResponse.StatusCode
-func (r ApiStoragesLocalfilesSyncCreateResponse) StatusCode() int {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.StatusCode
-	}
-	return 0
-}
-
-// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
-func (r ApiStoragesLocalfilesSyncCreateResponse) ContentType() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Header.Get("Content-Type")
-	}
-	return ""
-}
-
-type ApiStoragesRedisListResponse struct {
-	Body         []byte
-	HTTPResponse *http.Response
-	// JSON200 the response for an HTTP 200 `application/json` response
-	JSON200 *[]RedisImportStorage
-}
-
-// GetJSON200 returns the response for an HTTP 200 `application/json` response
-func (r ApiStoragesRedisListResponse) GetJSON200() *[]RedisImportStorage {
-	return r.JSON200
-}
-
-// GetBody returns the raw response body bytes
-func (r ApiStoragesRedisListResponse) GetBody() []byte {
-	return r.Body
-}
-
-// Status returns HTTPResponse.Status
-func (r ApiStoragesRedisListResponse) Status() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Status
-	}
-	return http.StatusText(0)
-}
-
-// StatusCode returns HTTPResponse.StatusCode
-func (r ApiStoragesRedisListResponse) StatusCode() int {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.StatusCode
-	}
-	return 0
-}
-
-// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
-func (r ApiStoragesRedisListResponse) ContentType() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Header.Get("Content-Type")
-	}
-	return ""
-}
-
-type ApiStoragesRedisCreateResponse struct {
-	Body         []byte
-	HTTPResponse *http.Response
-	// JSON201 the response for an HTTP 201 `application/json` response
-	JSON201 *RedisImportStorage
-}
-
-// GetJSON201 returns the response for an HTTP 201 `application/json` response
-func (r ApiStoragesRedisCreateResponse) GetJSON201() *RedisImportStorage {
-	return r.JSON201
-}
-
-// GetBody returns the raw response body bytes
-func (r ApiStoragesRedisCreateResponse) GetBody() []byte {
-	return r.Body
-}
-
-// Status returns HTTPResponse.Status
-func (r ApiStoragesRedisCreateResponse) Status() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Status
-	}
-	return http.StatusText(0)
-}
-
-// StatusCode returns HTTPResponse.StatusCode
-func (r ApiStoragesRedisCreateResponse) StatusCode() int {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.StatusCode
-	}
-	return 0
-}
-
-// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
-func (r ApiStoragesRedisCreateResponse) ContentType() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Header.Get("Content-Type")
-	}
-	return ""
-}
-
-type ApiStoragesRedisValidateCreateResponse struct {
-	Body         []byte
-	HTTPResponse *http.Response
-}
-
-// GetBody returns the raw response body bytes
-func (r ApiStoragesRedisValidateCreateResponse) GetBody() []byte {
-	return r.Body
-}
-
-// Status returns HTTPResponse.Status
-func (r ApiStoragesRedisValidateCreateResponse) Status() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Status
-	}
-	return http.StatusText(0)
-}
-
-// StatusCode returns HTTPResponse.StatusCode
-func (r ApiStoragesRedisValidateCreateResponse) StatusCode() int {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.StatusCode
-	}
-	return 0
-}
-
-// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
-func (r ApiStoragesRedisValidateCreateResponse) ContentType() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Header.Get("Content-Type")
-	}
-	return ""
-}
-
-type ApiStoragesRedisDestroyResponse struct {
-	Body         []byte
-	HTTPResponse *http.Response
-}
-
-// GetBody returns the raw response body bytes
-func (r ApiStoragesRedisDestroyResponse) GetBody() []byte {
-	return r.Body
-}
-
-// Status returns HTTPResponse.Status
-func (r ApiStoragesRedisDestroyResponse) Status() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Status
-	}
-	return http.StatusText(0)
-}
-
-// StatusCode returns HTTPResponse.StatusCode
-func (r ApiStoragesRedisDestroyResponse) StatusCode() int {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.StatusCode
-	}
-	return 0
-}
-
-// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
-func (r ApiStoragesRedisDestroyResponse) ContentType() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Header.Get("Content-Type")
-	}
-	return ""
-}
-
-type ApiStoragesRedisRetrieveResponse struct {
-	Body         []byte
-	HTTPResponse *http.Response
-	// JSON200 the response for an HTTP 200 `application/json` response
-	JSON200 *RedisImportStorage
-}
-
-// GetJSON200 returns the response for an HTTP 200 `application/json` response
-func (r ApiStoragesRedisRetrieveResponse) GetJSON200() *RedisImportStorage {
-	return r.JSON200
-}
-
-// GetBody returns the raw response body bytes
-func (r ApiStoragesRedisRetrieveResponse) GetBody() []byte {
-	return r.Body
-}
-
-// Status returns HTTPResponse.Status
-func (r ApiStoragesRedisRetrieveResponse) Status() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Status
-	}
-	return http.StatusText(0)
 }

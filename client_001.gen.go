@@ -418,6 +418,24 @@ func (e ConjunctionEnum) Valid() bool {
 	}
 }
 
+// Defines values for CourseHistoryScopeEnum.
+const (
+	CourseHistoryScopeEnumCourse CourseHistoryScopeEnum = "course"
+	CourseHistoryScopeEnumPage   CourseHistoryScopeEnum = "page"
+)
+
+// Valid indicates whether the value is a known member of the CourseHistoryScopeEnum enum.
+func (e CourseHistoryScopeEnum) Valid() bool {
+	switch e {
+	case CourseHistoryScopeEnumCourse:
+		return true
+	case CourseHistoryScopeEnumPage:
+		return true
+	default:
+		return false
+	}
+}
+
 // Defines values for DashboardTypeEnum.
 const (
 	DashboardTypeEnumMemberPerformance DashboardTypeEnum = "member_performance"
@@ -526,6 +544,27 @@ func (e FsmBackfillJobStatusEnum) Valid() bool {
 	case FsmBackfillJobStatusEnumQUEUED:
 		return true
 	case FsmBackfillJobStatusEnumRUNNING:
+		return true
+	default:
+		return false
+	}
+}
+
+// Defines values for HistoryPinKindEnum.
+const (
+	HistoryPinKindEnumBeforeRestore HistoryPinKindEnum = "before_restore"
+	HistoryPinKindEnumNamed         HistoryPinKindEnum = "named"
+	HistoryPinKindEnumPublished     HistoryPinKindEnum = "published"
+)
+
+// Valid indicates whether the value is a known member of the HistoryPinKindEnum enum.
+func (e HistoryPinKindEnum) Valid() bool {
+	switch e {
+	case HistoryPinKindEnumBeforeRestore:
+		return true
+	case HistoryPinKindEnumNamed:
+		return true
+	case HistoryPinKindEnumPublished:
 		return true
 	default:
 		return false
@@ -2110,6 +2149,24 @@ func (e ApiFsmOrganizationsSettingsHistoryListParamsKind) Valid() bool {
 	case ApiFsmOrganizationsSettingsHistoryListParamsKindSaml:
 		return true
 	case ApiFsmOrganizationsSettingsHistoryListParamsKindScim:
+		return true
+	default:
+		return false
+	}
+}
+
+// Defines values for ApiLearningResourcesHistoryStatesRestorePreviewRetrieveParamsScope.
+const (
+	ApiLearningResourcesHistoryStatesRestorePreviewRetrieveParamsScopeCourse ApiLearningResourcesHistoryStatesRestorePreviewRetrieveParamsScope = "course"
+	ApiLearningResourcesHistoryStatesRestorePreviewRetrieveParamsScopePage   ApiLearningResourcesHistoryStatesRestorePreviewRetrieveParamsScope = "page"
+)
+
+// Valid indicates whether the value is a known member of the ApiLearningResourcesHistoryStatesRestorePreviewRetrieveParamsScope enum.
+func (e ApiLearningResourcesHistoryStatesRestorePreviewRetrieveParamsScope) Valid() bool {
+	switch e {
+	case ApiLearningResourcesHistoryStatesRestorePreviewRetrieveParamsScopeCourse:
+		return true
+	case ApiLearningResourcesHistoryStatesRestorePreviewRetrieveParamsScopePage:
 		return true
 	default:
 		return false
@@ -4481,6 +4538,10 @@ type CourseExportPayload struct {
 	Source        *map[string]interface{}  `json:"source"`
 }
 
+// CourseHistoryScopeEnum * `course` - course
+// * `page` - page
+type CourseHistoryScopeEnum string
+
 // CourseImportResponse defines model for CourseImportResponse.
 type CourseImportResponse struct {
 	AllowStandalone                 *bool                   `json:"allow_standalone,omitempty"`
@@ -6300,6 +6361,146 @@ type GCSWIFImportStorageRequest struct {
 
 	// UseBlobUrls Interpret objects as BLOBs and generate URLs
 	UseBlobUrls *bool `json:"use_blob_urls,omitempty"`
+}
+
+// HistoryAnchorUnavailable defines model for HistoryAnchorUnavailable.
+type HistoryAnchorUnavailable struct {
+	Code   string `json:"code"`
+	Detail string `json:"detail"`
+
+	// NearestRef Newest surviving state at or before the anchor.
+	NearestRef *string `json:"nearest_ref"`
+}
+
+// HistoryCurrent defines model for HistoryCurrent.
+type HistoryCurrent struct {
+	RevisionId *int         `json:"revision_id"`
+	UpdatedAt  *time.Time   `json:"updated_at"`
+	UpdatedBy  *HistoryUser `json:"updated_by"`
+}
+
+// HistoryDeletedPage defines model for HistoryDeletedPage.
+type HistoryDeletedPage struct {
+	DeletedAt time.Time    `json:"deleted_at"`
+	DeletedBy *HistoryUser `json:"deleted_by"`
+	ModuleId  *int         `json:"module_id"`
+	PageId    string       `json:"page_id"`
+
+	// Ref The tombstone revision. Restore it with `scope=page`.
+	Ref   string `json:"ref"`
+	Title string `json:"title"`
+}
+
+// HistoryError defines model for HistoryError.
+type HistoryError struct {
+	Code   string `json:"code"`
+	Detail string `json:"detail"`
+}
+
+// HistoryListResponse defines model for HistoryListResponse.
+type HistoryListResponse struct {
+	Current      HistoryCurrent       `json:"current"`
+	DeletedPages []HistoryDeletedPage `json:"deleted_pages"`
+	NextBefore   *int                 `json:"next_before"`
+	Pins         []HistoryPin         `json:"pins"`
+	Sessions     []HistorySession     `json:"sessions"`
+}
+
+// HistoryPin defines model for HistoryPin.
+type HistoryPin struct {
+	// Anchor Revision id the pin was taken at.
+	Anchor             *int         `json:"anchor"`
+	CreatedAt          time.Time    `json:"created_at"`
+	CreatedBy          *HistoryUser `json:"created_by"`
+	Id                 int          `json:"id"`
+	IsCurrentPublished bool         `json:"is_current_published"`
+
+	// Kind * `named` - named
+	// * `published` - published
+	// * `before_restore` - before_restore
+	Kind HistoryPinKindEnum `json:"kind"`
+	Name *string            `json:"name"`
+	Ref  string             `json:"ref"`
+}
+
+// HistoryPinKindEnum * `named` - named
+// * `published` - published
+// * `before_restore` - before_restore
+type HistoryPinKindEnum string
+
+// HistoryRestoredFrom defines model for HistoryRestoredFrom.
+type HistoryRestoredFrom struct {
+	// Label A pin name or a relative time, to follow "Restored from".
+	Label string `json:"label"`
+	Ref   string `json:"ref"`
+}
+
+// HistorySave defines model for HistorySave.
+type HistorySave struct {
+	CreatedAt time.Time    `json:"created_at"`
+	CreatedBy *HistoryUser `json:"created_by"`
+	Kind      string       `json:"kind"`
+	PageId    *string      `json:"page_id"`
+	Ref       string       `json:"ref"`
+	Title     *string      `json:"title"`
+}
+
+// HistorySession defines model for HistorySession.
+type HistorySession struct {
+	Authors    []HistoryUser        `json:"authors"`
+	EndedAt    time.Time            `json:"ended_at"`
+	InProgress bool                 `json:"in_progress"`
+	Pages      []HistorySessionPage `json:"pages"`
+
+	// Ref The session's last revision.
+	Ref              string               `json:"ref"`
+	RestoredFrom     *HistoryRestoredFrom `json:"restored_from"`
+	Saves            int                  `json:"saves"`
+	StartedAt        time.Time            `json:"started_at"`
+	StructureChanges int                  `json:"structure_changes"`
+}
+
+// HistorySessionPage defines model for HistorySessionPage.
+type HistorySessionPage struct {
+	PageId string `json:"page_id"`
+	Ref    string `json:"ref"`
+	Saves  int    `json:"saves"`
+	Title  string `json:"title"`
+}
+
+// HistorySessionSavesResponse defines model for HistorySessionSavesResponse.
+type HistorySessionSavesResponse struct {
+	Saves []HistorySave `json:"saves"`
+}
+
+// HistoryStateModule defines model for HistoryStateModule.
+type HistoryStateModule struct {
+	Content   map[string]interface{} `json:"content"`
+	Id        int                    `json:"id"`
+	SortOrder int                    `json:"sort_order"`
+	Title     string                 `json:"title"`
+}
+
+// HistoryStateResponse defines model for HistoryStateResponse.
+type HistoryStateResponse struct {
+	// Content Same shape as `content` of the course detail.
+	Content   map[string]interface{} `json:"content"`
+	CreatedAt time.Time              `json:"created_at"`
+	Label     string                 `json:"label"`
+	Modules   []HistoryStateModule   `json:"modules"`
+	Pin       *HistoryPin            `json:"pin"`
+	Ref       string                 `json:"ref"`
+}
+
+// HistoryUser defines model for HistoryUser.
+type HistoryUser struct {
+	DisplayName string `json:"display_name"`
+	Id          int    `json:"id"`
+}
+
+// HistoryViewingResponse defines model for HistoryViewingResponse.
+type HistoryViewingResponse struct {
+	TtlSeconds int `json:"ttl_seconds"`
 }
 
 // Hotkeys defines model for Hotkeys.
@@ -12407,6 +12608,11 @@ type PatchedPauseRequest struct {
 	VerboseReason *string `json:"verbose_reason,omitempty"`
 }
 
+// PatchedPinRenameRequest defines model for PatchedPinRenameRequest.
+type PatchedPinRenameRequest struct {
+	Name *string `json:"name,omitempty"`
+}
+
 // PatchedPredictionRequest defines model for PatchedPredictionRequest.
 type PatchedPredictionRequest struct {
 	// Cluster Cluster for the current prediction
@@ -12791,6 +12997,14 @@ type PauseRequest struct {
 
 	// VerboseReason Detailed description of why the project is paused, will be readable by paused annotators
 	VerboseReason *string `json:"verbose_reason,omitempty"`
+}
+
+// PinCreateRequest defines model for PinCreateRequest.
+type PinCreateRequest struct {
+	Name string `json:"name"`
+
+	// Ref State to name: `r<revision>` or `p<pin>`.
+	Ref string `json:"ref"`
 }
 
 // Prediction defines model for Prediction.
@@ -14033,6 +14247,38 @@ type RejectActionEnum string
 // * `flexible` - Flexible
 type RequeueRejectedTasksModeEnum string
 
+// RestorePreviewResponse defines model for RestorePreviewResponse.
+type RestorePreviewResponse struct {
+	LearnersWithProgressOnRemovedModules int `json:"learners_with_progress_on_removed_modules"`
+	ModulesAdded                         int `json:"modules_added"`
+	ModulesRemoved                       int `json:"modules_removed"`
+	PagesAdded                           int `json:"pages_added"`
+	PagesChanged                         int `json:"pages_changed"`
+	PagesRemoved                         int `json:"pages_removed"`
+
+	// Scope * `course` - course
+	// * `page` - page
+	Scope CourseHistoryScopeEnum `json:"scope"`
+}
+
+// RestoreRequestRequest defines model for RestoreRequestRequest.
+type RestoreRequestRequest struct {
+	PageId           *string                 `json:"page_id,omitempty"`
+	Scope            *CourseHistoryScopeEnum `json:"scope,omitempty"`
+	StructureVersion int                     `json:"structure_version"`
+}
+
+// RestoreResponse defines model for RestoreResponse.
+type RestoreResponse struct {
+	BeforeRestorePin HistoryPin     `json:"before_restore_pin"`
+	Modules          []CourseModule `json:"modules"`
+	Outline          CourseOutline  `json:"outline"`
+
+	// RestoredRef Newest revision after the restore; null when the restore changed nothing.
+	RestoredRef      *string `json:"restored_ref"`
+	StructureVersion int     `json:"structure_version"`
+}
+
 // RetakeReasonEnum * `manual` - Manual invalidation
 // * `gt_agreement` - Ground truth / agreement threshold
 type RetakeReasonEnum string
@@ -15104,6 +15350,14 @@ type StateTriggeredBy struct {
 // * `completed` - Completed
 // * `completed_with_errors` - Completed with errors
 type StorageStatusEnum string
+
+// StructureVersionConflict defines model for StructureVersionConflict.
+type StructureVersionConflict struct {
+	Code             string        `json:"code"`
+	Detail           string        `json:"detail"`
+	Outline          CourseOutline `json:"outline"`
+	StructureVersion int           `json:"structure_version"`
+}
 
 // TaskAgreementMatrixResponse defines model for TaskAgreementMatrixResponse.
 type TaskAgreementMatrixResponse struct {
@@ -16504,6 +16758,28 @@ type ApiLearningResourcesExportRetrieveParams struct {
 	// IncludeOther Bundle the other files (documents, etc.) the course references. Returns a zip.
 	IncludeOther *bool `form:"include_other,omitempty" json:"include_other,omitempty"`
 }
+
+// ApiLearningResourcesHistoryRetrieveParams defines parameters for ApiLearningResourcesHistoryRetrieve.
+type ApiLearningResourcesHistoryRetrieveParams struct {
+	// Before Revision id: only sessions older than this. Use `next_before`.
+	Before *int `form:"before,omitempty" json:"before,omitempty"`
+
+	// Include Ref (`r<revision>` or `p<pin>`) whose row stays in the response.
+	Include *string `form:"include,omitempty" json:"include,omitempty"`
+	Limit   *int    `form:"limit,omitempty" json:"limit,omitempty"`
+}
+
+// ApiLearningResourcesHistoryStatesRestorePreviewRetrieveParams defines parameters for ApiLearningResourcesHistoryStatesRestorePreviewRetrieve.
+type ApiLearningResourcesHistoryStatesRestorePreviewRetrieveParams struct {
+	PageId *string `form:"page_id,omitempty" json:"page_id,omitempty"`
+
+	// Scope * `course` - course
+	// * `page` - page
+	Scope *ApiLearningResourcesHistoryStatesRestorePreviewRetrieveParamsScope `form:"scope,omitempty" json:"scope,omitempty"`
+}
+
+// ApiLearningResourcesHistoryStatesRestorePreviewRetrieveParamsScope defines parameters for ApiLearningResourcesHistoryStatesRestorePreviewRetrieve.
+type ApiLearningResourcesHistoryStatesRestorePreviewRetrieveParamsScope string
 
 // ApiLearningResourcesModulesListParams defines parameters for ApiLearningResourcesModulesList.
 type ApiLearningResourcesModulesListParams struct {
@@ -18611,6 +18887,33 @@ type ApiLearningResourcesEditingSessionCreateFormdataRequestBody = CourseEditing
 // ApiLearningResourcesEditingSessionCreateMultipartRequestBody defines body for ApiLearningResourcesEditingSessionCreate for multipart/form-data ContentType.
 type ApiLearningResourcesEditingSessionCreateMultipartRequestBody = CourseEditingSessionHeartbeatRequest
 
+// ApiLearningResourcesHistoryPinsCreateJSONRequestBody defines body for ApiLearningResourcesHistoryPinsCreate for application/json ContentType.
+type ApiLearningResourcesHistoryPinsCreateJSONRequestBody = PinCreateRequest
+
+// ApiLearningResourcesHistoryPinsCreateFormdataRequestBody defines body for ApiLearningResourcesHistoryPinsCreate for application/x-www-form-urlencoded ContentType.
+type ApiLearningResourcesHistoryPinsCreateFormdataRequestBody = PinCreateRequest
+
+// ApiLearningResourcesHistoryPinsCreateMultipartRequestBody defines body for ApiLearningResourcesHistoryPinsCreate for multipart/form-data ContentType.
+type ApiLearningResourcesHistoryPinsCreateMultipartRequestBody = PinCreateRequest
+
+// ApiLearningResourcesHistoryPinsPartialUpdateJSONRequestBody defines body for ApiLearningResourcesHistoryPinsPartialUpdate for application/json ContentType.
+type ApiLearningResourcesHistoryPinsPartialUpdateJSONRequestBody = PatchedPinRenameRequest
+
+// ApiLearningResourcesHistoryPinsPartialUpdateFormdataRequestBody defines body for ApiLearningResourcesHistoryPinsPartialUpdate for application/x-www-form-urlencoded ContentType.
+type ApiLearningResourcesHistoryPinsPartialUpdateFormdataRequestBody = PatchedPinRenameRequest
+
+// ApiLearningResourcesHistoryPinsPartialUpdateMultipartRequestBody defines body for ApiLearningResourcesHistoryPinsPartialUpdate for multipart/form-data ContentType.
+type ApiLearningResourcesHistoryPinsPartialUpdateMultipartRequestBody = PatchedPinRenameRequest
+
+// ApiLearningResourcesHistoryStatesRestoreCreateJSONRequestBody defines body for ApiLearningResourcesHistoryStatesRestoreCreate for application/json ContentType.
+type ApiLearningResourcesHistoryStatesRestoreCreateJSONRequestBody = RestoreRequestRequest
+
+// ApiLearningResourcesHistoryStatesRestoreCreateFormdataRequestBody defines body for ApiLearningResourcesHistoryStatesRestoreCreate for application/x-www-form-urlencoded ContentType.
+type ApiLearningResourcesHistoryStatesRestoreCreateFormdataRequestBody = RestoreRequestRequest
+
+// ApiLearningResourcesHistoryStatesRestoreCreateMultipartRequestBody defines body for ApiLearningResourcesHistoryStatesRestoreCreate for multipart/form-data ContentType.
+type ApiLearningResourcesHistoryStatesRestoreCreateMultipartRequestBody = RestoreRequestRequest
+
 // ApiLearningResourcesInvalidateProgressCreateJSONRequestBody defines body for ApiLearningResourcesInvalidateProgressCreate for application/json ContentType.
 type ApiLearningResourcesInvalidateProgressCreateJSONRequestBody = LearningResourceRequest
 
@@ -19705,306 +20008,3 @@ type ApiStoragesExportLocalfilesPartialUpdateMultipartRequestBody = PatchedLocal
 
 // ApiStoragesExportRedisCreateJSONRequestBody defines body for ApiStoragesExportRedisCreate for application/json ContentType.
 type ApiStoragesExportRedisCreateJSONRequestBody = RedisExportStorageWriteRequest
-
-// ApiStoragesExportRedisCreateFormdataRequestBody defines body for ApiStoragesExportRedisCreate for application/x-www-form-urlencoded ContentType.
-type ApiStoragesExportRedisCreateFormdataRequestBody = RedisExportStorageWriteRequest
-
-// ApiStoragesExportRedisCreateMultipartRequestBody defines body for ApiStoragesExportRedisCreate for multipart/form-data ContentType.
-type ApiStoragesExportRedisCreateMultipartRequestBody = RedisExportStorageWriteRequest
-
-// ApiStoragesExportRedisValidateCreateJSONRequestBody defines body for ApiStoragesExportRedisValidateCreate for application/json ContentType.
-type ApiStoragesExportRedisValidateCreateJSONRequestBody = RedisExportStorageValidateRequest
-
-// ApiStoragesExportRedisValidateCreateFormdataRequestBody defines body for ApiStoragesExportRedisValidateCreate for application/x-www-form-urlencoded ContentType.
-type ApiStoragesExportRedisValidateCreateFormdataRequestBody = RedisExportStorageValidateRequest
-
-// ApiStoragesExportRedisValidateCreateMultipartRequestBody defines body for ApiStoragesExportRedisValidateCreate for multipart/form-data ContentType.
-type ApiStoragesExportRedisValidateCreateMultipartRequestBody = RedisExportStorageValidateRequest
-
-// ApiStoragesExportRedisPartialUpdateJSONRequestBody defines body for ApiStoragesExportRedisPartialUpdate for application/json ContentType.
-type ApiStoragesExportRedisPartialUpdateJSONRequestBody = PatchedRedisExportStorageWriteRequest
-
-// ApiStoragesExportRedisPartialUpdateFormdataRequestBody defines body for ApiStoragesExportRedisPartialUpdate for application/x-www-form-urlencoded ContentType.
-type ApiStoragesExportRedisPartialUpdateFormdataRequestBody = PatchedRedisExportStorageWriteRequest
-
-// ApiStoragesExportRedisPartialUpdateMultipartRequestBody defines body for ApiStoragesExportRedisPartialUpdate for multipart/form-data ContentType.
-type ApiStoragesExportRedisPartialUpdateMultipartRequestBody = PatchedRedisExportStorageWriteRequest
-
-// ApiStoragesExportS3CreateJSONRequestBody defines body for ApiStoragesExportS3Create for application/json ContentType.
-type ApiStoragesExportS3CreateJSONRequestBody = S3ExportStorageWriteRequest
-
-// ApiStoragesExportS3CreateFormdataRequestBody defines body for ApiStoragesExportS3Create for application/x-www-form-urlencoded ContentType.
-type ApiStoragesExportS3CreateFormdataRequestBody = S3ExportStorageWriteRequest
-
-// ApiStoragesExportS3CreateMultipartRequestBody defines body for ApiStoragesExportS3Create for multipart/form-data ContentType.
-type ApiStoragesExportS3CreateMultipartRequestBody = S3ExportStorageWriteRequest
-
-// ApiStoragesExportS3ValidateCreateJSONRequestBody defines body for ApiStoragesExportS3ValidateCreate for application/json ContentType.
-type ApiStoragesExportS3ValidateCreateJSONRequestBody = S3ExportStorageValidateRequest
-
-// ApiStoragesExportS3ValidateCreateFormdataRequestBody defines body for ApiStoragesExportS3ValidateCreate for application/x-www-form-urlencoded ContentType.
-type ApiStoragesExportS3ValidateCreateFormdataRequestBody = S3ExportStorageValidateRequest
-
-// ApiStoragesExportS3ValidateCreateMultipartRequestBody defines body for ApiStoragesExportS3ValidateCreate for multipart/form-data ContentType.
-type ApiStoragesExportS3ValidateCreateMultipartRequestBody = S3ExportStorageValidateRequest
-
-// ApiStoragesExportS3PartialUpdateJSONRequestBody defines body for ApiStoragesExportS3PartialUpdate for application/json ContentType.
-type ApiStoragesExportS3PartialUpdateJSONRequestBody = PatchedS3ExportStorageWriteRequest
-
-// ApiStoragesExportS3PartialUpdateFormdataRequestBody defines body for ApiStoragesExportS3PartialUpdate for application/x-www-form-urlencoded ContentType.
-type ApiStoragesExportS3PartialUpdateFormdataRequestBody = PatchedS3ExportStorageWriteRequest
-
-// ApiStoragesExportS3PartialUpdateMultipartRequestBody defines body for ApiStoragesExportS3PartialUpdate for multipart/form-data ContentType.
-type ApiStoragesExportS3PartialUpdateMultipartRequestBody = PatchedS3ExportStorageWriteRequest
-
-// ApiStoragesExportS3sCreateJSONRequestBody defines body for ApiStoragesExportS3sCreate for application/json ContentType.
-type ApiStoragesExportS3sCreateJSONRequestBody = LseS3ExportStorageRequest
-
-// ApiStoragesExportS3sCreateFormdataRequestBody defines body for ApiStoragesExportS3sCreate for application/x-www-form-urlencoded ContentType.
-type ApiStoragesExportS3sCreateFormdataRequestBody = LseS3ExportStorageRequest
-
-// ApiStoragesExportS3sCreateMultipartRequestBody defines body for ApiStoragesExportS3sCreate for multipart/form-data ContentType.
-type ApiStoragesExportS3sCreateMultipartRequestBody = LseS3ExportStorageRequest
-
-// ApiStoragesExportS3sValidateCreateJSONRequestBody defines body for ApiStoragesExportS3sValidateCreate for application/json ContentType.
-type ApiStoragesExportS3sValidateCreateJSONRequestBody = LseS3ExportStorageRequest
-
-// ApiStoragesExportS3sValidateCreateFormdataRequestBody defines body for ApiStoragesExportS3sValidateCreate for application/x-www-form-urlencoded ContentType.
-type ApiStoragesExportS3sValidateCreateFormdataRequestBody = LseS3ExportStorageRequest
-
-// ApiStoragesExportS3sValidateCreateMultipartRequestBody defines body for ApiStoragesExportS3sValidateCreate for multipart/form-data ContentType.
-type ApiStoragesExportS3sValidateCreateMultipartRequestBody = LseS3ExportStorageRequest
-
-// ApiStoragesExportS3sPartialUpdateJSONRequestBody defines body for ApiStoragesExportS3sPartialUpdate for application/json ContentType.
-type ApiStoragesExportS3sPartialUpdateJSONRequestBody = PatchedLseS3ExportStorageRequest
-
-// ApiStoragesExportS3sPartialUpdateFormdataRequestBody defines body for ApiStoragesExportS3sPartialUpdate for application/x-www-form-urlencoded ContentType.
-type ApiStoragesExportS3sPartialUpdateFormdataRequestBody = PatchedLseS3ExportStorageRequest
-
-// ApiStoragesExportS3sPartialUpdateMultipartRequestBody defines body for ApiStoragesExportS3sPartialUpdate for multipart/form-data ContentType.
-type ApiStoragesExportS3sPartialUpdateMultipartRequestBody = PatchedLseS3ExportStorageRequest
-
-// ApiStoragesGcsCreateJSONRequestBody defines body for ApiStoragesGcsCreate for application/json ContentType.
-type ApiStoragesGcsCreateJSONRequestBody = GCSImportStorageWriteRequest
-
-// ApiStoragesGcsCreateFormdataRequestBody defines body for ApiStoragesGcsCreate for application/x-www-form-urlencoded ContentType.
-type ApiStoragesGcsCreateFormdataRequestBody = GCSImportStorageWriteRequest
-
-// ApiStoragesGcsCreateMultipartRequestBody defines body for ApiStoragesGcsCreate for multipart/form-data ContentType.
-type ApiStoragesGcsCreateMultipartRequestBody = GCSImportStorageWriteRequest
-
-// ApiStoragesGcsValidateCreateJSONRequestBody defines body for ApiStoragesGcsValidateCreate for application/json ContentType.
-type ApiStoragesGcsValidateCreateJSONRequestBody = GCSImportStorageValidateRequest
-
-// ApiStoragesGcsValidateCreateFormdataRequestBody defines body for ApiStoragesGcsValidateCreate for application/x-www-form-urlencoded ContentType.
-type ApiStoragesGcsValidateCreateFormdataRequestBody = GCSImportStorageValidateRequest
-
-// ApiStoragesGcsValidateCreateMultipartRequestBody defines body for ApiStoragesGcsValidateCreate for multipart/form-data ContentType.
-type ApiStoragesGcsValidateCreateMultipartRequestBody = GCSImportStorageValidateRequest
-
-// ApiStoragesGcsPartialUpdateJSONRequestBody defines body for ApiStoragesGcsPartialUpdate for application/json ContentType.
-type ApiStoragesGcsPartialUpdateJSONRequestBody = PatchedGCSImportStorageWriteRequest
-
-// ApiStoragesGcsPartialUpdateFormdataRequestBody defines body for ApiStoragesGcsPartialUpdate for application/x-www-form-urlencoded ContentType.
-type ApiStoragesGcsPartialUpdateFormdataRequestBody = PatchedGCSImportStorageWriteRequest
-
-// ApiStoragesGcsPartialUpdateMultipartRequestBody defines body for ApiStoragesGcsPartialUpdate for multipart/form-data ContentType.
-type ApiStoragesGcsPartialUpdateMultipartRequestBody = PatchedGCSImportStorageWriteRequest
-
-// ApiStoragesGcsSaCreateJSONRequestBody defines body for ApiStoragesGcsSaCreate for application/json ContentType.
-type ApiStoragesGcsSaCreateJSONRequestBody = GCSSAImportStorageRequest
-
-// ApiStoragesGcsSaCreateFormdataRequestBody defines body for ApiStoragesGcsSaCreate for application/x-www-form-urlencoded ContentType.
-type ApiStoragesGcsSaCreateFormdataRequestBody = GCSSAImportStorageRequest
-
-// ApiStoragesGcsSaCreateMultipartRequestBody defines body for ApiStoragesGcsSaCreate for multipart/form-data ContentType.
-type ApiStoragesGcsSaCreateMultipartRequestBody = GCSSAImportStorageRequest
-
-// ApiStoragesGcsSaValidateCreateJSONRequestBody defines body for ApiStoragesGcsSaValidateCreate for application/json ContentType.
-type ApiStoragesGcsSaValidateCreateJSONRequestBody = GCSSAImportStorageRequest
-
-// ApiStoragesGcsSaValidateCreateFormdataRequestBody defines body for ApiStoragesGcsSaValidateCreate for application/x-www-form-urlencoded ContentType.
-type ApiStoragesGcsSaValidateCreateFormdataRequestBody = GCSSAImportStorageRequest
-
-// ApiStoragesGcsSaValidateCreateMultipartRequestBody defines body for ApiStoragesGcsSaValidateCreate for multipart/form-data ContentType.
-type ApiStoragesGcsSaValidateCreateMultipartRequestBody = GCSSAImportStorageRequest
-
-// ApiStoragesGcsSaPartialUpdateJSONRequestBody defines body for ApiStoragesGcsSaPartialUpdate for application/json ContentType.
-type ApiStoragesGcsSaPartialUpdateJSONRequestBody = PatchedGCSSAImportStorageRequest
-
-// ApiStoragesGcsSaPartialUpdateFormdataRequestBody defines body for ApiStoragesGcsSaPartialUpdate for application/x-www-form-urlencoded ContentType.
-type ApiStoragesGcsSaPartialUpdateFormdataRequestBody = PatchedGCSSAImportStorageRequest
-
-// ApiStoragesGcsSaPartialUpdateMultipartRequestBody defines body for ApiStoragesGcsSaPartialUpdate for multipart/form-data ContentType.
-type ApiStoragesGcsSaPartialUpdateMultipartRequestBody = PatchedGCSSAImportStorageRequest
-
-// ApiStoragesGcswifCreateJSONRequestBody defines body for ApiStoragesGcswifCreate for application/json ContentType.
-type ApiStoragesGcswifCreateJSONRequestBody = GCSWIFImportStorageRequest
-
-// ApiStoragesGcswifCreateFormdataRequestBody defines body for ApiStoragesGcswifCreate for application/x-www-form-urlencoded ContentType.
-type ApiStoragesGcswifCreateFormdataRequestBody = GCSWIFImportStorageRequest
-
-// ApiStoragesGcswifCreateMultipartRequestBody defines body for ApiStoragesGcswifCreate for multipart/form-data ContentType.
-type ApiStoragesGcswifCreateMultipartRequestBody = GCSWIFImportStorageRequest
-
-// ApiStoragesGcswifValidateCreateJSONRequestBody defines body for ApiStoragesGcswifValidateCreate for application/json ContentType.
-type ApiStoragesGcswifValidateCreateJSONRequestBody = GCSWIFImportStorageRequest
-
-// ApiStoragesGcswifValidateCreateFormdataRequestBody defines body for ApiStoragesGcswifValidateCreate for application/x-www-form-urlencoded ContentType.
-type ApiStoragesGcswifValidateCreateFormdataRequestBody = GCSWIFImportStorageRequest
-
-// ApiStoragesGcswifValidateCreateMultipartRequestBody defines body for ApiStoragesGcswifValidateCreate for multipart/form-data ContentType.
-type ApiStoragesGcswifValidateCreateMultipartRequestBody = GCSWIFImportStorageRequest
-
-// ApiStoragesGcswifPartialUpdateJSONRequestBody defines body for ApiStoragesGcswifPartialUpdate for application/json ContentType.
-type ApiStoragesGcswifPartialUpdateJSONRequestBody = PatchedGCSWIFImportStorageRequest
-
-// ApiStoragesGcswifPartialUpdateFormdataRequestBody defines body for ApiStoragesGcswifPartialUpdate for application/x-www-form-urlencoded ContentType.
-type ApiStoragesGcswifPartialUpdateFormdataRequestBody = PatchedGCSWIFImportStorageRequest
-
-// ApiStoragesGcswifPartialUpdateMultipartRequestBody defines body for ApiStoragesGcswifPartialUpdate for multipart/form-data ContentType.
-type ApiStoragesGcswifPartialUpdateMultipartRequestBody = PatchedGCSWIFImportStorageRequest
-
-// ApiStoragesLocalfilesCreateJSONRequestBody defines body for ApiStoragesLocalfilesCreate for application/json ContentType.
-type ApiStoragesLocalfilesCreateJSONRequestBody = LocalFilesImportStorageWriteRequest
-
-// ApiStoragesLocalfilesCreateFormdataRequestBody defines body for ApiStoragesLocalfilesCreate for application/x-www-form-urlencoded ContentType.
-type ApiStoragesLocalfilesCreateFormdataRequestBody = LocalFilesImportStorageWriteRequest
-
-// ApiStoragesLocalfilesCreateMultipartRequestBody defines body for ApiStoragesLocalfilesCreate for multipart/form-data ContentType.
-type ApiStoragesLocalfilesCreateMultipartRequestBody = LocalFilesImportStorageWriteRequest
-
-// ApiStoragesLocalfilesValidateCreateJSONRequestBody defines body for ApiStoragesLocalfilesValidateCreate for application/json ContentType.
-type ApiStoragesLocalfilesValidateCreateJSONRequestBody = LocalFilesImportStorageValidateRequest
-
-// ApiStoragesLocalfilesValidateCreateFormdataRequestBody defines body for ApiStoragesLocalfilesValidateCreate for application/x-www-form-urlencoded ContentType.
-type ApiStoragesLocalfilesValidateCreateFormdataRequestBody = LocalFilesImportStorageValidateRequest
-
-// ApiStoragesLocalfilesValidateCreateMultipartRequestBody defines body for ApiStoragesLocalfilesValidateCreate for multipart/form-data ContentType.
-type ApiStoragesLocalfilesValidateCreateMultipartRequestBody = LocalFilesImportStorageValidateRequest
-
-// ApiStoragesLocalfilesPartialUpdateJSONRequestBody defines body for ApiStoragesLocalfilesPartialUpdate for application/json ContentType.
-type ApiStoragesLocalfilesPartialUpdateJSONRequestBody = PatchedLocalFilesImportStorageWriteRequest
-
-// ApiStoragesLocalfilesPartialUpdateFormdataRequestBody defines body for ApiStoragesLocalfilesPartialUpdate for application/x-www-form-urlencoded ContentType.
-type ApiStoragesLocalfilesPartialUpdateFormdataRequestBody = PatchedLocalFilesImportStorageWriteRequest
-
-// ApiStoragesLocalfilesPartialUpdateMultipartRequestBody defines body for ApiStoragesLocalfilesPartialUpdate for multipart/form-data ContentType.
-type ApiStoragesLocalfilesPartialUpdateMultipartRequestBody = PatchedLocalFilesImportStorageWriteRequest
-
-// ApiStoragesRedisCreateJSONRequestBody defines body for ApiStoragesRedisCreate for application/json ContentType.
-type ApiStoragesRedisCreateJSONRequestBody = RedisImportStorageWriteRequest
-
-// ApiStoragesRedisCreateFormdataRequestBody defines body for ApiStoragesRedisCreate for application/x-www-form-urlencoded ContentType.
-type ApiStoragesRedisCreateFormdataRequestBody = RedisImportStorageWriteRequest
-
-// ApiStoragesRedisCreateMultipartRequestBody defines body for ApiStoragesRedisCreate for multipart/form-data ContentType.
-type ApiStoragesRedisCreateMultipartRequestBody = RedisImportStorageWriteRequest
-
-// ApiStoragesRedisValidateCreateJSONRequestBody defines body for ApiStoragesRedisValidateCreate for application/json ContentType.
-type ApiStoragesRedisValidateCreateJSONRequestBody = RedisImportStorageValidateRequest
-
-// ApiStoragesRedisValidateCreateFormdataRequestBody defines body for ApiStoragesRedisValidateCreate for application/x-www-form-urlencoded ContentType.
-type ApiStoragesRedisValidateCreateFormdataRequestBody = RedisImportStorageValidateRequest
-
-// ApiStoragesRedisValidateCreateMultipartRequestBody defines body for ApiStoragesRedisValidateCreate for multipart/form-data ContentType.
-type ApiStoragesRedisValidateCreateMultipartRequestBody = RedisImportStorageValidateRequest
-
-// ApiStoragesRedisPartialUpdateJSONRequestBody defines body for ApiStoragesRedisPartialUpdate for application/json ContentType.
-type ApiStoragesRedisPartialUpdateJSONRequestBody = PatchedRedisImportStorageWriteRequest
-
-// ApiStoragesRedisPartialUpdateFormdataRequestBody defines body for ApiStoragesRedisPartialUpdate for application/x-www-form-urlencoded ContentType.
-type ApiStoragesRedisPartialUpdateFormdataRequestBody = PatchedRedisImportStorageWriteRequest
-
-// ApiStoragesRedisPartialUpdateMultipartRequestBody defines body for ApiStoragesRedisPartialUpdate for multipart/form-data ContentType.
-type ApiStoragesRedisPartialUpdateMultipartRequestBody = PatchedRedisImportStorageWriteRequest
-
-// ApiStoragesS3CreateJSONRequestBody defines body for ApiStoragesS3Create for application/json ContentType.
-type ApiStoragesS3CreateJSONRequestBody = S3ImportStorageWriteRequest
-
-// ApiStoragesS3CreateFormdataRequestBody defines body for ApiStoragesS3Create for application/x-www-form-urlencoded ContentType.
-type ApiStoragesS3CreateFormdataRequestBody = S3ImportStorageWriteRequest
-
-// ApiStoragesS3CreateMultipartRequestBody defines body for ApiStoragesS3Create for multipart/form-data ContentType.
-type ApiStoragesS3CreateMultipartRequestBody = S3ImportStorageWriteRequest
-
-// ApiStoragesS3ValidateCreateJSONRequestBody defines body for ApiStoragesS3ValidateCreate for application/json ContentType.
-type ApiStoragesS3ValidateCreateJSONRequestBody = S3ImportStorageValidateRequest
-
-// ApiStoragesS3ValidateCreateFormdataRequestBody defines body for ApiStoragesS3ValidateCreate for application/x-www-form-urlencoded ContentType.
-type ApiStoragesS3ValidateCreateFormdataRequestBody = S3ImportStorageValidateRequest
-
-// ApiStoragesS3ValidateCreateMultipartRequestBody defines body for ApiStoragesS3ValidateCreate for multipart/form-data ContentType.
-type ApiStoragesS3ValidateCreateMultipartRequestBody = S3ImportStorageValidateRequest
-
-// ApiStoragesS3PartialUpdateJSONRequestBody defines body for ApiStoragesS3PartialUpdate for application/json ContentType.
-type ApiStoragesS3PartialUpdateJSONRequestBody = PatchedS3ImportStorageWriteRequest
-
-// ApiStoragesS3PartialUpdateFormdataRequestBody defines body for ApiStoragesS3PartialUpdate for application/x-www-form-urlencoded ContentType.
-type ApiStoragesS3PartialUpdateFormdataRequestBody = PatchedS3ImportStorageWriteRequest
-
-// ApiStoragesS3PartialUpdateMultipartRequestBody defines body for ApiStoragesS3PartialUpdate for multipart/form-data ContentType.
-type ApiStoragesS3PartialUpdateMultipartRequestBody = PatchedS3ImportStorageWriteRequest
-
-// ApiStoragesS3sCreateJSONRequestBody defines body for ApiStoragesS3sCreate for application/json ContentType.
-type ApiStoragesS3sCreateJSONRequestBody = LseS3ImportStorageRequest
-
-// ApiStoragesS3sCreateFormdataRequestBody defines body for ApiStoragesS3sCreate for application/x-www-form-urlencoded ContentType.
-type ApiStoragesS3sCreateFormdataRequestBody = LseS3ImportStorageRequest
-
-// ApiStoragesS3sCreateMultipartRequestBody defines body for ApiStoragesS3sCreate for multipart/form-data ContentType.
-type ApiStoragesS3sCreateMultipartRequestBody = LseS3ImportStorageRequest
-
-// ApiStoragesS3sValidateCreateJSONRequestBody defines body for ApiStoragesS3sValidateCreate for application/json ContentType.
-type ApiStoragesS3sValidateCreateJSONRequestBody = LseS3ImportStorageRequest
-
-// ApiStoragesS3sValidateCreateFormdataRequestBody defines body for ApiStoragesS3sValidateCreate for application/x-www-form-urlencoded ContentType.
-type ApiStoragesS3sValidateCreateFormdataRequestBody = LseS3ImportStorageRequest
-
-// ApiStoragesS3sValidateCreateMultipartRequestBody defines body for ApiStoragesS3sValidateCreate for multipart/form-data ContentType.
-type ApiStoragesS3sValidateCreateMultipartRequestBody = LseS3ImportStorageRequest
-
-// ApiStoragesS3sPartialUpdateJSONRequestBody defines body for ApiStoragesS3sPartialUpdate for application/json ContentType.
-type ApiStoragesS3sPartialUpdateJSONRequestBody = PatchedLseS3ImportStorageRequest
-
-// ApiStoragesS3sPartialUpdateFormdataRequestBody defines body for ApiStoragesS3sPartialUpdate for application/x-www-form-urlencoded ContentType.
-type ApiStoragesS3sPartialUpdateFormdataRequestBody = PatchedLseS3ImportStorageRequest
-
-// ApiStoragesS3sPartialUpdateMultipartRequestBody defines body for ApiStoragesS3sPartialUpdate for multipart/form-data ContentType.
-type ApiStoragesS3sPartialUpdateMultipartRequestBody = PatchedLseS3ImportStorageRequest
-
-// ApiTasksCreateJSONRequestBody defines body for ApiTasksCreate for application/json ContentType.
-type ApiTasksCreateJSONRequestBody = LseTaskRequest
-
-// ApiTasksCreateFormdataRequestBody defines body for ApiTasksCreate for application/x-www-form-urlencoded ContentType.
-type ApiTasksCreateFormdataRequestBody = LseTaskRequest
-
-// ApiTasksCreateMultipartRequestBody defines body for ApiTasksCreate for multipart/form-data ContentType.
-type ApiTasksCreateMultipartRequestBody = LseTaskRequest
-
-// ApiTasksPartialUpdateJSONRequestBody defines body for ApiTasksPartialUpdate for application/json ContentType.
-type ApiTasksPartialUpdateJSONRequestBody = PatchedLseTaskRequest
-
-// ApiTasksPartialUpdateFormdataRequestBody defines body for ApiTasksPartialUpdate for application/x-www-form-urlencoded ContentType.
-type ApiTasksPartialUpdateFormdataRequestBody = PatchedLseTaskRequest
-
-// ApiTasksPartialUpdateMultipartRequestBody defines body for ApiTasksPartialUpdate for multipart/form-data ContentType.
-type ApiTasksPartialUpdateMultipartRequestBody = PatchedLseTaskRequest
-
-// ApiTasksAnnotationsCreateJSONRequestBody defines body for ApiTasksAnnotationsCreate for application/json ContentType.
-type ApiTasksAnnotationsCreateJSONRequestBody = AnnotationRequest
-
-// ApiTasksAnnotationsCreateFormdataRequestBody defines body for ApiTasksAnnotationsCreate for application/x-www-form-urlencoded ContentType.
-type ApiTasksAnnotationsCreateFormdataRequestBody = AnnotationRequest
-
-// ApiTasksAnnotationsCreateMultipartRequestBody defines body for ApiTasksAnnotationsCreate for multipart/form-data ContentType.
-type ApiTasksAnnotationsCreateMultipartRequestBody = AnnotationRequest
-
-// ApiTasksEventsCreateJSONRequestBody defines body for ApiTasksEventsCreate for application/json ContentType.
-type ApiTasksEventsCreateJSONRequestBody = TaskEventRequest
-
-// ApiTasksEventsCreateFormdataRequestBody defines body for ApiTasksEventsCreate for application/x-www-form-urlencoded ContentType.
-type ApiTasksEventsCreateFormdataRequestBody = TaskEventRequest
-
-// ApiTasksEventsCreateMultipartRequestBody defines body for ApiTasksEventsCreate for multipart/form-data ContentType.
-type ApiTasksEventsCreateMultipartRequestBody = TaskEventRequest
