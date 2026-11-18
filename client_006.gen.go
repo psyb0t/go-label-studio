@@ -12626,6 +12626,47 @@ func (r ApiProjectsTasksAssigneesBulkCreateResponse) ContentType() string {
 	return ""
 }
 
+type ApiProjectsTasksDataColumnCreateResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+	// JSON200 the response for an HTTP 200 `application/json` response
+	JSON200 *TaskDataColumnResult
+}
+
+// GetJSON200 returns the response for an HTTP 200 `application/json` response
+func (r ApiProjectsTasksDataColumnCreateResponse) GetJSON200() *TaskDataColumnResult {
+	return r.JSON200
+}
+
+// GetBody returns the raw response body bytes
+func (r ApiProjectsTasksDataColumnCreateResponse) GetBody() []byte {
+	return r.Body
+}
+
+// Status returns HTTPResponse.Status
+func (r ApiProjectsTasksDataColumnCreateResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+
+// StatusCode returns HTTPResponse.StatusCode
+func (r ApiProjectsTasksDataColumnCreateResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+
+// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
+func (r ApiProjectsTasksDataColumnCreateResponse) ContentType() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Header.Get("Content-Type")
+	}
+	return ""
+}
+
 type ApiProjectsTasksAssigneesDestroyResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -19962,47 +20003,6 @@ func (r ApiStoragesGcswifSyncCreateResponse) Status() string {
 
 // StatusCode returns HTTPResponse.StatusCode
 func (r ApiStoragesGcswifSyncCreateResponse) StatusCode() int {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.StatusCode
-	}
-	return 0
-}
-
-// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
-func (r ApiStoragesGcswifSyncCreateResponse) ContentType() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Header.Get("Content-Type")
-	}
-	return ""
-}
-
-type ApiStoragesLocalfilesListResponse struct {
-	Body         []byte
-	HTTPResponse *http.Response
-	// JSON200 the response for an HTTP 200 `application/json` response
-	JSON200 *[]LocalFilesImportStorage
-}
-
-// GetJSON200 returns the response for an HTTP 200 `application/json` response
-func (r ApiStoragesLocalfilesListResponse) GetJSON200() *[]LocalFilesImportStorage {
-	return r.JSON200
-}
-
-// GetBody returns the raw response body bytes
-func (r ApiStoragesLocalfilesListResponse) GetBody() []byte {
-	return r.Body
-}
-
-// Status returns HTTPResponse.Status
-func (r ApiStoragesLocalfilesListResponse) Status() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Status
-	}
-	return http.StatusText(0)
-}
-
-// StatusCode returns HTTPResponse.StatusCode
-func (r ApiStoragesLocalfilesListResponse) StatusCode() int {
 	if r.HTTPResponse != nil {
 		return r.HTTPResponse.StatusCode
 	}

@@ -17,6 +17,85 @@ import (
 	openapi_types "github.com/oapi-codegen/runtime/types"
 )
 
+// ApiLearningResourcesHistoryPinsCreate ✨ Name a past state of a course
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Author-only. Materializes the state at `ref` as a named pin that survives thinning of the revisions behind it.
+//
+// Takes a body of the `application/json` content type.
+//
+// Corresponds with POST /api/learning-resources/{id}/history/pins/ (the `ApiLearningResourcesHistoryPinsCreate` operationId).
+func (c *Client) ApiLearningResourcesHistoryPinsCreate(ctx context.Context, id int, body ApiLearningResourcesHistoryPinsCreateJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiLearningResourcesHistoryPinsCreateRequest(c.Server, id, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ApiLearningResourcesHistoryPinsCreateWithFormdataBody ✨ Name a past state of a course
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Author-only. Materializes the state at `ref` as a named pin that survives thinning of the revisions behind it.
+//
+// Takes a body of the `application/x-www-form-urlencoded` content type.
+//
+// Corresponds with POST /api/learning-resources/{id}/history/pins/ (the `ApiLearningResourcesHistoryPinsCreate` operationId).
+func (c *Client) ApiLearningResourcesHistoryPinsCreateWithFormdataBody(ctx context.Context, id int, body ApiLearningResourcesHistoryPinsCreateFormdataRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiLearningResourcesHistoryPinsCreateRequestWithFormdataBody(c.Server, id, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ApiLearningResourcesHistoryPinsDestroy ✨ Delete a named or before-restore version
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Author-only. `named` and `before_restore` pins are deletable; published pins record what was published and answer 400 `pin_not_deletable`. Deletes only the pin: revisions and other pins are untouched, and the revisions behind it stay subject to thinning.
+//
+// Corresponds with DELETE /api/learning-resources/{id}/history/pins/{pin_id}/ (the `ApiLearningResourcesHistoryPinsDestroy` operationId).
+func (c *Client) ApiLearningResourcesHistoryPinsDestroy(ctx context.Context, id int, pinId int, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiLearningResourcesHistoryPinsDestroyRequest(c.Server, id, pinId)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
 // ApiLearningResourcesHistoryPinsPartialUpdateWithBody ✨ Rename a named version
 //
 // <Card href="https://humansignal.com/goenterprise">
@@ -7355,6 +7434,44 @@ func (c *Client) ApiProjectsTasksAssigneesBulkCreate(ctx context.Context, id int
 // Corresponds with POST /api/projects/{id}/tasks/assignees (the `ApiProjectsTasksAssigneesBulkCreate` operationId).
 func (c *Client) ApiProjectsTasksAssigneesBulkCreateWithFormdataBody(ctx context.Context, id int, body ApiProjectsTasksAssigneesBulkCreateFormdataRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewApiProjectsTasksAssigneesBulkCreateRequestWithFormdataBody(c.Server, id, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ApiProjectsTasksDataColumnCreateWithBody Set a data column on tasks
+//
+// Set one `task.data` key to a different value for each listed task of the project, in one synchronous request. Only that key of the listed tasks is written: other keys and other tasks are not touched, and a new column is created on the listed tasks only (the "Add or Update Columns" Data Manager action, in contrast, writes `null` into every other task when it adds a column). The column then appears in the Data Manager. All values are validated first; if any is invalid, nothing is written. The response lists the tasks that were updated and the requested IDs that are not tasks of this project. Requires the same permission and feature flag as the "Add or Update Columns" action. Values are not checked against the labeling configuration or a custom interface input schema. If an "Add or Update Columns" action that adds the same column is still running in the background, it can overwrite the values with `null`.
+//
+// Takes any type of body and a specified content type.
+//
+// Corresponds with POST /api/projects/{id}/tasks/data-column/ (the `ApiProjectsTasksDataColumnCreate` operationId).
+func (c *Client) ApiProjectsTasksDataColumnCreateWithBody(ctx context.Context, id int, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiProjectsTasksDataColumnCreateRequestWithBody(c.Server, id, contentType, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ApiProjectsTasksDataColumnCreate Set a data column on tasks
+//
+// Set one `task.data` key to a different value for each listed task of the project, in one synchronous request. Only that key of the listed tasks is written: other keys and other tasks are not touched, and a new column is created on the listed tasks only (the "Add or Update Columns" Data Manager action, in contrast, writes `null` into every other task when it adds a column). The column then appears in the Data Manager. All values are validated first; if any is invalid, nothing is written. The response lists the tasks that were updated and the requested IDs that are not tasks of this project. Requires the same permission and feature flag as the "Add or Update Columns" action. Values are not checked against the labeling configuration or a custom interface input schema. If an "Add or Update Columns" action that adds the same column is still running in the background, it can overwrite the values with `null`.
+//
+// Takes a body of the `application/json` content type.
+//
+// Corresponds with POST /api/projects/{id}/tasks/data-column/ (the `ApiProjectsTasksDataColumnCreate` operationId).
+func (c *Client) ApiProjectsTasksDataColumnCreate(ctx context.Context, id int, body ApiProjectsTasksDataColumnCreateJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiProjectsTasksDataColumnCreateRequest(c.Server, id, body)
 	if err != nil {
 		return nil, err
 	}
@@ -19881,198 +19998,6 @@ func NewApiCommentsListRequest(server string, params *ApiCommentsListParams) (*h
 		if params.Projects != nil {
 
 			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "projects", *params.Projects, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "string", Format: ""}); err != nil {
-				return nil, err
-			} else {
-				for _, qp := range strings.Split(queryFrag, "&") {
-					rawQueryFragments = append(rawQueryFragments, qp)
-				}
-			}
-
-		}
-
-		if encoded := queryValues.Encode(); encoded != "" {
-			rawQueryFragments = append(rawQueryFragments, encoded)
-		}
-		queryURL.RawQuery = strings.Join(rawQueryFragments, "&")
-	}
-
-	req, err := http.NewRequest(http.MethodGet, queryURL.String(), nil)
-	if err != nil {
-		return nil, err
-	}
-
-	return req, nil
-}
-
-// NewApiCommentsCreateRequest calls the generic ApiCommentsCreate builder with application/json body
-func NewApiCommentsCreateRequest(server string, params *ApiCommentsCreateParams, body ApiCommentsCreateJSONRequestBody) (*http.Request, error) {
-	var bodyReader io.Reader
-	buf, err := json.Marshal(body)
-	if err != nil {
-		return nil, err
-	}
-	bodyReader = bytes.NewReader(buf)
-	return NewApiCommentsCreateRequestWithBody(server, params, "application/json", bodyReader)
-}
-
-// NewApiCommentsCreateRequestWithFormdataBody calls the generic ApiCommentsCreate builder with application/x-www-form-urlencoded body
-func NewApiCommentsCreateRequestWithFormdataBody(server string, params *ApiCommentsCreateParams, body ApiCommentsCreateFormdataRequestBody) (*http.Request, error) {
-	var bodyReader io.Reader
-	bodyStr, err := runtime.MarshalForm(body, nil)
-	if err != nil {
-		return nil, err
-	}
-	bodyReader = strings.NewReader(bodyStr.Encode())
-	return NewApiCommentsCreateRequestWithBody(server, params, "application/x-www-form-urlencoded", bodyReader)
-}
-
-// NewApiCommentsCreateRequestWithBody constructs an http.Request for the ApiCommentsCreate method, with any body, and a specified content type
-func NewApiCommentsCreateRequestWithBody(server string, params *ApiCommentsCreateParams, contentType string, body io.Reader) (*http.Request, error) {
-	var err error
-
-	serverURL, err := url.Parse(server)
-	if err != nil {
-		return nil, err
-	}
-
-	operationPath := fmt.Sprintf("/api/comments/")
-	if operationPath[0] == '/' {
-		operationPath = "." + operationPath
-	}
-
-	queryURL, err := serverURL.Parse(operationPath)
-	if err != nil {
-		return nil, err
-	}
-
-	if params != nil {
-		// queryValues collects non-styled parameters (passthrough, JSON)
-		// that are safe to round-trip through url.Values.Encode().
-		queryValues := queryURL.Query()
-		// rawQueryFragments collects pre-encoded query fragments from
-		// styled parameters, preserving literal commas as delimiters
-		// per the OpenAPI spec (e.g. "color=blue,black,brown").
-		var rawQueryFragments []string
-
-		if params.ExpandCreatedBy != nil {
-
-			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "expand_created_by", *params.ExpandCreatedBy, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "boolean", Format: ""}); err != nil {
-				return nil, err
-			} else {
-				for _, qp := range strings.Split(queryFrag, "&") {
-					rawQueryFragments = append(rawQueryFragments, qp)
-				}
-			}
-
-		}
-
-		if encoded := queryValues.Encode(); encoded != "" {
-			rawQueryFragments = append(rawQueryFragments, encoded)
-		}
-		queryURL.RawQuery = strings.Join(rawQueryFragments, "&")
-	}
-
-	req, err := http.NewRequest(http.MethodPost, queryURL.String(), body)
-	if err != nil {
-		return nil, err
-	}
-
-	req.Header.Add("Content-Type", contentType)
-
-	return req, nil
-}
-
-// NewApiCommentsExportRetrieveRequest constructs an http.Request for the ApiCommentsExportRetrieve method
-func NewApiCommentsExportRetrieveRequest(server string, params *ApiCommentsExportRetrieveParams) (*http.Request, error) {
-	var err error
-
-	serverURL, err := url.Parse(server)
-	if err != nil {
-		return nil, err
-	}
-
-	operationPath := fmt.Sprintf("/api/comments/export/")
-	if operationPath[0] == '/' {
-		operationPath = "." + operationPath
-	}
-
-	queryURL, err := serverURL.Parse(operationPath)
-	if err != nil {
-		return nil, err
-	}
-
-	if params != nil {
-		// queryValues collects non-styled parameters (passthrough, JSON)
-		// that are safe to round-trip through url.Values.Encode().
-		queryValues := queryURL.Query()
-		// rawQueryFragments collects pre-encoded query fragments from
-		// styled parameters, preserving literal commas as delimiters
-		// per the OpenAPI spec (e.g. "color=blue,black,brown").
-		var rawQueryFragments []string
-
-		if params.Annotation != nil {
-
-			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "annotation", *params.Annotation, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "integer", Format: ""}); err != nil {
-				return nil, err
-			} else {
-				for _, qp := range strings.Split(queryFrag, "&") {
-					rawQueryFragments = append(rawQueryFragments, qp)
-				}
-			}
-
-		}
-
-		if params.Annotators != nil {
-
-			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "annotators", *params.Annotators, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "string", Format: ""}); err != nil {
-				return nil, err
-			} else {
-				for _, qp := range strings.Split(queryFrag, "&") {
-					rawQueryFragments = append(rawQueryFragments, qp)
-				}
-			}
-
-		}
-
-		if params.Draft != nil {
-
-			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "draft", *params.Draft, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "integer", Format: ""}); err != nil {
-				return nil, err
-			} else {
-				for _, qp := range strings.Split(queryFrag, "&") {
-					rawQueryFragments = append(rawQueryFragments, qp)
-				}
-			}
-
-		}
-
-		if params.ExpandCreatedBy != nil {
-
-			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "expand_created_by", *params.ExpandCreatedBy, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "boolean", Format: ""}); err != nil {
-				return nil, err
-			} else {
-				for _, qp := range strings.Split(queryFrag, "&") {
-					rawQueryFragments = append(rawQueryFragments, qp)
-				}
-			}
-
-		}
-
-		if params.Projects != nil {
-
-			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "projects", *params.Projects, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "string", Format: ""}); err != nil {
-				return nil, err
-			} else {
-				for _, qp := range strings.Split(queryFrag, "&") {
-					rawQueryFragments = append(rawQueryFragments, qp)
-				}
-			}
-
-		}
-
-		if params.Tz != nil {
-
-			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "tz", *params.Tz, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "string", Format: ""}); err != nil {
 				return nil, err
 			} else {
 				for _, qp := range strings.Split(queryFrag, "&") {

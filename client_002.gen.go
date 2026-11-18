@@ -15,6 +15,72 @@ import (
 	openapi_types "github.com/oapi-codegen/runtime/types"
 )
 
+// ApiStoragesExportGcsSaPartialUpdateJSONRequestBody defines body for ApiStoragesExportGcsSaPartialUpdate for application/json ContentType.
+type ApiStoragesExportGcsSaPartialUpdateJSONRequestBody = PatchedGCSSAExportStorageRequest
+
+// ApiStoragesExportGcsSaPartialUpdateFormdataRequestBody defines body for ApiStoragesExportGcsSaPartialUpdate for application/x-www-form-urlencoded ContentType.
+type ApiStoragesExportGcsSaPartialUpdateFormdataRequestBody = PatchedGCSSAExportStorageRequest
+
+// ApiStoragesExportGcsSaPartialUpdateMultipartRequestBody defines body for ApiStoragesExportGcsSaPartialUpdate for multipart/form-data ContentType.
+type ApiStoragesExportGcsSaPartialUpdateMultipartRequestBody = PatchedGCSSAExportStorageRequest
+
+// ApiStoragesExportGcswifCreateJSONRequestBody defines body for ApiStoragesExportGcswifCreate for application/json ContentType.
+type ApiStoragesExportGcswifCreateJSONRequestBody = GCSWIFExportStorageRequest
+
+// ApiStoragesExportGcswifCreateFormdataRequestBody defines body for ApiStoragesExportGcswifCreate for application/x-www-form-urlencoded ContentType.
+type ApiStoragesExportGcswifCreateFormdataRequestBody = GCSWIFExportStorageRequest
+
+// ApiStoragesExportGcswifCreateMultipartRequestBody defines body for ApiStoragesExportGcswifCreate for multipart/form-data ContentType.
+type ApiStoragesExportGcswifCreateMultipartRequestBody = GCSWIFExportStorageRequest
+
+// ApiStoragesExportGcswifValidateCreateJSONRequestBody defines body for ApiStoragesExportGcswifValidateCreate for application/json ContentType.
+type ApiStoragesExportGcswifValidateCreateJSONRequestBody = GCSWIFExportStorageRequest
+
+// ApiStoragesExportGcswifValidateCreateFormdataRequestBody defines body for ApiStoragesExportGcswifValidateCreate for application/x-www-form-urlencoded ContentType.
+type ApiStoragesExportGcswifValidateCreateFormdataRequestBody = GCSWIFExportStorageRequest
+
+// ApiStoragesExportGcswifValidateCreateMultipartRequestBody defines body for ApiStoragesExportGcswifValidateCreate for multipart/form-data ContentType.
+type ApiStoragesExportGcswifValidateCreateMultipartRequestBody = GCSWIFExportStorageRequest
+
+// ApiStoragesExportGcswifPartialUpdateJSONRequestBody defines body for ApiStoragesExportGcswifPartialUpdate for application/json ContentType.
+type ApiStoragesExportGcswifPartialUpdateJSONRequestBody = PatchedGCSWIFExportStorageRequest
+
+// ApiStoragesExportGcswifPartialUpdateFormdataRequestBody defines body for ApiStoragesExportGcswifPartialUpdate for application/x-www-form-urlencoded ContentType.
+type ApiStoragesExportGcswifPartialUpdateFormdataRequestBody = PatchedGCSWIFExportStorageRequest
+
+// ApiStoragesExportGcswifPartialUpdateMultipartRequestBody defines body for ApiStoragesExportGcswifPartialUpdate for multipart/form-data ContentType.
+type ApiStoragesExportGcswifPartialUpdateMultipartRequestBody = PatchedGCSWIFExportStorageRequest
+
+// ApiStoragesExportLocalfilesCreateJSONRequestBody defines body for ApiStoragesExportLocalfilesCreate for application/json ContentType.
+type ApiStoragesExportLocalfilesCreateJSONRequestBody = LocalFilesExportStorageWriteRequest
+
+// ApiStoragesExportLocalfilesCreateFormdataRequestBody defines body for ApiStoragesExportLocalfilesCreate for application/x-www-form-urlencoded ContentType.
+type ApiStoragesExportLocalfilesCreateFormdataRequestBody = LocalFilesExportStorageWriteRequest
+
+// ApiStoragesExportLocalfilesCreateMultipartRequestBody defines body for ApiStoragesExportLocalfilesCreate for multipart/form-data ContentType.
+type ApiStoragesExportLocalfilesCreateMultipartRequestBody = LocalFilesExportStorageWriteRequest
+
+// ApiStoragesExportLocalfilesValidateCreateJSONRequestBody defines body for ApiStoragesExportLocalfilesValidateCreate for application/json ContentType.
+type ApiStoragesExportLocalfilesValidateCreateJSONRequestBody = LocalFilesExportStorageValidateRequest
+
+// ApiStoragesExportLocalfilesValidateCreateFormdataRequestBody defines body for ApiStoragesExportLocalfilesValidateCreate for application/x-www-form-urlencoded ContentType.
+type ApiStoragesExportLocalfilesValidateCreateFormdataRequestBody = LocalFilesExportStorageValidateRequest
+
+// ApiStoragesExportLocalfilesValidateCreateMultipartRequestBody defines body for ApiStoragesExportLocalfilesValidateCreate for multipart/form-data ContentType.
+type ApiStoragesExportLocalfilesValidateCreateMultipartRequestBody = LocalFilesExportStorageValidateRequest
+
+// ApiStoragesExportLocalfilesPartialUpdateJSONRequestBody defines body for ApiStoragesExportLocalfilesPartialUpdate for application/json ContentType.
+type ApiStoragesExportLocalfilesPartialUpdateJSONRequestBody = PatchedLocalFilesExportStorageWriteRequest
+
+// ApiStoragesExportLocalfilesPartialUpdateFormdataRequestBody defines body for ApiStoragesExportLocalfilesPartialUpdate for application/x-www-form-urlencoded ContentType.
+type ApiStoragesExportLocalfilesPartialUpdateFormdataRequestBody = PatchedLocalFilesExportStorageWriteRequest
+
+// ApiStoragesExportLocalfilesPartialUpdateMultipartRequestBody defines body for ApiStoragesExportLocalfilesPartialUpdate for multipart/form-data ContentType.
+type ApiStoragesExportLocalfilesPartialUpdateMultipartRequestBody = PatchedLocalFilesExportStorageWriteRequest
+
+// ApiStoragesExportRedisCreateJSONRequestBody defines body for ApiStoragesExportRedisCreate for application/json ContentType.
+type ApiStoragesExportRedisCreateJSONRequestBody = RedisExportStorageWriteRequest
+
 // ApiStoragesExportRedisCreateFormdataRequestBody defines body for ApiStoragesExportRedisCreate for application/x-www-form-urlencoded ContentType.
 type ApiStoragesExportRedisCreateFormdataRequestBody = RedisExportStorageWriteRequest
 
@@ -9137,6 +9203,24 @@ type ClientInterface interface {
 	//
 	// Corresponds with POST /api/projects/{id}/tasks/assignees (the `ApiProjectsTasksAssigneesBulkCreate` operationId).
 	ApiProjectsTasksAssigneesBulkCreateWithFormdataBody(ctx context.Context, id int, body ApiProjectsTasksAssigneesBulkCreateFormdataRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	// ApiProjectsTasksDataColumnCreateWithBody Set a data column on tasks
+	//
+	// Set one `task.data` key to a different value for each listed task of the project, in one synchronous request. Only that key of the listed tasks is written: other keys and other tasks are not touched, and a new column is created on the listed tasks only (the "Add or Update Columns" Data Manager action, in contrast, writes `null` into every other task when it adds a column). The column then appears in the Data Manager. All values are validated first; if any is invalid, nothing is written. The response lists the tasks that were updated and the requested IDs that are not tasks of this project. Requires the same permission and feature flag as the "Add or Update Columns" action. Values are not checked against the labeling configuration or a custom interface input schema. If an "Add or Update Columns" action that adds the same column is still running in the background, it can overwrite the values with `null`.
+	//
+	// Takes any type of body and a specified content type.
+	//
+	// Corresponds with POST /api/projects/{id}/tasks/data-column/ (the `ApiProjectsTasksDataColumnCreate` operationId).
+	ApiProjectsTasksDataColumnCreateWithBody(ctx context.Context, id int, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	// ApiProjectsTasksDataColumnCreate Set a data column on tasks
+	//
+	// Set one `task.data` key to a different value for each listed task of the project, in one synchronous request. Only that key of the listed tasks is written: other keys and other tasks are not touched, and a new column is created on the listed tasks only (the "Add or Update Columns" Data Manager action, in contrast, writes `null` into every other task when it adds a column). The column then appears in the Data Manager. All values are validated first; if any is invalid, nothing is written. The response lists the tasks that were updated and the requested IDs that are not tasks of this project. Requires the same permission and feature flag as the "Add or Update Columns" action. Values are not checked against the labeling configuration or a custom interface input schema. If an "Add or Update Columns" action that adds the same column is still running in the background, it can overwrite the values with `null`.
+	//
+	// Takes a body of the `application/json` content type.
+	//
+	// Corresponds with POST /api/projects/{id}/tasks/data-column/ (the `ApiProjectsTasksDataColumnCreate` operationId).
+	ApiProjectsTasksDataColumnCreate(ctx context.Context, id int, body ApiProjectsTasksDataColumnCreateJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// ApiProjectsTasksAssigneesDestroy ✨ Delete task assignments
 	//
@@ -19927,85 +20011,6 @@ func (c *Client) ApiLearningResourcesHistoryRetrieve(ctx context.Context, id int
 // Corresponds with POST /api/learning-resources/{id}/history/pins/ (the `ApiLearningResourcesHistoryPinsCreate` operationId).
 func (c *Client) ApiLearningResourcesHistoryPinsCreateWithBody(ctx context.Context, id int, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewApiLearningResourcesHistoryPinsCreateRequestWithBody(c.Server, id, contentType, body)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// ApiLearningResourcesHistoryPinsCreate ✨ Name a past state of a course
-//
-// <Card href="https://humansignal.com/goenterprise">
-//
-//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
-//	    <p style="margin-top: 10px; font-size: 14px;">
-//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
-//	    </p>
-//	</Card>
-//
-// Author-only. Materializes the state at `ref` as a named pin that survives thinning of the revisions behind it.
-//
-// Takes a body of the `application/json` content type.
-//
-// Corresponds with POST /api/learning-resources/{id}/history/pins/ (the `ApiLearningResourcesHistoryPinsCreate` operationId).
-func (c *Client) ApiLearningResourcesHistoryPinsCreate(ctx context.Context, id int, body ApiLearningResourcesHistoryPinsCreateJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewApiLearningResourcesHistoryPinsCreateRequest(c.Server, id, body)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// ApiLearningResourcesHistoryPinsCreateWithFormdataBody ✨ Name a past state of a course
-//
-// <Card href="https://humansignal.com/goenterprise">
-//
-//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
-//	    <p style="margin-top: 10px; font-size: 14px;">
-//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
-//	    </p>
-//	</Card>
-//
-// Author-only. Materializes the state at `ref` as a named pin that survives thinning of the revisions behind it.
-//
-// Takes a body of the `application/x-www-form-urlencoded` content type.
-//
-// Corresponds with POST /api/learning-resources/{id}/history/pins/ (the `ApiLearningResourcesHistoryPinsCreate` operationId).
-func (c *Client) ApiLearningResourcesHistoryPinsCreateWithFormdataBody(ctx context.Context, id int, body ApiLearningResourcesHistoryPinsCreateFormdataRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewApiLearningResourcesHistoryPinsCreateRequestWithFormdataBody(c.Server, id, body)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// ApiLearningResourcesHistoryPinsDestroy ✨ Delete a named or before-restore version
-//
-// <Card href="https://humansignal.com/goenterprise">
-//
-//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
-//	    <p style="margin-top: 10px; font-size: 14px;">
-//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
-//	    </p>
-//	</Card>
-//
-// Author-only. `named` and `before_restore` pins are deletable; published pins record what was published and answer 400 `pin_not_deletable`. Deletes only the pin: revisions and other pins are untouched, and the revisions behind it stay subject to thinning.
-//
-// Corresponds with DELETE /api/learning-resources/{id}/history/pins/{pin_id}/ (the `ApiLearningResourcesHistoryPinsDestroy` operationId).
-func (c *Client) ApiLearningResourcesHistoryPinsDestroy(ctx context.Context, id int, pinId int, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewApiLearningResourcesHistoryPinsDestroyRequest(c.Server, id, pinId)
 	if err != nil {
 		return nil, err
 	}

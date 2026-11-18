@@ -2,6 +2,15 @@
 
 All notable changes per release. Versions follow [semver](https://semver.org).
 
+## v0.10.2, 2026-11-18
+
+- Added the project task data column endpoint. `Client` has `ApiProjectsTasksDataColumnCreate` and `ApiProjectsTasksDataColumnCreateWithBody`, and `ClientWithResponses` has `ApiProjectsTasksDataColumnCreateWithResponse` and `ApiProjectsTasksDataColumnCreateWithBodyWithResponse`. The endpoint also has `NewApiProjectsTasksDataColumnCreateRequest`, `NewApiProjectsTasksDataColumnCreateRequestWithBody`, `ParseApiProjectsTasksDataColumnCreateResponse`, `ApiProjectsTasksDataColumnCreateResponse` and `ApiProjectsTasksDataColumnCreateJSONRequestBody`.
+- Added the models `TaskDataColumnRequest` and `TaskDataColumnResult`, and `TaskDataColumnValueTypeEnum` with the constants `TaskDataColumnValueTypeEnumNumber` and `TaskDataColumnValueTypeEnumString`. The enum has a `Valid` method.
+- Added the `ImportId` field (`*int64`) to `LseTask`, `LseTaskRequest`, `LseTaskSerializerForReviewers`, `PatchedLseTaskRequest` and `TaskSimple`.
+- Marked `ReviewSettings.RequeueRejectedTasksMode`, `ReviewSettings.RequeueRejectedTasksToAnnotator` and `ReviewSettingsRequest.RequeueRejectedTasksMode` as deprecated in their doc comments. Prefer `allowed_reject_actions`.
+- Added the matching methods to `ClientInterface` and `ClientWithResponsesInterface`. Code that calls the clients is unaffected, but a custom type that implements either interface must add them.
+- Several generated types and methods moved between generated files. Their names and signatures are unchanged.
+
 ## v0.10.1, 2026-11-17
 
 - Added the learning resource history endpoints under `/api/learning-resources/{id}/history/`. `Client` and `ClientWithResponses` get `ApiLearningResourcesHistoryRetrieve`, `ApiLearningResourcesHistorySessionsSavesRetrieve`, `ApiLearningResourcesHistoryStatesRetrieve`, `ApiLearningResourcesHistoryStatesRestorePreviewRetrieve`, `ApiLearningResourcesHistoryStatesRestoreCreate` and `ApiLearningResourcesHistoryViewingCreate`.

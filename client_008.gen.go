@@ -13,6 +13,66 @@ import (
 	openapi_types "github.com/oapi-codegen/runtime/types"
 )
 
+// ApiStoragesGcsCreateWithBodyWithResponse Create import storage
+//
+// Create a new GCS import storage connection.
+//
+// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with POST /api/storages/gcs/ (the `ApiStoragesGcsCreate` operationId).
+func (c *ClientWithResponses) ApiStoragesGcsCreateWithBodyWithResponse(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*ApiStoragesGcsCreateResponse, error) {
+	rsp, err := c.ApiStoragesGcsCreateWithBody(ctx, contentType, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesGcsCreateResponse(rsp)
+}
+
+// ApiStoragesGcsCreateWithResponse Create import storage
+//
+// Create a new GCS import storage connection.
+//
+// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with POST /api/storages/gcs/ (the `ApiStoragesGcsCreate` operationId).
+func (c *ClientWithResponses) ApiStoragesGcsCreateWithResponse(ctx context.Context, body ApiStoragesGcsCreateJSONRequestBody, reqEditors ...RequestEditorFn) (*ApiStoragesGcsCreateResponse, error) {
+	rsp, err := c.ApiStoragesGcsCreate(ctx, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesGcsCreateResponse(rsp)
+}
+
+// ApiStoragesGcsCreateWithFormdataBodyWithResponse Create import storage
+//
+// Create a new GCS import storage connection.
+//
+// Takes a body of the `application/x-www-form-urlencoded` content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with POST /api/storages/gcs/ (the `ApiStoragesGcsCreate` operationId).
+func (c *ClientWithResponses) ApiStoragesGcsCreateWithFormdataBodyWithResponse(ctx context.Context, body ApiStoragesGcsCreateFormdataRequestBody, reqEditors ...RequestEditorFn) (*ApiStoragesGcsCreateResponse, error) {
+	rsp, err := c.ApiStoragesGcsCreateWithFormdataBody(ctx, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesGcsCreateResponse(rsp)
+}
+
+// ApiStoragesGcsValidateCreateWithBodyWithResponse Validate import storage
+//
+// Validate a specific GCS import storage connection.
+//
+// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with POST /api/storages/gcs/validate (the `ApiStoragesGcsValidateCreate` operationId).
+func (c *ClientWithResponses) ApiStoragesGcsValidateCreateWithBodyWithResponse(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*ApiStoragesGcsValidateCreateResponse, error) {
+	rsp, err := c.ApiStoragesGcsValidateCreateWithBody(ctx, contentType, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesGcsValidateCreateResponse(rsp)
+}
+
 // ApiStoragesGcsValidateCreateWithResponse Validate import storage
 //
 // Validate a specific GCS import storage connection.
@@ -11154,6 +11214,41 @@ func ParseApiProjectsTasksAssigneesBulkCreateResponse(rsp *http.Response) (*ApiP
 		response.JSON201 = &dest
 
 	case rsp.StatusCode == 400:
+		break // No content-type
+
+	}
+
+	return response, nil
+}
+
+// ParseApiProjectsTasksDataColumnCreateResponse parses an HTTP response from a ApiProjectsTasksDataColumnCreateWithResponse call
+func ParseApiProjectsTasksDataColumnCreateResponse(rsp *http.Response) (*ApiProjectsTasksDataColumnCreateResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &ApiProjectsTasksDataColumnCreateResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	switch {
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
+		var dest TaskDataColumnResult
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON200 = &dest
+
+	case rsp.StatusCode == 400:
+		break // No content-type
+
+	case rsp.StatusCode == 403:
+		break // No content-type
+
+	case rsp.StatusCode == 404:
 		break // No content-type
 
 	}

@@ -1930,6 +1930,24 @@ func (e StorageStatusEnum) Valid() bool {
 	}
 }
 
+// Defines values for TaskDataColumnValueTypeEnum.
+const (
+	TaskDataColumnValueTypeEnumNumber TaskDataColumnValueTypeEnum = "Number"
+	TaskDataColumnValueTypeEnumString TaskDataColumnValueTypeEnum = "String"
+)
+
+// Valid indicates whether the value is a known member of the TaskDataColumnValueTypeEnum enum.
+func (e TaskDataColumnValueTypeEnum) Valid() bool {
+	switch e {
+	case TaskDataColumnValueTypeEnumNumber:
+		return true
+	case TaskDataColumnValueTypeEnumString:
+		return true
+	default:
+		return false
+	}
+}
+
 // Defines values for TrialRoleEnum.
 const (
 	TrialRoleEnumAnnotator                    TrialRoleEnum = "annotator"
@@ -9440,7 +9458,10 @@ type LseTask struct {
 	FileUpload  *string `json:"file_upload,omitempty"`
 	GroundTruth *bool   `json:"ground_truth,omitempty"`
 	Id          *int    `json:"id,omitempty"`
-	InnerId     *int    `json:"inner_id,omitempty"`
+
+	// ImportId Original task ID that was at the import step (the "id" of the task in the imported data, or the source task when tasks are copied between projects), or NULL if there was none. It points one step back, so for a copy of a copy it is the ID of the intermediate copy, not of the first task
+	ImportId *int64 `json:"import_id,omitempty"`
+	InnerId  *int   `json:"inner_id,omitempty"`
 
 	// IsLabeled True if the number of annotations for this task is greater than or equal to the number of maximum_completions for the project
 	IsLabeled *bool `json:"is_labeled,omitempty"`
@@ -9598,6 +9619,9 @@ type LseTaskRequest struct {
 	// FileUpload Uploaded file used as data source for this task
 	FileUpload *int `json:"file_upload,omitempty"`
 
+	// ImportId Original task ID that was at the import step (the "id" of the task in the imported data, or the source task when tasks are copied between projects), or NULL if there was none. It points one step back, so for a copy of a copy it is the ID of the intermediate copy, not of the first task
+	ImportId *int64 `json:"import_id,omitempty"`
+
 	// InnerId Internal task ID in the project, starts with 1
 	InnerId *int64 `json:"inner_id,omitempty"`
 
@@ -9736,7 +9760,10 @@ type LseTaskSerializerForReviewers struct {
 	FileUpload  *string `json:"file_upload,omitempty"`
 	GroundTruth *bool   `json:"ground_truth,omitempty"`
 	Id          *int    `json:"id,omitempty"`
-	InnerId     *int    `json:"inner_id,omitempty"`
+
+	// ImportId Original task ID that was at the import step (the "id" of the task in the imported data, or the source task when tasks are copied between projects), or NULL if there was none. It points one step back, so for a copy of a copy it is the ID of the intermediate copy, not of the first task
+	ImportId *int64 `json:"import_id,omitempty"`
+	InnerId  *int   `json:"inner_id,omitempty"`
 
 	// IsLabeled True if the number of annotations for this task is greater than or equal to the number of maximum_completions for the project
 	IsLabeled *bool `json:"is_labeled,omitempty"`
@@ -12396,7 +12423,10 @@ type PatchedLseTaskRequest struct {
 	Data        *map[string]interface{} `json:"data,omitempty"`
 	DraftExists *bool                   `json:"draft_exists,omitempty"`
 	GroundTruth *bool                   `json:"ground_truth,omitempty"`
-	InnerId     *int                    `json:"inner_id,omitempty"`
+
+	// ImportId Original task ID that was at the import step (the "id" of the task in the imported data, or the source task when tasks are copied between projects), or NULL if there was none. It points one step back, so for a copy of a copy it is the ID of the intermediate copy, not of the first task
+	ImportId *int64 `json:"import_id,omitempty"`
+	InnerId  *int   `json:"inner_id,omitempty"`
 
 	// IsLabeled True if the number of annotations for this task is greater than or equal to the number of maximum_completions for the project
 	IsLabeled *bool `json:"is_labeled,omitempty"`
@@ -14367,9 +14397,11 @@ type ReviewSettings struct {
 	// * `requeue` - Requeue
 	// * `remove` - Remove
 	// * `flexible` - Flexible
+	// Deprecated: this property has been marked as deprecated upstream, but no `x-deprecated-reason` was set
 	RequeueRejectedTasksMode *RequeueRejectedTasksModeEnum `json:"requeue_rejected_tasks_mode,omitempty"`
 
 	// RequeueRejectedTasksToAnnotator Deprecated. Prefer allowed_reject_actions. If set, the rejected task is requeued to the annotator
+	// Deprecated: this property has been marked as deprecated upstream, but no `x-deprecated-reason` was set
 	RequeueRejectedTasksToAnnotator *bool `json:"requeue_rejected_tasks_to_annotator,omitempty"`
 
 	// RequireCommentOnReject Reviewers must leave a comment on reject
@@ -14436,6 +14468,7 @@ type ReviewSettingsRequest struct {
 	// * `requeue` - Requeue
 	// * `remove` - Remove
 	// * `flexible` - Flexible
+	// Deprecated: this property has been marked as deprecated upstream, but no `x-deprecated-reason` was set
 	RequeueRejectedTasksMode *RequeueRejectedTasksModeEnum `json:"requeue_rejected_tasks_mode,omitempty"`
 
 	// RequireCommentOnReject Reviewers must leave a comment on reject
@@ -15399,6 +15432,34 @@ type TaskAssignment struct {
 	Type *AssignmentTypeEnum `json:"type,omitempty"`
 }
 
+// TaskDataColumnRequest defines model for TaskDataColumnRequest.
+type TaskDataColumnRequest struct {
+	// ColumnName Data column to set: the key in `task.data`, used exactly as sent. If no task of the project has it yet, it is created on the listed tasks only. A new column name cannot contain whitespace, quotation marks, brackets, semicolons, hashes, control characters, or SQL comments.
+	ColumnName string `json:"column_name"`
+
+	// ValueType How the values are stored: `String` keeps the text exactly as sent; `Number` stores a number.
+	//
+	// * `String` - String
+	// * `Number` - Number
+	ValueType *TaskDataColumnValueTypeEnum `json:"value_type,omitempty"`
+
+	// Values Map of task ID to the value for that task, for example `{"101": "Missing box", "102": "OK"}`. At most `TASK_DATA_COLUMN_MAX_TASKS` tasks per request (1000 by default).
+	Values map[string]interface{} `json:"values"`
+}
+
+// TaskDataColumnResult defines model for TaskDataColumnResult.
+type TaskDataColumnResult struct {
+	// NotFoundTaskIds Requested task IDs that are not tasks of this project (nothing was written for them).
+	NotFoundTaskIds []int `json:"not_found_task_ids"`
+
+	// UpdatedTaskIds Tasks whose column value was set, in ascending order.
+	UpdatedTaskIds []int `json:"updated_task_ids"`
+}
+
+// TaskDataColumnValueTypeEnum * `String` - String
+// * `Number` - Number
+type TaskDataColumnValueTypeEnum string
+
 // TaskEvent Serializer for TaskEvent model to handle event creation from frontend.
 //
 // This serializer validates and processes task events sent from the labeling interface,
@@ -15484,6 +15545,9 @@ type TaskSimple struct {
 	// FileUpload Uploaded file used as data source for this task
 	FileUpload *int `json:"file_upload,omitempty"`
 	Id         *int `json:"id,omitempty"`
+
+	// ImportId Original task ID that was at the import step (the "id" of the task in the imported data, or the source task when tasks are copied between projects), or NULL if there was none. It points one step back, so for a copy of a copy it is the ID of the intermediate copy, not of the first task
+	ImportId *int64 `json:"import_id,omitempty"`
 
 	// InnerId Internal task ID in the project, starts with 1
 	InnerId *int64 `json:"inner_id,omitempty"`
@@ -19466,6 +19530,9 @@ type ApiProjectsTasksAssigneesBulkCreateFormdataRequestBody = BulkTaskAssigneesR
 // ApiProjectsTasksAssigneesBulkCreateMultipartRequestBody defines body for ApiProjectsTasksAssigneesBulkCreate for multipart/form-data ContentType.
 type ApiProjectsTasksAssigneesBulkCreateMultipartRequestBody = BulkTaskAssigneesRequestRequest
 
+// ApiProjectsTasksDataColumnCreateJSONRequestBody defines body for ApiProjectsTasksDataColumnCreate for application/json ContentType.
+type ApiProjectsTasksDataColumnCreateJSONRequestBody = TaskDataColumnRequest
+
 // ApiProjectsTasksAssigneesPartialUpdateJSONRequestBody defines body for ApiProjectsTasksAssigneesPartialUpdate for application/json ContentType.
 type ApiProjectsTasksAssigneesPartialUpdateJSONRequestBody = PatchedTaskAssigneesMutationRequest
 
@@ -19942,69 +20009,3 @@ type ApiStoragesExportGcsSaValidateCreateFormdataRequestBody = GCSSAExportStorag
 
 // ApiStoragesExportGcsSaValidateCreateMultipartRequestBody defines body for ApiStoragesExportGcsSaValidateCreate for multipart/form-data ContentType.
 type ApiStoragesExportGcsSaValidateCreateMultipartRequestBody = GCSSAExportStorageRequest
-
-// ApiStoragesExportGcsSaPartialUpdateJSONRequestBody defines body for ApiStoragesExportGcsSaPartialUpdate for application/json ContentType.
-type ApiStoragesExportGcsSaPartialUpdateJSONRequestBody = PatchedGCSSAExportStorageRequest
-
-// ApiStoragesExportGcsSaPartialUpdateFormdataRequestBody defines body for ApiStoragesExportGcsSaPartialUpdate for application/x-www-form-urlencoded ContentType.
-type ApiStoragesExportGcsSaPartialUpdateFormdataRequestBody = PatchedGCSSAExportStorageRequest
-
-// ApiStoragesExportGcsSaPartialUpdateMultipartRequestBody defines body for ApiStoragesExportGcsSaPartialUpdate for multipart/form-data ContentType.
-type ApiStoragesExportGcsSaPartialUpdateMultipartRequestBody = PatchedGCSSAExportStorageRequest
-
-// ApiStoragesExportGcswifCreateJSONRequestBody defines body for ApiStoragesExportGcswifCreate for application/json ContentType.
-type ApiStoragesExportGcswifCreateJSONRequestBody = GCSWIFExportStorageRequest
-
-// ApiStoragesExportGcswifCreateFormdataRequestBody defines body for ApiStoragesExportGcswifCreate for application/x-www-form-urlencoded ContentType.
-type ApiStoragesExportGcswifCreateFormdataRequestBody = GCSWIFExportStorageRequest
-
-// ApiStoragesExportGcswifCreateMultipartRequestBody defines body for ApiStoragesExportGcswifCreate for multipart/form-data ContentType.
-type ApiStoragesExportGcswifCreateMultipartRequestBody = GCSWIFExportStorageRequest
-
-// ApiStoragesExportGcswifValidateCreateJSONRequestBody defines body for ApiStoragesExportGcswifValidateCreate for application/json ContentType.
-type ApiStoragesExportGcswifValidateCreateJSONRequestBody = GCSWIFExportStorageRequest
-
-// ApiStoragesExportGcswifValidateCreateFormdataRequestBody defines body for ApiStoragesExportGcswifValidateCreate for application/x-www-form-urlencoded ContentType.
-type ApiStoragesExportGcswifValidateCreateFormdataRequestBody = GCSWIFExportStorageRequest
-
-// ApiStoragesExportGcswifValidateCreateMultipartRequestBody defines body for ApiStoragesExportGcswifValidateCreate for multipart/form-data ContentType.
-type ApiStoragesExportGcswifValidateCreateMultipartRequestBody = GCSWIFExportStorageRequest
-
-// ApiStoragesExportGcswifPartialUpdateJSONRequestBody defines body for ApiStoragesExportGcswifPartialUpdate for application/json ContentType.
-type ApiStoragesExportGcswifPartialUpdateJSONRequestBody = PatchedGCSWIFExportStorageRequest
-
-// ApiStoragesExportGcswifPartialUpdateFormdataRequestBody defines body for ApiStoragesExportGcswifPartialUpdate for application/x-www-form-urlencoded ContentType.
-type ApiStoragesExportGcswifPartialUpdateFormdataRequestBody = PatchedGCSWIFExportStorageRequest
-
-// ApiStoragesExportGcswifPartialUpdateMultipartRequestBody defines body for ApiStoragesExportGcswifPartialUpdate for multipart/form-data ContentType.
-type ApiStoragesExportGcswifPartialUpdateMultipartRequestBody = PatchedGCSWIFExportStorageRequest
-
-// ApiStoragesExportLocalfilesCreateJSONRequestBody defines body for ApiStoragesExportLocalfilesCreate for application/json ContentType.
-type ApiStoragesExportLocalfilesCreateJSONRequestBody = LocalFilesExportStorageWriteRequest
-
-// ApiStoragesExportLocalfilesCreateFormdataRequestBody defines body for ApiStoragesExportLocalfilesCreate for application/x-www-form-urlencoded ContentType.
-type ApiStoragesExportLocalfilesCreateFormdataRequestBody = LocalFilesExportStorageWriteRequest
-
-// ApiStoragesExportLocalfilesCreateMultipartRequestBody defines body for ApiStoragesExportLocalfilesCreate for multipart/form-data ContentType.
-type ApiStoragesExportLocalfilesCreateMultipartRequestBody = LocalFilesExportStorageWriteRequest
-
-// ApiStoragesExportLocalfilesValidateCreateJSONRequestBody defines body for ApiStoragesExportLocalfilesValidateCreate for application/json ContentType.
-type ApiStoragesExportLocalfilesValidateCreateJSONRequestBody = LocalFilesExportStorageValidateRequest
-
-// ApiStoragesExportLocalfilesValidateCreateFormdataRequestBody defines body for ApiStoragesExportLocalfilesValidateCreate for application/x-www-form-urlencoded ContentType.
-type ApiStoragesExportLocalfilesValidateCreateFormdataRequestBody = LocalFilesExportStorageValidateRequest
-
-// ApiStoragesExportLocalfilesValidateCreateMultipartRequestBody defines body for ApiStoragesExportLocalfilesValidateCreate for multipart/form-data ContentType.
-type ApiStoragesExportLocalfilesValidateCreateMultipartRequestBody = LocalFilesExportStorageValidateRequest
-
-// ApiStoragesExportLocalfilesPartialUpdateJSONRequestBody defines body for ApiStoragesExportLocalfilesPartialUpdate for application/json ContentType.
-type ApiStoragesExportLocalfilesPartialUpdateJSONRequestBody = PatchedLocalFilesExportStorageWriteRequest
-
-// ApiStoragesExportLocalfilesPartialUpdateFormdataRequestBody defines body for ApiStoragesExportLocalfilesPartialUpdate for application/x-www-form-urlencoded ContentType.
-type ApiStoragesExportLocalfilesPartialUpdateFormdataRequestBody = PatchedLocalFilesExportStorageWriteRequest
-
-// ApiStoragesExportLocalfilesPartialUpdateMultipartRequestBody defines body for ApiStoragesExportLocalfilesPartialUpdate for multipart/form-data ContentType.
-type ApiStoragesExportLocalfilesPartialUpdateMultipartRequestBody = PatchedLocalFilesExportStorageWriteRequest
-
-// ApiStoragesExportRedisCreateJSONRequestBody defines body for ApiStoragesExportRedisCreate for application/json ContentType.
-type ApiStoragesExportRedisCreateJSONRequestBody = RedisExportStorageWriteRequest

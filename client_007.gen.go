@@ -12,6 +12,47 @@ import (
 )
 
 // ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
+func (r ApiStoragesGcswifSyncCreateResponse) ContentType() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Header.Get("Content-Type")
+	}
+	return ""
+}
+
+type ApiStoragesLocalfilesListResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+	// JSON200 the response for an HTTP 200 `application/json` response
+	JSON200 *[]LocalFilesImportStorage
+}
+
+// GetJSON200 returns the response for an HTTP 200 `application/json` response
+func (r ApiStoragesLocalfilesListResponse) GetJSON200() *[]LocalFilesImportStorage {
+	return r.JSON200
+}
+
+// GetBody returns the raw response body bytes
+func (r ApiStoragesLocalfilesListResponse) GetBody() []byte {
+	return r.Body
+}
+
+// Status returns HTTPResponse.Status
+func (r ApiStoragesLocalfilesListResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+
+// StatusCode returns HTTPResponse.StatusCode
+func (r ApiStoragesLocalfilesListResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+
+// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
 func (r ApiStoragesLocalfilesListResponse) ContentType() string {
 	if r.HTTPResponse != nil {
 		return r.HTTPResponse.Header.Get("Content-Type")
@@ -13885,6 +13926,36 @@ func (c *ClientWithResponses) ApiProjectsTasksAssigneesBulkCreateWithFormdataBod
 	return ParseApiProjectsTasksAssigneesBulkCreateResponse(rsp)
 }
 
+// ApiProjectsTasksDataColumnCreateWithBodyWithResponse Set a data column on tasks
+//
+// Set one `task.data` key to a different value for each listed task of the project, in one synchronous request. Only that key of the listed tasks is written: other keys and other tasks are not touched, and a new column is created on the listed tasks only (the "Add or Update Columns" Data Manager action, in contrast, writes `null` into every other task when it adds a column). The column then appears in the Data Manager. All values are validated first; if any is invalid, nothing is written. The response lists the tasks that were updated and the requested IDs that are not tasks of this project. Requires the same permission and feature flag as the "Add or Update Columns" action. Values are not checked against the labeling configuration or a custom interface input schema. If an "Add or Update Columns" action that adds the same column is still running in the background, it can overwrite the values with `null`.
+//
+// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with POST /api/projects/{id}/tasks/data-column/ (the `ApiProjectsTasksDataColumnCreate` operationId).
+func (c *ClientWithResponses) ApiProjectsTasksDataColumnCreateWithBodyWithResponse(ctx context.Context, id int, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*ApiProjectsTasksDataColumnCreateResponse, error) {
+	rsp, err := c.ApiProjectsTasksDataColumnCreateWithBody(ctx, id, contentType, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiProjectsTasksDataColumnCreateResponse(rsp)
+}
+
+// ApiProjectsTasksDataColumnCreateWithResponse Set a data column on tasks
+//
+// Set one `task.data` key to a different value for each listed task of the project, in one synchronous request. Only that key of the listed tasks is written: other keys and other tasks are not touched, and a new column is created on the listed tasks only (the "Add or Update Columns" Data Manager action, in contrast, writes `null` into every other task when it adds a column). The column then appears in the Data Manager. All values are validated first; if any is invalid, nothing is written. The response lists the tasks that were updated and the requested IDs that are not tasks of this project. Requires the same permission and feature flag as the "Add or Update Columns" action. Values are not checked against the labeling configuration or a custom interface input schema. If an "Add or Update Columns" action that adds the same column is still running in the background, it can overwrite the values with `null`.
+//
+// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with POST /api/projects/{id}/tasks/data-column/ (the `ApiProjectsTasksDataColumnCreate` operationId).
+func (c *ClientWithResponses) ApiProjectsTasksDataColumnCreateWithResponse(ctx context.Context, id int, body ApiProjectsTasksDataColumnCreateJSONRequestBody, reqEditors ...RequestEditorFn) (*ApiProjectsTasksDataColumnCreateResponse, error) {
+	rsp, err := c.ApiProjectsTasksDataColumnCreate(ctx, id, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiProjectsTasksDataColumnCreateResponse(rsp)
+}
+
 // ApiProjectsTasksAssigneesDestroyWithResponse ✨ Delete task assignments
 //
 // <Card href="https://humansignal.com/goenterprise">
@@ -19951,64 +20022,4 @@ func (c *ClientWithResponses) ApiStoragesGcsListWithResponse(ctx context.Context
 		return nil, err
 	}
 	return ParseApiStoragesGcsListResponse(rsp)
-}
-
-// ApiStoragesGcsCreateWithBodyWithResponse Create import storage
-//
-// Create a new GCS import storage connection.
-//
-// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
-//
-// Corresponds with POST /api/storages/gcs/ (the `ApiStoragesGcsCreate` operationId).
-func (c *ClientWithResponses) ApiStoragesGcsCreateWithBodyWithResponse(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*ApiStoragesGcsCreateResponse, error) {
-	rsp, err := c.ApiStoragesGcsCreateWithBody(ctx, contentType, body, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseApiStoragesGcsCreateResponse(rsp)
-}
-
-// ApiStoragesGcsCreateWithResponse Create import storage
-//
-// Create a new GCS import storage connection.
-//
-// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
-//
-// Corresponds with POST /api/storages/gcs/ (the `ApiStoragesGcsCreate` operationId).
-func (c *ClientWithResponses) ApiStoragesGcsCreateWithResponse(ctx context.Context, body ApiStoragesGcsCreateJSONRequestBody, reqEditors ...RequestEditorFn) (*ApiStoragesGcsCreateResponse, error) {
-	rsp, err := c.ApiStoragesGcsCreate(ctx, body, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseApiStoragesGcsCreateResponse(rsp)
-}
-
-// ApiStoragesGcsCreateWithFormdataBodyWithResponse Create import storage
-//
-// Create a new GCS import storage connection.
-//
-// Takes a body of the `application/x-www-form-urlencoded` content type, and returns a wrapper object for the known response body format(s).
-//
-// Corresponds with POST /api/storages/gcs/ (the `ApiStoragesGcsCreate` operationId).
-func (c *ClientWithResponses) ApiStoragesGcsCreateWithFormdataBodyWithResponse(ctx context.Context, body ApiStoragesGcsCreateFormdataRequestBody, reqEditors ...RequestEditorFn) (*ApiStoragesGcsCreateResponse, error) {
-	rsp, err := c.ApiStoragesGcsCreateWithFormdataBody(ctx, body, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseApiStoragesGcsCreateResponse(rsp)
-}
-
-// ApiStoragesGcsValidateCreateWithBodyWithResponse Validate import storage
-//
-// Validate a specific GCS import storage connection.
-//
-// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
-//
-// Corresponds with POST /api/storages/gcs/validate (the `ApiStoragesGcsValidateCreate` operationId).
-func (c *ClientWithResponses) ApiStoragesGcsValidateCreateWithBodyWithResponse(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*ApiStoragesGcsValidateCreateResponse, error) {
-	rsp, err := c.ApiStoragesGcsValidateCreateWithBody(ctx, contentType, body, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseApiStoragesGcsValidateCreateResponse(rsp)
 }
