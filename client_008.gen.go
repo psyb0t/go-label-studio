@@ -13,111 +13,6 @@ import (
 	openapi_types "github.com/oapi-codegen/runtime/types"
 )
 
-// ApiStoragesGcsCreateWithBodyWithResponse Create import storage
-//
-// Create a new GCS import storage connection.
-//
-// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
-//
-// Corresponds with POST /api/storages/gcs/ (the `ApiStoragesGcsCreate` operationId).
-func (c *ClientWithResponses) ApiStoragesGcsCreateWithBodyWithResponse(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*ApiStoragesGcsCreateResponse, error) {
-	rsp, err := c.ApiStoragesGcsCreateWithBody(ctx, contentType, body, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseApiStoragesGcsCreateResponse(rsp)
-}
-
-// ApiStoragesGcsCreateWithResponse Create import storage
-//
-// Create a new GCS import storage connection.
-//
-// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
-//
-// Corresponds with POST /api/storages/gcs/ (the `ApiStoragesGcsCreate` operationId).
-func (c *ClientWithResponses) ApiStoragesGcsCreateWithResponse(ctx context.Context, body ApiStoragesGcsCreateJSONRequestBody, reqEditors ...RequestEditorFn) (*ApiStoragesGcsCreateResponse, error) {
-	rsp, err := c.ApiStoragesGcsCreate(ctx, body, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseApiStoragesGcsCreateResponse(rsp)
-}
-
-// ApiStoragesGcsCreateWithFormdataBodyWithResponse Create import storage
-//
-// Create a new GCS import storage connection.
-//
-// Takes a body of the `application/x-www-form-urlencoded` content type, and returns a wrapper object for the known response body format(s).
-//
-// Corresponds with POST /api/storages/gcs/ (the `ApiStoragesGcsCreate` operationId).
-func (c *ClientWithResponses) ApiStoragesGcsCreateWithFormdataBodyWithResponse(ctx context.Context, body ApiStoragesGcsCreateFormdataRequestBody, reqEditors ...RequestEditorFn) (*ApiStoragesGcsCreateResponse, error) {
-	rsp, err := c.ApiStoragesGcsCreateWithFormdataBody(ctx, body, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseApiStoragesGcsCreateResponse(rsp)
-}
-
-// ApiStoragesGcsValidateCreateWithBodyWithResponse Validate import storage
-//
-// Validate a specific GCS import storage connection.
-//
-// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
-//
-// Corresponds with POST /api/storages/gcs/validate (the `ApiStoragesGcsValidateCreate` operationId).
-func (c *ClientWithResponses) ApiStoragesGcsValidateCreateWithBodyWithResponse(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*ApiStoragesGcsValidateCreateResponse, error) {
-	rsp, err := c.ApiStoragesGcsValidateCreateWithBody(ctx, contentType, body, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseApiStoragesGcsValidateCreateResponse(rsp)
-}
-
-// ApiStoragesGcsValidateCreateWithResponse Validate import storage
-//
-// Validate a specific GCS import storage connection.
-//
-// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
-//
-// Corresponds with POST /api/storages/gcs/validate (the `ApiStoragesGcsValidateCreate` operationId).
-func (c *ClientWithResponses) ApiStoragesGcsValidateCreateWithResponse(ctx context.Context, body ApiStoragesGcsValidateCreateJSONRequestBody, reqEditors ...RequestEditorFn) (*ApiStoragesGcsValidateCreateResponse, error) {
-	rsp, err := c.ApiStoragesGcsValidateCreate(ctx, body, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseApiStoragesGcsValidateCreateResponse(rsp)
-}
-
-// ApiStoragesGcsValidateCreateWithFormdataBodyWithResponse Validate import storage
-//
-// Validate a specific GCS import storage connection.
-//
-// Takes a body of the `application/x-www-form-urlencoded` content type, and returns a wrapper object for the known response body format(s).
-//
-// Corresponds with POST /api/storages/gcs/validate (the `ApiStoragesGcsValidateCreate` operationId).
-func (c *ClientWithResponses) ApiStoragesGcsValidateCreateWithFormdataBodyWithResponse(ctx context.Context, body ApiStoragesGcsValidateCreateFormdataRequestBody, reqEditors ...RequestEditorFn) (*ApiStoragesGcsValidateCreateResponse, error) {
-	rsp, err := c.ApiStoragesGcsValidateCreateWithFormdataBody(ctx, body, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseApiStoragesGcsValidateCreateResponse(rsp)
-}
-
-// ApiStoragesGcsDestroyWithResponse Delete import storage
-//
-// Delete a specific GCS import storage connection.
-//
-// Returns a wrapper object for the known response body format(s).
-//
-// Corresponds with DELETE /api/storages/gcs/{id} (the `ApiStoragesGcsDestroy` operationId).
-func (c *ClientWithResponses) ApiStoragesGcsDestroyWithResponse(ctx context.Context, id int, reqEditors ...RequestEditorFn) (*ApiStoragesGcsDestroyResponse, error) {
-	rsp, err := c.ApiStoragesGcsDestroy(ctx, id, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseApiStoragesGcsDestroyResponse(rsp)
-}
-
 // ApiStoragesGcsRetrieveWithResponse Get import storage
 //
 // Get a specific GCS import storage connection.
@@ -2342,29 +2237,6 @@ func (c *ClientWithResponses) ApiUsersCreateWithFormdataBodyWithResponse(ctx con
 		return nil, err
 	}
 	return ParseApiUsersCreateResponse(rsp)
-}
-
-// ApiUsersMeCertificatesListWithResponse ✨ List certificates for the current user
-//
-// <Card href="https://humansignal.com/goenterprise">
-//
-//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
-//	    <p style="margin-top: 10px; font-size: 14px;">
-//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
-//	    </p>
-//	</Card>
-//
-// List all certificates issued to the current user.
-//
-// Returns a wrapper object for the known response body format(s).
-//
-// Corresponds with GET /api/users/me/certificates/ (the `ApiUsersMeCertificatesList` operationId).
-func (c *ClientWithResponses) ApiUsersMeCertificatesListWithResponse(ctx context.Context, reqEditors ...RequestEditorFn) (*ApiUsersMeCertificatesListResponse, error) {
-	rsp, err := c.ApiUsersMeCertificatesList(ctx, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseApiUsersMeCertificatesListResponse(rsp)
 }
 
 // ApiUsersDestroyWithResponse Delete user
@@ -6392,58 +6264,6 @@ func ParseApiLearningResourcesPartialUpdateResponse(rsp *http.Response) (*ApiLea
 	return response, nil
 }
 
-// ParseApiLearningResourcesCertificatesListResponse parses an HTTP response from a ApiLearningResourcesCertificatesListWithResponse call
-func ParseApiLearningResourcesCertificatesListResponse(rsp *http.Response) (*ApiLearningResourcesCertificatesListResponse, error) {
-	bodyBytes, err := io.ReadAll(rsp.Body)
-	defer func() { _ = rsp.Body.Close() }()
-	if err != nil {
-		return nil, err
-	}
-
-	response := &ApiLearningResourcesCertificatesListResponse{
-		Body:         bodyBytes,
-		HTTPResponse: rsp,
-	}
-
-	switch {
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest PaginatedCertificateList
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON200 = &dest
-
-	}
-
-	return response, nil
-}
-
-// ParseApiLearningResourcesCertificatesRevokeCreateResponse parses an HTTP response from a ApiLearningResourcesCertificatesRevokeCreateWithResponse call
-func ParseApiLearningResourcesCertificatesRevokeCreateResponse(rsp *http.Response) (*ApiLearningResourcesCertificatesRevokeCreateResponse, error) {
-	bodyBytes, err := io.ReadAll(rsp.Body)
-	defer func() { _ = rsp.Body.Close() }()
-	if err != nil {
-		return nil, err
-	}
-
-	response := &ApiLearningResourcesCertificatesRevokeCreateResponse{
-		Body:         bodyBytes,
-		HTTPResponse: rsp,
-	}
-
-	switch {
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest Certificate
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON200 = &dest
-
-	}
-
-	return response, nil
-}
-
 // ParseApiLearningResourcesDuplicateCreateResponse parses an HTTP response from a ApiLearningResourcesDuplicateCreateWithResponse call
 func ParseApiLearningResourcesDuplicateCreateResponse(rsp *http.Response) (*ApiLearningResourcesDuplicateCreateResponse, error) {
 	bodyBytes, err := io.ReadAll(rsp.Body)
@@ -10204,6 +10024,32 @@ func ParseApiProjectsImportsRetrieveResponse(rsp *http.Response) (*ApiProjectsIm
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
 		var dest ProjectImport
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON200 = &dest
+
+	}
+
+	return response, nil
+}
+
+// ParseApiProjectsInterfaceCompatibilityCreateResponse parses an HTTP response from a ApiProjectsInterfaceCompatibilityCreateWithResponse call
+func ParseApiProjectsInterfaceCompatibilityCreateResponse(rsp *http.Response) (*ApiProjectsInterfaceCompatibilityCreateResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &ApiProjectsInterfaceCompatibilityCreateResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	switch {
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
+		var dest InterfaceCompatibilityResponse
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}
@@ -16793,32 +16639,6 @@ func ParseApiUsersCreateResponse(rsp *http.Response) (*ApiUsersCreateResponse, e
 			return nil, err
 		}
 		response.JSON201 = &dest
-
-	}
-
-	return response, nil
-}
-
-// ParseApiUsersMeCertificatesListResponse parses an HTTP response from a ApiUsersMeCertificatesListWithResponse call
-func ParseApiUsersMeCertificatesListResponse(rsp *http.Response) (*ApiUsersMeCertificatesListResponse, error) {
-	bodyBytes, err := io.ReadAll(rsp.Body)
-	defer func() { _ = rsp.Body.Close() }()
-	if err != nil {
-		return nil, err
-	}
-
-	response := &ApiUsersMeCertificatesListResponse{
-		Body:         bodyBytes,
-		HTTPResponse: rsp,
-	}
-
-	switch {
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest []Certificate
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON200 = &dest
 
 	}
 

@@ -15,30 +15,6 @@ import (
 	openapi_types "github.com/oapi-codegen/runtime/types"
 )
 
-// ApiStoragesExportGcsSaPartialUpdateJSONRequestBody defines body for ApiStoragesExportGcsSaPartialUpdate for application/json ContentType.
-type ApiStoragesExportGcsSaPartialUpdateJSONRequestBody = PatchedGCSSAExportStorageRequest
-
-// ApiStoragesExportGcsSaPartialUpdateFormdataRequestBody defines body for ApiStoragesExportGcsSaPartialUpdate for application/x-www-form-urlencoded ContentType.
-type ApiStoragesExportGcsSaPartialUpdateFormdataRequestBody = PatchedGCSSAExportStorageRequest
-
-// ApiStoragesExportGcsSaPartialUpdateMultipartRequestBody defines body for ApiStoragesExportGcsSaPartialUpdate for multipart/form-data ContentType.
-type ApiStoragesExportGcsSaPartialUpdateMultipartRequestBody = PatchedGCSSAExportStorageRequest
-
-// ApiStoragesExportGcswifCreateJSONRequestBody defines body for ApiStoragesExportGcswifCreate for application/json ContentType.
-type ApiStoragesExportGcswifCreateJSONRequestBody = GCSWIFExportStorageRequest
-
-// ApiStoragesExportGcswifCreateFormdataRequestBody defines body for ApiStoragesExportGcswifCreate for application/x-www-form-urlencoded ContentType.
-type ApiStoragesExportGcswifCreateFormdataRequestBody = GCSWIFExportStorageRequest
-
-// ApiStoragesExportGcswifCreateMultipartRequestBody defines body for ApiStoragesExportGcswifCreate for multipart/form-data ContentType.
-type ApiStoragesExportGcswifCreateMultipartRequestBody = GCSWIFExportStorageRequest
-
-// ApiStoragesExportGcswifValidateCreateJSONRequestBody defines body for ApiStoragesExportGcswifValidateCreate for application/json ContentType.
-type ApiStoragesExportGcswifValidateCreateJSONRequestBody = GCSWIFExportStorageRequest
-
-// ApiStoragesExportGcswifValidateCreateFormdataRequestBody defines body for ApiStoragesExportGcswifValidateCreate for application/x-www-form-urlencoded ContentType.
-type ApiStoragesExportGcswifValidateCreateFormdataRequestBody = GCSWIFExportStorageRequest
-
 // ApiStoragesExportGcswifValidateCreateMultipartRequestBody defines body for ApiStoragesExportGcswifValidateCreate for multipart/form-data ContentType.
 type ApiStoragesExportGcswifValidateCreateMultipartRequestBody = GCSWIFExportStorageRequest
 
@@ -4875,64 +4851,6 @@ type ClientInterface interface {
 	// Corresponds with PATCH /api/learning-resources/{id}/ (the `ApiLearningResourcesPartialUpdate` operationId).
 	ApiLearningResourcesPartialUpdateWithFormdataBody(ctx context.Context, id int, body ApiLearningResourcesPartialUpdateFormdataRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
 
-	// ApiLearningResourcesCertificatesList ✨ List certificates for a learning resource
-	//
-	// <Card href="https://humansignal.com/goenterprise">
-	//         <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
-	//         <p style="margin-top: 10px; font-size: 14px;">
-	//             This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
-	//         </p>
-	//     </Card>
-	// List all certificates issued for a course.
-	//
-	// Corresponds with GET /api/learning-resources/{id}/certificates/ (the `ApiLearningResourcesCertificatesList` operationId).
-	ApiLearningResourcesCertificatesList(ctx context.Context, id int, params *ApiLearningResourcesCertificatesListParams, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// ApiLearningResourcesCertificatesRevokeCreateWithBody ✨ Revoke a certificate
-	//
-	// <Card href="https://humansignal.com/goenterprise">
-	//         <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
-	//         <p style="margin-top: 10px; font-size: 14px;">
-	//             This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
-	//         </p>
-	//     </Card>
-	// Revoke a certificate issued for a learning resource.
-	//
-	// Takes any type of body and a specified content type.
-	//
-	// Corresponds with POST /api/learning-resources/{id}/certificates/{certificate_id}/revoke/ (the `ApiLearningResourcesCertificatesRevokeCreate` operationId).
-	ApiLearningResourcesCertificatesRevokeCreateWithBody(ctx context.Context, id int, certificateId int, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// ApiLearningResourcesCertificatesRevokeCreate ✨ Revoke a certificate
-	//
-	// <Card href="https://humansignal.com/goenterprise">
-	//         <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
-	//         <p style="margin-top: 10px; font-size: 14px;">
-	//             This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
-	//         </p>
-	//     </Card>
-	// Revoke a certificate issued for a learning resource.
-	//
-	// Takes a body of the `application/json` content type.
-	//
-	// Corresponds with POST /api/learning-resources/{id}/certificates/{certificate_id}/revoke/ (the `ApiLearningResourcesCertificatesRevokeCreate` operationId).
-	ApiLearningResourcesCertificatesRevokeCreate(ctx context.Context, id int, certificateId int, body ApiLearningResourcesCertificatesRevokeCreateJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// ApiLearningResourcesCertificatesRevokeCreateWithFormdataBody ✨ Revoke a certificate
-	//
-	// <Card href="https://humansignal.com/goenterprise">
-	//         <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
-	//         <p style="margin-top: 10px; font-size: 14px;">
-	//             This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
-	//         </p>
-	//     </Card>
-	// Revoke a certificate issued for a learning resource.
-	//
-	// Takes a body of the `application/x-www-form-urlencoded` content type.
-	//
-	// Corresponds with POST /api/learning-resources/{id}/certificates/{certificate_id}/revoke/ (the `ApiLearningResourcesCertificatesRevokeCreate` operationId).
-	ApiLearningResourcesCertificatesRevokeCreateWithFormdataBody(ctx context.Context, id int, certificateId int, body ApiLearningResourcesCertificatesRevokeCreateFormdataRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
-
 	// ApiLearningResourcesDuplicateCreateWithBody ✨ Duplicate a learning resource
 	//
 	// <Card href="https://humansignal.com/goenterprise">
@@ -5782,7 +5700,7 @@ type ClientInterface interface {
 	//             This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
 	//         </p>
 	//     </Card>
-	// Delete multiple learners' progress on this course and revoke their certificates. Pass `user_ids`, or `select_all` with the Learners tab `filters` to reset every matching learner. Responds 409 when `expected_count` no longer matches the filtered learners.
+	// Delete multiple learners' progress on this course. Pass `user_ids`, or `select_all` with the Learners tab `filters` to reset every matching learner. Responds 409 when `expected_count` no longer matches the filtered learners.
 	//
 	// Takes any type of body and a specified content type.
 	//
@@ -5797,7 +5715,7 @@ type ClientInterface interface {
 	//             This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
 	//         </p>
 	//     </Card>
-	// Delete multiple learners' progress on this course and revoke their certificates. Pass `user_ids`, or `select_all` with the Learners tab `filters` to reset every matching learner. Responds 409 when `expected_count` no longer matches the filtered learners.
+	// Delete multiple learners' progress on this course. Pass `user_ids`, or `select_all` with the Learners tab `filters` to reset every matching learner. Responds 409 when `expected_count` no longer matches the filtered learners.
 	//
 	// Takes a body of the `application/json` content type.
 	//
@@ -5812,7 +5730,7 @@ type ClientInterface interface {
 	//             This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
 	//         </p>
 	//     </Card>
-	// Delete multiple learners' progress on this course and revoke their certificates. Pass `user_ids`, or `select_all` with the Learners tab `filters` to reset every matching learner. Responds 409 when `expected_count` no longer matches the filtered learners.
+	// Delete multiple learners' progress on this course. Pass `user_ids`, or `select_all` with the Learners tab `filters` to reset every matching learner. Responds 409 when `expected_count` no longer matches the filtered learners.
 	//
 	// Takes a body of the `application/x-www-form-urlencoded` content type.
 	//
@@ -5868,7 +5786,7 @@ type ClientInterface interface {
 	//             This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
 	//         </p>
 	//     </Card>
-	// Delete a learner's progress on this course and revoke their certificate so they must retake it.
+	// Delete a learner's progress on this course so they must retake it.
 	//
 	// Takes any type of body and a specified content type.
 	//
@@ -5883,7 +5801,7 @@ type ClientInterface interface {
 	//             This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
 	//         </p>
 	//     </Card>
-	// Delete a learner's progress on this course and revoke their certificate so they must retake it.
+	// Delete a learner's progress on this course so they must retake it.
 	//
 	// Takes a body of the `application/json` content type.
 	//
@@ -5898,7 +5816,7 @@ type ClientInterface interface {
 	//             This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
 	//         </p>
 	//     </Card>
-	// Delete a learner's progress on this course and revoke their certificate so they must retake it.
+	// Delete a learner's progress on this course so they must retake it.
 	//
 	// Takes a body of the `application/x-www-form-urlencoded` content type.
 	//
@@ -8552,6 +8470,51 @@ type ClientInterface interface {
 	//
 	// Corresponds with GET /api/projects/{id}/imports/{import_pk}/ (the `ApiProjectsImportsRetrieve` operationId).
 	ApiProjectsImportsRetrieve(ctx context.Context, id int, importPk int, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	// ApiProjectsInterfaceCompatibilityCreateWithBody ✨ Check project tasks against an interface
+	//
+	// <Card href="https://humansignal.com/goenterprise">
+	//         <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+	//         <p style="margin-top: 10px; font-size: 14px;">
+	//             This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+	//         </p>
+	//     </Card>
+	// Check the existing tasks of a project against the input schema of an interface version before attaching it. Read-only: tasks and the project are not changed.
+	//
+	// Takes any type of body and a specified content type.
+	//
+	// Corresponds with POST /api/projects/{id}/interface-compatibility (the `ApiProjectsInterfaceCompatibilityCreate` operationId).
+	ApiProjectsInterfaceCompatibilityCreateWithBody(ctx context.Context, id int, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	// ApiProjectsInterfaceCompatibilityCreate ✨ Check project tasks against an interface
+	//
+	// <Card href="https://humansignal.com/goenterprise">
+	//         <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+	//         <p style="margin-top: 10px; font-size: 14px;">
+	//             This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+	//         </p>
+	//     </Card>
+	// Check the existing tasks of a project against the input schema of an interface version before attaching it. Read-only: tasks and the project are not changed.
+	//
+	// Takes a body of the `application/json` content type.
+	//
+	// Corresponds with POST /api/projects/{id}/interface-compatibility (the `ApiProjectsInterfaceCompatibilityCreate` operationId).
+	ApiProjectsInterfaceCompatibilityCreate(ctx context.Context, id int, body ApiProjectsInterfaceCompatibilityCreateJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	// ApiProjectsInterfaceCompatibilityCreateWithFormdataBody ✨ Check project tasks against an interface
+	//
+	// <Card href="https://humansignal.com/goenterprise">
+	//         <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+	//         <p style="margin-top: 10px; font-size: 14px;">
+	//             This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+	//         </p>
+	//     </Card>
+	// Check the existing tasks of a project against the input schema of an interface version before attaching it. Read-only: tasks and the project are not changed.
+	//
+	// Takes a body of the `application/x-www-form-urlencoded` content type.
+	//
+	// Corresponds with POST /api/projects/{id}/interface-compatibility (the `ApiProjectsInterfaceCompatibilityCreate` operationId).
+	ApiProjectsInterfaceCompatibilityCreateWithFormdataBody(ctx context.Context, id int, body ApiProjectsInterfaceCompatibilityCreateFormdataRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// ApiProjectsMembersDestroy ✨ Remove member from project
 	//
@@ -14359,19 +14322,6 @@ type ClientInterface interface {
 	// Corresponds with POST /api/users/ (the `ApiUsersCreate` operationId).
 	ApiUsersCreateWithFormdataBody(ctx context.Context, body ApiUsersCreateFormdataRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
 
-	// ApiUsersMeCertificatesList ✨ List certificates for the current user
-	//
-	// <Card href="https://humansignal.com/goenterprise">
-	//         <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
-	//         <p style="margin-top: 10px; font-size: 14px;">
-	//             This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
-	//         </p>
-	//     </Card>
-	// List all certificates issued to the current user.
-	//
-	// Corresponds with GET /api/users/me/certificates/ (the `ApiUsersMeCertificatesList` operationId).
-	ApiUsersMeCertificatesList(ctx context.Context, reqEditors ...RequestEditorFn) (*http.Response, error)
-
 	// ApiUsersDestroy Delete user
 	//
 	// Delete a specific Label Studio user. Only available in community edition.
@@ -19651,112 +19601,6 @@ func (c *Client) ApiLearningResourcesPartialUpdateWithFormdataBody(ctx context.C
 	return c.Client.Do(req)
 }
 
-// ApiLearningResourcesCertificatesList ✨ List certificates for a learning resource
-//
-// <Card href="https://humansignal.com/goenterprise">
-//
-//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
-//	    <p style="margin-top: 10px; font-size: 14px;">
-//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
-//	    </p>
-//	</Card>
-//
-// List all certificates issued for a course.
-//
-// Corresponds with GET /api/learning-resources/{id}/certificates/ (the `ApiLearningResourcesCertificatesList` operationId).
-func (c *Client) ApiLearningResourcesCertificatesList(ctx context.Context, id int, params *ApiLearningResourcesCertificatesListParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewApiLearningResourcesCertificatesListRequest(c.Server, id, params)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// ApiLearningResourcesCertificatesRevokeCreateWithBody ✨ Revoke a certificate
-//
-// <Card href="https://humansignal.com/goenterprise">
-//
-//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
-//	    <p style="margin-top: 10px; font-size: 14px;">
-//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
-//	    </p>
-//	</Card>
-//
-// Revoke a certificate issued for a learning resource.
-//
-// Takes any type of body and a specified content type.
-//
-// Corresponds with POST /api/learning-resources/{id}/certificates/{certificate_id}/revoke/ (the `ApiLearningResourcesCertificatesRevokeCreate` operationId).
-func (c *Client) ApiLearningResourcesCertificatesRevokeCreateWithBody(ctx context.Context, id int, certificateId int, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewApiLearningResourcesCertificatesRevokeCreateRequestWithBody(c.Server, id, certificateId, contentType, body)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// ApiLearningResourcesCertificatesRevokeCreate ✨ Revoke a certificate
-//
-// <Card href="https://humansignal.com/goenterprise">
-//
-//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
-//	    <p style="margin-top: 10px; font-size: 14px;">
-//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
-//	    </p>
-//	</Card>
-//
-// Revoke a certificate issued for a learning resource.
-//
-// Takes a body of the `application/json` content type.
-//
-// Corresponds with POST /api/learning-resources/{id}/certificates/{certificate_id}/revoke/ (the `ApiLearningResourcesCertificatesRevokeCreate` operationId).
-func (c *Client) ApiLearningResourcesCertificatesRevokeCreate(ctx context.Context, id int, certificateId int, body ApiLearningResourcesCertificatesRevokeCreateJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewApiLearningResourcesCertificatesRevokeCreateRequest(c.Server, id, certificateId, body)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// ApiLearningResourcesCertificatesRevokeCreateWithFormdataBody ✨ Revoke a certificate
-//
-// <Card href="https://humansignal.com/goenterprise">
-//
-//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
-//	    <p style="margin-top: 10px; font-size: 14px;">
-//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
-//	    </p>
-//	</Card>
-//
-// Revoke a certificate issued for a learning resource.
-//
-// Takes a body of the `application/x-www-form-urlencoded` content type.
-//
-// Corresponds with POST /api/learning-resources/{id}/certificates/{certificate_id}/revoke/ (the `ApiLearningResourcesCertificatesRevokeCreate` operationId).
-func (c *Client) ApiLearningResourcesCertificatesRevokeCreateWithFormdataBody(ctx context.Context, id int, certificateId int, body ApiLearningResourcesCertificatesRevokeCreateFormdataRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewApiLearningResourcesCertificatesRevokeCreateRequestWithFormdataBody(c.Server, id, certificateId, body)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
 // ApiLearningResourcesDuplicateCreateWithBody ✨ Duplicate a learning resource
 //
 // <Card href="https://humansignal.com/goenterprise">
@@ -20011,6 +19855,166 @@ func (c *Client) ApiLearningResourcesHistoryRetrieve(ctx context.Context, id int
 // Corresponds with POST /api/learning-resources/{id}/history/pins/ (the `ApiLearningResourcesHistoryPinsCreate` operationId).
 func (c *Client) ApiLearningResourcesHistoryPinsCreateWithBody(ctx context.Context, id int, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewApiLearningResourcesHistoryPinsCreateRequestWithBody(c.Server, id, contentType, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ApiLearningResourcesHistoryPinsCreate ✨ Name a past state of a course
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Author-only. Materializes the state at `ref` as a named pin that survives thinning of the revisions behind it.
+//
+// Takes a body of the `application/json` content type.
+//
+// Corresponds with POST /api/learning-resources/{id}/history/pins/ (the `ApiLearningResourcesHistoryPinsCreate` operationId).
+func (c *Client) ApiLearningResourcesHistoryPinsCreate(ctx context.Context, id int, body ApiLearningResourcesHistoryPinsCreateJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiLearningResourcesHistoryPinsCreateRequest(c.Server, id, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ApiLearningResourcesHistoryPinsCreateWithFormdataBody ✨ Name a past state of a course
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Author-only. Materializes the state at `ref` as a named pin that survives thinning of the revisions behind it.
+//
+// Takes a body of the `application/x-www-form-urlencoded` content type.
+//
+// Corresponds with POST /api/learning-resources/{id}/history/pins/ (the `ApiLearningResourcesHistoryPinsCreate` operationId).
+func (c *Client) ApiLearningResourcesHistoryPinsCreateWithFormdataBody(ctx context.Context, id int, body ApiLearningResourcesHistoryPinsCreateFormdataRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiLearningResourcesHistoryPinsCreateRequestWithFormdataBody(c.Server, id, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ApiLearningResourcesHistoryPinsDestroy ✨ Delete a named or before-restore version
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Author-only. `named` and `before_restore` pins are deletable; published pins record what was published and answer 400 `pin_not_deletable`. Deletes only the pin: revisions and other pins are untouched, and the revisions behind it stay subject to thinning.
+//
+// Corresponds with DELETE /api/learning-resources/{id}/history/pins/{pin_id}/ (the `ApiLearningResourcesHistoryPinsDestroy` operationId).
+func (c *Client) ApiLearningResourcesHistoryPinsDestroy(ctx context.Context, id int, pinId int, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiLearningResourcesHistoryPinsDestroyRequest(c.Server, id, pinId)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ApiLearningResourcesHistoryPinsPartialUpdateWithBody ✨ Rename a named version
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Author-only. Only `named` pins are renamable; published and before-restore pins answer 400 `pin_not_renamable`.
+//
+// Takes any type of body and a specified content type.
+//
+// Corresponds with PATCH /api/learning-resources/{id}/history/pins/{pin_id}/ (the `ApiLearningResourcesHistoryPinsPartialUpdate` operationId).
+func (c *Client) ApiLearningResourcesHistoryPinsPartialUpdateWithBody(ctx context.Context, id int, pinId int, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiLearningResourcesHistoryPinsPartialUpdateRequestWithBody(c.Server, id, pinId, contentType, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ApiLearningResourcesHistoryPinsPartialUpdate ✨ Rename a named version
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Author-only. Only `named` pins are renamable; published and before-restore pins answer 400 `pin_not_renamable`.
+//
+// Takes a body of the `application/json` content type.
+//
+// Corresponds with PATCH /api/learning-resources/{id}/history/pins/{pin_id}/ (the `ApiLearningResourcesHistoryPinsPartialUpdate` operationId).
+func (c *Client) ApiLearningResourcesHistoryPinsPartialUpdate(ctx context.Context, id int, pinId int, body ApiLearningResourcesHistoryPinsPartialUpdateJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiLearningResourcesHistoryPinsPartialUpdateRequest(c.Server, id, pinId, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ApiLearningResourcesHistoryPinsPartialUpdateWithFormdataBody ✨ Rename a named version
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Author-only. Only `named` pins are renamable; published and before-restore pins answer 400 `pin_not_renamable`.
+//
+// Takes a body of the `application/x-www-form-urlencoded` content type.
+//
+// Corresponds with PATCH /api/learning-resources/{id}/history/pins/{pin_id}/ (the `ApiLearningResourcesHistoryPinsPartialUpdate` operationId).
+func (c *Client) ApiLearningResourcesHistoryPinsPartialUpdateWithFormdataBody(ctx context.Context, id int, pinId int, body ApiLearningResourcesHistoryPinsPartialUpdateFormdataRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiLearningResourcesHistoryPinsPartialUpdateRequestWithFormdataBody(c.Server, id, pinId, body)
 	if err != nil {
 		return nil, err
 	}

@@ -2,6 +2,16 @@
 
 All notable changes per release. Versions follow [semver](https://semver.org).
 
+## v0.11.0, 2026-11-19
+
+- Removed the learning resource certificate endpoints. `Client` loses `ApiLearningResourcesCertificatesList`, `ApiLearningResourcesCertificatesRevokeCreate` (with its `WithBody` and `WithFormdataBody` variants) and `ApiUsersMeCertificatesList`. `ClientWithResponses` loses the matching `WithResponse` methods, and `ClientInterface` and `ClientWithResponsesInterface` lose the same methods. Remove calls to them before upgrading.
+- Removed the certificate types `Certificate`, `PaginatedCertificateList`, `RevokeCertificateRequest`, `ApiLearningResourcesCertificatesListParams`, the `ApiLearningResourcesCertificatesListResponse`, `ApiLearningResourcesCertificatesRevokeCreateResponse` and `ApiUsersMeCertificatesListResponse` types, the revoke request body aliases, and the matching `New...Request` and `Parse...Response` functions.
+- Removed the `GenerateCertificateOnCompletion` field from `CourseImportResponse`, `LearningResource`, `LearningResourceDetail`, `LearningResourceList`, `LearningResourceRequest`, `LearningResourceUpdate`, `PatchedLearningResourceRequest` and `PatchedLearningResourceUpdateRequest`.
+- Added the project interface compatibility endpoint. `Client` has `ApiProjectsInterfaceCompatibilityCreate`, `ApiProjectsInterfaceCompatibilityCreateWithBody` and `ApiProjectsInterfaceCompatibilityCreateWithFormdataBody`, and `ClientWithResponses` has the matching `WithResponse` methods. It also adds `ApiProjectsInterfaceCompatibilityCreateResponse`, the request body aliases, and the `New...Request` and `Parse...Response` functions.
+- Added the models `InterfaceCompatibilityError`, `InterfaceCompatibilityRequestRequest` and `InterfaceCompatibilityResponse`.
+- Added the `WorkspaceOrShared` query field to `ApiInterfacesListParams` and the `LatestPublishedVersion` field to `LseInterfaceList`.
+- Several generated types and methods moved between generated files. Their names and signatures are unchanged.
+
 ## v0.10.2, 2026-11-18
 
 - Added the project task data column endpoint. `Client` has `ApiProjectsTasksDataColumnCreate` and `ApiProjectsTasksDataColumnCreateWithBody`, and `ClientWithResponses` has `ApiProjectsTasksDataColumnCreateWithResponse` and `ApiProjectsTasksDataColumnCreateWithBodyWithResponse`. The endpoint also has `NewApiProjectsTasksDataColumnCreateRequest`, `NewApiProjectsTasksDataColumnCreateRequestWithBody`, `ParseApiProjectsTasksDataColumnCreateResponse`, `ApiProjectsTasksDataColumnCreateResponse` and `ApiProjectsTasksDataColumnCreateJSONRequestBody`.

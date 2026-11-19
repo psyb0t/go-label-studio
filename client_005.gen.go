@@ -17,310 +17,6 @@ import (
 	openapi_types "github.com/oapi-codegen/runtime/types"
 )
 
-// NewApiPromptsVersionsPartialUpdateRequestWithFormdataBody calls the generic ApiPromptsVersionsPartialUpdate builder with application/x-www-form-urlencoded body
-func NewApiPromptsVersionsPartialUpdateRequestWithFormdataBody(server string, promptId int, versionId int, body ApiPromptsVersionsPartialUpdateFormdataRequestBody) (*http.Request, error) {
-	var bodyReader io.Reader
-	bodyStr, err := runtime.MarshalForm(body, nil)
-	if err != nil {
-		return nil, err
-	}
-	bodyReader = strings.NewReader(bodyStr.Encode())
-	return NewApiPromptsVersionsPartialUpdateRequestWithBody(server, promptId, versionId, "application/x-www-form-urlencoded", bodyReader)
-}
-
-// NewApiPromptsVersionsPartialUpdateRequestWithBody constructs an http.Request for the ApiPromptsVersionsPartialUpdate method, with any body, and a specified content type
-func NewApiPromptsVersionsPartialUpdateRequestWithBody(server string, promptId int, versionId int, contentType string, body io.Reader) (*http.Request, error) {
-	var err error
-
-	var pathParam0 string
-
-	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "prompt_id", promptId, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "integer", Format: ""})
-	if err != nil {
-		return nil, err
-	}
-
-	var pathParam1 string
-
-	pathParam1, err = runtime.StyleParamWithOptions("simple", false, "version_id", versionId, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "integer", Format: ""})
-	if err != nil {
-		return nil, err
-	}
-
-	serverURL, err := url.Parse(server)
-	if err != nil {
-		return nil, err
-	}
-
-	operationPath := fmt.Sprintf("/api/prompts/%s/versions/%s", pathParam0, pathParam1)
-	if operationPath[0] == '/' {
-		operationPath = "." + operationPath
-	}
-
-	queryURL, err := serverURL.Parse(operationPath)
-	if err != nil {
-		return nil, err
-	}
-
-	req, err := http.NewRequest(http.MethodPatch, queryURL.String(), body)
-	if err != nil {
-		return nil, err
-	}
-
-	req.Header.Add("Content-Type", contentType)
-
-	return req, nil
-}
-
-// NewApiPromptsVersionsUpdateRequest calls the generic ApiPromptsVersionsUpdate builder with application/json body
-func NewApiPromptsVersionsUpdateRequest(server string, promptId int, versionId int, body ApiPromptsVersionsUpdateJSONRequestBody) (*http.Request, error) {
-	var bodyReader io.Reader
-	buf, err := json.Marshal(body)
-	if err != nil {
-		return nil, err
-	}
-	bodyReader = bytes.NewReader(buf)
-	return NewApiPromptsVersionsUpdateRequestWithBody(server, promptId, versionId, "application/json", bodyReader)
-}
-
-// NewApiPromptsVersionsUpdateRequestWithFormdataBody calls the generic ApiPromptsVersionsUpdate builder with application/x-www-form-urlencoded body
-func NewApiPromptsVersionsUpdateRequestWithFormdataBody(server string, promptId int, versionId int, body ApiPromptsVersionsUpdateFormdataRequestBody) (*http.Request, error) {
-	var bodyReader io.Reader
-	bodyStr, err := runtime.MarshalForm(body, nil)
-	if err != nil {
-		return nil, err
-	}
-	bodyReader = strings.NewReader(bodyStr.Encode())
-	return NewApiPromptsVersionsUpdateRequestWithBody(server, promptId, versionId, "application/x-www-form-urlencoded", bodyReader)
-}
-
-// NewApiPromptsVersionsUpdateRequestWithBody constructs an http.Request for the ApiPromptsVersionsUpdate method, with any body, and a specified content type
-func NewApiPromptsVersionsUpdateRequestWithBody(server string, promptId int, versionId int, contentType string, body io.Reader) (*http.Request, error) {
-	var err error
-
-	var pathParam0 string
-
-	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "prompt_id", promptId, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "integer", Format: ""})
-	if err != nil {
-		return nil, err
-	}
-
-	var pathParam1 string
-
-	pathParam1, err = runtime.StyleParamWithOptions("simple", false, "version_id", versionId, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "integer", Format: ""})
-	if err != nil {
-		return nil, err
-	}
-
-	serverURL, err := url.Parse(server)
-	if err != nil {
-		return nil, err
-	}
-
-	operationPath := fmt.Sprintf("/api/prompts/%s/versions/%s", pathParam0, pathParam1)
-	if operationPath[0] == '/' {
-		operationPath = "." + operationPath
-	}
-
-	queryURL, err := serverURL.Parse(operationPath)
-	if err != nil {
-		return nil, err
-	}
-
-	req, err := http.NewRequest(http.MethodPut, queryURL.String(), body)
-	if err != nil {
-		return nil, err
-	}
-
-	req.Header.Add("Content-Type", contentType)
-
-	return req, nil
-}
-
-// NewApiPromptsVersionsCostEstimateRetrieveRequest constructs an http.Request for the ApiPromptsVersionsCostEstimateRetrieve method
-func NewApiPromptsVersionsCostEstimateRetrieveRequest(server string, promptId int, versionId int) (*http.Request, error) {
-	var err error
-
-	var pathParam0 string
-
-	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "prompt_id", promptId, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "integer", Format: ""})
-	if err != nil {
-		return nil, err
-	}
-
-	var pathParam1 string
-
-	pathParam1, err = runtime.StyleParamWithOptions("simple", false, "version_id", versionId, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "integer", Format: ""})
-	if err != nil {
-		return nil, err
-	}
-
-	serverURL, err := url.Parse(server)
-	if err != nil {
-		return nil, err
-	}
-
-	operationPath := fmt.Sprintf("/api/prompts/%s/versions/%s/cost-estimate", pathParam0, pathParam1)
-	if operationPath[0] == '/' {
-		operationPath = "." + operationPath
-	}
-
-	queryURL, err := serverURL.Parse(operationPath)
-	if err != nil {
-		return nil, err
-	}
-
-	req, err := http.NewRequest(http.MethodGet, queryURL.String(), nil)
-	if err != nil {
-		return nil, err
-	}
-
-	return req, nil
-}
-
-// NewApiPromptsVersionsDuplicateCreateRequest calls the generic ApiPromptsVersionsDuplicateCreate builder with application/json body
-func NewApiPromptsVersionsDuplicateCreateRequest(server string, promptId int, versionId int, body ApiPromptsVersionsDuplicateCreateJSONRequestBody) (*http.Request, error) {
-	var bodyReader io.Reader
-	buf, err := json.Marshal(body)
-	if err != nil {
-		return nil, err
-	}
-	bodyReader = bytes.NewReader(buf)
-	return NewApiPromptsVersionsDuplicateCreateRequestWithBody(server, promptId, versionId, "application/json", bodyReader)
-}
-
-// NewApiPromptsVersionsDuplicateCreateRequestWithFormdataBody calls the generic ApiPromptsVersionsDuplicateCreate builder with application/x-www-form-urlencoded body
-func NewApiPromptsVersionsDuplicateCreateRequestWithFormdataBody(server string, promptId int, versionId int, body ApiPromptsVersionsDuplicateCreateFormdataRequestBody) (*http.Request, error) {
-	var bodyReader io.Reader
-	bodyStr, err := runtime.MarshalForm(body, nil)
-	if err != nil {
-		return nil, err
-	}
-	bodyReader = strings.NewReader(bodyStr.Encode())
-	return NewApiPromptsVersionsDuplicateCreateRequestWithBody(server, promptId, versionId, "application/x-www-form-urlencoded", bodyReader)
-}
-
-// NewApiPromptsVersionsDuplicateCreateRequestWithBody constructs an http.Request for the ApiPromptsVersionsDuplicateCreate method, with any body, and a specified content type
-func NewApiPromptsVersionsDuplicateCreateRequestWithBody(server string, promptId int, versionId int, contentType string, body io.Reader) (*http.Request, error) {
-	var err error
-
-	var pathParam0 string
-
-	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "prompt_id", promptId, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "integer", Format: ""})
-	if err != nil {
-		return nil, err
-	}
-
-	var pathParam1 string
-
-	pathParam1, err = runtime.StyleParamWithOptions("simple", false, "version_id", versionId, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "integer", Format: ""})
-	if err != nil {
-		return nil, err
-	}
-
-	serverURL, err := url.Parse(server)
-	if err != nil {
-		return nil, err
-	}
-
-	operationPath := fmt.Sprintf("/api/prompts/%s/versions/%s/duplicate", pathParam0, pathParam1)
-	if operationPath[0] == '/' {
-		operationPath = "." + operationPath
-	}
-
-	queryURL, err := serverURL.Parse(operationPath)
-	if err != nil {
-		return nil, err
-	}
-
-	req, err := http.NewRequest(http.MethodPost, queryURL.String(), body)
-	if err != nil {
-		return nil, err
-	}
-
-	req.Header.Add("Content-Type", contentType)
-
-	return req, nil
-}
-
-// NewApiPromptsVersionsFewShotExamplesListRequest constructs an http.Request for the ApiPromptsVersionsFewShotExamplesList method
-func NewApiPromptsVersionsFewShotExamplesListRequest(server string, promptId int, versionId int, params *ApiPromptsVersionsFewShotExamplesListParams) (*http.Request, error) {
-	var err error
-
-	var pathParam0 string
-
-	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "prompt_id", promptId, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "integer", Format: ""})
-	if err != nil {
-		return nil, err
-	}
-
-	var pathParam1 string
-
-	pathParam1, err = runtime.StyleParamWithOptions("simple", false, "version_id", versionId, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "integer", Format: ""})
-	if err != nil {
-		return nil, err
-	}
-
-	serverURL, err := url.Parse(server)
-	if err != nil {
-		return nil, err
-	}
-
-	operationPath := fmt.Sprintf("/api/prompts/%s/versions/%s/few-shot-examples", pathParam0, pathParam1)
-	if operationPath[0] == '/' {
-		operationPath = "." + operationPath
-	}
-
-	queryURL, err := serverURL.Parse(operationPath)
-	if err != nil {
-		return nil, err
-	}
-
-	if params != nil {
-		// queryValues collects non-styled parameters (passthrough, JSON)
-		// that are safe to round-trip through url.Values.Encode().
-		queryValues := queryURL.Query()
-		// rawQueryFragments collects pre-encoded query fragments from
-		// styled parameters, preserving literal commas as delimiters
-		// per the OpenAPI spec (e.g. "color=blue,black,brown").
-		var rawQueryFragments []string
-
-		if params.Ordering != nil {
-
-			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "ordering", *params.Ordering, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "string", Format: ""}); err != nil {
-				return nil, err
-			} else {
-				for _, qp := range strings.Split(queryFrag, "&") {
-					rawQueryFragments = append(rawQueryFragments, qp)
-				}
-			}
-
-		}
-
-		if encoded := queryValues.Encode(); encoded != "" {
-			rawQueryFragments = append(rawQueryFragments, encoded)
-		}
-		queryURL.RawQuery = strings.Join(rawQueryFragments, "&")
-	}
-
-	req, err := http.NewRequest(http.MethodGet, queryURL.String(), nil)
-	if err != nil {
-		return nil, err
-	}
-
-	return req, nil
-}
-
-// NewApiPromptsVersionsFewShotExamplesCreateRequest calls the generic ApiPromptsVersionsFewShotExamplesCreate builder with application/json body
-func NewApiPromptsVersionsFewShotExamplesCreateRequest(server string, promptId int, versionId int, body ApiPromptsVersionsFewShotExamplesCreateJSONRequestBody) (*http.Request, error) {
-	var bodyReader io.Reader
-	buf, err := json.Marshal(body)
-	if err != nil {
-		return nil, err
-	}
-	bodyReader = bytes.NewReader(buf)
-	return NewApiPromptsVersionsFewShotExamplesCreateRequestWithBody(server, promptId, versionId, "application/json", bodyReader)
-}
-
 // NewApiPromptsVersionsFewShotExamplesCreateRequestWithFormdataBody calls the generic ApiPromptsVersionsFewShotExamplesCreate builder with application/x-www-form-urlencoded body
 func NewApiPromptsVersionsFewShotExamplesCreateRequestWithFormdataBody(server string, promptId int, versionId int, body ApiPromptsVersionsFewShotExamplesCreateFormdataRequestBody) (*http.Request, error) {
 	var bodyReader io.Reader
@@ -8990,33 +8686,6 @@ func NewApiUsersCreateRequestWithBody(server string, contentType string, body io
 	return req, nil
 }
 
-// NewApiUsersMeCertificatesListRequest constructs an http.Request for the ApiUsersMeCertificatesList method
-func NewApiUsersMeCertificatesListRequest(server string) (*http.Request, error) {
-	var err error
-
-	serverURL, err := url.Parse(server)
-	if err != nil {
-		return nil, err
-	}
-
-	operationPath := fmt.Sprintf("/api/users/me/certificates/")
-	if operationPath[0] == '/' {
-		operationPath = "." + operationPath
-	}
-
-	queryURL, err := serverURL.Parse(operationPath)
-	if err != nil {
-		return nil, err
-	}
-
-	req, err := http.NewRequest(http.MethodGet, queryURL.String(), nil)
-	if err != nil {
-		return nil, err
-	}
-
-	return req, nil
-}
-
 // NewApiUsersDestroyRequest constructs an http.Request for the ApiUsersDestroy method
 func NewApiUsersDestroyRequest(server string, id int) (*http.Request, error) {
 	var err error
@@ -13201,66 +12870,6 @@ type ClientWithResponsesInterface interface {
 	// Corresponds with PATCH /api/learning-resources/{id}/ (the `ApiLearningResourcesPartialUpdate` operationId).
 	ApiLearningResourcesPartialUpdateWithFormdataBodyWithResponse(ctx context.Context, id int, body ApiLearningResourcesPartialUpdateFormdataRequestBody, reqEditors ...RequestEditorFn) (*ApiLearningResourcesPartialUpdateResponse, error)
 
-	// ApiLearningResourcesCertificatesListWithResponse ✨ List certificates for a learning resource
-	//
-	// <Card href="https://humansignal.com/goenterprise">
-	//         <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
-	//         <p style="margin-top: 10px; font-size: 14px;">
-	//             This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
-	//         </p>
-	//     </Card>
-	// List all certificates issued for a course.
-	//
-	// Returns a wrapper object for the known response body format(s).
-	//
-	// Corresponds with GET /api/learning-resources/{id}/certificates/ (the `ApiLearningResourcesCertificatesList` operationId).
-	ApiLearningResourcesCertificatesListWithResponse(ctx context.Context, id int, params *ApiLearningResourcesCertificatesListParams, reqEditors ...RequestEditorFn) (*ApiLearningResourcesCertificatesListResponse, error)
-
-	// ApiLearningResourcesCertificatesRevokeCreateWithBodyWithResponse ✨ Revoke a certificate
-	//
-	// <Card href="https://humansignal.com/goenterprise">
-	//         <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
-	//         <p style="margin-top: 10px; font-size: 14px;">
-	//             This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
-	//         </p>
-	//     </Card>
-	// Revoke a certificate issued for a learning resource.
-	//
-	// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
-	//
-	// Corresponds with POST /api/learning-resources/{id}/certificates/{certificate_id}/revoke/ (the `ApiLearningResourcesCertificatesRevokeCreate` operationId).
-	ApiLearningResourcesCertificatesRevokeCreateWithBodyWithResponse(ctx context.Context, id int, certificateId int, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*ApiLearningResourcesCertificatesRevokeCreateResponse, error)
-
-	// ApiLearningResourcesCertificatesRevokeCreateWithResponse ✨ Revoke a certificate
-	//
-	// <Card href="https://humansignal.com/goenterprise">
-	//         <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
-	//         <p style="margin-top: 10px; font-size: 14px;">
-	//             This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
-	//         </p>
-	//     </Card>
-	// Revoke a certificate issued for a learning resource.
-	//
-	// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
-	//
-	// Corresponds with POST /api/learning-resources/{id}/certificates/{certificate_id}/revoke/ (the `ApiLearningResourcesCertificatesRevokeCreate` operationId).
-	ApiLearningResourcesCertificatesRevokeCreateWithResponse(ctx context.Context, id int, certificateId int, body ApiLearningResourcesCertificatesRevokeCreateJSONRequestBody, reqEditors ...RequestEditorFn) (*ApiLearningResourcesCertificatesRevokeCreateResponse, error)
-
-	// ApiLearningResourcesCertificatesRevokeCreateWithFormdataBodyWithResponse ✨ Revoke a certificate
-	//
-	// <Card href="https://humansignal.com/goenterprise">
-	//         <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
-	//         <p style="margin-top: 10px; font-size: 14px;">
-	//             This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
-	//         </p>
-	//     </Card>
-	// Revoke a certificate issued for a learning resource.
-	//
-	// Takes a body of the `application/x-www-form-urlencoded` content type, and returns a wrapper object for the known response body format(s).
-	//
-	// Corresponds with POST /api/learning-resources/{id}/certificates/{certificate_id}/revoke/ (the `ApiLearningResourcesCertificatesRevokeCreate` operationId).
-	ApiLearningResourcesCertificatesRevokeCreateWithFormdataBodyWithResponse(ctx context.Context, id int, certificateId int, body ApiLearningResourcesCertificatesRevokeCreateFormdataRequestBody, reqEditors ...RequestEditorFn) (*ApiLearningResourcesCertificatesRevokeCreateResponse, error)
-
 	// ApiLearningResourcesDuplicateCreateWithBodyWithResponse ✨ Duplicate a learning resource
 	//
 	// <Card href="https://humansignal.com/goenterprise">
@@ -14136,7 +13745,7 @@ type ClientWithResponsesInterface interface {
 	//             This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
 	//         </p>
 	//     </Card>
-	// Delete multiple learners' progress on this course and revoke their certificates. Pass `user_ids`, or `select_all` with the Learners tab `filters` to reset every matching learner. Responds 409 when `expected_count` no longer matches the filtered learners.
+	// Delete multiple learners' progress on this course. Pass `user_ids`, or `select_all` with the Learners tab `filters` to reset every matching learner. Responds 409 when `expected_count` no longer matches the filtered learners.
 	//
 	// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
 	//
@@ -14151,7 +13760,7 @@ type ClientWithResponsesInterface interface {
 	//             This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
 	//         </p>
 	//     </Card>
-	// Delete multiple learners' progress on this course and revoke their certificates. Pass `user_ids`, or `select_all` with the Learners tab `filters` to reset every matching learner. Responds 409 when `expected_count` no longer matches the filtered learners.
+	// Delete multiple learners' progress on this course. Pass `user_ids`, or `select_all` with the Learners tab `filters` to reset every matching learner. Responds 409 when `expected_count` no longer matches the filtered learners.
 	//
 	// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
 	//
@@ -14166,7 +13775,7 @@ type ClientWithResponsesInterface interface {
 	//             This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
 	//         </p>
 	//     </Card>
-	// Delete multiple learners' progress on this course and revoke their certificates. Pass `user_ids`, or `select_all` with the Learners tab `filters` to reset every matching learner. Responds 409 when `expected_count` no longer matches the filtered learners.
+	// Delete multiple learners' progress on this course. Pass `user_ids`, or `select_all` with the Learners tab `filters` to reset every matching learner. Responds 409 when `expected_count` no longer matches the filtered learners.
 	//
 	// Takes a body of the `application/x-www-form-urlencoded` content type, and returns a wrapper object for the known response body format(s).
 	//
@@ -14226,7 +13835,7 @@ type ClientWithResponsesInterface interface {
 	//             This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
 	//         </p>
 	//     </Card>
-	// Delete a learner's progress on this course and revoke their certificate so they must retake it.
+	// Delete a learner's progress on this course so they must retake it.
 	//
 	// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
 	//
@@ -14241,7 +13850,7 @@ type ClientWithResponsesInterface interface {
 	//             This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
 	//         </p>
 	//     </Card>
-	// Delete a learner's progress on this course and revoke their certificate so they must retake it.
+	// Delete a learner's progress on this course so they must retake it.
 	//
 	// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
 	//
@@ -14256,7 +13865,7 @@ type ClientWithResponsesInterface interface {
 	//             This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
 	//         </p>
 	//     </Card>
-	// Delete a learner's progress on this course and revoke their certificate so they must retake it.
+	// Delete a learner's progress on this course so they must retake it.
 	//
 	// Takes a body of the `application/x-www-form-urlencoded` content type, and returns a wrapper object for the known response body format(s).
 	//
@@ -17038,6 +16647,51 @@ type ClientWithResponsesInterface interface {
 	//
 	// Corresponds with GET /api/projects/{id}/imports/{import_pk}/ (the `ApiProjectsImportsRetrieve` operationId).
 	ApiProjectsImportsRetrieveWithResponse(ctx context.Context, id int, importPk int, reqEditors ...RequestEditorFn) (*ApiProjectsImportsRetrieveResponse, error)
+
+	// ApiProjectsInterfaceCompatibilityCreateWithBodyWithResponse ✨ Check project tasks against an interface
+	//
+	// <Card href="https://humansignal.com/goenterprise">
+	//         <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+	//         <p style="margin-top: 10px; font-size: 14px;">
+	//             This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+	//         </p>
+	//     </Card>
+	// Check the existing tasks of a project against the input schema of an interface version before attaching it. Read-only: tasks and the project are not changed.
+	//
+	// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
+	//
+	// Corresponds with POST /api/projects/{id}/interface-compatibility (the `ApiProjectsInterfaceCompatibilityCreate` operationId).
+	ApiProjectsInterfaceCompatibilityCreateWithBodyWithResponse(ctx context.Context, id int, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*ApiProjectsInterfaceCompatibilityCreateResponse, error)
+
+	// ApiProjectsInterfaceCompatibilityCreateWithResponse ✨ Check project tasks against an interface
+	//
+	// <Card href="https://humansignal.com/goenterprise">
+	//         <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+	//         <p style="margin-top: 10px; font-size: 14px;">
+	//             This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+	//         </p>
+	//     </Card>
+	// Check the existing tasks of a project against the input schema of an interface version before attaching it. Read-only: tasks and the project are not changed.
+	//
+	// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
+	//
+	// Corresponds with POST /api/projects/{id}/interface-compatibility (the `ApiProjectsInterfaceCompatibilityCreate` operationId).
+	ApiProjectsInterfaceCompatibilityCreateWithResponse(ctx context.Context, id int, body ApiProjectsInterfaceCompatibilityCreateJSONRequestBody, reqEditors ...RequestEditorFn) (*ApiProjectsInterfaceCompatibilityCreateResponse, error)
+
+	// ApiProjectsInterfaceCompatibilityCreateWithFormdataBodyWithResponse ✨ Check project tasks against an interface
+	//
+	// <Card href="https://humansignal.com/goenterprise">
+	//         <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+	//         <p style="margin-top: 10px; font-size: 14px;">
+	//             This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+	//         </p>
+	//     </Card>
+	// Check the existing tasks of a project against the input schema of an interface version before attaching it. Read-only: tasks and the project are not changed.
+	//
+	// Takes a body of the `application/x-www-form-urlencoded` content type, and returns a wrapper object for the known response body format(s).
+	//
+	// Corresponds with POST /api/projects/{id}/interface-compatibility (the `ApiProjectsInterfaceCompatibilityCreate` operationId).
+	ApiProjectsInterfaceCompatibilityCreateWithFormdataBodyWithResponse(ctx context.Context, id int, body ApiProjectsInterfaceCompatibilityCreateFormdataRequestBody, reqEditors ...RequestEditorFn) (*ApiProjectsInterfaceCompatibilityCreateResponse, error)
 
 	// ApiProjectsMembersDestroyWithResponse ✨ Remove member from project
 	//
@@ -23166,21 +22820,6 @@ type ClientWithResponsesInterface interface {
 	//
 	// Corresponds with POST /api/users/ (the `ApiUsersCreate` operationId).
 	ApiUsersCreateWithFormdataBodyWithResponse(ctx context.Context, body ApiUsersCreateFormdataRequestBody, reqEditors ...RequestEditorFn) (*ApiUsersCreateResponse, error)
-
-	// ApiUsersMeCertificatesListWithResponse ✨ List certificates for the current user
-	//
-	// <Card href="https://humansignal.com/goenterprise">
-	//         <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
-	//         <p style="margin-top: 10px; font-size: 14px;">
-	//             This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
-	//         </p>
-	//     </Card>
-	// List all certificates issued to the current user.
-	//
-	// Returns a wrapper object for the known response body format(s).
-	//
-	// Corresponds with GET /api/users/me/certificates/ (the `ApiUsersMeCertificatesList` operationId).
-	ApiUsersMeCertificatesListWithResponse(ctx context.Context, reqEditors ...RequestEditorFn) (*ApiUsersMeCertificatesListResponse, error)
 
 	// ApiUsersDestroyWithResponse Delete user
 	//

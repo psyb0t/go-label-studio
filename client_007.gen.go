@@ -12,47 +12,6 @@ import (
 )
 
 // ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
-func (r ApiStoragesGcswifSyncCreateResponse) ContentType() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Header.Get("Content-Type")
-	}
-	return ""
-}
-
-type ApiStoragesLocalfilesListResponse struct {
-	Body         []byte
-	HTTPResponse *http.Response
-	// JSON200 the response for an HTTP 200 `application/json` response
-	JSON200 *[]LocalFilesImportStorage
-}
-
-// GetJSON200 returns the response for an HTTP 200 `application/json` response
-func (r ApiStoragesLocalfilesListResponse) GetJSON200() *[]LocalFilesImportStorage {
-	return r.JSON200
-}
-
-// GetBody returns the raw response body bytes
-func (r ApiStoragesLocalfilesListResponse) GetBody() []byte {
-	return r.Body
-}
-
-// Status returns HTTPResponse.Status
-func (r ApiStoragesLocalfilesListResponse) Status() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Status
-	}
-	return http.StatusText(0)
-}
-
-// StatusCode returns HTTPResponse.StatusCode
-func (r ApiStoragesLocalfilesListResponse) StatusCode() int {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.StatusCode
-	}
-	return 0
-}
-
-// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
 func (r ApiStoragesLocalfilesListResponse) ContentType() string {
 	if r.HTTPResponse != nil {
 		return r.HTTPResponse.Header.Get("Content-Type")
@@ -1801,47 +1760,6 @@ func (r ApiUsersCreateResponse) StatusCode() int {
 
 // ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
 func (r ApiUsersCreateResponse) ContentType() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Header.Get("Content-Type")
-	}
-	return ""
-}
-
-type ApiUsersMeCertificatesListResponse struct {
-	Body         []byte
-	HTTPResponse *http.Response
-	// JSON200 the response for an HTTP 200 `application/json` response
-	JSON200 *[]Certificate
-}
-
-// GetJSON200 returns the response for an HTTP 200 `application/json` response
-func (r ApiUsersMeCertificatesListResponse) GetJSON200() *[]Certificate {
-	return r.JSON200
-}
-
-// GetBody returns the raw response body bytes
-func (r ApiUsersMeCertificatesListResponse) GetBody() []byte {
-	return r.Body
-}
-
-// Status returns HTTPResponse.Status
-func (r ApiUsersMeCertificatesListResponse) Status() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Status
-	}
-	return http.StatusText(0)
-}
-
-// StatusCode returns HTTPResponse.StatusCode
-func (r ApiUsersMeCertificatesListResponse) StatusCode() int {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.StatusCode
-	}
-	return 0
-}
-
-// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
-func (r ApiUsersMeCertificatesListResponse) ContentType() string {
 	if r.HTTPResponse != nil {
 		return r.HTTPResponse.Header.Get("Content-Type")
 	}
@@ -7151,98 +7069,6 @@ func (c *ClientWithResponses) ApiLearningResourcesPartialUpdateWithFormdataBodyW
 	return ParseApiLearningResourcesPartialUpdateResponse(rsp)
 }
 
-// ApiLearningResourcesCertificatesListWithResponse ✨ List certificates for a learning resource
-//
-// <Card href="https://humansignal.com/goenterprise">
-//
-//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
-//	    <p style="margin-top: 10px; font-size: 14px;">
-//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
-//	    </p>
-//	</Card>
-//
-// List all certificates issued for a course.
-//
-// Returns a wrapper object for the known response body format(s).
-//
-// Corresponds with GET /api/learning-resources/{id}/certificates/ (the `ApiLearningResourcesCertificatesList` operationId).
-func (c *ClientWithResponses) ApiLearningResourcesCertificatesListWithResponse(ctx context.Context, id int, params *ApiLearningResourcesCertificatesListParams, reqEditors ...RequestEditorFn) (*ApiLearningResourcesCertificatesListResponse, error) {
-	rsp, err := c.ApiLearningResourcesCertificatesList(ctx, id, params, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseApiLearningResourcesCertificatesListResponse(rsp)
-}
-
-// ApiLearningResourcesCertificatesRevokeCreateWithBodyWithResponse ✨ Revoke a certificate
-//
-// <Card href="https://humansignal.com/goenterprise">
-//
-//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
-//	    <p style="margin-top: 10px; font-size: 14px;">
-//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
-//	    </p>
-//	</Card>
-//
-// Revoke a certificate issued for a learning resource.
-//
-// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
-//
-// Corresponds with POST /api/learning-resources/{id}/certificates/{certificate_id}/revoke/ (the `ApiLearningResourcesCertificatesRevokeCreate` operationId).
-func (c *ClientWithResponses) ApiLearningResourcesCertificatesRevokeCreateWithBodyWithResponse(ctx context.Context, id int, certificateId int, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*ApiLearningResourcesCertificatesRevokeCreateResponse, error) {
-	rsp, err := c.ApiLearningResourcesCertificatesRevokeCreateWithBody(ctx, id, certificateId, contentType, body, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseApiLearningResourcesCertificatesRevokeCreateResponse(rsp)
-}
-
-// ApiLearningResourcesCertificatesRevokeCreateWithResponse ✨ Revoke a certificate
-//
-// <Card href="https://humansignal.com/goenterprise">
-//
-//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
-//	    <p style="margin-top: 10px; font-size: 14px;">
-//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
-//	    </p>
-//	</Card>
-//
-// Revoke a certificate issued for a learning resource.
-//
-// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
-//
-// Corresponds with POST /api/learning-resources/{id}/certificates/{certificate_id}/revoke/ (the `ApiLearningResourcesCertificatesRevokeCreate` operationId).
-func (c *ClientWithResponses) ApiLearningResourcesCertificatesRevokeCreateWithResponse(ctx context.Context, id int, certificateId int, body ApiLearningResourcesCertificatesRevokeCreateJSONRequestBody, reqEditors ...RequestEditorFn) (*ApiLearningResourcesCertificatesRevokeCreateResponse, error) {
-	rsp, err := c.ApiLearningResourcesCertificatesRevokeCreate(ctx, id, certificateId, body, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseApiLearningResourcesCertificatesRevokeCreateResponse(rsp)
-}
-
-// ApiLearningResourcesCertificatesRevokeCreateWithFormdataBodyWithResponse ✨ Revoke a certificate
-//
-// <Card href="https://humansignal.com/goenterprise">
-//
-//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
-//	    <p style="margin-top: 10px; font-size: 14px;">
-//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
-//	    </p>
-//	</Card>
-//
-// Revoke a certificate issued for a learning resource.
-//
-// Takes a body of the `application/x-www-form-urlencoded` content type, and returns a wrapper object for the known response body format(s).
-//
-// Corresponds with POST /api/learning-resources/{id}/certificates/{certificate_id}/revoke/ (the `ApiLearningResourcesCertificatesRevokeCreate` operationId).
-func (c *ClientWithResponses) ApiLearningResourcesCertificatesRevokeCreateWithFormdataBodyWithResponse(ctx context.Context, id int, certificateId int, body ApiLearningResourcesCertificatesRevokeCreateFormdataRequestBody, reqEditors ...RequestEditorFn) (*ApiLearningResourcesCertificatesRevokeCreateResponse, error) {
-	rsp, err := c.ApiLearningResourcesCertificatesRevokeCreateWithFormdataBody(ctx, id, certificateId, body, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseApiLearningResourcesCertificatesRevokeCreateResponse(rsp)
-}
-
 // ApiLearningResourcesDuplicateCreateWithBodyWithResponse ✨ Duplicate a learning resource
 //
 // <Card href="https://humansignal.com/goenterprise">
@@ -8586,7 +8412,7 @@ func (c *ClientWithResponses) ApiLearningResourcesUserProgressListWithResponse(c
 //	    </p>
 //	</Card>
 //
-// Delete multiple learners' progress on this course and revoke their certificates. Pass `user_ids`, or `select_all` with the Learners tab `filters` to reset every matching learner. Responds 409 when `expected_count` no longer matches the filtered learners.
+// Delete multiple learners' progress on this course. Pass `user_ids`, or `select_all` with the Learners tab `filters` to reset every matching learner. Responds 409 when `expected_count` no longer matches the filtered learners.
 //
 // Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
 //
@@ -8609,7 +8435,7 @@ func (c *ClientWithResponses) ApiLearningResourcesUserProgressBulkResetCreateWit
 //	    </p>
 //	</Card>
 //
-// Delete multiple learners' progress on this course and revoke their certificates. Pass `user_ids`, or `select_all` with the Learners tab `filters` to reset every matching learner. Responds 409 when `expected_count` no longer matches the filtered learners.
+// Delete multiple learners' progress on this course. Pass `user_ids`, or `select_all` with the Learners tab `filters` to reset every matching learner. Responds 409 when `expected_count` no longer matches the filtered learners.
 //
 // Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
 //
@@ -8632,7 +8458,7 @@ func (c *ClientWithResponses) ApiLearningResourcesUserProgressBulkResetCreateWit
 //	    </p>
 //	</Card>
 //
-// Delete multiple learners' progress on this course and revoke their certificates. Pass `user_ids`, or `select_all` with the Learners tab `filters` to reset every matching learner. Responds 409 when `expected_count` no longer matches the filtered learners.
+// Delete multiple learners' progress on this course. Pass `user_ids`, or `select_all` with the Learners tab `filters` to reset every matching learner. Responds 409 when `expected_count` no longer matches the filtered learners.
 //
 // Takes a body of the `application/x-www-form-urlencoded` content type, and returns a wrapper object for the known response body format(s).
 //
@@ -8724,7 +8550,7 @@ func (c *ClientWithResponses) ApiLearningResourcesUserProgressQuizAttemptsRetrie
 //	    </p>
 //	</Card>
 //
-// Delete a learner's progress on this course and revoke their certificate so they must retake it.
+// Delete a learner's progress on this course so they must retake it.
 //
 // Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
 //
@@ -8747,7 +8573,7 @@ func (c *ClientWithResponses) ApiLearningResourcesUserProgressResetCreateWithBod
 //	    </p>
 //	</Card>
 //
-// Delete a learner's progress on this course and revoke their certificate so they must retake it.
+// Delete a learner's progress on this course so they must retake it.
 //
 // Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
 //
@@ -8770,7 +8596,7 @@ func (c *ClientWithResponses) ApiLearningResourcesUserProgressResetCreateWithRes
 //	    </p>
 //	</Card>
 //
-// Delete a learner's progress on this course and revoke their certificate so they must retake it.
+// Delete a learner's progress on this course so they must retake it.
 //
 // Takes a body of the `application/x-www-form-urlencoded` content type, and returns a wrapper object for the known response body format(s).
 //
@@ -12854,6 +12680,75 @@ func (c *ClientWithResponses) ApiProjectsImportsRetrieveWithResponse(ctx context
 		return nil, err
 	}
 	return ParseApiProjectsImportsRetrieveResponse(rsp)
+}
+
+// ApiProjectsInterfaceCompatibilityCreateWithBodyWithResponse ✨ Check project tasks against an interface
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Check the existing tasks of a project against the input schema of an interface version before attaching it. Read-only: tasks and the project are not changed.
+//
+// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with POST /api/projects/{id}/interface-compatibility (the `ApiProjectsInterfaceCompatibilityCreate` operationId).
+func (c *ClientWithResponses) ApiProjectsInterfaceCompatibilityCreateWithBodyWithResponse(ctx context.Context, id int, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*ApiProjectsInterfaceCompatibilityCreateResponse, error) {
+	rsp, err := c.ApiProjectsInterfaceCompatibilityCreateWithBody(ctx, id, contentType, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiProjectsInterfaceCompatibilityCreateResponse(rsp)
+}
+
+// ApiProjectsInterfaceCompatibilityCreateWithResponse ✨ Check project tasks against an interface
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Check the existing tasks of a project against the input schema of an interface version before attaching it. Read-only: tasks and the project are not changed.
+//
+// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with POST /api/projects/{id}/interface-compatibility (the `ApiProjectsInterfaceCompatibilityCreate` operationId).
+func (c *ClientWithResponses) ApiProjectsInterfaceCompatibilityCreateWithResponse(ctx context.Context, id int, body ApiProjectsInterfaceCompatibilityCreateJSONRequestBody, reqEditors ...RequestEditorFn) (*ApiProjectsInterfaceCompatibilityCreateResponse, error) {
+	rsp, err := c.ApiProjectsInterfaceCompatibilityCreate(ctx, id, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiProjectsInterfaceCompatibilityCreateResponse(rsp)
+}
+
+// ApiProjectsInterfaceCompatibilityCreateWithFormdataBodyWithResponse ✨ Check project tasks against an interface
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Check the existing tasks of a project against the input schema of an interface version before attaching it. Read-only: tasks and the project are not changed.
+//
+// Takes a body of the `application/x-www-form-urlencoded` content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with POST /api/projects/{id}/interface-compatibility (the `ApiProjectsInterfaceCompatibilityCreate` operationId).
+func (c *ClientWithResponses) ApiProjectsInterfaceCompatibilityCreateWithFormdataBodyWithResponse(ctx context.Context, id int, body ApiProjectsInterfaceCompatibilityCreateFormdataRequestBody, reqEditors ...RequestEditorFn) (*ApiProjectsInterfaceCompatibilityCreateResponse, error) {
+	rsp, err := c.ApiProjectsInterfaceCompatibilityCreateWithFormdataBody(ctx, id, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiProjectsInterfaceCompatibilityCreateResponse(rsp)
 }
 
 // ApiProjectsMembersDestroyWithResponse ✨ Remove member from project
@@ -20022,4 +19917,109 @@ func (c *ClientWithResponses) ApiStoragesGcsListWithResponse(ctx context.Context
 		return nil, err
 	}
 	return ParseApiStoragesGcsListResponse(rsp)
+}
+
+// ApiStoragesGcsCreateWithBodyWithResponse Create import storage
+//
+// Create a new GCS import storage connection.
+//
+// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with POST /api/storages/gcs/ (the `ApiStoragesGcsCreate` operationId).
+func (c *ClientWithResponses) ApiStoragesGcsCreateWithBodyWithResponse(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*ApiStoragesGcsCreateResponse, error) {
+	rsp, err := c.ApiStoragesGcsCreateWithBody(ctx, contentType, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesGcsCreateResponse(rsp)
+}
+
+// ApiStoragesGcsCreateWithResponse Create import storage
+//
+// Create a new GCS import storage connection.
+//
+// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with POST /api/storages/gcs/ (the `ApiStoragesGcsCreate` operationId).
+func (c *ClientWithResponses) ApiStoragesGcsCreateWithResponse(ctx context.Context, body ApiStoragesGcsCreateJSONRequestBody, reqEditors ...RequestEditorFn) (*ApiStoragesGcsCreateResponse, error) {
+	rsp, err := c.ApiStoragesGcsCreate(ctx, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesGcsCreateResponse(rsp)
+}
+
+// ApiStoragesGcsCreateWithFormdataBodyWithResponse Create import storage
+//
+// Create a new GCS import storage connection.
+//
+// Takes a body of the `application/x-www-form-urlencoded` content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with POST /api/storages/gcs/ (the `ApiStoragesGcsCreate` operationId).
+func (c *ClientWithResponses) ApiStoragesGcsCreateWithFormdataBodyWithResponse(ctx context.Context, body ApiStoragesGcsCreateFormdataRequestBody, reqEditors ...RequestEditorFn) (*ApiStoragesGcsCreateResponse, error) {
+	rsp, err := c.ApiStoragesGcsCreateWithFormdataBody(ctx, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesGcsCreateResponse(rsp)
+}
+
+// ApiStoragesGcsValidateCreateWithBodyWithResponse Validate import storage
+//
+// Validate a specific GCS import storage connection.
+//
+// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with POST /api/storages/gcs/validate (the `ApiStoragesGcsValidateCreate` operationId).
+func (c *ClientWithResponses) ApiStoragesGcsValidateCreateWithBodyWithResponse(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*ApiStoragesGcsValidateCreateResponse, error) {
+	rsp, err := c.ApiStoragesGcsValidateCreateWithBody(ctx, contentType, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesGcsValidateCreateResponse(rsp)
+}
+
+// ApiStoragesGcsValidateCreateWithResponse Validate import storage
+//
+// Validate a specific GCS import storage connection.
+//
+// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with POST /api/storages/gcs/validate (the `ApiStoragesGcsValidateCreate` operationId).
+func (c *ClientWithResponses) ApiStoragesGcsValidateCreateWithResponse(ctx context.Context, body ApiStoragesGcsValidateCreateJSONRequestBody, reqEditors ...RequestEditorFn) (*ApiStoragesGcsValidateCreateResponse, error) {
+	rsp, err := c.ApiStoragesGcsValidateCreate(ctx, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesGcsValidateCreateResponse(rsp)
+}
+
+// ApiStoragesGcsValidateCreateWithFormdataBodyWithResponse Validate import storage
+//
+// Validate a specific GCS import storage connection.
+//
+// Takes a body of the `application/x-www-form-urlencoded` content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with POST /api/storages/gcs/validate (the `ApiStoragesGcsValidateCreate` operationId).
+func (c *ClientWithResponses) ApiStoragesGcsValidateCreateWithFormdataBodyWithResponse(ctx context.Context, body ApiStoragesGcsValidateCreateFormdataRequestBody, reqEditors ...RequestEditorFn) (*ApiStoragesGcsValidateCreateResponse, error) {
+	rsp, err := c.ApiStoragesGcsValidateCreateWithFormdataBody(ctx, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesGcsValidateCreateResponse(rsp)
+}
+
+// ApiStoragesGcsDestroyWithResponse Delete import storage
+//
+// Delete a specific GCS import storage connection.
+//
+// Returns a wrapper object for the known response body format(s).
+//
+// Corresponds with DELETE /api/storages/gcs/{id} (the `ApiStoragesGcsDestroy` operationId).
+func (c *ClientWithResponses) ApiStoragesGcsDestroyWithResponse(ctx context.Context, id int, reqEditors ...RequestEditorFn) (*ApiStoragesGcsDestroyResponse, error) {
+	rsp, err := c.ApiStoragesGcsDestroy(ctx, id, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesGcsDestroyResponse(rsp)
 }

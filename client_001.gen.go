@@ -4246,18 +4246,6 @@ type CancelModelRunResponse struct {
 	Detail string `json:"detail"`
 }
 
-// Certificate defines model for Certificate.
-type Certificate struct {
-	CompletedAt      *time.Time  `json:"completed_at,omitempty"`
-	CreatedAt        *time.Time  `json:"created_at,omitempty"`
-	ExpiresAt        *time.Time  `json:"expires_at,omitempty"`
-	Id               *int        `json:"id,omitempty"`
-	LearningResource *int        `json:"learning_resource,omitempty"`
-	Metadata         interface{} `json:"metadata,omitempty"`
-	RevokedAt        *time.Time  `json:"revoked_at,omitempty"`
-	SerialNumber     *string     `json:"serial_number,omitempty"`
-}
-
 // ChatCompletionRequestRequest Validates and sanitizes chat completion request payload.
 //
 // Ensures:
@@ -4580,28 +4568,27 @@ type CourseImportResponse struct {
 	// * `hours` - Hours
 	// * `days` - Days
 	// * `weeks` - Weeks
-	EstimatedDurationUnit           *EstimatedDurationUnitEnum `json:"estimated_duration_unit,omitempty"`
-	EstimatedDurationValue          *int                       `json:"estimated_duration_value,omitempty"`
-	GenerateCertificateOnCompletion *bool                      `json:"generate_certificate_on_completion,omitempty"`
-	HasUnpublishedChanges           *bool                      `json:"has_unpublished_changes,omitempty"`
-	HideCompletedQuizzes            *bool                      `json:"hide_completed_quizzes,omitempty"`
-	Id                              *int                       `json:"id,omitempty"`
-	IsPublished                     *bool                      `json:"is_published,omitempty"`
-	LearnerCount                    *int                       `json:"learner_count,omitempty"`
-	LearnersCompletedCount          *int                       `json:"learners_completed_count,omitempty"`
-	LearnersStartedCount            *int                       `json:"learners_started_count,omitempty"`
-	ModuleCount                     *int                       `json:"module_count,omitempty"`
-	Organization                    *int                       `json:"organization,omitempty"`
-	PageCount                       *int                       `json:"page_count,omitempty"`
-	ProjectCount                    *int                       `json:"project_count,omitempty"`
-	SinglePageReview                *bool                      `json:"single_page_review,omitempty"`
-	StructureVersion                *int                       `json:"structure_version,omitempty"`
-	Summary                         *string                    `json:"summary,omitempty"`
-	Title                           *string                    `json:"title,omitempty"`
-	UnresolvedAssetIds              []int                      `json:"unresolved_asset_ids"`
-	UpdatedAt                       *time.Time                 `json:"updated_at,omitempty"`
-	UpdatedBy                       *UserSimple                `json:"updated_by,omitempty"`
-	Workspace                       *int                       `json:"workspace,omitempty"`
+	EstimatedDurationUnit  *EstimatedDurationUnitEnum `json:"estimated_duration_unit,omitempty"`
+	EstimatedDurationValue *int                       `json:"estimated_duration_value,omitempty"`
+	HasUnpublishedChanges  *bool                      `json:"has_unpublished_changes,omitempty"`
+	HideCompletedQuizzes   *bool                      `json:"hide_completed_quizzes,omitempty"`
+	Id                     *int                       `json:"id,omitempty"`
+	IsPublished            *bool                      `json:"is_published,omitempty"`
+	LearnerCount           *int                       `json:"learner_count,omitempty"`
+	LearnersCompletedCount *int                       `json:"learners_completed_count,omitempty"`
+	LearnersStartedCount   *int                       `json:"learners_started_count,omitempty"`
+	ModuleCount            *int                       `json:"module_count,omitempty"`
+	Organization           *int                       `json:"organization,omitempty"`
+	PageCount              *int                       `json:"page_count,omitempty"`
+	ProjectCount           *int                       `json:"project_count,omitempty"`
+	SinglePageReview       *bool                      `json:"single_page_review,omitempty"`
+	StructureVersion       *int                       `json:"structure_version,omitempty"`
+	Summary                *string                    `json:"summary,omitempty"`
+	Title                  *string                    `json:"title,omitempty"`
+	UnresolvedAssetIds     []int                      `json:"unresolved_asset_ids"`
+	UpdatedAt              *time.Time                 `json:"updated_at,omitempty"`
+	UpdatedBy              *UserSimple                `json:"updated_by,omitempty"`
+	Workspace              *int                       `json:"workspace,omitempty"`
 }
 
 // CourseModule defines model for CourseModule.
@@ -6597,6 +6584,34 @@ type InferenceRunCostEstimate struct {
 	TotalCostUsd *string `json:"total_cost_usd,omitempty"`
 }
 
+// InterfaceCompatibilityError defines model for InterfaceCompatibilityError.
+type InterfaceCompatibilityError struct {
+	// Count Number of tasks with this error.
+	Count         int    `json:"count"`
+	Message       string `json:"message"`
+	SampleTaskIds []int  `json:"sample_task_ids"`
+}
+
+// InterfaceCompatibilityRequestRequest defines model for InterfaceCompatibilityRequestRequest.
+type InterfaceCompatibilityRequestRequest struct {
+	// SourceInterfaceId Interface to check the project tasks against.
+	SourceInterfaceId int `json:"source_interface_id"`
+
+	// SourceInterfaceVersion Published version id. Defaults to the latest published version.
+	SourceInterfaceVersion *int `json:"source_interface_version,omitempty"`
+}
+
+// InterfaceCompatibilityResponse defines model for InterfaceCompatibilityResponse.
+type InterfaceCompatibilityResponse struct {
+	Errors          []InterfaceCompatibilityError `json:"errors"`
+	TasksChecked    int                           `json:"tasks_checked"`
+	TasksWithErrors int                           `json:"tasks_with_errors"`
+	TotalTasks      int                           `json:"total_tasks"`
+
+	// Truncated True when only the first tasks of a large project were checked.
+	Truncated bool `json:"truncated"`
+}
+
 // InterfaceMoveBlockerEnum * `published_projects` - Published projects
 // * `projects_cannot_move` - Projects cannot move
 // * `inaccessible_projects` - Inaccessible projects
@@ -7253,27 +7268,26 @@ type LearningResource struct {
 	// * `hours` - Hours
 	// * `days` - Days
 	// * `weeks` - Weeks
-	EstimatedDurationUnit           *EstimatedDurationUnitEnum `json:"estimated_duration_unit,omitempty"`
-	EstimatedDurationValue          *int                       `json:"estimated_duration_value,omitempty"`
-	GenerateCertificateOnCompletion *bool                      `json:"generate_certificate_on_completion,omitempty"`
-	HasUnpublishedChanges           *bool                      `json:"has_unpublished_changes,omitempty"`
-	HideCompletedQuizzes            *bool                      `json:"hide_completed_quizzes,omitempty"`
-	Id                              *int                       `json:"id,omitempty"`
-	IsPublished                     *bool                      `json:"is_published,omitempty"`
-	LearnerCount                    *int                       `json:"learner_count,omitempty"`
-	LearnersCompletedCount          *int                       `json:"learners_completed_count,omitempty"`
-	LearnersStartedCount            *int                       `json:"learners_started_count,omitempty"`
-	ModuleCount                     *int                       `json:"module_count,omitempty"`
-	Organization                    *int                       `json:"organization,omitempty"`
-	PageCount                       *int                       `json:"page_count,omitempty"`
-	ProjectCount                    *int                       `json:"project_count,omitempty"`
-	SinglePageReview                *bool                      `json:"single_page_review,omitempty"`
-	StructureVersion                *int                       `json:"structure_version,omitempty"`
-	Summary                         *string                    `json:"summary,omitempty"`
-	Title                           *string                    `json:"title,omitempty"`
-	UpdatedAt                       *time.Time                 `json:"updated_at,omitempty"`
-	UpdatedBy                       *UserSimple                `json:"updated_by,omitempty"`
-	Workspace                       *int                       `json:"workspace,omitempty"`
+	EstimatedDurationUnit  *EstimatedDurationUnitEnum `json:"estimated_duration_unit,omitempty"`
+	EstimatedDurationValue *int                       `json:"estimated_duration_value,omitempty"`
+	HasUnpublishedChanges  *bool                      `json:"has_unpublished_changes,omitempty"`
+	HideCompletedQuizzes   *bool                      `json:"hide_completed_quizzes,omitempty"`
+	Id                     *int                       `json:"id,omitempty"`
+	IsPublished            *bool                      `json:"is_published,omitempty"`
+	LearnerCount           *int                       `json:"learner_count,omitempty"`
+	LearnersCompletedCount *int                       `json:"learners_completed_count,omitempty"`
+	LearnersStartedCount   *int                       `json:"learners_started_count,omitempty"`
+	ModuleCount            *int                       `json:"module_count,omitempty"`
+	Organization           *int                       `json:"organization,omitempty"`
+	PageCount              *int                       `json:"page_count,omitempty"`
+	ProjectCount           *int                       `json:"project_count,omitempty"`
+	SinglePageReview       *bool                      `json:"single_page_review,omitempty"`
+	StructureVersion       *int                       `json:"structure_version,omitempty"`
+	Summary                *string                    `json:"summary,omitempty"`
+	Title                  *string                    `json:"title,omitempty"`
+	UpdatedAt              *time.Time                 `json:"updated_at,omitempty"`
+	UpdatedBy              *UserSimple                `json:"updated_by,omitempty"`
+	Workspace              *int                       `json:"workspace,omitempty"`
 }
 
 // LearningResourceAssignmentSummary Lean nested resource for project assignment lists (gating / on-demand UI).
@@ -7355,32 +7369,31 @@ type LearningResourceDetail struct {
 	// * `hours` - Hours
 	// * `days` - Days
 	// * `weeks` - Weeks
-	EstimatedDurationUnit           *EstimatedDurationUnitEnum `json:"estimated_duration_unit,omitempty"`
-	EstimatedDurationValue          *int                       `json:"estimated_duration_value,omitempty"`
-	GenerateCertificateOnCompletion *bool                      `json:"generate_certificate_on_completion,omitempty"`
-	HasUnpublishedChanges           *bool                      `json:"has_unpublished_changes,omitempty"`
-	HideCompletedQuizzes            *bool                      `json:"hide_completed_quizzes,omitempty"`
-	Id                              *int                       `json:"id,omitempty"`
-	IsPublished                     *bool                      `json:"is_published,omitempty"`
-	LearnerContent                  *map[string]interface{}    `json:"learner_content,omitempty"`
-	LearnerCount                    *int                       `json:"learner_count,omitempty"`
-	LearnersCompletedCount          *int                       `json:"learners_completed_count,omitempty"`
-	LearnersStartedCount            *int                       `json:"learners_started_count,omitempty"`
-	ModuleCount                     *int                       `json:"module_count,omitempty"`
-	Modules                         *[]CourseModule            `json:"modules,omitempty"`
-	Organization                    *int                       `json:"organization,omitempty"`
-	PageCount                       *int                       `json:"page_count,omitempty"`
-	Progress                        *map[string]interface{}    `json:"progress,omitempty"`
-	ProjectAssignments              *[]map[string]interface{}  `json:"project_assignments,omitempty"`
-	ProjectCount                    *int                       `json:"project_count,omitempty"`
-	SinglePageReview                *bool                      `json:"single_page_review,omitempty"`
-	StructureVersion                *int                       `json:"structure_version,omitempty"`
-	Summary                         *string                    `json:"summary,omitempty"`
-	Title                           *string                    `json:"title,omitempty"`
-	UnpublishedModuleIds            *[]int                     `json:"unpublished_module_ids,omitempty"`
-	UpdatedAt                       *time.Time                 `json:"updated_at,omitempty"`
-	UpdatedBy                       *UserSimple                `json:"updated_by,omitempty"`
-	Workspace                       *int                       `json:"workspace,omitempty"`
+	EstimatedDurationUnit  *EstimatedDurationUnitEnum `json:"estimated_duration_unit,omitempty"`
+	EstimatedDurationValue *int                       `json:"estimated_duration_value,omitempty"`
+	HasUnpublishedChanges  *bool                      `json:"has_unpublished_changes,omitempty"`
+	HideCompletedQuizzes   *bool                      `json:"hide_completed_quizzes,omitempty"`
+	Id                     *int                       `json:"id,omitempty"`
+	IsPublished            *bool                      `json:"is_published,omitempty"`
+	LearnerContent         *map[string]interface{}    `json:"learner_content,omitempty"`
+	LearnerCount           *int                       `json:"learner_count,omitempty"`
+	LearnersCompletedCount *int                       `json:"learners_completed_count,omitempty"`
+	LearnersStartedCount   *int                       `json:"learners_started_count,omitempty"`
+	ModuleCount            *int                       `json:"module_count,omitempty"`
+	Modules                *[]CourseModule            `json:"modules,omitempty"`
+	Organization           *int                       `json:"organization,omitempty"`
+	PageCount              *int                       `json:"page_count,omitempty"`
+	Progress               *map[string]interface{}    `json:"progress,omitempty"`
+	ProjectAssignments     *[]map[string]interface{}  `json:"project_assignments,omitempty"`
+	ProjectCount           *int                       `json:"project_count,omitempty"`
+	SinglePageReview       *bool                      `json:"single_page_review,omitempty"`
+	StructureVersion       *int                       `json:"structure_version,omitempty"`
+	Summary                *string                    `json:"summary,omitempty"`
+	Title                  *string                    `json:"title,omitempty"`
+	UnpublishedModuleIds   *[]int                     `json:"unpublished_module_ids,omitempty"`
+	UpdatedAt              *time.Time                 `json:"updated_at,omitempty"`
+	UpdatedBy              *UserSimple                `json:"updated_by,omitempty"`
+	Workspace              *int                       `json:"workspace,omitempty"`
 }
 
 // LearningResourceList Admin list payload: core metadata + cheap annotated counts (no page content).
@@ -7405,27 +7418,26 @@ type LearningResourceList struct {
 	// * `hours` - Hours
 	// * `days` - Days
 	// * `weeks` - Weeks
-	EstimatedDurationUnit           *EstimatedDurationUnitEnum `json:"estimated_duration_unit,omitempty"`
-	EstimatedDurationValue          *int                       `json:"estimated_duration_value,omitempty"`
-	GenerateCertificateOnCompletion *bool                      `json:"generate_certificate_on_completion,omitempty"`
-	HasUnpublishedChanges           *bool                      `json:"has_unpublished_changes,omitempty"`
-	HideCompletedQuizzes            *bool                      `json:"hide_completed_quizzes,omitempty"`
-	Id                              *int                       `json:"id,omitempty"`
-	IsPublished                     *bool                      `json:"is_published,omitempty"`
-	LearnerCount                    *int                       `json:"learner_count,omitempty"`
-	LearnersCompletedCount          *int                       `json:"learners_completed_count,omitempty"`
-	LearnersStartedCount            *int                       `json:"learners_started_count,omitempty"`
-	ModuleCount                     *int                       `json:"module_count,omitempty"`
-	Organization                    *int                       `json:"organization,omitempty"`
-	PageCount                       *int                       `json:"page_count,omitempty"`
-	ProjectCount                    *int                       `json:"project_count,omitempty"`
-	SinglePageReview                *bool                      `json:"single_page_review,omitempty"`
-	StructureVersion                *int                       `json:"structure_version,omitempty"`
-	Summary                         *string                    `json:"summary,omitempty"`
-	Title                           *string                    `json:"title,omitempty"`
-	UpdatedAt                       *time.Time                 `json:"updated_at,omitempty"`
-	UpdatedBy                       *UserSimple                `json:"updated_by,omitempty"`
-	Workspace                       *int                       `json:"workspace,omitempty"`
+	EstimatedDurationUnit  *EstimatedDurationUnitEnum `json:"estimated_duration_unit,omitempty"`
+	EstimatedDurationValue *int                       `json:"estimated_duration_value,omitempty"`
+	HasUnpublishedChanges  *bool                      `json:"has_unpublished_changes,omitempty"`
+	HideCompletedQuizzes   *bool                      `json:"hide_completed_quizzes,omitempty"`
+	Id                     *int                       `json:"id,omitempty"`
+	IsPublished            *bool                      `json:"is_published,omitempty"`
+	LearnerCount           *int                       `json:"learner_count,omitempty"`
+	LearnersCompletedCount *int                       `json:"learners_completed_count,omitempty"`
+	LearnersStartedCount   *int                       `json:"learners_started_count,omitempty"`
+	ModuleCount            *int                       `json:"module_count,omitempty"`
+	Organization           *int                       `json:"organization,omitempty"`
+	PageCount              *int                       `json:"page_count,omitempty"`
+	ProjectCount           *int                       `json:"project_count,omitempty"`
+	SinglePageReview       *bool                      `json:"single_page_review,omitempty"`
+	StructureVersion       *int                       `json:"structure_version,omitempty"`
+	Summary                *string                    `json:"summary,omitempty"`
+	Title                  *string                    `json:"title,omitempty"`
+	UpdatedAt              *time.Time                 `json:"updated_at,omitempty"`
+	UpdatedBy              *UserSimple                `json:"updated_by,omitempty"`
+	Workspace              *int                       `json:"workspace,omitempty"`
 }
 
 // LearningResourceRequest defines model for LearningResourceRequest.
@@ -7444,14 +7456,13 @@ type LearningResourceRequest struct {
 	// * `hours` - Hours
 	// * `days` - Days
 	// * `weeks` - Weeks
-	EstimatedDurationUnit           *EstimatedDurationUnitEnum `json:"estimated_duration_unit,omitempty"`
-	EstimatedDurationValue          *int                       `json:"estimated_duration_value,omitempty"`
-	GenerateCertificateOnCompletion *bool                      `json:"generate_certificate_on_completion,omitempty"`
-	HideCompletedQuizzes            *bool                      `json:"hide_completed_quizzes,omitempty"`
-	SinglePageReview                *bool                      `json:"single_page_review,omitempty"`
-	Summary                         *string                    `json:"summary,omitempty"`
-	Title                           *string                    `json:"title,omitempty"`
-	Workspace                       *int                       `json:"workspace,omitempty"`
+	EstimatedDurationUnit  *EstimatedDurationUnitEnum `json:"estimated_duration_unit,omitempty"`
+	EstimatedDurationValue *int                       `json:"estimated_duration_value,omitempty"`
+	HideCompletedQuizzes   *bool                      `json:"hide_completed_quizzes,omitempty"`
+	SinglePageReview       *bool                      `json:"single_page_review,omitempty"`
+	Summary                *string                    `json:"summary,omitempty"`
+	Title                  *string                    `json:"title,omitempty"`
+	Workspace              *int                       `json:"workspace,omitempty"`
 }
 
 // LearningResourceUpdate defines model for LearningResourceUpdate.
@@ -7470,14 +7481,13 @@ type LearningResourceUpdate struct {
 	// * `hours` - Hours
 	// * `days` - Days
 	// * `weeks` - Weeks
-	EstimatedDurationUnit           *EstimatedDurationUnitEnum `json:"estimated_duration_unit,omitempty"`
-	EstimatedDurationValue          *int                       `json:"estimated_duration_value,omitempty"`
-	GenerateCertificateOnCompletion *bool                      `json:"generate_certificate_on_completion,omitempty"`
-	HideCompletedQuizzes            *bool                      `json:"hide_completed_quizzes,omitempty"`
-	SinglePageReview                *bool                      `json:"single_page_review,omitempty"`
-	Summary                         *string                    `json:"summary,omitempty"`
-	Title                           *string                    `json:"title,omitempty"`
-	Workspace                       *int                       `json:"workspace,omitempty"`
+	EstimatedDurationUnit  *EstimatedDurationUnitEnum `json:"estimated_duration_unit,omitempty"`
+	EstimatedDurationValue *int                       `json:"estimated_duration_value,omitempty"`
+	HideCompletedQuizzes   *bool                      `json:"hide_completed_quizzes,omitempty"`
+	SinglePageReview       *bool                      `json:"single_page_review,omitempty"`
+	Summary                *string                    `json:"summary,omitempty"`
+	Title                  *string                    `json:"title,omitempty"`
+	Workspace              *int                       `json:"workspace,omitempty"`
 }
 
 // LearningResourceUploadResponse defines model for LearningResourceUploadResponse.
@@ -7973,6 +7983,9 @@ type LseInterfaceList struct {
 
 	// IsSystem HumanSignal-provided system template visible to all organizations
 	IsSystem *bool `json:"is_system,omitempty"`
+
+	// LatestPublishedVersion Stable id of the latest published version, for pickers that show "vN" without loading the versions JSON (derived from versions JSON; 0 for an interface without a versions array)
+	LatestPublishedVersion *int `json:"latest_published_version,omitempty"`
 
 	// Metadata Arbitrary metadata for this interface
 	Metadata      interface{} `json:"metadata,omitempty"`
@@ -10681,19 +10694,6 @@ type PaginatedAnnotationHistoryList struct {
 	Results  []AnnotationHistory `json:"results"`
 }
 
-// PaginatedCertificateList defines model for PaginatedCertificateList.
-type PaginatedCertificateList struct {
-	// Count Example: 123
-	Count int `json:"count"`
-
-	// Next Example: http://api.example.org/accounts/?page=4
-	Next *string `json:"next,omitempty"`
-
-	// Previous Example: http://api.example.org/accounts/?page=2
-	Previous *string       `json:"previous,omitempty"`
-	Results  []Certificate `json:"results"`
-}
-
 // PaginatedCourseModuleList defines model for PaginatedCourseModuleList.
 type PaginatedCourseModuleList struct {
 	// Count Example: 123
@@ -11906,14 +11906,13 @@ type PatchedLearningResourceRequest struct {
 	// * `hours` - Hours
 	// * `days` - Days
 	// * `weeks` - Weeks
-	EstimatedDurationUnit           *EstimatedDurationUnitEnum `json:"estimated_duration_unit,omitempty"`
-	EstimatedDurationValue          *int                       `json:"estimated_duration_value,omitempty"`
-	GenerateCertificateOnCompletion *bool                      `json:"generate_certificate_on_completion,omitempty"`
-	HideCompletedQuizzes            *bool                      `json:"hide_completed_quizzes,omitempty"`
-	SinglePageReview                *bool                      `json:"single_page_review,omitempty"`
-	Summary                         *string                    `json:"summary,omitempty"`
-	Title                           *string                    `json:"title,omitempty"`
-	Workspace                       *int                       `json:"workspace,omitempty"`
+	EstimatedDurationUnit  *EstimatedDurationUnitEnum `json:"estimated_duration_unit,omitempty"`
+	EstimatedDurationValue *int                       `json:"estimated_duration_value,omitempty"`
+	HideCompletedQuizzes   *bool                      `json:"hide_completed_quizzes,omitempty"`
+	SinglePageReview       *bool                      `json:"single_page_review,omitempty"`
+	Summary                *string                    `json:"summary,omitempty"`
+	Title                  *string                    `json:"title,omitempty"`
+	Workspace              *int                       `json:"workspace,omitempty"`
 }
 
 // PatchedLearningResourceUpdateRequest defines model for PatchedLearningResourceUpdateRequest.
@@ -11932,14 +11931,13 @@ type PatchedLearningResourceUpdateRequest struct {
 	// * `hours` - Hours
 	// * `days` - Days
 	// * `weeks` - Weeks
-	EstimatedDurationUnit           *EstimatedDurationUnitEnum `json:"estimated_duration_unit,omitempty"`
-	EstimatedDurationValue          *int                       `json:"estimated_duration_value,omitempty"`
-	GenerateCertificateOnCompletion *bool                      `json:"generate_certificate_on_completion,omitempty"`
-	HideCompletedQuizzes            *bool                      `json:"hide_completed_quizzes,omitempty"`
-	SinglePageReview                *bool                      `json:"single_page_review,omitempty"`
-	Summary                         *string                    `json:"summary,omitempty"`
-	Title                           *string                    `json:"title,omitempty"`
-	Workspace                       *int                       `json:"workspace,omitempty"`
+	EstimatedDurationUnit  *EstimatedDurationUnitEnum `json:"estimated_duration_unit,omitempty"`
+	EstimatedDurationValue *int                       `json:"estimated_duration_value,omitempty"`
+	HideCompletedQuizzes   *bool                      `json:"hide_completed_quizzes,omitempty"`
+	SinglePageReview       *bool                      `json:"single_page_review,omitempty"`
+	Summary                *string                    `json:"summary,omitempty"`
+	Title                  *string                    `json:"title,omitempty"`
+	Workspace              *int                       `json:"workspace,omitempty"`
 }
 
 // PatchedLocalFilesExportStorageWriteRequest defines model for PatchedLocalFilesExportStorageWriteRequest.
@@ -14511,11 +14509,6 @@ type ReviewSettingsRequest struct {
 // * `by_annotator` - By Annotator
 type ReviewSettingsSamplingEnum string
 
-// RevokeCertificateRequest defines model for RevokeCertificateRequest.
-type RevokeCertificateRequest struct {
-	Reason *string `json:"reason,omitempty"`
-}
-
 // RevokeInviteRequest defines model for RevokeInviteRequest.
 type RevokeInviteRequest struct {
 	// Email Email address
@@ -16714,8 +16707,9 @@ type ApiInterfacesListParams struct {
 	Scope    *string `form:"scope,omitempty" json:"scope,omitempty"`
 
 	// Search A search term.
-	Search    *string `form:"search,omitempty" json:"search,omitempty"`
-	Workspace *int    `form:"workspace,omitempty" json:"workspace,omitempty"`
+	Search            *string `form:"search,omitempty" json:"search,omitempty"`
+	Workspace         *int    `form:"workspace,omitempty" json:"workspace,omitempty"`
+	WorkspaceOrShared *int    `form:"workspace_or_shared,omitempty" json:"workspace_or_shared,omitempty"`
 }
 
 // ApiLabelLinksListParams defines parameters for ApiLabelLinksList.
@@ -16792,23 +16786,6 @@ type ApiLearningResourcesImportCreateMultipartBody struct {
 type ApiLearningResourcesRetrieveParams struct {
 	// Omit Comma-separated response fields to leave out, e.g. `content,modules`. `content`, `learner_content` and `modules` each carry the whole course, so leave out the ones you do not read.
 	Omit *string `form:"omit,omitempty" json:"omit,omitempty"`
-}
-
-// ApiLearningResourcesCertificatesListParams defines parameters for ApiLearningResourcesCertificatesList.
-type ApiLearningResourcesCertificatesListParams struct {
-	// Ordering Which field to use when ordering the results.
-	Ordering *string `form:"ordering,omitempty" json:"ordering,omitempty"`
-
-	// Page A page number within the paginated result set.
-	Page *int `form:"page,omitempty" json:"page,omitempty"`
-
-	// PageSize Number of results to return per page.
-	PageSize *int    `form:"page_size,omitempty" json:"page_size,omitempty"`
-	Scope    *string `form:"scope,omitempty" json:"scope,omitempty"`
-
-	// Search A search term.
-	Search    *string `form:"search,omitempty" json:"search,omitempty"`
-	Workspace *int    `form:"workspace,omitempty" json:"workspace,omitempty"`
 }
 
 // ApiLearningResourcesExportRetrieveParams defines parameters for ApiLearningResourcesExportRetrieve.
@@ -18924,15 +18901,6 @@ type ApiLearningResourcesPartialUpdateFormdataRequestBody = PatchedLearningResou
 // ApiLearningResourcesPartialUpdateMultipartRequestBody defines body for ApiLearningResourcesPartialUpdate for multipart/form-data ContentType.
 type ApiLearningResourcesPartialUpdateMultipartRequestBody = PatchedLearningResourceUpdateRequest
 
-// ApiLearningResourcesCertificatesRevokeCreateJSONRequestBody defines body for ApiLearningResourcesCertificatesRevokeCreate for application/json ContentType.
-type ApiLearningResourcesCertificatesRevokeCreateJSONRequestBody = RevokeCertificateRequest
-
-// ApiLearningResourcesCertificatesRevokeCreateFormdataRequestBody defines body for ApiLearningResourcesCertificatesRevokeCreate for application/x-www-form-urlencoded ContentType.
-type ApiLearningResourcesCertificatesRevokeCreateFormdataRequestBody = RevokeCertificateRequest
-
-// ApiLearningResourcesCertificatesRevokeCreateMultipartRequestBody defines body for ApiLearningResourcesCertificatesRevokeCreate for multipart/form-data ContentType.
-type ApiLearningResourcesCertificatesRevokeCreateMultipartRequestBody = RevokeCertificateRequest
-
 // ApiLearningResourcesDuplicateCreateJSONRequestBody defines body for ApiLearningResourcesDuplicateCreate for application/json ContentType.
 type ApiLearningResourcesDuplicateCreateJSONRequestBody = DuplicateLearningResourceRequest
 
@@ -19476,6 +19444,15 @@ type ApiProjectsImportPredictionsCreateFormdataRequestBody = ApiProjectsImportPr
 // ApiProjectsImportPredictionsCreateMultipartRequestBody defines body for ApiProjectsImportPredictionsCreate for multipart/form-data ContentType.
 type ApiProjectsImportPredictionsCreateMultipartRequestBody = ApiProjectsImportPredictionsCreateMultipartBody
 
+// ApiProjectsInterfaceCompatibilityCreateJSONRequestBody defines body for ApiProjectsInterfaceCompatibilityCreate for application/json ContentType.
+type ApiProjectsInterfaceCompatibilityCreateJSONRequestBody = InterfaceCompatibilityRequestRequest
+
+// ApiProjectsInterfaceCompatibilityCreateFormdataRequestBody defines body for ApiProjectsInterfaceCompatibilityCreate for application/x-www-form-urlencoded ContentType.
+type ApiProjectsInterfaceCompatibilityCreateFormdataRequestBody = InterfaceCompatibilityRequestRequest
+
+// ApiProjectsInterfaceCompatibilityCreateMultipartRequestBody defines body for ApiProjectsInterfaceCompatibilityCreate for multipart/form-data ContentType.
+type ApiProjectsInterfaceCompatibilityCreateMultipartRequestBody = InterfaceCompatibilityRequestRequest
+
 // ApiProjectsMembersCreateJSONRequestBody defines body for ApiProjectsMembersCreate for application/json ContentType.
 type ApiProjectsMembersCreateJSONRequestBody = ProjectMemberRequest
 
@@ -20009,3 +19986,27 @@ type ApiStoragesExportGcsSaValidateCreateFormdataRequestBody = GCSSAExportStorag
 
 // ApiStoragesExportGcsSaValidateCreateMultipartRequestBody defines body for ApiStoragesExportGcsSaValidateCreate for multipart/form-data ContentType.
 type ApiStoragesExportGcsSaValidateCreateMultipartRequestBody = GCSSAExportStorageRequest
+
+// ApiStoragesExportGcsSaPartialUpdateJSONRequestBody defines body for ApiStoragesExportGcsSaPartialUpdate for application/json ContentType.
+type ApiStoragesExportGcsSaPartialUpdateJSONRequestBody = PatchedGCSSAExportStorageRequest
+
+// ApiStoragesExportGcsSaPartialUpdateFormdataRequestBody defines body for ApiStoragesExportGcsSaPartialUpdate for application/x-www-form-urlencoded ContentType.
+type ApiStoragesExportGcsSaPartialUpdateFormdataRequestBody = PatchedGCSSAExportStorageRequest
+
+// ApiStoragesExportGcsSaPartialUpdateMultipartRequestBody defines body for ApiStoragesExportGcsSaPartialUpdate for multipart/form-data ContentType.
+type ApiStoragesExportGcsSaPartialUpdateMultipartRequestBody = PatchedGCSSAExportStorageRequest
+
+// ApiStoragesExportGcswifCreateJSONRequestBody defines body for ApiStoragesExportGcswifCreate for application/json ContentType.
+type ApiStoragesExportGcswifCreateJSONRequestBody = GCSWIFExportStorageRequest
+
+// ApiStoragesExportGcswifCreateFormdataRequestBody defines body for ApiStoragesExportGcswifCreate for application/x-www-form-urlencoded ContentType.
+type ApiStoragesExportGcswifCreateFormdataRequestBody = GCSWIFExportStorageRequest
+
+// ApiStoragesExportGcswifCreateMultipartRequestBody defines body for ApiStoragesExportGcswifCreate for multipart/form-data ContentType.
+type ApiStoragesExportGcswifCreateMultipartRequestBody = GCSWIFExportStorageRequest
+
+// ApiStoragesExportGcswifValidateCreateJSONRequestBody defines body for ApiStoragesExportGcswifValidateCreate for application/json ContentType.
+type ApiStoragesExportGcswifValidateCreateJSONRequestBody = GCSWIFExportStorageRequest
+
+// ApiStoragesExportGcswifValidateCreateFormdataRequestBody defines body for ApiStoragesExportGcswifValidateCreate for application/x-www-form-urlencoded ContentType.
+type ApiStoragesExportGcswifValidateCreateFormdataRequestBody = GCSWIFExportStorageRequest
