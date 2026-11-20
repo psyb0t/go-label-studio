@@ -17,6 +17,299 @@ import (
 	openapi_types "github.com/oapi-codegen/runtime/types"
 )
 
+// NewApiPromptsVersionsPartialUpdateRequestWithBody constructs an http.Request for the ApiPromptsVersionsPartialUpdate method, with any body, and a specified content type
+func NewApiPromptsVersionsPartialUpdateRequestWithBody(server string, promptId int, versionId int, contentType string, body io.Reader) (*http.Request, error) {
+	var err error
+
+	var pathParam0 string
+
+	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "prompt_id", promptId, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "integer", Format: ""})
+	if err != nil {
+		return nil, err
+	}
+
+	var pathParam1 string
+
+	pathParam1, err = runtime.StyleParamWithOptions("simple", false, "version_id", versionId, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "integer", Format: ""})
+	if err != nil {
+		return nil, err
+	}
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/api/prompts/%s/versions/%s", pathParam0, pathParam1)
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequest(http.MethodPatch, queryURL.String(), body)
+	if err != nil {
+		return nil, err
+	}
+
+	req.Header.Add("Content-Type", contentType)
+
+	return req, nil
+}
+
+// NewApiPromptsVersionsUpdateRequest calls the generic ApiPromptsVersionsUpdate builder with application/json body
+func NewApiPromptsVersionsUpdateRequest(server string, promptId int, versionId int, body ApiPromptsVersionsUpdateJSONRequestBody) (*http.Request, error) {
+	var bodyReader io.Reader
+	buf, err := json.Marshal(body)
+	if err != nil {
+		return nil, err
+	}
+	bodyReader = bytes.NewReader(buf)
+	return NewApiPromptsVersionsUpdateRequestWithBody(server, promptId, versionId, "application/json", bodyReader)
+}
+
+// NewApiPromptsVersionsUpdateRequestWithFormdataBody calls the generic ApiPromptsVersionsUpdate builder with application/x-www-form-urlencoded body
+func NewApiPromptsVersionsUpdateRequestWithFormdataBody(server string, promptId int, versionId int, body ApiPromptsVersionsUpdateFormdataRequestBody) (*http.Request, error) {
+	var bodyReader io.Reader
+	bodyStr, err := runtime.MarshalForm(body, nil)
+	if err != nil {
+		return nil, err
+	}
+	bodyReader = strings.NewReader(bodyStr.Encode())
+	return NewApiPromptsVersionsUpdateRequestWithBody(server, promptId, versionId, "application/x-www-form-urlencoded", bodyReader)
+}
+
+// NewApiPromptsVersionsUpdateRequestWithBody constructs an http.Request for the ApiPromptsVersionsUpdate method, with any body, and a specified content type
+func NewApiPromptsVersionsUpdateRequestWithBody(server string, promptId int, versionId int, contentType string, body io.Reader) (*http.Request, error) {
+	var err error
+
+	var pathParam0 string
+
+	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "prompt_id", promptId, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "integer", Format: ""})
+	if err != nil {
+		return nil, err
+	}
+
+	var pathParam1 string
+
+	pathParam1, err = runtime.StyleParamWithOptions("simple", false, "version_id", versionId, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "integer", Format: ""})
+	if err != nil {
+		return nil, err
+	}
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/api/prompts/%s/versions/%s", pathParam0, pathParam1)
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequest(http.MethodPut, queryURL.String(), body)
+	if err != nil {
+		return nil, err
+	}
+
+	req.Header.Add("Content-Type", contentType)
+
+	return req, nil
+}
+
+// NewApiPromptsVersionsCostEstimateRetrieveRequest constructs an http.Request for the ApiPromptsVersionsCostEstimateRetrieve method
+func NewApiPromptsVersionsCostEstimateRetrieveRequest(server string, promptId int, versionId int) (*http.Request, error) {
+	var err error
+
+	var pathParam0 string
+
+	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "prompt_id", promptId, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "integer", Format: ""})
+	if err != nil {
+		return nil, err
+	}
+
+	var pathParam1 string
+
+	pathParam1, err = runtime.StyleParamWithOptions("simple", false, "version_id", versionId, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "integer", Format: ""})
+	if err != nil {
+		return nil, err
+	}
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/api/prompts/%s/versions/%s/cost-estimate", pathParam0, pathParam1)
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequest(http.MethodGet, queryURL.String(), nil)
+	if err != nil {
+		return nil, err
+	}
+
+	return req, nil
+}
+
+// NewApiPromptsVersionsDuplicateCreateRequest calls the generic ApiPromptsVersionsDuplicateCreate builder with application/json body
+func NewApiPromptsVersionsDuplicateCreateRequest(server string, promptId int, versionId int, body ApiPromptsVersionsDuplicateCreateJSONRequestBody) (*http.Request, error) {
+	var bodyReader io.Reader
+	buf, err := json.Marshal(body)
+	if err != nil {
+		return nil, err
+	}
+	bodyReader = bytes.NewReader(buf)
+	return NewApiPromptsVersionsDuplicateCreateRequestWithBody(server, promptId, versionId, "application/json", bodyReader)
+}
+
+// NewApiPromptsVersionsDuplicateCreateRequestWithFormdataBody calls the generic ApiPromptsVersionsDuplicateCreate builder with application/x-www-form-urlencoded body
+func NewApiPromptsVersionsDuplicateCreateRequestWithFormdataBody(server string, promptId int, versionId int, body ApiPromptsVersionsDuplicateCreateFormdataRequestBody) (*http.Request, error) {
+	var bodyReader io.Reader
+	bodyStr, err := runtime.MarshalForm(body, nil)
+	if err != nil {
+		return nil, err
+	}
+	bodyReader = strings.NewReader(bodyStr.Encode())
+	return NewApiPromptsVersionsDuplicateCreateRequestWithBody(server, promptId, versionId, "application/x-www-form-urlencoded", bodyReader)
+}
+
+// NewApiPromptsVersionsDuplicateCreateRequestWithBody constructs an http.Request for the ApiPromptsVersionsDuplicateCreate method, with any body, and a specified content type
+func NewApiPromptsVersionsDuplicateCreateRequestWithBody(server string, promptId int, versionId int, contentType string, body io.Reader) (*http.Request, error) {
+	var err error
+
+	var pathParam0 string
+
+	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "prompt_id", promptId, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "integer", Format: ""})
+	if err != nil {
+		return nil, err
+	}
+
+	var pathParam1 string
+
+	pathParam1, err = runtime.StyleParamWithOptions("simple", false, "version_id", versionId, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "integer", Format: ""})
+	if err != nil {
+		return nil, err
+	}
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/api/prompts/%s/versions/%s/duplicate", pathParam0, pathParam1)
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequest(http.MethodPost, queryURL.String(), body)
+	if err != nil {
+		return nil, err
+	}
+
+	req.Header.Add("Content-Type", contentType)
+
+	return req, nil
+}
+
+// NewApiPromptsVersionsFewShotExamplesListRequest constructs an http.Request for the ApiPromptsVersionsFewShotExamplesList method
+func NewApiPromptsVersionsFewShotExamplesListRequest(server string, promptId int, versionId int, params *ApiPromptsVersionsFewShotExamplesListParams) (*http.Request, error) {
+	var err error
+
+	var pathParam0 string
+
+	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "prompt_id", promptId, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "integer", Format: ""})
+	if err != nil {
+		return nil, err
+	}
+
+	var pathParam1 string
+
+	pathParam1, err = runtime.StyleParamWithOptions("simple", false, "version_id", versionId, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "integer", Format: ""})
+	if err != nil {
+		return nil, err
+	}
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/api/prompts/%s/versions/%s/few-shot-examples", pathParam0, pathParam1)
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	if params != nil {
+		// queryValues collects non-styled parameters (passthrough, JSON)
+		// that are safe to round-trip through url.Values.Encode().
+		queryValues := queryURL.Query()
+		// rawQueryFragments collects pre-encoded query fragments from
+		// styled parameters, preserving literal commas as delimiters
+		// per the OpenAPI spec (e.g. "color=blue,black,brown").
+		var rawQueryFragments []string
+
+		if params.Ordering != nil {
+
+			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "ordering", *params.Ordering, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			} else {
+				for _, qp := range strings.Split(queryFrag, "&") {
+					rawQueryFragments = append(rawQueryFragments, qp)
+				}
+			}
+
+		}
+
+		if encoded := queryValues.Encode(); encoded != "" {
+			rawQueryFragments = append(rawQueryFragments, encoded)
+		}
+		queryURL.RawQuery = strings.Join(rawQueryFragments, "&")
+	}
+
+	req, err := http.NewRequest(http.MethodGet, queryURL.String(), nil)
+	if err != nil {
+		return nil, err
+	}
+
+	return req, nil
+}
+
+// NewApiPromptsVersionsFewShotExamplesCreateRequest calls the generic ApiPromptsVersionsFewShotExamplesCreate builder with application/json body
+func NewApiPromptsVersionsFewShotExamplesCreateRequest(server string, promptId int, versionId int, body ApiPromptsVersionsFewShotExamplesCreateJSONRequestBody) (*http.Request, error) {
+	var bodyReader io.Reader
+	buf, err := json.Marshal(body)
+	if err != nil {
+		return nil, err
+	}
+	bodyReader = bytes.NewReader(buf)
+	return NewApiPromptsVersionsFewShotExamplesCreateRequestWithBody(server, promptId, versionId, "application/json", bodyReader)
+}
+
 // NewApiPromptsVersionsFewShotExamplesCreateRequestWithFormdataBody calls the generic ApiPromptsVersionsFewShotExamplesCreate builder with application/x-www-form-urlencoded body
 func NewApiPromptsVersionsFewShotExamplesCreateRequestWithFormdataBody(server string, promptId int, versionId int, body ApiPromptsVersionsFewShotExamplesCreateFormdataRequestBody) (*http.Request, error) {
 	var bodyReader io.Reader
@@ -11155,6 +11448,51 @@ type ClientWithResponsesInterface interface {
 	//
 	// Corresponds with PATCH /api/current-user (the `ApiCurrentUserPartialUpdate` operationId).
 	ApiCurrentUserPartialUpdateWithFormdataBodyWithResponse(ctx context.Context, body ApiCurrentUserPartialUpdateFormdataRequestBody, reqEditors ...RequestEditorFn) (*ApiCurrentUserPartialUpdateResponse, error)
+
+	// ApiCurrentUserActingRoleDestroyWithResponse Stop acting as a role
+	//
+	// Go back to your own role.
+	//
+	// Returns a wrapper object for the known response body format(s).
+	//
+	// Corresponds with DELETE /api/current-user/acting-role (the `ApiCurrentUserActingRoleDestroy` operationId).
+	ApiCurrentUserActingRoleDestroyWithResponse(ctx context.Context, reqEditors ...RequestEditorFn) (*ApiCurrentUserActingRoleDestroyResponse, error)
+
+	// ApiCurrentUserActingRoleRetrieveWithResponse Get acting role
+	//
+	// Your stored role, the role you act as, and the roles you may act as.
+	//
+	// Returns a wrapper object for the known response body format(s).
+	//
+	// Corresponds with GET /api/current-user/acting-role (the `ApiCurrentUserActingRoleRetrieve` operationId).
+	ApiCurrentUserActingRoleRetrieveWithResponse(ctx context.Context, reqEditors ...RequestEditorFn) (*ApiCurrentUserActingRoleRetrieveResponse, error)
+
+	// ApiCurrentUserActingRoleCreateWithBodyWithResponse Start acting as a role
+	//
+	// Act as a lower role in your active organization. Replaces the role you act as now.
+	//
+	// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
+	//
+	// Corresponds with POST /api/current-user/acting-role (the `ApiCurrentUserActingRoleCreate` operationId).
+	ApiCurrentUserActingRoleCreateWithBodyWithResponse(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*ApiCurrentUserActingRoleCreateResponse, error)
+
+	// ApiCurrentUserActingRoleCreateWithResponse Start acting as a role
+	//
+	// Act as a lower role in your active organization. Replaces the role you act as now.
+	//
+	// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
+	//
+	// Corresponds with POST /api/current-user/acting-role (the `ApiCurrentUserActingRoleCreate` operationId).
+	ApiCurrentUserActingRoleCreateWithResponse(ctx context.Context, body ApiCurrentUserActingRoleCreateJSONRequestBody, reqEditors ...RequestEditorFn) (*ApiCurrentUserActingRoleCreateResponse, error)
+
+	// ApiCurrentUserActingRoleCreateWithFormdataBodyWithResponse Start acting as a role
+	//
+	// Act as a lower role in your active organization. Replaces the role you act as now.
+	//
+	// Takes a body of the `application/x-www-form-urlencoded` content type, and returns a wrapper object for the known response body format(s).
+	//
+	// Corresponds with POST /api/current-user/acting-role (the `ApiCurrentUserActingRoleCreate` operationId).
+	ApiCurrentUserActingRoleCreateWithFormdataBodyWithResponse(ctx context.Context, body ApiCurrentUserActingRoleCreateFormdataRequestBody, reqEditors ...RequestEditorFn) (*ApiCurrentUserActingRoleCreateResponse, error)
 
 	// ApiCurrentUserHotkeysRetrieveWithResponse Get user hotkeys
 	//

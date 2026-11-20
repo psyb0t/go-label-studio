@@ -2,6 +2,15 @@
 
 All notable changes per release. Versions follow [semver](https://semver.org).
 
+## v0.11.1, 2026-11-20
+
+- Added the acting role endpoints under `/api/current-user/acting-role/`. `Client` and `ClientWithResponses` get `ApiCurrentUserActingRoleRetrieve`, `ApiCurrentUserActingRoleCreate` and `ApiCurrentUserActingRoleDestroy`. The create method has `WithBody` and `WithFormdataBody` variants, and `ClientWithResponses` has the matching `WithResponse` methods.
+- Each new endpoint also has a `New...Request` function, a `Parse...Response` function and a `...Response` type, such as `ApiCurrentUserActingRoleCreateResponse`.
+- Added the models `ActingRole` and `ActingRoleStartRequest`, and `ActingRoleStartRoleEnum` with the constants `ActingRoleStartRoleEnumAD`, `ActingRoleStartRoleEnumAN`, `ActingRoleStartRoleEnumMA` and `ActingRoleStartRoleEnumRE`. The enum has a `Valid` method.
+- Added the request body aliases `ApiCurrentUserActingRoleCreateJSONRequestBody`, `ApiCurrentUserActingRoleCreateFormdataRequestBody` and `ApiCurrentUserActingRoleCreateMultipartRequestBody`.
+- Added the matching methods to `ClientInterface` and `ClientWithResponsesInterface`. Code that calls the clients is unaffected, but a custom type that implements either interface must add them.
+- Several generated types and methods moved between generated files. Their names and signatures are unchanged.
+
 ## v0.11.0, 2026-11-19
 
 - Removed the learning resource certificate endpoints. `Client` loses `ApiLearningResourcesCertificatesList`, `ApiLearningResourcesCertificatesRevokeCreate` (with its `WithBody` and `WithFormdataBody` variants) and `ApiUsersMeCertificatesList`. `ClientWithResponses` loses the matching `WithResponse` methods, and `ClientInterface` and `ClientWithResponsesInterface` lose the same methods. Remove calls to them before upgrading.

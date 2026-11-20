@@ -10,6 +10,30 @@ import (
 	openapi_types "github.com/oapi-codegen/runtime/types"
 )
 
+// Defines values for ActingRoleStartRoleEnum.
+const (
+	ActingRoleStartRoleEnumAD ActingRoleStartRoleEnum = "AD"
+	ActingRoleStartRoleEnumAN ActingRoleStartRoleEnum = "AN"
+	ActingRoleStartRoleEnumMA ActingRoleStartRoleEnum = "MA"
+	ActingRoleStartRoleEnumRE ActingRoleStartRoleEnum = "RE"
+)
+
+// Valid indicates whether the value is a known member of the ActingRoleStartRoleEnum enum.
+func (e ActingRoleStartRoleEnum) Valid() bool {
+	switch e {
+	case ActingRoleStartRoleEnumAD:
+		return true
+	case ActingRoleStartRoleEnumAN:
+		return true
+	case ActingRoleStartRoleEnumMA:
+		return true
+	case ActingRoleStartRoleEnumRE:
+		return true
+	default:
+		return false
+	}
+}
+
 // Defines values for ActionsEnum.
 const (
 	ActionsEnumANNOTATIONCREATED  ActionsEnum = "ANNOTATION_CREATED"
@@ -2511,6 +2535,38 @@ type AWSCustomFunctionUpdateRequest struct {
 	// Role The AWS IAM role ARN for the Lambda function. Uses default if not provided.
 	Role *string `json:"role,omitempty"`
 }
+
+// ActingRole defines model for ActingRole.
+type ActingRole struct {
+	// ActingRole Role the user acts as, or null
+	ActingRole *string `json:"acting_role"`
+
+	// AllowedRoles Roles the user may act as; empty when they may not act
+	AllowedRoles []string `json:"allowed_roles"`
+
+	// RealRole Stored organization role of the user
+	RealRole *string `json:"real_role"`
+
+	// StartedAt When acting started, or null
+	StartedAt *time.Time `json:"started_at"`
+}
+
+// ActingRoleStartRequest defines model for ActingRoleStartRequest.
+type ActingRoleStartRequest struct {
+	// Role Role to act as
+	//
+	// * `AD` - Administrator
+	// * `MA` - Manager
+	// * `RE` - Reviewer
+	// * `AN` - Annotator
+	Role ActingRoleStartRoleEnum `json:"role"`
+}
+
+// ActingRoleStartRoleEnum * `AD` - Administrator
+// * `MA` - Manager
+// * `RE` - Reviewer
+// * `AN` - Annotator
+type ActingRoleStartRoleEnum string
 
 // ActionsEnum * `PROJECT_CREATED` - PROJECT_CREATED
 // * `PROJECT_UPDATED` - PROJECT_UPDATED
@@ -18628,6 +18684,15 @@ type ApiCurrentUserPartialUpdateFormdataRequestBody = PatchedLseUserSerializerUp
 // ApiCurrentUserPartialUpdateMultipartRequestBody defines body for ApiCurrentUserPartialUpdate for multipart/form-data ContentType.
 type ApiCurrentUserPartialUpdateMultipartRequestBody = PatchedLseUserSerializerUpdateRequest
 
+// ApiCurrentUserActingRoleCreateJSONRequestBody defines body for ApiCurrentUserActingRoleCreate for application/json ContentType.
+type ApiCurrentUserActingRoleCreateJSONRequestBody = ActingRoleStartRequest
+
+// ApiCurrentUserActingRoleCreateFormdataRequestBody defines body for ApiCurrentUserActingRoleCreate for application/x-www-form-urlencoded ContentType.
+type ApiCurrentUserActingRoleCreateFormdataRequestBody = ActingRoleStartRequest
+
+// ApiCurrentUserActingRoleCreateMultipartRequestBody defines body for ApiCurrentUserActingRoleCreate for multipart/form-data ContentType.
+type ApiCurrentUserActingRoleCreateMultipartRequestBody = ActingRoleStartRequest
+
 // ApiCurrentUserHotkeysPartialUpdateJSONRequestBody defines body for ApiCurrentUserHotkeysPartialUpdate for application/json ContentType.
 type ApiCurrentUserHotkeysPartialUpdateJSONRequestBody = PatchedHotkeysRequest
 
@@ -19944,69 +20009,3 @@ type ApiStoragesExportDatabricksPartialUpdateMultipartRequestBody = PatchedDatab
 
 // ApiStoragesExportGcsCreateJSONRequestBody defines body for ApiStoragesExportGcsCreate for application/json ContentType.
 type ApiStoragesExportGcsCreateJSONRequestBody = GCSExportStorageWriteRequest
-
-// ApiStoragesExportGcsCreateFormdataRequestBody defines body for ApiStoragesExportGcsCreate for application/x-www-form-urlencoded ContentType.
-type ApiStoragesExportGcsCreateFormdataRequestBody = GCSExportStorageWriteRequest
-
-// ApiStoragesExportGcsCreateMultipartRequestBody defines body for ApiStoragesExportGcsCreate for multipart/form-data ContentType.
-type ApiStoragesExportGcsCreateMultipartRequestBody = GCSExportStorageWriteRequest
-
-// ApiStoragesExportGcsValidateCreateJSONRequestBody defines body for ApiStoragesExportGcsValidateCreate for application/json ContentType.
-type ApiStoragesExportGcsValidateCreateJSONRequestBody = GCSExportStorageValidateRequest
-
-// ApiStoragesExportGcsValidateCreateFormdataRequestBody defines body for ApiStoragesExportGcsValidateCreate for application/x-www-form-urlencoded ContentType.
-type ApiStoragesExportGcsValidateCreateFormdataRequestBody = GCSExportStorageValidateRequest
-
-// ApiStoragesExportGcsValidateCreateMultipartRequestBody defines body for ApiStoragesExportGcsValidateCreate for multipart/form-data ContentType.
-type ApiStoragesExportGcsValidateCreateMultipartRequestBody = GCSExportStorageValidateRequest
-
-// ApiStoragesExportGcsPartialUpdateJSONRequestBody defines body for ApiStoragesExportGcsPartialUpdate for application/json ContentType.
-type ApiStoragesExportGcsPartialUpdateJSONRequestBody = PatchedGCSExportStorageWriteRequest
-
-// ApiStoragesExportGcsPartialUpdateFormdataRequestBody defines body for ApiStoragesExportGcsPartialUpdate for application/x-www-form-urlencoded ContentType.
-type ApiStoragesExportGcsPartialUpdateFormdataRequestBody = PatchedGCSExportStorageWriteRequest
-
-// ApiStoragesExportGcsPartialUpdateMultipartRequestBody defines body for ApiStoragesExportGcsPartialUpdate for multipart/form-data ContentType.
-type ApiStoragesExportGcsPartialUpdateMultipartRequestBody = PatchedGCSExportStorageWriteRequest
-
-// ApiStoragesExportGcsSaCreateJSONRequestBody defines body for ApiStoragesExportGcsSaCreate for application/json ContentType.
-type ApiStoragesExportGcsSaCreateJSONRequestBody = GCSSAExportStorageRequest
-
-// ApiStoragesExportGcsSaCreateFormdataRequestBody defines body for ApiStoragesExportGcsSaCreate for application/x-www-form-urlencoded ContentType.
-type ApiStoragesExportGcsSaCreateFormdataRequestBody = GCSSAExportStorageRequest
-
-// ApiStoragesExportGcsSaCreateMultipartRequestBody defines body for ApiStoragesExportGcsSaCreate for multipart/form-data ContentType.
-type ApiStoragesExportGcsSaCreateMultipartRequestBody = GCSSAExportStorageRequest
-
-// ApiStoragesExportGcsSaValidateCreateJSONRequestBody defines body for ApiStoragesExportGcsSaValidateCreate for application/json ContentType.
-type ApiStoragesExportGcsSaValidateCreateJSONRequestBody = GCSSAExportStorageRequest
-
-// ApiStoragesExportGcsSaValidateCreateFormdataRequestBody defines body for ApiStoragesExportGcsSaValidateCreate for application/x-www-form-urlencoded ContentType.
-type ApiStoragesExportGcsSaValidateCreateFormdataRequestBody = GCSSAExportStorageRequest
-
-// ApiStoragesExportGcsSaValidateCreateMultipartRequestBody defines body for ApiStoragesExportGcsSaValidateCreate for multipart/form-data ContentType.
-type ApiStoragesExportGcsSaValidateCreateMultipartRequestBody = GCSSAExportStorageRequest
-
-// ApiStoragesExportGcsSaPartialUpdateJSONRequestBody defines body for ApiStoragesExportGcsSaPartialUpdate for application/json ContentType.
-type ApiStoragesExportGcsSaPartialUpdateJSONRequestBody = PatchedGCSSAExportStorageRequest
-
-// ApiStoragesExportGcsSaPartialUpdateFormdataRequestBody defines body for ApiStoragesExportGcsSaPartialUpdate for application/x-www-form-urlencoded ContentType.
-type ApiStoragesExportGcsSaPartialUpdateFormdataRequestBody = PatchedGCSSAExportStorageRequest
-
-// ApiStoragesExportGcsSaPartialUpdateMultipartRequestBody defines body for ApiStoragesExportGcsSaPartialUpdate for multipart/form-data ContentType.
-type ApiStoragesExportGcsSaPartialUpdateMultipartRequestBody = PatchedGCSSAExportStorageRequest
-
-// ApiStoragesExportGcswifCreateJSONRequestBody defines body for ApiStoragesExportGcswifCreate for application/json ContentType.
-type ApiStoragesExportGcswifCreateJSONRequestBody = GCSWIFExportStorageRequest
-
-// ApiStoragesExportGcswifCreateFormdataRequestBody defines body for ApiStoragesExportGcswifCreate for application/x-www-form-urlencoded ContentType.
-type ApiStoragesExportGcswifCreateFormdataRequestBody = GCSWIFExportStorageRequest
-
-// ApiStoragesExportGcswifCreateMultipartRequestBody defines body for ApiStoragesExportGcswifCreate for multipart/form-data ContentType.
-type ApiStoragesExportGcswifCreateMultipartRequestBody = GCSWIFExportStorageRequest
-
-// ApiStoragesExportGcswifValidateCreateJSONRequestBody defines body for ApiStoragesExportGcswifValidateCreate for application/json ContentType.
-type ApiStoragesExportGcswifValidateCreateJSONRequestBody = GCSWIFExportStorageRequest
-
-// ApiStoragesExportGcswifValidateCreateFormdataRequestBody defines body for ApiStoragesExportGcswifValidateCreate for application/x-www-form-urlencoded ContentType.
-type ApiStoragesExportGcswifValidateCreateFormdataRequestBody = GCSWIFExportStorageRequest

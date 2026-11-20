@@ -15,6 +15,198 @@ import (
 	"github.com/oapi-codegen/runtime"
 )
 
+// NewApiCommentsCreateRequest calls the generic ApiCommentsCreate builder with application/json body
+func NewApiCommentsCreateRequest(server string, params *ApiCommentsCreateParams, body ApiCommentsCreateJSONRequestBody) (*http.Request, error) {
+	var bodyReader io.Reader
+	buf, err := json.Marshal(body)
+	if err != nil {
+		return nil, err
+	}
+	bodyReader = bytes.NewReader(buf)
+	return NewApiCommentsCreateRequestWithBody(server, params, "application/json", bodyReader)
+}
+
+// NewApiCommentsCreateRequestWithFormdataBody calls the generic ApiCommentsCreate builder with application/x-www-form-urlencoded body
+func NewApiCommentsCreateRequestWithFormdataBody(server string, params *ApiCommentsCreateParams, body ApiCommentsCreateFormdataRequestBody) (*http.Request, error) {
+	var bodyReader io.Reader
+	bodyStr, err := runtime.MarshalForm(body, nil)
+	if err != nil {
+		return nil, err
+	}
+	bodyReader = strings.NewReader(bodyStr.Encode())
+	return NewApiCommentsCreateRequestWithBody(server, params, "application/x-www-form-urlencoded", bodyReader)
+}
+
+// NewApiCommentsCreateRequestWithBody constructs an http.Request for the ApiCommentsCreate method, with any body, and a specified content type
+func NewApiCommentsCreateRequestWithBody(server string, params *ApiCommentsCreateParams, contentType string, body io.Reader) (*http.Request, error) {
+	var err error
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/api/comments/")
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	if params != nil {
+		// queryValues collects non-styled parameters (passthrough, JSON)
+		// that are safe to round-trip through url.Values.Encode().
+		queryValues := queryURL.Query()
+		// rawQueryFragments collects pre-encoded query fragments from
+		// styled parameters, preserving literal commas as delimiters
+		// per the OpenAPI spec (e.g. "color=blue,black,brown").
+		var rawQueryFragments []string
+
+		if params.ExpandCreatedBy != nil {
+
+			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "expand_created_by", *params.ExpandCreatedBy, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "boolean", Format: ""}); err != nil {
+				return nil, err
+			} else {
+				for _, qp := range strings.Split(queryFrag, "&") {
+					rawQueryFragments = append(rawQueryFragments, qp)
+				}
+			}
+
+		}
+
+		if encoded := queryValues.Encode(); encoded != "" {
+			rawQueryFragments = append(rawQueryFragments, encoded)
+		}
+		queryURL.RawQuery = strings.Join(rawQueryFragments, "&")
+	}
+
+	req, err := http.NewRequest(http.MethodPost, queryURL.String(), body)
+	if err != nil {
+		return nil, err
+	}
+
+	req.Header.Add("Content-Type", contentType)
+
+	return req, nil
+}
+
+// NewApiCommentsExportRetrieveRequest constructs an http.Request for the ApiCommentsExportRetrieve method
+func NewApiCommentsExportRetrieveRequest(server string, params *ApiCommentsExportRetrieveParams) (*http.Request, error) {
+	var err error
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/api/comments/export/")
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	if params != nil {
+		// queryValues collects non-styled parameters (passthrough, JSON)
+		// that are safe to round-trip through url.Values.Encode().
+		queryValues := queryURL.Query()
+		// rawQueryFragments collects pre-encoded query fragments from
+		// styled parameters, preserving literal commas as delimiters
+		// per the OpenAPI spec (e.g. "color=blue,black,brown").
+		var rawQueryFragments []string
+
+		if params.Annotation != nil {
+
+			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "annotation", *params.Annotation, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "integer", Format: ""}); err != nil {
+				return nil, err
+			} else {
+				for _, qp := range strings.Split(queryFrag, "&") {
+					rawQueryFragments = append(rawQueryFragments, qp)
+				}
+			}
+
+		}
+
+		if params.Annotators != nil {
+
+			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "annotators", *params.Annotators, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			} else {
+				for _, qp := range strings.Split(queryFrag, "&") {
+					rawQueryFragments = append(rawQueryFragments, qp)
+				}
+			}
+
+		}
+
+		if params.Draft != nil {
+
+			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "draft", *params.Draft, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "integer", Format: ""}); err != nil {
+				return nil, err
+			} else {
+				for _, qp := range strings.Split(queryFrag, "&") {
+					rawQueryFragments = append(rawQueryFragments, qp)
+				}
+			}
+
+		}
+
+		if params.ExpandCreatedBy != nil {
+
+			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "expand_created_by", *params.ExpandCreatedBy, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "boolean", Format: ""}); err != nil {
+				return nil, err
+			} else {
+				for _, qp := range strings.Split(queryFrag, "&") {
+					rawQueryFragments = append(rawQueryFragments, qp)
+				}
+			}
+
+		}
+
+		if params.Projects != nil {
+
+			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "projects", *params.Projects, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			} else {
+				for _, qp := range strings.Split(queryFrag, "&") {
+					rawQueryFragments = append(rawQueryFragments, qp)
+				}
+			}
+
+		}
+
+		if params.Tz != nil {
+
+			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "tz", *params.Tz, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			} else {
+				for _, qp := range strings.Split(queryFrag, "&") {
+					rawQueryFragments = append(rawQueryFragments, qp)
+				}
+			}
+
+		}
+
+		if encoded := queryValues.Encode(); encoded != "" {
+			rawQueryFragments = append(rawQueryFragments, encoded)
+		}
+		queryURL.RawQuery = strings.Join(rawQueryFragments, "&")
+	}
+
+	req, err := http.NewRequest(http.MethodGet, queryURL.String(), nil)
+	if err != nil {
+		return nil, err
+	}
+
+	return req, nil
+}
+
 // NewApiCommentsDestroyRequest constructs an http.Request for the ApiCommentsDestroy method
 func NewApiCommentsDestroyRequest(server string, id int, params *ApiCommentsDestroyParams) (*http.Request, error) {
 	var err error
@@ -376,6 +568,111 @@ func NewApiCurrentUserPartialUpdateRequestWithBody(server string, contentType st
 	}
 
 	req, err := http.NewRequest(http.MethodPatch, queryURL.String(), body)
+	if err != nil {
+		return nil, err
+	}
+
+	req.Header.Add("Content-Type", contentType)
+
+	return req, nil
+}
+
+// NewApiCurrentUserActingRoleDestroyRequest constructs an http.Request for the ApiCurrentUserActingRoleDestroy method
+func NewApiCurrentUserActingRoleDestroyRequest(server string) (*http.Request, error) {
+	var err error
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/api/current-user/acting-role")
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequest(http.MethodDelete, queryURL.String(), nil)
+	if err != nil {
+		return nil, err
+	}
+
+	return req, nil
+}
+
+// NewApiCurrentUserActingRoleRetrieveRequest constructs an http.Request for the ApiCurrentUserActingRoleRetrieve method
+func NewApiCurrentUserActingRoleRetrieveRequest(server string) (*http.Request, error) {
+	var err error
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/api/current-user/acting-role")
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequest(http.MethodGet, queryURL.String(), nil)
+	if err != nil {
+		return nil, err
+	}
+
+	return req, nil
+}
+
+// NewApiCurrentUserActingRoleCreateRequest calls the generic ApiCurrentUserActingRoleCreate builder with application/json body
+func NewApiCurrentUserActingRoleCreateRequest(server string, body ApiCurrentUserActingRoleCreateJSONRequestBody) (*http.Request, error) {
+	var bodyReader io.Reader
+	buf, err := json.Marshal(body)
+	if err != nil {
+		return nil, err
+	}
+	bodyReader = bytes.NewReader(buf)
+	return NewApiCurrentUserActingRoleCreateRequestWithBody(server, "application/json", bodyReader)
+}
+
+// NewApiCurrentUserActingRoleCreateRequestWithFormdataBody calls the generic ApiCurrentUserActingRoleCreate builder with application/x-www-form-urlencoded body
+func NewApiCurrentUserActingRoleCreateRequestWithFormdataBody(server string, body ApiCurrentUserActingRoleCreateFormdataRequestBody) (*http.Request, error) {
+	var bodyReader io.Reader
+	bodyStr, err := runtime.MarshalForm(body, nil)
+	if err != nil {
+		return nil, err
+	}
+	bodyReader = strings.NewReader(bodyStr.Encode())
+	return NewApiCurrentUserActingRoleCreateRequestWithBody(server, "application/x-www-form-urlencoded", bodyReader)
+}
+
+// NewApiCurrentUserActingRoleCreateRequestWithBody constructs an http.Request for the ApiCurrentUserActingRoleCreate method, with any body, and a specified content type
+func NewApiCurrentUserActingRoleCreateRequestWithBody(server string, contentType string, body io.Reader) (*http.Request, error) {
+	var err error
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/api/current-user/acting-role")
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequest(http.MethodPost, queryURL.String(), body)
 	if err != nil {
 		return nil, err
 	}
@@ -19725,297 +20022,4 @@ func NewApiPromptsVersionsPartialUpdateRequestWithFormdataBody(server string, pr
 	}
 	bodyReader = strings.NewReader(bodyStr.Encode())
 	return NewApiPromptsVersionsPartialUpdateRequestWithBody(server, promptId, versionId, "application/x-www-form-urlencoded", bodyReader)
-}
-
-// NewApiPromptsVersionsPartialUpdateRequestWithBody constructs an http.Request for the ApiPromptsVersionsPartialUpdate method, with any body, and a specified content type
-func NewApiPromptsVersionsPartialUpdateRequestWithBody(server string, promptId int, versionId int, contentType string, body io.Reader) (*http.Request, error) {
-	var err error
-
-	var pathParam0 string
-
-	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "prompt_id", promptId, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "integer", Format: ""})
-	if err != nil {
-		return nil, err
-	}
-
-	var pathParam1 string
-
-	pathParam1, err = runtime.StyleParamWithOptions("simple", false, "version_id", versionId, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "integer", Format: ""})
-	if err != nil {
-		return nil, err
-	}
-
-	serverURL, err := url.Parse(server)
-	if err != nil {
-		return nil, err
-	}
-
-	operationPath := fmt.Sprintf("/api/prompts/%s/versions/%s", pathParam0, pathParam1)
-	if operationPath[0] == '/' {
-		operationPath = "." + operationPath
-	}
-
-	queryURL, err := serverURL.Parse(operationPath)
-	if err != nil {
-		return nil, err
-	}
-
-	req, err := http.NewRequest(http.MethodPatch, queryURL.String(), body)
-	if err != nil {
-		return nil, err
-	}
-
-	req.Header.Add("Content-Type", contentType)
-
-	return req, nil
-}
-
-// NewApiPromptsVersionsUpdateRequest calls the generic ApiPromptsVersionsUpdate builder with application/json body
-func NewApiPromptsVersionsUpdateRequest(server string, promptId int, versionId int, body ApiPromptsVersionsUpdateJSONRequestBody) (*http.Request, error) {
-	var bodyReader io.Reader
-	buf, err := json.Marshal(body)
-	if err != nil {
-		return nil, err
-	}
-	bodyReader = bytes.NewReader(buf)
-	return NewApiPromptsVersionsUpdateRequestWithBody(server, promptId, versionId, "application/json", bodyReader)
-}
-
-// NewApiPromptsVersionsUpdateRequestWithFormdataBody calls the generic ApiPromptsVersionsUpdate builder with application/x-www-form-urlencoded body
-func NewApiPromptsVersionsUpdateRequestWithFormdataBody(server string, promptId int, versionId int, body ApiPromptsVersionsUpdateFormdataRequestBody) (*http.Request, error) {
-	var bodyReader io.Reader
-	bodyStr, err := runtime.MarshalForm(body, nil)
-	if err != nil {
-		return nil, err
-	}
-	bodyReader = strings.NewReader(bodyStr.Encode())
-	return NewApiPromptsVersionsUpdateRequestWithBody(server, promptId, versionId, "application/x-www-form-urlencoded", bodyReader)
-}
-
-// NewApiPromptsVersionsUpdateRequestWithBody constructs an http.Request for the ApiPromptsVersionsUpdate method, with any body, and a specified content type
-func NewApiPromptsVersionsUpdateRequestWithBody(server string, promptId int, versionId int, contentType string, body io.Reader) (*http.Request, error) {
-	var err error
-
-	var pathParam0 string
-
-	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "prompt_id", promptId, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "integer", Format: ""})
-	if err != nil {
-		return nil, err
-	}
-
-	var pathParam1 string
-
-	pathParam1, err = runtime.StyleParamWithOptions("simple", false, "version_id", versionId, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "integer", Format: ""})
-	if err != nil {
-		return nil, err
-	}
-
-	serverURL, err := url.Parse(server)
-	if err != nil {
-		return nil, err
-	}
-
-	operationPath := fmt.Sprintf("/api/prompts/%s/versions/%s", pathParam0, pathParam1)
-	if operationPath[0] == '/' {
-		operationPath = "." + operationPath
-	}
-
-	queryURL, err := serverURL.Parse(operationPath)
-	if err != nil {
-		return nil, err
-	}
-
-	req, err := http.NewRequest(http.MethodPut, queryURL.String(), body)
-	if err != nil {
-		return nil, err
-	}
-
-	req.Header.Add("Content-Type", contentType)
-
-	return req, nil
-}
-
-// NewApiPromptsVersionsCostEstimateRetrieveRequest constructs an http.Request for the ApiPromptsVersionsCostEstimateRetrieve method
-func NewApiPromptsVersionsCostEstimateRetrieveRequest(server string, promptId int, versionId int) (*http.Request, error) {
-	var err error
-
-	var pathParam0 string
-
-	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "prompt_id", promptId, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "integer", Format: ""})
-	if err != nil {
-		return nil, err
-	}
-
-	var pathParam1 string
-
-	pathParam1, err = runtime.StyleParamWithOptions("simple", false, "version_id", versionId, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "integer", Format: ""})
-	if err != nil {
-		return nil, err
-	}
-
-	serverURL, err := url.Parse(server)
-	if err != nil {
-		return nil, err
-	}
-
-	operationPath := fmt.Sprintf("/api/prompts/%s/versions/%s/cost-estimate", pathParam0, pathParam1)
-	if operationPath[0] == '/' {
-		operationPath = "." + operationPath
-	}
-
-	queryURL, err := serverURL.Parse(operationPath)
-	if err != nil {
-		return nil, err
-	}
-
-	req, err := http.NewRequest(http.MethodGet, queryURL.String(), nil)
-	if err != nil {
-		return nil, err
-	}
-
-	return req, nil
-}
-
-// NewApiPromptsVersionsDuplicateCreateRequest calls the generic ApiPromptsVersionsDuplicateCreate builder with application/json body
-func NewApiPromptsVersionsDuplicateCreateRequest(server string, promptId int, versionId int, body ApiPromptsVersionsDuplicateCreateJSONRequestBody) (*http.Request, error) {
-	var bodyReader io.Reader
-	buf, err := json.Marshal(body)
-	if err != nil {
-		return nil, err
-	}
-	bodyReader = bytes.NewReader(buf)
-	return NewApiPromptsVersionsDuplicateCreateRequestWithBody(server, promptId, versionId, "application/json", bodyReader)
-}
-
-// NewApiPromptsVersionsDuplicateCreateRequestWithFormdataBody calls the generic ApiPromptsVersionsDuplicateCreate builder with application/x-www-form-urlencoded body
-func NewApiPromptsVersionsDuplicateCreateRequestWithFormdataBody(server string, promptId int, versionId int, body ApiPromptsVersionsDuplicateCreateFormdataRequestBody) (*http.Request, error) {
-	var bodyReader io.Reader
-	bodyStr, err := runtime.MarshalForm(body, nil)
-	if err != nil {
-		return nil, err
-	}
-	bodyReader = strings.NewReader(bodyStr.Encode())
-	return NewApiPromptsVersionsDuplicateCreateRequestWithBody(server, promptId, versionId, "application/x-www-form-urlencoded", bodyReader)
-}
-
-// NewApiPromptsVersionsDuplicateCreateRequestWithBody constructs an http.Request for the ApiPromptsVersionsDuplicateCreate method, with any body, and a specified content type
-func NewApiPromptsVersionsDuplicateCreateRequestWithBody(server string, promptId int, versionId int, contentType string, body io.Reader) (*http.Request, error) {
-	var err error
-
-	var pathParam0 string
-
-	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "prompt_id", promptId, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "integer", Format: ""})
-	if err != nil {
-		return nil, err
-	}
-
-	var pathParam1 string
-
-	pathParam1, err = runtime.StyleParamWithOptions("simple", false, "version_id", versionId, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "integer", Format: ""})
-	if err != nil {
-		return nil, err
-	}
-
-	serverURL, err := url.Parse(server)
-	if err != nil {
-		return nil, err
-	}
-
-	operationPath := fmt.Sprintf("/api/prompts/%s/versions/%s/duplicate", pathParam0, pathParam1)
-	if operationPath[0] == '/' {
-		operationPath = "." + operationPath
-	}
-
-	queryURL, err := serverURL.Parse(operationPath)
-	if err != nil {
-		return nil, err
-	}
-
-	req, err := http.NewRequest(http.MethodPost, queryURL.String(), body)
-	if err != nil {
-		return nil, err
-	}
-
-	req.Header.Add("Content-Type", contentType)
-
-	return req, nil
-}
-
-// NewApiPromptsVersionsFewShotExamplesListRequest constructs an http.Request for the ApiPromptsVersionsFewShotExamplesList method
-func NewApiPromptsVersionsFewShotExamplesListRequest(server string, promptId int, versionId int, params *ApiPromptsVersionsFewShotExamplesListParams) (*http.Request, error) {
-	var err error
-
-	var pathParam0 string
-
-	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "prompt_id", promptId, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "integer", Format: ""})
-	if err != nil {
-		return nil, err
-	}
-
-	var pathParam1 string
-
-	pathParam1, err = runtime.StyleParamWithOptions("simple", false, "version_id", versionId, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "integer", Format: ""})
-	if err != nil {
-		return nil, err
-	}
-
-	serverURL, err := url.Parse(server)
-	if err != nil {
-		return nil, err
-	}
-
-	operationPath := fmt.Sprintf("/api/prompts/%s/versions/%s/few-shot-examples", pathParam0, pathParam1)
-	if operationPath[0] == '/' {
-		operationPath = "." + operationPath
-	}
-
-	queryURL, err := serverURL.Parse(operationPath)
-	if err != nil {
-		return nil, err
-	}
-
-	if params != nil {
-		// queryValues collects non-styled parameters (passthrough, JSON)
-		// that are safe to round-trip through url.Values.Encode().
-		queryValues := queryURL.Query()
-		// rawQueryFragments collects pre-encoded query fragments from
-		// styled parameters, preserving literal commas as delimiters
-		// per the OpenAPI spec (e.g. "color=blue,black,brown").
-		var rawQueryFragments []string
-
-		if params.Ordering != nil {
-
-			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "ordering", *params.Ordering, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "string", Format: ""}); err != nil {
-				return nil, err
-			} else {
-				for _, qp := range strings.Split(queryFrag, "&") {
-					rawQueryFragments = append(rawQueryFragments, qp)
-				}
-			}
-
-		}
-
-		if encoded := queryValues.Encode(); encoded != "" {
-			rawQueryFragments = append(rawQueryFragments, encoded)
-		}
-		queryURL.RawQuery = strings.Join(rawQueryFragments, "&")
-	}
-
-	req, err := http.NewRequest(http.MethodGet, queryURL.String(), nil)
-	if err != nil {
-		return nil, err
-	}
-
-	return req, nil
-}
-
-// NewApiPromptsVersionsFewShotExamplesCreateRequest calls the generic ApiPromptsVersionsFewShotExamplesCreate builder with application/json body
-func NewApiPromptsVersionsFewShotExamplesCreateRequest(server string, promptId int, versionId int, body ApiPromptsVersionsFewShotExamplesCreateJSONRequestBody) (*http.Request, error) {
-	var bodyReader io.Reader
-	buf, err := json.Marshal(body)
-	if err != nil {
-		return nil, err
-	}
-	bodyReader = bytes.NewReader(buf)
-	return NewApiPromptsVersionsFewShotExamplesCreateRequestWithBody(server, promptId, versionId, "application/json", bodyReader)
 }
