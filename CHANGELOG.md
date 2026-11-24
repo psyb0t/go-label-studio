@@ -2,6 +2,16 @@
 
 All notable changes per release. Versions follow [semver](https://semver.org).
 
+## v0.11.2, 2026-11-24
+
+- Added the learning resource project assignment preview endpoint at `/api/learning-resources/{id}/project-assignment-preview/`. `Client` has `ApiLearningResourcesProjectAssignmentPreviewCreate`, with `WithBody` and `WithFormdataBody` variants, and `ClientWithResponses` has the matching `WithResponse` methods.
+- Added the project courses-enabled endpoint at `/api/projects/{id}/learning-assignments/courses-enabled/`. `Client` has `ApiProjectsLearningAssignmentsCoursesEnabledPartialUpdate`, with `WithBody` and `WithFormdataBody` variants, and `ClientWithResponses` has the matching `WithResponse` methods.
+- Each new endpoint also has a `New...Request` function, a `Parse...Response` function, a `...Response` type and JSON, formdata and multipart request body aliases, such as `ApiLearningResourcesProjectAssignmentPreviewCreateJSONRequestBody`.
+- Added the models `AssignmentPreviewCounts`, `AssignmentPreviewProject`, `AssignmentPreviewRequestRequest`, `AssignmentPreviewResponse`, `ProjectCoursesEnabled` and `PatchedProjectCoursesEnabledRequest`.
+- Added the fields `CoursesEnabled`, `HasAnnotationInstructions` and `HasReviewInstructions` to `AllRolesProjectList`, `LseProject` and `LseProjectResponse`.
+- Added the matching methods to `ClientInterface` and `ClientWithResponsesInterface`. Code that calls the clients is unaffected, but a custom type that implements either interface must add them.
+- Several generated types and methods moved between generated files. Their names and signatures are unchanged.
+
 ## v0.11.1, 2026-11-20
 
 - Added the acting role endpoints under `/api/current-user/acting-role/`. `Client` and `ClientWithResponses` get `ApiCurrentUserActingRoleRetrieve`, `ApiCurrentUserActingRoleCreate` and `ApiCurrentUserActingRoleDestroy`. The create method has `WithBody` and `WithFormdataBody` variants, and `ClientWithResponses` has the matching `WithResponse` methods.

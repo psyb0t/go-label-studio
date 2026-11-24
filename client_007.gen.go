@@ -12,6 +12,81 @@ import (
 )
 
 // ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
+func (r ApiStoragesGcswifValidateCreateResponse) ContentType() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Header.Get("Content-Type")
+	}
+	return ""
+}
+
+type ApiStoragesGcswifDestroyResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+}
+
+// GetBody returns the raw response body bytes
+func (r ApiStoragesGcswifDestroyResponse) GetBody() []byte {
+	return r.Body
+}
+
+// Status returns HTTPResponse.Status
+func (r ApiStoragesGcswifDestroyResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+
+// StatusCode returns HTTPResponse.StatusCode
+func (r ApiStoragesGcswifDestroyResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+
+// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
+func (r ApiStoragesGcswifDestroyResponse) ContentType() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Header.Get("Content-Type")
+	}
+	return ""
+}
+
+type ApiStoragesGcswifRetrieveResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+	// JSON200 the response for an HTTP 200 `application/json` response
+	JSON200 *GCSWIFImportStorage
+}
+
+// GetJSON200 returns the response for an HTTP 200 `application/json` response
+func (r ApiStoragesGcswifRetrieveResponse) GetJSON200() *GCSWIFImportStorage {
+	return r.JSON200
+}
+
+// GetBody returns the raw response body bytes
+func (r ApiStoragesGcswifRetrieveResponse) GetBody() []byte {
+	return r.Body
+}
+
+// Status returns HTTPResponse.Status
+func (r ApiStoragesGcswifRetrieveResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+
+// StatusCode returns HTTPResponse.StatusCode
+func (r ApiStoragesGcswifRetrieveResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+
+// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
 func (r ApiStoragesGcswifRetrieveResponse) ContentType() string {
 	if r.HTTPResponse != nil {
 		return r.HTTPResponse.Header.Get("Content-Type")
@@ -8279,6 +8354,75 @@ func (c *ClientWithResponses) ApiLearningResourcesProgressCreateWithFormdataBody
 	return ParseApiLearningResourcesProgressCreateResponse(rsp)
 }
 
+// ApiLearningResourcesProjectAssignmentPreviewCreateWithBodyWithResponse ✨ Preview what assigning a learning resource does to projects
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Read-only. Returns one row per selected project (by title, capped; see total) and says whether assigning this course would turn Courses on there and so hide its written instructions (switch_with_instructions), turn Courses on with nothing to hide (switch_empty), or change nothing (already_on). Assigning a course always turns Courses on for the project. The preview lets the UI say what that costs; it changes nothing and the assignment endpoints never depend on it: assigning through the API or SDK is silent and turns Courses on for the project. Projects of other organizations or that the caller cannot access are left out.
+//
+// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with POST /api/learning-resources/{id}/project-assignment-preview/ (the `ApiLearningResourcesProjectAssignmentPreviewCreate` operationId).
+func (c *ClientWithResponses) ApiLearningResourcesProjectAssignmentPreviewCreateWithBodyWithResponse(ctx context.Context, id int, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*ApiLearningResourcesProjectAssignmentPreviewCreateResponse, error) {
+	rsp, err := c.ApiLearningResourcesProjectAssignmentPreviewCreateWithBody(ctx, id, contentType, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiLearningResourcesProjectAssignmentPreviewCreateResponse(rsp)
+}
+
+// ApiLearningResourcesProjectAssignmentPreviewCreateWithResponse ✨ Preview what assigning a learning resource does to projects
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Read-only. Returns one row per selected project (by title, capped; see total) and says whether assigning this course would turn Courses on there and so hide its written instructions (switch_with_instructions), turn Courses on with nothing to hide (switch_empty), or change nothing (already_on). Assigning a course always turns Courses on for the project. The preview lets the UI say what that costs; it changes nothing and the assignment endpoints never depend on it: assigning through the API or SDK is silent and turns Courses on for the project. Projects of other organizations or that the caller cannot access are left out.
+//
+// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with POST /api/learning-resources/{id}/project-assignment-preview/ (the `ApiLearningResourcesProjectAssignmentPreviewCreate` operationId).
+func (c *ClientWithResponses) ApiLearningResourcesProjectAssignmentPreviewCreateWithResponse(ctx context.Context, id int, body ApiLearningResourcesProjectAssignmentPreviewCreateJSONRequestBody, reqEditors ...RequestEditorFn) (*ApiLearningResourcesProjectAssignmentPreviewCreateResponse, error) {
+	rsp, err := c.ApiLearningResourcesProjectAssignmentPreviewCreate(ctx, id, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiLearningResourcesProjectAssignmentPreviewCreateResponse(rsp)
+}
+
+// ApiLearningResourcesProjectAssignmentPreviewCreateWithFormdataBodyWithResponse ✨ Preview what assigning a learning resource does to projects
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Read-only. Returns one row per selected project (by title, capped; see total) and says whether assigning this course would turn Courses on there and so hide its written instructions (switch_with_instructions), turn Courses on with nothing to hide (switch_empty), or change nothing (already_on). Assigning a course always turns Courses on for the project. The preview lets the UI say what that costs; it changes nothing and the assignment endpoints never depend on it: assigning through the API or SDK is silent and turns Courses on for the project. Projects of other organizations or that the caller cannot access are left out.
+//
+// Takes a body of the `application/x-www-form-urlencoded` content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with POST /api/learning-resources/{id}/project-assignment-preview/ (the `ApiLearningResourcesProjectAssignmentPreviewCreate` operationId).
+func (c *ClientWithResponses) ApiLearningResourcesProjectAssignmentPreviewCreateWithFormdataBodyWithResponse(ctx context.Context, id int, body ApiLearningResourcesProjectAssignmentPreviewCreateFormdataRequestBody, reqEditors ...RequestEditorFn) (*ApiLearningResourcesProjectAssignmentPreviewCreateResponse, error) {
+	rsp, err := c.ApiLearningResourcesProjectAssignmentPreviewCreateWithFormdataBody(ctx, id, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiLearningResourcesProjectAssignmentPreviewCreateResponse(rsp)
+}
+
 // ApiLearningResourcesProjectAssignmentsCreateWithBodyWithResponse ✨ Bulk assign learning resource to projects
 //
 // Create project assignments for many projects in one request.
@@ -14799,6 +14943,75 @@ func (c *ClientWithResponses) ApiProjectsLearningAssignmentsCreateWithFormdataBo
 	return ParseApiProjectsLearningAssignmentsCreateResponse(rsp)
 }
 
+// ApiProjectsLearningAssignmentsCoursesEnabledPartialUpdateWithBodyWithResponse ✨ Turn Courses on or off for a project
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// When Courses are on, Annotation and Reviewer Instructions are hidden from annotators and reviewers and published assigned courses are shown instead. The instruction content is never changed. Assigning a course to a project always turns Courses on automatically. When Courses are off, no assigned course gates or is offered on the project; the assignments are kept and apply again when Courses are turned back on.
+//
+// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with PATCH /api/projects/{project_pk}/learning-assignments/courses-enabled/ (the `ApiProjectsLearningAssignmentsCoursesEnabledPartialUpdate` operationId).
+func (c *ClientWithResponses) ApiProjectsLearningAssignmentsCoursesEnabledPartialUpdateWithBodyWithResponse(ctx context.Context, projectPk int, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*ApiProjectsLearningAssignmentsCoursesEnabledPartialUpdateResponse, error) {
+	rsp, err := c.ApiProjectsLearningAssignmentsCoursesEnabledPartialUpdateWithBody(ctx, projectPk, contentType, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiProjectsLearningAssignmentsCoursesEnabledPartialUpdateResponse(rsp)
+}
+
+// ApiProjectsLearningAssignmentsCoursesEnabledPartialUpdateWithResponse ✨ Turn Courses on or off for a project
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// When Courses are on, Annotation and Reviewer Instructions are hidden from annotators and reviewers and published assigned courses are shown instead. The instruction content is never changed. Assigning a course to a project always turns Courses on automatically. When Courses are off, no assigned course gates or is offered on the project; the assignments are kept and apply again when Courses are turned back on.
+//
+// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with PATCH /api/projects/{project_pk}/learning-assignments/courses-enabled/ (the `ApiProjectsLearningAssignmentsCoursesEnabledPartialUpdate` operationId).
+func (c *ClientWithResponses) ApiProjectsLearningAssignmentsCoursesEnabledPartialUpdateWithResponse(ctx context.Context, projectPk int, body ApiProjectsLearningAssignmentsCoursesEnabledPartialUpdateJSONRequestBody, reqEditors ...RequestEditorFn) (*ApiProjectsLearningAssignmentsCoursesEnabledPartialUpdateResponse, error) {
+	rsp, err := c.ApiProjectsLearningAssignmentsCoursesEnabledPartialUpdate(ctx, projectPk, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiProjectsLearningAssignmentsCoursesEnabledPartialUpdateResponse(rsp)
+}
+
+// ApiProjectsLearningAssignmentsCoursesEnabledPartialUpdateWithFormdataBodyWithResponse ✨ Turn Courses on or off for a project
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// When Courses are on, Annotation and Reviewer Instructions are hidden from annotators and reviewers and published assigned courses are shown instead. The instruction content is never changed. Assigning a course to a project always turns Courses on automatically. When Courses are off, no assigned course gates or is offered on the project; the assignments are kept and apply again when Courses are turned back on.
+//
+// Takes a body of the `application/x-www-form-urlencoded` content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with PATCH /api/projects/{project_pk}/learning-assignments/courses-enabled/ (the `ApiProjectsLearningAssignmentsCoursesEnabledPartialUpdate` operationId).
+func (c *ClientWithResponses) ApiProjectsLearningAssignmentsCoursesEnabledPartialUpdateWithFormdataBodyWithResponse(ctx context.Context, projectPk int, body ApiProjectsLearningAssignmentsCoursesEnabledPartialUpdateFormdataRequestBody, reqEditors ...RequestEditorFn) (*ApiProjectsLearningAssignmentsCoursesEnabledPartialUpdateResponse, error) {
+	rsp, err := c.ApiProjectsLearningAssignmentsCoursesEnabledPartialUpdateWithFormdataBody(ctx, projectPk, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiProjectsLearningAssignmentsCoursesEnabledPartialUpdateResponse(rsp)
+}
+
 // ApiProjectsLearningAssignmentsReorderPartialUpdateWithBodyWithResponse ✨ Reorder learning assignments for a project
 //
 // <Card href="https://humansignal.com/goenterprise">
@@ -19809,211 +20022,4 @@ func (c *ClientWithResponses) ApiStoragesExportS3sListWithResponse(ctx context.C
 		return nil, err
 	}
 	return ParseApiStoragesExportS3sListResponse(rsp)
-}
-
-// ApiStoragesExportS3sCreateWithBodyWithResponse ✨ Create export storage
-//
-// <Card href="https://humansignal.com/goenterprise">
-//
-//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
-//	    <p style="margin-top: 10px; font-size: 14px;">
-//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
-//	    </p>
-//	</Card>
-//
-// Create an S3 export storage connection with IAM role access to store annotations.
-//
-// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
-//
-// Corresponds with POST /api/storages/export/s3s (the `ApiStoragesExportS3sCreate` operationId).
-func (c *ClientWithResponses) ApiStoragesExportS3sCreateWithBodyWithResponse(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*ApiStoragesExportS3sCreateResponse, error) {
-	rsp, err := c.ApiStoragesExportS3sCreateWithBody(ctx, contentType, body, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseApiStoragesExportS3sCreateResponse(rsp)
-}
-
-// ApiStoragesExportS3sCreateWithResponse ✨ Create export storage
-//
-// <Card href="https://humansignal.com/goenterprise">
-//
-//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
-//	    <p style="margin-top: 10px; font-size: 14px;">
-//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
-//	    </p>
-//	</Card>
-//
-// Create an S3 export storage connection with IAM role access to store annotations.
-//
-// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
-//
-// Corresponds with POST /api/storages/export/s3s (the `ApiStoragesExportS3sCreate` operationId).
-func (c *ClientWithResponses) ApiStoragesExportS3sCreateWithResponse(ctx context.Context, body ApiStoragesExportS3sCreateJSONRequestBody, reqEditors ...RequestEditorFn) (*ApiStoragesExportS3sCreateResponse, error) {
-	rsp, err := c.ApiStoragesExportS3sCreate(ctx, body, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseApiStoragesExportS3sCreateResponse(rsp)
-}
-
-// ApiStoragesExportS3sCreateWithFormdataBodyWithResponse ✨ Create export storage
-//
-// <Card href="https://humansignal.com/goenterprise">
-//
-//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
-//	    <p style="margin-top: 10px; font-size: 14px;">
-//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
-//	    </p>
-//	</Card>
-//
-// Create an S3 export storage connection with IAM role access to store annotations.
-//
-// Takes a body of the `application/x-www-form-urlencoded` content type, and returns a wrapper object for the known response body format(s).
-//
-// Corresponds with POST /api/storages/export/s3s (the `ApiStoragesExportS3sCreate` operationId).
-func (c *ClientWithResponses) ApiStoragesExportS3sCreateWithFormdataBodyWithResponse(ctx context.Context, body ApiStoragesExportS3sCreateFormdataRequestBody, reqEditors ...RequestEditorFn) (*ApiStoragesExportS3sCreateResponse, error) {
-	rsp, err := c.ApiStoragesExportS3sCreateWithFormdataBody(ctx, body, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseApiStoragesExportS3sCreateResponse(rsp)
-}
-
-// ApiStoragesExportS3sValidateCreateWithBodyWithResponse ✨ Validate export storage
-//
-// <Card href="https://humansignal.com/goenterprise">
-//
-//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
-//	    <p style="margin-top: 10px; font-size: 14px;">
-//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
-//	    </p>
-//	</Card>
-//
-// Validate a specific S3 export storage connection that was set up with IAM role access.
-//
-// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
-//
-// Corresponds with POST /api/storages/export/s3s/validate (the `ApiStoragesExportS3sValidateCreate` operationId).
-func (c *ClientWithResponses) ApiStoragesExportS3sValidateCreateWithBodyWithResponse(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*ApiStoragesExportS3sValidateCreateResponse, error) {
-	rsp, err := c.ApiStoragesExportS3sValidateCreateWithBody(ctx, contentType, body, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseApiStoragesExportS3sValidateCreateResponse(rsp)
-}
-
-// ApiStoragesExportS3sValidateCreateWithResponse ✨ Validate export storage
-//
-// <Card href="https://humansignal.com/goenterprise">
-//
-//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
-//	    <p style="margin-top: 10px; font-size: 14px;">
-//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
-//	    </p>
-//	</Card>
-//
-// Validate a specific S3 export storage connection that was set up with IAM role access.
-//
-// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
-//
-// Corresponds with POST /api/storages/export/s3s/validate (the `ApiStoragesExportS3sValidateCreate` operationId).
-func (c *ClientWithResponses) ApiStoragesExportS3sValidateCreateWithResponse(ctx context.Context, body ApiStoragesExportS3sValidateCreateJSONRequestBody, reqEditors ...RequestEditorFn) (*ApiStoragesExportS3sValidateCreateResponse, error) {
-	rsp, err := c.ApiStoragesExportS3sValidateCreate(ctx, body, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseApiStoragesExportS3sValidateCreateResponse(rsp)
-}
-
-// ApiStoragesExportS3sValidateCreateWithFormdataBodyWithResponse ✨ Validate export storage
-//
-// <Card href="https://humansignal.com/goenterprise">
-//
-//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
-//	    <p style="margin-top: 10px; font-size: 14px;">
-//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
-//	    </p>
-//	</Card>
-//
-// Validate a specific S3 export storage connection that was set up with IAM role access.
-//
-// Takes a body of the `application/x-www-form-urlencoded` content type, and returns a wrapper object for the known response body format(s).
-//
-// Corresponds with POST /api/storages/export/s3s/validate (the `ApiStoragesExportS3sValidateCreate` operationId).
-func (c *ClientWithResponses) ApiStoragesExportS3sValidateCreateWithFormdataBodyWithResponse(ctx context.Context, body ApiStoragesExportS3sValidateCreateFormdataRequestBody, reqEditors ...RequestEditorFn) (*ApiStoragesExportS3sValidateCreateResponse, error) {
-	rsp, err := c.ApiStoragesExportS3sValidateCreateWithFormdataBody(ctx, body, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseApiStoragesExportS3sValidateCreateResponse(rsp)
-}
-
-// ApiStoragesExportS3sDestroyWithResponse ✨ Delete export storage
-//
-// <Card href="https://humansignal.com/goenterprise">
-//
-//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
-//	    <p style="margin-top: 10px; font-size: 14px;">
-//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
-//	    </p>
-//	</Card>
-//
-// Delete a specific S3 export storage connection that was set up with IAM role access.
-//
-// Returns a wrapper object for the known response body format(s).
-//
-// Corresponds with DELETE /api/storages/export/s3s/{id} (the `ApiStoragesExportS3sDestroy` operationId).
-func (c *ClientWithResponses) ApiStoragesExportS3sDestroyWithResponse(ctx context.Context, id int, reqEditors ...RequestEditorFn) (*ApiStoragesExportS3sDestroyResponse, error) {
-	rsp, err := c.ApiStoragesExportS3sDestroy(ctx, id, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseApiStoragesExportS3sDestroyResponse(rsp)
-}
-
-// ApiStoragesExportS3sRetrieveWithResponse ✨ Get export storage
-//
-// <Card href="https://humansignal.com/goenterprise">
-//
-//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
-//	    <p style="margin-top: 10px; font-size: 14px;">
-//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
-//	    </p>
-//	</Card>
-//
-// Get a specific S3 export storage connection that was set up with IAM role access.
-//
-// Returns a wrapper object for the known response body format(s).
-//
-// Corresponds with GET /api/storages/export/s3s/{id} (the `ApiStoragesExportS3sRetrieve` operationId).
-func (c *ClientWithResponses) ApiStoragesExportS3sRetrieveWithResponse(ctx context.Context, id int, reqEditors ...RequestEditorFn) (*ApiStoragesExportS3sRetrieveResponse, error) {
-	rsp, err := c.ApiStoragesExportS3sRetrieve(ctx, id, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseApiStoragesExportS3sRetrieveResponse(rsp)
-}
-
-// ApiStoragesExportS3sPartialUpdateWithBodyWithResponse ✨ Update export storage
-//
-// <Card href="https://humansignal.com/goenterprise">
-//
-//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
-//	    <p style="margin-top: 10px; font-size: 14px;">
-//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
-//	    </p>
-//	</Card>
-//
-// Update a specific S3 export storage connection that was set up with IAM role access.
-//
-// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
-//
-// Corresponds with PATCH /api/storages/export/s3s/{id} (the `ApiStoragesExportS3sPartialUpdate` operationId).
-func (c *ClientWithResponses) ApiStoragesExportS3sPartialUpdateWithBodyWithResponse(ctx context.Context, id int, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*ApiStoragesExportS3sPartialUpdateResponse, error) {
-	rsp, err := c.ApiStoragesExportS3sPartialUpdateWithBody(ctx, id, contentType, body, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseApiStoragesExportS3sPartialUpdateResponse(rsp)
 }

@@ -17,6 +17,189 @@ import (
 	openapi_types "github.com/oapi-codegen/runtime/types"
 )
 
+// ApiLearningResourcesDuplicateCreateWithFormdataBody ✨ Duplicate a learning resource
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Create a copy of a learning resource.
+//
+// Takes a body of the `application/x-www-form-urlencoded` content type.
+//
+// Corresponds with POST /api/learning-resources/{id}/duplicate/ (the `ApiLearningResourcesDuplicateCreate` operationId).
+func (c *Client) ApiLearningResourcesDuplicateCreateWithFormdataBody(ctx context.Context, id int, body ApiLearningResourcesDuplicateCreateFormdataRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiLearningResourcesDuplicateCreateRequestWithFormdataBody(c.Server, id, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ApiLearningResourcesEditingSessionDestroy ✨ Heartbeat or release an editing session for a learning resource
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// POST claims or refreshes presence on a (module, page). A bare heartbeat only tracks presence — it never claims the write lock. Pass `wants_to_edit` to actually claim it: the first session on a free page to ask becomes the writer, later ones stay read-only unless `takeover` is set (which itself implies `wants_to_edit`). Sessions expire 60 seconds after the last heartbeat. DELETE releases the caller's own session.
+//
+// Corresponds with DELETE /api/learning-resources/{id}/editing-session/ (the `ApiLearningResourcesEditingSessionDestroy` operationId).
+func (c *Client) ApiLearningResourcesEditingSessionDestroy(ctx context.Context, id int, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiLearningResourcesEditingSessionDestroyRequest(c.Server, id)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ApiLearningResourcesEditingSessionCreateWithBody ✨ Heartbeat or release an editing session for a learning resource
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// POST claims or refreshes presence on a (module, page). A bare heartbeat only tracks presence — it never claims the write lock. Pass `wants_to_edit` to actually claim it: the first session on a free page to ask becomes the writer, later ones stay read-only unless `takeover` is set (which itself implies `wants_to_edit`). Sessions expire 60 seconds after the last heartbeat. DELETE releases the caller's own session.
+//
+// Takes any type of body and a specified content type.
+//
+// Corresponds with POST /api/learning-resources/{id}/editing-session/ (the `ApiLearningResourcesEditingSessionCreate` operationId).
+func (c *Client) ApiLearningResourcesEditingSessionCreateWithBody(ctx context.Context, id int, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiLearningResourcesEditingSessionCreateRequestWithBody(c.Server, id, contentType, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ApiLearningResourcesEditingSessionCreate ✨ Heartbeat or release an editing session for a learning resource
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// POST claims or refreshes presence on a (module, page). A bare heartbeat only tracks presence — it never claims the write lock. Pass `wants_to_edit` to actually claim it: the first session on a free page to ask becomes the writer, later ones stay read-only unless `takeover` is set (which itself implies `wants_to_edit`). Sessions expire 60 seconds after the last heartbeat. DELETE releases the caller's own session.
+//
+// Takes a body of the `application/json` content type.
+//
+// Corresponds with POST /api/learning-resources/{id}/editing-session/ (the `ApiLearningResourcesEditingSessionCreate` operationId).
+func (c *Client) ApiLearningResourcesEditingSessionCreate(ctx context.Context, id int, body ApiLearningResourcesEditingSessionCreateJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiLearningResourcesEditingSessionCreateRequest(c.Server, id, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ApiLearningResourcesEditingSessionCreateWithFormdataBody ✨ Heartbeat or release an editing session for a learning resource
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// POST claims or refreshes presence on a (module, page). A bare heartbeat only tracks presence — it never claims the write lock. Pass `wants_to_edit` to actually claim it: the first session on a free page to ask becomes the writer, later ones stay read-only unless `takeover` is set (which itself implies `wants_to_edit`). Sessions expire 60 seconds after the last heartbeat. DELETE releases the caller's own session.
+//
+// Takes a body of the `application/x-www-form-urlencoded` content type.
+//
+// Corresponds with POST /api/learning-resources/{id}/editing-session/ (the `ApiLearningResourcesEditingSessionCreate` operationId).
+func (c *Client) ApiLearningResourcesEditingSessionCreateWithFormdataBody(ctx context.Context, id int, body ApiLearningResourcesEditingSessionCreateFormdataRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiLearningResourcesEditingSessionCreateRequestWithFormdataBody(c.Server, id, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ApiLearningResourcesExportRetrieve ✨ Export a learning resource
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Return the draft course (settings, modules, pages) as a portable JSON payload for Import. With any of `include_images`, `include_audio_video` and `include_other` the response is a zip instead: `course.json` (the same payload), `assets.json` and the referenced files under `assets/`. References that cannot be bundled are counted in the `X-Course-Export-Skipped-Assets` header.
+//
+// Corresponds with GET /api/learning-resources/{id}/export/ (the `ApiLearningResourcesExportRetrieve` operationId).
+func (c *Client) ApiLearningResourcesExportRetrieve(ctx context.Context, id int, params *ApiLearningResourcesExportRetrieveParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiLearningResourcesExportRetrieveRequest(c.Server, id, params)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ApiLearningResourcesHistoryRetrieve ✨ List the version history of a course
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Author-only. Edit sessions (newest first), pinned versions and recently deleted pages. Summaries only, no page bodies.
+//
+// Corresponds with GET /api/learning-resources/{id}/history/ (the `ApiLearningResourcesHistoryRetrieve` operationId).
+func (c *Client) ApiLearningResourcesHistoryRetrieve(ctx context.Context, id int, params *ApiLearningResourcesHistoryRetrieveParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiLearningResourcesHistoryRetrieveRequest(c.Server, id, params)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
 // ApiLearningResourcesHistoryPinsCreateWithBody ✨ Name a past state of a course
 //
 // <Card href="https://humansignal.com/goenterprise">
@@ -936,6 +1119,87 @@ func (c *Client) ApiLearningResourcesProgressCreate(ctx context.Context, id int,
 // Corresponds with POST /api/learning-resources/{id}/progress/ (the `ApiLearningResourcesProgressCreate` operationId).
 func (c *Client) ApiLearningResourcesProgressCreateWithFormdataBody(ctx context.Context, id int, body ApiLearningResourcesProgressCreateFormdataRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewApiLearningResourcesProgressCreateRequestWithFormdataBody(c.Server, id, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ApiLearningResourcesProjectAssignmentPreviewCreateWithBody ✨ Preview what assigning a learning resource does to projects
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Read-only. Returns one row per selected project (by title, capped; see total) and says whether assigning this course would turn Courses on there and so hide its written instructions (switch_with_instructions), turn Courses on with nothing to hide (switch_empty), or change nothing (already_on). Assigning a course always turns Courses on for the project. The preview lets the UI say what that costs; it changes nothing and the assignment endpoints never depend on it: assigning through the API or SDK is silent and turns Courses on for the project. Projects of other organizations or that the caller cannot access are left out.
+//
+// Takes any type of body and a specified content type.
+//
+// Corresponds with POST /api/learning-resources/{id}/project-assignment-preview/ (the `ApiLearningResourcesProjectAssignmentPreviewCreate` operationId).
+func (c *Client) ApiLearningResourcesProjectAssignmentPreviewCreateWithBody(ctx context.Context, id int, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiLearningResourcesProjectAssignmentPreviewCreateRequestWithBody(c.Server, id, contentType, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ApiLearningResourcesProjectAssignmentPreviewCreate ✨ Preview what assigning a learning resource does to projects
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Read-only. Returns one row per selected project (by title, capped; see total) and says whether assigning this course would turn Courses on there and so hide its written instructions (switch_with_instructions), turn Courses on with nothing to hide (switch_empty), or change nothing (already_on). Assigning a course always turns Courses on for the project. The preview lets the UI say what that costs; it changes nothing and the assignment endpoints never depend on it: assigning through the API or SDK is silent and turns Courses on for the project. Projects of other organizations or that the caller cannot access are left out.
+//
+// Takes a body of the `application/json` content type.
+//
+// Corresponds with POST /api/learning-resources/{id}/project-assignment-preview/ (the `ApiLearningResourcesProjectAssignmentPreviewCreate` operationId).
+func (c *Client) ApiLearningResourcesProjectAssignmentPreviewCreate(ctx context.Context, id int, body ApiLearningResourcesProjectAssignmentPreviewCreateJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiLearningResourcesProjectAssignmentPreviewCreateRequest(c.Server, id, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ApiLearningResourcesProjectAssignmentPreviewCreateWithFormdataBody ✨ Preview what assigning a learning resource does to projects
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Read-only. Returns one row per selected project (by title, capped; see total) and says whether assigning this course would turn Courses on there and so hide its written instructions (switch_with_instructions), turn Courses on with nothing to hide (switch_empty), or change nothing (already_on). Assigning a course always turns Courses on for the project. The preview lets the UI say what that costs; it changes nothing and the assignment endpoints never depend on it: assigning through the API or SDK is silent and turns Courses on for the project. Projects of other organizations or that the caller cannot access are left out.
+//
+// Takes a body of the `application/x-www-form-urlencoded` content type.
+//
+// Corresponds with POST /api/learning-resources/{id}/project-assignment-preview/ (the `ApiLearningResourcesProjectAssignmentPreviewCreate` operationId).
+func (c *Client) ApiLearningResourcesProjectAssignmentPreviewCreateWithFormdataBody(ctx context.Context, id int, body ApiLearningResourcesProjectAssignmentPreviewCreateFormdataRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiLearningResourcesProjectAssignmentPreviewCreateRequestWithFormdataBody(c.Server, id, body)
 	if err != nil {
 		return nil, err
 	}
@@ -8440,6 +8704,87 @@ func (c *Client) ApiProjectsLearningAssignmentsCreate(ctx context.Context, proje
 // Corresponds with POST /api/projects/{project_pk}/learning-assignments/ (the `ApiProjectsLearningAssignmentsCreate` operationId).
 func (c *Client) ApiProjectsLearningAssignmentsCreateWithFormdataBody(ctx context.Context, projectPk int, body ApiProjectsLearningAssignmentsCreateFormdataRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewApiProjectsLearningAssignmentsCreateRequestWithFormdataBody(c.Server, projectPk, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ApiProjectsLearningAssignmentsCoursesEnabledPartialUpdateWithBody ✨ Turn Courses on or off for a project
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// When Courses are on, Annotation and Reviewer Instructions are hidden from annotators and reviewers and published assigned courses are shown instead. The instruction content is never changed. Assigning a course to a project always turns Courses on automatically. When Courses are off, no assigned course gates or is offered on the project; the assignments are kept and apply again when Courses are turned back on.
+//
+// Takes any type of body and a specified content type.
+//
+// Corresponds with PATCH /api/projects/{project_pk}/learning-assignments/courses-enabled/ (the `ApiProjectsLearningAssignmentsCoursesEnabledPartialUpdate` operationId).
+func (c *Client) ApiProjectsLearningAssignmentsCoursesEnabledPartialUpdateWithBody(ctx context.Context, projectPk int, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiProjectsLearningAssignmentsCoursesEnabledPartialUpdateRequestWithBody(c.Server, projectPk, contentType, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ApiProjectsLearningAssignmentsCoursesEnabledPartialUpdate ✨ Turn Courses on or off for a project
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// When Courses are on, Annotation and Reviewer Instructions are hidden from annotators and reviewers and published assigned courses are shown instead. The instruction content is never changed. Assigning a course to a project always turns Courses on automatically. When Courses are off, no assigned course gates or is offered on the project; the assignments are kept and apply again when Courses are turned back on.
+//
+// Takes a body of the `application/json` content type.
+//
+// Corresponds with PATCH /api/projects/{project_pk}/learning-assignments/courses-enabled/ (the `ApiProjectsLearningAssignmentsCoursesEnabledPartialUpdate` operationId).
+func (c *Client) ApiProjectsLearningAssignmentsCoursesEnabledPartialUpdate(ctx context.Context, projectPk int, body ApiProjectsLearningAssignmentsCoursesEnabledPartialUpdateJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiProjectsLearningAssignmentsCoursesEnabledPartialUpdateRequest(c.Server, projectPk, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// ApiProjectsLearningAssignmentsCoursesEnabledPartialUpdateWithFormdataBody ✨ Turn Courses on or off for a project
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// When Courses are on, Annotation and Reviewer Instructions are hidden from annotators and reviewers and published assigned courses are shown instead. The instruction content is never changed. Assigning a course to a project always turns Courses on automatically. When Courses are off, no assigned course gates or is offered on the project; the assignments are kept and apply again when Courses are turned back on.
+//
+// Takes a body of the `application/x-www-form-urlencoded` content type.
+//
+// Corresponds with PATCH /api/projects/{project_pk}/learning-assignments/courses-enabled/ (the `ApiProjectsLearningAssignmentsCoursesEnabledPartialUpdate` operationId).
+func (c *Client) ApiProjectsLearningAssignmentsCoursesEnabledPartialUpdateWithFormdataBody(ctx context.Context, projectPk int, body ApiProjectsLearningAssignmentsCoursesEnabledPartialUpdateFormdataRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewApiProjectsLearningAssignmentsCoursesEnabledPartialUpdateRequestWithFormdataBody(c.Server, projectPk, body)
 	if err != nil {
 		return nil, err
 	}
@@ -19687,416 +20032,6 @@ func NewApiAnnotationsDestroyRequest(server string, id int) (*http.Request, erro
 	}
 
 	req, err := http.NewRequest(http.MethodDelete, queryURL.String(), nil)
-	if err != nil {
-		return nil, err
-	}
-
-	return req, nil
-}
-
-// NewApiAnnotationsRetrieveRequest constructs an http.Request for the ApiAnnotationsRetrieve method
-func NewApiAnnotationsRetrieveRequest(server string, id int) (*http.Request, error) {
-	var err error
-
-	var pathParam0 string
-
-	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "id", id, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "integer", Format: ""})
-	if err != nil {
-		return nil, err
-	}
-
-	serverURL, err := url.Parse(server)
-	if err != nil {
-		return nil, err
-	}
-
-	operationPath := fmt.Sprintf("/api/annotations/%s/", pathParam0)
-	if operationPath[0] == '/' {
-		operationPath = "." + operationPath
-	}
-
-	queryURL, err := serverURL.Parse(operationPath)
-	if err != nil {
-		return nil, err
-	}
-
-	req, err := http.NewRequest(http.MethodGet, queryURL.String(), nil)
-	if err != nil {
-		return nil, err
-	}
-
-	return req, nil
-}
-
-// NewApiAnnotationsPartialUpdateRequest calls the generic ApiAnnotationsPartialUpdate builder with application/json body
-func NewApiAnnotationsPartialUpdateRequest(server string, id int, body ApiAnnotationsPartialUpdateJSONRequestBody) (*http.Request, error) {
-	var bodyReader io.Reader
-	buf, err := json.Marshal(body)
-	if err != nil {
-		return nil, err
-	}
-	bodyReader = bytes.NewReader(buf)
-	return NewApiAnnotationsPartialUpdateRequestWithBody(server, id, "application/json", bodyReader)
-}
-
-// NewApiAnnotationsPartialUpdateRequestWithFormdataBody calls the generic ApiAnnotationsPartialUpdate builder with application/x-www-form-urlencoded body
-func NewApiAnnotationsPartialUpdateRequestWithFormdataBody(server string, id int, body ApiAnnotationsPartialUpdateFormdataRequestBody) (*http.Request, error) {
-	var bodyReader io.Reader
-	bodyStr, err := runtime.MarshalForm(body, nil)
-	if err != nil {
-		return nil, err
-	}
-	bodyReader = strings.NewReader(bodyStr.Encode())
-	return NewApiAnnotationsPartialUpdateRequestWithBody(server, id, "application/x-www-form-urlencoded", bodyReader)
-}
-
-// NewApiAnnotationsPartialUpdateRequestWithBody constructs an http.Request for the ApiAnnotationsPartialUpdate method, with any body, and a specified content type
-func NewApiAnnotationsPartialUpdateRequestWithBody(server string, id int, contentType string, body io.Reader) (*http.Request, error) {
-	var err error
-
-	var pathParam0 string
-
-	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "id", id, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "integer", Format: ""})
-	if err != nil {
-		return nil, err
-	}
-
-	serverURL, err := url.Parse(server)
-	if err != nil {
-		return nil, err
-	}
-
-	operationPath := fmt.Sprintf("/api/annotations/%s/", pathParam0)
-	if operationPath[0] == '/' {
-		operationPath = "." + operationPath
-	}
-
-	queryURL, err := serverURL.Parse(operationPath)
-	if err != nil {
-		return nil, err
-	}
-
-	req, err := http.NewRequest(http.MethodPatch, queryURL.String(), body)
-	if err != nil {
-		return nil, err
-	}
-
-	req.Header.Add("Content-Type", contentType)
-
-	return req, nil
-}
-
-// NewApiBillingInfoRetrieveRequest constructs an http.Request for the ApiBillingInfoRetrieve method
-func NewApiBillingInfoRetrieveRequest(server string) (*http.Request, error) {
-	var err error
-
-	serverURL, err := url.Parse(server)
-	if err != nil {
-		return nil, err
-	}
-
-	operationPath := fmt.Sprintf("/api/billing/info")
-	if operationPath[0] == '/' {
-		operationPath = "." + operationPath
-	}
-
-	queryURL, err := serverURL.Parse(operationPath)
-	if err != nil {
-		return nil, err
-	}
-
-	req, err := http.NewRequest(http.MethodGet, queryURL.String(), nil)
-	if err != nil {
-		return nil, err
-	}
-
-	return req, nil
-}
-
-// NewApiBlueprintsCreateRequest calls the generic ApiBlueprintsCreate builder with application/json body
-func NewApiBlueprintsCreateRequest(server string, body ApiBlueprintsCreateJSONRequestBody) (*http.Request, error) {
-	var bodyReader io.Reader
-	buf, err := json.Marshal(body)
-	if err != nil {
-		return nil, err
-	}
-	bodyReader = bytes.NewReader(buf)
-	return NewApiBlueprintsCreateRequestWithBody(server, "application/json", bodyReader)
-}
-
-// NewApiBlueprintsCreateRequestWithFormdataBody calls the generic ApiBlueprintsCreate builder with application/x-www-form-urlencoded body
-func NewApiBlueprintsCreateRequestWithFormdataBody(server string, body ApiBlueprintsCreateFormdataRequestBody) (*http.Request, error) {
-	var bodyReader io.Reader
-	bodyStr, err := runtime.MarshalForm(body, nil)
-	if err != nil {
-		return nil, err
-	}
-	bodyReader = strings.NewReader(bodyStr.Encode())
-	return NewApiBlueprintsCreateRequestWithBody(server, "application/x-www-form-urlencoded", bodyReader)
-}
-
-// NewApiBlueprintsCreateRequestWithBody constructs an http.Request for the ApiBlueprintsCreate method, with any body, and a specified content type
-func NewApiBlueprintsCreateRequestWithBody(server string, contentType string, body io.Reader) (*http.Request, error) {
-	var err error
-
-	serverURL, err := url.Parse(server)
-	if err != nil {
-		return nil, err
-	}
-
-	operationPath := fmt.Sprintf("/api/blueprints/")
-	if operationPath[0] == '/' {
-		operationPath = "." + operationPath
-	}
-
-	queryURL, err := serverURL.Parse(operationPath)
-	if err != nil {
-		return nil, err
-	}
-
-	req, err := http.NewRequest(http.MethodPost, queryURL.String(), body)
-	if err != nil {
-		return nil, err
-	}
-
-	req.Header.Add("Content-Type", contentType)
-
-	return req, nil
-}
-
-// NewApiBlueprintsDestroyRequest constructs an http.Request for the ApiBlueprintsDestroy method
-func NewApiBlueprintsDestroyRequest(server string, id int) (*http.Request, error) {
-	var err error
-
-	var pathParam0 string
-
-	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "id", id, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "integer", Format: ""})
-	if err != nil {
-		return nil, err
-	}
-
-	serverURL, err := url.Parse(server)
-	if err != nil {
-		return nil, err
-	}
-
-	operationPath := fmt.Sprintf("/api/blueprints/%s/", pathParam0)
-	if operationPath[0] == '/' {
-		operationPath = "." + operationPath
-	}
-
-	queryURL, err := serverURL.Parse(operationPath)
-	if err != nil {
-		return nil, err
-	}
-
-	req, err := http.NewRequest(http.MethodDelete, queryURL.String(), nil)
-	if err != nil {
-		return nil, err
-	}
-
-	return req, nil
-}
-
-// NewApiBlueprintsPartialUpdateRequest calls the generic ApiBlueprintsPartialUpdate builder with application/json body
-func NewApiBlueprintsPartialUpdateRequest(server string, id int, body ApiBlueprintsPartialUpdateJSONRequestBody) (*http.Request, error) {
-	var bodyReader io.Reader
-	buf, err := json.Marshal(body)
-	if err != nil {
-		return nil, err
-	}
-	bodyReader = bytes.NewReader(buf)
-	return NewApiBlueprintsPartialUpdateRequestWithBody(server, id, "application/json", bodyReader)
-}
-
-// NewApiBlueprintsPartialUpdateRequestWithFormdataBody calls the generic ApiBlueprintsPartialUpdate builder with application/x-www-form-urlencoded body
-func NewApiBlueprintsPartialUpdateRequestWithFormdataBody(server string, id int, body ApiBlueprintsPartialUpdateFormdataRequestBody) (*http.Request, error) {
-	var bodyReader io.Reader
-	bodyStr, err := runtime.MarshalForm(body, nil)
-	if err != nil {
-		return nil, err
-	}
-	bodyReader = strings.NewReader(bodyStr.Encode())
-	return NewApiBlueprintsPartialUpdateRequestWithBody(server, id, "application/x-www-form-urlencoded", bodyReader)
-}
-
-// NewApiBlueprintsPartialUpdateRequestWithBody constructs an http.Request for the ApiBlueprintsPartialUpdate method, with any body, and a specified content type
-func NewApiBlueprintsPartialUpdateRequestWithBody(server string, id int, contentType string, body io.Reader) (*http.Request, error) {
-	var err error
-
-	var pathParam0 string
-
-	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "id", id, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "integer", Format: ""})
-	if err != nil {
-		return nil, err
-	}
-
-	serverURL, err := url.Parse(server)
-	if err != nil {
-		return nil, err
-	}
-
-	operationPath := fmt.Sprintf("/api/blueprints/%s/", pathParam0)
-	if operationPath[0] == '/' {
-		operationPath = "." + operationPath
-	}
-
-	queryURL, err := serverURL.Parse(operationPath)
-	if err != nil {
-		return nil, err
-	}
-
-	req, err := http.NewRequest(http.MethodPatch, queryURL.String(), body)
-	if err != nil {
-		return nil, err
-	}
-
-	req.Header.Add("Content-Type", contentType)
-
-	return req, nil
-}
-
-// NewApiBlueprintsCreateProjectRetrieveRequest constructs an http.Request for the ApiBlueprintsCreateProjectRetrieve method
-func NewApiBlueprintsCreateProjectRetrieveRequest(server string, shareId string) (*http.Request, error) {
-	var err error
-
-	var pathParam0 string
-
-	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "share_id", shareId, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
-	if err != nil {
-		return nil, err
-	}
-
-	serverURL, err := url.Parse(server)
-	if err != nil {
-		return nil, err
-	}
-
-	operationPath := fmt.Sprintf("/api/blueprints/%s/create-project", pathParam0)
-	if operationPath[0] == '/' {
-		operationPath = "." + operationPath
-	}
-
-	queryURL, err := serverURL.Parse(operationPath)
-	if err != nil {
-		return nil, err
-	}
-
-	req, err := http.NewRequest(http.MethodGet, queryURL.String(), nil)
-	if err != nil {
-		return nil, err
-	}
-
-	return req, nil
-}
-
-// NewApiCommentsListRequest constructs an http.Request for the ApiCommentsList method
-func NewApiCommentsListRequest(server string, params *ApiCommentsListParams) (*http.Request, error) {
-	var err error
-
-	serverURL, err := url.Parse(server)
-	if err != nil {
-		return nil, err
-	}
-
-	operationPath := fmt.Sprintf("/api/comments/")
-	if operationPath[0] == '/' {
-		operationPath = "." + operationPath
-	}
-
-	queryURL, err := serverURL.Parse(operationPath)
-	if err != nil {
-		return nil, err
-	}
-
-	if params != nil {
-		// queryValues collects non-styled parameters (passthrough, JSON)
-		// that are safe to round-trip through url.Values.Encode().
-		queryValues := queryURL.Query()
-		// rawQueryFragments collects pre-encoded query fragments from
-		// styled parameters, preserving literal commas as delimiters
-		// per the OpenAPI spec (e.g. "color=blue,black,brown").
-		var rawQueryFragments []string
-
-		if params.Annotation != nil {
-
-			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "annotation", *params.Annotation, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "integer", Format: ""}); err != nil {
-				return nil, err
-			} else {
-				for _, qp := range strings.Split(queryFrag, "&") {
-					rawQueryFragments = append(rawQueryFragments, qp)
-				}
-			}
-
-		}
-
-		if params.Annotators != nil {
-
-			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "annotators", *params.Annotators, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "string", Format: ""}); err != nil {
-				return nil, err
-			} else {
-				for _, qp := range strings.Split(queryFrag, "&") {
-					rawQueryFragments = append(rawQueryFragments, qp)
-				}
-			}
-
-		}
-
-		if params.Draft != nil {
-
-			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "draft", *params.Draft, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "integer", Format: ""}); err != nil {
-				return nil, err
-			} else {
-				for _, qp := range strings.Split(queryFrag, "&") {
-					rawQueryFragments = append(rawQueryFragments, qp)
-				}
-			}
-
-		}
-
-		if params.ExpandCreatedBy != nil {
-
-			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "expand_created_by", *params.ExpandCreatedBy, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "boolean", Format: ""}); err != nil {
-				return nil, err
-			} else {
-				for _, qp := range strings.Split(queryFrag, "&") {
-					rawQueryFragments = append(rawQueryFragments, qp)
-				}
-			}
-
-		}
-
-		if params.Ordering != nil {
-
-			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "ordering", *params.Ordering, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "string", Format: ""}); err != nil {
-				return nil, err
-			} else {
-				for _, qp := range strings.Split(queryFrag, "&") {
-					rawQueryFragments = append(rawQueryFragments, qp)
-				}
-			}
-
-		}
-
-		if params.Projects != nil {
-
-			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "projects", *params.Projects, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "string", Format: ""}); err != nil {
-				return nil, err
-			} else {
-				for _, qp := range strings.Split(queryFrag, "&") {
-					rawQueryFragments = append(rawQueryFragments, qp)
-				}
-			}
-
-		}
-
-		if encoded := queryValues.Encode(); encoded != "" {
-			rawQueryFragments = append(rawQueryFragments, encoded)
-		}
-		queryURL.RawQuery = strings.Join(rawQueryFragments, "&")
-	}
-
-	req, err := http.NewRequest(http.MethodGet, queryURL.String(), nil)
 	if err != nil {
 		return nil, err
 	}

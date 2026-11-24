@@ -15,6 +15,102 @@ import (
 	openapi_types "github.com/oapi-codegen/runtime/types"
 )
 
+// ApiStoragesDatabricksValidateCreateMultipartRequestBody defines body for ApiStoragesDatabricksValidateCreate for multipart/form-data ContentType.
+type ApiStoragesDatabricksValidateCreateMultipartRequestBody = DatabricksImportStorageValidateRequest
+
+// ApiStoragesDatabricksPartialUpdateJSONRequestBody defines body for ApiStoragesDatabricksPartialUpdate for application/json ContentType.
+type ApiStoragesDatabricksPartialUpdateJSONRequestBody = PatchedDatabricksImportStorageWriteRequest
+
+// ApiStoragesDatabricksPartialUpdateFormdataRequestBody defines body for ApiStoragesDatabricksPartialUpdate for application/x-www-form-urlencoded ContentType.
+type ApiStoragesDatabricksPartialUpdateFormdataRequestBody = PatchedDatabricksImportStorageWriteRequest
+
+// ApiStoragesDatabricksPartialUpdateMultipartRequestBody defines body for ApiStoragesDatabricksPartialUpdate for multipart/form-data ContentType.
+type ApiStoragesDatabricksPartialUpdateMultipartRequestBody = PatchedDatabricksImportStorageWriteRequest
+
+// ApiStoragesExportAzureCreateJSONRequestBody defines body for ApiStoragesExportAzureCreate for application/json ContentType.
+type ApiStoragesExportAzureCreateJSONRequestBody = AzureBlobExportStorageWriteRequest
+
+// ApiStoragesExportAzureCreateFormdataRequestBody defines body for ApiStoragesExportAzureCreate for application/x-www-form-urlencoded ContentType.
+type ApiStoragesExportAzureCreateFormdataRequestBody = AzureBlobExportStorageWriteRequest
+
+// ApiStoragesExportAzureCreateMultipartRequestBody defines body for ApiStoragesExportAzureCreate for multipart/form-data ContentType.
+type ApiStoragesExportAzureCreateMultipartRequestBody = AzureBlobExportStorageWriteRequest
+
+// ApiStoragesExportAzureValidateCreateJSONRequestBody defines body for ApiStoragesExportAzureValidateCreate for application/json ContentType.
+type ApiStoragesExportAzureValidateCreateJSONRequestBody = AzureBlobExportStorageValidateRequest
+
+// ApiStoragesExportAzureValidateCreateFormdataRequestBody defines body for ApiStoragesExportAzureValidateCreate for application/x-www-form-urlencoded ContentType.
+type ApiStoragesExportAzureValidateCreateFormdataRequestBody = AzureBlobExportStorageValidateRequest
+
+// ApiStoragesExportAzureValidateCreateMultipartRequestBody defines body for ApiStoragesExportAzureValidateCreate for multipart/form-data ContentType.
+type ApiStoragesExportAzureValidateCreateMultipartRequestBody = AzureBlobExportStorageValidateRequest
+
+// ApiStoragesExportAzurePartialUpdateJSONRequestBody defines body for ApiStoragesExportAzurePartialUpdate for application/json ContentType.
+type ApiStoragesExportAzurePartialUpdateJSONRequestBody = PatchedAzureBlobExportStorageWriteRequest
+
+// ApiStoragesExportAzurePartialUpdateFormdataRequestBody defines body for ApiStoragesExportAzurePartialUpdate for application/x-www-form-urlencoded ContentType.
+type ApiStoragesExportAzurePartialUpdateFormdataRequestBody = PatchedAzureBlobExportStorageWriteRequest
+
+// ApiStoragesExportAzurePartialUpdateMultipartRequestBody defines body for ApiStoragesExportAzurePartialUpdate for multipart/form-data ContentType.
+type ApiStoragesExportAzurePartialUpdateMultipartRequestBody = PatchedAzureBlobExportStorageWriteRequest
+
+// ApiStoragesExportAzureSpiCreateJSONRequestBody defines body for ApiStoragesExportAzureSpiCreate for application/json ContentType.
+type ApiStoragesExportAzureSpiCreateJSONRequestBody = AzureServicePrincipalExportStorageRequest
+
+// ApiStoragesExportAzureSpiCreateFormdataRequestBody defines body for ApiStoragesExportAzureSpiCreate for application/x-www-form-urlencoded ContentType.
+type ApiStoragesExportAzureSpiCreateFormdataRequestBody = AzureServicePrincipalExportStorageRequest
+
+// ApiStoragesExportAzureSpiCreateMultipartRequestBody defines body for ApiStoragesExportAzureSpiCreate for multipart/form-data ContentType.
+type ApiStoragesExportAzureSpiCreateMultipartRequestBody = AzureServicePrincipalExportStorageRequest
+
+// ApiStoragesExportAzureSpiValidateCreateJSONRequestBody defines body for ApiStoragesExportAzureSpiValidateCreate for application/json ContentType.
+type ApiStoragesExportAzureSpiValidateCreateJSONRequestBody = AzureServicePrincipalExportStorageRequest
+
+// ApiStoragesExportAzureSpiValidateCreateFormdataRequestBody defines body for ApiStoragesExportAzureSpiValidateCreate for application/x-www-form-urlencoded ContentType.
+type ApiStoragesExportAzureSpiValidateCreateFormdataRequestBody = AzureServicePrincipalExportStorageRequest
+
+// ApiStoragesExportAzureSpiValidateCreateMultipartRequestBody defines body for ApiStoragesExportAzureSpiValidateCreate for multipart/form-data ContentType.
+type ApiStoragesExportAzureSpiValidateCreateMultipartRequestBody = AzureServicePrincipalExportStorageRequest
+
+// ApiStoragesExportAzureSpiPartialUpdateJSONRequestBody defines body for ApiStoragesExportAzureSpiPartialUpdate for application/json ContentType.
+type ApiStoragesExportAzureSpiPartialUpdateJSONRequestBody = PatchedAzureServicePrincipalExportStorageRequest
+
+// ApiStoragesExportAzureSpiPartialUpdateFormdataRequestBody defines body for ApiStoragesExportAzureSpiPartialUpdate for application/x-www-form-urlencoded ContentType.
+type ApiStoragesExportAzureSpiPartialUpdateFormdataRequestBody = PatchedAzureServicePrincipalExportStorageRequest
+
+// ApiStoragesExportAzureSpiPartialUpdateMultipartRequestBody defines body for ApiStoragesExportAzureSpiPartialUpdate for multipart/form-data ContentType.
+type ApiStoragesExportAzureSpiPartialUpdateMultipartRequestBody = PatchedAzureServicePrincipalExportStorageRequest
+
+// ApiStoragesExportDatabricksCreateJSONRequestBody defines body for ApiStoragesExportDatabricksCreate for application/json ContentType.
+type ApiStoragesExportDatabricksCreateJSONRequestBody = DatabricksExportStorageWriteRequest
+
+// ApiStoragesExportDatabricksCreateFormdataRequestBody defines body for ApiStoragesExportDatabricksCreate for application/x-www-form-urlencoded ContentType.
+type ApiStoragesExportDatabricksCreateFormdataRequestBody = DatabricksExportStorageWriteRequest
+
+// ApiStoragesExportDatabricksCreateMultipartRequestBody defines body for ApiStoragesExportDatabricksCreate for multipart/form-data ContentType.
+type ApiStoragesExportDatabricksCreateMultipartRequestBody = DatabricksExportStorageWriteRequest
+
+// ApiStoragesExportDatabricksValidateCreateJSONRequestBody defines body for ApiStoragesExportDatabricksValidateCreate for application/json ContentType.
+type ApiStoragesExportDatabricksValidateCreateJSONRequestBody = DatabricksExportStorageValidateRequest
+
+// ApiStoragesExportDatabricksValidateCreateFormdataRequestBody defines body for ApiStoragesExportDatabricksValidateCreate for application/x-www-form-urlencoded ContentType.
+type ApiStoragesExportDatabricksValidateCreateFormdataRequestBody = DatabricksExportStorageValidateRequest
+
+// ApiStoragesExportDatabricksValidateCreateMultipartRequestBody defines body for ApiStoragesExportDatabricksValidateCreate for multipart/form-data ContentType.
+type ApiStoragesExportDatabricksValidateCreateMultipartRequestBody = DatabricksExportStorageValidateRequest
+
+// ApiStoragesExportDatabricksPartialUpdateJSONRequestBody defines body for ApiStoragesExportDatabricksPartialUpdate for application/json ContentType.
+type ApiStoragesExportDatabricksPartialUpdateJSONRequestBody = PatchedDatabricksExportStorageWriteRequest
+
+// ApiStoragesExportDatabricksPartialUpdateFormdataRequestBody defines body for ApiStoragesExportDatabricksPartialUpdate for application/x-www-form-urlencoded ContentType.
+type ApiStoragesExportDatabricksPartialUpdateFormdataRequestBody = PatchedDatabricksExportStorageWriteRequest
+
+// ApiStoragesExportDatabricksPartialUpdateMultipartRequestBody defines body for ApiStoragesExportDatabricksPartialUpdate for multipart/form-data ContentType.
+type ApiStoragesExportDatabricksPartialUpdateMultipartRequestBody = PatchedDatabricksExportStorageWriteRequest
+
+// ApiStoragesExportGcsCreateJSONRequestBody defines body for ApiStoragesExportGcsCreate for application/json ContentType.
+type ApiStoragesExportGcsCreateJSONRequestBody = GCSExportStorageWriteRequest
+
 // ApiStoragesExportGcsCreateFormdataRequestBody defines body for ApiStoragesExportGcsCreate for application/x-www-form-urlencoded ContentType.
 type ApiStoragesExportGcsCreateFormdataRequestBody = GCSExportStorageWriteRequest
 
@@ -5596,6 +5692,51 @@ type ClientInterface interface {
 	// Corresponds with POST /api/learning-resources/{id}/progress/ (the `ApiLearningResourcesProgressCreate` operationId).
 	ApiLearningResourcesProgressCreateWithFormdataBody(ctx context.Context, id int, body ApiLearningResourcesProgressCreateFormdataRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
 
+	// ApiLearningResourcesProjectAssignmentPreviewCreateWithBody ✨ Preview what assigning a learning resource does to projects
+	//
+	// <Card href="https://humansignal.com/goenterprise">
+	//         <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+	//         <p style="margin-top: 10px; font-size: 14px;">
+	//             This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+	//         </p>
+	//     </Card>
+	// Read-only. Returns one row per selected project (by title, capped; see total) and says whether assigning this course would turn Courses on there and so hide its written instructions (switch_with_instructions), turn Courses on with nothing to hide (switch_empty), or change nothing (already_on). Assigning a course always turns Courses on for the project. The preview lets the UI say what that costs; it changes nothing and the assignment endpoints never depend on it: assigning through the API or SDK is silent and turns Courses on for the project. Projects of other organizations or that the caller cannot access are left out.
+	//
+	// Takes any type of body and a specified content type.
+	//
+	// Corresponds with POST /api/learning-resources/{id}/project-assignment-preview/ (the `ApiLearningResourcesProjectAssignmentPreviewCreate` operationId).
+	ApiLearningResourcesProjectAssignmentPreviewCreateWithBody(ctx context.Context, id int, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	// ApiLearningResourcesProjectAssignmentPreviewCreate ✨ Preview what assigning a learning resource does to projects
+	//
+	// <Card href="https://humansignal.com/goenterprise">
+	//         <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+	//         <p style="margin-top: 10px; font-size: 14px;">
+	//             This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+	//         </p>
+	//     </Card>
+	// Read-only. Returns one row per selected project (by title, capped; see total) and says whether assigning this course would turn Courses on there and so hide its written instructions (switch_with_instructions), turn Courses on with nothing to hide (switch_empty), or change nothing (already_on). Assigning a course always turns Courses on for the project. The preview lets the UI say what that costs; it changes nothing and the assignment endpoints never depend on it: assigning through the API or SDK is silent and turns Courses on for the project. Projects of other organizations or that the caller cannot access are left out.
+	//
+	// Takes a body of the `application/json` content type.
+	//
+	// Corresponds with POST /api/learning-resources/{id}/project-assignment-preview/ (the `ApiLearningResourcesProjectAssignmentPreviewCreate` operationId).
+	ApiLearningResourcesProjectAssignmentPreviewCreate(ctx context.Context, id int, body ApiLearningResourcesProjectAssignmentPreviewCreateJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	// ApiLearningResourcesProjectAssignmentPreviewCreateWithFormdataBody ✨ Preview what assigning a learning resource does to projects
+	//
+	// <Card href="https://humansignal.com/goenterprise">
+	//         <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+	//         <p style="margin-top: 10px; font-size: 14px;">
+	//             This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+	//         </p>
+	//     </Card>
+	// Read-only. Returns one row per selected project (by title, capped; see total) and says whether assigning this course would turn Courses on there and so hide its written instructions (switch_with_instructions), turn Courses on with nothing to hide (switch_empty), or change nothing (already_on). Assigning a course always turns Courses on for the project. The preview lets the UI say what that costs; it changes nothing and the assignment endpoints never depend on it: assigning through the API or SDK is silent and turns Courses on for the project. Projects of other organizations or that the caller cannot access are left out.
+	//
+	// Takes a body of the `application/x-www-form-urlencoded` content type.
+	//
+	// Corresponds with POST /api/learning-resources/{id}/project-assignment-preview/ (the `ApiLearningResourcesProjectAssignmentPreviewCreate` operationId).
+	ApiLearningResourcesProjectAssignmentPreviewCreateWithFormdataBody(ctx context.Context, id int, body ApiLearningResourcesProjectAssignmentPreviewCreateFormdataRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
+
 	// ApiLearningResourcesProjectAssignmentsCreateWithBody ✨ Bulk assign learning resource to projects
 	//
 	// Create project assignments for many projects in one request.
@@ -9751,6 +9892,51 @@ type ClientInterface interface {
 	//
 	// Corresponds with POST /api/projects/{project_pk}/learning-assignments/ (the `ApiProjectsLearningAssignmentsCreate` operationId).
 	ApiProjectsLearningAssignmentsCreateWithFormdataBody(ctx context.Context, projectPk int, body ApiProjectsLearningAssignmentsCreateFormdataRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	// ApiProjectsLearningAssignmentsCoursesEnabledPartialUpdateWithBody ✨ Turn Courses on or off for a project
+	//
+	// <Card href="https://humansignal.com/goenterprise">
+	//         <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+	//         <p style="margin-top: 10px; font-size: 14px;">
+	//             This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+	//         </p>
+	//     </Card>
+	// When Courses are on, Annotation and Reviewer Instructions are hidden from annotators and reviewers and published assigned courses are shown instead. The instruction content is never changed. Assigning a course to a project always turns Courses on automatically. When Courses are off, no assigned course gates or is offered on the project; the assignments are kept and apply again when Courses are turned back on.
+	//
+	// Takes any type of body and a specified content type.
+	//
+	// Corresponds with PATCH /api/projects/{project_pk}/learning-assignments/courses-enabled/ (the `ApiProjectsLearningAssignmentsCoursesEnabledPartialUpdate` operationId).
+	ApiProjectsLearningAssignmentsCoursesEnabledPartialUpdateWithBody(ctx context.Context, projectPk int, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	// ApiProjectsLearningAssignmentsCoursesEnabledPartialUpdate ✨ Turn Courses on or off for a project
+	//
+	// <Card href="https://humansignal.com/goenterprise">
+	//         <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+	//         <p style="margin-top: 10px; font-size: 14px;">
+	//             This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+	//         </p>
+	//     </Card>
+	// When Courses are on, Annotation and Reviewer Instructions are hidden from annotators and reviewers and published assigned courses are shown instead. The instruction content is never changed. Assigning a course to a project always turns Courses on automatically. When Courses are off, no assigned course gates or is offered on the project; the assignments are kept and apply again when Courses are turned back on.
+	//
+	// Takes a body of the `application/json` content type.
+	//
+	// Corresponds with PATCH /api/projects/{project_pk}/learning-assignments/courses-enabled/ (the `ApiProjectsLearningAssignmentsCoursesEnabledPartialUpdate` operationId).
+	ApiProjectsLearningAssignmentsCoursesEnabledPartialUpdate(ctx context.Context, projectPk int, body ApiProjectsLearningAssignmentsCoursesEnabledPartialUpdateJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	// ApiProjectsLearningAssignmentsCoursesEnabledPartialUpdateWithFormdataBody ✨ Turn Courses on or off for a project
+	//
+	// <Card href="https://humansignal.com/goenterprise">
+	//         <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+	//         <p style="margin-top: 10px; font-size: 14px;">
+	//             This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+	//         </p>
+	//     </Card>
+	// When Courses are on, Annotation and Reviewer Instructions are hidden from annotators and reviewers and published assigned courses are shown instead. The instruction content is never changed. Assigning a course to a project always turns Courses on automatically. When Courses are off, no assigned course gates or is offered on the project; the assignments are kept and apply again when Courses are turned back on.
+	//
+	// Takes a body of the `application/x-www-form-urlencoded` content type.
+	//
+	// Corresponds with PATCH /api/projects/{project_pk}/learning-assignments/courses-enabled/ (the `ApiProjectsLearningAssignmentsCoursesEnabledPartialUpdate` operationId).
+	ApiProjectsLearningAssignmentsCoursesEnabledPartialUpdateWithFormdataBody(ctx context.Context, projectPk int, body ApiProjectsLearningAssignmentsCoursesEnabledPartialUpdateFormdataRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// ApiProjectsLearningAssignmentsReorderPartialUpdateWithBody ✨ Reorder learning assignments for a project
 	//
@@ -19843,189 +20029,6 @@ func (c *Client) ApiLearningResourcesDuplicateCreateWithBody(ctx context.Context
 // Corresponds with POST /api/learning-resources/{id}/duplicate/ (the `ApiLearningResourcesDuplicateCreate` operationId).
 func (c *Client) ApiLearningResourcesDuplicateCreate(ctx context.Context, id int, body ApiLearningResourcesDuplicateCreateJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewApiLearningResourcesDuplicateCreateRequest(c.Server, id, body)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// ApiLearningResourcesDuplicateCreateWithFormdataBody ✨ Duplicate a learning resource
-//
-// <Card href="https://humansignal.com/goenterprise">
-//
-//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
-//	    <p style="margin-top: 10px; font-size: 14px;">
-//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
-//	    </p>
-//	</Card>
-//
-// Create a copy of a learning resource.
-//
-// Takes a body of the `application/x-www-form-urlencoded` content type.
-//
-// Corresponds with POST /api/learning-resources/{id}/duplicate/ (the `ApiLearningResourcesDuplicateCreate` operationId).
-func (c *Client) ApiLearningResourcesDuplicateCreateWithFormdataBody(ctx context.Context, id int, body ApiLearningResourcesDuplicateCreateFormdataRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewApiLearningResourcesDuplicateCreateRequestWithFormdataBody(c.Server, id, body)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// ApiLearningResourcesEditingSessionDestroy ✨ Heartbeat or release an editing session for a learning resource
-//
-// <Card href="https://humansignal.com/goenterprise">
-//
-//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
-//	    <p style="margin-top: 10px; font-size: 14px;">
-//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
-//	    </p>
-//	</Card>
-//
-// POST claims or refreshes presence on a (module, page). A bare heartbeat only tracks presence — it never claims the write lock. Pass `wants_to_edit` to actually claim it: the first session on a free page to ask becomes the writer, later ones stay read-only unless `takeover` is set (which itself implies `wants_to_edit`). Sessions expire 60 seconds after the last heartbeat. DELETE releases the caller's own session.
-//
-// Corresponds with DELETE /api/learning-resources/{id}/editing-session/ (the `ApiLearningResourcesEditingSessionDestroy` operationId).
-func (c *Client) ApiLearningResourcesEditingSessionDestroy(ctx context.Context, id int, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewApiLearningResourcesEditingSessionDestroyRequest(c.Server, id)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// ApiLearningResourcesEditingSessionCreateWithBody ✨ Heartbeat or release an editing session for a learning resource
-//
-// <Card href="https://humansignal.com/goenterprise">
-//
-//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
-//	    <p style="margin-top: 10px; font-size: 14px;">
-//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
-//	    </p>
-//	</Card>
-//
-// POST claims or refreshes presence on a (module, page). A bare heartbeat only tracks presence — it never claims the write lock. Pass `wants_to_edit` to actually claim it: the first session on a free page to ask becomes the writer, later ones stay read-only unless `takeover` is set (which itself implies `wants_to_edit`). Sessions expire 60 seconds after the last heartbeat. DELETE releases the caller's own session.
-//
-// Takes any type of body and a specified content type.
-//
-// Corresponds with POST /api/learning-resources/{id}/editing-session/ (the `ApiLearningResourcesEditingSessionCreate` operationId).
-func (c *Client) ApiLearningResourcesEditingSessionCreateWithBody(ctx context.Context, id int, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewApiLearningResourcesEditingSessionCreateRequestWithBody(c.Server, id, contentType, body)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// ApiLearningResourcesEditingSessionCreate ✨ Heartbeat or release an editing session for a learning resource
-//
-// <Card href="https://humansignal.com/goenterprise">
-//
-//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
-//	    <p style="margin-top: 10px; font-size: 14px;">
-//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
-//	    </p>
-//	</Card>
-//
-// POST claims or refreshes presence on a (module, page). A bare heartbeat only tracks presence — it never claims the write lock. Pass `wants_to_edit` to actually claim it: the first session on a free page to ask becomes the writer, later ones stay read-only unless `takeover` is set (which itself implies `wants_to_edit`). Sessions expire 60 seconds after the last heartbeat. DELETE releases the caller's own session.
-//
-// Takes a body of the `application/json` content type.
-//
-// Corresponds with POST /api/learning-resources/{id}/editing-session/ (the `ApiLearningResourcesEditingSessionCreate` operationId).
-func (c *Client) ApiLearningResourcesEditingSessionCreate(ctx context.Context, id int, body ApiLearningResourcesEditingSessionCreateJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewApiLearningResourcesEditingSessionCreateRequest(c.Server, id, body)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// ApiLearningResourcesEditingSessionCreateWithFormdataBody ✨ Heartbeat or release an editing session for a learning resource
-//
-// <Card href="https://humansignal.com/goenterprise">
-//
-//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
-//	    <p style="margin-top: 10px; font-size: 14px;">
-//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
-//	    </p>
-//	</Card>
-//
-// POST claims or refreshes presence on a (module, page). A bare heartbeat only tracks presence — it never claims the write lock. Pass `wants_to_edit` to actually claim it: the first session on a free page to ask becomes the writer, later ones stay read-only unless `takeover` is set (which itself implies `wants_to_edit`). Sessions expire 60 seconds after the last heartbeat. DELETE releases the caller's own session.
-//
-// Takes a body of the `application/x-www-form-urlencoded` content type.
-//
-// Corresponds with POST /api/learning-resources/{id}/editing-session/ (the `ApiLearningResourcesEditingSessionCreate` operationId).
-func (c *Client) ApiLearningResourcesEditingSessionCreateWithFormdataBody(ctx context.Context, id int, body ApiLearningResourcesEditingSessionCreateFormdataRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewApiLearningResourcesEditingSessionCreateRequestWithFormdataBody(c.Server, id, body)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// ApiLearningResourcesExportRetrieve ✨ Export a learning resource
-//
-// <Card href="https://humansignal.com/goenterprise">
-//
-//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
-//	    <p style="margin-top: 10px; font-size: 14px;">
-//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
-//	    </p>
-//	</Card>
-//
-// Return the draft course (settings, modules, pages) as a portable JSON payload for Import. With any of `include_images`, `include_audio_video` and `include_other` the response is a zip instead: `course.json` (the same payload), `assets.json` and the referenced files under `assets/`. References that cannot be bundled are counted in the `X-Course-Export-Skipped-Assets` header.
-//
-// Corresponds with GET /api/learning-resources/{id}/export/ (the `ApiLearningResourcesExportRetrieve` operationId).
-func (c *Client) ApiLearningResourcesExportRetrieve(ctx context.Context, id int, params *ApiLearningResourcesExportRetrieveParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewApiLearningResourcesExportRetrieveRequest(c.Server, id, params)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// ApiLearningResourcesHistoryRetrieve ✨ List the version history of a course
-//
-// <Card href="https://humansignal.com/goenterprise">
-//
-//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
-//	    <p style="margin-top: 10px; font-size: 14px;">
-//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
-//	    </p>
-//	</Card>
-//
-// Author-only. Edit sessions (newest first), pinned versions and recently deleted pages. Summaries only, no page bodies.
-//
-// Corresponds with GET /api/learning-resources/{id}/history/ (the `ApiLearningResourcesHistoryRetrieve` operationId).
-func (c *Client) ApiLearningResourcesHistoryRetrieve(ctx context.Context, id int, params *ApiLearningResourcesHistoryRetrieveParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewApiLearningResourcesHistoryRetrieveRequest(c.Server, id, params)
 	if err != nil {
 		return nil, err
 	}

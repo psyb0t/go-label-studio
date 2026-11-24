@@ -13,6 +13,213 @@ import (
 	openapi_types "github.com/oapi-codegen/runtime/types"
 )
 
+// ApiStoragesExportS3sCreateWithBodyWithResponse ✨ Create export storage
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Create an S3 export storage connection with IAM role access to store annotations.
+//
+// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with POST /api/storages/export/s3s (the `ApiStoragesExportS3sCreate` operationId).
+func (c *ClientWithResponses) ApiStoragesExportS3sCreateWithBodyWithResponse(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*ApiStoragesExportS3sCreateResponse, error) {
+	rsp, err := c.ApiStoragesExportS3sCreateWithBody(ctx, contentType, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesExportS3sCreateResponse(rsp)
+}
+
+// ApiStoragesExportS3sCreateWithResponse ✨ Create export storage
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Create an S3 export storage connection with IAM role access to store annotations.
+//
+// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with POST /api/storages/export/s3s (the `ApiStoragesExportS3sCreate` operationId).
+func (c *ClientWithResponses) ApiStoragesExportS3sCreateWithResponse(ctx context.Context, body ApiStoragesExportS3sCreateJSONRequestBody, reqEditors ...RequestEditorFn) (*ApiStoragesExportS3sCreateResponse, error) {
+	rsp, err := c.ApiStoragesExportS3sCreate(ctx, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesExportS3sCreateResponse(rsp)
+}
+
+// ApiStoragesExportS3sCreateWithFormdataBodyWithResponse ✨ Create export storage
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Create an S3 export storage connection with IAM role access to store annotations.
+//
+// Takes a body of the `application/x-www-form-urlencoded` content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with POST /api/storages/export/s3s (the `ApiStoragesExportS3sCreate` operationId).
+func (c *ClientWithResponses) ApiStoragesExportS3sCreateWithFormdataBodyWithResponse(ctx context.Context, body ApiStoragesExportS3sCreateFormdataRequestBody, reqEditors ...RequestEditorFn) (*ApiStoragesExportS3sCreateResponse, error) {
+	rsp, err := c.ApiStoragesExportS3sCreateWithFormdataBody(ctx, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesExportS3sCreateResponse(rsp)
+}
+
+// ApiStoragesExportS3sValidateCreateWithBodyWithResponse ✨ Validate export storage
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Validate a specific S3 export storage connection that was set up with IAM role access.
+//
+// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with POST /api/storages/export/s3s/validate (the `ApiStoragesExportS3sValidateCreate` operationId).
+func (c *ClientWithResponses) ApiStoragesExportS3sValidateCreateWithBodyWithResponse(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*ApiStoragesExportS3sValidateCreateResponse, error) {
+	rsp, err := c.ApiStoragesExportS3sValidateCreateWithBody(ctx, contentType, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesExportS3sValidateCreateResponse(rsp)
+}
+
+// ApiStoragesExportS3sValidateCreateWithResponse ✨ Validate export storage
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Validate a specific S3 export storage connection that was set up with IAM role access.
+//
+// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with POST /api/storages/export/s3s/validate (the `ApiStoragesExportS3sValidateCreate` operationId).
+func (c *ClientWithResponses) ApiStoragesExportS3sValidateCreateWithResponse(ctx context.Context, body ApiStoragesExportS3sValidateCreateJSONRequestBody, reqEditors ...RequestEditorFn) (*ApiStoragesExportS3sValidateCreateResponse, error) {
+	rsp, err := c.ApiStoragesExportS3sValidateCreate(ctx, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesExportS3sValidateCreateResponse(rsp)
+}
+
+// ApiStoragesExportS3sValidateCreateWithFormdataBodyWithResponse ✨ Validate export storage
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Validate a specific S3 export storage connection that was set up with IAM role access.
+//
+// Takes a body of the `application/x-www-form-urlencoded` content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with POST /api/storages/export/s3s/validate (the `ApiStoragesExportS3sValidateCreate` operationId).
+func (c *ClientWithResponses) ApiStoragesExportS3sValidateCreateWithFormdataBodyWithResponse(ctx context.Context, body ApiStoragesExportS3sValidateCreateFormdataRequestBody, reqEditors ...RequestEditorFn) (*ApiStoragesExportS3sValidateCreateResponse, error) {
+	rsp, err := c.ApiStoragesExportS3sValidateCreateWithFormdataBody(ctx, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesExportS3sValidateCreateResponse(rsp)
+}
+
+// ApiStoragesExportS3sDestroyWithResponse ✨ Delete export storage
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Delete a specific S3 export storage connection that was set up with IAM role access.
+//
+// Returns a wrapper object for the known response body format(s).
+//
+// Corresponds with DELETE /api/storages/export/s3s/{id} (the `ApiStoragesExportS3sDestroy` operationId).
+func (c *ClientWithResponses) ApiStoragesExportS3sDestroyWithResponse(ctx context.Context, id int, reqEditors ...RequestEditorFn) (*ApiStoragesExportS3sDestroyResponse, error) {
+	rsp, err := c.ApiStoragesExportS3sDestroy(ctx, id, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesExportS3sDestroyResponse(rsp)
+}
+
+// ApiStoragesExportS3sRetrieveWithResponse ✨ Get export storage
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Get a specific S3 export storage connection that was set up with IAM role access.
+//
+// Returns a wrapper object for the known response body format(s).
+//
+// Corresponds with GET /api/storages/export/s3s/{id} (the `ApiStoragesExportS3sRetrieve` operationId).
+func (c *ClientWithResponses) ApiStoragesExportS3sRetrieveWithResponse(ctx context.Context, id int, reqEditors ...RequestEditorFn) (*ApiStoragesExportS3sRetrieveResponse, error) {
+	rsp, err := c.ApiStoragesExportS3sRetrieve(ctx, id, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesExportS3sRetrieveResponse(rsp)
+}
+
+// ApiStoragesExportS3sPartialUpdateWithBodyWithResponse ✨ Update export storage
+//
+// <Card href="https://humansignal.com/goenterprise">
+//
+//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+//	    <p style="margin-top: 10px; font-size: 14px;">
+//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+//	    </p>
+//	</Card>
+//
+// Update a specific S3 export storage connection that was set up with IAM role access.
+//
+// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with PATCH /api/storages/export/s3s/{id} (the `ApiStoragesExportS3sPartialUpdate` operationId).
+func (c *ClientWithResponses) ApiStoragesExportS3sPartialUpdateWithBodyWithResponse(ctx context.Context, id int, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*ApiStoragesExportS3sPartialUpdateResponse, error) {
+	rsp, err := c.ApiStoragesExportS3sPartialUpdateWithBody(ctx, id, contentType, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseApiStoragesExportS3sPartialUpdateResponse(rsp)
+}
+
 // ApiStoragesExportS3sPartialUpdateWithResponse ✨ Update export storage
 //
 // <Card href="https://humansignal.com/goenterprise">
@@ -7182,6 +7389,32 @@ func ParseApiLearningResourcesProgressCreateResponse(rsp *http.Response) (*ApiLe
 	return response, nil
 }
 
+// ParseApiLearningResourcesProjectAssignmentPreviewCreateResponse parses an HTTP response from a ApiLearningResourcesProjectAssignmentPreviewCreateWithResponse call
+func ParseApiLearningResourcesProjectAssignmentPreviewCreateResponse(rsp *http.Response) (*ApiLearningResourcesProjectAssignmentPreviewCreateResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &ApiLearningResourcesProjectAssignmentPreviewCreateResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	switch {
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
+		var dest AssignmentPreviewResponse
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON200 = &dest
+
+	}
+
+	return response, nil
+}
+
 // ParseApiLearningResourcesProjectAssignmentsCreateResponse parses an HTTP response from a ApiLearningResourcesProjectAssignmentsCreateWithResponse call
 func ParseApiLearningResourcesProjectAssignmentsCreateResponse(rsp *http.Response) (*ApiLearningResourcesProjectAssignmentsCreateResponse, error) {
 	bodyBytes, err := io.ReadAll(rsp.Body)
@@ -11894,6 +12127,32 @@ func ParseApiProjectsLearningAssignmentsCreateResponse(rsp *http.Response) (*Api
 			return nil, err
 		}
 		response.JSON201 = &dest
+
+	}
+
+	return response, nil
+}
+
+// ParseApiProjectsLearningAssignmentsCoursesEnabledPartialUpdateResponse parses an HTTP response from a ApiProjectsLearningAssignmentsCoursesEnabledPartialUpdateWithResponse call
+func ParseApiProjectsLearningAssignmentsCoursesEnabledPartialUpdateResponse(rsp *http.Response) (*ApiProjectsLearningAssignmentsCoursesEnabledPartialUpdateResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &ApiProjectsLearningAssignmentsCoursesEnabledPartialUpdateResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	switch {
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
+		var dest ProjectCoursesEnabled
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON200 = &dest
 
 	}
 

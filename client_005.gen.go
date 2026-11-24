@@ -17,6 +17,505 @@ import (
 	openapi_types "github.com/oapi-codegen/runtime/types"
 )
 
+// NewApiPromptsDestroyRequest constructs an http.Request for the ApiPromptsDestroy method
+func NewApiPromptsDestroyRequest(server string, id int) (*http.Request, error) {
+	var err error
+
+	var pathParam0 string
+
+	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "id", id, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "integer", Format: ""})
+	if err != nil {
+		return nil, err
+	}
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/api/prompts/%s/", pathParam0)
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequest(http.MethodDelete, queryURL.String(), nil)
+	if err != nil {
+		return nil, err
+	}
+
+	return req, nil
+}
+
+// NewApiPromptsRetrieveRequest constructs an http.Request for the ApiPromptsRetrieve method
+func NewApiPromptsRetrieveRequest(server string, id int) (*http.Request, error) {
+	var err error
+
+	var pathParam0 string
+
+	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "id", id, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "integer", Format: ""})
+	if err != nil {
+		return nil, err
+	}
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/api/prompts/%s/", pathParam0)
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequest(http.MethodGet, queryURL.String(), nil)
+	if err != nil {
+		return nil, err
+	}
+
+	return req, nil
+}
+
+// NewApiPromptsPartialUpdateRequest calls the generic ApiPromptsPartialUpdate builder with application/json body
+func NewApiPromptsPartialUpdateRequest(server string, id int, body ApiPromptsPartialUpdateJSONRequestBody) (*http.Request, error) {
+	var bodyReader io.Reader
+	buf, err := json.Marshal(body)
+	if err != nil {
+		return nil, err
+	}
+	bodyReader = bytes.NewReader(buf)
+	return NewApiPromptsPartialUpdateRequestWithBody(server, id, "application/json", bodyReader)
+}
+
+// NewApiPromptsPartialUpdateRequestWithFormdataBody calls the generic ApiPromptsPartialUpdate builder with application/x-www-form-urlencoded body
+func NewApiPromptsPartialUpdateRequestWithFormdataBody(server string, id int, body ApiPromptsPartialUpdateFormdataRequestBody) (*http.Request, error) {
+	var bodyReader io.Reader
+	bodyStr, err := runtime.MarshalForm(body, nil)
+	if err != nil {
+		return nil, err
+	}
+	bodyReader = strings.NewReader(bodyStr.Encode())
+	return NewApiPromptsPartialUpdateRequestWithBody(server, id, "application/x-www-form-urlencoded", bodyReader)
+}
+
+// NewApiPromptsPartialUpdateRequestWithBody constructs an http.Request for the ApiPromptsPartialUpdate method, with any body, and a specified content type
+func NewApiPromptsPartialUpdateRequestWithBody(server string, id int, contentType string, body io.Reader) (*http.Request, error) {
+	var err error
+
+	var pathParam0 string
+
+	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "id", id, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "integer", Format: ""})
+	if err != nil {
+		return nil, err
+	}
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/api/prompts/%s/", pathParam0)
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequest(http.MethodPatch, queryURL.String(), body)
+	if err != nil {
+		return nil, err
+	}
+
+	req.Header.Add("Content-Type", contentType)
+
+	return req, nil
+}
+
+// NewApiPromptsUpdateRequest calls the generic ApiPromptsUpdate builder with application/json body
+func NewApiPromptsUpdateRequest(server string, id int, body ApiPromptsUpdateJSONRequestBody) (*http.Request, error) {
+	var bodyReader io.Reader
+	buf, err := json.Marshal(body)
+	if err != nil {
+		return nil, err
+	}
+	bodyReader = bytes.NewReader(buf)
+	return NewApiPromptsUpdateRequestWithBody(server, id, "application/json", bodyReader)
+}
+
+// NewApiPromptsUpdateRequestWithFormdataBody calls the generic ApiPromptsUpdate builder with application/x-www-form-urlencoded body
+func NewApiPromptsUpdateRequestWithFormdataBody(server string, id int, body ApiPromptsUpdateFormdataRequestBody) (*http.Request, error) {
+	var bodyReader io.Reader
+	bodyStr, err := runtime.MarshalForm(body, nil)
+	if err != nil {
+		return nil, err
+	}
+	bodyReader = strings.NewReader(bodyStr.Encode())
+	return NewApiPromptsUpdateRequestWithBody(server, id, "application/x-www-form-urlencoded", bodyReader)
+}
+
+// NewApiPromptsUpdateRequestWithBody constructs an http.Request for the ApiPromptsUpdate method, with any body, and a specified content type
+func NewApiPromptsUpdateRequestWithBody(server string, id int, contentType string, body io.Reader) (*http.Request, error) {
+	var err error
+
+	var pathParam0 string
+
+	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "id", id, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "integer", Format: ""})
+	if err != nil {
+		return nil, err
+	}
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/api/prompts/%s/", pathParam0)
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequest(http.MethodPut, queryURL.String(), body)
+	if err != nil {
+		return nil, err
+	}
+
+	req.Header.Add("Content-Type", contentType)
+
+	return req, nil
+}
+
+// NewApiPromptsDuplicateCreateRequest calls the generic ApiPromptsDuplicateCreate builder with application/json body
+func NewApiPromptsDuplicateCreateRequest(server string, id int, body ApiPromptsDuplicateCreateJSONRequestBody) (*http.Request, error) {
+	var bodyReader io.Reader
+	buf, err := json.Marshal(body)
+	if err != nil {
+		return nil, err
+	}
+	bodyReader = bytes.NewReader(buf)
+	return NewApiPromptsDuplicateCreateRequestWithBody(server, id, "application/json", bodyReader)
+}
+
+// NewApiPromptsDuplicateCreateRequestWithFormdataBody calls the generic ApiPromptsDuplicateCreate builder with application/x-www-form-urlencoded body
+func NewApiPromptsDuplicateCreateRequestWithFormdataBody(server string, id int, body ApiPromptsDuplicateCreateFormdataRequestBody) (*http.Request, error) {
+	var bodyReader io.Reader
+	bodyStr, err := runtime.MarshalForm(body, nil)
+	if err != nil {
+		return nil, err
+	}
+	bodyReader = strings.NewReader(bodyStr.Encode())
+	return NewApiPromptsDuplicateCreateRequestWithBody(server, id, "application/x-www-form-urlencoded", bodyReader)
+}
+
+// NewApiPromptsDuplicateCreateRequestWithBody constructs an http.Request for the ApiPromptsDuplicateCreate method, with any body, and a specified content type
+func NewApiPromptsDuplicateCreateRequestWithBody(server string, id int, contentType string, body io.Reader) (*http.Request, error) {
+	var err error
+
+	var pathParam0 string
+
+	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "id", id, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "integer", Format: ""})
+	if err != nil {
+		return nil, err
+	}
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/api/prompts/%s/duplicate/", pathParam0)
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequest(http.MethodPost, queryURL.String(), body)
+	if err != nil {
+		return nil, err
+	}
+
+	req.Header.Add("Content-Type", contentType)
+
+	return req, nil
+}
+
+// NewApiPromptsGetDefaultVersionNameRetrieveRequest constructs an http.Request for the ApiPromptsGetDefaultVersionNameRetrieve method
+func NewApiPromptsGetDefaultVersionNameRetrieveRequest(server string, id int) (*http.Request, error) {
+	var err error
+
+	var pathParam0 string
+
+	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "id", id, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "integer", Format: ""})
+	if err != nil {
+		return nil, err
+	}
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/api/prompts/%s/get-default-version-name", pathParam0)
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequest(http.MethodGet, queryURL.String(), nil)
+	if err != nil {
+		return nil, err
+	}
+
+	return req, nil
+}
+
+// NewApiPromptsVersionsListRequest constructs an http.Request for the ApiPromptsVersionsList method
+func NewApiPromptsVersionsListRequest(server string, promptId int, params *ApiPromptsVersionsListParams) (*http.Request, error) {
+	var err error
+
+	var pathParam0 string
+
+	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "prompt_id", promptId, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "integer", Format: ""})
+	if err != nil {
+		return nil, err
+	}
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/api/prompts/%s/versions", pathParam0)
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	if params != nil {
+		// queryValues collects non-styled parameters (passthrough, JSON)
+		// that are safe to round-trip through url.Values.Encode().
+		queryValues := queryURL.Query()
+		// rawQueryFragments collects pre-encoded query fragments from
+		// styled parameters, preserving literal commas as delimiters
+		// per the OpenAPI spec (e.g. "color=blue,black,brown").
+		var rawQueryFragments []string
+
+		if params.Ordering != nil {
+
+			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "ordering", *params.Ordering, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			} else {
+				for _, qp := range strings.Split(queryFrag, "&") {
+					rawQueryFragments = append(rawQueryFragments, qp)
+				}
+			}
+
+		}
+
+		if encoded := queryValues.Encode(); encoded != "" {
+			rawQueryFragments = append(rawQueryFragments, encoded)
+		}
+		queryURL.RawQuery = strings.Join(rawQueryFragments, "&")
+	}
+
+	req, err := http.NewRequest(http.MethodGet, queryURL.String(), nil)
+	if err != nil {
+		return nil, err
+	}
+
+	return req, nil
+}
+
+// NewApiPromptsVersionsCreateRequest calls the generic ApiPromptsVersionsCreate builder with application/json body
+func NewApiPromptsVersionsCreateRequest(server string, promptId int, body ApiPromptsVersionsCreateJSONRequestBody) (*http.Request, error) {
+	var bodyReader io.Reader
+	buf, err := json.Marshal(body)
+	if err != nil {
+		return nil, err
+	}
+	bodyReader = bytes.NewReader(buf)
+	return NewApiPromptsVersionsCreateRequestWithBody(server, promptId, "application/json", bodyReader)
+}
+
+// NewApiPromptsVersionsCreateRequestWithFormdataBody calls the generic ApiPromptsVersionsCreate builder with application/x-www-form-urlencoded body
+func NewApiPromptsVersionsCreateRequestWithFormdataBody(server string, promptId int, body ApiPromptsVersionsCreateFormdataRequestBody) (*http.Request, error) {
+	var bodyReader io.Reader
+	bodyStr, err := runtime.MarshalForm(body, nil)
+	if err != nil {
+		return nil, err
+	}
+	bodyReader = strings.NewReader(bodyStr.Encode())
+	return NewApiPromptsVersionsCreateRequestWithBody(server, promptId, "application/x-www-form-urlencoded", bodyReader)
+}
+
+// NewApiPromptsVersionsCreateRequestWithBody constructs an http.Request for the ApiPromptsVersionsCreate method, with any body, and a specified content type
+func NewApiPromptsVersionsCreateRequestWithBody(server string, promptId int, contentType string, body io.Reader) (*http.Request, error) {
+	var err error
+
+	var pathParam0 string
+
+	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "prompt_id", promptId, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "integer", Format: ""})
+	if err != nil {
+		return nil, err
+	}
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/api/prompts/%s/versions", pathParam0)
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequest(http.MethodPost, queryURL.String(), body)
+	if err != nil {
+		return nil, err
+	}
+
+	req.Header.Add("Content-Type", contentType)
+
+	return req, nil
+}
+
+// NewApiPromptsVersionsDestroyRequest constructs an http.Request for the ApiPromptsVersionsDestroy method
+func NewApiPromptsVersionsDestroyRequest(server string, promptId int, versionId int) (*http.Request, error) {
+	var err error
+
+	var pathParam0 string
+
+	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "prompt_id", promptId, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "integer", Format: ""})
+	if err != nil {
+		return nil, err
+	}
+
+	var pathParam1 string
+
+	pathParam1, err = runtime.StyleParamWithOptions("simple", false, "version_id", versionId, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "integer", Format: ""})
+	if err != nil {
+		return nil, err
+	}
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/api/prompts/%s/versions/%s", pathParam0, pathParam1)
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequest(http.MethodDelete, queryURL.String(), nil)
+	if err != nil {
+		return nil, err
+	}
+
+	return req, nil
+}
+
+// NewApiPromptsVersionsRetrieveRequest constructs an http.Request for the ApiPromptsVersionsRetrieve method
+func NewApiPromptsVersionsRetrieveRequest(server string, promptId int, versionId int) (*http.Request, error) {
+	var err error
+
+	var pathParam0 string
+
+	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "prompt_id", promptId, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "integer", Format: ""})
+	if err != nil {
+		return nil, err
+	}
+
+	var pathParam1 string
+
+	pathParam1, err = runtime.StyleParamWithOptions("simple", false, "version_id", versionId, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "integer", Format: ""})
+	if err != nil {
+		return nil, err
+	}
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/api/prompts/%s/versions/%s", pathParam0, pathParam1)
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequest(http.MethodGet, queryURL.String(), nil)
+	if err != nil {
+		return nil, err
+	}
+
+	return req, nil
+}
+
+// NewApiPromptsVersionsPartialUpdateRequest calls the generic ApiPromptsVersionsPartialUpdate builder with application/json body
+func NewApiPromptsVersionsPartialUpdateRequest(server string, promptId int, versionId int, body ApiPromptsVersionsPartialUpdateJSONRequestBody) (*http.Request, error) {
+	var bodyReader io.Reader
+	buf, err := json.Marshal(body)
+	if err != nil {
+		return nil, err
+	}
+	bodyReader = bytes.NewReader(buf)
+	return NewApiPromptsVersionsPartialUpdateRequestWithBody(server, promptId, versionId, "application/json", bodyReader)
+}
+
+// NewApiPromptsVersionsPartialUpdateRequestWithFormdataBody calls the generic ApiPromptsVersionsPartialUpdate builder with application/x-www-form-urlencoded body
+func NewApiPromptsVersionsPartialUpdateRequestWithFormdataBody(server string, promptId int, versionId int, body ApiPromptsVersionsPartialUpdateFormdataRequestBody) (*http.Request, error) {
+	var bodyReader io.Reader
+	bodyStr, err := runtime.MarshalForm(body, nil)
+	if err != nil {
+		return nil, err
+	}
+	bodyReader = strings.NewReader(bodyStr.Encode())
+	return NewApiPromptsVersionsPartialUpdateRequestWithBody(server, promptId, versionId, "application/x-www-form-urlencoded", bodyReader)
+}
+
 // NewApiPromptsVersionsPartialUpdateRequestWithBody constructs an http.Request for the ApiPromptsVersionsPartialUpdate method, with any body, and a specified content type
 func NewApiPromptsVersionsPartialUpdateRequestWithBody(server string, promptId int, versionId int, contentType string, body io.Reader) (*http.Request, error) {
 	var err error
@@ -13868,6 +14367,51 @@ type ClientWithResponsesInterface interface {
 	// Corresponds with POST /api/learning-resources/{id}/progress/ (the `ApiLearningResourcesProgressCreate` operationId).
 	ApiLearningResourcesProgressCreateWithFormdataBodyWithResponse(ctx context.Context, id int, body ApiLearningResourcesProgressCreateFormdataRequestBody, reqEditors ...RequestEditorFn) (*ApiLearningResourcesProgressCreateResponse, error)
 
+	// ApiLearningResourcesProjectAssignmentPreviewCreateWithBodyWithResponse ✨ Preview what assigning a learning resource does to projects
+	//
+	// <Card href="https://humansignal.com/goenterprise">
+	//         <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+	//         <p style="margin-top: 10px; font-size: 14px;">
+	//             This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+	//         </p>
+	//     </Card>
+	// Read-only. Returns one row per selected project (by title, capped; see total) and says whether assigning this course would turn Courses on there and so hide its written instructions (switch_with_instructions), turn Courses on with nothing to hide (switch_empty), or change nothing (already_on). Assigning a course always turns Courses on for the project. The preview lets the UI say what that costs; it changes nothing and the assignment endpoints never depend on it: assigning through the API or SDK is silent and turns Courses on for the project. Projects of other organizations or that the caller cannot access are left out.
+	//
+	// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
+	//
+	// Corresponds with POST /api/learning-resources/{id}/project-assignment-preview/ (the `ApiLearningResourcesProjectAssignmentPreviewCreate` operationId).
+	ApiLearningResourcesProjectAssignmentPreviewCreateWithBodyWithResponse(ctx context.Context, id int, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*ApiLearningResourcesProjectAssignmentPreviewCreateResponse, error)
+
+	// ApiLearningResourcesProjectAssignmentPreviewCreateWithResponse ✨ Preview what assigning a learning resource does to projects
+	//
+	// <Card href="https://humansignal.com/goenterprise">
+	//         <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+	//         <p style="margin-top: 10px; font-size: 14px;">
+	//             This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+	//         </p>
+	//     </Card>
+	// Read-only. Returns one row per selected project (by title, capped; see total) and says whether assigning this course would turn Courses on there and so hide its written instructions (switch_with_instructions), turn Courses on with nothing to hide (switch_empty), or change nothing (already_on). Assigning a course always turns Courses on for the project. The preview lets the UI say what that costs; it changes nothing and the assignment endpoints never depend on it: assigning through the API or SDK is silent and turns Courses on for the project. Projects of other organizations or that the caller cannot access are left out.
+	//
+	// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
+	//
+	// Corresponds with POST /api/learning-resources/{id}/project-assignment-preview/ (the `ApiLearningResourcesProjectAssignmentPreviewCreate` operationId).
+	ApiLearningResourcesProjectAssignmentPreviewCreateWithResponse(ctx context.Context, id int, body ApiLearningResourcesProjectAssignmentPreviewCreateJSONRequestBody, reqEditors ...RequestEditorFn) (*ApiLearningResourcesProjectAssignmentPreviewCreateResponse, error)
+
+	// ApiLearningResourcesProjectAssignmentPreviewCreateWithFormdataBodyWithResponse ✨ Preview what assigning a learning resource does to projects
+	//
+	// <Card href="https://humansignal.com/goenterprise">
+	//         <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+	//         <p style="margin-top: 10px; font-size: 14px;">
+	//             This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+	//         </p>
+	//     </Card>
+	// Read-only. Returns one row per selected project (by title, capped; see total) and says whether assigning this course would turn Courses on there and so hide its written instructions (switch_with_instructions), turn Courses on with nothing to hide (switch_empty), or change nothing (already_on). Assigning a course always turns Courses on for the project. The preview lets the UI say what that costs; it changes nothing and the assignment endpoints never depend on it: assigning through the API or SDK is silent and turns Courses on for the project. Projects of other organizations or that the caller cannot access are left out.
+	//
+	// Takes a body of the `application/x-www-form-urlencoded` content type, and returns a wrapper object for the known response body format(s).
+	//
+	// Corresponds with POST /api/learning-resources/{id}/project-assignment-preview/ (the `ApiLearningResourcesProjectAssignmentPreviewCreate` operationId).
+	ApiLearningResourcesProjectAssignmentPreviewCreateWithFormdataBodyWithResponse(ctx context.Context, id int, body ApiLearningResourcesProjectAssignmentPreviewCreateFormdataRequestBody, reqEditors ...RequestEditorFn) (*ApiLearningResourcesProjectAssignmentPreviewCreateResponse, error)
+
 	// ApiLearningResourcesProjectAssignmentsCreateWithBodyWithResponse ✨ Bulk assign learning resource to projects
 	//
 	// Create project assignments for many projects in one request.
@@ -18243,6 +18787,51 @@ type ClientWithResponsesInterface interface {
 	//
 	// Corresponds with POST /api/projects/{project_pk}/learning-assignments/ (the `ApiProjectsLearningAssignmentsCreate` operationId).
 	ApiProjectsLearningAssignmentsCreateWithFormdataBodyWithResponse(ctx context.Context, projectPk int, body ApiProjectsLearningAssignmentsCreateFormdataRequestBody, reqEditors ...RequestEditorFn) (*ApiProjectsLearningAssignmentsCreateResponse, error)
+
+	// ApiProjectsLearningAssignmentsCoursesEnabledPartialUpdateWithBodyWithResponse ✨ Turn Courses on or off for a project
+	//
+	// <Card href="https://humansignal.com/goenterprise">
+	//         <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+	//         <p style="margin-top: 10px; font-size: 14px;">
+	//             This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+	//         </p>
+	//     </Card>
+	// When Courses are on, Annotation and Reviewer Instructions are hidden from annotators and reviewers and published assigned courses are shown instead. The instruction content is never changed. Assigning a course to a project always turns Courses on automatically. When Courses are off, no assigned course gates or is offered on the project; the assignments are kept and apply again when Courses are turned back on.
+	//
+	// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
+	//
+	// Corresponds with PATCH /api/projects/{project_pk}/learning-assignments/courses-enabled/ (the `ApiProjectsLearningAssignmentsCoursesEnabledPartialUpdate` operationId).
+	ApiProjectsLearningAssignmentsCoursesEnabledPartialUpdateWithBodyWithResponse(ctx context.Context, projectPk int, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*ApiProjectsLearningAssignmentsCoursesEnabledPartialUpdateResponse, error)
+
+	// ApiProjectsLearningAssignmentsCoursesEnabledPartialUpdateWithResponse ✨ Turn Courses on or off for a project
+	//
+	// <Card href="https://humansignal.com/goenterprise">
+	//         <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+	//         <p style="margin-top: 10px; font-size: 14px;">
+	//             This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+	//         </p>
+	//     </Card>
+	// When Courses are on, Annotation and Reviewer Instructions are hidden from annotators and reviewers and published assigned courses are shown instead. The instruction content is never changed. Assigning a course to a project always turns Courses on automatically. When Courses are off, no assigned course gates or is offered on the project; the assignments are kept and apply again when Courses are turned back on.
+	//
+	// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
+	//
+	// Corresponds with PATCH /api/projects/{project_pk}/learning-assignments/courses-enabled/ (the `ApiProjectsLearningAssignmentsCoursesEnabledPartialUpdate` operationId).
+	ApiProjectsLearningAssignmentsCoursesEnabledPartialUpdateWithResponse(ctx context.Context, projectPk int, body ApiProjectsLearningAssignmentsCoursesEnabledPartialUpdateJSONRequestBody, reqEditors ...RequestEditorFn) (*ApiProjectsLearningAssignmentsCoursesEnabledPartialUpdateResponse, error)
+
+	// ApiProjectsLearningAssignmentsCoursesEnabledPartialUpdateWithFormdataBodyWithResponse ✨ Turn Courses on or off for a project
+	//
+	// <Card href="https://humansignal.com/goenterprise">
+	//         <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
+	//         <p style="margin-top: 10px; font-size: 14px;">
+	//             This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
+	//         </p>
+	//     </Card>
+	// When Courses are on, Annotation and Reviewer Instructions are hidden from annotators and reviewers and published assigned courses are shown instead. The instruction content is never changed. Assigning a course to a project always turns Courses on automatically. When Courses are off, no assigned course gates or is offered on the project; the assignments are kept and apply again when Courses are turned back on.
+	//
+	// Takes a body of the `application/x-www-form-urlencoded` content type, and returns a wrapper object for the known response body format(s).
+	//
+	// Corresponds with PATCH /api/projects/{project_pk}/learning-assignments/courses-enabled/ (the `ApiProjectsLearningAssignmentsCoursesEnabledPartialUpdate` operationId).
+	ApiProjectsLearningAssignmentsCoursesEnabledPartialUpdateWithFormdataBodyWithResponse(ctx context.Context, projectPk int, body ApiProjectsLearningAssignmentsCoursesEnabledPartialUpdateFormdataRequestBody, reqEditors ...RequestEditorFn) (*ApiProjectsLearningAssignmentsCoursesEnabledPartialUpdateResponse, error)
 
 	// ApiProjectsLearningAssignmentsReorderPartialUpdateWithBodyWithResponse ✨ Reorder learning assignments for a project
 	//

@@ -2786,7 +2786,10 @@ type AllRolesProjectList struct {
 
 	// ControlWeights Dict of weights for each control tag in metric calculation. Keys are control tag names from the labeling config. At least one tag must have a non-zero overall weight.
 	ControlWeights *map[string]ControlTagWeight `json:"control_weights,omitempty"`
-	CreatedAt      *time.Time                   `json:"created_at,omitempty"`
+
+	// CoursesEnabled Courses replace Annotation and Reviewer Instructions on this project. Changed through the learning-assignments courses-enabled endpoint.
+	CoursesEnabled *bool      `json:"courses_enabled,omitempty"`
+	CreatedAt      *time.Time `json:"created_at,omitempty"`
 
 	// CreatedBy Project owner
 	CreatedBy               *UserSimple `json:"created_by,omitempty"`
@@ -2841,9 +2844,15 @@ type AllRolesProjectList struct {
 	FinishedTaskNumber *int `json:"finished_task_number,omitempty"`
 
 	// GroundTruthNumber Honeypot annotation number in project
-	GroundTruthNumber *int        `json:"ground_truth_number,omitempty"`
-	Id                *int        `json:"id,omitempty"`
-	InputSchema       interface{} `json:"input_schema,omitempty"`
+	GroundTruthNumber *int `json:"ground_truth_number,omitempty"`
+
+	// HasAnnotationInstructions Annotation Instructions hold readable content (not empty or only empty HTML)
+	HasAnnotationInstructions *bool `json:"has_annotation_instructions,omitempty"`
+
+	// HasReviewInstructions Review Instructions hold readable content (not empty or only empty HTML)
+	HasReviewInstructions *bool       `json:"has_review_instructions,omitempty"`
+	Id                    *int        `json:"id,omitempty"`
+	InputSchema           interface{} `json:"input_schema,omitempty"`
 
 	// InternalDescription Description (Internal)
 	InternalDescription      *[]interface{} `json:"internal_description,omitempty"`
@@ -3376,6 +3385,44 @@ type AssignableOrganizationRoleEnum string
 // * `flex` - Flex
 // * `viewonly` - View Only
 type AssignableUserTypeEnum string
+
+// AssignmentPreviewCounts defines model for AssignmentPreviewCounts.
+type AssignmentPreviewCounts struct {
+	AlreadyOn              int `json:"already_on"`
+	SwitchEmpty            int `json:"switch_empty"`
+	SwitchWithInstructions int `json:"switch_with_instructions"`
+}
+
+// AssignmentPreviewProject defines model for AssignmentPreviewProject.
+type AssignmentPreviewProject struct {
+	HasAnnotationInstructions bool `json:"has_annotation_instructions"`
+	HasReviewInstructions     bool `json:"has_review_instructions"`
+	Id                        int  `json:"id"`
+
+	// State One of switch_with_instructions, switch_empty, already_on. switch_with_instructions: Courses off and written instructions (assigning turns Courses on and hides them). switch_empty: Courses off and no written instructions (assigning turns Courses on). already_on: Courses on (nothing changes).
+	State string `json:"state"`
+	Title string `json:"title"`
+}
+
+// AssignmentPreviewRequestRequest Same body as the bulk assignment, so the preview describes exactly what the assignment would do.
+type AssignmentPreviewRequestRequest struct {
+	ProjectIds []int `json:"project_ids"`
+}
+
+// AssignmentPreviewResponse defines model for AssignmentPreviewResponse.
+type AssignmentPreviewResponse struct {
+	// AlreadyAssigned Selected projects that already have this course
+	AlreadyAssigned int `json:"already_assigned"`
+
+	// Counts Projects per state, over every project, not just the rows
+	Counts AssignmentPreviewCounts `json:"counts"`
+
+	// Projects One row per project that would get the course, by title (capped; see total)
+	Projects []AssignmentPreviewProject `json:"projects"`
+
+	// Total Projects that would get the course; more than len(projects) if capped
+	Total int `json:"total"`
+}
 
 // AssignmentSettings defines model for AssignmentSettings.
 type AssignmentSettings struct {
@@ -8333,7 +8380,10 @@ type LseProject struct {
 
 	// ControlWeights Dict of weights for each control tag in metric calculation. Keys are control tag names from the labeling config. At least one tag must have a non-zero overall weight.
 	ControlWeights *map[string]ControlTagWeight `json:"control_weights,omitempty"`
-	CreatedAt      *time.Time                   `json:"created_at,omitempty"`
+
+	// CoursesEnabled Courses replace Annotation and Reviewer Instructions on this project. Changed through the learning-assignments courses-enabled endpoint.
+	CoursesEnabled *bool      `json:"courses_enabled,omitempty"`
+	CreatedAt      *time.Time `json:"created_at,omitempty"`
 
 	// CreatedBy Project owner
 	CreatedBy               *UserSimple `json:"created_by,omitempty"`
@@ -8390,9 +8440,15 @@ type LseProject struct {
 	FinishedTaskNumber *int `json:"finished_task_number,omitempty"`
 
 	// GroundTruthNumber Honeypot annotation number in project
-	GroundTruthNumber *int        `json:"ground_truth_number,omitempty"`
-	Id                *int        `json:"id,omitempty"`
-	InputSchema       interface{} `json:"input_schema,omitempty"`
+	GroundTruthNumber *int `json:"ground_truth_number,omitempty"`
+
+	// HasAnnotationInstructions Annotation Instructions hold readable content (not empty or only empty HTML)
+	HasAnnotationInstructions *bool `json:"has_annotation_instructions,omitempty"`
+
+	// HasReviewInstructions Review Instructions hold readable content (not empty or only empty HTML)
+	HasReviewInstructions *bool       `json:"has_review_instructions,omitempty"`
+	Id                    *int        `json:"id,omitempty"`
+	InputSchema           interface{} `json:"input_schema,omitempty"`
 
 	// InternalDescription Description (Internal)
 	InternalDescription *[]interface{} `json:"internal_description,omitempty"`
@@ -8948,7 +9004,10 @@ type LseProjectResponse struct {
 
 	// ControlWeights Dict of weights for each control tag in metric calculation. Keys are control tag names from the labeling config. At least one tag must have a non-zero overall weight.
 	ControlWeights *map[string]ControlTagWeight `json:"control_weights,omitempty"`
-	CreatedAt      *time.Time                   `json:"created_at,omitempty"`
+
+	// CoursesEnabled Courses replace Annotation and Reviewer Instructions on this project. Changed through the learning-assignments courses-enabled endpoint.
+	CoursesEnabled *bool      `json:"courses_enabled,omitempty"`
+	CreatedAt      *time.Time `json:"created_at,omitempty"`
 
 	// CreatedBy Project owner
 	CreatedBy               *UserSimple `json:"created_by,omitempty"`
@@ -9005,9 +9064,15 @@ type LseProjectResponse struct {
 	FinishedTaskNumber *int `json:"finished_task_number,omitempty"`
 
 	// GroundTruthNumber Honeypot annotation number in project
-	GroundTruthNumber *int        `json:"ground_truth_number,omitempty"`
-	Id                *int        `json:"id,omitempty"`
-	InputSchema       interface{} `json:"input_schema,omitempty"`
+	GroundTruthNumber *int `json:"ground_truth_number,omitempty"`
+
+	// HasAnnotationInstructions Annotation Instructions hold readable content (not empty or only empty HTML)
+	HasAnnotationInstructions *bool `json:"has_annotation_instructions,omitempty"`
+
+	// HasReviewInstructions Review Instructions hold readable content (not empty or only empty HTML)
+	HasReviewInstructions *bool       `json:"has_review_instructions,omitempty"`
+	Id                    *int        `json:"id,omitempty"`
+	InputSchema           interface{} `json:"input_schema,omitempty"`
 
 	// InternalDescription Description (Internal)
 	InternalDescription *[]interface{} `json:"internal_description,omitempty"`
@@ -12726,6 +12791,12 @@ type PatchedPredictionRequest struct {
 	Task  *int     `json:"task,omitempty"`
 }
 
+// PatchedProjectCoursesEnabledRequest defines model for PatchedProjectCoursesEnabledRequest.
+type PatchedProjectCoursesEnabledRequest struct {
+	// CoursesEnabled Courses replace Annotation and Reviewer Instructions on this project
+	CoursesEnabled *bool `json:"courses_enabled,omitempty"`
+}
+
 // PatchedProjectLearningAssignmentRequest defines model for PatchedProjectLearningAssignmentRequest.
 type PatchedProjectLearningAssignmentRequest struct {
 	AllowManualAccess        *bool `json:"allow_manual_access,omitempty"`
@@ -13434,6 +13505,12 @@ type ProjectAnnotationsBrowseItem struct {
 type ProjectAnnotationsBrowseResponse struct {
 	Annotations []ProjectAnnotationsBrowseItem `json:"annotations"`
 	Count       int                            `json:"count"`
+}
+
+// ProjectCoursesEnabled defines model for ProjectCoursesEnabled.
+type ProjectCoursesEnabled struct {
+	// CoursesEnabled Courses replace Annotation and Reviewer Instructions on this project
+	CoursesEnabled bool `json:"courses_enabled"`
 }
 
 // ProjectDuplicateModeEnum * `settings` - Only settings
@@ -19065,6 +19142,15 @@ type ApiLearningResourcesProgressCreateFormdataRequestBody = LearningProgressUpd
 // ApiLearningResourcesProgressCreateMultipartRequestBody defines body for ApiLearningResourcesProgressCreate for multipart/form-data ContentType.
 type ApiLearningResourcesProgressCreateMultipartRequestBody = LearningProgressUpdateRequest
 
+// ApiLearningResourcesProjectAssignmentPreviewCreateJSONRequestBody defines body for ApiLearningResourcesProjectAssignmentPreviewCreate for application/json ContentType.
+type ApiLearningResourcesProjectAssignmentPreviewCreateJSONRequestBody = AssignmentPreviewRequestRequest
+
+// ApiLearningResourcesProjectAssignmentPreviewCreateFormdataRequestBody defines body for ApiLearningResourcesProjectAssignmentPreviewCreate for application/x-www-form-urlencoded ContentType.
+type ApiLearningResourcesProjectAssignmentPreviewCreateFormdataRequestBody = AssignmentPreviewRequestRequest
+
+// ApiLearningResourcesProjectAssignmentPreviewCreateMultipartRequestBody defines body for ApiLearningResourcesProjectAssignmentPreviewCreate for multipart/form-data ContentType.
+type ApiLearningResourcesProjectAssignmentPreviewCreateMultipartRequestBody = AssignmentPreviewRequestRequest
+
 // ApiLearningResourcesProjectAssignmentsCreateJSONRequestBody defines body for ApiLearningResourcesProjectAssignmentsCreate for application/json ContentType.
 type ApiLearningResourcesProjectAssignmentsCreateJSONRequestBody = BulkProjectLearningAssignmentRequest
 
@@ -19638,6 +19724,15 @@ type ApiProjectsLearningAssignmentsCreateFormdataRequestBody = ProjectLearningAs
 // ApiProjectsLearningAssignmentsCreateMultipartRequestBody defines body for ApiProjectsLearningAssignmentsCreate for multipart/form-data ContentType.
 type ApiProjectsLearningAssignmentsCreateMultipartRequestBody = ProjectLearningAssignmentCreateRequest
 
+// ApiProjectsLearningAssignmentsCoursesEnabledPartialUpdateJSONRequestBody defines body for ApiProjectsLearningAssignmentsCoursesEnabledPartialUpdate for application/json ContentType.
+type ApiProjectsLearningAssignmentsCoursesEnabledPartialUpdateJSONRequestBody = PatchedProjectCoursesEnabledRequest
+
+// ApiProjectsLearningAssignmentsCoursesEnabledPartialUpdateFormdataRequestBody defines body for ApiProjectsLearningAssignmentsCoursesEnabledPartialUpdate for application/x-www-form-urlencoded ContentType.
+type ApiProjectsLearningAssignmentsCoursesEnabledPartialUpdateFormdataRequestBody = PatchedProjectCoursesEnabledRequest
+
+// ApiProjectsLearningAssignmentsCoursesEnabledPartialUpdateMultipartRequestBody defines body for ApiProjectsLearningAssignmentsCoursesEnabledPartialUpdate for multipart/form-data ContentType.
+type ApiProjectsLearningAssignmentsCoursesEnabledPartialUpdateMultipartRequestBody = PatchedProjectCoursesEnabledRequest
+
 // ApiProjectsLearningAssignmentsReorderPartialUpdateJSONRequestBody defines body for ApiProjectsLearningAssignmentsReorderPartialUpdate for application/json ContentType.
 type ApiProjectsLearningAssignmentsReorderPartialUpdateJSONRequestBody = PatchedProjectLearningAssignmentRequest
 
@@ -19913,99 +20008,3 @@ type ApiStoragesDatabricksValidateCreateJSONRequestBody = DatabricksImportStorag
 
 // ApiStoragesDatabricksValidateCreateFormdataRequestBody defines body for ApiStoragesDatabricksValidateCreate for application/x-www-form-urlencoded ContentType.
 type ApiStoragesDatabricksValidateCreateFormdataRequestBody = DatabricksImportStorageValidateRequest
-
-// ApiStoragesDatabricksValidateCreateMultipartRequestBody defines body for ApiStoragesDatabricksValidateCreate for multipart/form-data ContentType.
-type ApiStoragesDatabricksValidateCreateMultipartRequestBody = DatabricksImportStorageValidateRequest
-
-// ApiStoragesDatabricksPartialUpdateJSONRequestBody defines body for ApiStoragesDatabricksPartialUpdate for application/json ContentType.
-type ApiStoragesDatabricksPartialUpdateJSONRequestBody = PatchedDatabricksImportStorageWriteRequest
-
-// ApiStoragesDatabricksPartialUpdateFormdataRequestBody defines body for ApiStoragesDatabricksPartialUpdate for application/x-www-form-urlencoded ContentType.
-type ApiStoragesDatabricksPartialUpdateFormdataRequestBody = PatchedDatabricksImportStorageWriteRequest
-
-// ApiStoragesDatabricksPartialUpdateMultipartRequestBody defines body for ApiStoragesDatabricksPartialUpdate for multipart/form-data ContentType.
-type ApiStoragesDatabricksPartialUpdateMultipartRequestBody = PatchedDatabricksImportStorageWriteRequest
-
-// ApiStoragesExportAzureCreateJSONRequestBody defines body for ApiStoragesExportAzureCreate for application/json ContentType.
-type ApiStoragesExportAzureCreateJSONRequestBody = AzureBlobExportStorageWriteRequest
-
-// ApiStoragesExportAzureCreateFormdataRequestBody defines body for ApiStoragesExportAzureCreate for application/x-www-form-urlencoded ContentType.
-type ApiStoragesExportAzureCreateFormdataRequestBody = AzureBlobExportStorageWriteRequest
-
-// ApiStoragesExportAzureCreateMultipartRequestBody defines body for ApiStoragesExportAzureCreate for multipart/form-data ContentType.
-type ApiStoragesExportAzureCreateMultipartRequestBody = AzureBlobExportStorageWriteRequest
-
-// ApiStoragesExportAzureValidateCreateJSONRequestBody defines body for ApiStoragesExportAzureValidateCreate for application/json ContentType.
-type ApiStoragesExportAzureValidateCreateJSONRequestBody = AzureBlobExportStorageValidateRequest
-
-// ApiStoragesExportAzureValidateCreateFormdataRequestBody defines body for ApiStoragesExportAzureValidateCreate for application/x-www-form-urlencoded ContentType.
-type ApiStoragesExportAzureValidateCreateFormdataRequestBody = AzureBlobExportStorageValidateRequest
-
-// ApiStoragesExportAzureValidateCreateMultipartRequestBody defines body for ApiStoragesExportAzureValidateCreate for multipart/form-data ContentType.
-type ApiStoragesExportAzureValidateCreateMultipartRequestBody = AzureBlobExportStorageValidateRequest
-
-// ApiStoragesExportAzurePartialUpdateJSONRequestBody defines body for ApiStoragesExportAzurePartialUpdate for application/json ContentType.
-type ApiStoragesExportAzurePartialUpdateJSONRequestBody = PatchedAzureBlobExportStorageWriteRequest
-
-// ApiStoragesExportAzurePartialUpdateFormdataRequestBody defines body for ApiStoragesExportAzurePartialUpdate for application/x-www-form-urlencoded ContentType.
-type ApiStoragesExportAzurePartialUpdateFormdataRequestBody = PatchedAzureBlobExportStorageWriteRequest
-
-// ApiStoragesExportAzurePartialUpdateMultipartRequestBody defines body for ApiStoragesExportAzurePartialUpdate for multipart/form-data ContentType.
-type ApiStoragesExportAzurePartialUpdateMultipartRequestBody = PatchedAzureBlobExportStorageWriteRequest
-
-// ApiStoragesExportAzureSpiCreateJSONRequestBody defines body for ApiStoragesExportAzureSpiCreate for application/json ContentType.
-type ApiStoragesExportAzureSpiCreateJSONRequestBody = AzureServicePrincipalExportStorageRequest
-
-// ApiStoragesExportAzureSpiCreateFormdataRequestBody defines body for ApiStoragesExportAzureSpiCreate for application/x-www-form-urlencoded ContentType.
-type ApiStoragesExportAzureSpiCreateFormdataRequestBody = AzureServicePrincipalExportStorageRequest
-
-// ApiStoragesExportAzureSpiCreateMultipartRequestBody defines body for ApiStoragesExportAzureSpiCreate for multipart/form-data ContentType.
-type ApiStoragesExportAzureSpiCreateMultipartRequestBody = AzureServicePrincipalExportStorageRequest
-
-// ApiStoragesExportAzureSpiValidateCreateJSONRequestBody defines body for ApiStoragesExportAzureSpiValidateCreate for application/json ContentType.
-type ApiStoragesExportAzureSpiValidateCreateJSONRequestBody = AzureServicePrincipalExportStorageRequest
-
-// ApiStoragesExportAzureSpiValidateCreateFormdataRequestBody defines body for ApiStoragesExportAzureSpiValidateCreate for application/x-www-form-urlencoded ContentType.
-type ApiStoragesExportAzureSpiValidateCreateFormdataRequestBody = AzureServicePrincipalExportStorageRequest
-
-// ApiStoragesExportAzureSpiValidateCreateMultipartRequestBody defines body for ApiStoragesExportAzureSpiValidateCreate for multipart/form-data ContentType.
-type ApiStoragesExportAzureSpiValidateCreateMultipartRequestBody = AzureServicePrincipalExportStorageRequest
-
-// ApiStoragesExportAzureSpiPartialUpdateJSONRequestBody defines body for ApiStoragesExportAzureSpiPartialUpdate for application/json ContentType.
-type ApiStoragesExportAzureSpiPartialUpdateJSONRequestBody = PatchedAzureServicePrincipalExportStorageRequest
-
-// ApiStoragesExportAzureSpiPartialUpdateFormdataRequestBody defines body for ApiStoragesExportAzureSpiPartialUpdate for application/x-www-form-urlencoded ContentType.
-type ApiStoragesExportAzureSpiPartialUpdateFormdataRequestBody = PatchedAzureServicePrincipalExportStorageRequest
-
-// ApiStoragesExportAzureSpiPartialUpdateMultipartRequestBody defines body for ApiStoragesExportAzureSpiPartialUpdate for multipart/form-data ContentType.
-type ApiStoragesExportAzureSpiPartialUpdateMultipartRequestBody = PatchedAzureServicePrincipalExportStorageRequest
-
-// ApiStoragesExportDatabricksCreateJSONRequestBody defines body for ApiStoragesExportDatabricksCreate for application/json ContentType.
-type ApiStoragesExportDatabricksCreateJSONRequestBody = DatabricksExportStorageWriteRequest
-
-// ApiStoragesExportDatabricksCreateFormdataRequestBody defines body for ApiStoragesExportDatabricksCreate for application/x-www-form-urlencoded ContentType.
-type ApiStoragesExportDatabricksCreateFormdataRequestBody = DatabricksExportStorageWriteRequest
-
-// ApiStoragesExportDatabricksCreateMultipartRequestBody defines body for ApiStoragesExportDatabricksCreate for multipart/form-data ContentType.
-type ApiStoragesExportDatabricksCreateMultipartRequestBody = DatabricksExportStorageWriteRequest
-
-// ApiStoragesExportDatabricksValidateCreateJSONRequestBody defines body for ApiStoragesExportDatabricksValidateCreate for application/json ContentType.
-type ApiStoragesExportDatabricksValidateCreateJSONRequestBody = DatabricksExportStorageValidateRequest
-
-// ApiStoragesExportDatabricksValidateCreateFormdataRequestBody defines body for ApiStoragesExportDatabricksValidateCreate for application/x-www-form-urlencoded ContentType.
-type ApiStoragesExportDatabricksValidateCreateFormdataRequestBody = DatabricksExportStorageValidateRequest
-
-// ApiStoragesExportDatabricksValidateCreateMultipartRequestBody defines body for ApiStoragesExportDatabricksValidateCreate for multipart/form-data ContentType.
-type ApiStoragesExportDatabricksValidateCreateMultipartRequestBody = DatabricksExportStorageValidateRequest
-
-// ApiStoragesExportDatabricksPartialUpdateJSONRequestBody defines body for ApiStoragesExportDatabricksPartialUpdate for application/json ContentType.
-type ApiStoragesExportDatabricksPartialUpdateJSONRequestBody = PatchedDatabricksExportStorageWriteRequest
-
-// ApiStoragesExportDatabricksPartialUpdateFormdataRequestBody defines body for ApiStoragesExportDatabricksPartialUpdate for application/x-www-form-urlencoded ContentType.
-type ApiStoragesExportDatabricksPartialUpdateFormdataRequestBody = PatchedDatabricksExportStorageWriteRequest
-
-// ApiStoragesExportDatabricksPartialUpdateMultipartRequestBody defines body for ApiStoragesExportDatabricksPartialUpdate for multipart/form-data ContentType.
-type ApiStoragesExportDatabricksPartialUpdateMultipartRequestBody = PatchedDatabricksExportStorageWriteRequest
-
-// ApiStoragesExportGcsCreateJSONRequestBody defines body for ApiStoragesExportGcsCreate for application/json ContentType.
-type ApiStoragesExportGcsCreateJSONRequestBody = GCSExportStorageWriteRequest
