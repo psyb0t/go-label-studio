@@ -2,6 +2,13 @@
 
 All notable changes per release. Versions follow [semver](https://semver.org).
 
+## v0.11.3, 2026-11-25
+
+- Added the field `ActingRole` to `AnnotationHistory`. It is a `*string` that holds the role the user acted as when making the change.
+- Added the model `SendInviteResponse` with the field `SkippedUserIds`.
+- `ApiInviteSendEmailCreateResponse` now has a parsed `JSON200` field of type `*SendInviteResponse` and a `GetJSON200` method.
+- Several generated types and methods moved between generated files. Their names and signatures are unchanged.
+
 ## v0.11.2, 2026-11-24
 
 - Added the learning resource project assignment preview endpoint at `/api/learning-resources/{id}/project-assignment-preview/`. `Client` has `ApiLearningResourcesProjectAssignmentPreviewCreate`, with `WithBody` and `WithFormdataBody` variants, and `ClientWithResponses` has the matching `WithResponse` methods.

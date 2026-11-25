@@ -3206,7 +3206,9 @@ type AnnotationBulkSerializerWithSelectedItemsRequest_SelectedItems struct {
 // control which fields are displayed, and whether to replace simple
 // values with complex, nested serializations
 type AnnotationHistory struct {
-	Action *AnnotationHistoryActionEnum `json:"action,omitempty"`
+	// ActingRole Role the user acted as when making this change; empty for normal work
+	ActingRole *string                      `json:"acting_role,omitempty"`
+	Action     *AnnotationHistoryActionEnum `json:"action,omitempty"`
 
 	// AnnotationId Corresponding annotation for this historical annotation
 	AnnotationId *int    `json:"annotation_id,omitempty"`
@@ -15283,6 +15285,11 @@ type SendInviteRequest struct {
 	Workspaces *[]int `json:"workspaces,omitempty"`
 }
 
+// SendInviteResponse defines model for SendInviteResponse.
+type SendInviteResponse struct {
+	SkippedUserIds []int `json:"skipped_user_ids"`
+}
+
 // SerializationOption defines model for SerializationOption.
 type SerializationOption struct {
 	// OnlyId Include a full json body or IDs only
@@ -20002,9 +20009,3 @@ type ApiStoragesDatabricksCreateFormdataRequestBody = DatabricksImportStorageWri
 
 // ApiStoragesDatabricksCreateMultipartRequestBody defines body for ApiStoragesDatabricksCreate for multipart/form-data ContentType.
 type ApiStoragesDatabricksCreateMultipartRequestBody = DatabricksImportStorageWriteRequest
-
-// ApiStoragesDatabricksValidateCreateJSONRequestBody defines body for ApiStoragesDatabricksValidateCreate for application/json ContentType.
-type ApiStoragesDatabricksValidateCreateJSONRequestBody = DatabricksImportStorageValidateRequest
-
-// ApiStoragesDatabricksValidateCreateFormdataRequestBody defines body for ApiStoragesDatabricksValidateCreate for application/x-www-form-urlencoded ContentType.
-type ApiStoragesDatabricksValidateCreateFormdataRequestBody = DatabricksImportStorageValidateRequest

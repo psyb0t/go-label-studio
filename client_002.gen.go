@@ -15,6 +15,12 @@ import (
 	openapi_types "github.com/oapi-codegen/runtime/types"
 )
 
+// ApiStoragesDatabricksValidateCreateJSONRequestBody defines body for ApiStoragesDatabricksValidateCreate for application/json ContentType.
+type ApiStoragesDatabricksValidateCreateJSONRequestBody = DatabricksImportStorageValidateRequest
+
+// ApiStoragesDatabricksValidateCreateFormdataRequestBody defines body for ApiStoragesDatabricksValidateCreate for application/x-www-form-urlencoded ContentType.
+type ApiStoragesDatabricksValidateCreateFormdataRequestBody = DatabricksImportStorageValidateRequest
+
 // ApiStoragesDatabricksValidateCreateMultipartRequestBody defines body for ApiStoragesDatabricksValidateCreate for multipart/form-data ContentType.
 type ApiStoragesDatabricksValidateCreateMultipartRequestBody = DatabricksImportStorageValidateRequest
 
@@ -20002,33 +20008,6 @@ func (c *Client) ApiLearningResourcesPartialUpdateWithFormdataBody(ctx context.C
 // Corresponds with POST /api/learning-resources/{id}/duplicate/ (the `ApiLearningResourcesDuplicateCreate` operationId).
 func (c *Client) ApiLearningResourcesDuplicateCreateWithBody(ctx context.Context, id int, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewApiLearningResourcesDuplicateCreateRequestWithBody(c.Server, id, contentType, body)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// ApiLearningResourcesDuplicateCreate ✨ Duplicate a learning resource
-//
-// <Card href="https://humansignal.com/goenterprise">
-//
-//	    <img style="pointer-events: none; margin-left: 0px; margin-right: 0px;" src="https://docs.humansignal.com/images/badge.svg" alt="Label Studio Enterprise badge"/>
-//	    <p style="margin-top: 10px; font-size: 14px;">
-//	        This endpoint is not available in Label Studio Community Edition. [Learn more about Label Studio Enterprise](https://humansignal.com/goenterprise)
-//	    </p>
-//	</Card>
-//
-// Create a copy of a learning resource.
-//
-// Takes a body of the `application/json` content type.
-//
-// Corresponds with POST /api/learning-resources/{id}/duplicate/ (the `ApiLearningResourcesDuplicateCreate` operationId).
-func (c *Client) ApiLearningResourcesDuplicateCreate(ctx context.Context, id int, body ApiLearningResourcesDuplicateCreateJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewApiLearningResourcesDuplicateCreateRequest(c.Server, id, body)
 	if err != nil {
 		return nil, err
 	}

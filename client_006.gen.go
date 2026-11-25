@@ -4293,6 +4293,13 @@ func (r ApiInviteRevokeCreateResponse) ContentType() string {
 type ApiInviteSendEmailCreateResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
+	// JSON200 the response for an HTTP 200 `application/json` response
+	JSON200 *SendInviteResponse
+}
+
+// GetJSON200 returns the response for an HTTP 200 `application/json` response
+func (r ApiInviteSendEmailCreateResponse) GetJSON200() *SendInviteResponse {
+	return r.JSON200
 }
 
 // GetBody returns the raw response body bytes
@@ -20006,12 +20013,4 @@ func (r ApiStoragesGcswifValidateCreateResponse) Status() string {
 		return r.HTTPResponse.Status
 	}
 	return http.StatusText(0)
-}
-
-// StatusCode returns HTTPResponse.StatusCode
-func (r ApiStoragesGcswifValidateCreateResponse) StatusCode() int {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.StatusCode
-	}
-	return 0
 }

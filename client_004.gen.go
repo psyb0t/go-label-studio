@@ -15,6 +15,40 @@ import (
 	"github.com/oapi-codegen/runtime"
 )
 
+// NewApiAnnotationsDestroyRequest constructs an http.Request for the ApiAnnotationsDestroy method
+func NewApiAnnotationsDestroyRequest(server string, id int) (*http.Request, error) {
+	var err error
+
+	var pathParam0 string
+
+	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "id", id, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "integer", Format: ""})
+	if err != nil {
+		return nil, err
+	}
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/api/annotations/%s/", pathParam0)
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequest(http.MethodDelete, queryURL.String(), nil)
+	if err != nil {
+		return nil, err
+	}
+
+	return req, nil
+}
+
 // NewApiAnnotationsRetrieveRequest constructs an http.Request for the ApiAnnotationsRetrieve method
 func NewApiAnnotationsRetrieveRequest(server string, id int) (*http.Request, error) {
 	var err error

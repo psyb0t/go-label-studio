@@ -11,6 +11,14 @@ import (
 	openapi_types "github.com/oapi-codegen/runtime/types"
 )
 
+// StatusCode returns HTTPResponse.StatusCode
+func (r ApiStoragesGcswifValidateCreateResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+
 // ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
 func (r ApiStoragesGcswifValidateCreateResponse) ContentType() string {
 	if r.HTTPResponse != nil {
