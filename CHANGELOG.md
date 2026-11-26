@@ -2,6 +2,12 @@
 
 All notable changes per release. Versions follow [semver](https://semver.org).
 
+## v0.11.4, 2026-11-26
+
+- Added the fields `Start` and `End`, both `*time.Time`, to `ApiProjectsStatsMemberPerformanceRowsRetrieveParams`. They filter the member performance rows by an inclusive ISO 8601 date range and are passed together.
+- Added the same `Start` and `End` fields to `ApiProjectsStatsMemberPerformanceSummaryRetrieveParams`. `NewApiProjectsStatsMemberPerformanceRowsRetrieveRequest` and the summary request builder now send them as the `start` and `end` query parameters.
+- Several generated request body aliases, such as `ApiStoragesDatabricksCreateJSONRequestBody`, moved between generated files. Their names and types are unchanged.
+
 ## v0.11.3, 2026-11-25
 
 - Added the field `ActingRole` to `AnnotationHistory`. It is a `*string` that holds the role the user acted as when making the change.

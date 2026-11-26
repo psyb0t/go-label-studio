@@ -17911,6 +17911,9 @@ type ApiProjectsStatsMemberPerformanceParticipantsListParamsTable string
 
 // ApiProjectsStatsMemberPerformanceRowsRetrieveParams defines parameters for ApiProjectsStatsMemberPerformanceRowsRetrieve.
 type ApiProjectsStatsMemberPerformanceRowsRetrieveParams struct {
+	// End End of the date range (ISO 8601, inclusive). Pass together with <code>start</code>.
+	End *time.Time `form:"end,omitempty" json:"end,omitempty"`
+
 	// Ids Comma-separated participant IDs: numeric user IDs and/or synthetic members as <code>model:&lt;version&gt;</code> (annotations table only). When omitted, members and distinct model versions are derived from the project.
 	Ids *string `form:"ids,omitempty" json:"ids,omitempty"`
 
@@ -17923,6 +17926,9 @@ type ApiProjectsStatsMemberPerformanceRowsRetrieveParams struct {
 	// PageSize Page size (1–100).
 	PageSize *int `form:"page_size,omitempty" json:"page_size,omitempty"`
 
+	// Start Start of the date range (ISO 8601, inclusive). Pass together with <code>end</code>. Each metric is dated like Analytics &gt; Member Performance: annotation work by the last submit or update, review work by the review, time by when it was spent. Agreement and evaluation metrics are all-time.
+	Start *time.Time `form:"start,omitempty" json:"start,omitempty"`
+
 	// Table Which table to load: "annotations" or "reviews".
 	Table *ApiProjectsStatsMemberPerformanceRowsRetrieveParamsTable `form:"table,omitempty" json:"table,omitempty"`
 }
@@ -17932,8 +17938,14 @@ type ApiProjectsStatsMemberPerformanceRowsRetrieveParamsTable string
 
 // ApiProjectsStatsMemberPerformanceSummaryRetrieveParams defines parameters for ApiProjectsStatsMemberPerformanceSummaryRetrieve.
 type ApiProjectsStatsMemberPerformanceSummaryRetrieveParams struct {
+	// End End of the date range (ISO 8601, inclusive). Pass together with <code>start</code>.
+	End *time.Time `form:"end,omitempty" json:"end,omitempty"`
+
 	// Ids Comma-separated participant IDs: numeric user IDs and/or <code>model:&lt;version&gt;</code> for annotations. When omitted, derived from the project.
 	Ids *string `form:"ids,omitempty" json:"ids,omitempty"`
+
+	// Start Start of the date range (ISO 8601, inclusive). Pass together with <code>end</code>. Each metric is dated like Analytics &gt; Member Performance: annotation work by the last submit or update, review work by the review, time by when it was spent. Agreement and evaluation metrics are all-time.
+	Start *time.Time `form:"start,omitempty" json:"start,omitempty"`
 
 	// Table Which table: "annotations" or "reviews".
 	Table *ApiProjectsStatsMemberPerformanceSummaryRetrieveParamsTable `form:"table,omitempty" json:"table,omitempty"`
@@ -19997,15 +20009,3 @@ type ApiStoragesAzureSpiPartialUpdateJSONRequestBody = PatchedAzureServicePrinci
 
 // ApiStoragesAzureSpiPartialUpdateFormdataRequestBody defines body for ApiStoragesAzureSpiPartialUpdate for application/x-www-form-urlencoded ContentType.
 type ApiStoragesAzureSpiPartialUpdateFormdataRequestBody = PatchedAzureServicePrincipalImportStorageRequest
-
-// ApiStoragesAzureSpiPartialUpdateMultipartRequestBody defines body for ApiStoragesAzureSpiPartialUpdate for multipart/form-data ContentType.
-type ApiStoragesAzureSpiPartialUpdateMultipartRequestBody = PatchedAzureServicePrincipalImportStorageRequest
-
-// ApiStoragesDatabricksCreateJSONRequestBody defines body for ApiStoragesDatabricksCreate for application/json ContentType.
-type ApiStoragesDatabricksCreateJSONRequestBody = DatabricksImportStorageWriteRequest
-
-// ApiStoragesDatabricksCreateFormdataRequestBody defines body for ApiStoragesDatabricksCreate for application/x-www-form-urlencoded ContentType.
-type ApiStoragesDatabricksCreateFormdataRequestBody = DatabricksImportStorageWriteRequest
-
-// ApiStoragesDatabricksCreateMultipartRequestBody defines body for ApiStoragesDatabricksCreate for multipart/form-data ContentType.
-type ApiStoragesDatabricksCreateMultipartRequestBody = DatabricksImportStorageWriteRequest

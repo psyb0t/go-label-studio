@@ -15,6 +15,18 @@ import (
 	openapi_types "github.com/oapi-codegen/runtime/types"
 )
 
+// ApiStoragesAzureSpiPartialUpdateMultipartRequestBody defines body for ApiStoragesAzureSpiPartialUpdate for multipart/form-data ContentType.
+type ApiStoragesAzureSpiPartialUpdateMultipartRequestBody = PatchedAzureServicePrincipalImportStorageRequest
+
+// ApiStoragesDatabricksCreateJSONRequestBody defines body for ApiStoragesDatabricksCreate for application/json ContentType.
+type ApiStoragesDatabricksCreateJSONRequestBody = DatabricksImportStorageWriteRequest
+
+// ApiStoragesDatabricksCreateFormdataRequestBody defines body for ApiStoragesDatabricksCreate for application/x-www-form-urlencoded ContentType.
+type ApiStoragesDatabricksCreateFormdataRequestBody = DatabricksImportStorageWriteRequest
+
+// ApiStoragesDatabricksCreateMultipartRequestBody defines body for ApiStoragesDatabricksCreate for multipart/form-data ContentType.
+type ApiStoragesDatabricksCreateMultipartRequestBody = DatabricksImportStorageWriteRequest
+
 // ApiStoragesDatabricksValidateCreateJSONRequestBody defines body for ApiStoragesDatabricksValidateCreate for application/json ContentType.
 type ApiStoragesDatabricksValidateCreateJSONRequestBody = DatabricksImportStorageValidateRequest
 
